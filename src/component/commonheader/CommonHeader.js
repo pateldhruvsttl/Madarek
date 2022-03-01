@@ -1,17 +1,18 @@
 import React, { memo } from "react";
-import { View, Text } from "react-native";
+import { View, Image, Text } from "react-native";
+import { GetSvg } from "../../utils/Assets";
 import Style from "./CommonHeaderStyle";
+import {Label} from "../../utils/StringUtil";
 
 const CommonHeader = (props) => {
-    console.log(props.isType);
-
 
     if (props.isType === "HomeScreenHeader") {
 
         return (
             <View style={Style.MainView}>
-                <Text>hello</Text>
-                <Text>hello</Text>
+                 <Image style={Style.headerProfile} source={GetSvg.iconSearch} />
+                       
+                <Text>{Label.HomeTitle}</Text>
                 <Text>hello</Text>
             </View>
         );

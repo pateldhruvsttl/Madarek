@@ -1,5 +1,9 @@
-const MESSAGE = {
-    NoInterNetConnecction:"NoInterNet Connecction",
+export const ARlabel = {
+    _homeTitle: "HomeScreen",
+    _subnitIdea: "SUBMIT IDEA",
 }
+export const USlabel = {
+    _homeTitle: "HomeScreen",
+    _subnitIdea: "SUBMIT IDEA",
 
-export default MESSAGE;
+}

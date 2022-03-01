@@ -4,7 +4,7 @@ import styles, { sliderWidth, itemWidth } from "./EventSliderStyle";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
-import {Lable} from '../../utils/StringUtil'
+import {Label} from '../../utils/StringUtil'
 
 const EventSlider = ({ Entries }) => {
 
@@ -58,7 +58,7 @@ const EventSlider = ({ Entries }) => {
                 <View style={styles.sliderRendTitleView}>
                     <Text style={styles.txtsliderRendTitle}>{item.title}</Text>
                     <TouchableOpacity style={styles.btnSliderRend}>
-                    <Text style={styles.txtsliderRendBtnTitle}>{Lable.SubnitIdea}</Text>
+                    <Text style={styles.txtsliderRendBtnTitle}>{Label.SubnitIdea}</Text>
                     </TouchableOpacity>
                 </View>
 
