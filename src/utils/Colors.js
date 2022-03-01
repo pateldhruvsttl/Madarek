@@ -1,6 +1,7 @@
 
 export const GetAppColor = {
     white: '#FFFFFF',
+    lightWhite: '#f5f7fb',
     black: '#000',
     statusBarYellow:'#E29834',
     headerYellow:'#FFAD3B',
