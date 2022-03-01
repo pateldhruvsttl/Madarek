@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
 import CategoryStyle from './CategoryStyle'
+import { Label } from '../../utils/StringUtil'
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
@@ -76,7 +77,7 @@ const Category = () => {
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
             <View style={CategoryStyle.headerView}>
-                <Text style={CategoryStyle.headerText}>Select Category</Text>
+                <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>
                 <TouchableOpacity style={CategoryStyle.skipBtn}>
                     <Text style={CategoryStyle.skipText}>SKIP</Text>
                 </TouchableOpacity>
