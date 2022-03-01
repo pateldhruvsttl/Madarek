@@ -1,4 +1,3 @@
-
 export const GetAppColor = {
     white: '#FFFFFF',
     lightWhite: '#f5f7fb',
@@ -11,5 +10,13 @@ export const GetAppColor = {
     borderGray:'#E0E1E4',
     categoryText:'#575757',
     categoryTextSelected:'#353535',
+    lightGrey : '#f5f7fb',
+    lightOrange : '#f9b52b',
+    lightWhite : '#ffffff',
+    commonBorderGrey:'#848484',
+    disableGrey : '#F5F7FB',
+    disableBorder :'#CCCCCC',
+    barGrey:'#cacbcf',
+    innovationGrey : '#5F6060'
 }
 
