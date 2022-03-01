@@ -11,6 +11,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		327BD67527CE39AA000F8046 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 327BD67027CE39AA000F8046 /* Roboto-Regular.ttf */; };
+		327BD67627CE39AA000F8046 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 327BD67127CE39AA000F8046 /* Roboto-Light.ttf */; };
+		327BD67727CE39AA000F8046 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 327BD67227CE39AA000F8046 /* Roboto-Medium.ttf */; };
+		327BD67827CE39AA000F8046 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 327BD67327CE39AA000F8046 /* Roboto-Italic.ttf */; };
+		327BD67927CE39AA000F8046 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 327BD67427CE39AA000F8046 /* Roboto-Bold.ttf */; };
 		4DA572549ADBF861E70480F9 /* libPods-Madarek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8D9ACC9E3F5EEDF89A3D76 /* libPods-Madarek.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D52EB1928EF16144452F26AD /* libPods-Madarek-MadarekTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C09B8EA488AB5E9ACF951A /* libPods-Madarek-MadarekTests.a */; };
@@ -36,6 +41,11 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Madarek/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Madarek/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Madarek/main.m; sourceTree = "<group>"; };
+		327BD67027CE39AA000F8046 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		327BD67127CE39AA000F8046 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		327BD67227CE39AA000F8046 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		327BD67327CE39AA000F8046 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		327BD67427CE39AA000F8046 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		3E638F41630B575AABC44F7A /* Pods-Madarek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Madarek.release.xcconfig"; path = "Target Support Files/Pods-Madarek/Pods-Madarek.release.xcconfig"; sourceTree = "<group>"; };
 		77E465AD78436B5DA217F0B2 /* Pods-Madarek-MadarekTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Madarek-MadarekTests.release.xcconfig"; path = "Target Support Files/Pods-Madarek-MadarekTests/Pods-Madarek-MadarekTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Madarek/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +114,6 @@
 				D8FC0039C8A1AC5C404FD4FD /* Pods-Madarek-MadarekTests.debug.xcconfig */,
 				77E465AD78436B5DA217F0B2 /* Pods-Madarek-MadarekTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -118,6 +127,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		327BD66F27CE3992000F8046 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				327BD67427CE39AA000F8046 /* Roboto-Bold.ttf */,
+				327BD67327CE39AA000F8046 /* Roboto-Italic.ttf */,
+				327BD67127CE39AA000F8046 /* Roboto-Light.ttf */,
+				327BD67227CE39AA000F8046 /* Roboto-Medium.ttf */,
+				327BD67027CE39AA000F8046 /* Roboto-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +149,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				327BD66F27CE3992000F8046 /* Resources */,
 				13B07FAE1A68108700A75B9A /* Madarek */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MadarekTests */,
@@ -243,7 +265,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				327BD67927CE39AA000F8046 /* Roboto-Bold.ttf in Resources */,
+				327BD67727CE39AA000F8046 /* Roboto-Medium.ttf in Resources */,
+				327BD67827CE39AA000F8046 /* Roboto-Italic.ttf in Resources */,
+				327BD67527CE39AA000F8046 /* Roboto-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				327BD67627CE39AA000F8046 /* Roboto-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

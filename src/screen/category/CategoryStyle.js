@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { GetAppColor } from '../../utils/Colors';
+import FONTS from '../../utils/Fonts';
 
 const CategoryStyle = StyleSheet.create({
     headerView: {
@@ -10,9 +11,10 @@ const CategoryStyle = StyleSheet.create({
     },
     headerText: {
         color: GetAppColor.white,
-        fontWeight: '900',
+        // fontWeight: '900',
         fontSize: 17,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontFamily:FONTS.robotBold
     },
     skipBtn: {
         position: 'absolute',
