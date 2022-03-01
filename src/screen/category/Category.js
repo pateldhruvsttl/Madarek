@@ -1,7 +1,8 @@
-import { View, Text, StatusBar, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native'
+import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
+import CategoryStyle from './CategoryStyle'
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
@@ -74,17 +75,17 @@ const Category = () => {
         <View>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
-            <View style={styles.headerView}>
-                <Text style={styles.headerText}>Select Category</Text>
-                <TouchableOpacity style={styles.skipBtn}>
-                    <Text style={styles.skipText}>SKIP</Text>
+            <View style={CategoryStyle.headerView}>
+                <Text style={CategoryStyle.headerText}>Select Category</Text>
+                <TouchableOpacity style={CategoryStyle.skipBtn}>
+                    <Text style={CategoryStyle.skipText}>SKIP</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.searchView}>
+            <View style={CategoryStyle.searchView}>
                 <TextInput
                     placeholder='What do you prefer to see?'
-                    style={styles.input}
+                    style={CategoryStyle.input}
                     onChangeText={(txt) => onWriteText(txt)}
                 />
 
@@ -92,12 +93,12 @@ const Category = () => {
                     <Image style={{ width: 25, height: 25 }} source={GetIcon.searchIcon} />
                 </TouchableOpacity>
             </View>
-            <ScrollView style={styles.scroll}>
-                <View style={styles.scrollSubView}>
+            <ScrollView style={CategoryStyle.scroll}>
+                <View style={CategoryStyle.scrollSubView}>
                     {
                         categories.map((item, index) => {
                             return (
-                                <TouchableOpacity onPress={() => onPressCategory(index)} style={[styles.categoryButton, { borderColor: item.isselected ? GetAppColor.borderRed : GetAppColor.borderGray, }]}>
+                                <TouchableOpacity onPress={() => onPressCategory(index)} style={[CategoryStyle.categoryButton, { borderColor: item.isselected ? GetAppColor.borderRed : GetAppColor.borderGray, }]}>
                                     <Text style={{ color: item.isselected ? GetAppColor.categoryTextSelected : GetAppColor.categoryText, fontSize: 17 }}>{item.name}</Text>
                                 </TouchableOpacity>
                             )
@@ -107,7 +108,7 @@ const Category = () => {
                 </View>
             </ScrollView>
 
-            <TouchableOpacity style={styles.continueButton}>
+            <TouchableOpacity style={CategoryStyle.continueButton}>
                 <Text style={{ color: GetAppColor.white, fontWeight: '700' }}>Continue</Text>
             </TouchableOpacity>
         </View>
@@ -116,40 +117,3 @@ const Category = () => {
 
 export default Category
 
-const styles = StyleSheet.create({
-    headerView: {
-        width: '100%',
-        height: 60,
-        backgroundColor: GetAppColor.headerYellow,
-        justifyContent: 'center',
-    },
-    headerText: {
-        color: GetAppColor.white,
-        fontWeight: '900',
-        fontSize: 17,
-        alignSelf: 'center'
-    },
-    skipBtn: {
-        position: 'absolute',
-        end: 10,
-        alignSelf: 'center',
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: GetAppColor.skipBorderColor,
-        height: 25,
-        width: 50,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    skipText: {
-        color: GetAppColor.white,
-        fontSize: 15,
-        fontWeight: '300',
-    },
-    searchView: { paddingHorizontal: 25, paddingVertical: 15, marginTop: 15, marginBottom: 15, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' },
-    scroll: { width: '100%', height: '69%', backgroundColor: GetAppColor.backGround },
-    scrollSubView: { paddingHorizontal: 15, flexDirection: 'row', flexWrap: 'wrap', },
-    categoryButton: { borderRadius: 25, backgroundColor: GetAppColor.white, borderWidth: 1, paddingHorizontal: 20, paddingVertical: 10, margin: 5 },
-    continueButton: { width: '90.74%', height: '4.35%', backgroundColor: GetAppColor.headerYellow, borderRadius: 5, alignItems: 'center', justifyContent: 'center', alignSelf: 'center', marginTop: 5 },
-    input: { width: '70%', fontSize: 20, paddingBottom: 15, borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1 },
-}) 
