@@ -5,7 +5,7 @@ const CommonHeaderStyle = StyleSheet.create({
     MainView: { width: '100%', height: 50, flexDirection:'row', justifyContent:'space-between',
     alignItems:'center',
     paddingHorizontal:5,
-    backgroundColor:GetAppColor.orange },
+    backgroundColor:GetAppColor.headerYellow },
 });
 
 export default CommonHeaderStyle;
