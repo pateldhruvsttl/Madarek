@@ -5,6 +5,8 @@ import { GetIcon, GetImage } from '../../utils/Assets'
 import CategoryStyle from './CategoryStyle'
 import { Label } from '../../utils/StringUtil'
 import IcnSearch from '../../assets/svg/IcnSearch'
+import { AppUtil } from '../../utils/AppUtil'
+import FONTS from '../../utils/Fonts'
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
@@ -91,7 +93,7 @@ const Category = () => {
                     onChangeText={(txt) => onWriteText(txt)}
                 />
 
-                <TouchableOpacity style={{position:'absolute', end:25,top:15, alignSelf:'center'}}>
+                <TouchableOpacity style={{ position: 'absolute', end: 25, top: 15, alignSelf: 'center' }}>
                     <Image style={{ width: 25, height: 25 }} source={GetIcon.searchIcon} />
                     {/* <IcnSearch /> */}
                 </TouchableOpacity>
@@ -102,7 +104,15 @@ const Category = () => {
                         categories.map((item, index) => {
                             return (
                                 <TouchableOpacity onPress={() => onPressCategory(index)} style={[CategoryStyle.categoryButton, { borderColor: item.isselected ? GetAppColor.borderRed : GetAppColor.borderGray, }]}>
-                                    <Text style={{ color: item.isselected ? GetAppColor.categoryTextSelected : GetAppColor.categoryText, fontSize: 17 }}>{item.name}</Text>
+                                    <Text
+                                        style={{
+                                            color: item.isselected ? GetAppColor.categoryTextSelected : GetAppColor.categoryText,
+                                            fontSize: AppUtil.getHP(2.25),
+                                            fontFamily:item.isselected ? FONTS.robotMedium:FONTS.robotRegular
+                                        }}
+                                    >
+                                        {item.name}
+                                    </Text>
                                 </TouchableOpacity>
                             )
                         })
@@ -112,7 +122,7 @@ const Category = () => {
             </ScrollView>
 
             <TouchableOpacity style={CategoryStyle.continueButton}>
-                <Text style={{ color: GetAppColor.white, fontWeight: '700' }}>{Label.Continue}</Text>
+                <Text style={CategoryStyle.continueText}>{Label.Continue}</Text>
             </TouchableOpacity>
         </View>
     )
