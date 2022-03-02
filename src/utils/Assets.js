@@ -10,8 +10,3 @@ export const GetImage = {
     // ImgHome: require("../assets/icn_home.png"),
     
 }
-
-export const GetSvg = {
-    iconSearch:require('../assets/svg/IcnSearch'),
-    
-}
