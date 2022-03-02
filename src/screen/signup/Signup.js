@@ -23,21 +23,21 @@ const Signup = () => {
 
     const signUpPressed=()=>{
         if (firstName === "") {
-            Alert.alert('Please Enter First Name');
+            Alert.alert(Label.enterfirstname);
         }else  if (lastName === "") {
-            Alert.alert('Please Enter Last Name');
+            Alert.alert(Label.enterlastname);
         }else  if (mobileNumber === "" || !AppUtil.mobilevalidate(mobileNumber)) {
-            Alert.alert('Please Enter Mobile Number');
+            Alert.alert( Label.entermobilenumber);
         }else  if (emaiId === "" || !AppUtil.validate(emaiId)) {
-            Alert.alert('Please Enter Proper Email');
+            Alert.alert( Label.enteremail);
         }else  if (password === "") {
-            Alert.alert('Please Enter Password');
+            Alert.alert(Label.enterpassword);
         }else  if (reTypePassword === "") {
-            Alert.alert('Please Enter Retype Password');
+            Alert.alert(Label.enterretypePassword);
         }else  if (password !== reTypePassword) {
-            Alert.alert('Please Match both Password and Re-type Password are same');
+            Alert.alert(Label.enterSamePassword);
         }else{
-            Alert.alert('all field are done')
+            console.log('all field are done');
         }
     }
 

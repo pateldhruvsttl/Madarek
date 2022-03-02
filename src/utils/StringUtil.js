@@ -2,7 +2,7 @@ import { baseUrl, isRTL } from "./Constant";
 import { ARlabel, USlabel } from "./Messages";
 
 export const Label = {
-    HomeTitle: isRTL ? ARlabel.homeTitle:USlabel._homeTitle,
+    HomeTitle: isRTL ? ARlabel.homeTitle : USlabel._homeTitle,
     SubnitIdea: isRTL ? ARlabel._subnitIdea : USlabel._subnitIdea,
     CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
     Skip: isRTL ? ARlabel._skip : USlabel._skip,
@@ -20,6 +20,14 @@ export const Label = {
     emailID: isRTL ? ARlabel._emailID : USlabel._emailID,
     password: isRTL ? ARlabel._password : USlabel._password,
     retypepassword: isRTL ? ARlabel._retypepassword : USlabel._retypepassword,
+
+    enterfirstname: isRTL ? ARlabel._enterfirstname : USlabel._enterfirstname,
+    enterlastname: isRTL ? ARlabel._enterlastname : USlabel._enterlastname,
+    entermobilenumber: isRTL ? ARlabel._entermobilenumber : USlabel._entermobilenumber,
+    enteremail: isRTL ? ARlabel._enteremail : USlabel._enteremail,
+    enterpassword: isRTL ? ARlabel._enterpassword : USlabel._enterpassword,
+    enterretypePassword: isRTL ? ARlabel._enterretypePassword : USlabel._enterretypePassword,
+    enterSamePassword: isRTL ? ARlabel._enterSamePassword : USlabel._enterSamePassword,
 }
 
 
