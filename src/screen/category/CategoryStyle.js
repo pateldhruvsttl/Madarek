@@ -76,7 +76,7 @@ const CategoryStyle = StyleSheet.create({
     },
 
     input: {
-        width: '70%',
+        width: '100%',
         fontSize: 20,
         paddingBottom: 15,
         borderBottomColor: GetAppColor.borderGray,

@@ -4,6 +4,7 @@ import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
 import CategoryStyle from './CategoryStyle'
 import { Label } from '../../utils/StringUtil'
+import IcnSearch from '../../assets/svg/IcnSearch'
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
@@ -79,19 +80,20 @@ const Category = () => {
             <View style={CategoryStyle.headerView}>
                 <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>
                 <TouchableOpacity style={CategoryStyle.skipBtn}>
-                    <Text style={CategoryStyle.skipText}>SKIP</Text>
+                    <Text style={CategoryStyle.skipText}>{Label.Skip}</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={CategoryStyle.searchView}>
                 <TextInput
-                    placeholder='What do you prefer to see?'
+                    placeholder={Label.WhatdoyouPrefertosee}
                     style={CategoryStyle.input}
                     onChangeText={(txt) => onWriteText(txt)}
                 />
 
-                <TouchableOpacity>
+                <TouchableOpacity style={{position:'absolute', end:25,top:15, alignSelf:'center'}}>
                     <Image style={{ width: 25, height: 25 }} source={GetIcon.searchIcon} />
+                    {/* <IcnSearch /> */}
                 </TouchableOpacity>
             </View>
             <ScrollView style={CategoryStyle.scroll}>
@@ -110,7 +112,7 @@ const Category = () => {
             </ScrollView>
 
             <TouchableOpacity style={CategoryStyle.continueButton}>
-                <Text style={{ color: GetAppColor.white, fontWeight: '700' }}>Continue</Text>
+                <Text style={{ color: GetAppColor.white, fontWeight: '700' }}>{Label.Continue}</Text>
             </TouchableOpacity>
         </View>
     )
