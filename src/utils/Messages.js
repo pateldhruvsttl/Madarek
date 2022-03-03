@@ -18,6 +18,18 @@ export const ARlabel = {
     _emailID: "Email ID",
     _password: "Password",
     _retypepassword: "Re-type Password",
+    _expertInsights:'Expert Insights',
+    _viewAll:'View All',
+    _renewableEnergy:'Renewable Energy',
+    _health:'Health',
+    _education:'Education',
+    _favouriteCategories:'Favourite Categories',
+    
+    _constructionInfrastructure:'Construction & Infrastructure',
+    _agricultureFisheriesy:'Agriculture & Fisheriesy',
+    _aviation:'Aviation',
+    _informationTechnology:'Information Technology?',
+    _submitIdea:"Submit Idea",
 
     // validation message.
     _enterfirstname: "Please Enter First Name",
@@ -27,6 +39,8 @@ export const ARlabel = {
     _enterpassword: "Please Enter Password",
     _enterretypePassword: "Please Enter Retype Password",
     _enterSamePassword: "Please Match both Password and Re-type Password are same",
+    _readyToSubmitYourIdea: "Ready to submit your Idea",
+   
 
 }
 export const USlabel = {
@@ -49,6 +63,17 @@ export const USlabel = {
     _emailID: "Email ID",
     _password: "Password",
     _retypepassword: "Re-type Password",
+    _expertInsights:'Expert Insights',
+    _viewAll:'View All',
+    _renewableEnergy:'Renewable Energy',
+    _health:'Health',
+    _education:'Education',
+    _favouriteCategories:'Favourite Categories',
+    _constructionInfrastructure:'Construction & Infrastructure',
+    _agricultureFisheriesy:'Agriculture & Fisheriesy',
+    _aviation:'Aviation',
+    _informationTechnology:'Information Technology',
+    _submitIdea:"Submit Idea",
 
     // validation message.
     _enterfirstname: "Please Enter First Name",
@@ -58,4 +83,5 @@ export const USlabel = {
     _enterpassword: "Please Enter Password",
     _enterretypePassword: "Please Enter Retype Password",
     _enterSamePassword: "Please Match both Password and Re-type Password are same",
+    _readyToSubmitYourIdea: "Ready to submit your Idea?",
 }

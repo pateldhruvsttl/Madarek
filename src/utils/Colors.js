@@ -14,5 +14,9 @@ export const GetAppColor = {
     dotGreen:'#42d235',
     textColor:'#646464',
     grayBorder:"#848484",
+    greyBg:"#fdfdfd",
+    lightBlue:'#31ade3',
+    catBorder:'#8c67a9',
+    blackTransperent: 'rgba(0, 0, 0, 0.6)'
 }
 

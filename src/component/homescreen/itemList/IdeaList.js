@@ -1,35 +1,40 @@
 import React, { memo, useState } from "react";
 import { View, Image, Text, TouchableOpacity, useWindowDimensions } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { GetAppColor } from "../../../utils/Colors";
+import Style from './IdealListStyle'
+
 import PopularIdeas from "./TabPopularIdeas";
-import { AppUtil } from "../../../utils/AppUtil";
-
-const Tab = createMaterialTopTabNavigator();
-
-function TestScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
-        </View>
-    );
-}
-const onTabNavigate = () => {
-    return (
-        <NavigationContainer independent={true}>
-            <Tab.Navigator>
-                <Tab.Screen name="Popular Ideas" component={PopularIdeas} />
-                <Tab.Screen name="New Ideas" component={TestScreen} />
-                <Tab.Screen name="Winning Ideas" component={TestScreen} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    )
-}
 
 const IdeaList = () => {
+
+    const [isSelectedIndex, setSelectedIndex] = useState(1);
+
+    const onSelectTab = (value) => {
+        setSelectedIndex(value)
+    }
+    const onTabNavigate = () => {
+        return (
+            isSelectedIndex == 0 && <PopularIdeas />
+        )
+    }
+
     return (
-        <View style={{ flex:1}}>
+        <View style={{ width: '100%' }}>
+            {/*  */}
+            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-around' }}>
+                <TouchableOpacity onPress={() => onSelectTab(0)} style={[{ borderBottomWidth: isSelectedIndex === 0 ? 1 : 0 }, Style.tabStly]}>
+                    <Text style={[{ color: isSelectedIndex === 0 ? GetAppColor.black : GetAppColor.grayBorder }, Style.txtCat]}> Popular Ideas</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onSelectTab(1)} style={[{ borderBottomWidth: isSelectedIndex === 1 ? 1 : 0 }, Style.tabStly]}>
+                    <Text style={[{ color: isSelectedIndex === 1 ? GetAppColor.black : GetAppColor.grayBorder }, Style.txtCat]}>New Ideas</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onSelectTab(2)} style={[{ borderBottomWidth: isSelectedIndex === 2 ? 1 : 0 }, Style.tabStly]}>
+                    <Text style={[{ color: isSelectedIndex === 2 ? GetAppColor.black : GetAppColor.grayBorder }, Style.txtCat]}>Winning Ideas</Text>
+                </TouchableOpacity>
+            </View>
+
             {onTabNavigate()}
+
         </View>
     );
 }

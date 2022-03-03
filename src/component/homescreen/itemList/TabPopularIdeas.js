@@ -18,6 +18,7 @@ const PopularIdeasListScreen = () => {
             see: '700',
             like: '200',
             comment: '80',
+            isLike:true,
         },
         {
             id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -28,6 +29,7 @@ const PopularIdeasListScreen = () => {
             see: '700',
             like: '200',
             comment: '80',
+            isLike:false,
         },
 
     ];
