@@ -7,12 +7,22 @@ import BackIcon from "../../assets/svg/loginLogo/BackIcon"
 import { StatusBar } from "react-native";
 import { GetAppColor } from "../../utils/Colors";
 import { Label } from "../../utils/StringUtil";
+import { showMessage } from "../../utils/Constant";
+import { showMessageWithCallBack } from "../../utils/Constant";
+import { emailValidate } from "../../utils/Constant";
+import CountryPicker from 'react-native-country-picker-modal'
+import { DarkTheme } from "@react-navigation/native";
+
 
 
 const LoginScreen = () => {
     const [showPassword, setShowPassword] = useState(false)
-    const [loginDetails, setLoginDetails] = useState(true)
-    // const [mobileDetail, setMobileDetail] = useState(true)
+    const [isMobilelogin, setMobilelogin] = useState(true)
+    const [mobileNumber, setMobileNumber] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState()
+
+    const [show, setShow] = useState(false);
 
     const [first, setfirst] = useState('');
     const [second, setsecond] = useState('');
@@ -20,6 +30,14 @@ const LoginScreen = () => {
     const [fourth, setfourth] = useState('');
     const [fifth, setfifth] = useState('');
     const [sixth, setsixth] = useState('');
+    const [otp, setotp] = useState()
+    const [countryCode, setCountryCode] = useState('IN')
+    const [country, setCountry] = useState(null)
+    const [withCallingCode, setWithCallingCode] = useState(false)
+    const [callCode, setCallCode] = useState('91');
+    const t1 = useRef(null);
+    const t2 = useRef(null);
+    const t3 = useRef(null);
 
     const input1 = useRef();
     const input2 = useRef();
@@ -31,9 +49,10 @@ const LoginScreen = () => {
     const setFocusInput = (inputRef) => {
         inputRef.current.focus();
     }
+    let pin = 12345678
+    let otpNumber = 123456
 
     const handleKeyPress = (key, index) => {
-        // alert(index)
         if (key === 'Backspace') {
             if (index === 1) {
                 return false;
@@ -64,13 +83,64 @@ const LoginScreen = () => {
         }
     }
 
+    const validateFields = () => {
+        if (isMobilelogin) {
+            if (!mobileNumber.trim()) {
+                showMessage(Label.Phone)
+                return false
+            }
+            if (showPassword) {
+                if (pin != password) {
+                    showMessage(Label.Password)
+                    return false
+                }
+            } else {
+                const otpJoin = first + second + third + fourth + fifth + sixth;
+                // alert( typeof Number(otpJoin))
+                if (otpNumber != Number(otpJoin)) {
+                    showMessage(Label.Pin)
+                    return false
+                }
+            }
+        }
+        else {
+            if (!email.trim() || !emailValidate(email)) {
+                showMessage(Label.Email)
+                return false
+            } else if (pin != password) {
+                showMessage(Label.Password)
+                return false
+            }
+        }
+        showMessage('Login successfully')
+        resetField()
+    }
+    const resetField = () => {
+        setMobileNumber('')
+        setPassword('')
+        setEmail('')
+        setfirst('')
+        setsecond('')
+        setfourth('')
+        setthird('')
+        setfifth('')
+        setsixth('')
+        setCountryCode('IN')
+        setCountry('')
+        setCallCode('');
+    }
+    const onSelect = (country) => {
+        console.log('country', country.callingCode[0],country);
+        setCountryCode(country.cca2)
+        setCountry(country)
+        setCallCode(country.callingCode[0]);
+    }
+
     return (
         <View style={PAGESTYLE.mainView}>
-            {/* <StatusBar backgroundColor='#f9b52b' /> */}
             <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
             <View style={{ width: '100%', paddingHorizontal: 15 }}>
                 <View style={PAGESTYLE.headingMain}>
-                    {/* <Image> */}
                     <MadarekLogo width={150} height={150} />
 
                 </View>
@@ -79,66 +149,87 @@ const LoginScreen = () => {
                         <Text style={PAGESTYLE.signText}>{Label.SignInTitle}</Text>
                     </View>
                     <View style={PAGESTYLE.userInformation}>
-                        <TouchableOpacity style={PAGESTYLE.loginCredential}
-                            onPress={() => { setLoginDetails(true) }}
-                        >
-                            <Text style={PAGESTYLE.mobileLoginText}>{Label.MobileTitle}</Text>
+
+                        <TouchableOpacity style={[PAGESTYLE.loginMobileCredential, isMobilelogin ? null : PAGESTYLE.emailCredential]}
+                            onPress={() => { setMobilelogin(true); resetField(); }}>
+                            <Text style={isMobilelogin ? PAGESTYLE.isEnableText : PAGESTYLE.isDisableText}>{Label.MobileTitle}</Text>
                         </TouchableOpacity>
                         <View style={PAGESTYLE.middleLine}></View>
-                        <TouchableOpacity style={[PAGESTYLE.loginCredential, PAGESTYLE.emailCredential]}
-                            onPress={() => { setLoginDetails(false) }}
-                        >
-                            <Text style={PAGESTYLE.emailLoginText}>{Label.EmailTitle}</Text>
+                        <TouchableOpacity style={[PAGESTYLE.loginEmailCredential, isMobilelogin ? PAGESTYLE.emailCredential : null]}
+                            onPress={() => { setMobilelogin(false); resetField(); }} >
+                            <Text style={isMobilelogin ? PAGESTYLE.isDisableText : PAGESTYLE.isEnableText}>{Label.EmailTitle}</Text>
                         </TouchableOpacity>
                     </View>
                     {
-                        loginDetails ?
+                        isMobilelogin ?
                             <View style={PAGESTYLE.numberArea}>
-                                <View style={PAGESTYLE.toggleNumber}>
-                                    <TextInput style={PAGESTYLE.numberAreaOne}>{Label.NumberCode}</TextInput>
-                                    <TouchableOpacity style={PAGESTYLE.backIcon}>
+                                <View style={PAGESTYLE.numberAreaOne}>
+                                    <CountryPicker
+                                        {...{
+                                            countryCode,
+                                            onSelect,
+                                            withCallingCode:true,
+                                            withFlagButton: false,
+                                            withCallingCodeButton: true,
+                                        }}
+                                        visible={false}
+                                        containerButtonStyle={{marginEnd:5 }} >
+                                    </CountryPicker>
+                                    <View style={PAGESTYLE.codePickerArea}>
                                         <BackIcon width={12} height={12} />
-                                    </TouchableOpacity>
+                                    </View>
                                 </View>
                                 <TextInput
-                                    keyboardType='number-pad'
+                                    keyboardType='phone-pad'
+                                    ref={t1}
+                                    returnKeyType={"next"}
+                                    onSubmitEditing={() => { t2.current.focus(); }}
                                     placeholder={Label.MobileNumber}
                                     maxLength={12}
-                                    style={PAGESTYLE.showMobileDetail}></TextInput>
+                                    style={PAGESTYLE.showMobileDetail}
+                                    value={mobileNumber}
+                                    onChangeText={mobileNumber => setMobileNumber(mobileNumber)}
+                                />
                             </View>
                             :
                             <View style={PAGESTYLE.numberArea}>
                                 <TextInput
                                     autoCapitalize={false}
+                                    ref={t1}
+                                    returnKeyType={"next"}
+                                    onSubmitEditing={() => { t2.current.focus(); }}
                                     maxLength={40}
                                     keyboardType="email-address"
                                     placeholder={Label.EmailAddress}
-                                    style={PAGESTYLE.showEmailDetail}></TextInput>
+                                    style={PAGESTYLE.showEmailDetail}
+                                    value={email}
+                                    onChangeText={email => setEmail(email)}
+                                ></TextInput>
                             </View>
                     }
                     <View>
                         <View style={PAGESTYLE.otpArea}>
                             {
-                                showPassword ?
-                                    <Text style={PAGESTYLE.addOtp}>{Label.EnterPinTitle}</Text>
-                                    :
-                                    <Text style={PAGESTYLE.addOtp}>{Label.EnterOtpTitle}</Text>
-                            }
-                            {
-                                showPassword ?
-                                    <TouchableOpacity style={PAGESTYLE.getOtpArea}>
-                                        <Text style={PAGESTYLE.getOtpText}>{Label.EnterPinTitle}</Text>
-                                    </TouchableOpacity> :
-
-                                    <TouchableOpacity style={PAGESTYLE.getOtpArea}>
-                                        <Text style={PAGESTYLE.getOtpText}>{Label.GetOtpTitle}</Text>
-                                    </TouchableOpacity>
+                                showPassword ? null :
+                                    <>
+                                        <Text style={PAGESTYLE.addOtp}>{Label.EnterOtpTitle}</Text>
+                                        <TouchableOpacity style={PAGESTYLE.getOtpArea}>
+                                            <Text style={PAGESTYLE.getOtpText}>{Label.GetOtpTitle}</Text>
+                                        </TouchableOpacity>
+                                    </>
                             }
 
                         </View>
                         {
                             showPassword ?
-                                <TextInput style={PAGESTYLE.showPassword}></TextInput>
+                                <TextInput
+                                    ref={t2}
+                                    returnKeyType={"done"}
+                                    value={password}
+                                    placeholder="Password"
+                                    onChangeText={password => setPassword(password)}
+                                    style={PAGESTYLE.showPassword}
+                                />
                                 :
                                 <View style={PAGESTYLE.otpSquareArea}>
                                     <TextInput
@@ -146,6 +237,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={first}
                                         ref={input1}
+                                        maxLength={1}
                                         onChangeText={(val) => { setfirst(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 1) }}
                                     />
@@ -154,6 +246,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={second}
                                         ref={input2}
+                                        maxLength={1}
                                         onChangeText={(val) => { setsecond(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 2) }}
                                     />
@@ -162,6 +255,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={third}
                                         ref={input3}
+                                        maxLength={1}
                                         onChangeText={(val) => { setthird(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 3) }}
                                     />
@@ -170,6 +264,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={fourth}
                                         ref={input4}
+                                        maxLength={1}
                                         onChangeText={(val) => { setfourth(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 4) }}
                                     />
@@ -178,6 +273,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={fifth}
                                         ref={input5}
+                                        maxLength={1}
                                         onChangeText={(val) => { setfifth(val) }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 5) }}
                                     />
@@ -186,6 +282,7 @@ const LoginScreen = () => {
                                         keyboardType="number-pad"
                                         value={sixth}
                                         ref={input6}
+                                        maxLength={1}
                                         onChangeText={(val) => { setsixth(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
                                     />
@@ -193,25 +290,34 @@ const LoginScreen = () => {
                         }
                         {
                             showPassword ?
-                                null
+                                <View style={PAGESTYLE.resendOtpArea}>
+                                    <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
+                                    <View style={PAGESTYLE.passwordView}>
+                                        <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => { setShowPassword(false); resetField() }} >
+                                            <Text style={PAGESTYLE.usePassword}>{Label.UseOtpTitle} </Text>
+                                        </TouchableOpacity>
+                                        <Text style={PAGESTYLE.resendTextFirst}>{Label.ToLogin}</Text>
+                                    </View>
+                                </View>
                                 :
                                 <View style={PAGESTYLE.resendOtpArea}>
                                     <Text style={PAGESTYLE.resendText}>{Label.ResendOtpTitle}</Text>
                                     <View style={PAGESTYLE.passwordView}>
                                         <Text style={PAGESTYLE.resendTextFirst}>{Label.ReceiveOtp}</Text>
-                                        <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => setShowPassword(true)} >
+                                        <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => { setShowPassword(true); resetField() }} >
                                             <Text style={PAGESTYLE.usePassword}>{Label.UsePinTitle}</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
                         }
                         <View style={PAGESTYLE.bottomButtomArea}>
-                            <TouchableOpacity style={PAGESTYLE.signInButton}>
+                            <TouchableOpacity style={PAGESTYLE.signInButton}
+                                onPress={() => { validateFields() }}>
                                 <Text style={PAGESTYLE.SignInbuttonText}>{Label.SignInTitle}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={PAGESTYLE.accountPart}>
-                            <Text>{Label.GetAccount} </Text>
+                            <Text style={PAGESTYLE.reciveAccount}>{Label.GetAccount} </Text>
                             <Text style={PAGESTYLE.signUptext}>{Label.AddAccount}</Text>
                         </View>
                     </View>
@@ -226,7 +332,4 @@ const LoginScreen = () => {
     );
 
 }
-
 export default memo(LoginScreen);
-
-

@@ -7,11 +7,11 @@ import { GetAppColor } from "../../utils/Colors";
 import { Label } from "../../utils/StringUtil";
 
 const SplashScreen = () => {
-    // const image = {require('src/assets/svg/splaceIcons/MaskGroup.png')}
+    const Bold = ({ children }) => <Text style={{ fontWeight: 'bold' }}>{children}</Text>
     return (
         <View style={{ flex: 1 }}>
             <StatusBar backgroundColor={GetAppColor.barGrey} />
-            <ImageBackground source={require('../../assets/svg/splaceIcons/MaskGroup.png')} style={STYLES.backgroundImage}>
+            <ImageBackground source={require('../../assets/image//MaskGroup.png')} style={STYLES.backgroundImage}>
                 <View style={STYLES.splaceArea}>
                     <View style={STYLES.splaceLight}>
                         <MadarecSplace width={150} height={150} />
@@ -20,8 +20,8 @@ const SplashScreen = () => {
                         <Text style={STYLES.logoText}>{Label.LogoTitle}</Text>
                     </View>
                     <View style={STYLES.innovationDetails}>
-                        {/* <InnovationDetails width={550} height={60} /> */}
-                        <Text style={STYLES.innovationDetailsText}>{Label.InnovationDetail}</Text>
+                        <Text style={STYLES.innovationDetailsText}><Bold>{Label.Innovation}</Bold>
+                        {Label.InnovationDetail} <Bold>{Label.NewWay}</Bold></Text>
                     </View>
                     <View style={STYLES.splaceLight}>
                         <SplaceImage width={300} height={360} />

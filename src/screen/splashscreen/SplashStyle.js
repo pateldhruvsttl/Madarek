@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { GetAppColor } from "../../utils/Colors";
+import FONTS from "../../utils/Fonts";
 
 const STYLES = StyleSheet.create({
     backgroundImage:{
@@ -18,14 +19,17 @@ const STYLES = StyleSheet.create({
     },
     logoText:{
         fontSize:35,
-        letterSpacing:10
+        letterSpacing:10,
+        fontFamily:FONTS.trajanProRegular
     },
     innovationDetails: {
         marginHorizontal: 15,
+        flexDirection:'column'
     },
     innovationDetailsText:{
         fontSize:20,
-        color:GetAppColor.innovationGrey
+        color:GetAppColor.innovationGrey,
+        fontFamily:FONTS.trajanProRegular
     },
     splaceLight: {
         marginTop: 30

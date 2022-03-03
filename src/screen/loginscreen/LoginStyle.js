@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 import { color } from "react-native-reanimated";
 // import Colors from "../../utils/Colors",
 import { GetAppColor } from "../../utils/Colors";
+import FONTS from "../../utils/Fonts"
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
-        backgroundColor:GetAppColor.lightGrey,
+        backgroundColor: GetAppColor.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%', width: '100%'
@@ -22,14 +23,19 @@ const PAGESTYLE = StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 25,
         paddingVertical: 10,
-        shadowColor:GetAppColor.commonBorderGrey,
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.9,
-        shadowRadius: 3,
+        shadowColor: GetAppColor.commonBorderGrey,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 6.68,
+        
+        elevation: 11,
     },
     signText: {
         color: GetAppColor.lightOrange,
-        fontWeight: '600',
+        fontFamily: FONTS.robotMedium,
         fontSize: 25
     },
     userInformation: {
@@ -41,85 +47,116 @@ const PAGESTYLE = StyleSheet.create({
         // padding:5,
         marginTop: 10
     },
-    loginCredential: {
+    loginEmailCredential: {
         padding: 6,
         // backgroundColor:'red'
-        flex:1,
-        justifyContent:"center",
-        alignItems:'center',
-       borderTopEndRadius:20,
-       borderBottomEndRadius:20
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+        borderTopEndRadius: 20,
+        borderBottomEndRadius: 20
+    },
+    loginMobileCredential: {
+        padding: 6,
+        // backgroundColor:'red'
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+        borderTopStartRadius: 20,
+        borderBottomStartRadius: 20
     },
     emailCredential: {
-        backgroundColor:GetAppColor.disableGrey
+        backgroundColor: GetAppColor.disableGrey
     },
     mobileLoginText: {
-        fontWeight: '600',
+        fontFamily: FONTS.robotMedium,
         fontSize: 18,
-        color:GetAppColor.black,
+        // color: GetAppColor.black,
     },
     emailLoginText: {
-        fontWeight: '600',
+        fontFamily: FONTS.robotRegular,
         fontSize: 18,
-        color:GetAppColor.commonBorderGrey
+        // color: GetAppColor.commonBorderGrey
+    },
+    isEnableText: {
+        color: GetAppColor.black,
+        fontFamily: FONTS.robotMedium,
+        fontSize: 18,
+    },
+    isDisableText: {
+        color: GetAppColor.commonBorderGrey,
+        fontFamily: FONTS.robotRegular,
+        fontSize: 18,
     },
     middleLine: {
         borderWidth: 1,
-        borderColor:  GetAppColor.disableBorder
+        borderColor: GetAppColor.disableBorder
     },
     numberArea: {
         flexDirection: 'row',
-        marginVertical: 25
+        marginTop: 25,
+        marginBottom: 10
     },
-    toggleNumber : {
+    toggleNumber: {
         justifyContent: 'center', width: 70
     },
     numberAreaOne: {
         borderWidth: 1,
-        borderColor:GetAppColor.disableBorder,
+        borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
         marginEnd: 5,
+        fontFamily: FONTS.robotRegular,
+        width: 80,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    backIcon:{
-        position:'absolute',
-        right:10,
+    codePickerArea: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    backIcon: {
+        position: 'absolute',
+        right: 10,
     },
     showEmailDetail: {
         borderWidth: 1,
-        borderColor:  GetAppColor.disableBorder,
+        borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
         width: '100%',
-        paddingStart:15
+        paddingStart: 15
     },
-    showMobileDetail : {
+    showMobileDetail: {
         borderWidth: 1,
-        borderColor:  GetAppColor.disableBorder,
+        borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
-        width: '77%',
-        paddingStart:15
+        width: '72%',
+        paddingStart: 15,
+        fontFamily: FONTS.robotRegular
     },
-    
     otpArea: {
         flexDirection: 'row',
-        marginBottom: 15
+        marginBottom: 10,
+        marginTop: 5
 
     },
     getOtpArea: {
         right: 0, position: 'absolute',
-        backgroundColor:GetAppColor.lightOrange,
+        backgroundColor: GetAppColor.lightOrange,
         borderRadius: 5,
         paddingHorizontal: 8,
         paddingVertical: 2
 
     }, getOtpText: {
         color: GetAppColor.white,
-        fontWeight:'600'
+        fontWeight: '600'
     },
     addOtp: {
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: FONTS.robotRegular
     },
     resendOtpArea: {
         flexDirection: 'row',
@@ -127,22 +164,24 @@ const PAGESTYLE = StyleSheet.create({
     },
     otpSquareArea: {
         flexDirection: 'row',
-        marginBottom: 10
+        marginBottom: 5
     },
     showPassword: {
         width: '100%',
         height: 45,
-        borderColor:GetAppColor.disableBorder,
+        borderColor: GetAppColor.disableBorder,
         borderWidth: 1,
-        borderRadius: 5
+        borderRadius: 5,
+        paddingStart: 15
     },
     resendText: {
-        fontWeight: '600',
-        color:GetAppColor.black,
+        fontFamily: FONTS.robotMedium,
+        color: GetAppColor.black,
         fontSize: 13
     },
     resendTextFirst: {
         fontSize: 13,
+        fontFamily: FONTS.robotMedium,
 
     },
     resendTextSecond: {
@@ -157,7 +196,7 @@ const PAGESTYLE = StyleSheet.create({
     },
     signInButton: {
         // backgroundColor: '#f9b52b',
-        backgroundColor:GetAppColor.lightOrange,
+        backgroundColor: GetAppColor.lightOrange,
         paddingVertical: 10,
         justifyContent: 'center',
         alignItems: 'center',
@@ -166,7 +205,7 @@ const PAGESTYLE = StyleSheet.create({
     SignInbuttonText: {
         color: GetAppColor.white,
         fontSize: 20,
-        fontWeight: '700'
+        fontFamily: FONTS.robotMedium,
     },
     bottomButtomArea: {
         marginVertical: 15,
@@ -180,7 +219,11 @@ const PAGESTYLE = StyleSheet.create({
     },
     signUptext: {
         fontWeight: '600',
-        color: GetAppColor.black
+        color: GetAppColor.black,
+        fontFamily: FONTS.robotMedium,
+    },
+    reciveAccount: {
+        fontFamily: FONTS.robotMedium,
     },
     continueArea: {
         marginTop: 50
@@ -193,12 +236,19 @@ const PAGESTYLE = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         margin: 5,
-        borderColor:GetAppColor.disableBorder,
-        opacity:1
+        borderColor: GetAppColor.disableBorder,
+        opacity: 1,
+        fontFamily: FONTS.robotMedium,
+        fontSize: 20,
+        textAlign: 'center'
     },
     usePassword: {
-        fontWeight: '600',
-        color:GetAppColor.black
+        color: GetAppColor.black,
+        fontFamily: FONTS.robotMedium,
+    },
+    hidePascod: {
+        position: 'absolute',
+        right: 0
     }
 
 })

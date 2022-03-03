@@ -6,7 +6,9 @@ export const USlabel = {
     _homeTitle: "HomeScreen",
     _subnitIdea: "SUBMIT IDEA",
     _logoTitle: "MADAREK",
-    _innovationDetail : "Innovation is taking two things that exist and putting them together in a new way",
+    _innovation : "Innovation",
+    _innovationDetail : " is taking two things that exist and putting them together in a",
+    _newWay : "new way",
     _signInTitle : "Sign In",
     _mobileTitle : "Mobile",
     _emailTitle : "Email ID",
@@ -20,6 +22,11 @@ export const USlabel = {
     _addAccount : "Sign Up",
     _getAccount : "Don't have an account?",
     _enterPinTitle:"Enter Password",
-    _numberCode : "+971"
-
+    _forgotPassword : "Forgot Password?",
+    __useOtpTitle : "Use OTP",
+    _toLogin : "to login",
+    _email: "Please enter valid email",
+    _phone: "Please enter valid mobile number",
+    _password: "Please enter correct password",
+    _pin : "Please enter correct otp"
 }
