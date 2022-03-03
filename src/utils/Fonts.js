@@ -4,6 +4,7 @@ const FONTS = {
     robotLight:"Roboto-Light",
     robotMedium:"Roboto-Medium",
     robotRegular:"Roboto-Regular",
+    trajanProRegular : "TrajanPro-Regular"
 }
 
 export default FONTS;

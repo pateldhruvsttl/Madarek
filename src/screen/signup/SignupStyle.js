@@ -3,6 +3,7 @@ import App from "../../../App";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
+import { inputFieldHight } from "../../utils/Constant";
 
 const SignupStyles=StyleSheet.create({
     headerView: {
@@ -87,7 +88,7 @@ const SignupStyles=StyleSheet.create({
     },
     inputstyle:{
         width:AppUtil.getWP(38),
-        height:AppUtil.getHP(5.63),
+        height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
@@ -96,7 +97,7 @@ const SignupStyles=StyleSheet.create({
     },
     codeinputstyle:{
         width:AppUtil.getWP(18.52),
-        height:AppUtil.getHP(5.63),
+        height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
@@ -104,7 +105,7 @@ const SignupStyles=StyleSheet.create({
     },
     numberinputstyle:{
         width:AppUtil.getWP(59.41),
-        height:AppUtil.getHP(5.63),
+        height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
