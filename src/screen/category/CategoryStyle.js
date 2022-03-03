@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
@@ -11,8 +12,7 @@ const CategoryStyle = StyleSheet.create({
     },
     headerText: {
         color: GetAppColor.white,
-        // fontWeight: '900',
-        fontSize: 17,
+        fontSize: AppUtil.getHP(3.07),
         alignSelf: 'center',
         fontFamily:FONTS.robotBold
     },
@@ -30,8 +30,8 @@ const CategoryStyle = StyleSheet.create({
     },
     skipText: {
         color: GetAppColor.white,
-        fontSize: 15,
-        fontWeight: '300',
+        fontSize: AppUtil.getHP(2.05),
+        fontFamily:FONTS.robotRegular,
     },
     searchView: {
         paddingHorizontal: 25,
@@ -75,8 +75,10 @@ const CategoryStyle = StyleSheet.create({
         marginTop: 5
     },
 
+    continueText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
+
     input: {
-        width: '70%',
+        width: '100%',
         fontSize: 20,
         paddingBottom: 15,
         borderBottomColor: GetAppColor.borderGray,

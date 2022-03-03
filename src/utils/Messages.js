@@ -1,11 +1,61 @@
 export const ARlabel = {
     _homeTitle: "HomeScreen",
     _subnitIdea: "SUBMIT IDEA",
-    _seeMore:"See More"
+    _seeMore:"See More",
+    _catTitle: "Select Categories",
+    _skip: "SKIP",
+    _whatdoyouPrefertosee: "What do you prefer to see",
+    _continue: "Continue",
+    _signupTitle: "Sign Up",
+    _selectusertype: "Select User Type",
+    _individual: "Individual",
+    _corporate: "Corporate",
+    _subjectexpert: "Subject Expert",
+    _partner: "Partner",
+    _firstname: "First Name",
+    _lastname: 'Last Name',
+    _mobilenumber: "Mobile Number",
+    _emailID: "Email ID",
+    _password: "Password",
+    _retypepassword: "Re-type Password",
+
+    // validation message.
+    _enterfirstname: "Please Enter First Name",
+    _enterlastname: "Please Enter Last Name",
+    _entermobilenumber: "Please Enter Mobile Number",
+    _enteremail: "Please Enter Proper Email",
+    _enterpassword: "Please Enter Password",
+    _enterretypePassword: "Please Enter Retype Password",
+    _enterSamePassword: "Please Match both Password and Re-type Password are same",
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
     _subnitIdea: "SUBMIT IDEA",
-    _seeMore:"See More"
+    _seeMore:"See More",
+    _catTitle: "Select Categories",
+    _skip: "SKIP",
+    _whatdoyouPrefertosee: "What do you prefer to see",
+    _continue: "Continue",
+    _signupTitle: "Sign Up",
+    _selectusertype: "Select User Type",
+    _individual: "Individual",
+    _corporate: "Corporate",
+    _subjectexpert: "Subject Expert",
+    _partner: "Partner",
+    _firstname: "First Name",
+    _lastname: 'Last Name',
+    _mobilenumber: "Mobile Number",
+    _emailID: "Email ID",
+    _password: "Password",
+    _retypepassword: "Re-type Password",
 
+    // validation message.
+    _enterfirstname: "Please Enter First Name",
+    _enterlastname: "Please Enter Last Name",
+    _entermobilenumber: "Please Enter Mobile Number",
+    _enteremail: "Please Enter Proper Email",
+    _enterpassword: "Please Enter Password",
+    _enterretypePassword: "Please Enter Retype Password",
+    _enterSamePassword: "Please Match both Password and Re-type Password are same",
 }
