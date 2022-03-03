@@ -7,7 +7,7 @@ import PopularIdeas from "./TabPopularIdeas";
 
 const IdeaList = () => {
 
-    const [isSelectedIndex, setSelectedIndex] = useState(1);
+    const [isSelectedIndex, setSelectedIndex] = useState(0);
 
     const onSelectTab = (value) => {
         setSelectedIndex(value)

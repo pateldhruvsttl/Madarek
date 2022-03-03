@@ -108,8 +108,8 @@ const HomeScreen = () => {
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
                         <EventSlider Entries={testData} />
                         <IdealList />
-                        <SubIdeasList data={DATA} isTitle={"1 Open challanges"} />
-                        <SubIdeasList data={DATA} isTitle={"2 Open challanges"} btn={"See All Ideas"} />
+                        <SubIdeasList data={DATA} isTitle={"Open challanges"} />
+                        <SubIdeasList data={DATA} isTitle={"Madarek Sportlight"} btn={"See All Ideas"} />
                         <ExpertInsights Entries={expertData} />
                         <FavouriteCategories />
 
