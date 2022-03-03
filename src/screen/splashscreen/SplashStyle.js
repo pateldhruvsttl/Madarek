@@ -29,7 +29,7 @@ const STYLES = StyleSheet.create({
     innovationDetailsText:{
         fontSize:20,
         color:GetAppColor.innovationGrey,
-        fontFamily:FONTS.trajanProRegular
+        fontFamily:FONTS.robotRegular
     },
     splaceLight: {
         marginTop: 30

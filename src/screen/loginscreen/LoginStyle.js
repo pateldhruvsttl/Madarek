@@ -15,6 +15,10 @@ const PAGESTYLE = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    headerPart : {
+        width: '100%',
+         paddingHorizontal: 15 
+    },
     headingMainText: {
         fontSize: 25,
     },
@@ -133,7 +137,8 @@ const PAGESTYLE = StyleSheet.create({
         borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
-        width: '72%',
+        // width: '100%',
+        flex:1,
         paddingStart: 15,
         fontFamily: FONTS.robotRegular
     },
@@ -229,8 +234,8 @@ const PAGESTYLE = StyleSheet.create({
         marginTop: 50
     },
     squreBox: {
-        height: 43,
-        width: 43,
+        flex:1,
+        height:40,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
@@ -240,7 +245,7 @@ const PAGESTYLE = StyleSheet.create({
         opacity: 1,
         fontFamily: FONTS.robotMedium,
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     usePassword: {
         color: GetAppColor.black,

@@ -1,5 +1,5 @@
 import React, { useState, memo, useRef } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View ,ScrollView} from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
 import GoogleLogo from "../../assets/svg/loginLogo/GoogleLogo"
@@ -12,6 +12,7 @@ import { showMessageWithCallBack } from "../../utils/Constant";
 import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import { DarkTheme } from "@react-navigation/native";
+// import { ScrollView } from "react-native-gesture-handler";
 
 
 
@@ -137,9 +138,10 @@ const LoginScreen = () => {
     }
 
     return (
-        <View style={PAGESTYLE.mainView}>
+        <ScrollView>
+            <View style={PAGESTYLE.mainView}>
             <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
-            <View style={{ width: '100%', paddingHorizontal: 15 }}>
+            <View style={PAGESTYLE.headerPart}>
                 <View style={PAGESTYLE.headingMain}>
                     <MadarekLogo width={150} height={150} />
 
@@ -226,7 +228,7 @@ const LoginScreen = () => {
                                     ref={t2}
                                     returnKeyType={"done"}
                                     value={password}
-                                    placeholder="Password"
+                                    placeholder={Label.password}
                                     onChangeText={password => setPassword(password)}
                                     style={PAGESTYLE.showPassword}
                                 />
@@ -328,7 +330,8 @@ const LoginScreen = () => {
                     </View>
                 </View>
             </View>
-        </View>
+            </View>
+        </ScrollView>
     );
 
 }
