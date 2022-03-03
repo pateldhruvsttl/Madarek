@@ -22,8 +22,11 @@ const EventSliderStyle = StyleSheet.create({
 
     sliderRendTitleView: { position: 'absolute', top: AppUtil.getHP(17), marginStart: AppUtil.getWP(4) },
     txtsliderRendTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(2.3), fontWeight: 'bold' },
-    btnSliderRend: {  width: AppUtil.getWP(22), marginVertical:AppUtil.getHP(0.5),  padding:AppUtil.getHP(0.5), backgroundColor:GetAppColor.orange, borderRadius:AppUtil.getHP(0.6) },
-    txtsliderRendBtnTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(1.4)},
+    btnSliderRend: {
+        width: AppUtil.getWP(22), marginVertical: AppUtil.getHP(0.5),
+        padding: AppUtil.getHP(0.5), backgroundColor: GetAppColor.headerYellow, borderRadius: AppUtil.getHP(0.6)
+    },
+    txtsliderRendBtnTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(1.4) },
 });
 
 export default EventSliderStyle;

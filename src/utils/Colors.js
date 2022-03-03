@@ -11,5 +11,6 @@ export const GetAppColor = {
     borderGray:'#E0E1E4',
     categoryText:'#575757',
     categoryTextSelected:'#353535',
+    dotGreen:'#42d235',
 }
 

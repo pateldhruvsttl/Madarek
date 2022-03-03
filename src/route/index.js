@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 
 export default function index() {
     return (
-        <NavigationContainer>
+        <NavigationContainer independent={true}>
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={"HomeSceen"}>
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />

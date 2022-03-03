@@ -4,7 +4,7 @@ import styles, { sliderWidth, itemWidth } from "./EventSliderStyle";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
-import {Label} from '../../utils/StringUtil'
+import { Label } from '../../utils/StringUtil'
 
 const EventSlider = ({ Entries }) => {
 
@@ -36,9 +36,9 @@ const EventSlider = ({ Entries }) => {
                     dotsLength={Entries.length}
                     activeDotIndex={isSelectIndecater}
                     containerStyle={styles.paginationContainer}
-                    dotColor={GetAppColor.red}
+                    dotColor={GetAppColor.borderRed}
                     dotStyle={styles.paginationDot}
-                    inactiveDotColor={GetAppColor.orange}
+                    inactiveDotColor={GetAppColor.dotGreen}
                     inactiveDotOpacity={0.4}
                     inactiveDotScale={0.6}
                 />
@@ -58,7 +58,7 @@ const EventSlider = ({ Entries }) => {
                 <View style={styles.sliderRendTitleView}>
                     <Text style={styles.txtsliderRendTitle}>{item.title}</Text>
                     <TouchableOpacity style={styles.btnSliderRend}>
-                    <Text style={styles.txtsliderRendBtnTitle}>{Label.SubnitIdea}</Text>
+                        <Text style={styles.txtsliderRendBtnTitle}>{Label.SubnitIdea}</Text>
                     </TouchableOpacity>
                 </View>
 
