@@ -121,8 +121,29 @@ const SignupStyles=StyleSheet.create({
         alignSelf: 'center',
         marginTop: AppUtil.getHP(2.5)
     },
-    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) }
-    
+    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
+
+    numberAreaOne: {
+        borderWidth: 1,
+        borderColor: GetAppColor.disableBorder,
+        borderRadius: 5,
+        padding: 8,
+        marginEnd: 5,
+        fontFamily: FONTS.robotRegular,
+        width:AppUtil.getWP(18.52),
+        height:AppUtil.getHP(5.63),
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    codePickerArea: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    backIcon: {
+        position: 'absolute',
+        right: 10,
+    },
     
 })
 export default SignupStyles;

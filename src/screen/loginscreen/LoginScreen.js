@@ -12,8 +12,8 @@ import { showMessageWithCallBack } from "../../utils/Constant";
 import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import { DarkTheme } from "@react-navigation/native";
-
-
+// import GoogleLogin from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 const LoginScreen = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -130,11 +130,27 @@ const LoginScreen = () => {
         setCallCode('');
     }
     const onSelect = (country) => {
-        console.log('country', country.callingCode[0],country);
+        console.log('country', country.callingCode[0], country);
         setCountryCode(country.cca2)
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
+    const success = response => {
+        console.log(response) // eslint-disable-line
+      }
+      
+      const error = response => {
+        console.error(response) // eslint-disable-line
+      }
+      
+      const loading = () => {
+        console.log('loading') // eslint-disable-line
+      }
+      
+      const logout = () => {
+        console.log('logout') // eslint-disable-line
+      }
+      
 
     return (
         <View style={PAGESTYLE.mainView}>
@@ -168,12 +184,12 @@ const LoginScreen = () => {
                                         {...{
                                             countryCode,
                                             onSelect,
-                                            withCallingCode:true,
+                                            withCallingCode: true,
                                             withFlagButton: false,
                                             withCallingCodeButton: true,
                                         }}
                                         visible={false}
-                                        containerButtonStyle={{marginEnd:5 }} >
+                                        containerButtonStyle={{ marginEnd: 5 }} >
                                     </CountryPicker>
                                     <View style={PAGESTYLE.codePickerArea}>
                                         <BackIcon width={12} height={12} />
@@ -324,7 +340,18 @@ const LoginScreen = () => {
                 </View>
                 <View style={PAGESTYLE.continueArea}>
                     <View>
-                        <GoogleLogo width={'100%'} height={70} />
+                        {/* <GoogleLogo width={'100%'} height={70} /> */}
+                        <GoogleLogin
+                            onSuccess={res => {
+                                // toggleShow(false)
+                                success(res)
+                            }}
+                            onFailure={error()}
+                            clientId={"246879201979-a1ore2j7t19qel6ejvgld2qunmlt1dfj.apps.googleusercontent.com"}
+                        >
+                            Auth then Hide button
+                        </GoogleLogin>
+                        
                     </View>
                 </View>
             </View>
