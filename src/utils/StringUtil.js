@@ -51,7 +51,14 @@ export const Label = {
     enteremail: isRTL ? ARlabel._enteremail : USlabel._enteremail,
     enterpassword: isRTL ? ARlabel._enterpassword : USlabel._enterpassword,
     enterretypePassword: isRTL ? ARlabel._enterretypePassword : USlabel._enterretypePassword,
-    enterSamePassword: isRTL ? ARlabel._enterSamePassword : USlabel._enterSamePassword,
+  
+    SignUpVerifyTitle: isRTL ? ARlabel._signUpVerifyTitle : USlabel._signUpVerifyTitle,
+    VerifyNumber: isRTL ? ARlabel._verifyNumber : USlabel._verifyNumber,
+    OneTimePinDetail: isRTL ? ARlabel._oneTimePinDetail : USlabel._oneTimePinDetail,
+    OneTimePassword: isRTL ? ARlabel._oneTimePassword : USlabel._oneTimePassword,
+    ToMessage: isRTL ? ARlabel._toMessage : USlabel._toMessage,
+    DefaultPhoneCode: isRTL ? ARlabel._defaultPhoneCode : USlabel._defaultPhoneCode,
+    VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
 }
 
 

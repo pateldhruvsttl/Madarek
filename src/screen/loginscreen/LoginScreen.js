@@ -1,5 +1,5 @@
 import React, { useState, memo, useRef } from "react";
-import { Text, TextInput, TouchableOpacity, View ,ScrollView} from "react-native";
+import { Text, TextInput, TouchableOpacity, View ,ScrollView,SafeAreaView} from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
 import GoogleLogo from "../../assets/svg/loginLogo/GoogleLogo"
@@ -23,22 +23,17 @@ const LoginScreen = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState()
 
-    const [show, setShow] = useState(false);
-
-    const [first, setfirst] = useState('');
-    const [second, setsecond] = useState('');
-    const [third, setthird] = useState('');
-    const [fourth, setfourth] = useState('');
-    const [fifth, setfifth] = useState('');
-    const [sixth, setsixth] = useState('');
-    const [otp, setotp] = useState()
+    const [first, setFirst] = useState('');
+    const [second, setSecond] = useState('');
+    const [third, setThird] = useState('');
+    const [fourth, setFourth] = useState('');
+    const [fifth, setFifth] = useState('');
+    const [sixth, setSixth] = useState('');
     const [countryCode, setCountryCode] = useState('IN')
     const [country, setCountry] = useState(null)
-    const [withCallingCode, setWithCallingCode] = useState(false)
     const [callCode, setCallCode] = useState('91');
     const t1 = useRef(null);
     const t2 = useRef(null);
-    const t3 = useRef(null);
 
     const input1 = useRef();
     const input2 = useRef();
@@ -120,12 +115,12 @@ const LoginScreen = () => {
         setMobileNumber('')
         setPassword('')
         setEmail('')
-        setfirst('')
-        setsecond('')
-        setfourth('')
-        setthird('')
-        setfifth('')
-        setsixth('')
+        setFirst('')
+        setSecond('')
+        setFourth('')
+        setThird('')
+        setFifth('')
+        setSixth('')
         setCountryCode('IN')
         setCountry('')
         setCallCode('');
@@ -139,6 +134,7 @@ const LoginScreen = () => {
 
     return (
         <ScrollView>
+            <SafeAreaView>
             <View style={PAGESTYLE.mainView}>
             <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
             <View style={PAGESTYLE.headerPart}>
@@ -240,7 +236,7 @@ const LoginScreen = () => {
                                         value={first}
                                         ref={input1}
                                         maxLength={1}
-                                        onChangeText={(val) => { setfirst(val); }}
+                                        onChangeText={(val) => { setFirst(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 1) }}
                                     />
                                     <TextInput
@@ -249,7 +245,7 @@ const LoginScreen = () => {
                                         value={second}
                                         ref={input2}
                                         maxLength={1}
-                                        onChangeText={(val) => { setsecond(val); }}
+                                        onChangeText={(val) => { setSecond(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 2) }}
                                     />
                                     <TextInput
@@ -258,7 +254,7 @@ const LoginScreen = () => {
                                         value={third}
                                         ref={input3}
                                         maxLength={1}
-                                        onChangeText={(val) => { setthird(val); }}
+                                        onChangeText={(val) => { setThird(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 3) }}
                                     />
                                     <TextInput
@@ -267,7 +263,7 @@ const LoginScreen = () => {
                                         value={fourth}
                                         ref={input4}
                                         maxLength={1}
-                                        onChangeText={(val) => { setfourth(val); }}
+                                        onChangeText={(val) => { setFourth(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 4) }}
                                     />
                                     <TextInput
@@ -276,7 +272,7 @@ const LoginScreen = () => {
                                         value={fifth}
                                         ref={input5}
                                         maxLength={1}
-                                        onChangeText={(val) => { setfifth(val) }}
+                                        onChangeText={(val) => { setFifth(val) }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 5) }}
                                     />
                                     <TextInput
@@ -285,7 +281,7 @@ const LoginScreen = () => {
                                         value={sixth}
                                         ref={input6}
                                         maxLength={1}
-                                        onChangeText={(val) => { setsixth(val); }}
+                                        onChangeText={(val) => { setSixth(val); }}
                                         onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
                                     />
                                 </View>
@@ -295,7 +291,7 @@ const LoginScreen = () => {
                                 <View style={PAGESTYLE.resendOtpArea}>
                                     <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
                                     <View style={PAGESTYLE.passwordView}>
-                                        <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => { setShowPassword(false); resetField() }} >
+                                        <TouchableOpacity onPress={() => { setShowPassword(false); resetField() }} >
                                             <Text style={PAGESTYLE.usePassword}>{Label.UseOtpTitle} </Text>
                                         </TouchableOpacity>
                                         <Text style={PAGESTYLE.resendTextFirst}>{Label.ToLogin}</Text>
@@ -331,6 +327,7 @@ const LoginScreen = () => {
                 </View>
             </View>
             </View>
+            </SafeAreaView>
         </ScrollView>
     );
 

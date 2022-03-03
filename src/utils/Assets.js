@@ -15,3 +15,7 @@ export const GetSvg = {
     iconSearch:require('../assets/svg/IcnSearch'),
     
 }
+export const GetAppImage = {
+    iconSearch:require('../assets/image/MaskGroup.png'),
+    
+}

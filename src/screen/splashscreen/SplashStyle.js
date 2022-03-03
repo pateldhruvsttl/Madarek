@@ -15,6 +15,7 @@ const STYLES = StyleSheet.create({
     logoDetails: {
         flexDirection: 'row',
         marginBottom:12,
+        marginTop:12
         
     },
     logoText:{

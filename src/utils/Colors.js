@@ -18,8 +18,9 @@ export const GetAppColor = {
     disableBorder :'#CCCCCC',
     barGrey:'#cacbcf',
     innovationGrey : '#5F6060',
-
+    headerLightYellow : '#F9B52B',
     textColor:'#646464',
     grayBorder:"#848484",
+    pincolor : "#323232"
 }
 
