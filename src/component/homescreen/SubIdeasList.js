@@ -52,7 +52,7 @@ const SubIdeasList = (props) => {
         <View style={Style.MainView}>
             <View style={Style.titleView}>
                 {props?.isTitle && <Text style={Style.txtTitle}>{props?.isTitle}</Text>}
-                <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>
+                {props?.isTitle && <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>}
             </View>
 
             <FlatList

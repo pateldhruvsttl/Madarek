@@ -14,17 +14,22 @@ function TestScreen() {
         </View>
     );
 }
+const onTabNavigate = () => {
+    return (
+        <NavigationContainer independent={true}>
+            <Tab.Navigator>
+                <Tab.Screen name="Popular Ideas" component={PopularIdeas} />
+                <Tab.Screen name="New Ideas" component={TestScreen} />
+                <Tab.Screen name="Winning Ideas" component={TestScreen} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
+}
 
 const IdeaList = () => {
     return (
-        <View style={{ width:'100%',backgroundColor:'pink'}}>
-            <NavigationContainer independent={true}>
-                <Tab.Navigator>
-                    <Tab.Screen name="Popular Ideas" component={PopularIdeas} />
-                    <Tab.Screen name="New Ideas" component={TestScreen} />
-                    <Tab.Screen name="Winning Ideas" component={TestScreen} />
-                </Tab.Navigator>
-            </NavigationContainer>
+        <View style={{ flex:1}}>
+            {onTabNavigate()}
         </View>
     );
 }

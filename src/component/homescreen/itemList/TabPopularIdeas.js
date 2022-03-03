@@ -34,7 +34,7 @@ const PopularIdeasListScreen = () => {
 
     return (
         <View style={Style.MainView}>
-            <SubIdeasList data={DATA} isTitle={"Open challanges"} btn={"See All Ideas"} />
+            <SubIdeasList data={DATA} btn={"See All Ideas"} />
         </View>
     );
 }

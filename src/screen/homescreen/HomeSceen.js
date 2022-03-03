@@ -6,6 +6,7 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import EventSlider from "../../component/homescreen/EventSlider";
 import IdealList from "../../component/homescreen/itemList/IdeaList"
 import SubIdeasList from "../../component/homescreen/SubIdeasList";
+import { GetAppColor } from "../../utils/Colors";
 import HomeStyle from "./HomeScreenStyle";
 
 const testData = [
@@ -72,21 +73,19 @@ const HomeScreen = () => {
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
 
-            <View style={HomeStyle.MainView}>
 
-                <ScrollView style={{ flex: 1 }}>
-                    <View style={{ height: '100%' }}>
-                        <EventSlider Entries={testData} />
+            <ScrollView style={{backgroundColor:'red', width:'100%'}}>
+                <View style={HomeStyle.MainView}>
+                    <EventSlider Entries={testData} />
 
-                        <IdealList />
+                    <IdealList />
 
-                        {/* <View>
-                            <SubIdeasList data={DATA} isTitle={"1 Open challanges"} />
-                            <SubIdeasList data={DATA} isTitle={"2 Open challanges"} btn={"See All Ideas"} />
-                        </View> */}
+                    <View>
+                        {/* <SubIdeasList data={DATA} isTitle={"1 Open challanges"} btn={"Participate now"}/> */}
+                        {/* <SubIdeasList data={DATA} isTitle={"2 Open challanges"} /> */}
                     </View>
-                </ScrollView >
-            </View>
+                </View>
+            </ScrollView >
         </SafeAreaView>
     );
 }
