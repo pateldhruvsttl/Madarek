@@ -5,13 +5,14 @@ import MadarecSplace from "../../assets/svg/splaceIcons/MadarecSplace";
 import STYLES from "./SplashStyle";
 import { GetAppColor } from "../../utils/Colors";
 import { Label } from "../../utils/StringUtil";
+import { GetAppImage } from "../../utils/Assets";
 
 const SplashScreen = () => {
     const Bold = ({ children }) => <Text style={{ fontWeight: 'bold' }}>{children}</Text>
     return (
         <View style={{ flex: 1 }}>
-            <StatusBar backgroundColor={GetAppColor.barGrey} />
-            <ImageBackground source={require('../../assets/image//MaskGroup.png')} style={STYLES.backgroundImage}>
+            <StatusBar backgroundColor={GetAppColor.barGrey} barStyle="light-content"/>
+            <ImageBackground source={GetAppImage.iconSearch} style={STYLES.backgroundImage}>
                 <View style={STYLES.splaceArea}>
                     <View style={STYLES.splaceLight}>
                         <MadarecSplace width={150} height={150} />

@@ -10,6 +10,13 @@ export const GetAppColor = {
     borderGray:'#E0E1E4',
     categoryText:'#575757',
     categoryTextSelected:'#353535',
+    dotGreen:'#42d235',
+    textColor:'#646464',
+    grayBorder:"#848484",
+    greyBg:"#fdfdfd",
+    lightBlue:'#31ade3',
+    catBorder:'#8c67a9',
+    blackTransperent: 'rgba(0, 0, 0, 0.6)',
     lightGrey : '#f5f7fb',
     lightOrange : '#f9b52b',
     lightWhite : '#ffffff',
@@ -18,8 +25,9 @@ export const GetAppColor = {
     disableBorder :'#CCCCCC',
     barGrey:'#cacbcf',
     innovationGrey : '#5F6060',
-
+    headerLightYellow : '#F9B52B',
     textColor:'#646464',
     grayBorder:"#848484",
+    pincolor : "#323232"
 }
 

@@ -7,6 +7,8 @@ import LoginScreen from '../screen/loginscreen/LoginScreen';
 import HomeSceen from '../screen/homescreen/HomeSceen';
 import Category from '../screen/category/Category';
 import Signup from '../screen/signup/Signup';
+import SignUpVerify from '../screen/signup/SignUpVerify';
+
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,7 @@ export default function index() {
                 <Stack.Screen name="HomeSceen" component={HomeSceen} />
                 <Stack.Screen name="Category" component={Category}  />
                 <Stack.Screen name="Signup" component={Signup} />
+                <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
             </Stack.Navigator>
         </NavigationContainer>
     );

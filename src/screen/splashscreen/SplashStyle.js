@@ -15,6 +15,7 @@ const STYLES = StyleSheet.create({
     logoDetails: {
         flexDirection: 'row',
         marginBottom:12,
+        marginTop:12
         
     },
     logoText:{
@@ -29,7 +30,7 @@ const STYLES = StyleSheet.create({
     innovationDetailsText:{
         fontSize:20,
         color:GetAppColor.innovationGrey,
-        fontFamily:FONTS.trajanProRegular
+        fontFamily:FONTS.robotRegular
     },
     splaceLight: {
         marginTop: 30

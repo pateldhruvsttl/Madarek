@@ -2,8 +2,11 @@
 // export const baseUrl = "http://192.168.0.218:3000/"; //internal
 export const baseUrl = "http://138.68.152.151:3000/"; //live
 import { Alert, Platform } from "react-native";
+import { AppUtil } from "./AppUtil";
 
 export const isRTL = false;
+
+export const inputFieldHight = AppUtil.getHP(5.63)
 
 export const showMessage = (message) => {
     if (Platform.OS == 'ios') {

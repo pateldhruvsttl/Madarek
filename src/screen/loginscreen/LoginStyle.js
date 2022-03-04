@@ -3,6 +3,7 @@ import { color } from "react-native-reanimated";
 // import Colors from "../../utils/Colors",
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts"
+import { inputFieldHight } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
@@ -14,6 +15,10 @@ const PAGESTYLE = StyleSheet.create({
     headingMain: {
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    headerPart : {
+        width: '100%',
+         paddingHorizontal: 15 
     },
     headingMainText: {
         fontSize: 25,
@@ -110,7 +115,8 @@ const PAGESTYLE = StyleSheet.create({
         width: 80,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        height:inputFieldHight
     },
     codePickerArea: {
         alignItems: 'center',
@@ -126,16 +132,18 @@ const PAGESTYLE = StyleSheet.create({
         borderRadius: 5,
         padding: 8,
         width: '100%',
-        paddingStart: 15
+        paddingStart: 15,
+        height:inputFieldHight,
     },
     showMobileDetail: {
         borderWidth: 1,
         borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
-        width: '72%',
+        height:inputFieldHight,
+        flex:1,
         paddingStart: 15,
-        fontFamily: FONTS.robotRegular
+        fontFamily: FONTS.robotRegular,
     },
     otpArea: {
         flexDirection: 'row',
@@ -156,7 +164,8 @@ const PAGESTYLE = StyleSheet.create({
     },
     addOtp: {
         fontSize: 16,
-        fontFamily: FONTS.robotRegular
+        fontFamily: FONTS.robotRegular,
+        color:GetAppColor.commonBorderGrey
     },
     resendOtpArea: {
         flexDirection: 'row',
@@ -168,7 +177,7 @@ const PAGESTYLE = StyleSheet.create({
     },
     showPassword: {
         width: '100%',
-        height: 45,
+        height:inputFieldHight,
         borderColor: GetAppColor.disableBorder,
         borderWidth: 1,
         borderRadius: 5,
@@ -181,12 +190,11 @@ const PAGESTYLE = StyleSheet.create({
     },
     resendTextFirst: {
         fontSize: 13,
-        fontFamily: FONTS.robotMedium,
+        fontFamily: FONTS.robotRegular,
 
     },
     resendTextSecond: {
         fontSize: 13,
-        fontWeight: '400',
         color: GetAppColor.black,
     },
     passwordView: {
@@ -195,7 +203,6 @@ const PAGESTYLE = StyleSheet.create({
         right: 0,
     },
     signInButton: {
-        // backgroundColor: '#f9b52b',
         backgroundColor: GetAppColor.lightOrange,
         paddingVertical: 10,
         justifyContent: 'center',
@@ -223,14 +230,14 @@ const PAGESTYLE = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
     },
     reciveAccount: {
-        fontFamily: FONTS.robotMedium,
+        fontFamily: FONTS.robotRegular,
     },
     continueArea: {
         marginTop: 50
     },
     squreBox: {
-        height: 43,
-        width: 43,
+        flex:1,
+        height:inputFieldHight,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
@@ -240,11 +247,12 @@ const PAGESTYLE = StyleSheet.create({
         opacity: 1,
         fontFamily: FONTS.robotMedium,
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     usePassword: {
         color: GetAppColor.black,
         fontFamily: FONTS.robotMedium,
+        fontSize:13
     },
     hidePascod: {
         position: 'absolute',

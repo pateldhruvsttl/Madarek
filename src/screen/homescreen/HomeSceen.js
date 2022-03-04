@@ -1,9 +1,16 @@
 import React, { memo } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, ScrollViewBase, Touchable, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import EventSlider from "../../component/homescreen/EventSlider";
+import IdealList from "../../component/homescreen/itemList/IdeaList"
+import SubIdeasList from "../../component/homescreen/SubIdeasList";
+import { GetAppColor } from "../../utils/Colors";
 import HomeStyle from "./HomeScreenStyle";
+
+import ExpertInsights from '../../component/homescreen/ExpertInsights'
+import FavouriteCategories from "../../component/homescreen/FavouriteCategories";
+import { Label } from "../../utils/StringUtil";
 
 const testData = [
     {
@@ -38,15 +45,85 @@ const testData = [
     }
 ];
 
+const DATA = [
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        title: 'Family business',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Dec 21 - 29 Dec 21",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: true,
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        title: 'Second Item',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Dec 21 - 29 Dec 21",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: false,
+    },
+
+];
+
+const expertData = [
+
+    {
+        name: 'Naredra Modi',
+        job: 'Game Tester',
+        title: 'Clean ocena plastic with HP SS',
+        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
+        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        see: '700',
+        like: '210',
+        comment: '180',
+    },
+
+    {
+        name: 'Bhupendra Patel',
+        job: 'App Tester',
+        title: 'Clean ocena plastic with HP SS',
+        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
+        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        see: '700',
+        like: '200',
+        comment: '80',
+    },
+
+]
+
 const HomeScreen = () => {
 
     return (
-        <View style={HomeStyle.MainView}>
-            <SafeAreaView>
-                <CommonHeader isType = {"HomeScreenHeader"} onManuClick={()=>null}/>
-                <EventSlider Entries={testData}/>
-            </SafeAreaView>
-        </View>
+
+        <SafeAreaView style={{ flex: 1 }}>
+            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
+            <View style={HomeStyle.MainView}>
+                <ScrollView>
+                    <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
+                        <EventSlider Entries={testData} />
+                        <IdealList />
+                        <SubIdeasList data={DATA} isTitle={"Open challanges"} />
+                        <SubIdeasList data={DATA} isTitle={"Madarek Sportlight"} btn={"See All Ideas"} />
+                        <ExpertInsights Entries={expertData} />
+                        <FavouriteCategories />
+
+                        <View style={HomeStyle.bottomBarView}>
+                            <Text style={HomeStyle.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
+                            <TouchableOpacity style={HomeStyle.btn}>
+                                <Text style={HomeStyle.txtBtn}>{Label.submitIdea}</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </ScrollView >
+            </View>
+        </SafeAreaView>
     );
 }
 export default memo(HomeScreen);
