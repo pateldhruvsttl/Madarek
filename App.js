@@ -7,6 +7,8 @@
  import { View } from 'react-native'
  import Loader from './src/component/Loader'
  import AppRoute from './src/route'
+ import { Provider } from 'react-redux'
+import { store } from './src/redux/store/Store'
  
  var self;
  export const onLoding = (status) => {
@@ -22,16 +24,16 @@
  
    componentDidMount() {
      self = this;
-     
    }
  
    render() {
      return (
+       <Provider store={store}>
        <View style={{ width: '100%', height: '100%'}}>
          <AppRoute />
          {this.state.isLoading && <Loader />}
        </View>
- 
+       </Provider>
      )
    }
  }

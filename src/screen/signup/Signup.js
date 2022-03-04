@@ -202,7 +202,7 @@ const Signup = () => {
                             style={SignupStyles.numberinputstyle}
                             onChangeText={(text) => { setMobileNumber(text) }}
                             keyboardType="number-pad"
-                            returnKeyType={"Next"}
+                            returnKeyType={"next"}
                             onSubmitEditing={()=>onChangeField(3)}
                         />
                     </View>

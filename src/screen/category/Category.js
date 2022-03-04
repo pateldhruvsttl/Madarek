@@ -10,6 +10,11 @@ import FONTS from '../../utils/Fonts'
 import GraySearchIcon from '../../assets/svg/GraySearchIcon'
 import CloseIcon from '../../assets/svg/CloseIcon'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { updateTheme } from '../../redux/reducers/ThemReducers'
+import { blueTheme } from '../../utils/ColorModel'
+import { log } from 'react-native-reanimated'
+
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
     { id: 1, name: 'Aviation', isselected: false },
@@ -40,10 +45,12 @@ const Category = () => {
     const [categories, setCategories] = useState(category)
     const [selectedCategories, setSelectedCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
-    const [searchStr, setSearchStr]=useState("")
+    const [searchStr, setSearchStr] = useState("")
 
 
-
+    const {themeColor} = useSelector((state) => state)
+    console.log('theme color is', themeColor);
+    const dispatch = useDispatch()
 
     const onPressCategory = (index) => {
         var cat = [...categories];
@@ -67,7 +74,7 @@ const Category = () => {
     const onWriteText = (text) => {
         if (text === "") {
             setSearch(false)
-        }else{
+        } else {
             setSearch(true)
         }
         setSearchStr(text)
@@ -86,18 +93,21 @@ const Category = () => {
         setCategories(cat)
     }
     const onCloseSearch = () => {
-        
+
         onWriteText("")
         Keyboard.dismiss()
     }
 
+    const onSkip = () => {
+        dispatch(updateTheme(blueTheme))
+    }
     return (
         <View style={{ height: '100%', backgroundColor: '#F5F7FB' }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
-            <View style={CategoryStyle.headerView}>
+            <View style={[CategoryStyle.headerView,{backgroundColor:themeColor.headerColor}]}>
                 <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>
-                <TouchableOpacity style={CategoryStyle.skipBtn}>
+                <TouchableOpacity onPress={() => onSkip()} style={CategoryStyle.skipBtn}>
                     <Text style={CategoryStyle.skipText}>{Label.Skip}</Text>
                 </TouchableOpacity>
             </View>
@@ -147,7 +157,7 @@ const Category = () => {
                 </View>
             </ScrollView>
 
-            <TouchableOpacity style={CategoryStyle.continueButton}>
+            <TouchableOpacity style={[CategoryStyle.continueButton,{backgroundColor:themeColor.headerColor}]}>
                 <Text style={CategoryStyle.continueText}>{Label.Continue}</Text>
             </TouchableOpacity>
         </View>
