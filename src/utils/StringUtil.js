@@ -15,7 +15,7 @@ export const Label = {
     MobileNumber: isRTL ? ARlabel._mobileNumber : USlabel._mobileNumber,
     EmailAddress: isRTL ? ARlabel._emailAddress : USlabel._emailAddress,
     EnterOtpTitle: isRTL ? ARlabel._enterOtpTitle : USlabel._enterOtpTitle,
-    GetOtpTitle: isRTL ? ARlabel._getOtpTitle : USlabel._getOtpTitle,
+    GetText: isRTL ? ARlabel._getText : USlabel._getText,
     ResendOtpTitle: isRTL ? ARlabel._resendOtpTitle : USlabel._resendOtpTitle,
     ReceiveOtp: isRTL ? ARlabel._receiveOtp : USlabel._receiveOtp,
     UsePinTitle: isRTL ? ARlabel._usePinTitle : USlabel._usePinTitle,

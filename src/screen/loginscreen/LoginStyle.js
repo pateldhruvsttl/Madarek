@@ -4,6 +4,8 @@ import { color } from "react-native-reanimated";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts"
 import { inputFieldHight } from "../../utils/Constant";
+import { AppUtil } from "../../utils/AppUtil";
+import { buttonHeight } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
@@ -18,7 +20,8 @@ const PAGESTYLE = StyleSheet.create({
     },
     headerPart : {
         width: '100%',
-         paddingHorizontal: 15 
+         paddingHorizontal: 15 ,
+         height:'100%'
     },
     headingMainText: {
         fontSize: 25,
@@ -134,6 +137,7 @@ const PAGESTYLE = StyleSheet.create({
         width: '100%',
         paddingStart: 15,
         height:inputFieldHight,
+        color:GetAppColor.black
     },
     showMobileDetail: {
         borderWidth: 1,
@@ -144,6 +148,7 @@ const PAGESTYLE = StyleSheet.create({
         flex:1,
         paddingStart: 15,
         fontFamily: FONTS.robotRegular,
+        color:GetAppColor.black
     },
     otpArea: {
         flexDirection: 'row',
@@ -160,7 +165,7 @@ const PAGESTYLE = StyleSheet.create({
 
     }, getOtpText: {
         color: GetAppColor.white,
-        fontWeight: '600'
+        fontFamily:FONTS.robotRegular
     },
     addOtp: {
         fontSize: 16,
@@ -181,7 +186,8 @@ const PAGESTYLE = StyleSheet.create({
         borderColor: GetAppColor.disableBorder,
         borderWidth: 1,
         borderRadius: 5,
-        paddingStart: 15
+        paddingStart: 15,
+        color:GetAppColor.black
     },
     resendText: {
         fontFamily: FONTS.robotMedium,
@@ -191,6 +197,7 @@ const PAGESTYLE = StyleSheet.create({
     resendTextFirst: {
         fontSize: 13,
         fontFamily: FONTS.robotRegular,
+        color:GetAppColor.commonBorderGrey
 
     },
     resendTextSecond: {
@@ -204,10 +211,11 @@ const PAGESTYLE = StyleSheet.create({
     },
     signInButton: {
         backgroundColor: GetAppColor.lightOrange,
-        paddingVertical: 10,
+        height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5
+        borderRadius: 5,
+        
     },
     SignInbuttonText: {
         color: GetAppColor.white,
@@ -225,15 +233,22 @@ const PAGESTYLE = StyleSheet.create({
         marginBottom: 15
     },
     signUptext: {
-        fontWeight: '600',
         color: GetAppColor.black,
         fontFamily: FONTS.robotMedium,
     },
     reciveAccount: {
         fontFamily: FONTS.robotRegular,
+        color:GetAppColor.commonBorderGrey
     },
     continueArea: {
-        marginTop: 50
+        flex:1,
+        width:'100%'
+    },
+    bottomLogoAreaa : {
+        position:'absolute',
+        right:0,
+        left:0,
+        bottom:AppUtil.getHP(2)
     },
     squreBox: {
         flex:1,
@@ -248,6 +263,7 @@ const PAGESTYLE = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         fontSize: 20,
         textAlign: 'center',
+        color:GetAppColor.black
     },
     usePassword: {
         color: GetAppColor.black,

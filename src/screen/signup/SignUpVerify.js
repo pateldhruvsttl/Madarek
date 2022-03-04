@@ -52,13 +52,12 @@ const SignUpVerify = () => {
   }
   const Bold = ({ children }) => <Text style={{ color: GetAppColor.pincolor }}>{children}</Text>
   return (
-    <ScrollView>
-      <View style={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
+      <View style={verifyStyle.signHeaderView}>
+        <StatusBar barStyle="light-content" hidden={false}
+          backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
+        <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
         <View style={verifyStyle.headerView}>
-          <StatusBar barStyle="light-content" hidden={false}
-            backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
-
-          <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
           <Text style={verifyStyle.headerText}>{Label.SignUpVerifyTitle}</Text>
           <TouchableOpacity style={verifyStyle.backButton}>
             <IcnBack height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
