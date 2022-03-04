@@ -11,6 +11,7 @@ export const Label = {
     NewWay: isRTL ? ARlabel._newWay : USlabel._newWay,
     SignInTitle: isRTL ? ARlabel._signInTitle : USlabel._signInTitle,
     MobileTitle: isRTL ? ARlabel._mobileTitle : USlabel._mobileTitle,
+    Dot: isRTL ? ARlabel._dot : USlabel._dot,
     EmailTitle: isRTL ? ARlabel._emailTitle : USlabel._emailTitle,
     MobileNumber: isRTL ? ARlabel._mobileNumber : USlabel._mobileNumber,
     EmailAddress: isRTL ? ARlabel._emailAddress : USlabel._emailAddress,

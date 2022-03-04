@@ -27,12 +27,13 @@ const STYLES = StyleSheet.create({
     },
     innovationDetails: {
         marginHorizontal: 15,
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     innovationDetailsText: {
-        fontSize: AppUtil.getWP(5),
+        fontSize: AppUtil.getWP(4),
         color: GetAppColor.innovationGrey,
-        fontFamily: FONTS.robotRegular
+        fontFamily: FONTS.robotRegular,
+        textAlign:'center'
     },
     splaceArea: {
         alignItems: 'center',

@@ -12,7 +12,8 @@ const PAGESTYLE = StyleSheet.create({
         backgroundColor: GetAppColor.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%', width: '100%'
+        height: '100%', 
+        width: '100%',
     },
     headingMain: {
         justifyContent: 'center',
@@ -21,7 +22,7 @@ const PAGESTYLE = StyleSheet.create({
     headerPart : {
         width: '100%',
          paddingHorizontal: 15 ,
-         height:'100%'
+         height:'100%',
     },
     headingMainText: {
         fontSize: 25,
@@ -197,7 +198,7 @@ const PAGESTYLE = StyleSheet.create({
     resendTextFirst: {
         fontSize: 13,
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonBorderGrey
+        color:GetAppColor.commonTextColor
 
     },
     resendTextSecond: {
@@ -238,18 +239,15 @@ const PAGESTYLE = StyleSheet.create({
     },
     reciveAccount: {
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonBorderGrey
+        color:GetAppColor.commonTextColor
     },
     continueArea: {
         flex:1,
-        width:'100%'
+        width:'100%',
+        justifyContent: 'flex-end',
+        marginBottom: 20,
     },
-    bottomLogoAreaa : {
-        position:'absolute',
-        right:0,
-        left:0,
-        bottom:AppUtil.getHP(2)
-    },
+    
     squreBox: {
         flex:1,
         height:inputFieldHight,

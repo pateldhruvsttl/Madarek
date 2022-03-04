@@ -38,7 +38,7 @@ const verifyStyle = StyleSheet.create({
         fontSize:15,
         textAlign: 'center',
         fontFamily:FONTS.robotRegular,
-        color:GetAppColor.commonBorderGrey
+        color:GetAppColor.commonTextColor
     },
     oneTimePinDetail:{
         marginHorizontal:10,
@@ -102,7 +102,7 @@ const verifyStyle = StyleSheet.create({
     resendTextFirst: {
         fontSize: 14,
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonBorderGrey
+        color:GetAppColor.commonTextColor
 
     },
     resendText: {
