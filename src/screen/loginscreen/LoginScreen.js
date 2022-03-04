@@ -1,5 +1,5 @@
 import React, { useState, memo, useRef } from "react";
-import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
 import GoogleLogo from "../../assets/svg/loginLogo/GoogleLogo"
@@ -12,9 +12,6 @@ import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import FONTS from "../../utils/Fonts";
 import { AppUtil } from "../../utils/AppUtil";
-// import GoogleLogin from 'react-google-login';
-// import { GoogleLogin } from 'react-google-login';
-// import { ScrollView } from "react-native-gesture-handler";
 
 
 
@@ -47,6 +44,7 @@ const LoginScreen = () => {
     const setFocusInput = (inputRef) => {
         inputRef.current.focus();
     }
+
     let pin = 12345678
     let otpNumber = 123456
 
@@ -198,9 +196,9 @@ const LoginScreen = () => {
                                         <TextInput
                                             keyboardType='phone-pad'
                                             ref={t1}
-                                            returnKeyType={"next"}
+                                            returnKeyType={showPassword ? "next" : "done"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { t2.current.focus(); }}
+                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
                                             placeholder={Label.MobileNumber}
                                             maxLength={12}
                                             style={PAGESTYLE.showMobileDetail}
@@ -215,7 +213,7 @@ const LoginScreen = () => {
                                             ref={t1}
                                             returnKeyType={"next"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { t2.current.focus(); }}
+                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
                                             maxLength={40}
                                             keyboardType="email-address"
                                             placeholder={Label.EmailAddress}
@@ -246,6 +244,8 @@ const LoginScreen = () => {
                                             value={password}
                                             placeholderTextColor={GetAppColor.grayBorder}
                                             placeholder={Label.password}
+                                            secureTextEntry={true}
+                                            maxLength={30}
                                             onChangeText={password => setPassword(password)}
                                             style={PAGESTYLE.showPassword}
                                         />
@@ -344,25 +344,15 @@ const LoginScreen = () => {
                             </View>
                         </View>
                         <View style={PAGESTYLE.continueArea}>
-                            <View style={PAGESTYLE.bottomLogoAreaa}>
+                            <View>
                                 <GoogleLogo width={'100%'} height={70} />
-                                {/* <GoogleLogin
-                            onSuccess={res => {
-                                // toggleShow(false)
-                                success(res)
-                            }}
-                            onFailure={error()}
-                            clientId={"246879201979-a1ore2j7t19qel6ejvgld2qunmlt1dfj.apps.googleusercontent.com"}
-                        >
-                            Auth then Hide button
-                        </GoogleLogin> */}
-
                             </View>
                         </View>
                     </View>
                 </View>
             </SafeAreaView>
         </ScrollView>
+
     );
 
 }

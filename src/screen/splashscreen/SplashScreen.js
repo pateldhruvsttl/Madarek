@@ -1,5 +1,5 @@
 import React, { useState, memo } from "react";
-import { View, Text, ImageBackground, StatusBar, SafeAreaView } from "react-native";
+import { View, Text, ImageBackground, StatusBar, SafeAreaView ,KeyboardAvoidingView} from "react-native";
 import SplaceImage from "../../assets/svg/splaceIcons/SplaceImage";
 import MadarecSplace from "../../assets/svg/splaceIcons/MadarecSplace";
 import STYLES from "./SplashStyle";
@@ -24,7 +24,7 @@ const SplashScreen = () => {
                         </View>
                         <View style={STYLES.innovationDetails}>
                             <Text style={STYLES.innovationDetailsText}><Bold>{Label.Innovation}</Bold>
-                                {Label.InnovationDetail} <Bold>{Label.NewWay}</Bold></Text>
+                                {Label.InnovationDetail} <Bold>{Label.NewWay}</Bold>{Label.Dot}</Text>
                         </View>
                     </View>
                     <View style={STYLES.splashImageArea}>
