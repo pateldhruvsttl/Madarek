@@ -5,6 +5,7 @@ import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts"
 import { inputFieldHight } from "../../utils/Constant";
 import { AppUtil } from "../../utils/AppUtil";
+import { buttonHeight } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
@@ -210,10 +211,11 @@ const PAGESTYLE = StyleSheet.create({
     },
     signInButton: {
         backgroundColor: GetAppColor.lightOrange,
-        paddingVertical: 10,
+        height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5
+        borderRadius: 5,
+        
     },
     SignInbuttonText: {
         color: GetAppColor.white,

@@ -4,11 +4,13 @@ import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
 import { inputFieldHight } from "../../utils/Constant";
+import { buttonHeight } from "../../utils/Constant";
+import { hederHeight } from "../../utils/Constant";
 
 const verifyStyle = StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: hederHeight,
         backgroundColor: GetAppColor.headerLightYellow,
         justifyContent: 'center',
     },
@@ -109,8 +111,8 @@ const verifyStyle = StyleSheet.create({
         fontSize: 14
     },
     signInButton: {
-        backgroundColor: GetAppColor.headerLightYellow,
-        paddingVertical: 10,
+        backgroundColor: GetAppColor.headerLightYellow,buttonHeight,
+        height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5
