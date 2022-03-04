@@ -105,6 +105,7 @@ const Category = () => {
             <View style={CategoryStyle.searchView}>
                 <TextInput
                     placeholder={Label.WhatdoyouPrefertosee}
+                    placeholderTextColor={GetAppColor.borderGray}
                     style={CategoryStyle.input}
                     value={searchStr}
                     onChangeText={(txt) => onWriteText(txt)}

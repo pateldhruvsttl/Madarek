@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Alert } from 'react-native'
-import React from 'react'
+import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
+import React, { useRef } from 'react'
 import { Label } from '../../utils/StringUtil'
 import { GetAppColor } from '../../utils/Colors'
 import SignupStyles from './SignupStyle'
@@ -27,6 +27,13 @@ const Signup = () => {
     const [withCallingCode, setWithCallingCode] = useState(false)
     const [callCode, setCallCode] = useState('91');
 
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const mobileNumberRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const retypepasswordRef = useRef();
+
     const signUpPressed = () => {
         if (firstName === "") {
             Alert.alert(Label.enterfirstname);
@@ -52,6 +59,21 @@ const Signup = () => {
         setCountryCode(country.cca2)
         setCountry(country)
         setCallCode(country.callingCode[0]);
+    }
+    const onChangeField=(index)=>{
+        if (index === 1) {
+            lastNameRef.current.focus()
+        }else if (index === 2) {
+            mobileNumberRef.current.focus()
+        }else if (index === 3) {
+            emailRef.current.focus()
+        }else if (index === 4) {
+            passwordRef.current.focus()
+        }else if (index === 5) {
+            retypepasswordRef.current.focus()
+        }else if (index === 6) {
+           Keyboard.dismiss()
+        }
     }
     return (
         <View >
@@ -127,13 +149,21 @@ const Signup = () => {
                         <TextInput
                             style={SignupStyles.inputstyle}
                             onChangeText={(text) => { setFirstName(text) }}
+                            ref={firstNameRef}
+                            returnKeyType={"next"}
+                            keyboardType="default"
+                            onSubmitEditing={()=>onChangeField(1)}
                         />
                     </View>
                     <View style={{width:'47%'}}>
                         <Text style={SignupStyles.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
                         <TextInput
+                            ref={lastNameRef}
                             style={SignupStyles.inputstyle}
                             onChangeText={(text) => { setlastName(text) }}
+                            returnKeyType={"next"}
+                            keyboardType="default"
+                            onSubmitEditing={()=>onChangeField(2)}
                         />
                     </View>
                 </View>
@@ -168,8 +198,12 @@ const Signup = () => {
                         </TouchableOpacity> */}
 
                         <TextInput
+                         ref={mobileNumberRef}
                             style={SignupStyles.numberinputstyle}
                             onChangeText={(text) => { setMobileNumber(text) }}
+                            keyboardType="number-pad"
+                            returnKeyType={"Next"}
+                            onSubmitEditing={()=>onChangeField(3)}
                         />
                     </View>
                 </View>
@@ -180,8 +214,12 @@ const Signup = () => {
                     <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
                         <TextInput
+                         ref={emailRef}
                             style={[SignupStyles.numberinputstyle, { width: '100%' }]}
                             onChangeText={(text) => { setEmailId(text) }}
+                            returnKeyType={"next"}
+                            keyboardType={'email-address'}
+                            onSubmitEditing={()=>onChangeField(4)}
                         />
                     </View>
                 </View>
@@ -192,8 +230,13 @@ const Signup = () => {
                     <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
                         <TextInput
+                         ref={passwordRef}
                             style={[SignupStyles.numberinputstyle, { width: '100%' }]}
                             onChangeText={(text) => { setPassword(text) }}
+                            secureTextEntry={true}
+                            returnKeyType={"next"}
+                            keyboardType="default"
+                            onSubmitEditing={()=>onChangeField(5)}
                         />
                     </View>
                 </View>
@@ -204,8 +247,13 @@ const Signup = () => {
                     <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
                         <TextInput
+                         ref={retypepasswordRef}
                             style={[SignupStyles.numberinputstyle, { width: '100%' }]}
                             onChangeText={(text) => { setReTypePassword(text) }}
+                            secureTextEntry={true}
+                            returnKeyType={"done"}
+                            keyboardType="default"
+                            onSubmitEditing={()=>onChangeField(6)}
                         />
                     </View>
                 </View>
