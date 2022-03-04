@@ -1,16 +1,21 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import App from "../../../App";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
 import { inputFieldHight } from "../../utils/Constant";
+import { buttonHeight } from "../../utils/Constant";
+import { hederHeight } from "../../utils/Constant";
 
 const verifyStyle = StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: hederHeight,
         backgroundColor: GetAppColor.headerLightYellow,
         justifyContent: 'center',
+    },
+    signHeaderView : {
+        width: "100%", height: '100%' 
     },
     headerText: {
         color: GetAppColor.white,
@@ -32,7 +37,8 @@ const verifyStyle = StyleSheet.create({
     oneTimepin:{
         fontSize:15,
         textAlign: 'center',
-        fontFamily:FONTS.robotRegular
+        fontFamily:FONTS.robotRegular,
+        color:GetAppColor.commonBorderGrey
     },
     oneTimePinDetail:{
         marginHorizontal:10,
@@ -81,6 +87,7 @@ const verifyStyle = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         fontSize: 20,
         textAlign: 'center',
+        color:GetAppColor.black
     },
     resendOtpArea: {
         flexDirection: 'row',
@@ -95,6 +102,7 @@ const verifyStyle = StyleSheet.create({
     resendTextFirst: {
         fontSize: 14,
         fontFamily: FONTS.robotRegular,
+        color:GetAppColor.commonBorderGrey
 
     },
     resendText: {
@@ -103,8 +111,8 @@ const verifyStyle = StyleSheet.create({
         fontSize: 14
     },
     signInButton: {
-        backgroundColor: GetAppColor.headerLightYellow,
-        paddingVertical: 10,
+        backgroundColor: GetAppColor.headerLightYellow,buttonHeight,
+        height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5

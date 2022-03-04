@@ -28,6 +28,7 @@ export const GetAppColor = {
     headerLightYellow : '#F9B52B',
     textColor:'#646464',
     grayBorder:"#848484",
-    pincolor : "#323232"
+    pincolor : "#323232",
+    splashLogoColor : "#aeaeae"
 }
 
