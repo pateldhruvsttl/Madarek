@@ -3,12 +3,12 @@ import App from "../../../App";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
-import { inputFieldHight } from "../../utils/Constant";
+import { buttonHeight, hederHeight, inputFieldHight } from "../../utils/Constant";
 
 const SignupStyles=StyleSheet.create({
     headerView: {
         width: '100%',
-        height: AppUtil.getHP(6),
+        height: hederHeight,
         backgroundColor: GetAppColor.headerYellow,
         justifyContent: 'center',
     },
@@ -78,7 +78,8 @@ const SignupStyles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        marginTop:AppUtil.getHP(3.17)
+        marginTop:AppUtil.getHP(3.17),
+        width:'100%'
     },
     titleText:{
         fontFamily:FONTS.robotRegular,
@@ -87,34 +88,37 @@ const SignupStyles=StyleSheet.create({
         marginBottom:AppUtil.getHP(0.82)
     },
     inputstyle:{
-        width:AppUtil.getWP(38),
+        width:"100%",
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        padding:5
+        padding:5,
+        color:GetAppColor.textColor
 
     },
     codeinputstyle:{
-        width:AppUtil.getWP(18.52),
+        width:'30%',
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        alignItems:'center', justifyContent:'space-between', flexDirection:'row', paddingHorizontal:AppUtil.getWP(2)
+        alignItems:'center', justifyContent:'space-between', flexDirection:'row', paddingHorizontal:AppUtil.getWP(2),
+        color:GetAppColor.textColor
     },
     numberinputstyle:{
-        width:AppUtil.getWP(59.41),
+        width:'70%',
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        padding:5
+        padding:5,
+        color:GetAppColor.textColor
 
     },
     signupButton: {
         width: '100%',
-        height: AppUtil.getHP(6.14),
+        height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
         borderRadius: 5,
         alignItems: 'center',
@@ -131,7 +135,7 @@ const SignupStyles=StyleSheet.create({
         padding: 8,
         marginEnd: 5,
         fontFamily: FONTS.robotRegular,
-        width:AppUtil.getWP(18.52),
+        width:'30%',
         height:AppUtil.getHP(5.63),
         flexDirection: 'row',
         justifyContent: 'center',

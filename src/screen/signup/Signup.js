@@ -10,6 +10,7 @@ import DownArrow from '../../assets/svg/DownArrow'
 import { useState } from 'react'
 import CountryPicker from 'react-native-country-picker-modal'
 import BackIcon from '../../assets/svg/loginLogo/BackIcon'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const Signup = () => {
 
@@ -64,7 +65,7 @@ const Signup = () => {
                     <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
                 </TouchableOpacity>
             </View>
-
+<KeyboardAwareScrollView>
             <View style={SignupStyles.roundMainView}>
                 {/* Radio button */}
                 <Text style={SignupStyles.userTypeText}>
@@ -121,14 +122,14 @@ const Signup = () => {
 
                 {/* Text Fields First name Last name */}
                 <View style={SignupStyles.nameView}>
-                    <View>
+                    <View  style={{width:'47%'}} >
                         <Text style={SignupStyles.titleText}>{Label.firstname}<Text style={{ color: 'red' }}>*</Text></Text>
                         <TextInput
                             style={SignupStyles.inputstyle}
                             onChangeText={(text) => { setFirstName(text) }}
                         />
                     </View>
-                    <View>
+                    <View style={{width:'47%'}}>
                         <Text style={SignupStyles.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
                         <TextInput
                             style={SignupStyles.inputstyle}
@@ -214,7 +215,7 @@ const Signup = () => {
                     <Text style={SignupStyles.signupText}>{Label.SignupTitle}</Text>
                 </TouchableOpacity>
             </View>
-
+            </KeyboardAwareScrollView>
         </View>
     )
 }

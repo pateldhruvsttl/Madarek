@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native'
+import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native'
 import React, { useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
@@ -7,6 +7,8 @@ import { Label } from '../../utils/StringUtil'
 import IcnSearch from '../../assets/svg/IcnSearch'
 import { AppUtil } from '../../utils/AppUtil'
 import FONTS from '../../utils/Fonts'
+import GraySearchIcon from '../../assets/svg/GraySearchIcon'
+import CloseIcon from '../../assets/svg/CloseIcon'
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
@@ -37,6 +39,9 @@ const category = [
 const Category = () => {
     const [categories, setCategories] = useState(category)
     const [selectedCategories, setSelectedCategories] = useState([])
+    const [isSearch, setSearch] = useState(false);
+    const [searchStr, setSearchStr]=useState("")
+
 
 
 
@@ -60,6 +65,12 @@ const Category = () => {
     }
 
     const onWriteText = (text) => {
+        if (text === "") {
+            setSearch(false)
+        }else{
+            setSearch(true)
+        }
+        setSearchStr(text)
         const searchData = category.filter(task => task.name.includes(text))
         var cat = []
         searchData.forEach(obj => {
@@ -74,9 +85,14 @@ const Category = () => {
         });
         setCategories(cat)
     }
+    const onCloseSearch = () => {
+        
+        onWriteText("")
+        Keyboard.dismiss()
+    }
 
     return (
-        <View>
+        <View style={{ height: '100%', backgroundColor: '#F5F7FB' }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
             <View style={CategoryStyle.headerView}>
@@ -90,13 +106,22 @@ const Category = () => {
                 <TextInput
                     placeholder={Label.WhatdoyouPrefertosee}
                     style={CategoryStyle.input}
+                    value={searchStr}
                     onChangeText={(txt) => onWriteText(txt)}
                 />
 
-                <TouchableOpacity style={{ position: 'absolute', end: 25, top: 15, alignSelf: 'center' }}>
-                    <Image style={{ width: 25, height: 25 }} source={GetIcon.searchIcon} />
-                    {/* <IcnSearch /> */}
-                </TouchableOpacity>
+                {
+                    isSearch ?
+                        <TouchableOpacity onPress={() => onCloseSearch()} style={{ position: 'absolute', end: 25, top: 15, alignSelf: 'center' }}>
+                            {/* <Image style={{ width: 25, height: 25 }} source={GetIcon.searchIcon} /> */}
+                            <CloseIcon height={25} width={25} />
+                        </TouchableOpacity>
+                        :
+                        <View style={{ position: 'absolute', end: 25, top: 15, alignSelf: 'center' }}>
+                            <GraySearchIcon height={25} width={25} />
+                        </View>
+                }
+
             </View>
             <ScrollView style={CategoryStyle.scroll}>
                 <View style={CategoryStyle.scrollSubView}>
@@ -107,8 +132,8 @@ const Category = () => {
                                     <Text
                                         style={{
                                             color: item.isselected ? GetAppColor.categoryTextSelected : GetAppColor.categoryText,
-                                            fontSize: AppUtil.getHP(2.25),
-                                            fontFamily:item.isselected ? FONTS.robotMedium:FONTS.robotRegular
+                                            fontSize: AppUtil.getHP(1.8),
+                                            fontFamily: item.isselected ? FONTS.robotMedium : FONTS.robotRegular
                                         }}
                                     >
                                         {item.name}
