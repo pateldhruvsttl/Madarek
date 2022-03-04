@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native'
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
+import { buttonHeight, hederHeight } from '../../utils/Constant';
 import FONTS from '../../utils/Fonts';
 
 const CategoryStyle = StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: hederHeight,
         backgroundColor: GetAppColor.headerYellow,
         justifyContent: 'center',
     },
@@ -35,17 +36,18 @@ const CategoryStyle = StyleSheet.create({
     },
     searchView: {
         paddingHorizontal: 25,
-        paddingVertical: 15,
+        paddingVertical: 10,
         marginTop: 15,
         marginBottom: 15,
         justifyContent: 'space-between',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor:'#F5F7FB'
     },
 
     scroll: {
         width: '100%',
-        height: '69%',
+        marginBottom:buttonHeight+10,
         backgroundColor: GetAppColor.backGround
     },
 
@@ -66,13 +68,15 @@ const CategoryStyle = StyleSheet.create({
 
     continueButton: {
         width: '90.74%',
-        height: '4.35%',
+        height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        marginTop: 5
+        marginTop: 5,
+        position:'absolute',
+        bottom:10
     },
 
     continueText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
@@ -80,9 +84,11 @@ const CategoryStyle = StyleSheet.create({
     input: {
         width: '100%',
         fontSize: 20,
-        paddingBottom: 15,
+        paddingBottom: 10,
         borderBottomColor: GetAppColor.borderGray,
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        backgroundColor:'#F5F7FB',
+        color:GetAppColor.textColor,
     },
 
 });

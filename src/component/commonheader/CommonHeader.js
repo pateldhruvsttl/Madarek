@@ -1,8 +1,13 @@
 import React, { memo } from "react";
-import { View, Image, Text } from "react-native";
-import { GetSvg } from "../../utils/Assets";
+import { View, Text } from "react-native";
 import Style from "./CommonHeaderStyle";
-import {Label} from "../../utils/StringUtil";
+import { Label } from "../../utils/StringUtil";
+import IcnMenu from '../../assets/svg/IcnMenu'
+import IcnMenuHeader from '../../assets/svg/IcnMenuHeader'
+import IcnMsg from '../../assets/svg/IcnMsg'
+import IcnAlert from '../../assets/svg/IcnAlert'
+import IcnSearch from '../../assets/svg/IcnSearch'
+import { AppUtil } from "../../utils/AppUtil";
 
 const CommonHeader = (props) => {
 
@@ -10,10 +15,14 @@ const CommonHeader = (props) => {
 
         return (
             <View style={Style.MainView}>
-                 <Image style={Style.headerProfile} source={GetSvg.iconSearch} />
-                       
-                <Text>{Label.HomeTitle}</Text>
-                <Text>hello</Text>
+                <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />
+
+                <View style={Style.leftMultiIcnView}>
+                    <IcnMsg style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    <IcnAlert style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    <IcnSearch style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                </View>
             </View>
         );
     }
