@@ -12,6 +12,8 @@ import { showMessageWithCallBack } from "../../utils/Constant";
 import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import { DarkTheme } from "@react-navigation/native";
+import FONTS from "../../utils/Fonts";
+import { AppUtil } from "../../utils/AppUtil";
 // import { ScrollView } from "react-native-gesture-handler";
 
 
@@ -131,9 +133,9 @@ const LoginScreen = () => {
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
-
+    const Bold = ({ children }) => <Text style={{fontFamily:FONTS.robotBold }}>{children}</Text>
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{flex:1}}>
             <SafeAreaView>
             <View style={PAGESTYLE.mainView}>
             <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
@@ -181,6 +183,7 @@ const LoginScreen = () => {
                                     keyboardType='phone-pad'
                                     ref={t1}
                                     returnKeyType={"next"}
+                                    placeholderTextColor={GetAppColor.grayBorder}
                                     onSubmitEditing={() => { t2.current.focus(); }}
                                     placeholder={Label.MobileNumber}
                                     maxLength={12}
@@ -195,6 +198,7 @@ const LoginScreen = () => {
                                     autoCapitalize={false}
                                     ref={t1}
                                     returnKeyType={"next"}
+                                    placeholderTextColor={GetAppColor.grayBorder}
                                     onSubmitEditing={() => { t2.current.focus(); }}
                                     maxLength={40}
                                     keyboardType="email-address"
@@ -212,7 +216,7 @@ const LoginScreen = () => {
                                     <>
                                         <Text style={PAGESTYLE.addOtp}>{Label.EnterOtpTitle}</Text>
                                         <TouchableOpacity style={PAGESTYLE.getOtpArea}>
-                                            <Text style={PAGESTYLE.getOtpText}>{Label.GetOtpTitle}</Text>
+                                            <Text style={PAGESTYLE.getOtpText}>{Label.GetText} <Bold>{Label.OneTimePassword}</Bold></Text>
                                         </TouchableOpacity>
                                     </>
                             }
@@ -224,6 +228,7 @@ const LoginScreen = () => {
                                     ref={t2}
                                     returnKeyType={"done"}
                                     value={password}
+                                    placeholderTextColor={GetAppColor.grayBorder}
                                     placeholder={Label.password}
                                     onChangeText={password => setPassword(password)}
                                     style={PAGESTYLE.showPassword}
@@ -321,7 +326,7 @@ const LoginScreen = () => {
                     </View>
                 </View>
                 <View style={PAGESTYLE.continueArea}>
-                    <View>
+                    <View style={PAGESTYLE.bottomLogoAreaa}>
                         <GoogleLogo width={'100%'} height={70} />
                     </View>
                 </View>
