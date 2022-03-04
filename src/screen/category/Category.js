@@ -77,7 +77,7 @@ const Category = () => {
 
     return (
         <View>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
             <View style={CategoryStyle.headerView}>
                 <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>

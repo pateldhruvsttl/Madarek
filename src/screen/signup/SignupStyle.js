@@ -7,7 +7,7 @@ import FONTS from "../../utils/Fonts";
 const SignupStyles=StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: AppUtil.getHP(6),
         backgroundColor: GetAppColor.headerYellow,
         justifyContent: 'center',
     },
@@ -28,8 +28,8 @@ const SignupStyles=StyleSheet.create({
         marginVertical:AppUtil.getHP(2.5),
         backgroundColor:GetAppColor.white,
         borderRadius:25,
-        width:AppUtil.getWP(90),
-        height:AppUtil.getHP(80),
+        // width:AppUtil.getWP(90),
+        // height:AppUtil.getHP(80),
         padding:AppUtil.getWP(5)
 
     },

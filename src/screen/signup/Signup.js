@@ -53,9 +53,11 @@ const Signup = () => {
         setCallCode(country.callingCode[0]);
     }
     return (
-        <View style={{ width: "100%", height: '100%', }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
+        <View >
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
+
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
+
             <View style={SignupStyles.headerView}>
                 <Text style={SignupStyles.headerText}>{Label.SignupTitle}</Text>
                 <TouchableOpacity style={SignupStyles.backButton}>

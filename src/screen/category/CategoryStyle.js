@@ -6,7 +6,7 @@ import FONTS from '../../utils/Fonts';
 const CategoryStyle = StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: AppUtil.getHP(6),
         backgroundColor: GetAppColor.headerYellow,
         justifyContent: 'center',
     },
@@ -35,7 +35,7 @@ const CategoryStyle = StyleSheet.create({
     },
     searchView: {
         paddingHorizontal: 25,
-        paddingVertical: 15,
+        paddingVertical: 10,
         marginTop: 15,
         marginBottom: 15,
         justifyContent: 'space-between',
@@ -45,7 +45,7 @@ const CategoryStyle = StyleSheet.create({
 
     scroll: {
         width: '100%',
-        height: '69%',
+        height: AppUtil.getHP(71),
         backgroundColor: GetAppColor.backGround
     },
 
@@ -80,7 +80,7 @@ const CategoryStyle = StyleSheet.create({
     input: {
         width: '100%',
         fontSize: 20,
-        paddingBottom: 15,
+        paddingBottom: 10,
         borderBottomColor: GetAppColor.borderGray,
         borderBottomWidth: 1
     },
