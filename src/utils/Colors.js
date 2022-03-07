@@ -6,7 +6,7 @@ export const GetAppColor = {
     statusBarYellow:'#E29834',
     headerYellow:'#FFAD3B',
     skipBorderColor:"#FFDCA8",
-    backGround:'#F3F6FA',
+    backGround:'#F5F7FB',
     borderRed:'#FF5144',
     borderGray:'#E0E1E4',
     categoryText:'#575757',
@@ -27,6 +27,9 @@ export const GetAppColor = {
     innovationGrey : '#5F6060',
     headerLightYellow : '#F9B52B',
     grayBorder:"#848484",
-    pincolor : "#323232"
+    pincolor : "#323232",
+    splashLogoColor : "#656667" ,
+    commonTextColor : "#aeaeae"
 }
+
 

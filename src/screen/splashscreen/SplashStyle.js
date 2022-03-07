@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
 
 const STYLES = StyleSheet.create({
-    backgroundImage:{
+    backgroundImage: {
         justifyContent: 'center',
-        flex: 1 
+        flex: 1
     },
     madarekSplace: {
         justifyContent: 'center',
@@ -14,32 +15,41 @@ const STYLES = StyleSheet.create({
     },
     logoDetails: {
         flexDirection: 'row',
-        marginBottom:12,
-        marginTop:12
-        
+        marginBottom: 12,
+        marginTop: 12
+
     },
-    logoText:{
-        fontSize:35,
-        letterSpacing:10,
-        fontFamily:FONTS.trajanProRegular
+    logoText: {
+        fontSize: 35,
+        letterSpacing: 10,
+        fontFamily: FONTS.trajanProRegular,
+        color: GetAppColor.splashLogoColor
     },
     innovationDetails: {
         marginHorizontal: 15,
-        flexDirection:'column'
+        flexDirection: 'column',
     },
-    innovationDetailsText:{
-        fontSize:20,
-        color:GetAppColor.innovationGrey,
-        fontFamily:FONTS.robotRegular
-    },
-    splaceLight: {
-        marginTop: 30
+    innovationDetailsText: {
+        fontSize: AppUtil.getWP(4),
+        color: GetAppColor.innovationGrey,
+        fontFamily: FONTS.robotRegular,
+        textAlign:'center'
     },
     splaceArea: {
-        justifyContent: 'center',
         alignItems: 'center',
         flex: 1
+    },
+    splashImageArea: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+        paddingTop: AppUtil.getHP(4),
+    },
+    splashHeader: {
+        paddingTop: AppUtil.getHP(9),
+        alignItems: 'center',
     }
+
 
 })
 export default STYLES;

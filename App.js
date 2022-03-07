@@ -8,6 +8,8 @@ import { View } from 'react-native'
 import Loader from './src/component/Loader'
 import AppRoute from './src/route'
 import { MenuProvider } from 'react-native-popup-menu';
+import { Provider } from 'react-redux'
+import { store } from './src/redux/store/Store'
 
 var self;
 export const onLoding = (status) => {
@@ -23,19 +25,20 @@ export default class App extends Component {
 
   componentDidMount() {
     self = this;
-
   }
 
   render() {
     return (
-      <View style={{ width: '100%', height: '100%' }}>
-        <MenuProvider>
-          <AppRoute />
-        </MenuProvider>
-        {this.state.isLoading && <Loader />}
-      </View>
-
+      <Provider store={store}>
+        <View style={{ width: '100%', height: '100%' }}>
+          <MenuProvider>
+            <AppRoute />
+          </MenuProvider>
+          {this.state.isLoading && <Loader />}
+        </View>
+      </Provider>
     )
   }
 }
+
 

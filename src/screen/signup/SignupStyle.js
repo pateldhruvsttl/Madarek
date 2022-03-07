@@ -3,12 +3,12 @@ import App from "../../../App";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
-import { inputFieldHight } from "../../utils/Constant";
+import { buttonHeight, hederHeight, inputFieldHight } from "../../utils/Constant";
 
 const SignupStyles=StyleSheet.create({
     headerView: {
         width: '100%',
-        height: 60,
+        height: hederHeight,
         backgroundColor: GetAppColor.headerYellow,
         justifyContent: 'center',
     },
@@ -29,8 +29,8 @@ const SignupStyles=StyleSheet.create({
         marginVertical:AppUtil.getHP(2.5),
         backgroundColor:GetAppColor.white,
         borderRadius:25,
-        width:AppUtil.getWP(90),
-        height:AppUtil.getHP(80),
+        // width:AppUtil.getWP(90),
+        // height:AppUtil.getHP(80),
         padding:AppUtil.getWP(5)
 
     },
@@ -78,7 +78,8 @@ const SignupStyles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        marginTop:AppUtil.getHP(3.17)
+        marginTop:AppUtil.getHP(3.17),
+        width:'100%'
     },
     titleText:{
         fontFamily:FONTS.robotRegular,
@@ -87,34 +88,37 @@ const SignupStyles=StyleSheet.create({
         marginBottom:AppUtil.getHP(0.82)
     },
     inputstyle:{
-        width:AppUtil.getWP(38),
+        width:"100%",
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        padding:5
+        padding:5,
+        color:GetAppColor.textColor
 
     },
     codeinputstyle:{
-        width:AppUtil.getWP(18.52),
+        width:'30%',
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        alignItems:'center', justifyContent:'space-between', flexDirection:'row', paddingHorizontal:AppUtil.getWP(2)
+        alignItems:'center', justifyContent:'space-between', flexDirection:'row', paddingHorizontal:AppUtil.getWP(2),
+        color:GetAppColor.textColor
     },
     numberinputstyle:{
-        width:AppUtil.getWP(59.41),
+        width:'70%',
         height:inputFieldHight,
         borderWidth:1,
         borderColor:GetAppColor.borderGray,
         borderRadius:5,
-        padding:5
+        padding:5,
+        color:GetAppColor.textColor
 
     },
     signupButton: {
         width: '100%',
-        height: AppUtil.getHP(6.14),
+        height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
         borderRadius: 5,
         alignItems: 'center',
@@ -122,8 +126,29 @@ const SignupStyles=StyleSheet.create({
         alignSelf: 'center',
         marginTop: AppUtil.getHP(2.5)
     },
-    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) }
-    
+    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
+
+    numberAreaOne: {
+        borderWidth: 1,
+        borderColor: GetAppColor.disableBorder,
+        borderRadius: 5,
+        padding: 8,
+        marginEnd: 5,
+        fontFamily: FONTS.robotRegular,
+        width:'30%',
+        height:AppUtil.getHP(5.63),
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    codePickerArea: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    backIcon: {
+        position: 'absolute',
+        right: 10,
+    },
     
 })
 export default SignupStyles;

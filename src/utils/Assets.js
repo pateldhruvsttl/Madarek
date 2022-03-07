@@ -3,7 +3,7 @@ import { Image, Alert } from "react-native";
 
 export const GetIcon = {
     // IcnHome: require("../assets/icn_home.png"),
-    searchIcon:require('../assets/image/Search.png'),
+   
 }
 
 export const GetImage = {
