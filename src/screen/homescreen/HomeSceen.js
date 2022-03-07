@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, ScrollView, ScrollViewBase, Touchable, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import EventSlider from "../../component/homescreen/EventSlider";
@@ -11,6 +11,7 @@ import HomeStyle from "./HomeScreenStyle";
 import ExpertInsights from '../../component/homescreen/ExpertInsights'
 import FavouriteCategories from "../../component/homescreen/FavouriteCategories";
 import { Label } from "../../utils/StringUtil";
+import { AppUtil } from "../../utils/AppUtil";
 
 const testData = [
     {
@@ -44,6 +45,33 @@ const testData = [
         url: 'https://i.imgur.com/l49aYS3l.jpg'
     }
 ];
+const sliderdata = [
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        name: 'Poonam Madhav',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: true,
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        name: 'Mitansh Bhavsar',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: false,
+    },
+
+];
 
 const DATA = [
     {
@@ -72,7 +100,6 @@ const DATA = [
 ];
 
 const expertData = [
-
     {
         name: 'Naredra Modi',
         job: 'Game Tester',
@@ -83,7 +110,6 @@ const expertData = [
         like: '210',
         comment: '180',
     },
-
     {
         name: 'Bhupendra Patel',
         job: 'App Tester',
@@ -94,7 +120,6 @@ const expertData = [
         like: '200',
         comment: '80',
     },
-
 ]
 
 const HomeScreen = () => {
@@ -102,14 +127,22 @@ const HomeScreen = () => {
     return (
 
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
             <View style={HomeStyle.MainView}>
                 <ScrollView>
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
                         <EventSlider Entries={testData} />
-                        <IdealList />
-                        <SubIdeasList data={DATA} isTitle={"Open challanges"} />
-                        <SubIdeasList data={DATA} isTitle={"Madarek Sportlight"} btn={"See All Ideas"} />
+                        <IdealList data={sliderdata} />
+
+                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                            <SubIdeasList data={DATA} isTitle={"Open Challenges"} isType={"Challenges"} btn={"Participaate Now"}/>
+                        </View>
+
+                        <View style={{paddingVertical: AppUtil.getHP(2) }}>
+                            <SubIdeasList data={DATA} isTitle={"Madarek Spotlight"} isType={"Spotlight"} />
+                        </View>
+
                         <ExpertInsights Entries={expertData} />
                         <FavouriteCategories />
 

@@ -9,9 +9,9 @@ export const sliderWidth = viewportWidth;
 export const itemWidth = slideWidth + itemHorizontalMargin * 6;
 
 const EventSliderStyle = StyleSheet.create({
-    MainView: { width: '100%', height: AppUtil.getHP(30), backgroundColor: GetAppColor.lightWhite },
+    MainView: { width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite },
 
-    sliderContainer: { marginTop: AppUtil.getHP(2) },
+    sliderContainer: { marginTop: AppUtil.getHP(2), marginBottom: AppUtil.getHP(1) },
     paginationContainer: { paddingVertical: 1, backgroundColor: GetAppColor.lightWhite },
 
     paginationDot: {
@@ -22,11 +22,13 @@ const EventSliderStyle = StyleSheet.create({
 
     sliderRendTitleView: { position: 'absolute', top: AppUtil.getHP(17), marginStart: AppUtil.getWP(4) },
     txtsliderRendTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(2.3), fontWeight: 'bold' },
+
     btnSliderRend: {
-        width: AppUtil.getWP(22), marginVertical: AppUtil.getHP(0.5),
-        padding: AppUtil.getHP(0.5), backgroundColor: GetAppColor.headerYellow, borderRadius: AppUtil.getHP(0.6)
+        flex: 1, marginVertical: AppUtil.getHP(0.5), top: AppUtil.getHP(20), marginStart: AppUtil.getWP(4),
+        position: 'absolute', backgroundColor: GetAppColor.headerYellow, borderRadius: AppUtil.getHP(0.6),
     },
-    txtsliderRendBtnTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(1.4) },
+    txtsliderRendBtnTitle: { color: GetAppColor.white, fontWeight:'', fontSize: AppUtil.getHP(1.2) , paddingHorizontal:5, paddingVertical: 4},
+    
 });
 
 export default EventSliderStyle;
