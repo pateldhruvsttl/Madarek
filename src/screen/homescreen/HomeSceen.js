@@ -13,6 +13,8 @@ import FavouriteCategories from "../../component/homescreen/FavouriteCategories"
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 
+import { DrawerActions } from '@react-navigation/native';
+
 const testData = [
     {
         title: 'Favourites landscapes 1',
@@ -122,13 +124,13 @@ const expertData = [
     },
 ]
 
-const HomeScreen = () => {
-
+const HomeScreen = (props) => {
+console.log('pros of render in homescreen', props);
     return (
 
         <SafeAreaView style={{ flex: 1 }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
-            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
+            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} openDrawer={()=>{props.navigation.openDrawer()}} />
             <View style={HomeStyle.MainView}>
                 <ScrollView>
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
