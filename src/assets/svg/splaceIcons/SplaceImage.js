@@ -5,8 +5,8 @@ function SplaceImage(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
-      width={676.037}
-      height={974.389}
+      width={props.width}
+      height={props.height}
       viewBox="0 0 676.037 974.389"
       {...props}
     >

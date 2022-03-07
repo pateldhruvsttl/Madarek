@@ -8,7 +8,12 @@ import { Label } from "../../utils/StringUtil";
 import { GetAppImage } from "../../utils/Assets";
 import { AppUtil } from "../../utils/AppUtil";
 
-const SplashScreen = () => {
+
+const SplashScreen = (props) => {
+    setTimeout(() => {
+      props.navigation.navigate("LoginScreen")
+    }, 2500);
+    
     const Bold = ({ children }) => <Text style={{ fontWeight: 'bold' }}>{children}</Text>
     return (
         <View style={{ flex: 1, width: '100%' }}>

@@ -4,6 +4,8 @@ import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
 import { buttonHeight, hederHeight, inputFieldHight } from "../../utils/Constant";
+import { buttonFontSize } from "../../utils/Constant";
+import { headerFontSize } from "../../utils/Constant";
 
 const SignupStyles=StyleSheet.create({
     headerView: {
@@ -15,7 +17,7 @@ const SignupStyles=StyleSheet.create({
     headerText: {
         color: GetAppColor.white,
         // fontWeight: '900',
-        fontSize: AppUtil.getHP(3.07),
+        fontSize: headerFontSize,
         alignSelf: 'center',
         fontFamily:FONTS.robotBold
     },
@@ -126,7 +128,7 @@ const SignupStyles=StyleSheet.create({
         alignSelf: 'center',
         marginTop: AppUtil.getHP(2.5)
     },
-    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
+    signupText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:buttonFontSize },
 
     numberAreaOne: {
         borderWidth: 1,
