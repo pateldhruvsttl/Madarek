@@ -104,8 +104,8 @@ const ExpertInsights = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={styles.txtseeMoewView}>{Label.expertInsights}</Text>
-                <Text style={styles.txtSubSeeMoewView}> {Label.viewAll}</Text>
+                <Text style={styles.txtTitle}>{Label.expertInsights}</Text>
+                <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
             </View>
             {setExpertInsights()}
 

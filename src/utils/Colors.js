@@ -1,4 +1,5 @@
 export const GetAppColor = {
+    
     white: '#FFFFFF',
     lightWhite: '#f5f7fb',
     black: '#000',
@@ -19,14 +20,12 @@ export const GetAppColor = {
     blackTransperent: 'rgba(0, 0, 0, 0.6)',
     lightGrey : '#f5f7fb',
     lightOrange : '#f9b52b',
-    lightWhite : '#ffffff',
     commonBorderGrey:'#848484',
     disableGrey : '#F5F7FB',
     disableBorder :'#CCCCCC',
     barGrey:'#cacbcf',
     innovationGrey : '#5F6060',
     headerLightYellow : '#F9B52B',
-    textColor:'#646464',
     grayBorder:"#848484",
     pincolor : "#323232",
     splashLogoColor : "#656667" ,

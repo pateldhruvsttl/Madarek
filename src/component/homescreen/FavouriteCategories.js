@@ -21,8 +21,8 @@ const FavouriteCategories = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={styles.txtseeMoewView}>{Label.favouriteCategories}</Text>
-                <Text style={styles.txtSubSeeMoewView}> {Label.viewAll}</Text>
+                <Text style={styles.txtTitle}>{Label.favouriteCategories}</Text>
+                <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
             </View>
 
             <View style={styles.innerView1}>

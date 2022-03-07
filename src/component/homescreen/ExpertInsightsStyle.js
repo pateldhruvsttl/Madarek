@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors';
+import FONTS from '../../utils/Fonts';
 
 const slideWidth = AppUtil.getWP(75);
 const itemHorizontalMargin = AppUtil.getWP(2);
@@ -16,21 +17,37 @@ const EventSliderStyle = StyleSheet.create({
 
     titleView:{flexDirection:'row', justifyContent:'space-between', marginHorizontal:AppUtil.getHP(2), marginVertical:AppUtil.getHP(2)},
    
-    txtseeMoewView:{fontSize:AppUtil.getHP(2.6), fontWeight:'bold', color:GetAppColor.categoryText},
-    txtSubSeeMoewView:{fontSize:AppUtil.getHP(1.5), color:GetAppColor.categoryText},
+    txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
+    txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},
+
+    // txtseeMoewView:{fontSize:AppUtil.getHP(2.6), fontFamily:FONTS.robotBold, color:GetAppColor.categoryText},
+    // txtSubSeeMoewView:{fontSize:AppUtil.getHP(1.5),fontFamily:FONTS.robotRegular, color:GetAppColor.categoryText},
 
     renderMainView:{ width: '100%', height: "93%", borderRadius: AppUtil.getHP(2), alignItems:'center'},
     renderProfileView:{width:AppUtil.getHP(15),height:AppUtil.getHP(15),borderRadius:AppUtil.getHP(15), alignSelf:'center'},
     profilePicView:{ width:AppUtil.getHP(15),height:AppUtil.getHP(15), borderRadius: AppUtil.getHP(15), },
 
-    txtNameView:{fontSize:AppUtil.getHP(2), fontWeight:'bold', color:GetAppColor.categoryText, marginTop:AppUtil.getHP(1),textAlign:'center'},
-    txtSubNameView:{fontSize:AppUtil.getHP(1.5), color:GetAppColor.categoryText, marginTop:AppUtil.getHP(1), textAlign:'center'},
+    
+    
+    txtNameView:{fontSize:AppUtil.getHP(2), fontFamily:FONTS.robotMedium,color:GetAppColor.pincolor, marginTop:AppUtil.getHP(1),textAlign:'center'},
+    txtSubNameView:{fontSize:AppUtil.getHP(1.5), fontFamily:FONTS.robotMedium, color:GetAppColor.textColor, marginTop:AppUtil.getHP(1), textAlign:'center'},
 
     borderLine:{width:AppUtil.getHP(7), borderWidth:AppUtil.getHP(.2), borderColor:GetAppColor.lightBlue, marginTop:AppUtil.getHP(1), borderRadius:AppUtil.getHP(1)},
     
-    txtTitleView:{fontSize:AppUtil.getHP(2), fontWeight:'bold', marginTop:AppUtil.getHP(1), color:GetAppColor.lightBlue,},
-    txtSubtitleView:{fontSize:AppUtil.getHP(1.5), color:GetAppColor.categoryText, marginTop:AppUtil.getHP(1),textAlign:'center'},
+    txtTitleView:{fontSize:AppUtil.getHP(2),fontFamily:FONTS.robotBold, marginTop:AppUtil.getHP(1), color:GetAppColor.lightBlue,},
+    txtSubtitleView:{fontSize:AppUtil.getHP(1.5),fontFamily:FONTS.robotRegular, color:GetAppColor.categoryText, marginTop:AppUtil.getHP(1),textAlign:'center'},
     
+    btnGrp:{flexDirection:'row'},
+    txtBtn:{fontSize:AppUtil.getHP(1.5), fontFamily:FONTS.robotRegular, color:GetAppColor.textColor, textAlign:'center'},
+    btn:{borderWidth:1, borderColor:GetAppColor.textColor, margin:AppUtil.getHP(0.7), padding:AppUtil.getHP(0.7), borderRadius:AppUtil.getHP(0.7)},
+
+    secondCalView: { flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
+    secondInnerCalView: { flexDirection: 'row', marginRight: AppUtil.getHP(2) },
+    calView: { flexDirection: 'row', alignItems: 'center' },
+    callIcn: { marginEnd: AppUtil.getHP(1) },
+    title: { fontSize: AppUtil.getHP(1.4), fontFamily:FONTS.robotRegular },
+
+
     paginationContainer: { paddingVertical: 1, marginBottom:AppUtil.getHP(1), backgroundColor: GetAppColor.lightWhite },
 
     paginationDot: {
@@ -49,15 +66,10 @@ const EventSliderStyle = StyleSheet.create({
 
 
     
-    secondCalView: { flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
-    secondInnerCalView: { flexDirection: 'row', marginRight: AppUtil.getHP(2) },
-    calView: { flexDirection: 'row', alignItems: 'center' },
-    callIcn: { marginEnd: AppUtil.getHP(1) },
-    title: { fontSize: AppUtil.getHP(1.4) },
 
-    btnGrp:{flexDirection:'row'},
-    txtBtn:{fontSize:AppUtil.getHP(1.5), color:GetAppColor.categoryText, textAlign:'center'},
-    btn:{borderWidth:1, borderColor:GetAppColor.categoryText, margin:AppUtil.getHP(0.7), padding:AppUtil.getHP(0.7), borderRadius:AppUtil.getHP(0.7)}
+    
+
+   
 });
 
 export default EventSliderStyle;

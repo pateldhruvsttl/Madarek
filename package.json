@@ -20,6 +20,7 @@
     "react-native": "0.67.3",
     "react-native-country-picker-modal": "^2.0.0",
     "react-native-gesture-handler": "^2.2.0",
+    "react-native-popup-menu": "^0.15.12",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-pager-view": "^5.4.11",
