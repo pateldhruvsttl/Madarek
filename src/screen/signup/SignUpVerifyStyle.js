@@ -6,6 +6,8 @@ import FONTS from "../../utils/Fonts";
 import { inputFieldHight } from "../../utils/Constant";
 import { buttonHeight } from "../../utils/Constant";
 import { hederHeight } from "../../utils/Constant";
+import { buttonFontSize } from "../../utils/Constant";
+import { headerFontSize } from "../../utils/Constant";
 
 const verifyStyle = StyleSheet.create({
     headerView: {
@@ -19,7 +21,7 @@ const verifyStyle = StyleSheet.create({
     },
     headerText: {
         color: GetAppColor.white,
-        fontSize: AppUtil.getHP(3.07),
+        fontSize: headerFontSize,
         alignSelf: 'center',
         fontFamily: FONTS.robotMedium
     },
@@ -119,7 +121,7 @@ const verifyStyle = StyleSheet.create({
     },
     SignInbuttonText: {
         color: GetAppColor.white,
-        fontSize: 20,
+        fontSize: buttonFontSize,
         fontFamily: FONTS.robotMedium,
     },
     bottomButtomArea: {

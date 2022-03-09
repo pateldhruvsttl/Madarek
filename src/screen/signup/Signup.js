@@ -12,7 +12,7 @@ import CountryPicker from 'react-native-country-picker-modal'
 import BackIcon from '../../assets/svg/loginLogo/BackIcon'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-const Signup = () => {
+const Signup = (props) => {
 
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [firstName, setFirstName] = useState("");
@@ -34,6 +34,10 @@ const Signup = () => {
     const passwordRef = useRef();
     const retypepasswordRef = useRef();
 
+    const navigateToSignUpVerify = () => {
+        props.navigation.navigate("SignUpVerify")
+    }
+
     const signUpPressed = () => {
         if (firstName === "") {
             Alert.alert(Label.enterfirstname);
@@ -52,6 +56,7 @@ const Signup = () => {
         } else {
             console.log('all field are done');
         }
+        navigateToSignUpVerify();
     }
 
     const onSelect = (country) => {
@@ -60,19 +65,19 @@ const Signup = () => {
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
-    const onChangeField=(index)=>{
+    const onChangeField = (index) => {
         if (index === 1) {
             lastNameRef.current.focus()
-        }else if (index === 2) {
+        } else if (index === 2) {
             mobileNumberRef.current.focus()
-        }else if (index === 3) {
+        } else if (index === 3) {
             emailRef.current.focus()
-        }else if (index === 4) {
+        } else if (index === 4) {
             passwordRef.current.focus()
-        }else if (index === 5) {
+        } else if (index === 5) {
             retypepasswordRef.current.focus()
-        }else if (index === 6) {
-           Keyboard.dismiss()
+        } else if (index === 6) {
+            Keyboard.dismiss()
         }
     }
     return (
@@ -87,182 +92,182 @@ const Signup = () => {
                     <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
                 </TouchableOpacity>
             </View>
-<KeyboardAwareScrollView>
-            <View style={SignupStyles.roundMainView}>
-                {/* Radio button */}
-                <Text style={SignupStyles.userTypeText}>
-                    {Label.selectusertype}
-                </Text>
+            <KeyboardAwareScrollView>
+                <View style={SignupStyles.roundMainView}>
+                    {/* Radio button */}
+                    <Text style={SignupStyles.userTypeText}>
+                        {Label.selectusertype}
+                    </Text>
 
-                <View style={SignupStyles.userTypeButtonView}>
-                    <TouchableOpacity onPress={() => setSelectedIndex(0)} style={{ alignItems: 'center' }}>
-                        {
-                            selectedIndex == 0 ?
-                                <View style={SignupStyles.yellowBorderView}>
-                                    <View style={SignupStyles.yellowFillView} />
-                                </View>
-                                :
-                                <View style={SignupStyles.grayBorderView} />
-                        }
+                    <View style={SignupStyles.userTypeButtonView}>
+                        <TouchableOpacity onPress={() => setSelectedIndex(0)} style={{ alignItems: 'center' }}>
+                            {
+                                selectedIndex == 0 ?
+                                    <View style={SignupStyles.yellowBorderView}>
+                                        <View style={SignupStyles.yellowFillView} />
+                                    </View>
+                                    :
+                                    <View style={SignupStyles.grayBorderView} />
+                            }
 
-                        <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.individual}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setSelectedIndex(1)} style={{ alignItems: 'center' }}>
-                        {
-                            selectedIndex == 1 ?
-                                <View style={SignupStyles.yellowBorderView}>
-                                    <View style={SignupStyles.yellowFillView} />
-                                </View>
-                                :
-                                <View style={SignupStyles.grayBorderView} />
-                        }
-                        <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.corporate}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setSelectedIndex(2)} style={{ alignItems: 'center' }}>
-                        {
-                            selectedIndex == 2 ?
-                                <View style={SignupStyles.yellowBorderView}>
-                                    <View style={SignupStyles.yellowFillView} />
-                                </View>
-                                :
-                                <View style={SignupStyles.grayBorderView} />
-                        }
-                        <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.subjectexpert}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setSelectedIndex(3)} style={{ alignItems: 'center' }}>
-                        {
-                            selectedIndex == 3 ?
-                                <View style={SignupStyles.yellowBorderView}>
-                                    <View style={SignupStyles.yellowFillView} />
-                                </View>
-                                :
-                                <View style={SignupStyles.grayBorderView} />
-                        }
-                        <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.partner}</Text>
-                    </TouchableOpacity>
-                </View>
-
-                {/* Text Fields First name Last name */}
-                <View style={SignupStyles.nameView}>
-                    <View  style={{width:'47%'}} >
-                        <Text style={SignupStyles.titleText}>{Label.firstname}<Text style={{ color: 'red' }}>*</Text></Text>
-                        <TextInput
-                            style={SignupStyles.inputstyle}
-                            onChangeText={(text) => { setFirstName(text) }}
-                            ref={firstNameRef}
-                            returnKeyType={"next"}
-                            keyboardType="default"
-                            onSubmitEditing={()=>onChangeField(1)}
-                        />
+                            <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.individual}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => setSelectedIndex(1)} style={{ alignItems: 'center' }}>
+                            {
+                                selectedIndex == 1 ?
+                                    <View style={SignupStyles.yellowBorderView}>
+                                        <View style={SignupStyles.yellowFillView} />
+                                    </View>
+                                    :
+                                    <View style={SignupStyles.grayBorderView} />
+                            }
+                            <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.corporate}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => setSelectedIndex(2)} style={{ alignItems: 'center' }}>
+                            {
+                                selectedIndex == 2 ?
+                                    <View style={SignupStyles.yellowBorderView}>
+                                        <View style={SignupStyles.yellowFillView} />
+                                    </View>
+                                    :
+                                    <View style={SignupStyles.grayBorderView} />
+                            }
+                            <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.subjectexpert}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => setSelectedIndex(3)} style={{ alignItems: 'center' }}>
+                            {
+                                selectedIndex == 3 ?
+                                    <View style={SignupStyles.yellowBorderView}>
+                                        <View style={SignupStyles.yellowFillView} />
+                                    </View>
+                                    :
+                                    <View style={SignupStyles.grayBorderView} />
+                            }
+                            <Text style={[SignupStyles.userTypeText, { marginTop: 0 }]} >{Label.partner}</Text>
+                        </TouchableOpacity>
                     </View>
-                    <View style={{width:'47%'}}>
-                        <Text style={SignupStyles.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
-                        <TextInput
-                            ref={lastNameRef}
-                            style={SignupStyles.inputstyle}
-                            onChangeText={(text) => { setlastName(text) }}
-                            returnKeyType={"next"}
-                            keyboardType="default"
-                            onSubmitEditing={()=>onChangeField(2)}
-                        />
-                    </View>
-                </View>
 
-
-                {/* Mobile Number */}
-                <View style={{ marginTop: AppUtil.getHP(2) }}>
-                    <Text style={SignupStyles.titleText}>{Label.mobilenumber}<Text style={{ color: 'red' }}>*</Text></Text>
-                    <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
-
-
-                        <View style={SignupStyles.numberAreaOne}>
-                            <CountryPicker
-                                {...{
-                                    countryCode,
-                                    onSelect,
-                                    withCallingCode: true,
-                                    withFlagButton: false,
-                                    withCallingCodeButton: true,
-                                }}
-                                visible={false}
-                                containerButtonStyle={{ marginEnd: 5 }} >
-                            </CountryPicker>
-                            <View style={SignupStyles.codePickerArea}>
-                                <BackIcon width={12} height={12} />
-                            </View>
+                    {/* Text Fields First name Last name */}
+                    <View style={SignupStyles.nameView}>
+                        <View style={{ width: '47%' }} >
+                            <Text style={SignupStyles.titleText}>{Label.firstname}<Text style={{ color: 'red' }}>*</Text></Text>
+                            <TextInput
+                                style={SignupStyles.inputstyle}
+                                onChangeText={(text) => { setFirstName(text) }}
+                                ref={firstNameRef}
+                                returnKeyType={"next"}
+                                keyboardType="default"
+                                onSubmitEditing={() => onChangeField(1)}
+                            />
                         </View>
+                        <View style={{ width: '47%' }}>
+                            <Text style={SignupStyles.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
+                            <TextInput
+                                ref={lastNameRef}
+                                style={SignupStyles.inputstyle}
+                                onChangeText={(text) => { setlastName(text) }}
+                                returnKeyType={"next"}
+                                keyboardType="default"
+                                onSubmitEditing={() => onChangeField(2)}
+                            />
+                        </View>
+                    </View>
 
-                        {/* <TouchableOpacity style={SignupStyles.codeinputstyle}>
+
+                    {/* Mobile Number */}
+                    <View style={{ marginTop: AppUtil.getHP(2) }}>
+                        <Text style={SignupStyles.titleText}>{Label.mobilenumber}<Text style={{ color: 'red' }}>*</Text></Text>
+                        <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
+
+
+                            <View style={SignupStyles.numberAreaOne}>
+                                <CountryPicker
+                                    {...{
+                                        countryCode,
+                                        onSelect,
+                                        withCallingCode: true,
+                                        withFlagButton: false,
+                                        withCallingCodeButton: true,
+                                    }}
+                                    visible={false}
+                                    containerButtonStyle={{ marginEnd: 5 }} >
+                                </CountryPicker>
+                                <View style={SignupStyles.codePickerArea}>
+                                    <BackIcon width={12} height={12} />
+                                </View>
+                            </View>
+
+                            {/* <TouchableOpacity style={SignupStyles.codeinputstyle}>
                             <Text>+971</Text>
                             <DownArrow height={AppUtil.getHP(1)} width={AppUtil.getWP(2.64)} />
                         </TouchableOpacity> */}
 
-                        <TextInput
-                         ref={mobileNumberRef}
-                            style={SignupStyles.numberinputstyle}
-                            onChangeText={(text) => { setMobileNumber(text) }}
-                            keyboardType="number-pad"
-                            returnKeyType={"next"}
-                            onSubmitEditing={()=>onChangeField(3)}
-                        />
+                            <TextInput
+                                ref={mobileNumberRef}
+                                style={SignupStyles.numberinputstyle}
+                                onChangeText={(text) => { setMobileNumber(text) }}
+                                keyboardType="number-pad"
+                                returnKeyType={"next"}
+                                onSubmitEditing={() => onChangeField(3)}
+                            />
+                        </View>
                     </View>
-                </View>
 
-                {/* Email id */}
-                <View style={{ marginTop: AppUtil.getHP(2) }}>
-                    <Text style={SignupStyles.titleText}>{Label.emailID}</Text>
-                    <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
+                    {/* Email id */}
+                    <View style={{ marginTop: AppUtil.getHP(2) }}>
+                        <Text style={SignupStyles.titleText}>{Label.emailID}</Text>
+                        <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
-                        <TextInput
-                         ref={emailRef}
-                            style={[SignupStyles.numberinputstyle, { width: '100%' }]}
-                            onChangeText={(text) => { setEmailId(text) }}
-                            returnKeyType={"next"}
-                            keyboardType={'email-address'}
-                            onSubmitEditing={()=>onChangeField(4)}
-                        />
+                            <TextInput
+                                ref={emailRef}
+                                style={[SignupStyles.numberinputstyle, { width: '100%' }]}
+                                onChangeText={(text) => { setEmailId(text) }}
+                                returnKeyType={"next"}
+                                keyboardType={'email-address'}
+                                onSubmitEditing={() => onChangeField(4)}
+                            />
+                        </View>
                     </View>
-                </View>
 
-                {/* Password */}
-                <View style={{ marginTop: AppUtil.getHP(2) }}>
-                    <Text style={SignupStyles.titleText}>{Label.password}<Text style={{ color: 'red' }}>*</Text></Text>
-                    <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
+                    {/* Password */}
+                    <View style={{ marginTop: AppUtil.getHP(2) }}>
+                        <Text style={SignupStyles.titleText}>{Label.password}<Text style={{ color: 'red' }}>*</Text></Text>
+                        <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
-                        <TextInput
-                         ref={passwordRef}
-                            style={[SignupStyles.numberinputstyle, { width: '100%' }]}
-                            onChangeText={(text) => { setPassword(text) }}
-                            secureTextEntry={true}
-                            returnKeyType={"next"}
-                            keyboardType="default"
-                            onSubmitEditing={()=>onChangeField(5)}
-                        />
+                            <TextInput
+                                ref={passwordRef}
+                                style={[SignupStyles.numberinputstyle, { width: '100%' }]}
+                                onChangeText={(text) => { setPassword(text) }}
+                                secureTextEntry={true}
+                                returnKeyType={"next"}
+                                keyboardType="default"
+                                onSubmitEditing={() => onChangeField(5)}
+                            />
+                        </View>
                     </View>
-                </View>
 
-                {/* Retype Password */}
-                <View style={{ marginTop: AppUtil.getHP(2) }}>
-                    <Text style={SignupStyles.titleText}>{Label.retypepassword}<Text style={{ color: 'red' }}>*</Text></Text>
-                    <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
+                    {/* Retype Password */}
+                    <View style={{ marginTop: AppUtil.getHP(2) }}>
+                        <Text style={SignupStyles.titleText}>{Label.retypepassword}<Text style={{ color: 'red' }}>*</Text></Text>
+                        <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
 
-                        <TextInput
-                         ref={retypepasswordRef}
-                            style={[SignupStyles.numberinputstyle, { width: '100%' }]}
-                            onChangeText={(text) => { setReTypePassword(text) }}
-                            secureTextEntry={true}
-                            returnKeyType={"done"}
-                            keyboardType="default"
-                            onSubmitEditing={()=>onChangeField(6)}
-                        />
+                            <TextInput
+                                ref={retypepasswordRef}
+                                style={[SignupStyles.numberinputstyle, { width: '100%' }]}
+                                onChangeText={(text) => { setReTypePassword(text) }}
+                                secureTextEntry={true}
+                                returnKeyType={"done"}
+                                keyboardType="default"
+                                onSubmitEditing={() => onChangeField(6)}
+                            />
+                        </View>
                     </View>
-                </View>
 
-                {/* SignUp button */}
-                <TouchableOpacity onPress={() => signUpPressed()} style={SignupStyles.signupButton}>
-                    <Text style={SignupStyles.signupText}>{Label.SignupTitle}</Text>
-                </TouchableOpacity>
-            </View>
+                    {/* SignUp button */}
+                    <TouchableOpacity onPress={() => signUpPressed()} style={SignupStyles.signupButton}>
+                        <Text style={SignupStyles.signupText}>{Label.SignupTitle}</Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAwareScrollView>
         </View>
     )

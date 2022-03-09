@@ -2,6 +2,8 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
+import { buttonHeight } from '../../utils/Constant';
+import { buttonFontSize } from '../../utils/Constant';
 
 const Style = StyleSheet.create({
 
@@ -41,10 +43,11 @@ const Style = StyleSheet.create({
     rowRightView: { width: '50%', height: AppUtil.getWP(7), flexDirection: 'row', alignItems: 'center' },
     secondInnerCalView: { flexDirection: 'row', marginRight: AppUtil.getHP(2), alignItems: 'center' },
 
-
-
-
-
+    bottomBtn: {
+        height: buttonHeight, borderColor: GetAppColor.lightOrange,
+        borderRadius: AppUtil.getHP(1), borderWidth: AppUtil.getHP(0.1), justifyContent: 'center', alignItems: 'center', margin: AppUtil.getHP(2),
+    },
+    txtBottomBtn: { fontSize:buttonFontSize, color: GetAppColor.lightOrange, fontFamily:FONTS.robotMedium },
 
 
 

@@ -37,6 +37,8 @@ export const ARlabel = {
     _innovationDetail : " is taking two things that exist and putting them together in a",
     _newWay : "new way",
     _dot : ".",
+
+    // LogIn message
     _signInTitle : "Sign In",
     _mobileTitle : "Mobile",
     _emailTitle : "Email ID",
@@ -57,6 +59,7 @@ export const ARlabel = {
     _phone: "Please enter valid mobile number",
     _password: "Please enter correct password",
     _pin : "Please enter correct otp",
+     _socialLine : "or continue with",
 
     // validation message.
     _enterfirstname: "Please Enter First Name",
@@ -90,6 +93,8 @@ export const USlabel = {
     _innovationDetail : " is taking two things that exist and putting them together in a",
     _newWay : "new way",
     _dot : ".",
+
+    // LogIn message
     _signInTitle : "Sign In",
     _mobileTitle : "Mobile",
     _emailTitle : "Email ID",
@@ -111,6 +116,8 @@ export const USlabel = {
     _password: "Please enter correct password",
     _pin : "Please enter correct otp",
     _ideas:"Ideas",
+    _socialLine : "or continue with",   
+
     // select categories message
     _catTitle: "Select Categories",
     _skip: "SKIP",

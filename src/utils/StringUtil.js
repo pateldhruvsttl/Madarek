@@ -79,6 +79,8 @@ export const Label = {
     VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
 
     Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
+    SocialLine: isRTL ? ARlabel._socialLine : USlabel._socialLine,
+
 }
 
 
