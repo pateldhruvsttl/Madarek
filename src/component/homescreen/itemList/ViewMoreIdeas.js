@@ -15,7 +15,7 @@ import Styles from './ViewMoreIdeasStyle'
 
 function ViewMoreIdeas(props) {
 
-    const [selectFilter, setSelectFilter] = useState(1);
+    const [selectFilter, setSelectFilter] = useState(0);
 
     const onSetFilter = (value) => {
         setSelectFilter(value)
@@ -24,18 +24,15 @@ function ViewMoreIdeas(props) {
     return (
         <View style={Styles.MainView}>
             <View style={Styles.HeaderBtn}>
-                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]}
-                    onPress={() => onSetFilter(0)}>
+                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(0)}>
                     <IcnIdeasImageAndTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 1 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]}
-                    onPress={() => onSetFilter(1)}>
+                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 1 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(1)}>
                     <IcnIdeasTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 2 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]}
-                    onPress={() => onSetFilter(2)}>
+                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 2 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(2)}>
                     <IcnIdeasGraphFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
 

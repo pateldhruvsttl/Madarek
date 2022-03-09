@@ -15,6 +15,10 @@ const CommonHeaderStyle = StyleSheet.create({
     headerLeftIcn:{},
 
     txtHeader:{fontFamily:FONTS.robotMedium, fontSize:headerFontSize, color:GetAppColor.white},
+
+    menuView:{flexDirection:'row', marginTop:'2%'},
+    headerProfileIcn:{marginHorizontal:'3%'}
+
 });
 
 export default CommonHeaderStyle;

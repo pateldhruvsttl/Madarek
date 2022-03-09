@@ -11,6 +11,7 @@ import IcnMenuDote from '../../assets/svg/IcnMenuDote'
 import IcnAlert from '../../assets/svg/IcnAlert'
 import IcnSearch from '../../assets/svg/IcnSearch'
 import IcnFilter from '../../assets/svg/IcnFilter'
+import IcnMsg from '../../assets/svg/IcnMsg'
 import { Label } from "../../utils/StringUtil";
 
 
@@ -25,15 +26,16 @@ const CommonHeader = (props) => {
                 </MenuTrigger>
 
                 <MenuOptions>
-                    <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                    <MenuOption onSelect={() => alert(`Delete`)} >
-                        <Text style={{ color: 'red' }}>Delete</Text>
+                    <MenuOption onSelect={() => alert(`Messag`)} style={Style.menuView}>
+                        <IcnMsg stroke="#000" style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                        <Text>Message</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+                    <MenuOption onSelect={() => alert(`Search`)} style={Style.menuView}>
+                        <IcnSearch fill="#000" style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                        <Text>Seatch</Text>
+                    </MenuOption>
                 </MenuOptions>
-
             </Menu>
-
         )
     }
 
@@ -45,8 +47,8 @@ const CommonHeader = (props) => {
                 <View style={Style.MainView}>
 
 
-                    {/* <IcnMsg style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                    <IcnSearch style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />*/}
+                    {/* 
+                    */}
 
 
                     <TouchableOpacity style={Style.LeftIcnView}>
