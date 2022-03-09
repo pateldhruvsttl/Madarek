@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { yellowTheme } from '../../utils/ColorModel'
 
 const initialState = {
-    themeColor: {
-        statusBarColor: '#E29834',
-        headerColor: '#FFAD3B',
-    },
+    themeColor: yellowTheme,
 }
 
 export const themSlice = createSlice({
