@@ -41,7 +41,7 @@ function MyDrawer() {
                 headerShown: false
             }}
             useLegacyImplementation={true}
-            drawerStyle={{ width: '80%' }}
+            drawerStyle={{ width: '100%' }}
         >
             <Drawer.Screen name="ScreenStack" component={ScreenStack} options={{
                 swipeEnabled: false,
