@@ -77,6 +77,8 @@ export const Label = {
     ToMessage: isRTL ? ARlabel._toMessage : USlabel._toMessage,
     DefaultPhoneCode: isRTL ? ARlabel._defaultPhoneCode : USlabel._defaultPhoneCode,
     VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
+
+    Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
 }
 
 

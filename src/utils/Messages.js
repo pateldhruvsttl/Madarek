@@ -24,12 +24,12 @@ export const ARlabel = {
     _health:'Health',
     _education:'Education',
     _favouriteCategories:'Favourite Categories',
-    
     _constructionInfrastructure:'Construction & Infrastructure',
     _agricultureFisheriesy:'Agriculture & Fisheriesy',
     _aviation:'Aviation',
     _informationTechnology:'Information Technology?',
     _submitIdea:"Submit Idea",
+    _ideas:"Ideas",
 
     // SignIn message
     _logoTitle: "MADAREK",
@@ -110,7 +110,7 @@ export const USlabel = {
     _phone: "Please enter valid mobile number",
     _password: "Please enter correct password",
     _pin : "Please enter correct otp",
-
+    _ideas:"Ideas",
     // select categories message
     _catTitle: "Select Categories",
     _skip: "SKIP",
