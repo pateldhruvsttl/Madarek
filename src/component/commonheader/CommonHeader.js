@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { View, Text, TouchableOpacity, StatusBar } from "react-native";
+import { useSelector, useDispatch } from 'react-redux'
 import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import Style from "./CommonHeaderStyle";
 import { AppUtil } from "../../utils/AppUtil";
@@ -16,6 +17,8 @@ import { Label } from "../../utils/StringUtil";
 
 
 const CommonHeader = (props) => {
+
+    const { themeColor } = useSelector((state) => state)
 
     const onMenu = () => {
         return (
@@ -43,13 +46,8 @@ const CommonHeader = (props) => {
 
         return (
             <>
-                <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
-                <View style={Style.MainView}>
-
-
-                    {/* 
-                    */}
-
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                     <TouchableOpacity style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -74,8 +72,9 @@ const CommonHeader = (props) => {
 
         return (
             <>
-                <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
-                <View style={Style.MainView}>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
                     <TouchableOpacity style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>

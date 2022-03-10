@@ -11,4 +11,5 @@ export const yellowTheme = {
 export const blueTheme = {
     statusBarColor: '#31ADE3',
     headerColor: '#1FB779',
+    buttonColor: '#1FB779',
 }

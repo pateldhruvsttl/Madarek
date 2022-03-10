@@ -1,5 +1,7 @@
 import React, { memo } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
+import { useSelector, useDispatch } from 'react-redux'
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import EventSlider from "../../component/homescreen/EventSlider";
@@ -138,8 +140,9 @@ const list = DATA.slice(0, 2);
 
 const HomeScreen = (porps) => {
 
-    return (
+    const { themeColor } = useSelector((state) => state)
 
+    return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
             <View style={HomeStyle.MainView}>
@@ -162,7 +165,7 @@ const HomeScreen = (porps) => {
 
                         <View style={HomeStyle.bottomBarView}>
                             <Text style={HomeStyle.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
-                            <TouchableOpacity style={HomeStyle.btn}>
+                            <TouchableOpacity style={[HomeStyle.btn,{backgroundColor:themeColor.buttonColor}]}>
                                 <Text style={HomeStyle.txtBtn}>{Label.submitIdea}</Text>
                             </TouchableOpacity>
                         </View>
