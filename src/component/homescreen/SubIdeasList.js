@@ -18,7 +18,6 @@ import IcnAvtarBg from "../../assets/svg/IcnAvtarBg"
 import IcnMenu from "../../assets/svg/IcnMenuDote"
 
 import { GetAppColor } from "../../utils/Colors";
-import { Label } from "../../utils/StringUtil";
 
 const SubIdeasList = (props) => {
 

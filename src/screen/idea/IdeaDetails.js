@@ -14,6 +14,7 @@ import Resources from '../../component/detailsidea/Resources'
 import ExpertInsights from '../../component/homescreen/ExpertInsights'
 import SubIdeasList from '../../component/homescreen/SubIdeasList'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
+import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
 
 
 const IdeaDetails = () => {
@@ -131,7 +132,6 @@ const IdeaDetails = () => {
 
   return (
       <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content"  backgroundColor={themeColor.statusBarColor} translucent={false} />
         <CommonHeader isType={"IdeaDetails"} />
         <View style={IdeaStyle.MainView}>
           <ScrollView>

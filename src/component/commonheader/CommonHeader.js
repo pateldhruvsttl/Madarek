@@ -49,7 +49,7 @@ const CommonHeader = (props) => {
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
-                <View style={[Style.MainView, {backgroundColor:themeColor.headerColor}]}>
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                     <TouchableOpacity style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -70,37 +70,13 @@ const CommonHeader = (props) => {
             </>
         );
     }
-    else if (props.isType === "IdeaDetails") {
-        return (
-            <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-                <TouchableOpacity style={Style.LeftIcnView}>
-                    <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                </TouchableOpacity>
-
-                <View style={Style.centerIcnView}>
-                    <Text style={[Style.expertHeader,{color:themeColor.headerFontColor}]}>{Label.IdeaDetails}</Text>
-                </View>
-
-                <View style={Style.rightIcnView}>
-                    <TouchableOpacity>
-                        <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                    </TouchableOpacity>
-                </View>
-
-            </View>
-        )
-    }
 
     else if (props.isType === "IdeasListScreen") {
-
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
-                 <View style={[Style.MainView, {backgroundColor:themeColor.headerColor}]}>
-                     
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
                     <TouchableOpacity style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
@@ -117,10 +93,36 @@ const CommonHeader = (props) => {
                             <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                     </View>
-
                 </View>
             </>
         );
+    }
+
+    else if (props.isType === "IdeaDetails") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                    <TouchableOpacity style={Style.LeftIcnView}>
+                        <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.IdeaDetails}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+            </>
+        )
     }
     else {
         return (
