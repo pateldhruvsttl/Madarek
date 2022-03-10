@@ -3,8 +3,6 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 import {headerFontSize} from '../../utils/Constant'
 import { hederHeight } from '../../utils/Constant';
-import { headerFontSize } from '../../utils/Constant';
-import FONTS from '../../utils/Fonts';
 
 const CommonHeaderStyle = StyleSheet.create({
     MainView: { width: '100%', height:hederHeight,  flexDirection:'row', alignItems:'center', backgroundColor:GetAppColor.headerLightYellow },
