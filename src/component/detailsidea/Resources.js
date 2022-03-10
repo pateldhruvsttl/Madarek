@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-import ResourcesStyle from './ResourcesStyle'
+import ResourcesStyle from "./ResourcesStyle";
 import IcnDownload from '../../assets/svg/IcnDownload'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'

@@ -14,6 +14,10 @@ import IcnSearch from '../../assets/svg/IcnSearch'
 import IcnFilter from '../../assets/svg/IcnFilter'
 import IcnMsg from '../../assets/svg/IcnMsg'
 import { Label } from "../../utils/StringUtil";
+import IcnBack from "../../assets/svg/IcnBack";
+import { useSelector } from 'react-redux'
+import IcnMultiMsg from "../../assets/svg/IcnMultiMsg";
+import IcnEdit from "../../assets/svg/IcnEdit";
 
 
 const CommonHeader = (props) => {

@@ -11,7 +11,7 @@ import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import FONTS from "../../utils/Fonts";
 import { AppUtil } from "../../utils/AppUtil";
-import SocialLogo from "./SocialLogo";
+import SocialLogo from '../../component/logindetails/SocialLogo'
 
 
 
