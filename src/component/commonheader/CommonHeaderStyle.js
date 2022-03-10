@@ -3,6 +3,8 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 import {headerFontSize} from '../../utils/Constant'
 import { hederHeight } from '../../utils/Constant';
+import { headerFontSize } from '../../utils/Constant';
+import FONTS from '../../utils/Fonts';
 
 const CommonHeaderStyle = StyleSheet.create({
     MainView: { width: '100%', height:hederHeight,  flexDirection:'row', alignItems:'center', backgroundColor:GetAppColor.headerLightYellow },
@@ -17,8 +19,13 @@ const CommonHeaderStyle = StyleSheet.create({
     txtHeader:{fontFamily:FONTS.robotMedium, fontSize:headerFontSize, color:GetAppColor.white},
 
     menuView:{flexDirection:'row', marginTop:'2%'},
-    headerProfileIcn:{marginHorizontal:'3%'}
+    headerProfileIcn:{marginHorizontal:'3%'},
 
+    expertHeader : {
+        fontSize:headerFontSize,
+        alignSelf: 'center',
+        fontFamily:FONTS.robotBold
+    }
 });
 
 export default CommonHeaderStyle;

@@ -31,6 +31,8 @@ export const GetAppColor = {
     splashLogoColor : "#656667" ,
     commonTextColor : "#aeaeae",
     btnBorderColor:'#CCCCCC',
+    acedemyRedtitle : "#F34D2D",
+    profileYellowBorder : "#FFF8E9"
 }
 
 

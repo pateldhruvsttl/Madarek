@@ -13,10 +13,15 @@ import IcnSearch from '../../assets/svg/IcnSearch'
 import IcnFilter from '../../assets/svg/IcnFilter'
 import IcnMsg from '../../assets/svg/IcnMsg'
 import { Label } from "../../utils/StringUtil";
+import { AppUtil } from "../../utils/AppUtil";
+import IcnBack from "../../assets/svg/IcnBack";
+import { useSelector } from 'react-redux'
+import IcnMultiMsg from "../../assets/svg/IcnMultiMsg";
+import IcnEdit from "../../assets/svg/IcnEdit";
 
 
 const CommonHeader = (props) => {
-
+    const { themeColor } = useSelector((state) => state)
     const onMenu = () => {
         return (
 
@@ -49,11 +54,24 @@ const CommonHeader = (props) => {
 
                     {/* 
                     */}
+                {/* <IcnMsg style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    <IcnSearch style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />*/}
 
 
-                    <TouchableOpacity style={Style.LeftIcnView}>
-                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                <TouchableOpacity style={Style.LeftIcnView}>
+                    <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                </TouchableOpacity>
+
+                <View style={Style.centerIcnView}>
+                    <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />
+                </View>
+
+                <View style={Style.rightIcnView}>
+                    <TouchableOpacity>
+                        <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
+                    {onMenu()}
+                </View>
 
                     <View style={Style.centerIcnView}>
                         <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />
@@ -65,6 +83,7 @@ const CommonHeader = (props) => {
                         </TouchableOpacity>
                         {onMenu()}
                     </View>
+            </View>
 
                 </View>
             </>
@@ -97,9 +116,27 @@ const CommonHeader = (props) => {
             </>
         );
     }
-    else {
+    else if (props.isType === "IdeaDetails") {
         return (
-            null
+            <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                <TouchableOpacity style={Style.LeftIcnView}>
+                    <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                </TouchableOpacity>
+
+                <View style={Style.centerIcnView}>
+                    <Text style={[Style.expertHeader,{color:themeColor.headerFontColor}]}>{Label.IdeaDetails}</Text>
+                </View>
+
+                <View style={Style.rightIcnView}>
+                    <TouchableOpacity>
+                        <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+                </View>
+
+            </View>
         )
     }
 }

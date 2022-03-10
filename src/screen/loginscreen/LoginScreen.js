@@ -55,6 +55,23 @@ const LoginScreen = (props) => {
         props.navigation.navigate("Signup")
     }
 
+    const checkOtpValue = () => {
+        if(first == ""){
+            input1.current.focus()
+        }else if(second == ""){
+            input2.current.focus()
+        }else if(third == ""){
+            input3.current.focus()
+        }else if(fourth == ""){
+            input4.current.focus()
+        }else if(fifth == ""){
+            input5.current.focus()
+        }else if(sixth == ""){
+            input6.current.focus()
+        }
+        
+    } 
+
 
     const handleKeyPress = (key, index) => {
         if (key === 'Backspace') {
@@ -208,7 +225,7 @@ const LoginScreen = (props) => {
                                             ref={t1}
                                             returnKeyType={showPassword ? "next" : "done"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
+                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue()}}
                                             placeholder={Label.MobileNumber}
                                             maxLength={12}
                                             style={PAGESTYLE.showMobileDetail}
