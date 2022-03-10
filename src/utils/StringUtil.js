@@ -79,6 +79,15 @@ export const Label = {
     VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
 
     SocialLine: isRTL ? ARlabel._socialLine : USlabel._socialLine,
+    IdeaDetails: isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
+    AcademyDetails: isRTL ? ARlabel._academyDetails : USlabel._academyDetails,
+    Sector: isRTL ? ARlabel._sector : USlabel._sector,
+    Category: isRTL ? ARlabel._category : USlabel._category,
+    VoteNow: isRTL ? ARlabel._voteNow : USlabel._voteNow,
+    Description: isRTL ? ARlabel._description : USlabel._description,
+    Team: isRTL ? ARlabel._team : USlabel._team,
+    Resources: isRTL ? ARlabel._resources : USlabel._resources,
+    Video: isRTL ? ARlabel._video : USlabel._video,
 
 }
 

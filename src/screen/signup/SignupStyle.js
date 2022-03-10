@@ -6,6 +6,7 @@ import FONTS from "../../utils/Fonts";
 import { buttonHeight, hederHeight, inputFieldHight } from "../../utils/Constant";
 import { buttonFontSize } from "../../utils/Constant";
 import { headerFontSize } from "../../utils/Constant";
+import { buttonBorderRadius } from "../../utils/Constant";
 
 const SignupStyles=StyleSheet.create({
     headerView: {
@@ -122,7 +123,7 @@ const SignupStyles=StyleSheet.create({
         width: '100%',
         height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
-        borderRadius: 5,
+        borderRadius: buttonBorderRadius,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',

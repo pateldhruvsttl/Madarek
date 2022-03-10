@@ -98,8 +98,8 @@ const SubIdeasList = (props) => {
             {
                 props?.isTitle &&
                 <View style={Style.titleView}>
-                    <Text style={Style.txtTitle}>{props?.isTitle}</Text>
-                    <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>
+                    <Text style={props.screen ? Style.titleAnotherScreen  : Style.txtTitle}>{props?.isTitle}</Text>
+                    <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
                 </View>
             }
 

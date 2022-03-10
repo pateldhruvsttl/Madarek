@@ -7,6 +7,7 @@ import { inputFieldHight } from "../../utils/Constant";
 import { AppUtil } from "../../utils/AppUtil";
 import { buttonHeight } from "../../utils/Constant";
 import { buttonFontSize } from "../../utils/Constant";
+import { buttonBorderRadius } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
@@ -217,7 +218,7 @@ const PAGESTYLE = StyleSheet.create({
         height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5,
+        borderRadius:buttonBorderRadius
         
     },
     SignInbuttonText: {

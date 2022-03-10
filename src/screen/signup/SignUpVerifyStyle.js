@@ -8,6 +8,7 @@ import { buttonHeight } from "../../utils/Constant";
 import { hederHeight } from "../../utils/Constant";
 import { buttonFontSize } from "../../utils/Constant";
 import { headerFontSize } from "../../utils/Constant";
+import { buttonBorderRadius } from "../../utils/Constant";
 
 const verifyStyle = StyleSheet.create({
     headerView: {
@@ -117,7 +118,7 @@ const verifyStyle = StyleSheet.create({
         height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5
+        borderRadius: buttonBorderRadius
     },
     SignInbuttonText: {
         color: GetAppColor.white,

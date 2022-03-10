@@ -5,6 +5,7 @@ import { buttonHeight, hederHeight } from '../../utils/Constant';
 import FONTS from '../../utils/Fonts';
 import { buttonFontSize } from '../../utils/Constant';
 import { headerFontSize } from '../../utils/Constant';
+import { buttonBorderRadius } from '../../utils/Constant';
 
 const CategoryStyle = StyleSheet.create({
     headerView: {
@@ -72,7 +73,7 @@ const CategoryStyle = StyleSheet.create({
         width: '90.74%',
         height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
-        borderRadius: 5,
+        borderRadius: buttonBorderRadius,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',

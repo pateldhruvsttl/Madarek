@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native'
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import { hederHeight } from '../../utils/Constant';
+import { headerFontSize } from '../../utils/Constant';
+import FONTS from '../../utils/Fonts';
 
 const CommonHeaderStyle = StyleSheet.create({
     MainView: { width: '100%', height:hederHeight,  flexDirection:'row', alignItems:'center', backgroundColor:GetAppColor.headerLightYellow },
@@ -12,6 +14,12 @@ const CommonHeaderStyle = StyleSheet.create({
 
     headerProfile:{},
     headerLeftIcn:{},
+
+    expertHeader : {
+        fontSize:headerFontSize,
+        alignSelf: 'center',
+        fontFamily:FONTS.robotBold
+    }
 });
 
 export default CommonHeaderStyle;

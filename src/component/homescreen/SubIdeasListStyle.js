@@ -13,6 +13,18 @@ const Style = StyleSheet.create({
         marginBottom: AppUtil.getHP(1)
     },
 
+    titleAnotherScreen : {
+        color: GetAppColor.pincolor,
+        fontFamily: FONTS.robotBold,
+        fontSize: AppUtil.getHP(2.2),
+        textAlign: 'left',
+    },
+    seeMoreAnotherScreen : {
+        fontSize: AppUtil.getHP(1.7),
+        color: GetAppColor.pincolor,
+        fontFamily: FONTS.robotRegular
+    },
+
     txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},
 
