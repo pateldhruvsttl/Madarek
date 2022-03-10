@@ -9,8 +9,8 @@ import IdeaSlider from '../../component/detailsidea/IdeaSlider'
 import { Label } from '../../utils/StringUtil'
 import IdeaContent from '../../component/detailsidea/IdeaContent'
 import { AppUtil } from '../../utils/AppUtil'
-import UserProfileList from './UserProfileList'
-import Resources from './Resources'
+import UserProfileList from '../../component/detailsidea/UserProfileList'
+import Resources from '../../component/detailsidea/Resources'
 import ExpertInsights from '../../component/homescreen/ExpertInsights'
 import SubIdeasList from '../../component/homescreen/SubIdeasList'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
@@ -151,7 +151,7 @@ const IdeaDetails = () => {
               <Resources resource={resource} />
               <ExpertInsights Entries={expertData} screen="IdeaDetail"/>
               <View style={IdeaStyle.subIdeaList}>
-                <SubIdeasList data={DATAPERSON} isTitle={"You May Also be Interested in "} screen="IdeaDetail" />
+                <SubIdeasListWithImage data={DATAPERSON} isTitle={"You May Also be Interested in "} screen="IdeaDetail" />
               </View>
             </View>
           </ScrollView>

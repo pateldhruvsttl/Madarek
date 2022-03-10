@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { AppUtil } from "../../utils/AppUtil";
 import Style from "./SubIdeasListStyle";
-
+import { Label } from "../../utils/StringUtil";
 import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
 import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeart"
 import IcnClander from "../../assets/svg/IcnClander"
@@ -98,8 +98,8 @@ const SubIdeasList = (props) => {
       {
         props?.isTitle &&
         <View style={Style.titleView}>
-          <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
-          <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+          <Text style={Style.txtTitle}>{props?.isTitle}</Text>
+          <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>
         </View>
       }
 

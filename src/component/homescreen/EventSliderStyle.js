@@ -27,7 +27,7 @@ const EventSliderStyle = StyleSheet.create({
         flex: 1, marginVertical: AppUtil.getHP(0.5), top: AppUtil.getHP(20), marginStart: AppUtil.getWP(4),
         position: 'absolute', backgroundColor: GetAppColor.headerYellow, borderRadius: AppUtil.getHP(0.6),
     },
-    txtsliderRendBtnTitle: { color: GetAppColor.white, fontWeight:'', fontSize: AppUtil.getHP(1.2) , paddingHorizontal:5, paddingVertical: 4},
+    txtsliderRendBtnTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(1.2) , paddingHorizontal:5, paddingVertical: 4},
     
 });
 
