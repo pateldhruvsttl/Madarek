@@ -11,6 +11,7 @@ export const hederHeight = AppUtil.getHP(7)
 export const buttonHeight = AppUtil.getHP(6.14)
 export const buttonFontSize = AppUtil.getHP(2.5)
 export const headerFontSize = AppUtil.getHP(2.7)
+export const buttonBorderRadius = 5
 
 export const showMessage = (message) => {
     if (Platform.OS == 'ios') {

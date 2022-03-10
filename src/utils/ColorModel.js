@@ -6,7 +6,7 @@ export const yellowTheme = {
     headerColor: GetAppColor.headerYellow,
     headerFontColor: GetAppColor.white,
     buttonColor: GetAppColor.headerYellow,
-    buttonFontColor:GetAppColor.textColor,
+    buttonFontColor:GetAppColor.white,
 }
 export const blueTheme = {
     statusBarColor: '#31ADE3',

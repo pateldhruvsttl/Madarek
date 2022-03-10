@@ -91,14 +91,29 @@ const SubIdeasList = (props) => {
     </View>
   );
 
+
   return (
     <View style={Style.MainView}>
+      {
+        props?.isTitle &&
+        <View style={Style.titleView}>
+          <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
+          <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+        </View>
+      }
+
       <FlatList
         data={props.data}
         scrollEnabled={props?.scrollEnabled ? true : false}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      {
+        props?.btn &&
+        <TouchableOpacity style={Style.bottomBtn}>
+          <Text style={Style.txtBottomBtn}> {props.btn}</Text>
+        </TouchableOpacity>
+      }
     </View>
   );
 }
