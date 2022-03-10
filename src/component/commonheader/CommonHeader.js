@@ -15,7 +15,6 @@ import IcnFilter from '../../assets/svg/IcnFilter'
 import IcnMsg from '../../assets/svg/IcnMsg'
 import { Label } from "../../utils/StringUtil";
 import IcnBack from "../../assets/svg/IcnBack";
-import { useSelector } from 'react-redux'
 import IcnMultiMsg from "../../assets/svg/IcnMultiMsg";
 import IcnEdit from "../../assets/svg/IcnEdit";
 
@@ -72,6 +71,30 @@ const CommonHeader = (props) => {
             </>
         );
     }
+    else if (props.isType === "IdeaDetails") {
+        return (
+            <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                <TouchableOpacity style={Style.LeftIcnView}>
+                    <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                </TouchableOpacity>
+
+                <View style={Style.centerIcnView}>
+                    <Text style={[Style.expertHeader,{color:themeColor.headerFontColor}]}>{Label.IdeaDetails}</Text>
+                </View>
+
+                <View style={Style.rightIcnView}>
+                    <TouchableOpacity>
+                        <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        )
+    }
+
     else if (props.isType === "IdeasListScreen") {
 
         return (
