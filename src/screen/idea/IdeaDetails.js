@@ -13,10 +13,7 @@ import UserProfileList from './UserProfileList'
 import Resources from './Resources'
 import ExpertInsights from '../../component/homescreen/ExpertInsights'
 import SubIdeasList from '../../component/homescreen/SubIdeasList'
-import Video from 'react-native-video'
-import { GetVedio } from '../../utils/Assets'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
-import IdeaSliderStyle from '../../component/detailsidea/IdeaSliderStyle'
 
 
 const IdeaDetails = () => {

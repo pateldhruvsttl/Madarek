@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { View, VideoStyleheet, Text, TouchableOpacity, Image } from 'react-native';
 import Video from 'react-native-video';;
 import { Label } from '../../utils/StringUtil';
-import { GetAppColor } from '../../utils/Colors';
-import { AppUtil } from '../../utils/AppUtil';
-import FONTS from '../../utils/Fonts';
 import { getControl } from '../../utils/Assets';
 import VideoStyle from './VideoPlayerStyle';
 

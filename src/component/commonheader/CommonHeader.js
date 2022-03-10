@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import Style from "./CommonHeaderStyle";
 import { AppUtil } from "../../utils/AppUtil";
-import { GetAppColor } from "../../utils/Colors";
 
 import IcnMenu from '../../assets/svg/IcnMenu'
 import IcnMenuHeader from '../../assets/svg/IcnMenuHeader'
