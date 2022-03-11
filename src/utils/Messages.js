@@ -102,7 +102,16 @@ export const ARlabel = {
     _description :"Description",
     _team :"Team",
     _resources :"Resources",
-    _video :"Video"
+    _video :"Video",
+    _expertDetails :"Expert Details",
+    _youAreConnected :"You are Connected",
+    _about :"About",
+    _publishby :"Publish by",
+    _similarExperts :"Similar Experts",
+    _learnMore :"Learn More",
+    _applyNow :"Apply Now",
+    _expertDes:"Want to Become an Expert?",
+    _expertsDirectory:"Experts Directory",
 
 }
 export const USlabel = {
@@ -200,5 +209,16 @@ export const USlabel = {
     _description :"Description",
     _team :"Team",
     _resources :"Resources",
-    _video :"Video"
+    _video :"Video",
+    _expertDetails :"Expert Details",
+    _youAreConnected :"You are Connected",
+    _about :"About",
+    _publishby :"Publish by",
+    _similarExperts :"Similar Experts",
+    _learnMore :"Learn More",
+    _applyNow :"Apply Now",
+
+    _expertDes:"Want to Become an Expert?",
+    _expertsDirectory:"Experts Directory",
+
 }

@@ -90,6 +90,18 @@ export const Label = {
     Resources: isRTL ? ARlabel._resources : USlabel._resources,
     Video: isRTL ? ARlabel._video : USlabel._video,
 
+    ExpertDetails: isRTL ? ARlabel._expertDetails : USlabel._expertDetails,
+    YouAreConnected: isRTL ? ARlabel._youAreConnected : USlabel._youAreConnected,
+    About: isRTL ? ARlabel._about : USlabel._about,
+    Publishby: isRTL ? ARlabel._publishby : USlabel._publishby,
+    SimilarExperts: isRTL ? ARlabel._similarExperts : USlabel._similarExperts,
+    
+    LearnMore: isRTL ? ARlabel._learnMore : USlabel._learnMore,
+    ApplyNow: isRTL ? ARlabel._applyNow : USlabel._applyNow,
+    ExpertDes: isRTL ? ARlabel._expertDes : USlabel._expertDes,
+    ExpertsDirectory: isRTL ? ARlabel._expertsDirectory : USlabel._expertsDirectory,
+
+
 }
 
 

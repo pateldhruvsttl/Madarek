@@ -8,13 +8,13 @@ function SvgComponent(props) {
       width={props.width}
       height={props.height}
       viewBox="0 0 55 59"
+      stroke="#848484"
       {...props}
     >
       <G
         data-name="Group 417"
         transform="translate(-.941)"
         fill="none"
-        stroke="#848484"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={4}
