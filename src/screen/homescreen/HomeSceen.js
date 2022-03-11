@@ -156,11 +156,11 @@ const HomeScreen = (props) => {
                         <IdealList data={sliderdata} />
 
                         <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={"Open Challenges"} isType={"Challenges"} btn={"Participate Now"}/>
+                            <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow}/>
                         </View>
 
                         <View style={{paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={"Madarek Spotlight"} isType={"Spotlight"} />
+                            <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
                         </View>
 
                         <ExpertInsights Entries={expertData} />

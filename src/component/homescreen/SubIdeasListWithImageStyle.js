@@ -56,7 +56,7 @@ const Style = StyleSheet.create({
     SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily:FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
 
     secondCalView: { flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
-    secondInnerCalView: { flexDirection: 'row', marginRight: AppUtil.getHP(2) },
+    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2) },
 
     bottomBtn: {
         height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange,
@@ -67,8 +67,8 @@ const Style = StyleSheet.create({
     likeUnlikeIcn: { paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 },
 
     rewordView: {
-        width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomRightRadius: AppUtil.getHP(1),
-        borderBottomLeftRadius: AppUtil.getHP(1),
+        width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomEndRadius: AppUtil.getHP(1),
+        borderBottomStartRadius: AppUtil.getHP(1),
         position: 'absolute', backgroundColor: GetAppColor.blackTransperent, flexDirection:'row',
         alignItems:'center'
     },

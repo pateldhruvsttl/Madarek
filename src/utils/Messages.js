@@ -19,7 +19,6 @@ export const ARlabel = {
     _password: "Password",
     _retypepassword: "Re-type Password",
     _expertInsights:'Expert Insights',
-    _viewAll:'View All',
     _renewableEnergy:'Renewable Energy',
     _health:'Health',
     _education:'Education',
@@ -127,7 +126,31 @@ export const ARlabel = {
     _description :"Description",
     _team :"Team",
     _resources :"Resources",
-    _video :"Video"
+    _video :"Video",
+    _expertDetails :"Expert Details",
+    _youAreConnected :"You are Connected",
+    _about :"About",
+    _publishby :"Publish by",
+    _similarExperts :"Similar Experts",
+    _learnMore :"Learn More",
+    _applyNow :"Apply Now",
+    _expertDes:"Want to Become an Expert?",
+    _expertsDirectory:"Experts Directory",
+    _seeAllIdeas:"See All Ideas",
+    _openChallenges:"Open Challenges",
+    _participateNow:"Participate Now",
+    _madarekSpotlight:"Madarek Spotlight",
+    _message:"Message",
+    _search:"Search",
+
+    _popularIdeas:"Popular Ideas",
+    _newIdeas:"New Ideas",
+    _winningIdeas:"Winning Ideas",
+
+    _all:'All',
+    _latest:'Latest',
+    _popular:'Popular',
+    _winning:'Winning',
 
 }
 export const USlabel = {
@@ -186,7 +209,6 @@ export const USlabel = {
     _password: "Password",
     _retypepassword: "Re-type Password",
     _expertInsights: 'Expert Insights',
-    _viewAll: 'View All',
     _renewableEnergy: 'Renewable Energy',
     _health: 'Health',
     _education: 'Education',
@@ -250,5 +272,31 @@ export const USlabel = {
     _description :"Description",
     _team :"Team",
     _resources :"Resources",
-    _video :"Video"
+    _video :"Video",
+    _expertDetails :"Expert Details",
+    _youAreConnected :"You are Connected",
+    _about :"About",
+    _publishby :"Publish by",
+    _similarExperts :"Similar Experts",
+    _learnMore :"Learn More",
+    _applyNow :"Apply Now",
+
+    _expertDes:"Want to Become an Expert?",
+    _expertsDirectory:"Experts Directory",
+
+    _seeAllIdeas:"See All Ideas",
+    _openChallenges:"Open Challenges",
+    _participateNow:"Participate Now",
+    _madarekSpotlight:"Madarek Spotlight",
+    _message:"Message",
+    _search:"Search",
+    _popularIdeas:"Popular Ideas",
+    _newIdeas:"New Ideas",
+    _winningIdeas:"Winning Ideas",
+
+    _all:'All',
+    _latest:'Latest',
+    _popular:'Popular',
+    _winning:'Winning',
+
 }

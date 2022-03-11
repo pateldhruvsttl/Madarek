@@ -10,6 +10,8 @@ const CommonHeaderStyle = StyleSheet.create({
     LeftIcnView:{width: '15%',alignItems:'center'},
     centerIcnView:{width: '65%', alignItems:'center'},
     rightIcnView:{width: '20%',  flexDirection:'row', justifyContent:'space-around'},
+    
+    rightSingleIcnView:{width: '15%', alignItems:'flex-end'},
 
     headerProfile:{},
     headerLeftIcn:{},
