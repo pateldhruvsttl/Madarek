@@ -8,6 +8,7 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import Style from "./IdeasListStyle";
 
 import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
+import { Label } from "../../utils/StringUtil";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = () => {
@@ -91,13 +92,14 @@ const IdeasListScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"IdeasListScreen"} onManuClick={() => null} />
+            
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator>
-                        <Tab.Screen name="All" children={() => <AllIdeas propName={{ type: "AllIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name="Latest" children={() => <AllIdeas propName={{ type: "LatestIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name="Popular" children={() => <AllIdeas propName={{ type: "PopularIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name="Winning" children={() => <AllIdeas propName={{ type: "WinningIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: sliderdata }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

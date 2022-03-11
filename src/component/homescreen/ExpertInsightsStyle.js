@@ -53,7 +53,7 @@ const EventSliderStyle = StyleSheet.create({
     btn: { borderWidth: 1, borderColor: GetAppColor.textColor, margin: AppUtil.getHP(0.7), padding: AppUtil.getHP(0.7), borderRadius: AppUtil.getHP(0.7) },
 
     secondCalView: { flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
-    secondInnerCalView: { flexDirection: 'row', marginRight: AppUtil.getHP(2) },
+    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2) },
     calView: { flexDirection: 'row', alignItems: 'center' },
     callIcn: { marginEnd: AppUtil.getHP(1) },
     title: { fontSize: AppUtil.getHP(1.4), fontFamily: FONTS.robotRegular },

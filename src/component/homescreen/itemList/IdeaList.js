@@ -3,6 +3,7 @@ import { View, Image, Text, TouchableOpacity, useWindowDimensions } from "react-
 import { AppUtil } from "../../../utils/AppUtil";
 import { GetAppColor } from "../../../utils/Colors";
 import FONTS from "../../../utils/Fonts";
+import { Label } from "../../../utils/StringUtil";
 import Style from './IdealListStyle'
 
 import TabPopularIdeas from "./TabPopularIdeas";
@@ -33,21 +34,21 @@ const IdeaList = (props) => {
                         color: selectedIndex === 0 ? GetAppColor.innovationGrey : GetAppColor.grayBorder,
                         fontWeight: selectedIndex === 0 ? 'bold' : 'normal',
                         fontFamily: selectedIndex === 0 ? FONTS.robotBold : FONTS.robotRegular,
-                    }, Style.txtCat]}> Popular Ideas</Text>
+                    }, Style.txtCat]}>{Label.PopularIdeas}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => onSelectTab(1)} style={[{ borderBottomWidth: selectedIndex === 1 ? 2 : 0 }, Style.tabStly]}>
                     <Text style={[{
                         color: selectedIndex === 1 ? GetAppColor.innovationGrey : GetAppColor.grayBorder,
                         fontWeight: selectedIndex === 1 ? 'bold' : 'normal',
                         fontFamily: selectedIndex === 1 ? FONTS.robotBold : FONTS.robotRegular,
-                    }, Style.txtCat]}>New Ideas</Text>
+                    }, Style.txtCat]}>{Label.NewIdeas}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => onSelectTab(2)} style={[{ borderBottomWidth: selectedIndex === 2 ? 2 : 0 }, Style.tabStly]}>
                     <Text style={[{
                         color: selectedIndex === 2 ? GetAppColor.innovationGrey : GetAppColor.grayBorder,
                         fontWeight: selectedIndex === 2 ? 'bold' : 'normal',
                         fontFamily: selectedIndex === 2 ? FONTS.robotBold : FONTS.robotRegular,
-                    }, Style.txtCat]}>Winning Ideas</Text>
+                    }, Style.txtCat]}>{Label.WinningIdeas}</Text>
                 </TouchableOpacity>
             </View>
 

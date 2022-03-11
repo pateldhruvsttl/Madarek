@@ -6,8 +6,8 @@ import { buttonFontSize } from '../../utils/Constant';
 import { buttonHeight } from '../../utils/Constant';
 
 const Style = StyleSheet.create({
-    SafeAryView:{ flex: 1 },
-    MainView: { width: '100%', flex:1, backgroundColor:GetAppColor.white},
+    SafeAryView:{ flex: 1 , backgroundColor:GetAppColor.lightWhite},
+    MainView: { width: '100%', flex:1, backgroundColor:GetAppColor.lightWhite},
 
     footerView:{paddingVertical:AppUtil.getHP(2), backgroundColor:GetAppColor.lightWhite},
     btnView:{flexDirection:'row', justifyContent:'space-evenly', marginVertical:AppUtil.getHP(1.5)},

@@ -20,6 +20,7 @@ function SimilarExperts(props) {
 
     const renderItem = ({ item }) => (
         <View style={Style.renderMainView}>
+
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
             <View style={Style.rightItems}>
@@ -53,14 +54,14 @@ function SimilarExperts(props) {
     return (
         <View style={Style.MainView}>
             {
-                props.maxLimit&& 
-            <View style={Style.titleView}>
-                <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{Label.SimilarExperts}</Text>
-                <TouchableOpacity onPress={()=> navigation.navigate("ExpertDirectoryScreen")}>
-                <Text style={Style.txtSeeMore}>{Label.viewAll}</Text>
-                </TouchableOpacity>
-            </View>
-}
+                props.maxLimit &&
+                <View style={Style.titleView}>
+                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{Label.SimilarExperts}</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
+                        <Text style={Style.txtSeeMore}>{Label.viewAll}</Text>
+                    </TouchableOpacity>
+                </View>
+            }
             <FlatList
                 data={list}
                 renderItem={renderItem}

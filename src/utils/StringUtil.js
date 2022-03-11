@@ -101,6 +101,24 @@ export const Label = {
     ExpertDes: isRTL ? ARlabel._expertDes : USlabel._expertDes,
     ExpertsDirectory: isRTL ? ARlabel._expertsDirectory : USlabel._expertsDirectory,
 
+    SeeAllIdeas: isRTL ? ARlabel._seeAllIdeas : USlabel._seeAllIdeas,
+    OpenChallenges: isRTL ? ARlabel._openChallenges : USlabel._openChallenges,
+    ParticipateNow: isRTL ? ARlabel._participateNow : USlabel._participateNow,
+    MadarekSpotlight: isRTL ? ARlabel._madarekSpotlight : USlabel._madarekSpotlight,
+
+    Search: isRTL ? ARlabel._search : USlabel._search,
+    Message: isRTL ? ARlabel._message : USlabel._message,
+
+
+    PopularIdeas: isRTL ? ARlabel._popularIdeas : USlabel._popularIdeas,
+    NewIdeas: isRTL ? ARlabel._newIdeas : USlabel._newIdeas,
+    WinningIdeas: isRTL ? ARlabel._winningIdeas : USlabel._winningIdeas,
+
+    All: isRTL ? ARlabel._all : USlabel._all,
+    Latest: isRTL ? ARlabel._latest : USlabel._latest,
+    Popular: isRTL ? ARlabel._popular : USlabel._popular,
+    Winning: isRTL ? ARlabel._winning : USlabel._winning,
+
 
 }
 
