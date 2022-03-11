@@ -7,7 +7,6 @@ const EventSliderStyle = StyleSheet.create({
 
     tabStly:{ height:AppUtil.getHP(4.5), justifyContent:'center', alignItems:'center', borderBottomColor:GetAppColor.innovationGrey},
     txtCat:{fontSize:AppUtil.getHP(2)}
-   
 });
 
 export default EventSliderStyle;

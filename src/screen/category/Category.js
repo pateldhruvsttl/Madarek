@@ -41,7 +41,7 @@ const category = [
     { id: 22, name: 'Youth Development and Support', isselected: false },
 ]
 
-const Category = () => {
+const Category = (props) => {
     const [categories, setCategories] = useState(category)
     const [selectedCategories, setSelectedCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
@@ -51,6 +51,10 @@ const Category = () => {
     const {themeColor} = useSelector((state) => state)
     console.log('theme color is', themeColor);
     const dispatch = useDispatch()
+
+    const navigateToHomeScreen = () => {
+        props.navigation.navigate("HomeSceen")
+      }
 
     const onPressCategory = (index) => {
         var cat = [...categories];
@@ -101,10 +105,12 @@ const Category = () => {
     const onSkip = () => {
         dispatch(updateTheme(blueTheme))
     }
+    
     return (
         <View style={{ height: '100%', backgroundColor: '#F5F7FB' }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
+           
             <View style={[CategoryStyle.headerView,{backgroundColor:themeColor.headerColor}]}>
                 <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>
                 <TouchableOpacity onPress={() => onSkip()} style={CategoryStyle.skipBtn}>
@@ -157,7 +163,9 @@ const Category = () => {
                 </View>
             </ScrollView>
 
-            <TouchableOpacity style={[CategoryStyle.continueButton,{backgroundColor:themeColor.headerColor}]}>
+            <TouchableOpacity style={[CategoryStyle.continueButton,{backgroundColor:themeColor.headerColor}]}
+            onPress={() => {navigateToHomeScreen()}}
+            >
                 <Text style={CategoryStyle.continueText}>{Label.Continue}</Text>
             </TouchableOpacity>
         </View>

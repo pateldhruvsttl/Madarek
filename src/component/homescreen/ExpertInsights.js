@@ -10,10 +10,9 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 
-const ExpertInsights = ({ Entries }) => {
+const ExpertInsights = ({ Entries, screen }) => {
 
     const [isSelectIndicator, setSelectIndicator] = useState(1);
-
 
     const setExpertInsights = () => {
         return (
@@ -104,8 +103,10 @@ const ExpertInsights = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={styles.txtTitle}>{Label.expertInsights}</Text>
-                <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
+                <Text style={screen ? styles.txtTitleOne : styles.txtTitle}>
+                    {Label.expertInsights}</Text>
+                <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}>
+                    {Label.viewAll}</Text>
             </View>
             {setExpertInsights()}
 

@@ -2,7 +2,6 @@ import React, { useState, memo, useRef } from "react";
 import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
-import GoogleLogo from "../../assets/svg/loginLogo/GoogleLogo"
 import BackIcon from "../../assets/svg/loginLogo/BackIcon"
 import { StatusBar } from "react-native";
 import { GetAppColor } from "../../utils/Colors";
@@ -12,10 +11,11 @@ import { emailValidate } from "../../utils/Constant";
 import CountryPicker from 'react-native-country-picker-modal'
 import FONTS from "../../utils/Fonts";
 import { AppUtil } from "../../utils/AppUtil";
+import SocialLogo from '../../component/logindetails/SocialLogo'
 
 
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
     const [showPassword, setShowPassword] = useState(false)
     const [isMobilelogin, setMobilelogin] = useState(true)
     const [mobileNumber, setMobileNumber] = useState('')
@@ -47,6 +47,31 @@ const LoginScreen = () => {
 
     let pin = 12345678
     let otpNumber = 123456
+
+    const navigateHomeScreen = () => {
+        props.navigation.navigate("HomeSceen")
+    }
+    const navigateSignUpScreen = () => {
+        props.navigation.navigate("Signup")
+    }
+
+    const checkOtpValue = () => {
+        if(first == ""){
+            input1.current.focus()
+        }else if(second == ""){
+            input2.current.focus()
+        }else if(third == ""){
+            input3.current.focus()
+        }else if(fourth == ""){
+            input4.current.focus()
+        }else if(fifth == ""){
+            input5.current.focus()
+        }else if(sixth == ""){
+            input6.current.focus()
+        }
+        
+    } 
+
 
     const handleKeyPress = (key, index) => {
         if (key === 'Backspace') {
@@ -108,8 +133,10 @@ const LoginScreen = () => {
                 return false
             }
         }
-        showMessage('Login successfully')
+
         resetField()
+        navigateHomeScreen()
+
     }
     const resetField = () => {
         setMobileNumber('')
@@ -156,7 +183,7 @@ const LoginScreen = () => {
                     <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
                     <View style={PAGESTYLE.headerPart}>
                         <View style={PAGESTYLE.headingMain}>
-                            <MadarekLogo width={150} height={150} />
+                            <MadarekLogo width={AppUtil.getWP(40)} height={AppUtil.getWP(40)} />
                         </View>
                         <View style={PAGESTYLE.signView}>
                             <View style={PAGESTYLE.headingMain}>
@@ -198,7 +225,7 @@ const LoginScreen = () => {
                                             ref={t1}
                                             returnKeyType={showPassword ? "next" : "done"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
+                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue()}}
                                             placeholder={Label.MobileNumber}
                                             maxLength={12}
                                             style={PAGESTYLE.showMobileDetail}
@@ -337,16 +364,14 @@ const LoginScreen = () => {
                                 </View>
                                 <View style={PAGESTYLE.accountPart}>
                                     <Text style={PAGESTYLE.reciveAccount}>{Label.GetAccount} </Text>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={navigateSignUpScreen}>
                                         <Text style={PAGESTYLE.signUptext}>{Label.AddAccount}</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
                         <View style={PAGESTYLE.continueArea}>
-                            <View>
-                                <GoogleLogo width={'100%'} height={70} />
-                            </View>
+                            <SocialLogo />
                         </View>
                     </View>
                 </View>

@@ -1,17 +1,26 @@
 import React, { memo } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar } from "react-native";
+import { useSelector, useDispatch } from 'react-redux'
+import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import Style from "./CommonHeaderStyle";
-import { Label } from "../../utils/StringUtil";
+import { AppUtil } from "../../utils/AppUtil";
+
 import IcnMenu from '../../assets/svg/IcnMenu'
 import IcnMenuHeader from '../../assets/svg/IcnMenuHeader'
 import IcnMenuDote from '../../assets/svg/IcnMenuDote'
 import IcnAlert from '../../assets/svg/IcnAlert'
 import IcnSearch from '../../assets/svg/IcnSearch'
-import { AppUtil } from "../../utils/AppUtil";
+import IcnFilter from '../../assets/svg/IcnFilter'
+import IcnMsg from '../../assets/svg/IcnMsg'
+import { Label } from "../../utils/StringUtil";
+import IcnBack from "../../assets/svg/IcnBack";
+import IcnMultiMsg from "../../assets/svg/IcnMultiMsg";
+import IcnEdit from "../../assets/svg/IcnEdit";
 
-import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 
 const CommonHeader = (props) => {
+
+    const { themeColor } = useSelector((state) => state)
 
     const onMenu = () => {
         return (
@@ -22,27 +31,25 @@ const CommonHeader = (props) => {
                 </MenuTrigger>
 
                 <MenuOptions>
-                    <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                    <MenuOption onSelect={() => alert(`Delete`)} >
-                        <Text style={{ color: 'red' }}>Delete</Text>
+                    <MenuOption onSelect={() => alert(`Messag`)} style={Style.menuView}>
+                        <IcnMsg stroke="#000" style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                        <Text>Message</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+                    <MenuOption onSelect={() => alert(`Search`)} style={Style.menuView}>
+                        <IcnSearch fill="#000" style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                        <Text>Seatch</Text>
+                    </MenuOption>
                 </MenuOptions>
-
             </Menu>
-
         )
     }
 
     if (props.isType === "HomeScreenHeader") {
 
         return (
-            <View style={Style.MainView}>
-
-                
-                    {/* <IcnMsg style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                    <IcnSearch style={Style.headerProfileIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />*/}
-
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                     <TouchableOpacity onPress={()=>props.openDrawer()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -58,10 +65,64 @@ const CommonHeader = (props) => {
                         </TouchableOpacity>
                         {onMenu()}
                     </View>
-                
-            </View>
 
+                </View>
+            </>
         );
+    }
+
+    else if (props.isType === "IdeasListScreen") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity style={Style.LeftIcnView}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.Ideas}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </>
+        );
+    }
+
+    else if (props.isType === "IdeaDetails") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                    <TouchableOpacity style={Style.LeftIcnView}>
+                        <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.IdeaDetails}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+            </>
+        )
     }
     else {
         return (

@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { View, FlatList, Text, TouchableOpacity } from "react-native";
 import styles from "./FavouriteCategoriesStyle";
 import { Label } from '../../utils/StringUtil'
 
@@ -18,6 +18,41 @@ import IcnConstructionInfrastructure from "../../assets/svg/IcnConstructionInfra
 
 const FavouriteCategories = ({ Entries }) => {
 
+
+    const testData = [
+        {
+            title: 'Favourites landscapes 1',
+        },
+        {
+            title: 'Favourites landscapes 2',
+        },
+        {
+            title: 'Favourites landscapes 3',
+        },
+        {
+            title: 'Favourites landscapes 4',
+        },
+        {
+            title: 'Favourites landscapes 5',
+        },
+        {
+            title: 'Favourites landscapes 6',
+        },
+        {
+            title: 'Favourites landscapes 6',
+        }
+    ];
+
+    const renderItem = ({ item }) => {
+
+        return (
+            <TouchableOpacity style={styles.btnView}>
+                <IcnInformationTechnology height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
+                <Text style={styles.txtBtn}>{Label.informationTechnology}</Text>
+            </TouchableOpacity>
+        )
+    }
+
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
@@ -25,7 +60,18 @@ const FavouriteCategories = ({ Entries }) => {
                 <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
             </View>
 
-            <View style={styles.innerView1}>
+            <FlatList
+                data={testData.slice(0, 6)}
+                contentContainerStyle={{alignItems:'flex-end'}}
+                numColumns={'3'}
+                scrollEnabled={false}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+
+
+
+            {/* <View style={styles.innerView1}>
                 <TouchableOpacity style={styles.btnView}>
                     <IcnInformationTechnology height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                     <Text style={styles.txtBtn}>{Label.informationTechnology}</Text>
@@ -53,7 +99,7 @@ const FavouriteCategories = ({ Entries }) => {
                     <IcnConstructionInfrastructure height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                     <Text style={styles.txtBtn}>{Label.constructionInfrastructure}</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
         </View>
     );
 }

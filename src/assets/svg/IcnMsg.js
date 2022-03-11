@@ -8,12 +8,12 @@ function SvgComponent(props) {
       width={55.238}
       height={55.238}
       viewBox="0 0 55.238 55.238"
+      stroke="#fff"
       {...props}
     >
       <Path
         d="M52.238 35.825a5.471 5.471 0 01-5.471 5.475H13.942L3 52.238V8.471A5.471 5.471 0 018.471 3h38.3a5.471 5.471 0 015.471 5.471z"
         fill="none"
-        stroke="#fff"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={6}

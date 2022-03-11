@@ -6,7 +6,7 @@ import verifyStyle from "./SignUpVerifyStyle";
 import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
 
-const SignUpVerify = () => {
+const SignUpVerify = (props) => {
   const [first, setFirst] = useState('');
   const [second, setSecond] = useState('');
   const [third, setThird] = useState('');
@@ -49,6 +49,9 @@ const SignUpVerify = () => {
       }
 
     }
+  }
+  const navigateToCategory = () => {
+    props.navigation.navigate("Category")
   }
   const Bold = ({ children }) => <Text style={{ color: GetAppColor.pincolor }}>{children}</Text>
   return (
@@ -135,7 +138,7 @@ const SignUpVerify = () => {
               </TouchableOpacity>
             </View>
             <View style={verifyStyle.bottomButtomArea}>
-              <TouchableOpacity style={verifyStyle.signInButton}>
+              <TouchableOpacity style={verifyStyle.signInButton} onPress={() => {navigateToCategory()}}>
                 <Text style={verifyStyle.SignInbuttonText}>{Label.VerifyTitle}</Text>
               </TouchableOpacity>
             </View>

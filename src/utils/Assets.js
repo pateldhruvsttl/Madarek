@@ -19,3 +19,11 @@ export const GetAppImage = {
     iconSearch:require('../assets/image/MaskGroup.png'),
     
 }
+export const GetVedio = {
+    vedioSearch:require('../assets/video/myed_open_school_mobile.mp4'),
+    
+}
+export const getControl = {
+    playVideo :require('../assets/image/PlayWhite.png'),
+    
+}

@@ -5,8 +5,8 @@ function MadarekLogo(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
-      width={324.384}
-      height={242.771}
+      width={props.width}
+      height={props.height}
       viewBox="0 0 324.384 242.771"
       {...props}
     >

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { color } from "react-native-reanimated";
 // import Colors from "../../utils/Colors",
 import { GetAppColor } from "../../utils/Colors";
@@ -6,6 +6,8 @@ import FONTS from "../../utils/Fonts"
 import { inputFieldHight } from "../../utils/Constant";
 import { AppUtil } from "../../utils/AppUtil";
 import { buttonHeight } from "../../utils/Constant";
+import { buttonFontSize } from "../../utils/Constant";
+import { buttonBorderRadius } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
     mainView: {
@@ -14,6 +16,7 @@ const PAGESTYLE = StyleSheet.create({
         alignItems: 'center',
         height: '100%', 
         width: '100%',
+        paddingTop:Platform.OS === 'android' ? AppUtil.getHP(4) : AppUtil.getHP(2)
     },
     headingMain: {
         justifyContent: 'center',
@@ -215,12 +218,12 @@ const PAGESTYLE = StyleSheet.create({
         height:buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5,
+        borderRadius:buttonBorderRadius
         
     },
     SignInbuttonText: {
         color: GetAppColor.white,
-        fontSize: 20,
+        fontSize: buttonFontSize,
         fontFamily: FONTS.robotMedium,
     },
     bottomButtomArea: {
@@ -245,7 +248,7 @@ const PAGESTYLE = StyleSheet.create({
         flex:1,
         width:'100%',
         justifyContent: 'flex-end',
-        marginBottom: 20,
+        marginBottom: AppUtil.getHP(3),
     },
     
     squreBox: {

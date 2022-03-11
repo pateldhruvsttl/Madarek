@@ -3,6 +3,9 @@ import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import { buttonHeight, hederHeight } from '../../utils/Constant';
 import FONTS from '../../utils/Fonts';
+import { buttonFontSize } from '../../utils/Constant';
+import { headerFontSize } from '../../utils/Constant';
+import { buttonBorderRadius } from '../../utils/Constant';
 
 const CategoryStyle = StyleSheet.create({
     headerView: {
@@ -13,7 +16,7 @@ const CategoryStyle = StyleSheet.create({
     },
     headerText: {
         color: GetAppColor.white,
-        fontSize: AppUtil.getHP(3.07),
+        fontSize:headerFontSize,
         alignSelf: 'center',
         fontFamily:FONTS.robotBold
     },
@@ -70,7 +73,7 @@ const CategoryStyle = StyleSheet.create({
         width: '90.74%',
         height: buttonHeight,
         backgroundColor: GetAppColor.headerYellow,
-        borderRadius: 5,
+        borderRadius: buttonBorderRadius,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
@@ -79,7 +82,7 @@ const CategoryStyle = StyleSheet.create({
         bottom:10
     },
 
-    continueText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:AppUtil.getHP(2.66) },
+    continueText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:buttonFontSize },
 
     input: {
         width: '100%',
