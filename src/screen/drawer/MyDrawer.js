@@ -40,7 +40,7 @@ const MyDrawerScreen = (props) => {
     return (
       <View>
         {
-          ["Popular Ideas", "Latest Ideas", "Madarek Spotlight,", "Winning Ideas"].map((item, indes) => {
+          [Label.PopularIdeas,Label.LatestIdeas,Label.MadarekSpotlight,Label.WinningIdeas].map((item, index) => {
             return (
               <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]}>
                 <Text style={drawerStyles.menuText}>{item}</Text>

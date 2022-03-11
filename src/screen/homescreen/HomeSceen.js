@@ -140,13 +140,13 @@ const expertData = [
 
 const list = DATA.slice(0, 2);
 
-const HomeScreen = (porps) => {
+const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
             <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} openDrawer={()=>{props.navigation.openDrawer()}} />
             <View style={HomeStyle.MainView}>
                 <ScrollView>
