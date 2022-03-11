@@ -13,7 +13,7 @@ import CloseIcon from '../../assets/svg/CloseIcon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateTheme } from '../../redux/reducers/ThemReducers'
 import { blueTheme } from '../../utils/ColorModel'
-import { log } from 'react-native-reanimated'
+
 
 const category = [
     { id: 0, name: 'Agriculture & Fisheries', isselected: false },

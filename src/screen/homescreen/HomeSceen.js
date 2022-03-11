@@ -15,6 +15,8 @@ import FavouriteCategories from "../../component/homescreen/FavouriteCategories"
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 
+import { DrawerActions } from '@react-navigation/native';
+
 const testData = [
     {
         title: 'Favourites landscapes 1',
@@ -144,7 +146,8 @@ const HomeScreen = (porps) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} />
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
+            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} openDrawer={()=>{props.navigation.openDrawer()}} />
             <View style={HomeStyle.MainView}>
                 <ScrollView>
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>

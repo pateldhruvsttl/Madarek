@@ -5,8 +5,8 @@ export const Label = {
     HomeTitle: isRTL ? ARlabel._homeTitle : USlabel._homeTitle,
     SubnitIdea: isRTL ? ARlabel._subnitIdea : USlabel._subnitIdea,
     seeMore: isRTL ? ARlabel._seeMore : USlabel._seeMore,
-    LogoTitle: isRTL ?  ARlabel._logoTitle : USlabel._logoTitle,
-    Innovation: isRTL ?  ARlabel._innovation : USlabel._innovation,
+    LogoTitle: isRTL ? ARlabel._logoTitle : USlabel._logoTitle,
+    Innovation: isRTL ? ARlabel._innovation : USlabel._innovation,
     InnovationDetail: isRTL ? ARlabel._innovationDetail : USlabel._innovationDetail,
     NewWay: isRTL ? ARlabel._newWay : USlabel._newWay,
     SignInTitle: isRTL ? ARlabel._signInTitle : USlabel._signInTitle,
@@ -29,7 +29,7 @@ export const Label = {
     Email: isRTL ? ARlabel._email : USlabel._email,
     Phone: isRTL ? ARlabel._phone : USlabel._phone,
     Password: isRTL ? ARlabel._password : USlabel._password,
-    Pin : isRTL ? ARlabel._pin : USlabel._pin,
+    Pin: isRTL ? ARlabel._pin : USlabel._pin,
     CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
     Skip: isRTL ? ARlabel._skip : USlabel._skip,
     WhatdoyouPrefertosee: isRTL ? ARlabel._whatdoyouPrefertosee : USlabel._whatdoyouPrefertosee,
@@ -68,8 +68,8 @@ export const Label = {
 
     readyToSubmitYourIdea: isRTL ? ARlabel._readyToSubmitYourIdea : USlabel._readyToSubmitYourIdea,
     submitIdea: isRTL ? ARlabel._submitIdea : USlabel._submitIdea,
-    
-  
+
+
     SignUpVerifyTitle: isRTL ? ARlabel._signUpVerifyTitle : USlabel._signUpVerifyTitle,
     VerifyNumber: isRTL ? ARlabel._verifyNumber : USlabel._verifyNumber,
     OneTimePinDetail: isRTL ? ARlabel._oneTimePinDetail : USlabel._oneTimePinDetail,
@@ -78,7 +78,24 @@ export const Label = {
     DefaultPhoneCode: isRTL ? ARlabel._defaultPhoneCode : USlabel._defaultPhoneCode,
     VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
 
+
+    //Drawer
+    Home: isRTL ? ARlabel._home : USlabel._home,
     Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
+    PopularIdeas: isRTL ? ARlabel._popularIdeas : USlabel._popularIdeas,
+    LatestIdeas: isRTL ? ARlabel._latestIdeas : USlabel._latestIdeas,
+    MadarekSpotlight: isRTL ? ARlabel._madarekSpotlight : USlabel._madarekSpotlight,
+    WinningIdeas: isRTL ? ARlabel._winningIdeas : USlabel._winningIdeas,
+    Challenges: isRTL ? ARlabel._challenges : USlabel._challenges,
+    Experts: isRTL ? ARlabel._experts : USlabel._experts,
+    Enterprises: isRTL ? ARlabel._enterprises : USlabel._enterprises,
+    HowitWorks: isRTL ? ARlabel._howitWorks : USlabel._howitWorks,
+    Partners: isRTL ? ARlabel._partners : USlabel._partners,
+    Settings: isRTL ? ARlabel._settings : USlabel._settings,
+    Logout: isRTL ? ARlabel._logout : USlabel._logout,
+    Dashboard:isRTL ? ARlabel._dashboard : USlabel._dashboard,
+    SubmitIdea:isRTL ? ARlabel._submitIdea : USlabel._submitIdea,
+    // Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
     SocialLine: isRTL ? ARlabel._socialLine : USlabel._socialLine,
     IdeaDetails: isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
     AcademyDetails: isRTL ? ARlabel._academyDetails : USlabel._academyDetails,

@@ -1,5 +1,4 @@
 import { Platform, StyleSheet } from "react-native";
-import App from "../../../App";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
