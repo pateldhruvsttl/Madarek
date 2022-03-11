@@ -76,7 +76,24 @@ export const ARlabel = {
     _oneTimePassword : "OTP",
     _toMessage : "to",
     _defaultPhoneCode :  "+971 877 887 7442",
-    _verifyTitle : "Verify"
+    _verifyTitle : "Verify",
+
+     //Drawer String
+     _home:"Home",
+     _ideas:"Ideas",
+     _popularIdeas:"Popular Ideas", 
+     _latestIdeas:"Latest Ideas",
+     _madarekSpotlight:"madarek Spotlight", 
+     _winningIdeas:"Winning Ideas",
+     _challenges:"Challenges",
+     _experts:"Experts",
+     _enterprises:"Enterprises",
+     _howitWorks:"How it Works",
+     _partners:"Partners",
+     _settings:"Settings",
+     _logout:"Logout",
+     _dashboard:"Dashboard",
+     _submitIdea:"Submit Idea",
 
 }
 export const USlabel = {
@@ -157,5 +174,22 @@ export const USlabel = {
     _oneTimePassword : "OTP",
     _toMessage : "to",
     _defaultPhoneCode :  "+971 877 887 7442",
-    _verifyTitle : "Verify"
+    _verifyTitle : "Verify",
+
+    //Drawer String
+    _home:"Home",
+    _ideas:"Ideas",
+    _popularIdeas:"Popular Ideas", 
+    _latestIdeas:"Latest Ideas",
+    _madarekSpotlight:"madarek Spotlight", 
+    _winningIdeas:"Winning Ideas",
+    _challenges:"Challenges",
+    _experts:"Experts",
+    _enterprises:"Enterprises",
+    _howitWorks:"How it Works",
+    _partners:"Partners",
+    _settings:"Settings",
+    _logout:"Logout",
+    _dashboard:"Dashboard",
+     _submitIdea:"Submit Idea",
 }

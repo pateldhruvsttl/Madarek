@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AppUtil } from '../../utils/AppUtil'
 import IcnMenuHeader from '../../assets/svg/IcnMenuHeader'
@@ -15,9 +15,26 @@ import HowItWorksIcn from '../../assets/svg/drawerIcon/HowItWorksIcn'
 import PartnerIcn from '../../assets/svg/drawerIcon/PartnerIcn'
 import SettingIcn from '../../assets/svg/drawerIcon/SettingIcn'
 import drawerStyles from './DrawerStyles'
+import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
+import { Label } from '../../utils/StringUtil'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+
+  const onSelectMenu = (index) => {
+    if (index == selectedIndex) {
+      setSelectedIndex(0)
+    } else {
+      setSelectedIndex(index)
+    }
+
+  }
+
+  const onselectButtonMenu = (index) => {
+    setSelectedButtonIndex(index)
+  }
 
   const renderCollapseView = () => {
     return (
@@ -25,7 +42,7 @@ const MyDrawerScreen = (props) => {
         {
           ["Popular Ideas", "Latest Ideas", "Madarek Spotlight,", "Winning Ideas"].map((item, indes) => {
             return (
-              <TouchableOpacity style={[drawerStyles.subMenuButton,{marginVertical: AppUtil.getHP(1),}]}>
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
               </TouchableOpacity>
             )
@@ -48,7 +65,7 @@ const MyDrawerScreen = (props) => {
               <IcnClose height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
             </TouchableOpacity>
           </View>
-          <View style={[drawerStyles.yellowLineView,{backgroundColor: themeColor.headerFontColor,}]} />
+          <View style={[drawerStyles.yellowLineView, { backgroundColor: themeColor.headerFontColor, }]} />
         </View>
 
         <View style={[drawerStyles.profileView]}>
@@ -60,10 +77,10 @@ const MyDrawerScreen = (props) => {
         </View>
         <View style={drawerStyles.dsButtonView}>
           <TouchableOpacity style={drawerStyles.dashBoardButton}>
-            <Text style={drawerStyles.dashText}>Dashboard</Text>
+            <Text style={drawerStyles.dashText}>{Label.Dashboard}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[drawerStyles.dashBoardButton,{  marginStart: 5 }]}>
-            <Text style={drawerStyles.dashText}>Submit Idea</Text>
+          <TouchableOpacity style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
+            <Text style={drawerStyles.dashText}>{Label.SubmitIdea}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -71,66 +88,89 @@ const MyDrawerScreen = (props) => {
 
       {/*  */}
 
-      <TouchableOpacity style={[drawerStyles.menuButton,{ marginTop: AppUtil.getHP(1)}]}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(1)} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
         <HomeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={drawerStyles.menuText}>Home</Text>
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==1? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Home}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[drawerStyles.menuButton,{justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(1);onselectButtonMenu(2) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={drawerStyles.menuText}>Ideas</Text>
+          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==2? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Ideas}</Text>
         </View>
-        <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        {
+          selectedIndex == 1 ?
+            <IcnUpArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+            :
+            <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        }
+
       </TouchableOpacity>
 
       {/*  */}
-      {renderCollapseView()}
+      {
+        selectedIndex == 1 ? renderCollapseView() : null
+      }
 
-      <TouchableOpacity style={[drawerStyles.menuButton,{justifyContent: 'space-between' }]}>
+
+      <TouchableOpacity onPress={() => { onSelectMenu(2);onselectButtonMenu(3) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={drawerStyles.menuText}>Challenges</Text>
+          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==3? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Challenges}</Text>
         </View>
-        <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        {
+          selectedIndex == 2 ?
+            <IcnUpArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+            :
+            <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        }
       </TouchableOpacity>
 
-
+      {
+        selectedIndex == 2 ? renderCollapseView() : null
+      }
       {/*  */}
-      <TouchableOpacity style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(4)} style={drawerStyles.menuButton}>
         <UserIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={drawerStyles.menuText}>Experts</Text>
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==4? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Experts}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[drawerStyles.menuButton,{justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(3);onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <EnterpriseIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={drawerStyles.menuText}>Enterprises</Text>
+          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==5? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Enterprises}</Text>
         </View>
-        <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        {
+          selectedIndex == 3 ?
+            <IcnUpArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+            :
+            <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+        }
       </TouchableOpacity>
-
+      {
+        selectedIndex == 3 ? renderCollapseView() : null
+      }
       {/*  */}
 
-      <TouchableOpacity style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(6)} style={drawerStyles.menuButton}>
         <HowItWorksIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={drawerStyles.menuText}>How it Works</Text>
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==6? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(7)} style={drawerStyles.menuButton}>
         <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={drawerStyles.menuText}>Partners</Text>
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Partners}</Text>
       </TouchableOpacity>
 
       <View style={drawerStyles.bottomView}>
         <TouchableOpacity style={drawerStyles.settingButton}>
           <SettingIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-          <Text style={drawerStyles.settingText}>Settings</Text>
+          <Text style={drawerStyles.settingText}>{Label.Settings}</Text>
         </TouchableOpacity>
         <View style={drawerStyles.line} />
         <TouchableOpacity style={drawerStyles.settingButton}>
           <SettingIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-          <Text style={drawerStyles.settingText}>Logout</Text>
+          <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
       </View>
     </View>
