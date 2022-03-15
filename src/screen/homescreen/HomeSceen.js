@@ -8,14 +8,64 @@ import EventSlider from "../../component/homescreen/EventSlider";
 import IdealList from "../../component/homescreen/itemList/IdeaList"
 import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithImage";
 import { GetAppColor } from "../../utils/Colors";
-import HomeStyle from "./HomeScreenStyle";
+import Style from "./HomeScreenStyle";
 
-import ExpertInsights from '../../component/homescreen/ExpertInsights'
+import ExpertInsightsSlider from '../../component/homescreen/ExpertInsightsSlider'
 import FavouriteCategories from "../../component/homescreen/FavouriteCategories";
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 
-import { DrawerActions } from '@react-navigation/native';
+
+
+const HomeScreen = (porps) => {
+
+    const { themeColor } = useSelector((state) => state)
+    const list = DATA.slice(0, 2);
+
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
+            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => { porps.navigation.openDrawer() }} />
+            
+            <View style={Style.MainView}>
+                <ScrollView>
+                    <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
+
+                        <EventSlider Entries={testData} />
+                        <IdealList data={sliderdata} />
+
+                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                            <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
+                        </View>
+
+                        <View style={{ paddingVertical: AppUtil.getHP(2) }}>
+                            <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
+                        </View>
+
+                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                            <ExpertInsightsSlider Entries={expertData} />
+                        </View>
+
+                        <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
+                            <FavouriteCategories />
+                        </View>
+
+                        <View style={Style.bottomBarView}>
+                            <Text style={Style.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
+                            <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
+                                <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </ScrollView >
+            </View>
+        </SafeAreaView>
+    );
+}
+
+export default memo(HomeScreen);
+
 
 const testData = [
     {
@@ -137,47 +187,3 @@ const expertData = [
         comment: '80',
     },
 ]
-
-const list = DATA.slice(0, 2);
-
-const HomeScreen = (porps) => {
-
-    const { themeColor } = useSelector((state) => state)
-
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
-            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => null} openDrawer={()=>{props.navigation.openDrawer()}} />
-            <View style={HomeStyle.MainView}>
-                <ScrollView>
-                    <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
-                      
-                        <EventSlider Entries={testData} />
-                        <IdealList data={sliderdata} />
-
-                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow}/>
-                        </View>
-
-                        <View style={{paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
-                        </View>
-
-                        <ExpertInsights Entries={expertData} />
-                        <FavouriteCategories />
-
-                        <View style={HomeStyle.bottomBarView}>
-                            <Text style={HomeStyle.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
-                            <TouchableOpacity style={[HomeStyle.btn,{backgroundColor:themeColor.buttonColor}]}>
-                                <Text style={HomeStyle.txtBtn}>{Label.submitIdea}</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-                </ScrollView >
-            </View>
-        </SafeAreaView>
-    );
-}
-
-export default memo(HomeScreen);

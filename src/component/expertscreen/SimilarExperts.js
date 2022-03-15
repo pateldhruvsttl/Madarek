@@ -50,13 +50,14 @@ function SimilarExperts(props) {
         </View>
     );
 
-    const list = props.maxLimit ? props.data.slice(0, 2) : props.data;
+    const list = props.maxLimit != 0 ? props.data.slice(0, props.maxLimit) : props.data;
+
     return (
         <View style={Style.MainView}>
             {
-                props.maxLimit &&
+                props.maxLimit != 0 &&
                 <View style={Style.titleView}>
-                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{Label.SimilarExperts}</Text>
+                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
                         <Text style={Style.txtSeeMore}>{Label.viewAll}</Text>
                     </TouchableOpacity>

@@ -11,7 +11,7 @@ import IdeaContent from '../../component/detailsidea/IdeaContent'
 import { AppUtil } from '../../utils/AppUtil'
 import UserProfileList from '../../component/detailsidea/UserProfileList'
 import Resources from '../../component/detailsidea/Resources'
-import ExpertInsights from '../../component/homescreen/ExpertInsights'
+import ExpertInsightsSlider from '../../component/homescreen/ExpertInsightsSlider'
 import SubIdeasList from '../../component/homescreen/SubIdeasList'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
@@ -149,7 +149,7 @@ const IdeaDetails = () => {
                 <VideoPlayer />
               </View>
               <Resources resource={resource} />
-              <ExpertInsights Entries={expertData} screen="IdeaDetail"/>
+              <ExpertInsightsSlider Entries={expertData} screen="IdeaDetail"/>
               <View style={IdeaStyle.subIdeaList}>
                 <SubIdeasListWithImage data={DATAPERSON} isTitle={"You May Also be Interested in "} screen="IdeaDetail" />
               </View>

@@ -11,87 +11,11 @@ import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import { Label } from "../../utils/StringUtil";
 const Tab = createMaterialTopTabNavigator();
 
-const IdeasListScreen = () => {
-
-    const sliderdata = [
-        {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            name: 'Poonam Madhav',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: true,
-        },
-        {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            name: 'Mitansh Bhavsar',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: false,
-        },
-        {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            name: 'Poonam Madhav',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: true,
-        },
-        {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            name: 'Mitansh Bhavsar',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: false,
-        },
-        {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            name: 'Poonam Madhav',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: true,
-        },
-        {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            name: 'Mitansh Bhavsar',
-            title: 'Banking and Finance',
-            subTitle: 'Children Omani Dress Competition',
-            url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-            date: "25 Jan 22",
-            see: '700',
-            like: '200',
-            comment: '80',
-            isLike: false,
-        },
-
-    ];
+const IdeasListScreen = (porps) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"IdeasListScreen"} onManuClick={() => null} />
+            <CommonHeader isType={"IdeasListScreen"} onManuClick={() => { porps.navigation.openDrawer() }} />
             
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
@@ -109,6 +33,81 @@ const IdeasListScreen = () => {
 
 export default memo(IdeasListScreen);
 
+const sliderdata = [
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        name: 'Poonam Madhav',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: true,
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        name: 'Mitansh Bhavsar',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: false,
+    },
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        name: 'Poonam Madhav',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: true,
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        name: 'Mitansh Bhavsar',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: false,
+    },
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        name: 'Poonam Madhav',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: true,
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        name: 'Mitansh Bhavsar',
+        title: 'Banking and Finance',
+        subTitle: 'Children Omani Dress Competition',
+        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
+        date: "25 Jan 22",
+        see: '700',
+        like: '200',
+        comment: '80',
+        isLike: false,
+    },
+
+];
 
 
 

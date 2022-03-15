@@ -32,8 +32,12 @@ const MyDrawerScreen = (props) => {
 
   }
 
-  const onselectButtonMenu = (index) => {
+  const onselectButtonMenu = (index, screen) => {
     setSelectedButtonIndex(index)
+
+    if(screen)
+      props.navigation.navigate(screen);
+  
   }
 
   const renderCollapseView = () => {
@@ -42,7 +46,7 @@ const MyDrawerScreen = (props) => {
         {
           ["Popular Ideas", "Latest Ideas", "Madarek Spotlight,", "Winning Ideas"].map((item, indes) => {
             return (
-              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]}>
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(1, "IdeasListScreen")}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
               </TouchableOpacity>
             )
@@ -88,10 +92,11 @@ const MyDrawerScreen = (props) => {
 
       {/*  */}
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(1)} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(1, "HomeSceen")} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
         <HomeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==1? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Home}</Text>
       </TouchableOpacity>
+
 
       <TouchableOpacity onPress={() => { onSelectMenu(1);onselectButtonMenu(2) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
@@ -130,7 +135,7 @@ const MyDrawerScreen = (props) => {
         selectedIndex == 2 ? renderCollapseView() : null
       }
       {/*  */}
-      <TouchableOpacity onPress={()=>onselectButtonMenu(4)} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>
         <UserIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==4? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Experts}</Text>
       </TouchableOpacity>

@@ -55,7 +55,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.openDrawer()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={()=>props.onManuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -74,14 +74,13 @@ const CommonHeader = (props) => {
             </>
         );
     }
-
     else if (props.isType === "IdeasListScreen") {
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity style={Style.LeftIcnView}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onManuClick()}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -101,7 +100,6 @@ const CommonHeader = (props) => {
             </>
         );
     }
-
     else if (props.isType === "IdeaDetails") {
         return (
             <>
@@ -176,6 +174,55 @@ const CommonHeader = (props) => {
                 </View>
             </>
         )
+    }
+    else if (props.isType === "ExpertScreen") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onManuClick()}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.Experts}</Text>
+                    </View>
+
+                    <View style={Style.rightSingleIcnView}>
+                        <TouchableOpacity>
+                            <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </>
+        );
+    }
+    if (props.isType === "UserDashboardSceen") {
+
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity onPress={()=>props.onManuClick()} style={Style.LeftIcnView}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.UserDashboard}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        {onMenu()}
+                    </View>
+
+                </View>
+            </>
+        );
     }
     else {
         return (

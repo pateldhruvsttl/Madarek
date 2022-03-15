@@ -10,7 +10,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 
-const ExpertInsights = ({ Entries, screen }) => {
+const ExpertInsightsSlider = ({ Entries, screen }) => {
 
     const [isSelectIndicator, setSelectIndicator] = useState(1);
 
@@ -45,7 +45,6 @@ const ExpertInsights = ({ Entries, screen }) => {
                         inactiveDotScale={0.6}
                     />
                 </View>
-                {/* <View style={{width:'100%', marginVertical:AppUtil.getHP(1)}}/> */}
             </View>
         );
     }
@@ -113,7 +112,7 @@ const ExpertInsights = ({ Entries, screen }) => {
         </View>
     );
 }
-export default memo(ExpertInsights);
+export default memo(ExpertInsightsSlider);
 
 
 

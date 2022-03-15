@@ -1,48 +1,16 @@
 import React, { memo, useState } from "react";
 import { View, FlatList, Text, TouchableOpacity } from "react-native";
+import { useSelector } from 'react-redux'
 import styles from "./FavouriteCategoriesStyle";
 import { Label } from '../../utils/StringUtil'
-
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
-
 import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
-import IcnAviation from "../../assets/svg/IcnAviation"
-import IcnAgricultureFisheriesy from "../../assets/svg/IcnAgricultureFisheriesy"
-
-import IcnHealth from "../../assets/svg/IcnHealth"
-import IcnEducation from "../../assets/svg/IcnEducation"
-import IcnConstructionInfrastructure from "../../assets/svg/IcnConstructionInfrastructure"
 
 
 const FavouriteCategories = ({ Entries }) => {
 
-
-    const testData = [
-        {
-            title: 'Favourites landscapes 1',
-        },
-        {
-            title: 'Favourites landscapes 2',
-        },
-        {
-            title: 'Favourites landscapes 3',
-        },
-        {
-            title: 'Favourites landscapes 4',
-        },
-        {
-            title: 'Favourites landscapes 5',
-        },
-        {
-            title: 'Favourites landscapes 6',
-        },
-        {
-            title: 'Favourites landscapes 6',
-        }
-    ];
-
+    const { themeColor } = useSelector((state) => state)
+   
     const renderItem = ({ item }) => {
 
         return (
@@ -56,7 +24,7 @@ const FavouriteCategories = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={styles.txtTitle}>{Label.favouriteCategories}</Text>
+                <Text style={[styles.txtTitle, { color: themeColor.buttonColor }] }>{Label.favouriteCategories}</Text>
                 <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
             </View>
 
@@ -68,8 +36,6 @@ const FavouriteCategories = ({ Entries }) => {
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
             />
-
-
 
             {/* <View style={styles.innerView1}>
                 <TouchableOpacity style={styles.btnView}>
@@ -109,3 +75,26 @@ export default memo(FavouriteCategories);
 
 
 
+const testData = [
+    {
+        title: 'Favourites landscapes 1',
+    },
+    {
+        title: 'Favourites landscapes 2',
+    },
+    {
+        title: 'Favourites landscapes 3',
+    },
+    {
+        title: 'Favourites landscapes 4',
+    },
+    {
+        title: 'Favourites landscapes 5',
+    },
+    {
+        title: 'Favourites landscapes 6',
+    },
+    {
+        title: 'Favourites landscapes 6',
+    }
+];

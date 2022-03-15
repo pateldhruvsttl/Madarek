@@ -58,18 +58,13 @@ export const Label = {
     renewableEnergy: isRTL ? ARlabel._renewableEnergy : USlabel._renewableEnergy,
     health: isRTL ? ARlabel._health : USlabel._health,
     education: isRTL ? ARlabel._education : USlabel._education,
-
     favouriteCategories: isRTL ? ARlabel._favouriteCategories : USlabel._favouriteCategories,
-
     constructionInfrastructure: isRTL ? ARlabel._constructionInfrastructure : USlabel._constructionInfrastructure,
     agricultureFisheriesy: isRTL ? ARlabel._agricultureFisheriesy : USlabel._agricultureFisheriesy,
     aviation: isRTL ? ARlabel._aviation : USlabel._aviation,
     informationTechnology: isRTL ? ARlabel._informationTechnology : USlabel._informationTechnology,
-
     readyToSubmitYourIdea: isRTL ? ARlabel._readyToSubmitYourIdea : USlabel._readyToSubmitYourIdea,
     submitIdea: isRTL ? ARlabel._submitIdea : USlabel._submitIdea,
-
-
     SignUpVerifyTitle: isRTL ? ARlabel._signUpVerifyTitle : USlabel._signUpVerifyTitle,
     VerifyNumber: isRTL ? ARlabel._verifyNumber : USlabel._verifyNumber,
     OneTimePinDetail: isRTL ? ARlabel._oneTimePinDetail : USlabel._oneTimePinDetail,
@@ -77,9 +72,6 @@ export const Label = {
     ToMessage: isRTL ? ARlabel._toMessage : USlabel._toMessage,
     DefaultPhoneCode: isRTL ? ARlabel._defaultPhoneCode : USlabel._defaultPhoneCode,
     VerifyTitle: isRTL ? ARlabel._verifyTitle : USlabel._verifyTitle,
-
-
-    //Drawer
     Home: isRTL ? ARlabel._home : USlabel._home,
     Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
     PopularIdeas: isRTL ? ARlabel._popularIdeas : USlabel._popularIdeas,
@@ -95,7 +87,6 @@ export const Label = {
     Logout: isRTL ? ARlabel._logout : USlabel._logout,
     Dashboard:isRTL ? ARlabel._dashboard : USlabel._dashboard,
     SubmitIdea:isRTL ? ARlabel._submitIdea : USlabel._submitIdea,
-    // Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
     SocialLine: isRTL ? ARlabel._socialLine : USlabel._socialLine,
     IdeaDetails: isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
     AcademyDetails: isRTL ? ARlabel._academyDetails : USlabel._academyDetails,
@@ -106,35 +97,35 @@ export const Label = {
     Team: isRTL ? ARlabel._team : USlabel._team,
     Resources: isRTL ? ARlabel._resources : USlabel._resources,
     Video: isRTL ? ARlabel._video : USlabel._video,
-
     ExpertDetails: isRTL ? ARlabel._expertDetails : USlabel._expertDetails,
     YouAreConnected: isRTL ? ARlabel._youAreConnected : USlabel._youAreConnected,
     About: isRTL ? ARlabel._about : USlabel._about,
     Publishby: isRTL ? ARlabel._publishby : USlabel._publishby,
     SimilarExperts: isRTL ? ARlabel._similarExperts : USlabel._similarExperts,
-    
     LearnMore: isRTL ? ARlabel._learnMore : USlabel._learnMore,
     ApplyNow: isRTL ? ARlabel._applyNow : USlabel._applyNow,
     ExpertDes: isRTL ? ARlabel._expertDes : USlabel._expertDes,
     ExpertsDirectory: isRTL ? ARlabel._expertsDirectory : USlabel._expertsDirectory,
-
     SeeAllIdeas: isRTL ? ARlabel._seeAllIdeas : USlabel._seeAllIdeas,
     OpenChallenges: isRTL ? ARlabel._openChallenges : USlabel._openChallenges,
     ParticipateNow: isRTL ? ARlabel._participateNow : USlabel._participateNow,
     MadarekSpotlight: isRTL ? ARlabel._madarekSpotlight : USlabel._madarekSpotlight,
-
     Search: isRTL ? ARlabel._search : USlabel._search,
     Message: isRTL ? ARlabel._message : USlabel._message,
-
-
     PopularIdeas: isRTL ? ARlabel._popularIdeas : USlabel._popularIdeas,
     NewIdeas: isRTL ? ARlabel._newIdeas : USlabel._newIdeas,
     WinningIdeas: isRTL ? ARlabel._winningIdeas : USlabel._winningIdeas,
-
     All: isRTL ? ARlabel._all : USlabel._all,
     Latest: isRTL ? ARlabel._latest : USlabel._latest,
     Popular: isRTL ? ARlabel._popular : USlabel._popular,
     Winning: isRTL ? ARlabel._winning : USlabel._winning,
+    UserDashboard: isRTL ? ARlabel._userDashboard : USlabel._userDashboard,
+    ConnectedExperts: isRTL ? ARlabel._connectedExperts : USlabel._connectedExperts,
+    PopularExperts: isRTL ? ARlabel._popularExperts : USlabel._popularExperts,
+    MyIdeaJointRequest: isRTL ? ARlabel._myIdeaJointRequest : USlabel._myIdeaJointRequest,
+
+    Accepted: isRTL ? ARlabel._accepted : USlabel._accepted,
+    Rejected: isRTL ? ARlabel._rejected : USlabel._rejected,
 
 
 }

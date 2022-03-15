@@ -151,7 +151,13 @@ export const ARlabel = {
     _latest:'Latest',
     _popular:'Popular',
     _winning:'Winning',
-
+    _connectedExperts:'Connected Experts',
+    _popularExperts:'Popular Experts',
+    _userDashboard:'User Dashboard',
+    _myIdeaJointRequest:'My Idea Joint Request',
+    _rejected:'Rejected',
+    _accepted:'Accepted',
+    
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -209,6 +215,7 @@ export const USlabel = {
     _password: "Password",
     _retypepassword: "Re-type Password",
     _expertInsights: 'Expert Insights',
+    _viewAll: 'View All',
     _renewableEnergy: 'Renewable Energy',
     _health: 'Health',
     _education: 'Education',
@@ -298,5 +305,12 @@ export const USlabel = {
     _latest:'Latest',
     _popular:'Popular',
     _winning:'Winning',
+
+    _connectedExperts:'Connected Experts',
+    _popularExperts:'Popular Experts',
+    _userDashboard:'User Dashboard',
+    _myIdeaJointRequest:'My Idea Joint Request',
+    _rejected:'Rejected',
+    _accepted:'Accepted',
 
 }

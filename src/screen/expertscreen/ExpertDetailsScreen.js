@@ -22,8 +22,10 @@ function ExpertDetailsScreen() {
                 <ScrollView>
                     <ExpertProfile data={testProfileData} />
                     <ExpertInsights data={expertInsightsData} />
-                    <SimilarExperts data={expertInsightsData} maxLimit={true} />
-
+                    
+                    <View style={Style.similarExpertView}>
+                        <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.SimilarExperts} />
+                    </View>
 
                     <View style={Style.footerView}>
                         <Text style={Style.txtTitle}>{Label.ExpertDes}</Text>

@@ -10,9 +10,9 @@ export const sliderWidth = viewportWidth;
 export const itemWidth = slideWidth + itemHorizontalMargin * 10;
 
 const EventSliderStyle = StyleSheet.create({
-    MainView: { width: '100%', flex: 1, backgroundColor: GetAppColor.lightWhite },
+    MainView: { width: '100%', flex: 1, },
 
-    sliderContainer: { marginBottom: AppUtil.getHP(5), backgroundColor: GetAppColor.lightWhite },
+    sliderContainer: { marginBottom: AppUtil.getHP(5)},
     paginView: { width: '100%', marginVertical: AppUtil.getHP(1), position: 'absolute', bottom: AppUtil.getHP(-2), },
 
     titleView: { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: AppUtil.getHP(2), marginVertical: AppUtil.getHP(2) },
@@ -30,9 +30,6 @@ const EventSliderStyle = StyleSheet.create({
     },
     txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily: FONTS.robotBold },
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular },
-
-    // txtseeMoewView:{fontSize:AppUtil.getHP(2.6), fontFamily:FONTS.robotBold, color:GetAppColor.categoryText},
-    // txtSubSeeMoewView:{fontSize:AppUtil.getHP(1.5),fontFamily:FONTS.robotRegular, color:GetAppColor.categoryText},
 
     renderMainView: { width: '100%', height: "93%", borderRadius: AppUtil.getHP(2), alignItems: 'center' },
     renderProfileView: { width: AppUtil.getHP(15), height: AppUtil.getHP(15), borderRadius: AppUtil.getHP(15), alignSelf: 'center' },
@@ -59,7 +56,7 @@ const EventSliderStyle = StyleSheet.create({
     title: { fontSize: AppUtil.getHP(1.4), fontFamily: FONTS.robotRegular },
 
 
-    paginationContainer: { paddingVertical: 1, marginBottom: AppUtil.getHP(1), backgroundColor: GetAppColor.lightWhite },
+    paginationContainer: { paddingVertical: 1, marginBottom: AppUtil.getHP(1), },
 
     paginationDot: {
         width: AppUtil.getHP(1.2),

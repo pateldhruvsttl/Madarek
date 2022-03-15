@@ -4,8 +4,9 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const Style = StyleSheet.create({
-    MainView: { width: '100%', flex: 1, paddingVertical: AppUtil.getHP(2) },
-    titleView: { marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" },
+    MainView: { width: '100%', flex: 1, },
+    
+    titleView: { marginHorizontal: AppUtil.getHP(2), marginVertical:AppUtil.getHP(1), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" },
 
     similerIcnView: { position: 'absolute', margin: AppUtil.getHP(1), end: 0 },
 

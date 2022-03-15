@@ -12,20 +12,16 @@ export const itemWidth = slideWidth + itemHorizontalMargin * 10;
 const Style = StyleSheet.create({
     MainView: { width: '100%', flex:1},
    
-    titleView:{flexDirection:'row', justifyContent:'space-between', marginHorizontal:AppUtil.getHP(2), marginVertical:AppUtil.getHP(2),alignItems:'center'},
-    
-    txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
-    txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},
-
     innerView1:{marginHorizontal:AppUtil.getHP(2), flexDirection:'row', justifyContent:'space-around'},
     innerView2:{marginHorizontal:AppUtil.getHP(2), flexDirection:'row', justifyContent:'space-around', marginTop:AppUtil.getHP(1.5)},
     
     btnView:{width:'30%', height:AppUtil.getHP(12), borderWidth:AppUtil.getHP(.1),
-    borderBottomWidth:AppUtil.getHP(.4),justifyContent:'center', alignItems:'center',
-    borderColor:GetAppColor.catBorder, marginHorizontal:"1%", marginVertical:'1%',
+    borderBottomWidth:AppUtil.getHP(.4), alignItems:'center',
+    borderColor:GetAppColor.catBorder, marginHorizontal:"1%", marginVertical:'1%',paddingHorizontal:AppUtil.getWP(2.1),
     borderRadius:5},
 
-    txtBtn:{fontSize:AppUtil.getHP(1.6), marginTop:AppUtil.getHP(0.9), color:GetAppColor.textColor, fontFamily:FONTS.robotRegular, textAlign:'center'},
+    txtTitle:{fontSize:AppUtil.getHP(2.8), marginTop:AppUtil.getHP(1.5), fontFamily:FONTS.robotMedium, textAlign:'center'},
+    txtBtn:{fontSize:AppUtil.getHP(1.8), marginTop:AppUtil.getHP(0.9), color:GetAppColor.textColor, fontFamily:FONTS.robotRegular, textAlign:'center'},
 });
 
 export default Style;
