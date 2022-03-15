@@ -126,9 +126,11 @@ export const Label = {
     ConnectedExperts: isRTL ? ARlabel._connectedExperts : USlabel._connectedExperts,
     PopularExperts: isRTL ? ARlabel._popularExperts : USlabel._popularExperts,
     MyIdeaJointRequest: isRTL ? ARlabel._myIdeaJointRequest : USlabel._myIdeaJointRequest,
+    IdeaMaturation: isRTL ? ARlabel._ideaMaturation : USlabel._ideaMaturation,
 
     Accepted: isRTL ? ARlabel._accepted : USlabel._accepted,
     Rejected: isRTL ? ARlabel._rejected : USlabel._rejected,
+    Completed: isRTL ? ARlabel._completed : USlabel._completed,
 
 
 }

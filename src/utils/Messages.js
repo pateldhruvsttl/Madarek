@@ -155,8 +155,10 @@ export const ARlabel = {
     _popularExperts:'Popular Experts',
     _userDashboard:'User Dashboard',
     _myIdeaJointRequest:'My Idea Joint Request',
+    _ideaMaturation:'Idea Maturation',
     _rejected:'Rejected',
     _accepted:'Accepted',
+    _completed:'Completed',
     
 }
 export const USlabel = {
@@ -310,7 +312,9 @@ export const USlabel = {
     _popularExperts:'Popular Experts',
     _userDashboard:'User Dashboard',
     _myIdeaJointRequest:'My Idea Joint Request',
+    _ideaMaturation:'Idea Maturation',
     _rejected:'Rejected',
     _accepted:'Accepted',
+    _completed:'Completed',
 
 }

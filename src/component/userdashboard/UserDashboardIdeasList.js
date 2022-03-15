@@ -66,19 +66,27 @@ const UserDashboardIdeasList = (props) => {
 
                 <View style={Style.secondCalView}>
 
-                    {props.isType == "Request" &&
+                    {props.isType == "Request" ?
 
                         item.btn === "Rejected" ?
-                        <TouchableOpacity style={Style.btnReject}>
-                            <Text>{Label.Rejected}</Text>
-                        </TouchableOpacity>
-                        :
-                        item.btn === "Accepted" ?
                             <TouchableOpacity style={Style.btnReject}>
-                                <Text>{Label.Accepted}</Text>
+                                <Text style={Style.txtbtnReject}> {Label.Rejected}</Text>
                             </TouchableOpacity>
                             :
-                            null
+                            item.btn === "Accepted" ?
+                                <TouchableOpacity style={Style.btnAccept}>
+                                    <Text style={Style.txtbtnAccept}>{Label.Accepted}</Text>
+                                </TouchableOpacity>
+                                :
+                                null
+
+                        : null
+                    }
+
+                    {props.isType == "Maturation" && item.btn === "Completed" &&
+                        <TouchableOpacity style={Style.btnComplited}>
+                            <Text style={Style.txtbtnComplited}> {Label.Completed}</Text>
+                        </TouchableOpacity>
                     }
 
                 </View>
