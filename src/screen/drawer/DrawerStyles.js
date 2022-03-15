@@ -21,7 +21,7 @@ import FONTS from '../../utils/Fonts'
   bottomView:{ position: 'absolute', bottom: 0, height: AppUtil.getHP(6), backgroundColor: GetAppColor.backGround, width: '100%', flexDirection: 'row' },
   settingButton:{ width: '50%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' },
   settingText:{ fontFamily: FONTS.robotRegular, fontSize: AppUtil.getHP(2.05), color: GetAppColor.pincolor, marginStart: AppUtil.getWP(2), },
-  menuText:{  fontSize: AppUtil.getHP(2), color: GetAppColor.pincolor, marginStart: AppUtil.getWP(2), marginTop: 5 },
+  menuText:{  fontSize: AppUtil.getHP(2), color: GetAppColor.pincolor, marginStart: AppUtil.getWP(2), },
   line:{ width: 1, backgroundColor: GetAppColor.borderGray, height: '60%', alignSelf: 'center' },
   greyLine:{ marginHorizontal: AppUtil.getWP(4), borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1, },
   

@@ -87,6 +87,9 @@ export const Label = {
     Logout: isRTL ? ARlabel._logout : USlabel._logout,
     Dashboard:isRTL ? ARlabel._dashboard : USlabel._dashboard,
     SubmitIdea:isRTL ? ARlabel._submitIdea : USlabel._submitIdea,
+
+    
+    // Ideas: isRTL ? ARlabel._ideas : USlabel._ideas,
     SocialLine: isRTL ? ARlabel._socialLine : USlabel._socialLine,
     IdeaDetails: isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
     AcademyDetails: isRTL ? ARlabel._academyDetails : USlabel._academyDetails,
