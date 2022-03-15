@@ -159,6 +159,8 @@ export const ARlabel = {
     _rejected:'Rejected',
     _accepted:'Accepted',
     _completed:'Completed',
+    _smeDashboard:'SME Dashboard',
+    _userJoinRequest:"User Join Request",
     
 }
 export const USlabel = {
@@ -316,5 +318,7 @@ export const USlabel = {
     _rejected:'Rejected',
     _accepted:'Accepted',
     _completed:'Completed',
+    _smeDashboard:'SME Dashboard',
+    _userJoinRequest:"User Join Request",
 
 }

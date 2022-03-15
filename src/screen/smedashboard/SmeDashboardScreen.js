@@ -4,50 +4,80 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
-import Style from "./UserDashboardSceenStyle";
+import Style from "./SmrDashboardStyle";
 import { Label } from "../../utils/StringUtil";
-import { AppUtil } from "../../utils/AppUtil";
 
-import UserDashboardIdeasList from "../../component/userdashboard/UserDashboardIdeasList";
-import UserDetails from "../../component/userdashboard/UserDetails";
+import UserDashboardIdeasList from "../../component/dashboard/UserDashboardIdeasList";
+import UserDetails from "../../component/dashboard/UserDetails";
+import JointRequest from "../../component/dashboard/JointRequest";
 
 
-const UserDashboardSceen = (porps) => {
+const SmeDashboardScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-    const list = DATA.slice(0, 2);
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"UserDashboardSceen"} onManuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"SmeDashboardScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                        <UserDetails />
+                        <UserDetails data={SmeDetailsData}/>
                     </View>
 
                     <View style={Style.secondPos}>
-                        <UserDashboardIdeasList data={list} isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
+                        <JointRequest data={DATA.slice(0, 3)} isTitle={Label.UserJoinRequest}/>
                     </View>
 
                     <View style={Style.firstPos}>
                         <UserDashboardIdeasList data={MaturationData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
                     </View>
-
-                    <View style={Style.bottomBarView}>
-                            <Text style={Style.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
-                            <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
-                                <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
-                            </TouchableOpacity>
-                        </View>
-
                 </ScrollView >
             </View>
         </SafeAreaView>
     );
 }
 
-export default memo(UserDashboardSceen);
+export default memo(SmeDashboardScreen);
+
+const SmeDetailsData = [
+    {
+        title: 'User Need SME Idea',
+        no:"14"
+    },
+    {
+        title: 'My Favorite Ideas',
+        no:"08"
+    },
+    {
+        title: 'My Submitted Ideas',
+        no:"05"
+    },
+    {
+        title: 'Favourite Challenges',
+        no:"02"
+    },
+    {
+        title: 'Challenge Participation',
+        no:"08"
+    },
+    {
+        title: 'Contest Panel Request',
+        no:"01"
+    },
+    {
+        title: 'Expert Insights',
+        no:"01"
+    },
+    {
+        title: 'Connected Experts',
+        no:"04"
+    },
+    {
+        title: 'User Join Request',
+        no:"05"
+    }
+];
 
 const MaturationData = [
     {

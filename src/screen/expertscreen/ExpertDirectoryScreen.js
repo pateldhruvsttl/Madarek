@@ -12,7 +12,7 @@ function ExpertDirectoryScreen() {
 
     return (
         <SafeAreaView style={Style.SafeAryView}>
-            <CommonHeader isType={"ExpertDirectoryScreen"} onManuClick={() => null} />
+            <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} />
             <View style={Style.MainView}>
                 <SimilarExperts data={expertInsightsData} maxLimit={0} />
             </View>

@@ -7,7 +7,7 @@ import { AppUtil } from "../../utils/AppUtil";
 import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 
 
-const UserDetails = ({ Entries }) => {
+const UserDetails = (props) => {
 
     const { themeColor } = useSelector((state) => state)
    
@@ -24,8 +24,8 @@ const UserDetails = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <FlatList
-                data={testData.slice(0, 6)}
-                contentContainerStyle={{alignItems:'flex-end'}}
+                data={props.data}
+                contentContainerStyle={{alignItems:'flex-start', justifyContent:'center'}}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}
@@ -40,29 +40,4 @@ export default memo(UserDetails);
 
 
 
-const testData = [
-    {
-        title: 'My Need SME Ideas',
-        no:"04"
-    },
-    {
-        title: 'My Favourite',
-        no:"09"
-    },
-    {
-        title: 'My Submitted Ideas',
-        no:"21"
-    },
-    {
-        title: 'Favourite Challenges',
-        no:"08"
-    },
-    {
-        title: 'Challenge Participation',
-        no:"11"
-    },
-    {
-        title: 'Connected Experts',
-        no:"08"
-    }
-];
+

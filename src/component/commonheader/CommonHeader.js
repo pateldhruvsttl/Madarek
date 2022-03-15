@@ -55,7 +55,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onManuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -80,7 +80,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onManuClick()}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onMenuClick()}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -181,7 +181,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onManuClick()}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onMenuClick()}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -198,19 +198,45 @@ const CommonHeader = (props) => {
             </>
         );
     }
-    if (props.isType === "UserDashboardSceen") {
+    else if (props.isType === "UserDashboardScreen") {
 
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onManuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
                     <View style={Style.centerIcnView}>
                         <Text style={Style.txtHeader}>{Label.UserDashboard}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        {onMenu()}
+                    </View>
+
+                </View>
+            </>
+        );
+    }
+    else if (props.isType === "SmeDashboardScreen") {
+
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.SmeDashboard}</Text>
                     </View>
 
                     <View style={Style.rightIcnView}>

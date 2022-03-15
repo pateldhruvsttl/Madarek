@@ -17,7 +17,7 @@ function ExpertDetailsScreen() {
 
     return (
         <SafeAreaView style={Style.SafeAryView}>
-            <CommonHeader isType={"ExpertDetailsScreen"} onManuClick={() => null} />
+            <CommonHeader isType={"ExpertDetailsScreen"} onMenuClick={() => null} />
             <View style={Style.MainView}>
                 <ScrollView>
                     <ExpertProfile data={testProfileData} />

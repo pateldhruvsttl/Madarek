@@ -11,9 +11,10 @@ import LoginScreen from '../screen/loginscreen/LoginScreen';
 import Signup from '../screen/signup/Signup';
 import SignUpVerify from '../screen/signup/SignUpVerify';
 
-import UserDashboardSceen from '../screen/userDashboard/UserDashboardSceen';
+import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
+import SmeDashboardScreen from '../screen/smedashboard/SmeDashboardScreen';
 
-import HomeSceen from '../screen/homescreen/HomeSceen';
+import HomeScreen from '../screen/homescreen/HomeScreen';
 import Category from '../screen/category/Category';
 import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
 import IdeaDetails from '../screen/idea/IdeaDetails';
@@ -27,14 +28,14 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"UserDashboardSceen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
             <Stack.Screen name="Category" component={Category} />
 
-            <Stack.Screen name="HomeSceen" component={HomeSceen} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
             <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
             
@@ -42,7 +43,8 @@ function ScreenStack() {
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
 
-            <Stack.Screen name="UserDashboardSceen" component={UserDashboardSceen} />
+            <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
+            <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
 
         </Stack.Navigator>
     )

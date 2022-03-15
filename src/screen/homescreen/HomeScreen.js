@@ -17,7 +17,7 @@ import { AppUtil } from "../../utils/AppUtil";
 
 
 
-const HomeScreen = (porps) => {
+const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     const list = DATA.slice(0, 2);
@@ -25,7 +25,7 @@ const HomeScreen = (porps) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
-            <CommonHeader isType={"HomeScreenHeader"} onManuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
             
             <View style={Style.MainView}>
                 <ScrollView>
@@ -51,7 +51,7 @@ const HomeScreen = (porps) => {
                         </View>
 
                         <View style={Style.bottomBarView}>
-                            <Text style={Style.txtBotamBarTitil}>{Label.readyToSubmitYourIdea}</Text>
+                            <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
                             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
                                 <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
                             </TouchableOpacity>

@@ -22,7 +22,7 @@ const ExpertScreen = (porps) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             
-            <CommonHeader isType={"ExpertScreen"} onManuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"ExpertScreen"} onMenuClick={() => { porps.navigation.openDrawer() }} />
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>

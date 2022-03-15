@@ -131,6 +131,9 @@ export const Label = {
     Accepted: isRTL ? ARlabel._accepted : USlabel._accepted,
     Rejected: isRTL ? ARlabel._rejected : USlabel._rejected,
     Completed: isRTL ? ARlabel._completed : USlabel._completed,
+    SmeDashboard: isRTL ? ARlabel._smeDashboard : USlabel._smeDashboard,
+    UserJoinRequest: isRTL ? ARlabel._userJoinRequest : USlabel._userJoinRequest,
+    
 
 
 }

@@ -15,7 +15,7 @@ const IdeasListScreen = (porps) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"IdeasListScreen"} onManuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { porps.navigation.openDrawer() }} />
             
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
