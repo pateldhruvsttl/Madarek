@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,6 +14,7 @@ import ExpertInsightsSlider from '../../component/homescreen/ExpertInsightsSlide
 import FavouriteCategories from "../../component/homescreen/FavouriteCategories";
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
+import { Loger } from "../../utils/Loger";
 
 
 
@@ -22,43 +23,63 @@ const HomeScreen = (props) => {
     const { themeColor } = useSelector((state) => state)
     const list = DATA.slice(0, 2);
 
+    const onSetItem = (item) => {
+        if (item === "Slider") {
+            return <EventSlider Entries={testData} />
+        }
+        else if (item === "Tab") {
+            return <IdealList data={sliderdata} />
+        }
+        else if (item === "Challenges") {
+            return (
+                <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                    <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
+                </View>
+            )
+        }
+        else if (item === "Spotlight") {
+            return (
+                <View style={{ paddingVertical: AppUtil.getHP(2) }}>
+                    <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
+                </View>
+            )
+        }
+        else if (item === "ExpertInsightsSlider") {
+            return (
+                <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                    <ExpertInsightsSlider Entries={expertData} />
+                </View>
+            )
+        }
+        else if (item === "FavouriteCategories") {
+            return (
+                <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
+                    <FavouriteCategories />
+                </View>
+            )
+        }
+        else if (item === "Button") {
+            return (
+                <View style={Style.bottomBarView}>
+                    <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
+                    <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
+                        <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
+                    </TouchableOpacity>
+                </View>
+            )
+        }
+    }
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
-            
+
             <View style={Style.MainView}>
-                <ScrollView>
-                    <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
-
-                        <EventSlider Entries={testData} />
-                        <IdealList data={sliderdata} />
-
-                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
-                        </View>
-
-                        <View style={{ paddingVertical: AppUtil.getHP(2) }}>
-                            <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
-                        </View>
-
-                        <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                            <ExpertInsightsSlider Entries={expertData} />
-                        </View>
-
-                        <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
-                            <FavouriteCategories />
-                        </View>
-
-                        <View style={Style.bottomBarView}>
-                            <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
-                            <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
-                                <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-                </ScrollView >
+                <FlatList
+                    data={dtList}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => onSetItem(item)}
+                />
             </View>
         </SafeAreaView>
     );
@@ -66,6 +87,7 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
+const dtList = ["Slider", "Tab", "Challenges","Spotlight","ExpertInsightsSlider","FavouriteCategories","Button"];
 
 const testData = [
     {
