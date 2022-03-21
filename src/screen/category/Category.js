@@ -49,7 +49,6 @@ const Category = (props) => {
 
 
     const {themeColor} = useSelector((state) => state)
-    console.log('theme color is', themeColor);
     const dispatch = useDispatch()
 
     const navigateToHomeScreen = () => {
@@ -70,7 +69,6 @@ const Category = (props) => {
                 selectedCat.splice(idx, 1)
             }
         }
-        console.log('selected category', selectedCat);
         setSelectedCategories(selectedCat)
         setCategories(cat)
     }

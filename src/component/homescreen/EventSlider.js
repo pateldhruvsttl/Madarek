@@ -1,5 +1,7 @@
 import React, { memo, useState } from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
+import FastImage from 'react-native-fast-image'
+
 import styles, { sliderWidth, itemWidth } from "./EventSliderStyle";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
@@ -48,8 +50,9 @@ const EventSlider = ({ Entries }) => {
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
         return (
-            <View style={{ width: '100%', height: "93%", borderRadius: AppUtil.getHP(2) }}>
-                <Image style={{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2), }} resizeMode='cover' source={{ uri: item.url }} />
+            <View style={styles.renderMainView}>
+                <FastImage style={styles.bgImage} resizeMode={FastImage.resizeMode.cover} source={{ uri: item.url, priority: FastImage.priority.normal, }} />
+                {/* <Image style={{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2), }} resizeMode='cover' source={{ uri: item.url }} /> */}
 
                 <View style={styles.sliderRendTitleView}>
                     <Text style={styles.txtsliderRendTitle}>{item.title}</Text>
