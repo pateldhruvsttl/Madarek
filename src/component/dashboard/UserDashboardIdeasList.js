@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux'
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
 import Style from "./userDashboardIdeasListStyle";
-import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
-import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeart"
+import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeartWithRound"
+import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
@@ -50,7 +50,20 @@ const UserDashboardIdeasList = (props) => {
             <View style={Style.leftItems}>
 
                 <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
-                <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.subTitle}</Text>
+                {
+                    props.isType == 'Challenges'?
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
+                    :
+                    props.isType == 'Request'?
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
+                    :
+                    props.isType == 'Maturation'?
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
+                    :
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed}]}>{item.subTitle}</Text>
+
+                }
+                
 
                 {
 
@@ -70,12 +83,12 @@ const UserDashboardIdeasList = (props) => {
 
                         item.btn === "Rejected" ?
                             <TouchableOpacity style={Style.btnReject}>
-                                <Text style={Style.txtbtnReject}> {Label.Rejected}</Text>
+                                <Text style={Style.txtbtnReject}> {(Label.Rejected).toUpperCase()}</Text>
                             </TouchableOpacity>
                             :
                             item.btn === "Accepted" ?
                                 <TouchableOpacity style={Style.btnAccept}>
-                                    <Text style={Style.txtbtnAccept}>{Label.Accepted}</Text>
+                                    <Text style={Style.txtbtnAccept}>{(Label.Accepted).toUpperCase()}</Text>
                                 </TouchableOpacity>
                                 :
                                 null
@@ -85,7 +98,7 @@ const UserDashboardIdeasList = (props) => {
 
                     {props.isType == "Maturation" && item.btn === "Completed" &&
                         <TouchableOpacity style={Style.btnComplited}>
-                            <Text style={Style.txtbtnComplited}> {Label.Completed}</Text>
+                            <Text style={Style.txtbtnComplited}> {(Label.Completed).toUpperCase()}</Text>
                         </TouchableOpacity>
                     }
 

@@ -49,7 +49,7 @@ const LoginScreen = (props) => {
     let otpNumber = 123456
 
     const navigateHomeScreen = () => {
-        props.navigation.navigate("HomeSceen")
+        props.navigation.navigate("HomeScreen")
     }
     const navigateSignUpScreen = () => {
         props.navigation.navigate("Signup")

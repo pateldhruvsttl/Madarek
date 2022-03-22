@@ -14,8 +14,8 @@ const FavouriteCategories = ({ Entries }) => {
     const renderItem = ({ item }) => {
 
         return (
-            <TouchableOpacity style={styles.btnView}>
-                <IcnInformationTechnology height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
+            <TouchableOpacity style={[styles.btnView,{borderColor:themeColor.buttonColor}]}>
+                <IcnInformationTechnology fill={themeColor.buttonColor} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 <Text style={styles.txtBtn}>{Label.informationTechnology}</Text>
             </TouchableOpacity>
         )
@@ -30,7 +30,7 @@ const FavouriteCategories = ({ Entries }) => {
 
             <FlatList
                 data={testData.slice(0, 6)}
-                contentContainerStyle={{alignItems:'flex-end'}}
+                contentContainerStyle={styles.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}

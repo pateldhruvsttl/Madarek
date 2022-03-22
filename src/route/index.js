@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import SplashScreen from '../screen/splashscreen/SplashScreen';
 import LoginScreen from '../screen/loginscreen/LoginScreen';
-import HomeSceen from '../screen/homescreen/HomeSceen';
+import HomeScreen from '../screen/homescreen/HomeScreen';
 import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
 import Category from '../screen/category/Category';
 import Signup from '../screen/signup/Signup';
@@ -18,11 +18,11 @@ const Stack = createStackNavigator();
 export default function index() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeSceen"}>
+            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 
-                <Stack.Screen name="HomeSceen" component={HomeSceen} />
+                <Stack.Screen name="HomeScreen" component={HomeSceen} />
                 <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
                 <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
 

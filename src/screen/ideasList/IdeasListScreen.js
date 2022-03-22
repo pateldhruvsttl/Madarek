@@ -9,6 +9,7 @@ import Style from "./IdeasListStyle";
 
 import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import { Label } from "../../utils/StringUtil";
+import { GetAppColor } from "../../utils/Colors";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (porps) => {
@@ -16,10 +17,15 @@ const IdeasListScreen = (porps) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { porps.navigation.openDrawer() }} />
-            
+
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
-                    <Tab.Navigator>
+                    <Tab.Navigator screenOptions={{
+                        tabBarLabelStyle: { fontSize: 12 },
+                        tabBarItemStyle: { width: 100 },
+                        tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
+                    }}
+                    >
                         <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: sliderdata }} />} />
                         <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: sliderdata }} />} />
                         <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: sliderdata }} />} />

@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
 import Style from "./SubIdeasListWithImageStyle";
-import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
-import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeart"
+import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeartWithRound"
+import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"

@@ -49,17 +49,18 @@ const Style = StyleSheet.create({
     leftItems: { width: '55%' },
 
     calView: { flexDirection: 'row', alignItems: 'center' },
+    
     callIcn: { marginEnd: AppUtil.getHP(1) },
     callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart:AppUtil.getHP(1), },
 
     title: { fontSize: AppUtil.getHP(1.3), fontFamily:FONTS.robotMedium, color:GetAppColor.textColor},
     SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily:FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
 
-    secondCalView: { flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
-    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2) },
+    secondCalView: {alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},
+    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems:'center' },
 
     bottomBtn: {
-        height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange,
+        height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor:GetAppColor.white,
         borderRadius: AppUtil.getHP(1), borderWidth: AppUtil.getHP(0.1), justifyContent: 'center', alignItems: 'center', margin: AppUtil.getHP(2),
     },
     txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily:FONTS.robotMedium },

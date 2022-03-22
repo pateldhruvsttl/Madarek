@@ -52,7 +52,7 @@ const Category = (props) => {
     const dispatch = useDispatch()
 
     const navigateToHomeScreen = () => {
-        props.navigation.navigate("HomeSceen")
+        props.navigation.navigate("HomeScreen")
       }
 
     const onPressCategory = (index) => {

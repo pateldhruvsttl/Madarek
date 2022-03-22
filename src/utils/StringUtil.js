@@ -55,6 +55,7 @@ export const Label = {
     enterSamePassword: isRTL ? ARlabel._enterSamePassword : USlabel._enterSamePassword,
     expertInsights: isRTL ? ARlabel._expertInsights : USlabel._expertInsights,
     viewAll: isRTL ? ARlabel._viewAll : USlabel._viewAll,
+    viewMore: isRTL ? ARlabel._viewMore : USlabel._viewMore,
     renewableEnergy: isRTL ? ARlabel._renewableEnergy : USlabel._renewableEnergy,
     health: isRTL ? ARlabel._health : USlabel._health,
     education: isRTL ? ARlabel._education : USlabel._education,

@@ -81,7 +81,6 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                 </View>
 
                 <View style={styles.secondCalView}>
-
                     <View style={styles.secondInnerCalView}>
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={styles.title}>{item.see}</Text>

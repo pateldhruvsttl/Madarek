@@ -34,12 +34,12 @@ const Style = StyleSheet.create({
     leftItems: { width: AppUtil.getWP(65), marginStart:6, marginTop: AppUtil.getHP(0.5), },
 
     title: { fontSize: AppUtil.getHP(1.9), fontFamily: FONTS.robotMedium, color: GetAppColor.black },
-    SubTitle: { fontSize: AppUtil.getHP(1.7), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, marginTop: AppUtil.getHP(0.5) },
+    SubTitle: { fontSize: AppUtil.getHP(1.7), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, marginTop: AppUtil.getHP(0.2) },
     
-    calView: { flexDirection: 'row', alignItems: 'center', marginTop: AppUtil.getHP(0.5) },
-    icnTitle: { fontSize: AppUtil.getHP(1.7), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor},
+    calView: { flexDirection: 'row', alignItems: 'center', marginTop: AppUtil.getHP(0.2) },
+    icnTitle: { fontSize: AppUtil.getHP(1.5), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor},
 
-    icnDes: { fontSize: AppUtil.getHP(1.7), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, margin: AppUtil.getHP(0.5) },
+    icnDes: { fontSize: AppUtil.getHP(1.7), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, margin: AppUtil.getHP(0.2) },
 
 
 });

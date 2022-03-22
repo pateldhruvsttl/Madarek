@@ -41,7 +41,7 @@ const JointRequest = (props) => {
                         </View>
                         :
                         <TouchableOpacity style={Style.btnAccept}>
-                            <Text style={Style.txtBtnAccept}>{Label.Accepted}</Text>
+                            <Text style={Style.txtBtnAccept}>{(Label.Accepted).toUpperCase()}</Text>
                         </TouchableOpacity>
                 }
             </View>
