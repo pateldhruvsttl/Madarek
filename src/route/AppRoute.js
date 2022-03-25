@@ -11,7 +11,7 @@ import LoginScreen from '../screen/loginscreen/LoginScreen';
 import Signup from '../screen/signup/Signup';
 import SignUpVerify from '../screen/signup/SignUpVerify';
 
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
+// import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import SmeDashboardScreen from '../screen/smedashboard/SmeDashboardScreen';
 
 import HomeScreen from '../screen/homescreen/HomeScreen';
@@ -21,6 +21,8 @@ import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertScreen from '../screen/expertscreen/ExpertScreen';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'; 
+import UserCategory from '../screen/category/UserCategory';
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 
 
 const Stack = createStackNavigator();
@@ -28,12 +30,13 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"UserCategory"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
             <Stack.Screen name="Category" component={Category} />
+            <Stack.Screen name="UserCategory" component={UserCategory} />
 
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />

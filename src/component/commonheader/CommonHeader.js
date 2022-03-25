@@ -55,7 +55,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -80,7 +80,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onMenuClick()}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -154,7 +154,7 @@ const CommonHeader = (props) => {
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=>{navigation.goBack()}}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={() => { navigation.goBack() }}>
                         <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -181,7 +181,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onMenuClick()}>
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -205,7 +205,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -231,7 +231,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
                         <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
@@ -249,8 +249,32 @@ const CommonHeader = (props) => {
                 </View>
             </>
         );
-    }
-    else {
+    } else if (props.isType === "userCategoryScreen") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.Ideas}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        {/* <TouchableOpacity>
+                            <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity> */}
+                    </View>
+                </View>
+            </>
+        );
+    } else {
         return (
             null
         )

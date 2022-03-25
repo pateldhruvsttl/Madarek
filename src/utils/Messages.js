@@ -162,6 +162,15 @@ export const ARlabel = {
     _completed:'Completed',
     _smeDashboard:'SME Dashboard',
     _userJoinRequest:"User Join Request",
+
+
+    // user category
+    _agriculture_Fisheries:"Agriculture & Fisheries",
+    _autismSpecializedCenters:"Autism Specialized Centers",
+    _aviation:"Aviation",
+    _bankingandFinance:"Banking and Finance",
+    _childLevelCat:"Child Level Cat",
+
     
 }
 export const USlabel = {
