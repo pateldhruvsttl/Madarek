@@ -250,6 +250,32 @@ const CommonHeader = (props) => {
             </>
         );
     }
+    else if (props.isType === "ChallengesListing") {
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=> props.onMenuClick()}>
+                        <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.Challenges}</Text>
+                    </View>
+
+                    <View style={Style.rightIcnView}>
+                        <TouchableOpacity>
+                            <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </>
+        );
+    }
     else {
         return (
             null

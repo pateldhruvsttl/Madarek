@@ -56,16 +56,19 @@ const IdeaContent = (props) => {
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[IdeaContentStyle.contentTitleSecond, IdeaContentStyle.spacetoLeft]}>{props.data.like}</Text>
                     </View>
-                    <View style={IdeaContentStyle.secondInnerCalView}>
+                    <View style={IdeaContentStyle.secondInnerCalViewOne}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[IdeaContentStyle.contentTitleSecond, IdeaContentStyle.spacetoLeft]}>{props.data.comment}</Text>
                     </View>
                 </View>
             </View>
             <View style={IdeaContentStyle.btnArea}>
+                <View style={IdeaContentStyle.leftSide}>
                 <TouchableOpacity style={[IdeaContentStyle.votingBtn, { backgroundColor: themeColor.buttonColor }]}>
                     <Text style={[IdeaContentStyle.voteNowBtnTitle,{color:themeColor.buttonFontColor}]}>{Label.VoteNow}</Text>
                 </TouchableOpacity>
+                </View>
+                <View style={IdeaContentStyle.rightSide}>
                 <TouchableOpacity style={IdeaContentStyle.likeBtn}>
                     <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
                 </TouchableOpacity>
@@ -75,6 +78,7 @@ const IdeaContent = (props) => {
                 <TouchableOpacity style={IdeaContentStyle.likeBtn}>
                     <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
                 </TouchableOpacity>
+                </View>
             </View>
         </View>
     )

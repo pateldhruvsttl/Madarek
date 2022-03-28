@@ -133,6 +133,12 @@ export const Label = {
     Completed: isRTL ? ARlabel._completed : USlabel._completed,
     SmeDashboard: isRTL ? ARlabel._smeDashboard : USlabel._smeDashboard,
     UserJoinRequest: isRTL ? ARlabel._userJoinRequest : USlabel._userJoinRequest,
+
+    Challenges: isRTL ? ARlabel._challenges : USlabel._challenges,
+    Open: isRTL ? ARlabel._open : USlabel._open,
+    Upcoming: isRTL ? ARlabel._upcoming : USlabel._upcoming,
+    Closed: isRTL ? ARlabel._closed : USlabel._closed,
+    Voting: isRTL ? ARlabel._voting : USlabel._voting,
     
 
 

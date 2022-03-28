@@ -17,15 +17,17 @@ const IdeaContentStyle = StyleSheet.create({
         width: "100%",
         marginVertical: AppUtil.getHP(3),
         // marginHorizontal:AppUtil.getWP(5),
-        paddingHorizontal: AppUtil.getWP(5),
+        // paddingHorizontal: AppUtil.getWP(5),
     },
     headerAcademyTitle: {
-        width: '100%'
+        width: '100%',
+        paddingHorizontal: AppUtil.getWP(5),
     },
     dateContent: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: AppUtil.getHP(2)
+        marginTop: AppUtil.getHP(1),
+        paddingHorizontal: AppUtil.getWP(5),
     },
     contentTitle: {
         fontFamily: FONTS.robotRegular,
@@ -45,7 +47,8 @@ const IdeaContentStyle = StyleSheet.create({
         alignItems:'center'
     },
     sectorCategoryArea: {
-        marginTop: AppUtil.getHP(2)
+        marginTop: AppUtil.getHP(1),
+        paddingHorizontal: AppUtil.getWP(5),
     },
     winningIcn: { marginEnd: AppUtil.getWP(1.5) },
     spacetoLeft: {
@@ -60,6 +63,7 @@ const IdeaContentStyle = StyleSheet.create({
     },
     performanceContainer: {
         flexDirection: 'row',
+        paddingHorizontal: AppUtil.getWP(5),
         marginTop: AppUtil.getHP(2), width: '100%',
         justifyContent: 'space-between'
 
@@ -68,18 +72,28 @@ const IdeaContentStyle = StyleSheet.create({
         flexDirection: 'row', marginEnd: AppUtil.getHP(1.3), justifyContent: 'flex-end',
         alignItems:'center'
     },
+    secondInnerCalViewOne : {
+        flexDirection: 'row', justifyContent: 'flex-end',
+        alignItems:'center'
+    },
     btnArea: {
+        paddingHorizontal: AppUtil.getWP(4),
         width: '100%',
         marginTop: AppUtil.getHP(2),
         flexDirection: 'row'
     },
+    rightSide : {
+        flexDirection:'row',right:0
+    },
+    leftSide : { flex:1 },
     votingBtn: {
         height: buttonHeight,
-        width: AppUtil.getWP(45),
+        // width: AppUtil.getWP(45),
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: buttonBorderRadius,
-        marginEnd: AppUtil.getHP(1)
+        // marginEnd: AppUtil.getHP(1),
+       
     },
     voteNowBtnTitle: {
         // color:GetAppColor.white,
@@ -95,8 +109,9 @@ const IdeaContentStyle = StyleSheet.create({
         width: AppUtil.getWP(12),
         borderColor: GetAppColor.grayBorder,
         backgroundColor: GetAppColor.white,
-        marginEnd: AppUtil.getHP(1)
-    }
+        marginStart: AppUtil.getHP(1),
+        // right:5
+    },
 })
 
 export default IdeaContentStyle;
