@@ -71,7 +71,6 @@ const HomeScreen = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>

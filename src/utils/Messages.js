@@ -162,6 +162,7 @@ export const ARlabel = {
     _completed:'Completed',
     _smeDashboard:'SME Dashboard',
     _userJoinRequest:"User Join Request",
+    _submitYourIdeas:"Submit your Ideas",
     
 }
 export const USlabel = {
@@ -322,5 +323,6 @@ export const USlabel = {
     _completed:'Completed',
     _smeDashboard:'SME Dashboard',
     _userJoinRequest:"User Join Request",
+    _submitYourIdeas:"Submit your Ideas",
 
 }

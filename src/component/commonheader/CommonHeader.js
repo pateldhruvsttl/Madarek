@@ -65,7 +65,7 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnAlert style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         {onMenu()}
                     </View>
@@ -75,6 +75,7 @@ const CommonHeader = (props) => {
         );
     }
     else if (props.isType === "IdeasListScreen") {
+    
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
@@ -90,7 +91,7 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -115,7 +116,7 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -164,7 +165,7 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -215,7 +216,7 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnAlert style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         {onMenu()}
                     </View>
@@ -241,11 +242,30 @@ const CommonHeader = (props) => {
 
                     <View style={Style.rightIcnView}>
                         <TouchableOpacity>
-                            <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <IcnAlert style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
                         {onMenu()}
                     </View>
 
+                </View>
+            </>
+        );
+    }
+    else if (props.isType === "SubmitIdeaScreen") {
+
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                        <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.SubmitYourIdeas}</Text>
+                    </View>
+                    <View style={Style.icnEmpty}/>
                 </View>
             </>
         );

@@ -134,6 +134,7 @@ export const Label = {
     Completed: isRTL ? ARlabel._completed : USlabel._completed,
     SmeDashboard: isRTL ? ARlabel._smeDashboard : USlabel._smeDashboard,
     UserJoinRequest: isRTL ? ARlabel._userJoinRequest : USlabel._userJoinRequest,
+    SubmitYourIdeas: isRTL ? ARlabel._submitYourIdeas : USlabel._submitYourIdeas,
     
 
 
