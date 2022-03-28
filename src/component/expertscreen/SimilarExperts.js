@@ -44,7 +44,7 @@ function SimilarExperts(props) {
                     <Text style={Style.icnTitle}>{item.comment}</Text>
                 </View>
 
-                <Text numberOfLines={2} style={Style.icnDes}>{item.des}</Text>
+                {item.des && <Text numberOfLines={2} style={Style.icnDes}>{item.des}</Text>}
             </View>
 
         </View>
@@ -59,7 +59,7 @@ function SimilarExperts(props) {
                 <View style={Style.titleView}>
                     <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
-                        <Text style={Style.txtSeeMore}>{Label.viewAll}</Text>
+                        <Text style={Style.txtSeeMore}>{props.type === "ExpertScreen" ? Label.viewMore:Label.viewAll}</Text>
                     </TouchableOpacity>
                 </View>
             }

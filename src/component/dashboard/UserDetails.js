@@ -16,7 +16,7 @@ const UserDetails = (props) => {
         return (
             <TouchableOpacity style={[styles.btnView,{borderColor:themeColor.buttonColor}]}>
                <Text style={[styles.txtTitle, {color:themeColor.buttonColor}]}>{item.no}</Text>
-                <Text style={styles.txtBtn}>{item.title}</Text>
+                <Text numberOfLines={2} style={styles.txtBtn}>{item.title}</Text>
             </TouchableOpacity>
         )
     }
@@ -25,7 +25,7 @@ const UserDetails = (props) => {
         <View style={styles.MainView}>
             <FlatList
                 data={props.data}
-                contentContainerStyle={{alignItems:'flex-start', justifyContent:'center'}}
+                contentContainerStyle={styles.lstView}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}

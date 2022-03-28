@@ -46,7 +46,7 @@ const Style = StyleSheet.create({
     
     rowLeftView: { width: '50%', height: AppUtil.getWP(7), flexDirection: 'row', alignItems: 'center' },
     
-    rowRightView: { width: '50%', height: AppUtil.getWP(7), flexDirection: 'row', alignItems: 'center' },
+    rowRightView: { width: '50%', height: AppUtil.getWP(7), flexDirection: 'row', alignItems: 'center', },
     secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems: 'center' },
 
     bottomBtn: {

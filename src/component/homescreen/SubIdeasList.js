@@ -4,7 +4,7 @@ import { AppUtil } from "../../utils/AppUtil";
 import Style from "./SubIdeasListStyle";
 import { Label } from "../../utils/StringUtil";
 import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
-import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeart"
+import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeard"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
@@ -30,9 +30,9 @@ const SubIdeasList = (props) => {
           <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
           {
             item.isLike ?
-              <IcnSelectedHeart height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+              <IcnSelectedHeart height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
               :
-              <IcnUnSelectedHeart fill={GetAppColor.textColor} stroke={GetAppColor.textColor} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+              <IcnUnSelectedHeart fill={GetAppColor.textColor} stroke={GetAppColor.textColor} height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
           }
         </View>
 

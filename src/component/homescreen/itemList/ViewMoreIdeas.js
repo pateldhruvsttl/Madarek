@@ -23,6 +23,7 @@ function ViewMoreIdeas(props) {
 
     return (
         <View style={Styles.MainView}>
+
             <View style={Styles.HeaderBtn}>
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(0)}>
                     <IcnIdeasImageAndTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
@@ -38,10 +39,12 @@ function ViewMoreIdeas(props) {
 
             </View>
 
+            <View style={Styles.selectView}>
+                {selectFilter == 0 && <SubIdeasListWithImage data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
+                {selectFilter == 1 && <SubIdeasList data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
+                {selectFilter == 2 && <SubIdeasListGraph data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
+            </View>
 
-            {selectFilter == 0 && <SubIdeasListWithImage data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
-            {selectFilter == 1 && <SubIdeasList data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
-            {selectFilter == 2 && <SubIdeasListGraph data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
         </View>
     )
 }

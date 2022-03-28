@@ -54,13 +54,11 @@ const Signup = (props) => {
         } else if (password !== reTypePassword) {
             Alert.alert(Label.enterSamePassword);
         } else {
-            console.log('all field are done');
         }
         navigateToSignUpVerify();
     }
 
     const onSelect = (country) => {
-        console.log('country', country.callingCode[0], country);
         setCountryCode(country.cca2)
         setCountry(country)
         setCallCode(country.callingCode[0]);

@@ -23,7 +23,7 @@ const UserDashboardScreen = (props) => {
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                        <UserDetails />
+                        <UserDetails data={SmeDetailsData}/>
                     </View>
 
                     <View style={Style.secondPos}>
@@ -130,4 +130,31 @@ const DATA = [
         name:'Jainam Kumar',
     },
 
+];
+const SmeDetailsData = [
+    {
+        title: 'My Need SME Idea',
+        no:"04"
+    },
+    {
+        title: 'My Favorite Ideas',
+        no:"09"
+    },
+    {
+        title: 'My Submitted Ideas',
+        no:"21"
+    },
+    {
+        title: 'Favourite Challenges',
+        no:"08"
+    },
+    {
+        title: 'Challenge Participation',
+        no:"11"
+    },
+    {
+        title: 'Contest Panel Request',
+        no:"08"
+    },
+    
 ];

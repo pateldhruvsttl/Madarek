@@ -32,11 +32,11 @@ const ExpertScreen = (porps) => {
                         </View>
 
                         <View style={Style.similarExpertView}>
-                            <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.ConnectedExperts} />
+                            <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.ConnectedExperts} type={"ExpertScreen"}/>
                         </View>
 
                         <View style={Style.popularExpertView}>
-                            <SimilarExperts data={populerExpertData} maxLimit={3} title={Label.PopularExperts} />
+                            <SimilarExperts data={populerExpertData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"}/>
                         </View>
 
                         <View style={Style.similarExpertView}>

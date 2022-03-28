@@ -20,6 +20,8 @@ const EventSliderStyle = StyleSheet.create({
         borderRadius: AppUtil.getHP(1.2),
     },
 
+    renderMainView:{ width: '100%', height: "93%", borderRadius: AppUtil.getHP(2) },
+    bgImage:{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2) },
     sliderRendTitleView: { position: 'absolute', top: AppUtil.getHP(17), marginStart: AppUtil.getWP(4) },
     txtsliderRendTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(2.3), fontWeight: 'bold' },
 

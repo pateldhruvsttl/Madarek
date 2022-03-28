@@ -49,7 +49,7 @@ const LoginScreen = (props) => {
     let otpNumber = 123456
 
     const navigateHomeScreen = () => {
-        props.navigation.navigate("HomeSceen")
+        props.navigation.navigate("HomeScreen")
     }
     const navigateSignUpScreen = () => {
         props.navigation.navigate("Signup")
@@ -153,26 +153,21 @@ const LoginScreen = (props) => {
         setCallCode('');
     }
     const onSelect = (country) => {
-        console.log('country', country.callingCode[0], country);
         setCountryCode(country.cca2)
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
     const Bold = ({ children }) => <Text style={{ fontFamily: FONTS.robotBold }}>{children}</Text>
     // const success = response => {
-    //     console.log(response) // eslint-disable-line
     //   }
 
     //   const error = response => {
-    //     console.error(response) // eslint-disable-line
     //   }
 
     //   const loading = () => {
-    //     console.log('loading') // eslint-disable-line
     //   }
 
     //   const logout = () => {
-    //     console.log('logout') // eslint-disable-line
     //   }
 
 
