@@ -26,6 +26,7 @@ import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 
 
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -50,6 +51,7 @@ function ScreenStack() {
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
+            
 
         </Stack.Navigator>
     )

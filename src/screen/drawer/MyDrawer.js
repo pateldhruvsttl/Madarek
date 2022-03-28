@@ -57,6 +57,26 @@ const MyDrawerScreen = (props) => {
       </View>
     )
   }
+
+  const renderChallangeCollapseView = () => {
+    return (
+      <View>
+        {
+          [Label.Open,Label.Upcoming,Label.Closed,Label.Voting].map((item, index) => {
+            return (
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(1, "IdeasListScreen")}>
+                <Text style={drawerStyles.menuText}>{item}</Text>
+              </TouchableOpacity>
+            )
+          })
+        }
+        <View style={drawerStyles.greyLine}></View>
+
+      </View>
+    )
+  }
+
+
   return (
     <View style={{ flex: 1 }}>
 
@@ -132,7 +152,7 @@ const MyDrawerScreen = (props) => {
       </TouchableOpacity>
 
       {
-        selectedIndex == 2 ? renderCollapseView() : null
+        selectedIndex == 2 ? renderChallangeCollapseView() : null
       }
       {/*  */}
       <TouchableOpacity onPress={()=>onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>

@@ -250,6 +250,7 @@ const CommonHeader = (props) => {
             </>
         );
     } else if (props.isType === "userCategoryScreen") {
+        return(
         <>
          <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
@@ -259,7 +260,7 @@ const CommonHeader = (props) => {
                     </TouchableOpacity>
 
                     <View style={Style.centerIcnView}>
-                        <Text style={Style.txtHeader}>{Label.Challenges}</Text>
+                        <Text style={Style.txtHeader}>{Label.Category}</Text>
                     </View>
 
                     <View style={Style.rightIcnView}>
@@ -273,6 +274,7 @@ const CommonHeader = (props) => {
                 </View>
             
         </>
+        );
     }
     else if (props.isType === "ChallengesListing") {
         return (

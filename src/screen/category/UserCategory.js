@@ -12,6 +12,7 @@ import FONTS from '../../utils/Fonts'
 import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 import Heart from '../../assets/svg/Heart'
 
+
 const testData = [
     {
         title: 'Favourites landscapes 1',
@@ -56,7 +57,7 @@ const UserCategory = (props) => {
                 </View>
                 <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 {/* {item.icon} */}
-                <Text style={UserCategoryStyles.txtBtn}>{item.title}</Text>
+                <Text style={UserCategoryStyles.txtBtn}>{'Category Name'}</Text>
             </TouchableOpacity>
         )
     }
@@ -77,6 +78,7 @@ const UserCategory = (props) => {
 
             <FlatList
                 data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                style={UserCategoryStyles.flatelist}
                 contentContainerStyle={UserCategoryStyles.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
@@ -117,4 +119,8 @@ const UserCategoryStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    flatelist:{
+        marginTop:AppUtil.getHP(1.6)
+    }
+
 })

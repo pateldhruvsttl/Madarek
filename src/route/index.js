@@ -13,7 +13,7 @@ import SignUpVerify from '../screen/signup/SignUpVerify';
 import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
-import ChallengesListScreen from '../screen/ChallengesList/ChallengesListScreen';
+import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 const Stack = createStackNavigator();
 
 export default function index() {

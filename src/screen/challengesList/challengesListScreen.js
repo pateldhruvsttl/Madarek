@@ -10,7 +10,7 @@ import AllChallenge from "../../component/challengelist/listing/ViewMoreChalleng
 import { Label } from "../../utils/StringUtil";
 const Tab = createMaterialTopTabNavigator();
 
-const challengesListScreen = (porps) => {
+const ChallengesListScreen = (porps) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -30,7 +30,7 @@ const challengesListScreen = (porps) => {
     );
 }
 
-export default memo(challengesListScreen);
+export default memo(ChallengesListScreen);
 
 const sliderdata = [
     {
