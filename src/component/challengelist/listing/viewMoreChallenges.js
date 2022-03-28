@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
 import { View } from 'react-native'
 import ChallengeListImage from "../ChallengeListImage";
-import Style from "./viewMoreChallengeStyle";
+import Style from "./ViewMoreChallengeStyle";
 
 function ViewMoreChallenges(props) {
     return (

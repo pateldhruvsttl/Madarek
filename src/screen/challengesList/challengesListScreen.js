@@ -5,8 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
-import ListStyle from "./challengesListStyle";
-import AllChallenge from "../../component/challengelist/listing/viewMoreChallenges"
+import ListStyle from "./ChallengesListStyle";
+import AllChallenge from "../../component/challengelist/listing/ViewMoreChallenges"
 import { Label } from "../../utils/StringUtil";
 const Tab = createMaterialTopTabNavigator();
 
@@ -18,13 +18,7 @@ const challengesListScreen = (porps) => {
 
             <View style={ListStyle.MainView}>
                 <NavigationContainer independent={true}>
-                    <Tab.Navigator screenOptions={{
-                      tabBarLabelStyle : {textTransform:'capitalize',fontSize:15},
-                      tabBarPressColor:'red',
-                      tabBarInactiveTintColor : 'green',
-                      tabBarActiveTintColor:'red',
-                      
-                    }}>
+                    <Tab.Navigator>
                         <Tab.Screen name={Label.Open} children={() => <AllChallenge propName={{ type: "OpenChallenge", data: sliderdata }} />} />
                         <Tab.Screen name={Label.Upcoming} children={() => <AllChallenge propName={{ type: "UpcomingChallenge", data: sliderdata }} />} />
                         <Tab.Screen name={Label.Closed} children={() => <AllChallenge propName={{ type: "ClosedChallenge", data: sliderdata }} />} />

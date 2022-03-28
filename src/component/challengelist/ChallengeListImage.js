@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
 import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
-import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeart"
+import IcnUnSelectedHeard from "../../assets/svg/IcnUnSelectedHeard"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
@@ -38,7 +38,7 @@ const SubIdeasListWithImage = (props) => {
                     item.isLike ?
                         <IcnSelectedHeart style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                         :
-                        <IcnUnSelectedHeart style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        <IcnUnSelectedHeard style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                 }
 
                 <View style={LISTSTYLE.rewordView}>

@@ -13,16 +13,17 @@ import SignUpVerify from '../screen/signup/SignUpVerify';
 import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
+import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 const Stack = createStackNavigator();
 
 export default function index() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
+            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"ChallengesListScreen"}>
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 
-                <Stack.Screen name="HomeScreen" component={HomeSceen} />
+                <Stack.Screen name="HomeScreen" component={HomeScreen} />
                 <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
                 <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
 
@@ -32,6 +33,8 @@ export default function index() {
 
                 <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
                 <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
+
+                <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
