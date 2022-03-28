@@ -28,7 +28,7 @@ const IdeaContentStyle = StyleSheet.create({
         backgroundColor: GetAppColor.white,
         alignItems: 'center',
         height: AppUtil.getHP(7),
-        paddingHorizontal: AppUtil.getWP(3),
+        // paddingHorizontal: AppUtil.getWP(3),
         marginBottom: AppUtil.getHP(2),
         shadowColor: "#000",
         borderRadius:buttonBorderRadius,
@@ -41,6 +41,13 @@ const IdeaContentStyle = StyleSheet.create({
         
         elevation: 3,
     },
+    resourceSubTitle : 
+    { flex: 1,paddingStart:AppUtil.getWP(3) },
+
+    downloadIcon : {
+        right:AppUtil.getWP(3)
+    },
+
     resourceTitle: {
         fontSize: AppUtil.getHP(1.7),
         color: GetAppColor.pincolor,

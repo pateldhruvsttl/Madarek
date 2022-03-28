@@ -13,10 +13,10 @@ const Resources = (props) => {
             {props.resource && props.resource.length !== 0 ?
                 props.resource.map((item, idx) => (
                     <View style={ResourcesStyle.resourceContainer}>
-                        <View style={{ flex: 4 }}>
+                        <View style={ResourcesStyle.resourceSubTitle}>
                             <Text style={ResourcesStyle.resourceTitle}>{item.resourceName}</Text>
                         </View>
-                        <TouchableOpacity style={{ flex: 0.5 }}>
+                        <TouchableOpacity style={ResourcesStyle.downloadIcon}>
                             <IcnDownload height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                         </TouchableOpacity>
                     </View>)) : null
