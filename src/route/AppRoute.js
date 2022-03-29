@@ -20,7 +20,7 @@ import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
 import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertScreen from '../screen/expertscreen/ExpertScreen';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
-import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'; 
+import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
 import UserCategory from '../screen/category/UserCategory';
 import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
@@ -43,7 +43,7 @@ function ScreenStack() {
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
             <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
-            
+
             <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
@@ -51,7 +51,7 @@ function ScreenStack() {
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
-            
+
 
         </Stack.Navigator>
     )
@@ -63,8 +63,15 @@ function MyDrawer() {
         <Drawer.Navigator
             drawerContent={props => <MyDrawerScreen {...props} />}
             drawerPosition='left'
-            screenOptions={{ headerShown: false }}
-            useLegacyImplementation={true}>
+            screenOptions={{
+                headerShown: false,
+                drawerStyle: {
+                    width: '85%',
+                },
+            }}
+            useLegacyImplementation={true}
+
+        >
             <Drawer.Screen name="ScreenStack" component={ScreenStack} options={{
                 swipeEnabled: false,
             }} />

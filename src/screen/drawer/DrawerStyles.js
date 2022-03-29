@@ -7,7 +7,7 @@ import FONTS from '../../utils/Fonts'
 
  const drawerStyles = StyleSheet.create({
     headerView:{ marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(4) },
-    centerIcnView: { width: '100%', alignItems: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', },
+    centerIcnView: { width: '100%', alignItems: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', marginTop:AppUtil.getHP(1) },
     profileImage: { height: AppUtil.getHP(5), width: AppUtil.getHP(5), borderRadius: AppUtil.getHP(5 / 2), borderWidth: 1, borderColor: 'white' },
     yellowLineView:{  width: '100%', height: 1, opacity: 0.5, marginTop: AppUtil.getHP(1) },
   profileView:{ flexDirection: "row", marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(2), alignItems: 'center' },
