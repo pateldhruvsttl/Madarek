@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import ListStyle from "./challengesListStyle";
-import AllChallenge from "../../component/challengelist/listing/viewMoreChallenges"
+import AllChallenge from "../../component/challengelist/listing/ViewMoreChallenges"
 import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
 
