@@ -5,9 +5,10 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from '../../utils/StringUtil'
+import { useSelector } from "react-redux";
 
 const IdeaSlider = ({ Entries }) => {
-
+    const { themeColor } = useSelector((state) => state)
     const [isSelectIndecater, setSelectIndecater] = useState(0);
 
     const onEventSlider = () => {
@@ -35,7 +36,7 @@ const IdeaSlider = ({ Entries }) => {
                     dotsLength={Entries.length}
                     activeDotIndex={isSelectIndecater}
                     containerStyle={IdeaSliderStyle.paginationContainer}
-                    dotColor={GetAppColor.borderRed}
+                    dotColor={themeColor.buttonColor}
                     dotStyle={IdeaSliderStyle.paginationDot}
                     inactiveDotColor={GetAppColor.white}
                     inactiveDotOpacity={0.8} //0.4

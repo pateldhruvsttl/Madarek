@@ -1,7 +1,10 @@
 import * as React from "react"
 import Svg, { G, Path } from "react-native-svg"
+import { useSelector } from "react-redux"
 
 function SvgComponent(props) {
+  const { themeColor } = useSelector((state) => state)
+  const fillColor = props.isType == 'ChallengeDetail' ? themeColor.buttonColor : "#f34d2d"
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +16,7 @@ function SvgComponent(props) {
       <G
         transform="translate(-645 -3899.5) translate(643.5 3898)"
         fill="none"
-        stroke="#f34d2d"
+        stroke={fillColor}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={3}

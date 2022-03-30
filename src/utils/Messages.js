@@ -170,6 +170,33 @@ export const ARlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
+    // ChallengeDetails screen message
+
+    _challengesDetail : "Challenge Details",
+    _openButtonTitle : "OPEN",
+    _follow : "Follow",
+    _termsAndCondition : "*Terms & conditions applied",
+    _ideaParticipate : "Ideas Participated",
+    _participate : "Participants",
+    _expertsEngaged : "Experts Engaged",
+    _announcement : "Announcement",
+    _openForSubmissiom : "Open for Submission",
+    _closeForSubmission : "Close for Submission",
+    _publicEvaluation : "Public Evaluation",
+    _awardAnnouncement : "Award Announcement",
+    _objective :"Objective",
+    _whoParticipate :"Who Should Participate",
+    _reward : "Reward",
+    _schedule: "Schedule",
+    _votingMechanisam : "Voting Mechanisam",
+    _evaluationPanel : "Evaluation Panel",
+    _loadMore : "Load More",
+    _rank : "Rank",
+    _totalScore  : "Total Score",
+    _votes : "Votes"
+
+    
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -336,5 +363,30 @@ export const USlabel = {
     _upcoming: "Upcoming",
     _closed: "Closed",
     _voting: "Voting",
+
+     // ChallengeDetails screen message
+
+     _challengesDetail : "Challenge Details",
+     _openButtonTitle : "OPEN",
+     _follow : "Follow",
+     _termsAndCondition : "*Terms & conditions applied",
+     _ideaParticipate : "Ideas Participated",
+     _participate : "Participants",
+     _expertsEngaged : "Experts Engaged",
+     _announcement : "Announcement",
+     _openForSubmissiom : "Open for Submission",
+     _closeForSubmission : "Close for Submission",
+     _publicEvaluation : "Public Evaluation",
+     _awardAnnouncement : "Award Announcement",
+     _objective :"Objective",
+     _whoParticipate :"Who Should Participate",
+     _reward : "Reward",
+     _schedule: "Schedule",
+     _votingMechanisam : "Voting Mechanisam",
+     _evaluationPanel : "Evaluation Panel",
+     _loadMore : "Load More",
+     _rank : "Rank",
+     _totalScore  : "Total Score",
+     _votes : "Votes"
 
 }

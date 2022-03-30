@@ -52,7 +52,7 @@ const Category = (props) => {
     const dispatch = useDispatch()
 
     const navigateToHomeScreen = () => {
-        props.navigation.navigate("HomeScreen")
+        props.navigation.navigate("ChallengeDetail")
       }
 
     const onPressCategory = (index) => {
