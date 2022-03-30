@@ -14,12 +14,14 @@ import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
+import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
+
 const Stack = createStackNavigator();
 
 export default function index() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"ChallengesListScreen"}>
+            <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"Category"}>
                 <Stack.Screen name="SplashScreen" component={SplashScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 
@@ -35,6 +37,8 @@ export default function index() {
                 <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
 
                 <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
+                <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
+            
             </Stack.Navigator>
         </NavigationContainer>
     );

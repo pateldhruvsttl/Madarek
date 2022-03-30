@@ -24,7 +24,7 @@ import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'
 import UserCategory from '../screen/category/UserCategory';
 import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
-
+import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 
 
 const Stack = createStackNavigator();
@@ -50,7 +50,9 @@ function ScreenStack() {
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
+            
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
+            <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
 
 
         </Stack.Navigator>

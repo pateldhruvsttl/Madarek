@@ -4,8 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
-import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
-import IcnUnSelectedHeard from "../../assets/svg/IcnUnSelectedHeard"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
@@ -18,7 +16,9 @@ import IcnRewordLight from "../../assets/svg/IcnRewordLight"
 import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
 import LISTSTYLE from "./ChallengeListImageStyle";
-
+import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
+import IcnSelectedHeartWithRound from "../../assets/svg/IcnSelectedHeartWithRound"
+import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWithRound"
 
 const SubIdeasListWithImage = (props) => {
 
@@ -36,9 +36,9 @@ const SubIdeasListWithImage = (props) => {
 
                 {
                     item.isLike ?
-                        <IcnSelectedHeart style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        <IcnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                         :
-                        <IcnUnSelectedHeard style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        <IcnUnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                 }
 
                 <View style={LISTSTYLE.rewordView}>
@@ -83,7 +83,7 @@ const SubIdeasListWithImage = (props) => {
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={LISTSTYLE.title}>{item.comment}</Text>
                     </View>
-                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end'}}>
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                     </TouchableOpacity>
                 </View>
