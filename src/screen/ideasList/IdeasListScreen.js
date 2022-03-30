@@ -12,11 +12,11 @@ import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
 const Tab = createMaterialTopTabNavigator();
 
-const IdeasListScreen = (porps) => {
+const IdeasListScreen = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
@@ -26,10 +26,10 @@ const IdeasListScreen = (porps) => {
                         tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
                     }}
                     >
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas", data: sliderdata }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

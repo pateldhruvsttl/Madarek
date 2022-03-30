@@ -101,7 +101,8 @@ const Category = (props) => {
     }
 
     const onSkip = () => {
-        dispatch(updateTheme(blueTheme))
+        // dispatch(updateTheme(blueTheme))
+        props.navigation.navigate('HomeScreen')
     }
     
     return (

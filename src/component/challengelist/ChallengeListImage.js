@@ -25,7 +25,7 @@ const SubIdeasListWithImage = (props) => {
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
-        <View style={LISTSTYLE.renderMainView}>
+        <TouchableOpacity onPress={()=>props.navigateDetail()} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
                 <Image
@@ -89,7 +89,7 @@ const SubIdeasListWithImage = (props) => {
                 </View>
             </View>
 
-        </View>
+        </TouchableOpacity>
     );
 
     return (

@@ -6,7 +6,7 @@ import Style from "./ViewMoreChallengeStyle";
 function ViewMoreChallenges(props) {
     return (
         <View style={Style.MainView}>
-            <ChallengeListImage data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true} />
+            <ChallengeListImage navigateDetail={()=>props.navigateDetail()} data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true} />
         </View>
     )
 }
