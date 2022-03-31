@@ -164,8 +164,12 @@ export const Label = {
     LoadMore : isRTL ? ARlabel._loadMore : USlabel._loadMore,
     Rank : isRTL ? ARlabel._rank : USlabel._rank,
     TotalScore : isRTL ? ARlabel._totalScore : USlabel._totalScore,
-    Votes : isRTL ? ARlabel._votes : USlabel._votes
-   
-}
+    Votes : isRTL ? ARlabel._votes : USlabel._votes,
+    ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
+    ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
+    SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
+    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea
+
+} 
 
 

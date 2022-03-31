@@ -217,8 +217,13 @@ export const ARlabel = {
     _loadMore : "Load More",
     _rank : "Rank",
     _totalScore  : "Total Score",
-    _votes : "Votes"
+    _votes : "Votes",
+    _participateNow : "Participate Now",
 
+     //modal message
+    _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
+    _selectArea : "Select Idea",
+    _submitYourIdea : "Submit Your Idea"
     
 
 }
@@ -411,6 +416,12 @@ export const USlabel = {
      _loadMore : "Load More",
      _rank : "Rank",
      _totalScore  : "Total Score",
-     _votes : "Votes"
+     _votes : "Votes",
+     _participateNow : "Participate Now",
+
+     //modal message
+     _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
+     _selectArea : "Select Idea",
+     _submitYourIdea : "Submit Your Idea"
 
 }
