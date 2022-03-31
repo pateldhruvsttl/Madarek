@@ -17,6 +17,7 @@ import SettingIcn from '../../assets/svg/drawerIcon/SettingIcn'
 import drawerStyles from './DrawerStyles'
 import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
 import { Label } from '../../utils/StringUtil'
+import MyAccount from '../../assets/svg/drawerIcon/MyAccount'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -182,13 +183,18 @@ const MyDrawerScreen = (props) => {
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==6? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(7)} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(7,'Partner')} style={drawerStyles.menuButton}>
         <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Partners}</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity onPress={()=>onselectButtonMenu(8,'Partner')} style={drawerStyles.menuButton}>
+        <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.MyAccount}</Text>
+      </TouchableOpacity>
+
       <View style={drawerStyles.bottomView}>
-        <TouchableOpacity style={drawerStyles.settingButton}>
+        <TouchableOpacity onPress={()=>onselectButtonMenu(9,'Setting')} style={drawerStyles.settingButton}>
           <SettingIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Settings}</Text>
         </TouchableOpacity>
