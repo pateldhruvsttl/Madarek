@@ -21,7 +21,7 @@ function SubmitIdeaStep1(props) {
         var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
 
         if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
-            Alert.alert("please fill all mandatory fields");
+            Alert.alert(Label.FillMandatoryFieldsValidation);
         else     
             props.onNext(obj);
     }
@@ -29,7 +29,7 @@ function SubmitIdeaStep1(props) {
         <View style={Style.MainView}>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Idea Title"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.IdeaTitle}<Text style={Style.txtStar}>*</Text></Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -41,17 +41,17 @@ function SubmitIdeaStep1(props) {
             </View>
 
             <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{"Sectors"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.Sectors}<Text style={Style.txtStar}>*</Text></Text>
                 <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setSectors(txt)} />
             </View>
 
             <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{"Category"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.Category}<Text style={Style.txtStar}>*</Text></Text>
                 <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setCategory(txt)} />
             </View>
 
             <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{"Sub Category"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.SubCategory}<Text style={Style.txtStar}>*</Text></Text>
                 <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setSubCategory(txt)} />
             </View>
 

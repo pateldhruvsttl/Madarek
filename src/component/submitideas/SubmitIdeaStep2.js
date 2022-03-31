@@ -27,7 +27,7 @@ function SubmitIdeaStep2(props) {
         if(email === "" || !AppUtil.validate(email))
             Alert.alert(Label.enteremail)
         else if(firstName === "" || lastName === "" || gender === 5 || email === "")
-            Alert.alert("please fill all mandatory fields");
+            Alert.alert(Label.FillMandatoryFieldsValidation);
         else     
             props.onNext(obj);
 
@@ -37,7 +37,7 @@ function SubmitIdeaStep2(props) {
         <View style={Style.MainView}>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"First Name"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.firstname}<Text style={Style.txtStar}>*</Text></Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -49,7 +49,7 @@ function SubmitIdeaStep2(props) {
             </View>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Last Name"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.lastname}<Text style={Style.txtStar}>*</Text></Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -61,7 +61,7 @@ function SubmitIdeaStep2(props) {
             </View>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Gender"}<Text style={Style.txtStar}>*</Text></Text>
+                <Text style={Style.txtTitle}>{Label.Gender}<Text style={Style.txtStar}>*</Text></Text>
 
                 <View style={Style.selectGender}>
 
@@ -74,7 +74,7 @@ function SubmitIdeaStep2(props) {
                                 :
                                 <View style={Style.grayBorderView} />
                         }
-                        <Text style={Style.txtOptions}>{"Male"}</Text>
+                        <Text style={Style.txtOptions}>{Label.Male}</Text>
 
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setSelectedIndex(1)} style={Style.tcOptions}>
@@ -86,7 +86,7 @@ function SubmitIdeaStep2(props) {
                                 :
                                 <View style={Style.grayBorderView} />
                         }
-                        <Text style={Style.txtOptions}>{"Female"}</Text>
+                        <Text style={Style.txtOptions}>{Label.Female}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setSelectedIndex(2)} style={Style.tcOptions}>
                         {
@@ -97,7 +97,7 @@ function SubmitIdeaStep2(props) {
                                 :
                                 <View style={Style.grayBorderView} />
                         }
-                        <Text style={Style.txtOptions}>{"Other"}</Text>
+                        <Text style={Style.txtOptions}>{Label.Other}</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -105,8 +105,7 @@ function SubmitIdeaStep2(props) {
             </View>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Email Id"}<Text style={Style.txtStar}>*</Text></Text>
-
+                <Text style={Style.txtTitle}>{Label.emailID}<Text style={Style.txtStar}>*</Text></Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}

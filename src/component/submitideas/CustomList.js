@@ -17,7 +17,7 @@ function CustomList(props) {
         <Menu>
             <MenuTrigger>
                 <View style={props?.isType === "Submit" ? Style.selectMenuTitle2 : Style.selectMenuTitle1}>
-                    <Text style={props?.isType === "Submit" ? Style.txtIdeasTitle : Style.txtInputTitle}>{title}</Text>
+                    <Text style={props?.isType === "Submit" ? Style.txtIdeasTitle : Style.txtDrowerTitle}>{title}</Text>
                     <IcnNext style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </View>
             </MenuTrigger>

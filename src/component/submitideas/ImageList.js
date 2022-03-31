@@ -14,14 +14,11 @@ function ImageList(props) {
             let options = {
                 title: 'Select Image',
                 customButtons: [
-                    {
-                        name: 'customOptionKey',
-                        title: 'Choose Photo from Custom Option'
-                    },
+                    { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
                 ],
                 storageOptions: {
                     skipBackup: true,
-                    path: 'downloads',
+                    path: 'images',
                 },
             };
 

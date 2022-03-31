@@ -20,13 +20,20 @@ const HomeStyle = StyleSheet.create({
     txtPlus: { fontSize: AppUtil.getHP(4), color: GetAppColor.textColor, fontFamily: FONTS.robotLight },
 
     txtInputTitle: {
+        height:AppUtil.getHP(5.5),
         fontSize: AppUtil.getHP(3), marginVertical: AppUtil.getHP(1), fontFamily: FONTS.robotLight,
-        color: GetAppColor.pincolor, borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor
+        color: GetAppColor.pincolor, borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor,
+    },
+    
+    txtDrowerTitle: {
+        fontSize: AppUtil.getHP(3), marginVertical: AppUtil.getHP(1), fontFamily: FONTS.robotLight,
+        color: GetAppColor.pincolor
     },
     
     txtIdeasTitle: {
+        height:AppUtil.getHP(5.5),
         fontSize: AppUtil.getHP(2.2), marginTop: AppUtil.getHP(0.5), fontFamily: FONTS.robotRegular,
-        color: GetAppColor.pincolor, paddingEnd:AppUtil.getWP(5)
+        color: GetAppColor.pincolor, paddingEnd:AppUtil.getWP(5),
     },
 
     selectMenuTitle1: {
@@ -68,7 +75,7 @@ const HomeStyle = StyleSheet.create({
     txtOptions: { fontSize: AppUtil.getHP(2.5), marginStart: AppUtil.getWP(1), color: GetAppColor.pincolor, fontFamily: FONTS.robotLight },
 
     txtInputMobile: {
-        width: '70%', height: AppUtil.getHP(5),
+        width: '70%', height: AppUtil.getHP(5.5),
         fontSize: AppUtil.getHP(3), marginHorizontal: AppUtil.getHP(1), fontFamily: FONTS.robotLight,
         color: GetAppColor.pincolor, borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor
     },
@@ -76,6 +83,7 @@ const HomeStyle = StyleSheet.create({
         width: '70%', height: AppUtil.getHP(5),fontSize: AppUtil.getHP(2.2), marginHorizontal: AppUtil.getHP(1), fontFamily: FONTS.robotRegular, color: GetAppColor.pincolor
     },
 
+    mobileInnerView:{ flexDirection: 'row' },
     numberAreaOne1: {
         width: '25%',
         borderBottomWidth: 1,

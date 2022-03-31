@@ -17,7 +17,7 @@ function SubmitIdeaStep3(props) {
 
     const [countryCode, setCountryCode] = useState('IN');
     const [mobileNumber, setMobileNumber] = useState("");
-    const [nationality, setNationality] = useState("Select");
+    const [nationality, setNationality] = useState("Selected");
     const [message, setMessage] = useState('');
     const [imageList, setImageList] = useState([{ assets: "selected" }]);
     
@@ -34,10 +34,8 @@ function SubmitIdeaStep3(props) {
         <View style={Style.MainView}>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Alternate Mobile No."}</Text>
-
-                <View style={{ flexDirection: 'row' }}>
-
+                <Text style={Style.txtTitle}>{Label.AlternateMobileNo}</Text>
+                <View style={Style.mobileInnerView}>
                     <View style={Style.numberAreaOne1}>
                         <CountryPicker
                             {...{ countryCode, onSelect, withCallingCode: true, withFlagButton: false, withCallingCodeButton: true, }}
@@ -62,15 +60,13 @@ function SubmitIdeaStep3(props) {
                 </View>
             </View>
 
-
             <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{"Nationality"}</Text>
-                <CustomList item={sectorsList} onSelect={(txt) => setNationality(txt)} />
+                <Text style={Style.txtTitle}>{Label.Nationality}</Text>
+                <CustomList currentItem={nationality} item={sectorsList} onSelect={(txt) => setNationality(txt)} />
             </View>
 
-
             <View style={Style.innerSecondView1}>
-                <Text style={Style.txtTitle}>{"Message"}</Text>
+                <Text style={Style.txtTitle}>{Label.Message}</Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -82,7 +78,7 @@ function SubmitIdeaStep3(props) {
             </View>
 
             <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{"Uploaded Images"}</Text>
+                <Text style={Style.txtTitle}>{Label.UploadedImages}</Text>
                 <ImageList onUpdateList={(list)=> setImageList(list)}/>
             </View>
 

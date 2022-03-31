@@ -170,7 +170,19 @@ export const Label = {
     ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
     ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
     SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
-    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea
+    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea,
+    FillMandatoryFieldsValidation : isRTL ? ARlabel._fillMandatoryFieldsValidation : USlabel._fillMandatoryFieldsValidation,
+    IdeaTitle : isRTL ? ARlabel._ideaTitle : USlabel._ideaTitle,
+    Sectors : isRTL ? ARlabel._sectors : USlabel._sectors,
+    Category : isRTL ? ARlabel._category : USlabel._category,
+    SubCategory : isRTL ? ARlabel._subCategory : USlabel._subCategory,
+    Gender : isRTL ? ARlabel._gender : USlabel._gender,
+    Male : isRTL ? ARlabel._male : USlabel._male,
+    Female : isRTL ? ARlabel._female : USlabel._female,
+    Other : isRTL ? ARlabel._other : USlabel._other,
+    AlternateMobileNo : isRTL ? ARlabel._alternateMobileNo : USlabel._alternateMobileNo,
+    Nationality : isRTL ? ARlabel._nationality : USlabel._nationality,
+    UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
 
 } 
 

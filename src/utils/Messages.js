@@ -224,8 +224,18 @@ export const ARlabel = {
      //modal message
     _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
     _selectArea : "Select Idea",
-    _submitYourIdea : "Submit Your Idea"
+    _submitYourIdea : "Submit Your Idea",
     
+     //SubmitIDeas Message
+     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
+     _ideaTitle:"Idea Title",
+     _sectors:"Sectors",
+     _category:"Category",
+     _subCategory:"Sub Category",
+     _gender:"Gender",
+     _male:"Male",
+     _female:"Female",
+     _other:"Other",
 
 }
 export const USlabel = {
@@ -434,6 +444,20 @@ export const USlabel = {
      //modal message
      _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
      _selectArea : "Select Idea",
-     _submitYourIdea : "Submit Your Idea"
+     _submitYourIdea : "Submit Your Idea",
+
+     //SubmitIDeas Message
+     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
+     _ideaTitle:"Idea Title",
+     _sectors:"Sectors",
+     _category:"Category",
+     _subCategory:"Sub Category",
+     _gender:"Gender",
+     _male:"Male",
+     _female:"Female",
+     _other:"Other",
+     _alternateMobileNo:"Alternate Mobile No.",
+     _nationality:"Nationality",
+     _uploadedImages:"Uploaded Images",
 
 }

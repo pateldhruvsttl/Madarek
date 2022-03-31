@@ -40,7 +40,7 @@ function SubmitIdeaStep4(props) {
         <View style={Style.MainView}>
 
             <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{"Idea Title"}</Text>
+                <Text style={Style.txtTitle}>{Label.IdeaTitle}</Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -52,23 +52,23 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <View style={Style.innerView2}>
-                <Text style={Style.txtTitle}>{"Sectors"}</Text>
+                <Text style={Style.txtTitle}>{Label.Sectors}</Text>
                 <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setSectors(txt)} isType={"Submit"} />
             </View>
 
             <View style={Style.innerView2}>
-                <Text style={Style.txtTitle}>{"Category"}</Text>
+                <Text style={Style.txtTitle}>{Label.Category}</Text>
                 <CustomList currentItem={category} item={sectorsList} onSelect={(txt) => setCategory(txt)} isType={"Submit"} />
             </View>
 
             <View style={Style.innerView2}>
-                <Text style={Style.txtTitle}>{"Sub Category"}</Text>
+                <Text style={Style.txtTitle}>{Label.SubCategory}</Text>
                 <CustomList currentItem={subCategory} item={sectorsList} onSelect={(txt) => setSubCategory(txt)} isType={"Submit"} />
             </View>
 
             <View style={Style.txtNameView}>
                 <View style={Style.txtName}>
-                    <Text style={Style.txtTitle}>{"First Name"}</Text>
+                    <Text style={Style.txtTitle}>{Label.firstname}</Text>
                     <TextInput
                         placeholderTextColor={GetAppColor.grayBorder}
                         numberOfLines={2}
@@ -79,7 +79,7 @@ function SubmitIdeaStep4(props) {
                     />
                 </View>
                 <View style={Style.txtName}>
-                    <Text style={Style.txtTitle}>{"Last Name"}</Text>
+                    <Text style={Style.txtTitle}>{Label.lastname}</Text>
                     <TextInput
                         placeholderTextColor={GetAppColor.grayBorder}
                         numberOfLines={2}
@@ -93,7 +93,7 @@ function SubmitIdeaStep4(props) {
 
             <View style={Style.txtNameView}>
                 <View style={Style.txtName}>
-                    <Text style={Style.txtTitle}>{"Gender"}</Text>
+                    <Text style={Style.txtTitle}>{Label.Gender}</Text>
                     <TextInput
                         placeholderTextColor={GetAppColor.grayBorder}
                         numberOfLines={2}
@@ -104,7 +104,7 @@ function SubmitIdeaStep4(props) {
                     />
                 </View>
                 <View style={Style.txtName}>
-                    <Text style={Style.txtTitle}>{"Nationality"}</Text>
+                    <Text style={Style.txtTitle}>{Label.Nationality}</Text>
                     <TextInput
                         placeholderTextColor={GetAppColor.grayBorder}
                         numberOfLines={2}
@@ -117,7 +117,7 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <View style={Style.innerSecondView2}>
-                <Text style={Style.txtTitle}>{"Email Id"}</Text>
+                <Text style={Style.txtTitle}>{Label.emailID}</Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -129,7 +129,7 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <View style={Style.innerSecondView2}>
-                <Text style={Style.txtTitle}>{"Alternate Mobile No."}</Text>
+                <Text style={Style.txtTitle}>{Label.AlternateMobileNo}</Text>
                 <View style={{ flexDirection: 'row' }}>
 
                     <View style={Style.numberAreaOne2}>
@@ -157,7 +157,7 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <View style={Style.innerSecondView2}>
-                <Text style={Style.txtTitle}>{"Message"}</Text>
+                <Text style={Style.txtTitle}>{Label.Message}</Text>
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     numberOfLines={2}
@@ -169,7 +169,7 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <View style={Style.innerView2}>
-                <Text style={Style.txtTitle}>{"Uploaded Images"}</Text>
+                <Text style={Style.txtTitle}>{Label.UploadedImages}</Text>
                 <ImageList onUpdateList={(list)=> setImageList(list)} currentList={imageList}/>
             </View>
 

@@ -60,7 +60,7 @@ const Style = StyleSheet.create({
 
     btnReject:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.borderRed, borderRadius:AppUtil.getHP(0.5), alignItems:'center',
      paddingVertical:AppUtil.getHP(0.2)},
-    txtbtnReject:{fontSize: AppUtil.getHP(1.4), color: GetAppColor.borderRed, fontFamily:FONTS.robotRegular},
+    txtbtnReject:{fontSize: AppUtil.getHP(1.8), color: GetAppColor.borderRed, fontFamily:FONTS.robotRegular},
     
     btnAccept:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.dotGreen, borderRadius:AppUtil.getHP(0.5), alignItems:'center', paddingVertical:AppUtil.getHP(0.2)},
     txtbtnAccept:{fontSize: AppUtil.getHP(1.8), color: GetAppColor.dotGreen, fontFamily:FONTS.robotRegular},
