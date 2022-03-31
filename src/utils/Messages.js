@@ -223,7 +223,12 @@ export const ARlabel = {
      //modal message
     _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
     _selectArea : "Select Idea",
-    _submitYourIdea : "Submit Your Idea"
+    _submitYourIdea : "Submit Your Idea",
+
+    _selectLanguage : "Select Language",
+    _english : "English",
+    _arabic : "Arabic"
+
     
 
 }
@@ -422,6 +427,10 @@ export const USlabel = {
      //modal message
      _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
      _selectArea : "Select Idea",
-     _submitYourIdea : "Submit Your Idea"
+     _submitYourIdea : "Submit Your Idea",
+
+     _selectLanguage : "Select Language",
+     _english : "English",
+     _arabic : "Arabic"
 
 }

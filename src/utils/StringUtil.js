@@ -168,7 +168,11 @@ export const Label = {
     ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
     ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
     SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
-    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea
+    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea,
+
+    SelectLanguage : isRTL ? ARlabel._selectLanguage : USlabel._selectLanguage,
+    English : isRTL ? ARlabel._english : USlabel._english,
+    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic
 
 } 
 
