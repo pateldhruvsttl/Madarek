@@ -62,7 +62,7 @@ const HomeScreen = (props) => {
             return (
                 <View style={Style.bottomBarView}>
                     <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
-                    <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
+                    <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={()=> props.navigation.navigate("SubmitIdeaScreen")}>
                         <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
                     </TouchableOpacity>
                 </View>

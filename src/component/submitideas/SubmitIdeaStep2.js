@@ -1,9 +1,10 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import React, { memo, useState } from 'react'
 import { Label } from '../../utils/StringUtil'
 import Style from './IdeaStepStyle'
 import { useSelector } from 'react-redux'
 import { GetAppColor } from '../../utils/Colors'
+import { AppUtil } from '../../utils/AppUtil'
 
 
 function SubmitIdeaStep2(props) {
@@ -22,7 +23,15 @@ function SubmitIdeaStep2(props) {
         else if(selectedIndex == 2) gender = "Other";    
 
         var obj = { firstName: firstName, lastName: lastName, gender: gender, email: email }
-        props.onNext(obj);
+
+        if(email === "" || !AppUtil.validate(email))
+            Alert.alert(Label.enteremail)
+        else if(firstName === "" || lastName === "" || gender === 5 || email === "")
+            Alert.alert("please fill all mandatory fields");
+        else     
+            props.onNext(obj);
+
+        
     }
     return (
         <View style={Style.MainView}>

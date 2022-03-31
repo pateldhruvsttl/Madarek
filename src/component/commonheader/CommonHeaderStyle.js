@@ -9,7 +9,7 @@ const CommonHeaderStyle = StyleSheet.create({
     MainView: { width: '100%', height:hederHeight,  flexDirection:'row', alignItems:'center', justifyContent:'space-between', backgroundColor:GetAppColor.headerLightYellow },
 
     LeftIcnView:{alignItems:'center', marginStart:AppUtil.getWP(3)},
-    centerIcnView:{alignItems:'center', position:'absolute', left:0, right:0},
+    centerIcnView:{alignItems:'center', },
     rightSingleIcnView:{alignItems:'flex-end', marginEnd:AppUtil.getWP(3)},
     rightIcnView:{flexDirection:'row', justifyContent:'space-around', marginEnd:AppUtil.getWP(3)},
 

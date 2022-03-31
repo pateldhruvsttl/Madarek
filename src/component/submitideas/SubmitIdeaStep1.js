@@ -1,5 +1,6 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import React, { memo, useState } from 'react'
+import { useSelector } from 'react-redux'
 import CustomList from './CustomList'
 
 import { Label } from '../../utils/StringUtil'
@@ -9,6 +10,8 @@ import { GetAppColor } from '../../utils/Colors'
 
 function SubmitIdeaStep1(props) {
 
+    const { themeColor } = useSelector((state) => state);
+    
     const [title, setTitle] = useState("");
     const [sectors, setSectors] = useState("Selected");
     const [category, setCategory] = useState("Selected");
@@ -16,7 +19,11 @@ function SubmitIdeaStep1(props) {
 
     const onCheckField = () => {
         var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
-        props.onNext(obj);
+
+        if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
+            Alert.alert("please fill all mandatory fields");
+        else     
+            props.onNext(obj);
     }
     return (
         <View style={Style.MainView}>

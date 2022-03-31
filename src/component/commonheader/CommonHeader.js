@@ -76,6 +76,7 @@ const CommonHeader = (props) => {
     }
     else if (props.isType === "IdeasListScreen") {
     
+    
         return (
             <>
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
@@ -329,7 +330,7 @@ const CommonHeader = (props) => {
                 <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                 <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <TouchableOpacity onPress={()=>props.onMenuClick()} style={Style.LeftIcnView}>
+                    <TouchableOpacity onPress={()=>navigation.goBack()} style={Style.LeftIcnView}>
                         <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 

@@ -10,7 +10,7 @@ import { GetAppColor } from "../../utils/Colors";
 import { Loger } from "../../utils/Loger";
 import Style from "./SubmitIdeaScreenStyle";
 
-function SubmitIdeaScreen() {
+function SubmitIdeaScreen(props) {
   const [selectIndex, setSelectIndex] = useState(0);
 
   const [step1Obj, setStep1Obj] = useState(null);
@@ -23,7 +23,7 @@ function SubmitIdeaScreen() {
 
   return (
     <SafeAreaView style={Style.MainView}>
-      <CommonHeader isType={"SubmitIdeaScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
+      <CommonHeader isType={"SubmitIdeaScreen"}/>
 
       <ScrollView>
         <View style={Style.containerView}>
