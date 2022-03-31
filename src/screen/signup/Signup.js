@@ -54,8 +54,9 @@ const Signup = (props) => {
         } else if (password !== reTypePassword) {
             Alert.alert(Label.enterSamePassword);
         } else {
-        }
         navigateToSignUpVerify();
+
+        }
     }
 
     const onSelect = (country) => {

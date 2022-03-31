@@ -40,7 +40,7 @@ function ViewMoreIdeas(props) {
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
+                {selectFilter == 0 && <SubIdeasListWithImage navigateDetail={()=>props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
                 {selectFilter == 1 && <SubIdeasList data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
                 {selectFilter == 2 && <SubIdeasListGraph data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
             </View>

@@ -10,42 +10,66 @@ import { buttonBorderRadius } from '../../utils/Constant';
 const IdeaContentStyle = StyleSheet.create({
     academyTitle: {
         fontFamily: FONTS.robotMedium,
-        color: GetAppColor.acedemyRedtitle,
         fontSize: AppUtil.getHP(2.3)
     },
     headerAcademyContainer: {
         width: "100%",
-        marginVertical: AppUtil.getHP(3),
-        // marginHorizontal:AppUtil.getWP(5),
-        paddingHorizontal: AppUtil.getWP(5),
+        paddingVertical: AppUtil.getHP(2),
     },
     headerAcademyTitle: {
-        width: '100%'
+        width: '100%',
+        paddingHorizontal: AppUtil.getWP(5),
     },
-    dateContent: {
+    dateContentChallenge: {
+        marginTop: AppUtil.getHP(0.5),
+        paddingHorizontal: AppUtil.getWP(5),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    openBtn: {
+        backgroundColor: GetAppColor.buttonGreenColor,
+        borderRadius: AppUtil.getHP(3),
+        paddingHorizontal: AppUtil.getHP(1.3),
+        paddingVertical:AppUtil.getHP(0.2),
+        alignItems:'center',justifyContent:'center'
+    },
+    openBtnTitle: {
+        color: GetAppColor.white,
+        fontFamily: FONTS.robotMedium,
+        fontSize: AppUtil.getHP(1.6),
+    },
+    dateContentIdea: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: AppUtil.getHP(2)
+        marginTop: AppUtil.getHP(0.5),
+        paddingHorizontal: AppUtil.getWP(5),
+    },
+    dateSubContain: {
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     contentTitle: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
         marginStart: AppUtil.getWP(1.5),
         color: GetAppColor.textColor,
-        textAlign:'center'
+        textAlign: 'center'
     },
     contentTitleSecond: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
-        color: GetAppColor.textColor
+        color: GetAppColor.textColor,
+
     },
     profileArea: {
         marginStart: AppUtil.getWP(5),
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems: 'center'
     },
     sectorCategoryArea: {
-        marginTop: AppUtil.getHP(2)
+        marginTop: AppUtil.getHP(0.5),
+        paddingHorizontal: AppUtil.getWP(5),
     },
     winningIcn: { marginEnd: AppUtil.getWP(1.5) },
     spacetoLeft: {
@@ -60,31 +84,58 @@ const IdeaContentStyle = StyleSheet.create({
     },
     performanceContainer: {
         flexDirection: 'row',
+        paddingHorizontal: AppUtil.getWP(5),
         marginTop: AppUtil.getHP(2), width: '100%',
         justifyContent: 'space-between'
 
     },
     secondInnerCalView: {
         flexDirection: 'row', marginEnd: AppUtil.getHP(1.3), justifyContent: 'flex-end',
-        alignItems:'center'
+        alignItems: 'center'
+    },
+    secondInnerCalViewOne: {
+        flexDirection: 'row', justifyContent: 'flex-end',
+        alignItems: 'center'
     },
     btnArea: {
+        paddingHorizontal: AppUtil.getWP(4),
         width: '100%',
         marginTop: AppUtil.getHP(2),
         flexDirection: 'row'
     },
+    rightSide: {
+        flexDirection: 'row', right: 0
+    },
+    leftSide: { flex: 1 },
     votingBtn: {
         height: buttonHeight,
-        width: AppUtil.getWP(45),
+        // width: AppUtil.getWP(45),
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: buttonBorderRadius,
-        marginEnd: AppUtil.getHP(1)
+        // marginEnd: AppUtil.getHP(1),
+
+    },
+    followBtn : {
+            height: buttonHeight,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: buttonBorderRadius,
+            flexDirection:'row',
+            borderColor:GetAppColor.grayBorder,
+            borderWidth:1,
+            backgroundColor:GetAppColor.white
     },
     voteNowBtnTitle: {
-        // color:GetAppColor.white,
         fontSize: buttonFontSize,
         fontFamily: FONTS.robotMedium
+    },
+    followBtnTitle : {
+        color:GetAppColor.grayBorder,
+        fontSize : buttonFontSize,
+        fontFamily: FONTS.robotMedium,
+        paddingStart:AppUtil.getWP(3)
+        
     },
     likeBtn: {
         height: buttonHeight,
@@ -95,8 +146,9 @@ const IdeaContentStyle = StyleSheet.create({
         width: AppUtil.getWP(12),
         borderColor: GetAppColor.grayBorder,
         backgroundColor: GetAppColor.white,
-        marginEnd: AppUtil.getHP(1)
-    }
+        marginStart: AppUtil.getHP(1),
+        // right:5
+    },
 })
 
 export default IdeaContentStyle;

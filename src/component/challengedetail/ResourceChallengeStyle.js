@@ -6,7 +6,7 @@ import { buttonBorderRadius, buttonHeight } from '../../utils/Constant';
 import { buttonFontSize } from '../../utils/Constant';
 
 
-const IdeaContentStyle = StyleSheet.create({
+const Style = StyleSheet.create({
     heading: {
         color: GetAppColor.pincolor,
         fontFamily: FONTS.robotBold,
@@ -18,48 +18,57 @@ const IdeaContentStyle = StyleSheet.create({
         width: '100%',
         paddingHorizontal: AppUtil.getWP(5),
         marginBottom: AppUtil.getHP(1),
-        backgroundColor : GetAppColor.white,
-        marginTop : AppUtil.getHP(1),
-        paddingVertical:AppUtil.getHP(2)
+        backgroundColor: GetAppColor.white,
+        marginTop: AppUtil.getHP(1),
+        paddingTop:AppUtil.getHP(2),
+        paddingBottom:AppUtil.getHP(3),
     },
     resourceContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         backgroundColor: GetAppColor.white,
         alignItems: 'center',
-        height: AppUtil.getHP(7),
-        // paddingHorizontal: AppUtil.getWP(3),
+        height: AppUtil.getHP(5),
+        borderRadius:buttonBorderRadius,
         marginBottom: AppUtil.getHP(2),
         shadowColor: "#000",
-        borderRadius:buttonBorderRadius,
         shadowOffset: {
             width: 0,
             height: 1,
         },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
         
-        elevation: 3,
+        elevation: 2,
     },
-    resourceSubTitle : 
-    { flex: 1,paddingStart:AppUtil.getWP(3) },
+    resourceSubTitle:
+        { flex: 1, paddingStart: AppUtil.getWP(3) },
 
-    resourceChallenge : 
-    { flex: 1,paddingStart:AppUtil.getWP(3),flexDirection:'row' },
+    resourceChallenge:
+        { flex: 1, paddingStart: AppUtil.getWP(3), flexDirection: 'row',alignItems:'center' },
 
-    downloadIcon : {
-        right:AppUtil.getWP(3)
+    downloadIcon: {
+        right: AppUtil.getWP(5)
     },
+    img: {
+        width: AppUtil.getWP(30),
+        height: AppUtil.getHP(13),
+        borderRadius: AppUtil.getHP(1),
+        marginEnd: AppUtil.getHP(1.2)
+    },
+    imgView: {
+        flexDirection: 'row',
 
+    },
     resourceTitle: {
         fontSize: AppUtil.getHP(1.7),
         color: GetAppColor.pincolor,
         fontFamily: FONTS.robotRegular
     },
-    icnDocument :{
-        marginEnd:AppUtil.getWP(1.5)
+    icnDocument: {
+        marginEnd: AppUtil.getWP(1.5)
     }
 })
 
 
-export default IdeaContentStyle
+export default Style

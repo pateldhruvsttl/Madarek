@@ -1,7 +1,10 @@
 import * as React from "react"
 import Svg, { G, Path } from "react-native-svg"
+import { useSelector } from "react-redux"
 
 function SvgComponent(props) {
+  const { themeColor } = useSelector((state) => state)
+  const fillColor = props.isType == 'ChallengeDetail' ? themeColor.buttonColor : "#f34d2d" 
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,53 +13,53 @@ function SvgComponent(props) {
       viewBox="0 0 31.691 33.615"
       {...props}
     >
-      <G data-name="Group 3451" fill="#f34d2d">
+      <G data-name="Group 3451" fill={fillColor}>
         <Path
           data-name="Path 38300"
           d="M-9643.957 1559.309a.731.731 0 01.778-.463c.771.009 1.543 0 2.314 0 .429 0 .672.206.708.563a.584.584 0 01-.56.7c-.889.024-1.78.015-2.669.005a.632.632 0 01-.571-.448z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38301"
           d="M-9613.516 1559.666a.734.734 0 01-.779.463c-.762-.009-1.523 0-2.285 0a.683.683 0 01-.645-.286.622.622 0 01.468-.974c.889-.032 1.779-.015 2.669-.007a.635.635 0 01.571.449z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38302"
           d="M-9628.558 1544.267a.7.7 0 01.462.718v2.374a.65.65 0 01-.311.631.62.62 0 01-.948-.483c-.032-.889-.015-1.78-.007-2.669a.631.631 0 01.449-.571z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38303"
           d="M-9637.418 1551.634a1.166 1.166 0 01-.362-.189q-.895-.928-1.759-1.885a.607.607 0 01.193-.972.568.568 0 01.686.1q.92.9 1.823 1.823a.546.546 0 01.1.683.738.738 0 01-.681.44z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38304"
           d="M-9618.507 1570.466a3.061 3.061 0 01-.607-.355c-.541-.509-1.059-1.042-1.581-1.571a.605.605 0 01-.1-.875.586.586 0 01.889-.087 74.96 74.96 0 011.851 1.847.565.565 0 01.091.664c-.1.217-.236.369-.516.285z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38305"
           d="M-9639.053 1570.442c-.28-.046-.5-.118-.6-.377a.614.614 0 01.158-.7c.58-.58 1.156-1.164 1.742-1.737a.624.624 0 11.879.883 75.254 75.254 0 01-1.722 1.715 1.664 1.664 0 01-.457.216z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />
         <Path
           data-name="Path 38306"
           d="M-9617.898 1549.377a1.438 1.438 0 01-.206.354 95.152 95.152 0 01-1.678 1.684.8.8 0 01-.858.149.574.574 0 01-.165-.869 64.969 64.969 0 011.908-1.914.535.535 0 01.639-.066.656.656 0 01.36.662z"
-          stroke="#f34d2d"
+          stroke={fillColor}
           strokeWidth={1.25}
           transform="translate(9644.582 -1543.642)"
         />

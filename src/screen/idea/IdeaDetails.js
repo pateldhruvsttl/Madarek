@@ -17,7 +17,7 @@ import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
 
 
-const IdeaDetails = () => {
+const IdeaDetails = (props) => {
   const { themeColor } = useSelector((state) => state)
 
   const testData = [
@@ -132,7 +132,7 @@ const IdeaDetails = () => {
 
   return (
       <SafeAreaView style={{ flex: 1 }}>
-        <CommonHeader isType={"IdeaDetails"} />
+        <CommonHeader isType={"IdeaDetails"}  />
         <View style={IdeaStyle.MainView}>
           <ScrollView>
             <View style={{ height: '100%',width:'100%', backgroundColor: GetAppColor.lightGrey ,paddingBottom:AppUtil.getHP(3),

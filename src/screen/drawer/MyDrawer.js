@@ -46,7 +46,7 @@ const MyDrawerScreen = (props) => {
         {
           [Label.PopularIdeas,Label.LatestIdeas,Label.MadarekSpotlight,Label.WinningIdeas].map((item, index) => {
             return (
-              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(1, "IdeasListScreen")}>
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(2, "IdeasListScreen")}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
               </TouchableOpacity>
             )
@@ -57,6 +57,26 @@ const MyDrawerScreen = (props) => {
       </View>
     )
   }
+
+  const renderChallangeCollapseView = () => {
+    return (
+      <View>
+        {
+          [Label.Open,Label.Upcoming,Label.Closed,Label.Voting].map((item, index) => {
+            return (
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(3, "ChallengesListScreen")}>
+                <Text style={drawerStyles.menuText}>{item}</Text>
+              </TouchableOpacity>
+            )
+          })
+        }
+        <View style={drawerStyles.greyLine}></View>
+
+      </View>
+    )
+  }
+
+
   return (
     <View style={{ flex: 1 }}>
 
@@ -80,7 +100,7 @@ const MyDrawerScreen = (props) => {
           </View>
         </View>
         <View style={drawerStyles.dsButtonView}>
-          <TouchableOpacity style={drawerStyles.dashBoardButton}>
+          <TouchableOpacity onPress={()=>props.navigation.navigate('UserDashboardScreen')} style={drawerStyles.dashBoardButton}>
             <Text style={drawerStyles.dashText}>{Label.Dashboard}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
@@ -92,7 +112,7 @@ const MyDrawerScreen = (props) => {
 
       {/*  */}
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(1, "HomeScreen")} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
+      <TouchableOpacity onPress={()=>{onSelectMenu(0);onselectButtonMenu(1, "HomeScreen")}} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
         <HomeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==1? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Home}</Text>
       </TouchableOpacity>
@@ -132,7 +152,7 @@ const MyDrawerScreen = (props) => {
       </TouchableOpacity>
 
       {
-        selectedIndex == 2 ? renderCollapseView() : null
+        selectedIndex == 2 ? renderChallangeCollapseView() : null
       }
       {/*  */}
       <TouchableOpacity onPress={()=>onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>

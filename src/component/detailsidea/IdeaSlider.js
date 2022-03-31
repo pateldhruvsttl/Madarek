@@ -5,9 +5,10 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from '../../utils/StringUtil'
+import { useSelector } from "react-redux";
 
 const IdeaSlider = ({ Entries }) => {
-
+    const { themeColor } = useSelector((state) => state)
     const [isSelectIndecater, setSelectIndecater] = useState(0);
 
     const onEventSlider = () => {
@@ -23,7 +24,7 @@ const IdeaSlider = ({ Entries }) => {
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={0.7}
                     containerCustomStyle={IdeaSliderStyle.slider}
-                    contentContainerCustomStyle={IdeaSliderStyle.sliderContentContainer}
+                    // contentContainerCustomStyle={IdeaSliderStyle.sliderContentContainer}
                     loop={true}
                     loopClonesPerSide={2}
                     autoplay={true}
@@ -35,11 +36,11 @@ const IdeaSlider = ({ Entries }) => {
                     dotsLength={Entries.length}
                     activeDotIndex={isSelectIndecater}
                     containerStyle={IdeaSliderStyle.paginationContainer}
-                    dotColor={GetAppColor.borderRed}
+                    dotColor={themeColor.buttonColor}
                     dotStyle={IdeaSliderStyle.paginationDot}
                     inactiveDotColor={GetAppColor.white}
-                    inactiveDotOpacity={0.9}
-                    inactiveDotScale={1.5}
+                    inactiveDotOpacity={0.8} //0.4
+                    inactiveDotScale={0.9}  //0.6
                 />
             </View>
         );
@@ -47,7 +48,7 @@ const IdeaSlider = ({ Entries }) => {
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
         return (
-            <View style={{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2) }}>
+            <View style={{ height: "100%", width:'100%'}}>
                 <Image style={{ width: '100%', height: "100%", }}
                     resizeMode='cover' source={{ uri: item.url }} />
                  </View>

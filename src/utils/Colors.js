@@ -32,7 +32,9 @@ export const GetAppColor = {
     commonTextColor : "#aeaeae",
     btnBorderColor:'#CCCCCC',
     acedemyRedtitle : "#F34D2D",
-    profileYellowBorder : "#FFF8E9"
+    profileYellowBorder : "#FFF8E9",
+    buttonGreenColor : "#1FB779",
+    grayShadeBorder : "#AAAAAA"
 }
 
 

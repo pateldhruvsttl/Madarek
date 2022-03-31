@@ -137,8 +137,41 @@ export const Label = {
     SubmitYourIdeas: isRTL ? ARlabel._submitYourIdeas : USlabel._submitYourIdeas,
     
 
+    Challenges: isRTL ? ARlabel._challenges : USlabel._challenges,
+    Open: isRTL ? ARlabel._open : USlabel._open,
+    Upcoming: isRTL ? ARlabel._upcoming : USlabel._upcoming,
+    Closed: isRTL ? ARlabel._closed : USlabel._closed,
+    Voting: isRTL ? ARlabel._voting : USlabel._voting,
 
-}
+    ChallengeDetail : isRTL ? ARlabel._challengesDetail : USlabel._challengesDetail,
+    OpenTitle : isRTL ? ARlabel._openButtonTitle : USlabel._openButtonTitle,
+    Follow : isRTL ? ARlabel._follow : USlabel._follow,
+    TermsAndCondition : isRTL ? ARlabel._termsAndCondition : USlabel._termsAndCondition,
+    IdeaParticipate : isRTL ? ARlabel._ideaParticipate : USlabel._ideaParticipate,
+    Participate : isRTL ? ARlabel._participate : USlabel._participate,
+    ExpertsEngaged : isRTL ? ARlabel._expertsEngaged : USlabel._expertsEngaged,
 
+    Announcement : isRTL ? ARlabel._announcement : USlabel._announcement,
+    OpenForSubmissiom : isRTL ? ARlabel._openForSubmissiom : USlabel._openForSubmissiom,
+    CloseForSubmission : isRTL ? ARlabel._closeForSubmission : USlabel._closeForSubmission,
+    PublicEvaluation : isRTL ? ARlabel._publicEvaluation : USlabel._publicEvaluation,
+    AwardAnnouncement : isRTL ? ARlabel._awardAnnouncement : USlabel._awardAnnouncement,
+
+    Objective : isRTL ? ARlabel._objective : USlabel._objective,
+    WhoParticipate : isRTL ? ARlabel._whoParticipate : USlabel._whoParticipate,
+    Reward : isRTL ? ARlabel._reward : USlabel._reward,
+    Schedule : isRTL ? ARlabel._schedule : USlabel._schedule,
+    VotingMechanisam : isRTL ? ARlabel._votingMechanisam : USlabel._votingMechanisam,
+    EvaluationPanel : isRTL ? ARlabel._evaluationPanel : USlabel._evaluationPanel,
+    LoadMore : isRTL ? ARlabel._loadMore : USlabel._loadMore,
+    Rank : isRTL ? ARlabel._rank : USlabel._rank,
+    TotalScore : isRTL ? ARlabel._totalScore : USlabel._totalScore,
+    Votes : isRTL ? ARlabel._votes : USlabel._votes,
+    ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
+    ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
+    SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
+    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea
+
+} 
 
 
