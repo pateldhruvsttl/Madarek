@@ -134,6 +134,8 @@ export const Label = {
     Completed: isRTL ? ARlabel._completed : USlabel._completed,
     SmeDashboard: isRTL ? ARlabel._smeDashboard : USlabel._smeDashboard,
     UserJoinRequest: isRTL ? ARlabel._userJoinRequest : USlabel._userJoinRequest,
+    SubmitYourIdeas: isRTL ? ARlabel._submitYourIdeas : USlabel._submitYourIdeas,
+    
 
     Challenges: isRTL ? ARlabel._challenges : USlabel._challenges,
     Open: isRTL ? ARlabel._open : USlabel._open,
@@ -172,7 +174,20 @@ export const Label = {
 
     SelectLanguage : isRTL ? ARlabel._selectLanguage : USlabel._selectLanguage,
     English : isRTL ? ARlabel._english : USlabel._english,
-    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic
+    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic,
+    
+    FillMandatoryFieldsValidation : isRTL ? ARlabel._fillMandatoryFieldsValidation : USlabel._fillMandatoryFieldsValidation,
+    IdeaTitle : isRTL ? ARlabel._ideaTitle : USlabel._ideaTitle,
+    Sectors : isRTL ? ARlabel._sectors : USlabel._sectors,
+    Category : isRTL ? ARlabel._category : USlabel._category,
+    SubCategory : isRTL ? ARlabel._subCategory : USlabel._subCategory,
+    Gender : isRTL ? ARlabel._gender : USlabel._gender,
+    Male : isRTL ? ARlabel._male : USlabel._male,
+    Female : isRTL ? ARlabel._female : USlabel._female,
+    Other : isRTL ? ARlabel._other : USlabel._other,
+    AlternateMobileNo : isRTL ? ARlabel._alternateMobileNo : USlabel._alternateMobileNo,
+    Nationality : isRTL ? ARlabel._nationality : USlabel._nationality,
+    UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
 
 } 
 

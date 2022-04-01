@@ -184,6 +184,7 @@ export const ARlabel = {
     _completed:'Completed',
     _smeDashboard:'SME Dashboard',
     _userJoinRequest:"User Join Request",
+    _submitYourIdeas:"Submit your Ideas",
 
 
     // user category
@@ -227,9 +228,19 @@ export const ARlabel = {
 
     _selectLanguage : "Select Language",
     _english : "English",
-    _arabic : "Arabic"
+    _arabic : "Arabic",
 
     
+     //SubmitIDeas Message
+     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
+     _ideaTitle:"Idea Title",
+     _sectors:"Sectors",
+     _category:"Category",
+     _subCategory:"Sub Category",
+     _gender:"Gender",
+     _male:"Male",
+     _female:"Female",
+     _other:"Other",
 
 }
 export const USlabel = {
@@ -365,6 +376,17 @@ export const USlabel = {
     _expertDes: "Want to Become an Expert?",
     _expertsDirectory: "Experts Directory",
 
+    _connectedExperts:'Connected Experts',
+    _popularExperts:'Popular Experts',
+    _userDashboard:'User Dashboard',
+    _myIdeaJointRequest:'My Idea Joint Request',
+    _ideaMaturation:'Idea Maturation',
+    _rejected:'Rejected',
+    _accepted:'Accepted',
+    _completed:'Completed',
+    _smeDashboard:'SME Dashboard',
+    _userJoinRequest:"User Join Request",
+    _submitYourIdeas:"Submit your Ideas",
     _seeAllIdeas: "See All Ideas",
     _openChallenges: "Open Challenges",
     _participateNow: "Participate Now",
@@ -431,6 +453,20 @@ export const USlabel = {
 
      _selectLanguage : "Select Language",
      _english : "English",
-     _arabic : "Arabic"
+     _arabic : "Arabic",
+     
+     //SubmitIDeas Message
+     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
+     _ideaTitle:"Idea Title",
+     _sectors:"Sectors",
+     _category:"Category",
+     _subCategory:"Sub Category",
+     _gender:"Gender",
+     _male:"Male",
+     _female:"Female",
+     _other:"Other",
+     _alternateMobileNo:"Alternate Mobile No.",
+     _nationality:"Nationality",
+     _uploadedImages:"Uploaded Images",
 
 }

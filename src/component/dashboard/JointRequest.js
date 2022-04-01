@@ -7,6 +7,7 @@ import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
 import Style from "./JointRequestStyle";
 
+import IcnAcceptRound from "../../assets/svg/IcnAcceptRound"
 import IcnRejectRound from "../../assets/svg/IcnRejectRound"
 
 
@@ -32,7 +33,7 @@ const JointRequest = (props) => {
                     item.btn != "Accepted" ?
                         <View style={Style.btnView}>
                             <TouchableOpacity>
-                                <IcnRejectRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
+                                <IcnAcceptRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
                             </TouchableOpacity>
 
                             <TouchableOpacity>

@@ -58,10 +58,13 @@ const Style = StyleSheet.create({
     },
     txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily:FONTS.robotMedium },
 
-    btnReject:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.borderRed, borderRadius:AppUtil.getHP(0.5), alignItems:'center', paddingVertical:AppUtil.getHP(0.2)},
+    btnReject:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.borderRed, borderRadius:AppUtil.getHP(0.5), alignItems:'center',
+     paddingVertical:AppUtil.getHP(0.2)},
     txtbtnReject:{fontSize: AppUtil.getHP(1.8), color: GetAppColor.borderRed, fontFamily:FONTS.robotRegular},
+    
     btnAccept:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.dotGreen, borderRadius:AppUtil.getHP(0.5), alignItems:'center', paddingVertical:AppUtil.getHP(0.2)},
     txtbtnAccept:{fontSize: AppUtil.getHP(1.8), color: GetAppColor.dotGreen, fontFamily:FONTS.robotRegular},
+    
     btnComplited:{width:AppUtil.getWP(25), borderWidth:AppUtil.getHP(0.1), borderColor:GetAppColor.textColor, borderRadius:AppUtil.getHP(0.5), alignItems:'center', paddingVertical:AppUtil.getHP(0.2)},
     txtbtnComplited:{fontSize: AppUtil.getHP(1.8), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},
    

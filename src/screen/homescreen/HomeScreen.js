@@ -24,54 +24,64 @@ const HomeScreen = (props) => {
     const list = DATA.slice(0, 2);
 
     const onSetItem = (item) => {
-        if (item === "Slider") {
-            return <EventSlider Entries={testData} />
-        }
-        else if (item === "Tab") {
-            return <IdealList data={sliderdata} />
-        }
-        else if (item === "Challenges") {
-            return (
-                <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                    <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
-                </View>
-            )
-        }
-        else if (item === "Spotlight") {
-            return (
-                <View style={{ paddingVertical: AppUtil.getHP(2) }}>
-                    <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
-                </View>
-            )
-        }
-        else if (item === "ExpertInsightsSlider") {
-            return (
-                <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                    <ExpertInsightsSlider Entries={expertData} />
-                </View>
-            )
-        }
-        else if (item === "FavouriteCategories") {
-            return (
-                <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
-                    <FavouriteCategories />
-                </View>
-            )
-        }
-        else if (item === "Button") {
-            return (
-                <View style={Style.bottomBarView}>
-                    <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
-                    <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
-                        <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
-                    </TouchableOpacity>
-                </View>
-            )
+
+
+        switch (item) {
+
+            case 'Slider':
+                return <EventSlider Entries={testData} />
+                break;
+
+            case 'Tab':
+                return <IdealList data={sliderdata} />
+                break;
+
+            case 'Challenges':
+                return (
+                    <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                        <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
+                    </View>
+                )
+                break;
+
+            case 'Spotlight':
+                return (
+                    <View style={{ paddingVertical: AppUtil.getHP(2) }}>
+                        <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
+                    </View>
+                )
+                break;
+            case 'ExpertInsightsSlider':
+                return (
+                    <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
+                        <ExpertInsightsSlider Entries={expertData} />
+                    </View>
+                )
+                break;
+            case 'FavouriteCategories':
+                return (
+                    <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
+                        <FavouriteCategories />
+                    </View>
+                )
+                break;
+            case 'Button':
+                return (
+                    <View style={Style.bottomBarView}>
+                        <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
+                        <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => props.navigation.navigate("SubmitIdeaScreen")}>
+                            <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )
+                break;
+
+            default: null;
+
         }
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} />
             <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
@@ -87,7 +97,7 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
-const dtList = ["Slider", "Tab", "Challenges","Spotlight","ExpertInsightsSlider","FavouriteCategories","Button"];
+const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
 
 const testData = [
     {
