@@ -76,8 +76,30 @@ const STYLES = StyleSheet.create({
     },
     selections: {
         borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1,
-        marginHorizontal: 20,
-        paddingVertical: 10
+        paddingVertical: 20,
+        backgroundColor: GetAppColor.white,
+    },
+    dropDown: {
+        marginBottom: AppUtil.getHP(1),
+        backgroundColor: GetAppColor.grayShadeBorder,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+
+        elevation: 10,
+        position: 'absolute',
+        bottom: AppUtil.getHP(6),
+        width: 200,
+        zIndex: 9,
+        right: AppUtil.getWP(6)
+
+    },
+    splashView: {
+        flex: 1, width: '100%'
     },
     bottomMenu: {
         backgroundColor: GetAppColor.white, paddingBottom: 10,

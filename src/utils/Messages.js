@@ -69,7 +69,7 @@ export const ARlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _password: "Please enter correct password",
+    _passwordLogin: "Please enter correct password",
     _pin: "Please enter correct otp",
     _socialLine: "or continue with",
 
@@ -263,7 +263,7 @@ export const USlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _password: "Please enter correct password",
+    _passwordLogin: "Please enter correct password",
     _pin: "Please enter correct otp",
     _ideas: "Ideas",
     _socialLine: "or continue with",

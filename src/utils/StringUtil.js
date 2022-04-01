@@ -28,7 +28,7 @@ export const Label = {
     ToLogin: isRTL ? ARlabel._toLogin : USlabel._toLogin,
     Email: isRTL ? ARlabel._email : USlabel._email,
     Phone: isRTL ? ARlabel._phone : USlabel._phone,
-    Password: isRTL ? ARlabel._password : USlabel._password,
+    PasswordLogin: isRTL ? ARlabel._passwordLogin : USlabel._passwordLogin,
     Pin: isRTL ? ARlabel._pin : USlabel._pin,
     CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
     Skip: isRTL ? ARlabel._skip : USlabel._skip,
