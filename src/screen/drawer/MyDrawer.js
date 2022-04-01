@@ -188,7 +188,7 @@ const MyDrawerScreen = (props) => {
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Partners}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(8,'Partner')} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(8,'MyAccount')} style={drawerStyles.menuButton}>
         <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.MyAccount}</Text>
       </TouchableOpacity>

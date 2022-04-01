@@ -228,6 +228,13 @@ export const ARlabel = {
     _arabic:"Arabic",
 
 
+    // user profile
+    _userProfile:"User Profile",
+    _upgradeUserType:"Upgrade User Type",
+    _payment:"Payment",
+    _help:"Help",
+
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -332,6 +339,7 @@ export const USlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
+    _myAccount:"My Account",
 
     //  _signUpVerifyTitle: "Sign Up Verification",
     // _verifyNumber: "Verify Your Mobile Number",
@@ -425,5 +433,12 @@ export const USlabel = {
 
     _english:"English",
     _arabic:"Arabic",
+
+    // user profile
+
+    _userProfile:"User Profile",
+    _upgradeUserType:"Upgrade User Type",
+    _payment:"Payment",
+    _help:"Help",
 
 }

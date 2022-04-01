@@ -174,6 +174,11 @@ export const Label = {
 
     MyAccount : isRTL ? ARlabel._myAccount : USlabel._myAccount,
 
+    UserProfile : isRTL ? ARlabel._userProfile : USlabel._userProfile,
+    UpgradeUserType : isRTL ? ARlabel._upgradeUserType : USlabel._upgradeUserType,
+    Payment : isRTL ? ARlabel._payment : USlabel._payment,
+    Help : isRTL ? ARlabel._help : USlabel._help,
+
 }
 
 
