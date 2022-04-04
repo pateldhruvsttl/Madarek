@@ -109,7 +109,7 @@ export const ARlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
-    _myAccount:"My Account",
+    _myAccount: "My Account",
 
     // _signUpVerifyTitle: "Sign Up Verification",
     // _verifyNumber: "Verify Your Mobile Number",
@@ -224,16 +224,32 @@ export const ARlabel = {
     _educationResearch: "Education & Research",
 
 
-    _english:"English",
-    _arabic:"Arabic",
+    _english: "English",
+    _arabic: "Arabic",
 
 
     // user profile
-    _userProfile:"User Profile",
-    _upgradeUserType:"Upgrade User Type",
-    _payment:"Payment",
-    _help:"Help",
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
 
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
 
 }
 export const USlabel = {
@@ -339,7 +355,7 @@ export const USlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
-    _myAccount:"My Account",
+    _myAccount: "My Account",
 
     //  _signUpVerifyTitle: "Sign Up Verification",
     // _verifyNumber: "Verify Your Mobile Number",
@@ -431,14 +447,31 @@ export const USlabel = {
     _sponsors: "Sponsors",
     _educationResearch: "Education & Research",
 
-    _english:"English",
-    _arabic:"Arabic",
+    _english: "English",
+    _arabic: "Arabic",
 
     // user profile
 
-    _userProfile:"User Profile",
-    _upgradeUserType:"Upgrade User Type",
-    _payment:"Payment",
-    _help:"Help",
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
 
+
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
 }

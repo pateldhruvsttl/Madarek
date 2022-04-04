@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native'
 import React from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
+import { Label } from '../../utils/StringUtil'
 
 const UserProfileView = (props) => {
     return (
@@ -12,44 +13,44 @@ const UserProfileView = (props) => {
                 <View style={MyAccountStyle.cornerView} >
                     <Image style={MyAccountStyle.userImage} />
 
-                    <Text style={MyAccountStyle.titleText}>User Type</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.UserType}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Individual</Text>
                     <View style={MyAccountStyle.flexView}>
                         <View style={MyAccountStyle.partView}>
-                            <Text style={MyAccountStyle.titleText}>Name</Text>
+                            <Text style={MyAccountStyle.titleText}>{Label.Name}</Text>
                             <Text style={MyAccountStyle.subTitleText}>Individual</Text>
                         </View>
 
                         <View style={MyAccountStyle.partView}>
-                            <Text style={MyAccountStyle.titleText}>Last Name</Text>
+                            <Text style={MyAccountStyle.titleText}>{Label.lastname}</Text>
                             <Text style={MyAccountStyle.subTitleText}>Individual</Text>
                         </View>
                     </View>
-                    <Text style={MyAccountStyle.titleText}>Oraganization Name</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.OrganizationName}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Individual</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Job Title(optional)</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.JobTitle}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Individual</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Email ID</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.Email}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Individual</Text>
 
                     <View style={MyAccountStyle.flexView}>
                         <View style={MyAccountStyle.partView}>
-                            <Text style={MyAccountStyle.titleText}>Country</Text>
+                            <Text style={MyAccountStyle.titleText}>{Label.Country}</Text>
                             <Text style={MyAccountStyle.subTitleText}>Individual</Text>
                         </View>
 
                         <View style={MyAccountStyle.partView}>
-                            <Text style={MyAccountStyle.titleText}>City</Text>
+                            <Text style={MyAccountStyle.titleText}>{Label.City}</Text>
                             <Text style={MyAccountStyle.subTitleText}>Individual</Text>
                         </View>
                     </View>
 
-                    <Text style={MyAccountStyle.titleText}>Mobile Number</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.MobileNumber}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Individual</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Categories</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.Categories}</Text>
                     <View style={MyAccountStyle.scrollSubView}>
                         {
                             [1, 2, 3, 4, 5, 6].map((item, index) => {
@@ -62,22 +63,22 @@ const UserProfileView = (props) => {
                         }
                     </View>
 
-                    <Text style={MyAccountStyle.titleText}>Short Description</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.ShortDiscription}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Facebook Link</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.FacebookLink}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Twitter Link</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.TwitterLink}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Linkdin Link</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.LinkdinLink}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
-                    <Text style={MyAccountStyle.titleText}>About Expert</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.AboutExpert}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
-                    <Text style={MyAccountStyle.titleText}>Description</Text>
+                    <Text style={MyAccountStyle.titleText}>{Label.Description}</Text>
                     <Text style={MyAccountStyle.subTitleText}>Lorem</Text>
 
                   

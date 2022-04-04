@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { AppUtil } from '../../utils/AppUtil'
-import { buttonBorderRadius } from '../../utils/Constant'
+import { buttonBorderRadius, buttonFontSize, buttonHeight, inputFieldHight } from '../../utils/Constant'
 import { GetAppColor } from '../../utils/Colors'
 import FONTS from '../../utils/Fonts'
 
@@ -93,9 +93,96 @@ const MyAccountStyle = StyleSheet.create({
         fontFamily:FONTS.robotRegular,
         marginHorizontal:AppUtil.getHP(2),
         marginVertical:AppUtil.getHP(1)
-    }
+    },
 
        // Edit User Profile view.
+
+       imageView:{
+         marginTop:AppUtil.getHP(2),
+        alignSelf:'center',
+
+       },
+       userEditImage:{
+        height:AppUtil.getHP(18),
+        width:AppUtil.getHP(18),
+        borderWidth:5,
+        borderColor:GetAppColor.white,
+        borderRadius:AppUtil.getHP(9),
+        backgroundColor:'red', 
+    },
+    cameraIconBtn:{
+        height:AppUtil.getHP(5),
+        width:AppUtil.getHP(5),
+        borderRadius:AppUtil.getHP(2.5),
+        backgroundColor:GetAppColor.catBorder,
+        position:'absolute',
+        bottom:0,
+        end:0,
+        alignItems:'center',
+        justifyContent: 'center',
+    },
+
+    contentView:{
+        paddingHorizontal:AppUtil.getWP(2.5),
+    },
+    input:{
+        borderBottomWidth:1,
+        borderBottomColor:GetAppColor.editProfBorder,
+        height:AppUtil.getHP(4),
+        fontFamily:FONTS.robotMedium,
+        fontSize:AppUtil.getHP(1.8)
+    },
+    editPartView:{
+        width:'45%',
+    },
+    editFlexView:{
+       flexDirection:'row',
+       justifyContent:'space-between'
+    },
+    submitButton: {
+        width: '100%',
+        height: buttonHeight,
+        backgroundColor: GetAppColor.headerYellow,
+        borderRadius: buttonBorderRadius,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginTop: AppUtil.getHP(2.5)
+    },
+    submitText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:buttonFontSize },
+    catView1:{
+        marginEnd:AppUtil.getWP(2),
+        marginVertical:AppUtil.getHP(0.40),
+        borderRadius:5,
+        borderWidth:1,
+        borderColor:GetAppColor.borderGray,
+        flexDirection:'row',
+        alignItems:'center',
+        paddingHorizontal:AppUtil.getHP(1),
+        backgroundColor:GetAppColor.white
+    },
+    catText1:{
+        fontSize:AppUtil.getHP(2),
+        fontFamily:FONTS.robotRegular,
+        marginEnd:AppUtil.getHP(1),
+        marginVertical:AppUtil.getHP(1)
+    },
+    addMoreButton:{
+        width:AppUtil.getWP(30),
+        height:AppUtil.getHP(4),
+        borderRadius:AppUtil.getHP(2),
+        justifyContent:'center',
+        alignItems:'center',
+        borderWidth:1,
+        borderColor:GetAppColor.catBorder,
+         marginTop:AppUtil.getHP(1)
+    },
+    addMoreText:{
+        color:GetAppColor.catBorder,
+        fontFamily:FONTS.robotMedium,
+        fontSize:AppUtil.getHP(1.8),
+    }
+       
 
 })
 export default MyAccountStyle

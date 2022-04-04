@@ -179,6 +179,22 @@ export const Label = {
     Payment : isRTL ? ARlabel._payment : USlabel._payment,
     Help : isRTL ? ARlabel._help : USlabel._help,
 
+    UserType:isRTL?ARlabel._userType:USlabel._userType,
+    Name:isRTL?ARlabel._name:USlabel._name,
+    OrganizationName:isRTL?ARlabel._organizationName:USlabel._organizationName,
+    JobTitle:isRTL?ARlabel._jobTitle:USlabel._jobTitle,
+    Country:isRTL?ARlabel._country:USlabel._country,
+    City:isRTL?ARlabel._city:USlabel._city,
+    Categories:isRTL?ARlabel._categories:USlabel._categories,
+    ShortDiscription:isRTL?ARlabel._shortDiscription:USlabel._shortDiscription,
+    FacebookLink:isRTL?ARlabel._facebookLink:USlabel._facebookLink,
+    TwitterLink:isRTL?ARlabel._twitterLink:USlabel._twitterLink,
+    LinkdinLink:isRTL?ARlabel._linkdinLink:USlabel._linkdinLink,
+    AboutExpert:isRTL?ARlabel._aboutExpert:USlabel._aboutExpert,
+    Description:isRTL?ARlabel._description:USlabel._description,
+
+    AddMore:isRTL?ARlabel._addMore:USlabel._addMore,
+    Submit:isRTL?ARlabel._submit:USlabel._submit,
 }
 
 

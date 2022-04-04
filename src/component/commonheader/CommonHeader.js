@@ -412,7 +412,7 @@ const CommonHeader = (props) => {
                     </TouchableOpacity>
 
                     <View style={Style.centerIcnView}>
-                        <Text style={Style.txtHeader}>{Label.MyAccount}</Text>
+                        <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
                     </View>
 
                     <View style={Style.rightIcnView}>
@@ -421,6 +421,31 @@ const CommonHeader = (props) => {
                         </TouchableOpacity>
                         {/* {onMenu()} */}
                     </View>
+
+                </View>
+            </>
+        );
+    }
+    else if (props.isType === "UserEditProfile") {
+
+        return (
+            <>
+                <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                    <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                        <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
+
+                    <View style={Style.centerIcnView}>
+                        <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
+                    </View>
+
+                    {/* <View style={Style.rightIcnView}>
+                        <TouchableOpacity onPress={()=>props.onEditProfile()}>
+                            <EditProfile style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+                    </View> */}
 
                 </View>
             </>
