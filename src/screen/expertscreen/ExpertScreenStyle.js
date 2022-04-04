@@ -15,9 +15,12 @@ const HomeStyle = StyleSheet.create({
 
     footerView:{paddingVertical:AppUtil.getHP(2), backgroundColor:GetAppColor.lightWhite},
     btnView:{flexDirection:'row', justifyContent:'space-evenly', marginVertical:AppUtil.getHP(1.5)},
+    
     btnLearMore:{width:AppUtil.getWP(43), height:buttonHeight, borderWidth:AppUtil.getHP(0.2), borderRadius:AppUtil.getHP(0.5), justifyContent:'center', alignItems:'center'},
     btnApplyNow:{width:AppUtil.getWP(43), height:buttonHeight, borderRadius:AppUtil.getHP(0.5), justifyContent:'center', alignItems:'center'},
-    txtTitle:{width: '100%', textAlign:'center',fontSize:buttonFontSize, fontFamily:FONTS.robotMedium, color:GetAppColor.innovationGrey},
+    
+    txtTitle:{width: '100%', textAlign:'center',fontSize:AppUtil.getHP(2), fontFamily:FONTS.robotMedium, color:GetAppColor.innovationGrey},
+    
     txt:{fontSize:buttonFontSize, fontFamily:FONTS.robotMedium},
 
 });

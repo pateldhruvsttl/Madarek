@@ -9,6 +9,7 @@ import ListStyle from "./ChallengesListStyle";
 import AllChallenge from "../../component/challengelist/listing/ViewMoreChallenges"
 import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
+import { AppUtil } from "../../utils/AppUtil";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -21,14 +22,15 @@ const ChallengesListScreen = (props) => {
             <View style={ListStyle.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
-                        tabBarLabelStyle: { fontSize: 14,textTransform: 'capitalize' },
+                        tabBarLabelStyle: { fontSize: 14,textTransform: 'capitalize',width:AppUtil.getWP(25) },
                         tabBarItemStyle: { width: 100 },
                         tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
-                    }}>
-                        <Tab.Screen name={Label.Open} children={() => <AllChallenge navigateDetail={()=>props.navigation.navigate('ChallengeDetail')} propName={{ type: "OpenChallenge", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Upcoming} children={() => <AllChallenge navigateDetail={()=>props.navigation.navigate('ChallengeDetail')} propName={{ type: "UpcomingChallenge", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Closed} children={() => <AllChallenge navigateDetail={()=>props.navigation.navigate('ChallengeDetail')} propName={{ type: "ClosedChallenge", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Voting} children={() => <AllChallenge navigateDetail={()=>props.navigation.navigate('ChallengeDetail')} propName={{ type: "Challenge", data: sliderdata }} />} />
+                        tabBarScrollEnabled:true
+                   }}>
+                        <Tab.Screen name={Label.Open} children={() => <AllChallenge propName={{ type: "OpenChallenge", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Upcoming} children={() => <AllChallenge propName={{ type: "UpcomingChallenge", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Closed} children={() => <AllChallenge propName={{ type: "ClosedChallenge", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Voting} children={() => <AllChallenge propName={{ type: "Challenge", data: sliderdata }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

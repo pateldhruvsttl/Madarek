@@ -1,12 +1,15 @@
-import { Text, View, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { Text, View, Image, FlatList, ScrollView, TouchableOpacity, Modal } from 'react-native'
+import React, { useState } from 'react'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import styles from './UserProfileListStyle'
 import { useSelector } from 'react-redux'
+import ParticipateModal from '../challengedetail/ParticipateModal'
 
 const UserProfileList = (props) => {
     const { themeColor } = useSelector((state) => state)
+    const [modalVisible, setModalVisible] = useState(false);
+   
     const renderItem = ({ item }) => (
 
         <ScrollView horizontal={true}>
@@ -60,8 +63,8 @@ const UserProfileList = (props) => {
 
                     <View style={styles.footerbtnView}>
                         <TouchableOpacity style={[styles.bottomBtn,
-                        { backgroundColor: themeColor.buttonColor }]} >
-                            <Text style={[styles.txtBottomBtn, { color: themeColor.buttonFontColor }]}>Participate Now</Text>
+                        { backgroundColor: themeColor.buttonColor }]} onPress={() => {setModalVisible(true)}}>
+                            <Text style={[styles.txtBottomBtn, { color: themeColor.buttonFontColor }]}>{Label.ParticipateNow}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -79,6 +82,8 @@ const UserProfileList = (props) => {
                         keyExtractor={item => item.id}
                     />
                 </View>}
+                <ParticipateModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+                
         </>
     )
 }

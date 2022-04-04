@@ -11,7 +11,6 @@ import LoginScreen from '../screen/loginscreen/LoginScreen';
 import Signup from '../screen/signup/Signup';
 import SignUpVerify from '../screen/signup/SignUpVerify';
 
-// import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import SmeDashboardScreen from '../screen/smedashboard/SmeDashboardScreen';
 
 import HomeScreen from '../screen/homescreen/HomeScreen';
@@ -20,9 +19,11 @@ import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
 import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertScreen from '../screen/expertscreen/ExpertScreen';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
-import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
+import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'; 
+import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen'; 
+
 import UserCategory from '../screen/category/UserCategory';
-import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
+import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import Partner from '../screen/partner/Partner';
@@ -55,6 +56,7 @@ function ScreenStack() {
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
+            <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
             
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />

@@ -22,34 +22,51 @@ const SignUpVerify = (props) => {
 
   const handleKeyPress = (key, index) => {
     if (key === 'Backspace') {
-      if (index === 1) {
-        return false;
-      } else if (index === 2) {
-        input1.current.focus();
-      } else if (index === 3) {
-        input2.current.focus();
-      } else if (index === 4) {
-        input3.current.focus();
-      } else if (index === 5) {
-        input4.current.focus();
-      } else if (index === 6) {
-        input5.current.focus();
-      }
-    } else {
-      if (index === 1) {
-        input2.current.focus();
-      } else if (index === 2) {
-        input3.current.focus();
-      } else if (index === 3) {
-        input4.current.focus();
-      } else if (index === 4) {
-        input5.current.focus();
-      } else if (index === 5) {
-        input6.current.focus();
-      }
+        switch (true) {
+            case (index === 1):
+                return false
+                break;
+            case (index === 2):
+                input1.current.focus()
+                break;
+            case (index === 3):
+                input2.current.focus()
+                break;
+            case (index === 4):
+                input3.current.focus()
+                break;
+            case (index === 5):
+                input4.current.focus()
+                break;
+            case (index === 6):
+                input5.current.focus()
+                break;
+            default:
+        }
+    }
+    else {
+        switch (true) {
+            case (index === 1):
+                input2.current.focus();
+                break;
+            case (index === 2):
+                input3.current.focus();
+                break;
+            case (index === 3):
+                input4.current.focus();
+                break;
+            case (index === 4):
+                input5.current.focus()
+                break;
+            case (index === 5):
+                input6.current.focus()
+                break;
+            default:
+        }
 
     }
-  }
+}
+
   const navigateToCategory = () => {
     props.navigation.navigate("Category")
   }

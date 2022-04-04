@@ -28,7 +28,7 @@ export const Label = {
     ToLogin: isRTL ? ARlabel._toLogin : USlabel._toLogin,
     Email: isRTL ? ARlabel._email : USlabel._email,
     Phone: isRTL ? ARlabel._phone : USlabel._phone,
-    Password: isRTL ? ARlabel._password : USlabel._password,
+    PasswordLogin: isRTL ? ARlabel._passwordLogin : USlabel._passwordLogin,
     Pin: isRTL ? ARlabel._pin : USlabel._pin,
     CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
     Skip: isRTL ? ARlabel._skip : USlabel._skip,
@@ -134,6 +134,8 @@ export const Label = {
     Completed: isRTL ? ARlabel._completed : USlabel._completed,
     SmeDashboard: isRTL ? ARlabel._smeDashboard : USlabel._smeDashboard,
     UserJoinRequest: isRTL ? ARlabel._userJoinRequest : USlabel._userJoinRequest,
+    SubmitYourIdeas: isRTL ? ARlabel._submitYourIdeas : USlabel._submitYourIdeas,
+    
 
     Challenges: isRTL ? ARlabel._challenges : USlabel._challenges,
     Open: isRTL ? ARlabel._open : USlabel._open,
@@ -195,6 +197,29 @@ export const Label = {
 
     AddMore:isRTL?ARlabel._addMore:USlabel._addMore,
     Submit:isRTL?ARlabel._submit:USlabel._submit,
-}
+
+    ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
+    ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
+    SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
+    SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea,
+
+    SelectLanguage : isRTL ? ARlabel._selectLanguage : USlabel._selectLanguage,
+    English : isRTL ? ARlabel._english : USlabel._english,
+    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic,
+    
+    FillMandatoryFieldsValidation : isRTL ? ARlabel._fillMandatoryFieldsValidation : USlabel._fillMandatoryFieldsValidation,
+    IdeaTitle : isRTL ? ARlabel._ideaTitle : USlabel._ideaTitle,
+    Sectors : isRTL ? ARlabel._sectors : USlabel._sectors,
+    Category : isRTL ? ARlabel._category : USlabel._category,
+    SubCategory : isRTL ? ARlabel._subCategory : USlabel._subCategory,
+    Gender : isRTL ? ARlabel._gender : USlabel._gender,
+    Male : isRTL ? ARlabel._male : USlabel._male,
+    Female : isRTL ? ARlabel._female : USlabel._female,
+    Other : isRTL ? ARlabel._other : USlabel._other,
+    AlternateMobileNo : isRTL ? ARlabel._alternateMobileNo : USlabel._alternateMobileNo,
+    Nationality : isRTL ? ARlabel._nationality : USlabel._nationality,
+    UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
+
+} 
 
 
