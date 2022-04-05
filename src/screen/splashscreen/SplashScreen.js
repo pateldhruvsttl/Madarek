@@ -1,5 +1,5 @@
-import React, { useState, memo } from "react";
-import { View, Text, ImageBackground, StatusBar, TouchableOpacity, ScrollView } from "react-native";
+import React, { useState, memo, useEffect } from "react";
+import { View, Text, ImageBackground, StatusBar, TouchableOpacity, ScrollView, TextInput } from "react-native";
 import SplaceImage from "../../assets/svg/splaceIcons/SplaceImage";
 import MadarecSplace from "../../assets/svg/splaceIcons/MadarecSplace";
 import STYLES from "./SplashStyle";
@@ -9,8 +9,10 @@ import { GetAppImage } from "../../utils/Assets";
 import { AppUtil } from "../../utils/AppUtil";
 import DownArrow from "../../assets/svg/DownArrow";
 import IcnUpArrow from "../../assets/svg/drawerIcon/IcnUpArrow";
-import { TextInput } from "react-native-gesture-handler";
+// import { TextInput } from "react-native-gesture-handler";
 import GoogleIcon from "../../assets/svg/loginLogo/GoogleIcon";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
 
 
 const SplashScreen = (props) => {
@@ -21,6 +23,8 @@ const SplashScreen = (props) => {
     // setTimeout(() => {
     //     props.navigation.navigate("LoginScreen")
     // }, 2500);
+
+    
 
     const languageList = [Label.English, Label.Arabic]
     const Bold = ({ children }) => <Text style={{ fontWeight: 'bold' }}>{children}</Text>

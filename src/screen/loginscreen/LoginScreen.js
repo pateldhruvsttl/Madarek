@@ -1,4 +1,4 @@
-import React, { useState, memo, useRef } from "react";
+import React, { useState, memo, useRef, useEffect } from "react";
 import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
@@ -12,6 +12,8 @@ import CountryPicker from 'react-native-country-picker-modal'
 import FONTS from "../../utils/Fonts";
 import { AppUtil } from "../../utils/AppUtil";
 import SocialLogo from '../../component/logindetails/SocialLogo'
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
 
 
 
@@ -40,6 +42,8 @@ const LoginScreen = (props) => {
     const input4 = useRef();
     const input5 = useRef();
     const input6 = useRef();
+
+   
 
     const setFocusInput = (inputRef) => {
         inputRef.current.focus();
