@@ -18,7 +18,7 @@ export default class SignUp {
         this.password = obj?.pwd
         this.mobileNumber = obj?.mobile_phone
         this.token = obj?.token
-        this.id = obj?.Id
+        this.id = obj?.id
 
     }
     
