@@ -2,7 +2,11 @@ export default class IdeaList {
 
     constructor(obj = null) {
 
-        this.Id = obj?.id;
+        if (obj == null) {
+            return;
+        }
+        
+        this.id = obj?.id;
         this.categoryName = obj?.category_name;
         this.ideaTitle = obj?.idea_title;
         this.firstName = obj?.first_name;

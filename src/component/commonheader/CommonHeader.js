@@ -364,7 +364,7 @@ const CommonHeader = (props) => {
         case 'BecomeExpert':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>

@@ -2,6 +2,10 @@ export default class SignUp {
 
     constructor(obj = null) {
         
+        if (obj == null) {
+            return;
+        }
+        
         this.message = obj?.message
         this.userType = obj?.user_type
         this.deviceId = obj?.device_id
@@ -14,8 +18,7 @@ export default class SignUp {
         this.password = obj?.pwd
         this.mobileNumber = obj?.mobile_phone
         this.token = obj?.token
-        this.status = obj?.status
-        this.Id = obj?.Id
+        this.id = obj?.Id
 
     }
     
