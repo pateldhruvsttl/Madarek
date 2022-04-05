@@ -109,14 +109,9 @@ export const ARlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
+    _myAccount: "My Account",
 
-    // _signUpVerifyTitle: "Sign Up Verification",
-    // _verifyNumber: "Verify Your Mobile Number",
-    // _oneTimePinDetail: "We sent a one time password",
-    // _oneTimePassword: "OTP",
-    // _toMessage: "to",
-    // _defaultPhoneCode: "+971 877 887 7442",
-    // _verifyTitle: "Verify",
+    
 
     // Expert Details message
     _ideaDetails: "Idea Detail",
@@ -170,24 +165,7 @@ export const ARlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
-    _all: 'All',
-    _latest: 'Latest',
-    _popular: 'Popular',
-    _winning: 'Winning',
-    _connectedExperts: 'Connected Experts',
-    _popularExperts: 'Popular Experts',
-    _userDashboard: 'User Dashboard',
-    _myIdeaJointRequest: 'My Idea Joint Request',
-    _ideaMaturation: 'Idea Maturation',
-    _rejected: 'Rejected',
-    _accepted: 'Accepted',
-    _completed: 'Completed',
-    _smeDashboard: 'SME Dashboard',
-    _userJoinRequest: "User Join Request",
-    _submitYourIdeas: "Submit your Ideas",
-
-
-    // user category
+ // user category
     _agriculture_Fisheries: "Agriculture & Fisheries",
     _autismSpecializedCenters: "Autism Specialized Centers",
     _aviation: "Aviation",
@@ -227,6 +205,11 @@ export const ARlabel = {
     _submitYourIdea: "Submit Your Idea",
 
     _selectLanguage: "Select Language",
+
+    _sponsors: "Sponsors",
+    _educationResearch: "Education & Research",
+
+
     _english: "English",
     _arabic: "Arabic",
 
@@ -248,7 +231,39 @@ export const ARlabel = {
      // BecomeAnExpert message
      _becomeAnExpert: "Become an Expert",
      _wantBecomeExpert : "Want to Become an Expert?",
-     _applyNow : "Apply Now"
+     _applyNow : "Apply Now",
+
+    // user profile
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
+
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
+    _votingMechanisam : "Voting Mechanisam",
+    _evaluationPanel : "Evaluation Panel",
+    _loadMore : "Load More",
+    _rank : "Rank",
+    _totalScore  : "Total Score",
+    _votes : "Votes",
+    _participateNow : "Participate Now",
+
+    
 
 }
 export const USlabel = {
@@ -354,6 +369,7 @@ export const USlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
+    _myAccount: "My Account",
 
     //  _signUpVerifyTitle: "Sign Up Verification",
     // _verifyNumber: "Verify Your Mobile Number",
@@ -483,6 +499,37 @@ export const USlabel = {
     // BecomeAnExpert message
     _becomeAnExpert: "Become an Expert",
     _wantBecomeExpert : "Want to Become an Expert?",
-    _applyNow : "Apply Now"
+    _applyNow : "Apply Now",
+    
 
+    _sponsors: "Sponsors",
+    _educationResearch: "Education & Research",
+
+    _english: "English",
+    _arabic: "Arabic",
+
+    // user profile
+
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
+
+
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
 }
