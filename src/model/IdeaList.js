@@ -17,14 +17,16 @@ export default class IdeaList {
         this.ideaImage = obj?.idea_cover_image;
         this.winning = obj?.winning;
         this.createDate = obj?.created_at;
-        this.totalView = obj?.toatal_views;
+        this.totalView = obj?.totalViews;
         this.madarekSpecial = obj?.madarek_special;
-        this.totalLike = obj?.toatal_liked_idea;
-        this.totalComment = obj?.toatal_idea_comment;
+        this.totalLike = obj?.totalLikes;
+        this.totalComment = obj?.totalComments;
         this.favoriteIdea = obj?.toatal_favorite_idea;
-        this.myLike = obj?.my_like;
+        this.like = obj?.isLiked;
+        this.favourite = obj?.isFavourite;
         this.topRate = obj?.top_rated;
-        this.ideaWinner = obj?.idea_winner;
+        this.trophy = obj?.isTrophy;
+        this.insight = obj?.isInsight;
 
     }
 }
