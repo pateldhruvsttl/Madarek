@@ -189,6 +189,10 @@ export const Label = {
     Nationality : isRTL ? ARlabel._nationality : USlabel._nationality,
     UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
 
+    Parners : isRTL ? ARlabel._parners : USlabel._parners,
+    BecomeAnExpert : isRTL ? ARlabel._becomeAnExpert : USlabel._becomeAnExpert,
+    WantBecomeExpert : isRTL ? ARlabel._wantBecomeExpert : USlabel._wantBecomeExpert,
+    ApplyNow : isRTL ? ARlabel._applyNow : USlabel._applyNow,
 } 
 
 

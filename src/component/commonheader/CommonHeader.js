@@ -277,7 +277,7 @@ const CommonHeader = (props) => {
         case 'ChallengesListing':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor}  />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
@@ -289,13 +289,11 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-
+                            <TouchableOpacity>
+                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
                             <TouchableOpacity>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity>
-                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -308,13 +306,14 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                        <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
                             <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
 
                         <View style={Style.centerIcnView}>
-                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ChallengeDetail}</Text>
+                            <Text style={Style.txtHeader}>{Label.ChallengeDetail}</Text>
                         </View>
+                        <View style={Style.icnEmpty} />
                     </View>
                 </>
             );
@@ -337,6 +336,49 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+        case 'Partners':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
+                            <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.Parners}</Text>
+                        </View>
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                </>
+            );
+            break;
+        case 'BecomeExpert':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
+                            <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.BecomeAnExpert}</Text>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
+            break;
+
 
         default: null;
 
@@ -344,7 +386,7 @@ const CommonHeader = (props) => {
     }
 }
 
-    export default memo(CommonHeader);
+export default memo(CommonHeader);
 
 
 

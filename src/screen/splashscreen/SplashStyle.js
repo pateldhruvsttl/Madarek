@@ -93,9 +93,9 @@ const STYLES = StyleSheet.create({
         elevation: 10,
         position: 'absolute',
         bottom: AppUtil.getHP(6),
-        width: 200,
+        width: '90%',
         zIndex: 9,
-        right: AppUtil.getWP(6)
+        right: AppUtil.getWP(6),
 
     },
     splashView: {
