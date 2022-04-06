@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -15,6 +15,9 @@ import FavouriteCategories from "../../component/homescreen/FavouriteCategories"
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 import { Loger } from "../../utils/Loger";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import BannerList from "../../model/BannerList";
 
 
 
@@ -22,6 +25,21 @@ const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     const list = DATA.slice(0, 2);
+    const [bannerList, setBannerList]=useState([])
+
+    useEffect(() => {
+        var banner=[];
+        Service.post(EndPoints.bannerList, {}, (res) => {
+            Loger.onLog('homeScreen bannerlist Response of banner list ========>',JSON.stringify(res.result))
+            res.result.forEach(element => {
+                let model = new BannerList(element);
+                banner.push(model)
+            });
+            setBannerList(banner)
+        }, (err) => {
+            Loger.onLog('homeScreen bannerlist error ========>',err)
+        })
+    }, []);
 
     const onSetItem = (item) => {
 

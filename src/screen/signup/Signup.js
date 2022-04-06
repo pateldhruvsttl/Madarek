@@ -54,7 +54,7 @@ const Signup = (props) => {
         } else if (password !== reTypePassword) {
             Alert.alert(Label.enterSamePassword);
         } else {
-        navigateToSignUpVerify();
+            navigateToSignUpVerify();
 
         }
     }
@@ -65,20 +65,29 @@ const Signup = (props) => {
         setCallCode(country.callingCode[0]);
     }
     const onChangeField = (index) => {
-        if (index === 1) {
-            lastNameRef.current.focus()
-        } else if (index === 2) {
-            mobileNumberRef.current.focus()
-        } else if (index === 3) {
-            emailRef.current.focus()
-        } else if (index === 4) {
-            passwordRef.current.focus()
-        } else if (index === 5) {
-            retypepasswordRef.current.focus()
-        } else if (index === 6) {
-            Keyboard.dismiss()
+        switch (true) {
+            case (index === 1):
+                lastNameRef.current.focus()
+                break;
+            case (index === 2):
+                mobileNumberRef.current.focus()
+                break;
+            case (index === 3):
+                emailRef.current.focus()
+                break;
+            case (index === 4):
+                passwordRef.current.focus()
+                break;
+            case (index === 5):
+                retypepasswordRef.current.focus()
+                break;
+            case (index === 6):
+                Keyboard.dismiss()
+                break;
+            default:
         }
     }
+
     return (
         <View >
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />

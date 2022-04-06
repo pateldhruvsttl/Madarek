@@ -20,6 +20,7 @@ import IcnMultiMsg from "../../assets/svg/IcnMultiMsg";
 import IcnEdit from "../../assets/svg/IcnEdit";
 import IcnShareIcon from "../../assets/svg/IcnShareIcon";
 import { GetAppColor } from "../../utils/Colors";
+import EditProfile from "../../assets/svg/UserProfile/EditProfile";
 
 
 const CommonHeader = (props) => {
@@ -277,7 +278,7 @@ const CommonHeader = (props) => {
         case 'ChallengesListing':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor}  />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
@@ -289,13 +290,11 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-
+                            <TouchableOpacity>
+                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
                             <TouchableOpacity>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity>
-                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -308,13 +307,14 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                        <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
                             <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
 
                         <View style={Style.centerIcnView}>
-                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ChallengeDetail}</Text>
+                            <Text style={Style.txtHeader}>{Label.ChallengeDetail}</Text>
                         </View>
+                        <View style={Style.icnEmpty} />
                     </View>
                 </>
             );
@@ -360,14 +360,155 @@ const CommonHeader = (props) => {
                     </>
                 );
                 break;    
+        case 'Partners':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
+                        <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
+                            <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.Parners}</Text>
+                        </View>
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                </>
+            );
+            break;
+        case 'BecomeExpert':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
+                            <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.BecomeAnExpert}</Text>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
+            break;
+
+        case 'Setting':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                        <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                            <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Settings}</Text>
+                        </View>
+
+                        {/* <View style={Style.rightIcnView}>
+                                    <TouchableOpacity>
+                                        <IcnMultiMsg style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity>
+                                        <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                    </TouchableOpacity>
+                                </View> */}
+
+                    </View>
+                </>
+            )
+            break;
+        case 'MyAccount':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
+                            <IcnMenu style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.MyAccount}</Text>
+                        </View>
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                            {/* {onMenu()} */}
+                        </View>
+
+                    </View>
+                </>
+            );
+            break;
+        case 'UserProfile':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                            <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
+                        </View>
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity onPress={() => props.onEditProfile()}>
+                                <EditProfile style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                            {/* {onMenu()} */}
+                        </View>
+
+                    </View>
+                </>
+            );
+            break;
+        case 'UserEditProfile':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
+                            <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        </TouchableOpacity>
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
+                        </View>
+
+                        {/* <View style={Style.rightIcnView}>
+                                                <TouchableOpacity onPress={()=>props.onEditProfile()}>
+                                                    <EditProfile style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                                </TouchableOpacity>
+                                            </View> */}
+
+                    </View>
+                </>
+            );
+            break;
         default: null;
-
 
     }
 }
 
-    export default memo(CommonHeader);
+export default memo(CommonHeader);
 
 
 

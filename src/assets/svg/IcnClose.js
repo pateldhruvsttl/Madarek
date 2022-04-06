@@ -13,7 +13,7 @@ function IcnClose(props) {
       <G
         data-name="Group 253"
         transform="translate(-168.368 -75.868)"
-        fill="#fff"
+        fill={props.color?props.color:"#fff"}
       >
         <Path
           data-name="Rectangle 232"

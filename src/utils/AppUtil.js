@@ -42,6 +42,10 @@ export const AppUtil = {
     } else {
       return true;
     }
+  },
+  isPortrait: () => {
+    const dim = Dimensions.get('screen');
+    return dim.height >= dim.width;
   }
 
 }

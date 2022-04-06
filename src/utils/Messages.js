@@ -69,7 +69,7 @@ export const ARlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _password: "Please enter correct password",
+    _passwordLogin: "Please enter correct password",
     _pin: "Please enter correct otp",
     _socialLine: "or continue with",
 
@@ -109,14 +109,9 @@ export const ARlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
+    _myAccount: "My Account",
 
-    // _signUpVerifyTitle: "Sign Up Verification",
-    // _verifyNumber: "Verify Your Mobile Number",
-    // _oneTimePinDetail: "We sent a one time password",
-    // _oneTimePassword: "OTP",
-    // _toMessage: "to",
-    // _defaultPhoneCode: "+971 877 887 7442",
-    // _verifyTitle: "Verify",
+    
 
     // Expert Details message
     _ideaDetails: "Idea Detail",
@@ -170,49 +165,96 @@ export const ARlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
-    _all:'All',
-    _latest:'Latest',
-    _popular:'Popular',
-    _winning:'Winning',
-    _connectedExperts:'Connected Experts',
-    _popularExperts:'Popular Experts',
-    _userDashboard:'User Dashboard',
-    _myIdeaJointRequest:'My Idea Joint Request',
-    _ideaMaturation:'Idea Maturation',
-    _rejected:'Rejected',
-    _accepted:'Accepted',
-    _completed:'Completed',
-    _smeDashboard:'SME Dashboard',
-    _userJoinRequest:"User Join Request",
-    _submitYourIdeas:"Submit your Ideas",
+ // user category
+    _agriculture_Fisheries: "Agriculture & Fisheries",
+    _autismSpecializedCenters: "Autism Specialized Centers",
+    _aviation: "Aviation",
+    _bankingandFinance: "Banking and Finance",
+    _childLevelCat: "Child Level Cat",
 
 
-    // user category
-    _agriculture_Fisheries:"Agriculture & Fisheries",
-    _autismSpecializedCenters:"Autism Specialized Centers",
-    _aviation:"Aviation",
-    _bankingandFinance:"Banking and Finance",
-    _childLevelCat:"Child Level Cat",
-
-    
     // ChallengeDetails screen message
 
-    _challengesDetail : "Challenge Details",
-    _openButtonTitle : "OPEN",
-    _follow : "Follow",
-    _termsAndCondition : "*Terms & conditions applied",
-    _ideaParticipate : "Ideas Participated",
-    _participate : "Participants",
-    _expertsEngaged : "Experts Engaged",
-    _announcement : "Announcement",
-    _openForSubmissiom : "Open for Submission",
-    _closeForSubmission : "Close for Submission",
-    _publicEvaluation : "Public Evaluation",
-    _awardAnnouncement : "Award Announcement",
-    _objective :"Objective",
-    _whoParticipate :"Who Should Participate",
-    _reward : "Reward",
+    _challengesDetail: "Challenge Details",
+    _openButtonTitle: "OPEN",
+    _follow: "Follow",
+    _termsAndCondition: "*Terms & conditions applied",
+    _ideaParticipate: "Ideas Participated",
+    _participate: "Participants",
+    _expertsEngaged: "Experts Engaged",
+    _announcement: "Announcement",
+    _openForSubmissiom: "Open for Submission",
+    _closeForSubmission: "Close for Submission",
+    _publicEvaluation: "Public Evaluation",
+    _awardAnnouncement: "Award Announcement",
+    _objective: "Objective",
+    _whoParticipate: "Who Should Participate",
+    _reward: "Reward",
     _schedule: "Schedule",
+    _votingMechanisam: "Voting Mechanisam",
+    _evaluationPanel: "Evaluation Panel",
+    _loadMore: "Load More",
+    _rank: "Rank",
+    _totalScore: "Total Score",
+    _votes: "Votes",
+    _participateNow: "Participate Now",
+
+    //modal message
+    _modalTitleChallenge: "Would you like to participate in existing idea or submit new idea ?",
+    _selectArea: "Select Idea",
+    _submitYourIdea: "Submit Your Idea",
+
+    _selectLanguage: "Select Language",
+
+    _sponsors: "Sponsors",
+    _educationResearch: "Education & Research",
+
+
+    _english: "English",
+    _arabic: "Arabic",
+
+
+    //SubmitIDeas Message
+    _fillMandatoryFieldsValidation: "please fill all mandatory fields",
+    _ideaTitle: "Idea Title",
+    _sectors: "Sectors",
+    _category: "Category",
+    _subCategory: "Sub Category",
+    _gender: "Gender",
+    _male: "Male",
+    _female: "Female",
+    _other: "Other",
+
+    // parners screen message
+    _parners: "Partners",
+
+     // BecomeAnExpert message
+     _becomeAnExpert: "Become an Expert",
+     _wantBecomeExpert : "Want to Become an Expert?",
+     _applyNow : "Apply Now",
+
+    // user profile
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
+
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
     _votingMechanisam : "Voting Mechanisam",
     _evaluationPanel : "Evaluation Panel",
     _loadMore : "Load More",
@@ -221,10 +263,6 @@ export const ARlabel = {
     _votes : "Votes",
     _participateNow : "Participate Now",
 
-     //modal message
-    _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
-    _selectArea : "Select Idea",
-    _submitYourIdea : "Submit Your Idea",
     
      //SubmitIDeas Message
      _fillMandatoryFieldsValidation:"please fill all mandatory fields",
@@ -270,7 +308,7 @@ export const USlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _password: "Please enter correct password",
+    _passwordLogin: "Please enter correct password",
     _pin: "Please enter correct otp",
     _ideas: "Ideas",
     _socialLine: "or continue with",
@@ -342,6 +380,7 @@ export const USlabel = {
     _logout: "Logout",
     _dashboard: "Dashboard",
     _submitIdea: "Submit Idea",
+    _myAccount: "My Account",
 
     //  _signUpVerifyTitle: "Sign Up Verification",
     // _verifyNumber: "Verify Your Mobile Number",
@@ -372,17 +411,17 @@ export const USlabel = {
     _expertDes: "Want to Become an Expert?",
     _expertsDirectory: "Experts Directory",
 
-    _connectedExperts:'Connected Experts',
-    _popularExperts:'Popular Experts',
-    _userDashboard:'User Dashboard',
-    _myIdeaJointRequest:'My Idea Joint Request',
-    _ideaMaturation:'Idea Maturation',
-    _rejected:'Rejected',
-    _accepted:'Accepted',
-    _completed:'Completed',
-    _smeDashboard:'SME Dashboard',
-    _userJoinRequest:"User Join Request",
-    _submitYourIdeas:"Submit your Ideas",
+    _connectedExperts: 'Connected Experts',
+    _popularExperts: 'Popular Experts',
+    _userDashboard: 'User Dashboard',
+    _myIdeaJointRequest: 'My Idea Joint Request',
+    _ideaMaturation: 'Idea Maturation',
+    _rejected: 'Rejected',
+    _accepted: 'Accepted',
+    _completed: 'Completed',
+    _smeDashboard: 'SME Dashboard',
+    _userJoinRequest: "User Join Request",
+    _submitYourIdeas: "Submit your Ideas",
     _seeAllIdeas: "See All Ideas",
     _openChallenges: "Open Challenges",
     _participateNow: "Participate Now",
@@ -461,4 +500,92 @@ export const USlabel = {
      _nationality:"Nationality",
      _uploadedImages:"Uploaded Images",
      _notifications:"Notifications",
+    // ChallengeDetails screen message
+
+    _challengesDetail: "Challenge Details",
+    _openButtonTitle: "OPEN",
+    _follow: "Follow",
+    _termsAndCondition: "*Terms & conditions applied",
+    _ideaParticipate: "Ideas Participated",
+    _participate: "Participants",
+    _expertsEngaged: "Experts Engaged",
+    _announcement: "Announcement",
+    _openForSubmissiom: "Open for Submission",
+    _closeForSubmission: "Close for Submission",
+    _publicEvaluation: "Public Evaluation",
+    _awardAnnouncement: "Award Announcement",
+    _objective: "Objective",
+    _whoParticipate: "Who Should Participate",
+    _reward: "Reward",
+    _schedule: "Schedule",
+    _votingMechanisam: "Voting Mechanisam",
+    _evaluationPanel: "Evaluation Panel",
+    _loadMore: "Load More",
+    _rank: "Rank",
+    _totalScore: "Total Score",
+    _votes: "Votes",
+    _participateNow: "Participate Now",
+
+    //modal message
+    _modalTitleChallenge: "Would you like to participate in existing idea or submit new idea ?",
+    _selectArea: "Select Idea",
+    _submitYourIdea: "Submit Your Idea",
+
+    _selectLanguage: "Select Language",
+    _english: "English",
+    _arabic: "Arabic",
+
+    //SubmitIDeas Message
+    _fillMandatoryFieldsValidation: "please fill all mandatory fields",
+    _ideaTitle: "Idea Title",
+    _sectors: "Sectors",
+    _category: "Category",
+    _subCategory: "Sub Category",
+    _gender: "Gender",
+    _male: "Male",
+    _female: "Female",
+    _other: "Other",
+    _alternateMobileNo: "Alternate Mobile No.",
+    _nationality: "Nationality",
+    _uploadedImages: "Uploaded Images",
+
+    // parners screen message
+    _parners: "Partners",
+
+    // BecomeAnExpert message
+    _becomeAnExpert: "Become an Expert",
+    _wantBecomeExpert : "Want to Become an Expert?",
+    _applyNow : "Apply Now",
+    
+
+    _sponsors: "Sponsors",
+    _educationResearch: "Education & Research",
+
+    _english: "English",
+    _arabic: "Arabic",
+
+    // user profile
+
+    _userProfile: "User Profile",
+    _upgradeUserType: "Upgrade User Type",
+    _payment: "Payment",
+    _help: "Help",
+
+
+    _userType: "User Type",
+    _name: "Name",
+    _organizationName: "Organization Name",
+    _jobTitle: "Job Title (optional)",
+    _country: "Country",
+    _city: "City",
+    _categories: "Categories",
+    _shortDiscription: "Short Discription",
+    _facebookLink: "Facebook Link",
+    _twitterLink: "Twitter Link",
+    _linkdinLink: "Linkdin Link",
+    _aboutExpert: "About Expert",
+    _description: "Description",
+
+    _addMore:"+ Add More",
+    _submit:"Submit",
 }

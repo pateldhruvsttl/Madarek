@@ -1,4 +1,4 @@
-import React, { useState, memo, useRef } from "react";
+import React, { useState, memo, useRef, useEffect } from "react";
 import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
@@ -12,6 +12,8 @@ import CountryPicker from 'react-native-country-picker-modal'
 import FONTS from "../../utils/Fonts";
 import { AppUtil } from "../../utils/AppUtil";
 import SocialLogo from '../../component/logindetails/SocialLogo'
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
 
 
 
@@ -41,6 +43,8 @@ const LoginScreen = (props) => {
     const input5 = useRef();
     const input6 = useRef();
 
+   
+
     const setFocusInput = (inputRef) => {
         inputRef.current.focus();
     }
@@ -54,55 +58,77 @@ const LoginScreen = (props) => {
     const navigateSignUpScreen = () => {
         props.navigation.navigate("Signup")
     }
-
     const checkOtpValue = () => {
-        if(first == ""){
-            input1.current.focus()
-        }else if(second == ""){
-            input2.current.focus()
-        }else if(third == ""){
-            input3.current.focus()
-        }else if(fourth == ""){
-            input4.current.focus()
-        }else if(fifth == ""){
-            input5.current.focus()
-        }else if(sixth == ""){
-            input6.current.focus()
+        switch (true) {
+            case (first == ""):
+                input1.current.focus()
+                break;
+            case (second == ""):
+                input2.current.focus()
+                break;
+            case (third == ""):
+                input3.current.focus()
+                break;
+            case (fourth == ""):
+                input4.current.focus()
+                break;
+            case (fifth == ""):
+                input5.current.focus()
+                break;
+            case (sixth == ""):
+                input6.current.focus()
+                break;
+            default:
         }
-        
-    } 
-
+    }
 
     const handleKeyPress = (key, index) => {
         if (key === 'Backspace') {
-            if (index === 1) {
-                return false;
-            } else if (index === 2) {
-                input1.current.focus();
-            } else if (index === 3) {
-                input2.current.focus();
-            } else if (index === 4) {
-                input3.current.focus();
-            } else if (index === 5) {
-                input4.current.focus();
-            } else if (index === 6) {
-                input5.current.focus();
+            switch (true) {
+                case (index === 1):
+                    return false
+                    break;
+                case (index === 2):
+                    input1.current.focus()
+                    break;
+                case (index === 3):
+                    input2.current.focus()
+                    break;
+                case (index === 4):
+                    input3.current.focus()
+                    break;
+                case (index === 5):
+                    input4.current.focus()
+                    break;
+                case (index === 6):
+                    input5.current.focus()
+                    break;
+                default:
             }
-        } else {
-            if (index === 1) {
-                input2.current.focus();
-            } else if (index === 2) {
-                input3.current.focus();
-            } else if (index === 3) {
-                input4.current.focus();
-            } else if (index === 4) {
-                input5.current.focus();
-            } else if (index === 5) {
-                input6.current.focus();
+        }
+        else {
+            switch (true) {
+                case (index === 1):
+                    input2.current.focus();
+                    break;
+                case (index === 2):
+                    input3.current.focus();
+                    break;
+                case (index === 3):
+                    input4.current.focus();
+                    break;
+                case (index === 4):
+                    input5.current.focus()
+                    break;
+                case (index === 5):
+                    input6.current.focus()
+                    break;
+                default:
             }
 
         }
     }
+
 
     const validateFields = () => {
         if (isMobilelogin) {
@@ -112,7 +138,7 @@ const LoginScreen = (props) => {
             }
             if (showPassword) {
                 if (pin != password) {
-                    showMessage(Label.Password)
+                    showMessage(Label.PasswordLogin)
                     return false
                 }
             } else {
@@ -129,7 +155,7 @@ const LoginScreen = (props) => {
                 showMessage(Label.Email)
                 return false
             } else if (pin != password) {
-                showMessage(Label.Password)
+                showMessage(Label.PasswordLogin)
                 return false
             }
         }
@@ -220,7 +246,7 @@ const LoginScreen = (props) => {
                                             ref={t1}
                                             returnKeyType={showPassword ? "next" : "done"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue()}}
+                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue() }}
                                             placeholder={Label.MobileNumber}
                                             maxLength={12}
                                             style={PAGESTYLE.showMobileDetail}

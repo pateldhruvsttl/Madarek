@@ -28,7 +28,7 @@ export const Label = {
     ToLogin: isRTL ? ARlabel._toLogin : USlabel._toLogin,
     Email: isRTL ? ARlabel._email : USlabel._email,
     Phone: isRTL ? ARlabel._phone : USlabel._phone,
-    Password: isRTL ? ARlabel._password : USlabel._password,
+    PasswordLogin: isRTL ? ARlabel._passwordLogin : USlabel._passwordLogin,
     Pin: isRTL ? ARlabel._pin : USlabel._pin,
     CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
     Skip: isRTL ? ARlabel._skip : USlabel._skip,
@@ -167,10 +167,46 @@ export const Label = {
     Rank : isRTL ? ARlabel._rank : USlabel._rank,
     TotalScore : isRTL ? ARlabel._totalScore : USlabel._totalScore,
     Votes : isRTL ? ARlabel._votes : USlabel._votes,
+
+    Sponsors : isRTL ? ARlabel._sponsors : USlabel._sponsors,
+    EducationResearch : isRTL ? ARlabel._educationResearch : USlabel._educationResearch,
+
+    English : isRTL ? ARlabel._english : USlabel._english,
+    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic,
+
+    MyAccount : isRTL ? ARlabel._myAccount : USlabel._myAccount,
+
+    UserProfile : isRTL ? ARlabel._userProfile : USlabel._userProfile,
+    UpgradeUserType : isRTL ? ARlabel._upgradeUserType : USlabel._upgradeUserType,
+    Payment : isRTL ? ARlabel._payment : USlabel._payment,
+    Help : isRTL ? ARlabel._help : USlabel._help,
+
+    UserType:isRTL?ARlabel._userType:USlabel._userType,
+    Name:isRTL?ARlabel._name:USlabel._name,
+    OrganizationName:isRTL?ARlabel._organizationName:USlabel._organizationName,
+    JobTitle:isRTL?ARlabel._jobTitle:USlabel._jobTitle,
+    Country:isRTL?ARlabel._country:USlabel._country,
+    City:isRTL?ARlabel._city:USlabel._city,
+    Categories:isRTL?ARlabel._categories:USlabel._categories,
+    ShortDiscription:isRTL?ARlabel._shortDiscription:USlabel._shortDiscription,
+    FacebookLink:isRTL?ARlabel._facebookLink:USlabel._facebookLink,
+    TwitterLink:isRTL?ARlabel._twitterLink:USlabel._twitterLink,
+    LinkdinLink:isRTL?ARlabel._linkdinLink:USlabel._linkdinLink,
+    AboutExpert:isRTL?ARlabel._aboutExpert:USlabel._aboutExpert,
+    Description:isRTL?ARlabel._description:USlabel._description,
+
+    AddMore:isRTL?ARlabel._addMore:USlabel._addMore,
+    Submit:isRTL?ARlabel._submit:USlabel._submit,
+
     ParticipateNow : isRTL ? ARlabel._participateNow : USlabel._participateNow,
     ModalTitleChallenge : isRTL ? ARlabel._modalTitleChallenge : USlabel._modalTitleChallenge,
     SelectArea : isRTL ? ARlabel._selectArea : USlabel._selectArea,
     SubmitYourIdea : isRTL ? ARlabel._submitYourIdea : USlabel._submitYourIdea,
+
+    SelectLanguage : isRTL ? ARlabel._selectLanguage : USlabel._selectLanguage,
+    English : isRTL ? ARlabel._english : USlabel._english,
+    Arabic : isRTL ? ARlabel._arabic : USlabel._arabic,
+    
     FillMandatoryFieldsValidation : isRTL ? ARlabel._fillMandatoryFieldsValidation : USlabel._fillMandatoryFieldsValidation,
     IdeaTitle : isRTL ? ARlabel._ideaTitle : USlabel._ideaTitle,
     Sectors : isRTL ? ARlabel._sectors : USlabel._sectors,
@@ -185,6 +221,10 @@ export const Label = {
     UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
     Notifications : isRTL ? ARlabel._notifications : USlabel._notifications,
 
+    Parners : isRTL ? ARlabel._parners : USlabel._parners,
+    BecomeAnExpert : isRTL ? ARlabel._becomeAnExpert : USlabel._becomeAnExpert,
+    WantBecomeExpert : isRTL ? ARlabel._wantBecomeExpert : USlabel._wantBecomeExpert,
+    ApplyNow : isRTL ? ARlabel._applyNow : USlabel._applyNow,
 } 
 
 
