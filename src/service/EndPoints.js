@@ -1,3 +1,4 @@
 export const EndPoints = {
-    bannerList:"rest/banner"
+    bannerList:"rest/banner",
+    signUp : "signup"
 }
