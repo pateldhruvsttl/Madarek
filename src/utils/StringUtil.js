@@ -183,6 +183,7 @@ export const Label = {
     AlternateMobileNo : isRTL ? ARlabel._alternateMobileNo : USlabel._alternateMobileNo,
     Nationality : isRTL ? ARlabel._nationality : USlabel._nationality,
     UploadedImages : isRTL ? ARlabel._uploadedImages : USlabel._uploadedImages,
+    Notifications : isRTL ? ARlabel._notifications : USlabel._notifications,
 
 } 
 

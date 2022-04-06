@@ -236,6 +236,7 @@ export const ARlabel = {
      _male:"Male",
      _female:"Female",
      _other:"Other",
+     _notifications:"Notifications",
 
 }
 export const USlabel = {
@@ -459,5 +460,5 @@ export const USlabel = {
      _alternateMobileNo:"Alternate Mobile No.",
      _nationality:"Nationality",
      _uploadedImages:"Uploaded Images",
-
+     _notifications:"Notifications",
 }

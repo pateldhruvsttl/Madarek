@@ -337,6 +337,29 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+            case 'NotificationsScreen':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+    
+                            <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
+                                <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+    
+                            <View style={Style.centerIcnView}>
+                                <Text style={Style.txtHeader}>{Label.Notifications}</Text>
+                            </View>
+                            
+                            <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                        </View>
+                    </>
+                );
+                break;    
 
         default: null;
 

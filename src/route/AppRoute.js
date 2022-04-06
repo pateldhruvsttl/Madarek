@@ -27,13 +27,17 @@ import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 
+import NotificationsScreen from '../screen/notifications/NotificationsScreen';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"NotificationsScreen"}>
+            
+
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -53,6 +57,8 @@ function ScreenStack() {
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
             
+            <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
+
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
 
