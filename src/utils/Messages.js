@@ -276,6 +276,11 @@ export const ARlabel = {
      _other:"Other",
      _notifications:"Notifications",
 
+     _notNow:"Not now",
+     _update:"Update",
+     _newNotifications:"new notifications",
+     _clearAll:"Clear all",
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -588,4 +593,8 @@ export const USlabel = {
 
     _addMore:"+ Add More",
     _submit:"Submit",
+    _notNow:"Not now",
+     _update:"Update",
+     _newNotifications:"new notifications",
+     _clearAll:"Clear all",
 }
