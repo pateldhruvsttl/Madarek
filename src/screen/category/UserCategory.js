@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, StatusBar, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, StatusBar, StyleSheet, FlatList, TouchableOpacity , Image} from 'react-native'
+import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { GetAppColor } from '../../utils/Colors'
 import { TextInput } from 'react-native-gesture-handler'
@@ -11,6 +11,10 @@ import { useSelector } from 'react-redux'
 import FONTS from '../../utils/Fonts'
 import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 import Heart from '../../assets/svg/Heart'
+import { Service } from '../../service/Service'
+import { EndPoints } from '../../service/EndPoints'
+import Categories from '../../model/Categories'
+import { Loger } from '../../utils/Loger'
 
 
 const testData = [
@@ -47,7 +51,41 @@ const testData = [
 const UserCategory = (props) => {
 
     const { themeColor } = useSelector((state) => state)
+    const [category, setCategory]=useState([])
+    const [categories, setCategories]=useState([])
+    const [isSearch, setSearch] = useState(false);
+    const [searchStr, setSearchStr] = useState("")
 
+    useEffect(() => {
+        var cat=[];
+        Service.post(EndPoints.categories, {}, (res) => {
+            Loger.onLog('User category categorylist Response of category list ========>',JSON.stringify(res.result))
+            res.result.forEach(element => {
+                let model = new Categories(element);
+                cat.push(model)
+            });
+            setCategories(cat)
+            setCategory(cat)
+        }, (err) => {
+            Loger.onLog('user category category list error ========>',err)
+        })
+    }, []);
+
+
+    const onWriteText = (text) => {
+        if (text === "") {
+            setSearch(false)
+        } else {
+            setSearch(true)
+        }
+        setSearchStr(text)
+        const searchData = category.filter(task => task.categoryName.includes(text))
+        var cat = []
+        searchData.forEach(obj => {
+            cat.push(obj)
+        });
+        setCategories(cat)
+    }
     const renderItem = ({ item, index }) => {
 
         return (
@@ -55,29 +93,29 @@ const UserCategory = (props) => {
                 <View style={UserCategoryStyles.heartView}>
                     <Heart height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                 </View>
-                <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
+                {/* <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} /> */}
+                <Image style={{height:AppUtil.getHP(3.6), width:AppUtil.getHP(3.6)}} source={{uri:item.categoryIcon}} />
                 {/* {item.icon} */}
-                <Text style={UserCategoryStyles.txtBtn}>{'Category Name'}</Text>
+                <Text style={UserCategoryStyles.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>
         )
     }
 
     return (
         <SafeAreaView>
-
-            {/* <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={true} /> */}
             <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
             <View style={UserCategoryStyles.searchView}>
                 <TextInput
                     style={UserCategoryStyles.input}
                     placeholder='Search'
                     placeholderTextColor={GetAppColor.grayBorder}
+                    onChangeText={(text)=>onWriteText(text)}
                 />
                 <GraySearchIcon height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
             </View>
 
             <FlatList
-                data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                data={categories}
                 style={UserCategoryStyles.flatelist}
                 contentContainerStyle={UserCategoryStyles.lisView}
                 numColumns={'3'}
@@ -105,7 +143,7 @@ const UserCategoryStyles = StyleSheet.create({
         backgroundColor: GetAppColor.white,
         borderColor: GetAppColor.catBorder
     },
-    heartView: { alignSelf: 'flex-end', marginEnd: 5 },
+    heartView: { alignSelf: 'flex-end', end: 5, position:'absolute', top:5 },
     input: { width: '90%', padding: 0, height: '100%' },
     searchView: { flexDirection: 'row', width: '100%', alignItems: 'center', paddingHorizontal: AppUtil.getWP(5), height: 50, backgroundColor: GetAppColor.white, justifyContent: 'space-between' },
     txtBtn: {

@@ -1,16 +1,17 @@
 import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Label } from '../../utils/StringUtil'
 import { GetAppColor } from '../../utils/Colors'
 import SignupStyles from './SignupStyle'
 import IcnBack from '../../assets/svg/IcnBack'
 import { AppUtil } from '../../utils/AppUtil'
-import FIllRadio from '../../assets/svg/FIllRadio'
-import DownArrow from '../../assets/svg/DownArrow'
 import { useState } from 'react'
 import CountryPicker from 'react-native-country-picker-modal'
 import BackIcon from '../../assets/svg/loginLogo/BackIcon'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Service } from '../../service/Service'
+import { EndPoints } from '../../service/EndPoints'
+import { Loger } from '../../utils/Loger'
 
 const Signup = (props) => {
 
@@ -34,16 +35,41 @@ const Signup = (props) => {
     const passwordRef = useRef();
     const retypepasswordRef = useRef();
 
+    const submitRegistartionForm = () => {
+        const data = {
+            first_name: firstName,
+            last_name: lastName,
+            user_type: selectedIndex,
+            organization_name: "organization",
+            country_id: "51",
+            city_id: "12",
+            mobile_phone: mobileNumber,
+            email: emaiId,
+            pwd: password,
+            device_id: "136356",
+            job_title: "Developer",
+            token: "1236547780",
+        }
+        // newData =  JSON.stringify(data)
+        Service.post(EndPoints.signUp, data, (res) => {
+            Loger.onLog('SignUp screen Response  ========>', res)
+            navigateToSignUpVerify();
+        }, (err) => {
+            Loger.onLog('SignUp screen error ========>', err)
+        })
+    };
+
     const navigateToSignUpVerify = () => {
         props.navigation.navigate("SignUpVerify")
     }
+
 
     const signUpPressed = () => {
         if (firstName === "") {
             Alert.alert(Label.enterfirstname);
         } else if (lastName === "") {
             Alert.alert(Label.enterlastname);
-        } else if (mobileNumber === "" || !AppUtil.mobilevalidate(mobileNumber)) {
+        } else if (mobileNumber === "") {
             Alert.alert(Label.entermobilenumber);
         } else if (emaiId === "" || !AppUtil.validate(emaiId)) {
             Alert.alert(Label.enteremail);
@@ -54,7 +80,8 @@ const Signup = (props) => {
         } else if (password !== reTypePassword) {
             Alert.alert(Label.enterSamePassword);
         } else {
-            navigateToSignUpVerify();
+            submitRegistartionForm();
+
 
         }
     }

@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
 import CategoryStyle from './CategoryStyle'
@@ -13,36 +13,41 @@ import CloseIcon from '../../assets/svg/CloseIcon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateTheme } from '../../redux/reducers/ThemReducers'
 import { blueTheme } from '../../utils/ColorModel'
+import { EndPoints } from '../../service/EndPoints'
+import { Service } from '../../service/Service'
+import Categories from '../../model/Categories'
+import { Loger } from '../../utils/Loger'
 
 
-const category = [
-    { id: 0, name: 'Agriculture & Fisheries', isselected: false },
-    { id: 1, name: 'Aviation', isselected: false },
-    { id: 2, name: 'Autism Specialized Centers', isselected: false },
-    { id: 3, name: 'Health', isselected: false },
-    { id: 4, name: 'Banking and Finance', isselected: false },
-    { id: 5, name: 'Cultural Activities', isselected: false },
-    { id: 6, name: 'Culture and Arts', isselected: false },
-    { id: 7, name: 'Development Programs', isselected: false },
-    { id: 8, name: 'Education', isselected: false },
-    { id: 9, name: 'Sports and Recreational Activities', isselected: false },
-    { id: 10, name: 'Volunteering', isselected: false },
-    { id: 11, name: 'Information Technology', isselected: false },
-    { id: 12, name: 'Handicapped Rehabilitation Centers', isselected: false },
-    { id: 13, name: 'Renewable Energy', isselected: false },
-    { id: 14, name: 'Entrepreneurship', isselected: false },
-    { id: 15, name: 'Construction and Infrastructure', isselected: false },
-    { id: 16, name: 'Strategic Planning', isselected: false },
-    { id: 17, name: 'Special Education', isselected: false },
-    { id: 18, name: 'Skills and Competencies', isselected: false },
-    { id: 19, name: 'Private Sector', isselected: false },
-    { id: 20, name: 'Quality of Living', isselected: false },
-    { id: 21, name: 'Entertainment Activities', isselected: false },
-    { id: 22, name: 'Youth Development and Support', isselected: false },
-]
+// const category = [
+//     { id: 0, name: 'Agriculture & Fisheries', isselected: false },
+//     { id: 1, name: 'Aviation', isselected: false },
+//     { id: 2, name: 'Autism Specialized Centers', isselected: false },
+//     { id: 3, name: 'Health', isselected: false },
+//     { id: 4, name: 'Banking and Finance', isselected: false },
+//     { id: 5, name: 'Cultural Activities', isselected: false },
+//     { id: 6, name: 'Culture and Arts', isselected: false },
+//     { id: 7, name: 'Development Programs', isselected: false },
+//     { id: 8, name: 'Education', isselected: false },
+//     { id: 9, name: 'Sports and Recreational Activities', isselected: false },
+//     { id: 10, name: 'Volunteering', isselected: false },
+//     { id: 11, name: 'Information Technology', isselected: false },
+//     { id: 12, name: 'Handicapped Rehabilitation Centers', isselected: false },
+//     { id: 13, name: 'Renewable Energy', isselected: false },
+//     { id: 14, name: 'Entrepreneurship', isselected: false },
+//     { id: 15, name: 'Construction and Infrastructure', isselected: false },
+//     { id: 16, name: 'Strategic Planning', isselected: false },
+//     { id: 17, name: 'Special Education', isselected: false },
+//     { id: 18, name: 'Skills and Competencies', isselected: false },
+//     { id: 19, name: 'Private Sector', isselected: false },
+//     { id: 20, name: 'Quality of Living', isselected: false },
+//     { id: 21, name: 'Entertainment Activities', isselected: false },
+//     { id: 22, name: 'Youth Development and Support', isselected: false },
+// ]
 
 const Category = (props) => {
-    const [categories, setCategories] = useState(category)
+    const [category, setCategory]=useState([])
+    const [categories, setCategories] = useState([])
     const [selectedCategories, setSelectedCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
@@ -51,6 +56,21 @@ const Category = (props) => {
     const {themeColor} = useSelector((state) => state)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        var cat=[];
+        Service.post(EndPoints.categories, {}, (res) => {
+            Loger.onLog('category categorylist Response of category list ========>',JSON.stringify(res.result))
+            res.result.forEach(element => {
+                let model = new Categories(element);
+                cat.push(model)
+            });
+            setCategories(cat)
+            setCategory(cat)
+        }, (err) => {
+            Loger.onLog('category bannerlist error ========>',err)
+        })
+    }, []);
+
     const navigateToHomeScreen = () => {
         props.navigation.navigate("ChallengeDetail")
       }
@@ -58,17 +78,12 @@ const Category = (props) => {
     const onPressCategory = (index) => {
         var cat = [...categories];
         var selectedCat = [...selectedCategories];
-        cat[index].isselected = !cat[index].isselected
-        if (cat[index].isselected) {
             if (!selectedCat.includes(cat[index])) {
                 selectedCat.push(cat[index])
-            }
-        } else {
-            if (selectedCat.includes(cat[index])) {
+            }else{
                 let idx = selectedCat.indexOf(cat[index])
                 selectedCat.splice(idx, 1)
             }
-        }
         setSelectedCategories(selectedCat)
         setCategories(cat)
     }
@@ -80,16 +95,9 @@ const Category = (props) => {
             setSearch(true)
         }
         setSearchStr(text)
-        const searchData = category.filter(task => task.name.includes(text))
+        const searchData = category.filter(task => task.categoryName.includes(text))
         var cat = []
         searchData.forEach(obj => {
-            if (selectedCategories.includes(obj)) {
-                obj.isselected = true
-
-            } else {
-                obj.isselected = false
-
-            }
             cat.push(obj)
         });
         setCategories(cat)
@@ -144,15 +152,15 @@ const Category = (props) => {
                     {
                         categories.map((item, index) => {
                             return (
-                                <TouchableOpacity onPress={() => onPressCategory(index)} style={[CategoryStyle.categoryButton, { borderColor: item.isselected ? GetAppColor.borderRed : GetAppColor.borderGray, }]}>
+                                <TouchableOpacity onPress={() => onPressCategory(index)} style={[CategoryStyle.categoryButton, { borderColor: selectedCategories.includes(item) ? GetAppColor.borderRed : GetAppColor.borderGray, }]}>
                                     <Text
                                         style={{
-                                            color: item.isselected ? GetAppColor.categoryTextSelected : GetAppColor.categoryText,
+                                            color: selectedCategories.includes(item) ? GetAppColor.categoryTextSelected : GetAppColor.categoryText,
                                             fontSize: AppUtil.getHP(1.8),
-                                            fontFamily: item.isselected ? FONTS.robotMedium : FONTS.robotRegular
+                                            fontFamily: selectedCategories.includes(item) ? FONTS.robotMedium : FONTS.robotRegular
                                         }}
                                     >
-                                        {item.name}
+                                        {item.categoryName}
                                     </Text>
                                 </TouchableOpacity>
                             )
