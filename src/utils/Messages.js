@@ -111,7 +111,7 @@ export const ARlabel = {
     _submitIdea: "Submit Idea",
     _myAccount: "My Account",
 
-    
+
 
     // Expert Details message
     _ideaDetails: "Idea Detail",
@@ -165,7 +165,7 @@ export const ARlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
- // user category
+    // user category
     _agriculture_Fisheries: "Agriculture & Fisheries",
     _autismSpecializedCenters: "Autism Specialized Centers",
     _aviation: "Aviation",
@@ -228,10 +228,10 @@ export const ARlabel = {
     // parners screen message
     _parners: "Partners",
 
-     // BecomeAnExpert message
-     _becomeAnExpert: "Become an Expert",
-     _wantBecomeExpert : "Want to Become an Expert?",
-     _applyNow : "Apply Now",
+    // BecomeAnExpert message
+    _becomeAnExpert: "Become an Expert",
+    _wantBecomeExpert: "Want to Become an Expert?",
+    _applyNow: "Apply Now",
 
     // user profile
     _userProfile: "User Profile",
@@ -253,17 +253,19 @@ export const ARlabel = {
     _aboutExpert: "About Expert",
     _description: "Description",
 
-    _addMore:"+ Add More",
-    _submit:"Submit",
-    _votingMechanisam : "Voting Mechanisam",
-    _evaluationPanel : "Evaluation Panel",
-    _loadMore : "Load More",
-    _rank : "Rank",
-    _totalScore  : "Total Score",
-    _votes : "Votes",
-    _participateNow : "Participate Now",
+    _addMore: "+ Add More",
+    _submit: "Submit",
+    _votingMechanisam: "Voting Mechanisam",
+    _evaluationPanel: "Evaluation Panel",
+    _loadMore: "Load More",
+    _rank: "Rank",
+    _totalScore: "Total Score",
+    _votes: "Votes",
+    _participateNow: "Participate Now",
 
-    
+    _markallasRead: "Mark all as Read",
+    _newNotifications: "new notifications",
+
 
 }
 export const USlabel = {
@@ -498,9 +500,9 @@ export const USlabel = {
 
     // BecomeAnExpert message
     _becomeAnExpert: "Become an Expert",
-    _wantBecomeExpert : "Want to Become an Expert?",
-    _applyNow : "Apply Now",
-    
+    _wantBecomeExpert: "Want to Become an Expert?",
+    _applyNow: "Apply Now",
+
 
     _sponsors: "Sponsors",
     _educationResearch: "Education & Research",
@@ -530,6 +532,9 @@ export const USlabel = {
     _aboutExpert: "About Expert",
     _description: "Description",
 
-    _addMore:"+ Add More",
-    _submit:"Submit",
+    _addMore: "+ Add More",
+    _submit: "Submit",
+
+    _markallasRead: "Mark all as Read",
+    _newNotifications: "new notifications",
 }
