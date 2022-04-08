@@ -229,7 +229,8 @@ export const Label = {
     Update : isRTL ? ARlabel._update : USlabel._update,
     NotNow : isRTL ? ARlabel._notNow : USlabel._notNow,
     NewNotifications: isRTL ? ARlabel._newNotifications : USlabel._newNotifications,
-    ClearAll: isRTL ? ARlabel._clearAll : USlabel._clearAll
+    ClearAll: isRTL ? ARlabel._clearAll : USlabel._clearAll,
+    BecomeAnExpert: isRTL ? ARlabel._becomeAnExpert : USlabel._becomeAnExpert
 } 
 
 

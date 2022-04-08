@@ -280,6 +280,7 @@ export const ARlabel = {
      _update:"Update",
      _newNotifications:"new notifications",
      _clearAll:"Clear all",
+     _becomeAnExpert:"Become anExpert",
 
 }
 export const USlabel = {
@@ -597,4 +598,5 @@ export const USlabel = {
      _update:"Update",
      _newNotifications:"new notifications",
      _clearAll:"Clear all",
+     _becomeAnExpert:"Become anExpert",
 }

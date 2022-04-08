@@ -35,6 +35,7 @@ import UserProfileView from '../screen/myaccount/UserProfileView';
 import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
 
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
+import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
 
 
 const Stack = createStackNavigator();
@@ -43,7 +44,7 @@ const Drawer = createDrawerNavigator();
 function ScreenStack() {
     return (
 
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"NotificationsScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"BecomeAnExpert"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -58,6 +59,7 @@ function ScreenStack() {
             <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
+            <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
