@@ -23,7 +23,7 @@ import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'
 import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen'; 
 
 import UserCategory from '../screen/category/UserCategory';
-import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
+import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
@@ -35,13 +35,16 @@ import UserProfileView from '../screen/myaccount/UserProfileView';
 import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
 import Message from '../screen/message/Message';
 
+import NotificationsScreen from '../screen/notifications/NotificationsScreen';
+import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"Message"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -56,11 +59,14 @@ function ScreenStack() {
             <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
+            <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
             
+            <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
+
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
             <Stack.Screen name="PartnerScreen" component={PartnerScreen} />
