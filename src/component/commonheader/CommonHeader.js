@@ -384,7 +384,7 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
-        case 'BecomeExpert':
+        case 'BecomeAnExpert':
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
