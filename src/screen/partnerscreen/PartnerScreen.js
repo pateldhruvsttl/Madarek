@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import Partners from "../../component/partners/PartnersData";
 import Style from "./PartnerScreenStyle";
+import { Label } from "../../utils/StringUtil";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,8 +24,8 @@ const PartnerScreen = (props) => {
                         tabBarIndicatorStyle: Style.barBorder,
                         tabBarScrollEnabled:true
                    }}>
-                        <Tab.Screen name={"Sponsors"} children={() => <Partners propName={{ type: "Sponsors", data: sliderdata }} />} />
-                        <Tab.Screen name={"Education & Research"} children={() => <Partners propName={{ type: "Education & Research", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Sponsors} children={() => <Partners propName={{ type: "Sponsors", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.EducationResearch} children={() => <Partners propName={{ type: "Education & Research", data: sliderdata }} />} />
                       </Tab.Navigator>
                 </NavigationContainer>
             </View>

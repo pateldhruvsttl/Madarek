@@ -262,7 +262,7 @@ export const ARlabel = {
     _totalScore  : "Total Score",
     _votes : "Votes",
     _participateNow : "Participate Now",
-
+    _clear : "Clear"
     
 
 }
@@ -532,4 +532,5 @@ export const USlabel = {
 
     _addMore:"+ Add More",
     _submit:"Submit",
+    _clear : "Clear"
 }

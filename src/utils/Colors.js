@@ -35,7 +35,8 @@ export const GetAppColor = {
     profileYellowBorder : "#FFF8E9",
     buttonGreenColor : "#1FB779",
     grayShadeBorder : "#AAAAAA",
-    editProfBorder:"#707070"
+    editProfBorder:"#707070",
+    clearColor : "#8C67A9"
 }
 
 

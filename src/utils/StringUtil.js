@@ -224,6 +224,7 @@ export const Label = {
     BecomeAnExpert : isRTL ? ARlabel._becomeAnExpert : USlabel._becomeAnExpert,
     WantBecomeExpert : isRTL ? ARlabel._wantBecomeExpert : USlabel._wantBecomeExpert,
     ApplyNow : isRTL ? ARlabel._applyNow : USlabel._applyNow,
+    Clear : isRTL ? ARlabel._clear : USlabel._clear,
 } 
 
 

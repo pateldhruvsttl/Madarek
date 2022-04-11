@@ -33,6 +33,7 @@ import Setting from '../screen/setting/Setting';
 import MyAccount from '../screen/myaccount/MyAccount';
 import UserProfileView from '../screen/myaccount/UserProfileView';
 import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
+import SearchLabel from '../screen/searchlabel/SearchLabel';
 
 
 const Stack = createStackNavigator();
@@ -40,7 +41,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"Category"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"SearchLabel"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -69,6 +70,8 @@ function ScreenStack() {
             <Stack.Screen name="MyAccount" component={MyAccount} />
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
             <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
+
+            <Stack.Screen name="SearchLabel" component={SearchLabel} />
 
 
         </Stack.Navigator>
