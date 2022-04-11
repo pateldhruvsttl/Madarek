@@ -227,6 +227,7 @@ export const Label = {
 
     MarkallasRead: isRTL ? ARlabel._markallasRead : USlabel._markallasRead,
     NewNotifications: isRTL ? ARlabel._newNotifications : USlabel._newNotifications,
+    Clear : isRTL ? ARlabel._clear : USlabel._clear,
 }
 
 
