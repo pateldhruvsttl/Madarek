@@ -14,7 +14,8 @@ import { AppUtil } from "../../utils/AppUtil";
 import SocialLogo from '../../component/logindetails/SocialLogo'
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
-
+import { Loger } from "../../utils/Loger";
+import { deviceId } from "../../utils/Constant";
 
 
 const LoginScreen = (props) => {
@@ -43,14 +44,29 @@ const LoginScreen = (props) => {
     const input5 = useRef();
     const input6 = useRef();
 
-   
+    let otpNumber = 123456
+    let pin = 1234567
 
-    const setFocusInput = (inputRef) => {
-        inputRef.current.focus();
+
+    // const setFocusInput = (inputRef) => {
+    //     inputRef.current.focus();
+    // }
+
+    const loginData = {
+        pwd: password,
+        email_mobile: email,
+        device_id: deviceId,
     }
 
-    let pin = 12345678
-    let otpNumber = 123456
+    const signIn = () => {
+        Service.post(EndPoints.login, loginData, (res) => {
+            Loger.onLog('Login screen Response  ========>', res)
+            alert('Login successFully')
+        }, (err) => {
+            Loger.onLog('Login screen error ========>', err)
+        })
+    }
+
 
     const navigateHomeScreen = () => {
         props.navigation.navigate("HomeScreen")
@@ -137,7 +153,7 @@ const LoginScreen = (props) => {
                 return false
             }
             if (showPassword) {
-                if (pin != password) {
+                if (loginData.pwd != password) {
                     showMessage(Label.PasswordLogin)
                     return false
                 }
@@ -159,9 +175,9 @@ const LoginScreen = (props) => {
                 return false
             }
         }
-
+        signIn()
         resetField()
-        navigateHomeScreen()
+        // navigateHomeScreen()
 
     }
     const resetField = () => {

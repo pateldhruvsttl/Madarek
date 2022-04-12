@@ -278,7 +278,7 @@ const CommonHeader = (props) => {
         case 'ChallengesListing':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor}  />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.onMenuClick()}>
@@ -384,7 +384,7 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
-        case 'BecomeExpert':
+        case 'BecomeAnExpert':
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
@@ -503,7 +503,7 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
-        case 'BecomeAnExpert':
+        case 'Message':
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
@@ -514,10 +514,16 @@ const CommonHeader = (props) => {
                         </TouchableOpacity>
 
                         <View style={Style.centerIcnView}>
-                            <Text style={Style.txtHeader}>{Label.BecomeAnExpert}</Text>
+                            <Text style={Style.txtHeader}>{Label.Message}</Text>
                         </View>
-                        <View style={Style.icnEmpty} />
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
+
                 </>
             );
             break;

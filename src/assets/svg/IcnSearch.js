@@ -8,7 +8,7 @@ function IcnSearch(props) {
       width={54}
       height={54}
       viewBox="0 0 54 54"
-      fill="#fff"
+      fill={props.color ? "#000000" : "#fff"}
       {...props}
     >
       <Path

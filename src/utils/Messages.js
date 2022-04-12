@@ -111,7 +111,7 @@ export const ARlabel = {
     _submitIdea: "Submit Idea",
     _myAccount: "My Account",
 
-    
+
 
     // Expert Details message
     _ideaDetails: "Idea Detail",
@@ -165,7 +165,7 @@ export const ARlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
- // user category
+    // user category
     _agriculture_Fisheries: "Agriculture & Fisheries",
     _autismSpecializedCenters: "Autism Specialized Centers",
     _aviation: "Aviation",
@@ -228,10 +228,10 @@ export const ARlabel = {
     // parners screen message
     _parners: "Partners",
 
-     // BecomeAnExpert message
-     _becomeAnExpert: "Become an Expert",
-     _wantBecomeExpert : "Want to Become an Expert?",
-     _applyNow : "Apply Now",
+    // BecomeAnExpert message
+    _becomeAnExpert: "Become an Expert",
+    _wantBecomeExpert: "Want to Become an Expert?",
+    _applyNow: "Apply Now",
 
     // user profile
     _userProfile: "User Profile",
@@ -253,34 +253,38 @@ export const ARlabel = {
     _aboutExpert: "About Expert",
     _description: "Description",
 
-    _addMore:"+ Add More",
-    _submit:"Submit",
-    _votingMechanisam : "Voting Mechanisam",
-    _evaluationPanel : "Evaluation Panel",
-    _loadMore : "Load More",
-    _rank : "Rank",
-    _totalScore  : "Total Score",
-    _votes : "Votes",
-    _participateNow : "Participate Now",
+    _addMore: "+ Add More",
+    _submit: "Submit",
+    _votingMechanisam: "Voting Mechanisam",
+    _evaluationPanel: "Evaluation Panel",
+    _loadMore: "Load More",
+    _rank: "Rank",
+    _totalScore: "Total Score",
+    _votes: "Votes",
+    _participateNow: "Participate Now",
 
-    
-     //SubmitIDeas Message
-     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
-     _ideaTitle:"Idea Title",
-     _sectors:"Sectors",
-     _category:"Category",
-     _subCategory:"Sub Category",
-     _gender:"Gender",
-     _male:"Male",
-     _female:"Female",
-     _other:"Other",
-     _notifications:"Notifications",
+    _markallasRead: "Mark all as Read",
+    _newNotifications: "new notifications",
 
-     _notNow:"Not now",
-     _update:"Update",
-     _newNotifications:"new notifications",
-     _clearAll:"Clear all",
-     _becomeAnExpert:"Become anExpert",
+    _clear: "Clear",
+
+    //SubmitIDeas Message
+    _fillMandatoryFieldsValidation: "please fill all mandatory fields",
+    _ideaTitle: "Idea Title",
+    _sectors: "Sectors",
+    _category: "Category",
+    _subCategory: "Sub Category",
+    _gender: "Gender",
+    _male: "Male",
+    _female: "Female",
+    _other: "Other",
+    _notifications: "Notifications",
+
+    _notNow: "Not now",
+    _update: "Update",
+    _newNotifications: "new notifications",
+    _clearAll: "Clear all",
+    _becomeAnExpert: "Become anExpert",
 
 }
 export const USlabel = {
@@ -461,51 +465,51 @@ export const USlabel = {
     _closed: "Closed",
     _voting: "Voting",
 
-     // ChallengeDetails screen message
+    // ChallengeDetails screen message
 
-     _challengesDetail : "Challenge Details",
-     _openButtonTitle : "OPEN",
-     _follow : "Follow",
-     _termsAndCondition : "*Terms & conditions applied",
-     _ideaParticipate : "Ideas Participated",
-     _participate : "Participants",
-     _expertsEngaged : "Experts Engaged",
-     _announcement : "Announcement",
-     _openForSubmissiom : "Open for Submission",
-     _closeForSubmission : "Close for Submission",
-     _publicEvaluation : "Public Evaluation",
-     _awardAnnouncement : "Award Announcement",
-     _objective :"Objective",
-     _whoParticipate :"Who Should Participate",
-     _reward : "Reward",
-     _schedule: "Schedule",
-     _votingMechanisam : "Voting Mechanisam",
-     _evaluationPanel : "Evaluation Panel",
-     _loadMore : "Load More",
-     _rank : "Rank",
-     _totalScore  : "Total Score",
-     _votes : "Votes",
-     _participateNow : "Participate Now",
+    _challengesDetail: "Challenge Details",
+    _openButtonTitle: "OPEN",
+    _follow: "Follow",
+    _termsAndCondition: "*Terms & conditions applied",
+    _ideaParticipate: "Ideas Participated",
+    _participate: "Participants",
+    _expertsEngaged: "Experts Engaged",
+    _announcement: "Announcement",
+    _openForSubmissiom: "Open for Submission",
+    _closeForSubmission: "Close for Submission",
+    _publicEvaluation: "Public Evaluation",
+    _awardAnnouncement: "Award Announcement",
+    _objective: "Objective",
+    _whoParticipate: "Who Should Participate",
+    _reward: "Reward",
+    _schedule: "Schedule",
+    _votingMechanisam: "Voting Mechanisam",
+    _evaluationPanel: "Evaluation Panel",
+    _loadMore: "Load More",
+    _rank: "Rank",
+    _totalScore: "Total Score",
+    _votes: "Votes",
+    _participateNow: "Participate Now",
 
-     //modal message
-     _modalTitleChallenge : "Would you like to participate in existing idea or submit new idea ?",
-     _selectArea : "Select Idea",
-     _submitYourIdea : "Submit Your Idea",
+    //modal message
+    _modalTitleChallenge: "Would you like to participate in existing idea or submit new idea ?",
+    _selectArea: "Select Idea",
+    _submitYourIdea: "Submit Your Idea",
 
-     //SubmitIDeas Message
-     _fillMandatoryFieldsValidation:"please fill all mandatory fields",
-     _ideaTitle:"Idea Title",
-     _sectors:"Sectors",
-     _category:"Category",
-     _subCategory:"Sub Category",
-     _gender:"Gender",
-     _male:"Male",
-     _female:"Female",
-     _other:"Other",
-     _alternateMobileNo:"Alternate Mobile No.",
-     _nationality:"Nationality",
-     _uploadedImages:"Uploaded Images",
-     _notifications:"Notifications",
+    //SubmitIDeas Message
+    _fillMandatoryFieldsValidation: "please fill all mandatory fields",
+    _ideaTitle: "Idea Title",
+    _sectors: "Sectors",
+    _category: "Category",
+    _subCategory: "Sub Category",
+    _gender: "Gender",
+    _male: "Male",
+    _female: "Female",
+    _other: "Other",
+    _alternateMobileNo: "Alternate Mobile No.",
+    _nationality: "Nationality",
+    _uploadedImages: "Uploaded Images",
+    _notifications: "Notifications",
     // ChallengeDetails screen message
 
     _challengesDetail: "Challenge Details",
@@ -560,9 +564,9 @@ export const USlabel = {
 
     // BecomeAnExpert message
     _becomeAnExpert: "Become an Expert",
-    _wantBecomeExpert : "Want to Become an Expert?",
-    _applyNow : "Apply Now",
-    
+    _wantBecomeExpert: "Want to Become an Expert?",
+    _applyNow: "Apply Now",
+
 
     _sponsors: "Sponsors",
     _educationResearch: "Education & Research",
@@ -592,11 +596,15 @@ export const USlabel = {
     _aboutExpert: "About Expert",
     _description: "Description",
 
-    _addMore:"+ Add More",
-    _submit:"Submit",
-    _notNow:"Not now",
-     _update:"Update",
-     _newNotifications:"new notifications",
-     _clearAll:"Clear all",
-     _becomeAnExpert:"Become anExpert",
+
+    _markallasRead: "Mark all as Read",
+    _newNotifications: "new notifications",
+    _addMore: "+ Add More",
+    _submit: "Submit",
+    _notNow: "Not now",
+    _update: "Update",
+    _newNotifications: "new notifications",
+    _clearAll: "Clear all",
+    _becomeAnExpert: "Become anExpert",
+    _clear: "Clear"
 }

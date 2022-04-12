@@ -19,23 +19,23 @@ import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
 import IdeaDetails from '../screen/idea/IdeaDetails';
 import ExpertScreen from '../screen/expertscreen/ExpertScreen';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
-import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'; 
-import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen'; 
+import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
+import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 
 import UserCategory from '../screen/category/UserCategory';
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
-import BecomeExpert from '../component/expertscreen/BecomeExpert';
-import Partner from '../screen/partner/Partner';
 import Setting from '../screen/setting/Setting';
 import MyAccount from '../screen/myaccount/MyAccount';
 import UserProfileView from '../screen/myaccount/UserProfileView';
 import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
+import Message from '../screen/message/Message';
 
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
 import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
+import SearchLabel from '../screen/searchlabel/SearchLabel';
 
 
 const Stack = createStackNavigator();
@@ -43,7 +43,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"BecomeAnExpert"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -63,18 +63,18 @@ function ScreenStack() {
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
-            
+
             <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
 
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
             <Stack.Screen name="PartnerScreen" component={PartnerScreen} />
-            <Stack.Screen name="BecomeExpert" component={BecomeExpert} />
-            <Stack.Screen name="Partner" component={Partner} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="MyAccount" component={MyAccount} />
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
             <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
+            <Stack.Screen name="Message" component={Message} />
+            <Stack.Screen name="SearchLabel" component={SearchLabel} />
 
 
         </Stack.Navigator>

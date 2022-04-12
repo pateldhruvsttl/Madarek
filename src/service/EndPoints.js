@@ -4,5 +4,6 @@ export const EndPoints = {
     ideaList:"idealist?frontuser_id=48",
     bannerList:"rest/banner?language=ar",
     categories:"rest/categories",
-    signUp : "signup"
+    signUp : "signup",
+    login : "login"
 }
