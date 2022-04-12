@@ -147,37 +147,37 @@ const LoginScreen = (props) => {
 
 
     const validateFields = () => {
-        if (isMobilelogin) {
-            if (!mobileNumber.trim()) {
-                showMessage(Label.Phone)
-                return false
-            }
-            if (showPassword) {
-                if (loginData.pwd != password) {
-                    showMessage(Label.PasswordLogin)
-                    return false
-                }
-            } else {
-                const otpJoin = first + second + third + fourth + fifth + sixth;
-                // alert( typeof Number(otpJoin))
-                if (otpNumber != Number(otpJoin)) {
-                    showMessage(Label.Pin)
-                    return false
-                }
-            }
-        }
-        else {
-            if (!email.trim() || !emailValidate(email)) {
-                showMessage(Label.Email)
-                return false
-            } else if (pin != password) {
-                showMessage(Label.PasswordLogin)
-                return false
-            }
-        }
-        signIn()
-        resetField()
-        // navigateHomeScreen()
+        // if (isMobilelogin) {
+        //     if (!mobileNumber.trim()) {
+        //         showMessage(Label.Phone)
+        //         return false
+        //     }
+        //     if (showPassword) {
+        //         if (loginData.pwd != password) {
+        //             showMessage(Label.PasswordLogin)
+        //             return false
+        //         }
+        //     } else {
+        //         const otpJoin = first + second + third + fourth + fifth + sixth;
+        //         // alert( typeof Number(otpJoin))
+        //         if (otpNumber != Number(otpJoin)) {
+        //             showMessage(Label.Pin)
+        //             return false
+        //         }
+        //     }
+        // }
+        // else {
+        //     if (!email.trim() || !emailValidate(email)) {
+        //         showMessage(Label.Email)
+        //         return false
+        //     } else if (pin != password) {
+        //         showMessage(Label.PasswordLogin)
+        //         return false
+        //     }
+        // }
+        // signIn()
+        // resetField()
+        navigateHomeScreen()
 
     }
     const resetField = () => {

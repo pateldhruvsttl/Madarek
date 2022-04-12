@@ -36,7 +36,7 @@ const SubIdeasListWithImage = (props) => {
 
             <View style={Style.rightItems}>
                 {/* <Image style={Style.img} resizeMode='cover' source={{ uri: item.url }}/> */}
-                <ImageLoad style={Style.img} loadingStyle={{ size: 'small', color: 'blue' }} source={{ uri: item.url }}/>
+                <ImageLoad style={Style.img} loadingStyle={{ size: 'small', color: 'blue' }} source={{ uri:  item.url }}/>
                 {
                     item.like ?
                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
@@ -44,10 +44,10 @@ const SubIdeasListWithImage = (props) => {
                         <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                 }
                 <View style={Style.rewordView}>
-                    {item?.trophy && <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {item?.favorite && <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    {item?.insight && <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> }
+                    { <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
                 </View>
 
             </View>
