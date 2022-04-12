@@ -7,7 +7,8 @@ export default class BannerList {
         }
         
         this.id = obj?.id;
-        this.bannerTitle = obj?.banner_title;
-        this.bannerImage = obj?.banner_image;
+        this.title = obj?.banner_title;
+        this.subtitle = obj?.banner_desc;
+        this.url = obj?.banner_image;
     }
 }

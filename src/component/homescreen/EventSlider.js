@@ -7,6 +7,8 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from '../../utils/StringUtil'
+import { Loger } from "../../utils/Loger";
+import ImageLoad from "react-native-image-placeholder";
 
 const EventSlider = ({ Entries }) => {
 
@@ -51,7 +53,8 @@ const EventSlider = ({ Entries }) => {
     const onSliderRend = ({ item, index }, parallaxProps) => {
         return (
             <View style={styles.renderMainView}>
-                <FastImage style={styles.bgImage} resizeMode={FastImage.resizeMode.cover} source={{ uri: item.url, priority: FastImage.priority.normal, }} />
+                <ImageLoad style={styles.bgImage} loadingStyle={{ size: 'large', color: 'blue' }} source={{ uri: item.url }}/>
+                {/* <FastImage style={styles.bgImage} resizeMode={FastImage.resizeMode.cover} source={{ uri: item.url, priority: FastImage.priority.normal, }} /> */}
                 {/* <Image style={{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2), }} resizeMode='cover' source={{ uri: item.url }} /> */}
 
                 <View style={styles.sliderRendTitleView}>

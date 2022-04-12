@@ -1,18 +1,25 @@
 import axios from 'axios';
+import { Loger } from '../utils/Loger';
 
 const axiosInstance = axios.create();
 const baseURL = 'http://madarek.php-staging.com/apiv1/';
 axios.defaults.headers.common['Authorization'] = "";
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
 
 export const Service = {
     get: (endPoint, success, error) => {
-        axios.get(baseURL+endPoint).then((response) => success(response.data)).catch((err)=>error(err));
+        Loger.onServerLog("Req",baseURL+endPoint,"");
+        axios.get(baseURL+endPoint).then((response) =>{
+            Loger.onServerLog("Res",baseURL+endPoint,success(response.data));
+             success(response.data)
+            }).catch((err)=>error(err));
     },
     post: (endPoint,params, success, error) => {
-        // console.log("base url", axios.defaults.baseURL);
+        Loger.onServerLog("Req",baseURL+endPoint,params);
+
         axios.post(baseURL+endPoint, params).then((response) => {
+            Loger.onServerLog("Res",baseURL+endPoint,response.data);
            return success(response.data)
         }).catch((err)=>{
             return error(err)
