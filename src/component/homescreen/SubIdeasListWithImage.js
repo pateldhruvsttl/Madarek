@@ -36,7 +36,7 @@ const SubIdeasListWithImage = (props) => {
 
             <View style={Style.rightItems}>
                 {/* <Image style={Style.img} resizeMode='cover' source={{ uri: item.url }}/> */}
-                <ImageLoad style={Style.img} loadingStyle={{ size: 'small', color: 'blue' }} source={{ uri:  item.url }}/>
+                <ImageLoad style={Style.img} source={{ uri:  item.url }} isShowActivity={false}/>
                 {
                     item.like ?
                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
