@@ -86,7 +86,7 @@ const MyDrawerScreen = (props) => {
         <View style={drawerStyles.headerView}>
           <View style={drawerStyles.centerIcnView}>
             <IcnMenuHeader height={AppUtil.getHP(5)} width={AppUtil.getHP(20)} />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> props.navigation.closeDrawer()}>
               <IcnClose height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
             </TouchableOpacity>
           </View>
@@ -183,14 +183,14 @@ const MyDrawerScreen = (props) => {
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==6? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(7,'Partner')} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={()=>onselectButtonMenu(7,'PartnerScreen')} style={drawerStyles.menuButton}>
         <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Partners}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={()=>onselectButtonMenu(8,'MyAccount')} style={drawerStyles.menuButton}>
         <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.MyAccount}</Text>
+        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==8? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.MyAccount}</Text>
       </TouchableOpacity>
 
       <View style={drawerStyles.bottomView}>

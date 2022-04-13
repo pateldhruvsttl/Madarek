@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
 import { GetAppColor } from '../../utils/Colors'
@@ -12,9 +12,12 @@ import { Label } from '../../utils/StringUtil'
 import UpgradeUserType from '../../assets/svg/myaccount/UpgradeUserType'
 
 const MyAccount = (props) => {
+
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
+
             <CommonHeader isType={"MyAccount"} onMenuClick={() => { props.navigation.openDrawer() }} />
+
             <TouchableOpacity onPress={()=>props.navigation.navigate('UserProfileView')} style={[MyAccountStyle.btnView, MyAccountStyle.topMargin]} >
                 <View style={MyAccountStyle.iconTextView}>
                     <UserProfile height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
@@ -49,6 +52,7 @@ const MyAccount = (props) => {
 
         </SafeAreaView>
     )
+    
 }
 
-export default MyAccount
+export default memo(MyAccount);

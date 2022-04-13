@@ -43,7 +43,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"LoginScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -75,8 +75,6 @@ function ScreenStack() {
             <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
-
-
         </Stack.Navigator>
     )
 }
@@ -89,9 +87,7 @@ function MyDrawer() {
             drawerPosition='left'
             screenOptions={{
                 headerShown: false,
-                drawerStyle: {
-                    width: '85%',
-                },
+                drawerStyle: {width: '85%',},
             }}
             useLegacyImplementation={true}
 

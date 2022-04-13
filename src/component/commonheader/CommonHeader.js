@@ -432,7 +432,7 @@ const CommonHeader = (props) => {
         case 'MyAccount':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true}/>
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
@@ -447,7 +447,6 @@ const CommonHeader = (props) => {
                             <TouchableOpacity>
                                 <IcnAlert style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            {/* {onMenu()} */}
                         </View>
 
                     </View>

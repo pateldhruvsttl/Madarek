@@ -37,7 +37,7 @@ const HomeScreen = (props) => {
     useEffect(() => {
         onSlider();
         onIdeas();
-        onOC();
+        onOpenChallenge();
         onSpotlight();
 
     }, []);
@@ -87,7 +87,7 @@ const HomeScreen = (props) => {
         })
     }
 
-    onOC = () => {
+    onOpenChallenge = () => {
 
         const data = new FormData();
         data.append('', '');
@@ -187,7 +187,6 @@ const HomeScreen = (props) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
-
             <View style={Style.MainView}>
                 <FlatList
                     data={dtList}
