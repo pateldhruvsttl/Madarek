@@ -27,16 +27,13 @@ import { Loger } from "../../utils/Loger";
 
 const SubIdeasListWithImage = (props) => {
 
-    Loger.onLog("List", props);
-
-    const navigation = useNavigation();
     
+
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={()=>props.navigateDetail()} style={Style.renderMainView}>
+        <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
-                {/* <Image style={Style.img} resizeMode='cover' source={{ uri: item.url }}/> */}
-                <ImageLoad style={Style.img} source={{ uri:  item.url }} isShowActivity={false}/>
+                <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
                 {
                     item.like ?
                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
@@ -46,8 +43,8 @@ const SubIdeasListWithImage = (props) => {
                 <View style={Style.rewordView}>
                     {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
                     {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> }
-                    { <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
                 </View>
 
             </View>
@@ -55,7 +52,7 @@ const SubIdeasListWithImage = (props) => {
             <View style={Style.leftItems}>
 
                 <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                <Text numberOfLines={2} style={[Style.SubTitle,{color: props.isType == 'Challenges' ? GetAppColor.black :  GetAppColor.borderRed}]}>{item.categoryName}</Text>
+                <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
                 {
                     props.isType == "Ideas" ?
@@ -64,7 +61,7 @@ const SubIdeasListWithImage = (props) => {
                             <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
 
                             <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.firstName +" "+ item.lastName}</Text>
+                            <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
                         </View>
                         :
                         <View style={Style.calView}>
@@ -89,7 +86,7 @@ const SubIdeasListWithImage = (props) => {
                         <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
                     </View>
-                    <TouchableOpacity style={{flex:1, alignItems:'flex-end'}}>
+                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                     </TouchableOpacity>
                 </View>
@@ -104,7 +101,9 @@ const SubIdeasListWithImage = (props) => {
                 props?.isTitle &&
                 <View style={Style.titleView}>
                     <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
-                    <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+                    <TouchableOpacity onPress={() => props.onSeeMorePress()}>
+                        <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+                    </TouchableOpacity>
                 </View>
             }
 
@@ -116,7 +115,7 @@ const SubIdeasListWithImage = (props) => {
             />
             {
                 props?.btn &&
-                <TouchableOpacity style={Style.bottomBtn} onPress={()=> navigation.navigate("IdeasListScreen")}>
+                <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
                     <Text style={Style.txtBottomBtn}> {props.btn}</Text>
                 </TouchableOpacity>
             }

@@ -54,29 +54,12 @@ const RenderItem = ({ item, index, clearData }) => (
 
 )
 
-const SearchLabel = () => {
+const SearchLabel = (props) => {
     const [isSearchActive, setSearchActive] = useState(false)
     const textInput = useRef(null);
     const [searchStr, setSearchStr] = useState("")
     const [labels, setLabels] = useState(search)
     
-
-    // const onWriteText = (text) => {
-    //     if (text === "") {
-    //         setSearchActive(false)
-    //     } else {
-    //         setSearchActive(true)
-    //     }
-
-    //     let text1 = text.toLowerCase()
-    //     let searchData = labels
-    //     searchData.filter((item) => {
-    //         return item.includes(text1)
-    //     })
-
-
-    //     setSearchStr(text)
-    // }
 
     let arr = labels.map((ele) => ele.map((element) => { return element.data }))
     let masterData = arr
@@ -101,7 +84,7 @@ const SearchLabel = () => {
         <SafeAreaView>
             <View style={Style.MainView}>
                 <View style={Style.centerIcnView}>
-                    <TouchableOpacity style={Style.LeftIcnView} >
+                    <TouchableOpacity style={Style.LeftIcnView} onPress={()=>props.navigation.goBack()}>
                         <IcnBack color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 

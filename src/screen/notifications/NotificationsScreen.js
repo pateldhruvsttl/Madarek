@@ -44,14 +44,22 @@ function NotificationsScreen() {
         )
     }
 
+    const onClear =()=>{
+        
+    }
+
     return (
         <View style={Style.MainView}>
             <SafeAreaView>
                 <CommonHeader isType={"NotificationsScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
+                
                 <View style={Style.bodyView}>
                     <Text style={Style.notificationsCounter}>{10}<Text style={Style.txtTitle}> {Label.NewNotifications}</Text></Text>
+                    <TouchableOpacity onPress={()=>{onClear()}}>
                     <Text style={Style.clearView}>{"X"} <Text style={Style.txtClear}>{Label.ClearAll}</Text> </Text>
+                    </TouchableOpacity>
                 </View>
+
                 <FlatList
                     data={List}
                     renderItem={renderItem}

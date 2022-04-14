@@ -21,6 +21,7 @@ import BannerList from "../../model/BannerList";
 import IdeaList from "../../model/IdeaList";
 import OpenChallenges from "../../model/OpenChallenges";
 import MadarekSportlight from "../../model/MadarekSportlight";
+import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 
 
 
@@ -29,6 +30,7 @@ const HomeScreen = (props) => {
     const { themeColor } = useSelector((state) => state)
     const list = DATA.slice(0, 2);
 
+    const [modalVisible, setModalVisible] = useState(false);
     const [bannerList, setBannerList] = useState([])
     const [ideasList, setIdeasList] = useState(null);
     const [openChallenges, setOpenChallenges] = useState([]);
@@ -114,7 +116,7 @@ const HomeScreen = (props) => {
             var spotLight = [];
             Loger.onLog("res", res.list);
             res.list.forEach(element => {
-                let model = new MadarekSportlight (element);
+                let model = new MadarekSportlight(element);
                 spotLight.push(model);
             });
 
@@ -142,7 +144,10 @@ const HomeScreen = (props) => {
                 return (
                     openChallenges.length > 0 &&
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                        <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
+                        <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow}
+                            onButtonPress={() => { setModalVisible(true) }}
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
+                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
                     </View>
                 )
                 break;
@@ -151,7 +156,10 @@ const HomeScreen = (props) => {
                 return (
                     spotLight.length > 0 &&
                     <View style={{ paddingVertical: AppUtil.getHP(2) }}>
-                        <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
+                        <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"}
+                            onButtonPress={() => { setModalVisible(true) }}
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
+                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
                     </View>
                 )
                 break;
@@ -193,6 +201,8 @@ const HomeScreen = (props) => {
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => onSetItem(item)}
                 />
+                <ParticipateModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+
             </View>
         </SafeAreaView>
     );

@@ -36,11 +36,11 @@ const CommonHeader = (props) => {
                 </MenuTrigger>
 
                 <MenuOptions>
-                    <MenuOption onSelect={() => alert(`Messag`)} style={Style.menuView}>
+                    <MenuOption onSelect={() => navigation.navigate("Message")} style={Style.menuView}>
                         <IcnMsg stroke={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Message}</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => alert(`Search`)} style={Style.menuView}>
+                    <MenuOption onSelect={() => navigation.navigate("SearchLabel")} style={Style.menuView}>
                         <IcnSearch fill={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Search}</Text>
                     </MenuOption>
@@ -66,7 +66,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={()=> navigation.navigate("NotificationsScreen")}>
                                 <IcnAlert style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             {onMenu()}
@@ -91,11 +91,11 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
-                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            <TouchableOpacity onPress={()=> navigation.navigate("SearchLabel")}>
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
                     </View>

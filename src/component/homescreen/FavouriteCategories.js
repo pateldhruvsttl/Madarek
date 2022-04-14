@@ -1,5 +1,7 @@
 import React, { memo, useState } from "react";
 import { View, FlatList, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+
 import { useSelector } from 'react-redux'
 import styles from "./FavouriteCategoriesStyle";
 import { Label } from '../../utils/StringUtil'
@@ -9,12 +11,13 @@ import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 
 const FavouriteCategories = ({ Entries }) => {
 
+    const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
-   
+
     const renderItem = ({ item }) => {
 
         return (
-            <TouchableOpacity style={[styles.btnView,{borderColor:themeColor.buttonColor}]}>
+            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={()=> navigation.navigate("ExpertDirectoryScreen")}>
                 <IcnInformationTechnology fill={themeColor.buttonColor} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 <Text style={styles.txtBtn}>{Label.informationTechnology}</Text>
             </TouchableOpacity>
@@ -24,8 +27,10 @@ const FavouriteCategories = ({ Entries }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={[styles.txtTitle, { color: themeColor.buttonColor }] }>{Label.favouriteCategories}</Text>
-                <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
+                <Text style={[styles.txtTitle, { color: themeColor.buttonColor }]}>{Label.favouriteCategories}</Text>
+                <TouchableOpacity onPress={()=>{navigation.navigate("UserCategory")}}>
+                    <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
+                </TouchableOpacity>
             </View>
 
             <FlatList

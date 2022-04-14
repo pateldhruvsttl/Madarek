@@ -603,7 +603,6 @@ export const USlabel = {
     _submit: "Submit",
     _notNow: "Not now",
     _update: "Update",
-    _newNotifications: "new notifications",
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
     _clear: "Clear"

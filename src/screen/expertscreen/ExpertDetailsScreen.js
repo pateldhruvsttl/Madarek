@@ -11,10 +11,12 @@ import SimilarExperts from '../../component/expertscreen/SimilarExperts';
 import Style from './ExpertDetailsStyle';
 import { Label } from '../../utils/StringUtil';
 import { GetAppColor } from '../../utils/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 function ExpertDetailsScreen() {
     const { themeColor } = useSelector((state) => state)
 
+    const navigation = useNavigation()
     return (
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDetailsScreen"} onMenuClick={() => null} />
@@ -30,7 +32,7 @@ function ExpertDetailsScreen() {
                     <View style={Style.footerView}>
                         <Text style={Style.txtTitle}>{Label.ExpertDes}</Text>
                         <View style={Style.btnView}>
-                            <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]}>
+                            <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={()=> navigation.navigate("BecomeAnExpert")}>
                                 <Text style={[Style.txt, { color: themeColor.buttonColor }]}>{Label.LearnMore}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]}>

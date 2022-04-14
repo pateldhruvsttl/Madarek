@@ -19,7 +19,7 @@ function SimilarExperts(props) {
     const { themeColor } = useSelector((state) => state)
 
     const renderItem = ({ item }) => (
-        <View style={Style.renderMainView}>
+        <TouchableOpacity style={Style.renderMainView} onPress={()=> navigation.navigate("ExpertDetailsScreen")}>
 
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
@@ -47,7 +47,7 @@ function SimilarExperts(props) {
                 {item.des && <Text numberOfLines={2} style={Style.icnDes}>{item.des}</Text>}
             </View>
 
-        </View>
+        </TouchableOpacity>
     );
 
     const list = props.maxLimit != 0 ? props.data.slice(0, props.maxLimit) : props.data;
