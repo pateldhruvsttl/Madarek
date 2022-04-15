@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native'
+import { View, Text, StatusBar, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
@@ -17,6 +17,7 @@ import { EndPoints } from '../../service/EndPoints'
 import { Service } from '../../service/Service'
 import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 // const category = [

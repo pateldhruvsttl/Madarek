@@ -1,5 +1,5 @@
 import React, { useState, memo, useRef, useEffect } from "react";
-import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, ScrollView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
 import BackIcon from "../../assets/svg/loginLogo/BackIcon"
@@ -16,6 +16,7 @@ import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import { deviceId } from "../../utils/Constant";
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const LoginScreen = (props) => {

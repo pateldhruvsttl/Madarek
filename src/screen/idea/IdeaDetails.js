@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StatusBar, Image, TouchableOpacity } from 'react-native'
 import React, { memo } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux'
@@ -16,6 +16,7 @@ import ExpertInsightsSlider from '../../component/homescreen/ExpertInsightsSlide
 import SubIdeasList from '../../component/homescreen/SubIdeasList'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const IdeaDetails = (props) => {

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StatusBar, StyleSheet, FlatList, TouchableOpacity , Image} from 'react-native'
+import { View, Text, StatusBar, StyleSheet, FlatList, TouchableOpacity , Image} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { GetAppColor } from '../../utils/Colors'
@@ -15,6 +15,7 @@ import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const testData = [

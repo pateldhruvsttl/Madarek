@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView,TouchableOpacity } from 'react-native'
+import { View, Text,TouchableOpacity } from 'react-native'
 import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -13,6 +13,7 @@ import SubInformation from '../../component/challengedetail/SubInformation'
 import SubParticipateIdeas from '../../component/challengedetail/SubParticipateIdeas'
 import IcnLoadMore from '../../assets/svg/IcnLoadMore'
 import ResourceChallenge from '../../component/challengedetail/ResourceChallenges'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const ChallengeDetail = () => {

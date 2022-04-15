@@ -1,4 +1,5 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
+import { View, Text, StatusBar, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useRef, useEffect } from 'react'
 import { Label } from '../../utils/StringUtil'
 import { GetAppColor } from '../../utils/Colors'
