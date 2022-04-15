@@ -491,13 +491,7 @@ const CommonHeader = (props) => {
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
                         </View>
-
-                        {/* <View style={Style.rightIcnView}>
-                                                <TouchableOpacity onPress={()=>props.onEditProfile()}>
-                                                    <EditProfile style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                                </TouchableOpacity>
-                                            </View> */}
-
+                        <View style={Style.rightIcnView}/>
                     </View>
                 </>
             );

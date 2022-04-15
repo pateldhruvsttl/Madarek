@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
 import Camera from '../../assets/svg/myaccount/Camera'
@@ -7,6 +7,7 @@ import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { GetAppColor } from '../../utils/Colors'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const EditUserProfileView = (props) => {
   return (
@@ -130,9 +131,10 @@ const EditUserProfileView = (props) => {
             <Text style={MyAccountStyle.submitText}>{Label.Submit}</Text>
           </TouchableOpacity>
         </View>
+        
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-export default EditUserProfileView
+export default memo(EditUserProfileView);
