@@ -47,9 +47,9 @@ const SettingStyle = StyleSheet.create({
         //  marginBottom:AppUtil.getHP(0.5),
     },
     grayBorderView:{
-        height:AppUtil.getHP(2.50),
-        width:AppUtil.getHP(2.50),
-        borderRadius:AppUtil.getHP(2.50/2),
+        height:AppUtil.getHP(2.3),
+        width:AppUtil.getHP(2.3),
+        borderRadius:AppUtil.getHP(2.3/2),
         borderColor:GetAppColor.grayBorder,
         borderWidth:1,
         alignItems:'center',
@@ -60,7 +60,7 @@ const SettingStyle = StyleSheet.create({
         height:AppUtil.getHP(1.6),
         width:AppUtil.getHP(1.6),
         borderRadius:AppUtil.getHP(1.6/2),
-        backgroundColor:GetAppColor.catBorder,
+        
         alignItems:'center',
         justifyContent:'center'
     },

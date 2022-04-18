@@ -7,15 +7,18 @@ import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { GetAppColor } from '../../utils/Colors'
+import { useSelector } from 'react-redux'
 
 const EditUserProfileView = (props) => {
+
+  const { themeColor } = useSelector((state) => state)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"UserEditProfile"} onEditProfile={() => props.navigation.navigate('EditUserProfileView')} onMenuClick={() => { props.navigation.openDrawer() }} />
       <ScrollView >
         <View style={MyAccountStyle.imageView}>
           <Image style={MyAccountStyle.userEditImage} />
-          <TouchableOpacity style={MyAccountStyle.cameraIconBtn}>
+          <TouchableOpacity style={[MyAccountStyle.cameraIconBtn,{backgroundColor:themeColor.headerColor}]}>
             <Camera height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           </TouchableOpacity>
         </View>
@@ -91,8 +94,8 @@ const EditUserProfileView = (props) => {
               })
             }
           </View>
-          <TouchableOpacity style={MyAccountStyle.addMoreButton}>
-            <Text style={MyAccountStyle.addMoreText}>{Label.AddMore}</Text>
+          <TouchableOpacity style={[MyAccountStyle.addMoreButton,{borderColor:themeColor.headerColor}]}>
+            <Text style={[MyAccountStyle.addMoreText,{color:themeColor.headerColor}]}>{Label.AddMore}</Text>
           </TouchableOpacity>
 
           <Text style={MyAccountStyle.titleText}>{Label.ShortDiscription}</Text>

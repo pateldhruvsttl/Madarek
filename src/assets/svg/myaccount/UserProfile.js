@@ -13,7 +13,7 @@ function UserProfile(props) {
       <G
         transform="translate(2.5 2.5)"
         fill="none"
-        stroke="#8c67a9"
+        stroke={props.color} // "#8c67a9"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={5}

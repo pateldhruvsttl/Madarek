@@ -18,6 +18,8 @@ import drawerStyles from './DrawerStyles'
 import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
 import { Label } from '../../utils/StringUtil'
 import MyAccount from '../../assets/svg/drawerIcon/MyAccount'
+import LogoutIcn from '../../assets/svg/drawerIcon/LogoutIcn'
+import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -82,7 +84,7 @@ const MyDrawerScreen = (props) => {
     <View style={{ flex: 1 }}>
 
       {/* header */}
-      <View style={{ height: AppUtil.getHP(23), backgroundColor: themeColor.headerColor, }}>
+      <View style={{  backgroundColor: themeColor.headerColor, }}>
         <View style={drawerStyles.headerView}>
           <View style={drawerStyles.centerIcnView}>
             <IcnMenuHeader height={AppUtil.getHP(5)} width={AppUtil.getHP(20)} />
@@ -141,7 +143,7 @@ const MyDrawerScreen = (props) => {
 
       <TouchableOpacity onPress={() => { onSelectMenu(2);onselectButtonMenu(3) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
-          <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
+          <ChallengeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
           <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==3? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Challenges}</Text>
         </View>
         {
@@ -200,7 +202,7 @@ const MyDrawerScreen = (props) => {
         </TouchableOpacity>
         <View style={drawerStyles.line} />
         <TouchableOpacity style={drawerStyles.settingButton}>
-          <SettingIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+          <LogoutIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
       </View>

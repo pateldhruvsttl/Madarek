@@ -17,7 +17,7 @@ function IcnAboutApp(props) {
           mixBlendMode: "normal",
           isolation: "isolate"
         }}
-        fill="#8c67a9"
+        fill={props.color}//"#8c67a9"
       >
         <Path
           data-name="Path 38151"

@@ -11,8 +11,11 @@ import { Label } from '../../utils/StringUtil'
 import IcnAboutApp from '../../assets/svg/settingIcon/icnAboutApp'
 import IcnMessage from '../../assets/svg/settingIcon/IcnMessage'
 import IcnAlert from '../../assets/svg/IcnAlert'
+import { useSelector } from 'react-redux'
 
 const Setting = (props) => {
+  const { themeColor } = useSelector((state) => state)
+
     return (
         <SafeAreaView>
             <CommonHeader isType={"Setting"} />
@@ -21,7 +24,7 @@ const Setting = (props) => {
 
             <TouchableOpacity style={[SettingStyle.btnView, SettingStyle.topMargin]} >
                 <View style={SettingStyle.iconTextView}>
-                    <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
+                    <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                     <Text style={SettingStyle.subTitleText}>Change Password</Text>
                 </View>
                 <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
@@ -31,15 +34,15 @@ const Setting = (props) => {
             {/* Language  */}
             <View style={SettingStyle.btnView} >
                 <View style={SettingStyle.iconTextView}>
-                    <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
+                    <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                     <Text style={SettingStyle.subTitleText}>Language</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
-                    <TouchableOpacity onPress={() => setSelectedIndex(0)} style={SettingStyle.radioBtn}>
+                    <TouchableOpacity onPress={() => {}} style={SettingStyle.radioBtn}>
                         {
                             // selectedIndex == 0 ?
-                            <View style={SettingStyle.yellowBorderView}>
-                                <View style={SettingStyle.yellowFillView} />
+                            <View style={[SettingStyle.yellowBorderView,{borderColor:themeColor.headerColor}]}>
+                                <View style={[SettingStyle.yellowFillView,{backgroundColor:themeColor.headerColor}]} />
                             </View>
                             // :
                             // <View style={SettingStyle.grayBorderView} />
@@ -48,14 +51,14 @@ const Setting = (props) => {
                         <Text style={[SettingStyle.userTypeText, { marginTop: 0 }]} >{Label.English}</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => setSelectedIndex(0)} style={SettingStyle.radioBtn}>
+                    <TouchableOpacity onPress={() => {}} style={SettingStyle.radioBtn}>
                         {
                             // selectedIndex == 0 ?
-                            <View style={SettingStyle.yellowBorderView}>
-                                <View style={SettingStyle.yellowFillView} />
-                            </View>
+                            // <View style={[SettingStyle.yellowBorderView,{borderColor:themeColor.headerColor}]}>
+                            //     <View style={[SettingStyle.yellowFillView,{backgroundColor:themeColor.headerColor}]} />
+                            // </View>
                             // :
-                            // <View style={SettingStyle.grayBorderView} />
+                            <View style={SettingStyle.grayBorderView} />
                         }
 
                         <Text style={[SettingStyle.userTypeText, { marginTop: 0 }]} >{Label.Arabic}</Text>
@@ -66,7 +69,7 @@ const Setting = (props) => {
             {/* Notifications */}
             <TouchableOpacity style={SettingStyle.btnView} >
                 <View style={SettingStyle.iconTextView}>
-                    <IcnAlert height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
+                    <IcnAlert height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                     <Text style={SettingStyle.subTitleText}>Notifications</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
@@ -81,7 +84,7 @@ const Setting = (props) => {
 
             <TouchableOpacity style={SettingStyle.btnView} >
                 <View style={SettingStyle.iconTextView}>
-                    <IcnMessage height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
+                    <IcnMessage height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                     <Text style={SettingStyle.subTitleText}>message</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
@@ -95,7 +98,7 @@ const Setting = (props) => {
             {/* About App  */}
             <TouchableOpacity style={SettingStyle.btnView} >
                 <View style={SettingStyle.iconTextView}>
-                    <IcnAboutApp height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={GetAppColor.catBorder} />
+                    <IcnAboutApp height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                     <Text style={SettingStyle.subTitleText}>About App</Text>
                 </View>
                 <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />

@@ -406,15 +406,15 @@ const CommonHeader = (props) => {
         case 'Setting':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
                         <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
                             <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
 
-                        <View style={Style.centerIcnView}>
+                        {/* <View style={Style.centerIcnView}> */}
                             <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Settings}</Text>
-                        </View>
+                        {/* </View> */}
 
                         {/* <View style={Style.rightIcnView}>
                                     <TouchableOpacity>
@@ -432,7 +432,7 @@ const CommonHeader = (props) => {
         case 'MyAccount':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity onPress={() => props.onMenuClick()} style={Style.LeftIcnView}>
@@ -457,7 +457,7 @@ const CommonHeader = (props) => {
         case 'UserProfile':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>
@@ -482,7 +482,7 @@ const CommonHeader = (props) => {
         case 'UserEditProfile':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <TouchableOpacity onPress={() => { navigation.goBack() }} style={Style.LeftIcnView}>

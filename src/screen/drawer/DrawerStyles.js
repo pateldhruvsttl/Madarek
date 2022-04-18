@@ -13,7 +13,7 @@ import FONTS from '../../utils/Fonts'
   profileView:{ flexDirection: "row", marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(2), alignItems: 'center' },
   welcomeText:{ fontFamily: FONTS.robotRegular, fontSize: AppUtil.getHP(1.7), color: GetAppColor.white },
   userNameText:{ fontFamily: FONTS.robotMedium, fontSize: AppUtil.getHP(2), color: GetAppColor.white },
-  dsButtonView:{ flexDirection: 'row', marginHorizontal: AppUtil.getWP(16), marginTop: AppUtil.getHP(1), },
+  dsButtonView:{ flexDirection: 'row', marginHorizontal: AppUtil.getWP(16), marginTop: AppUtil.getHP(1),marginBottom:AppUtil.getHP(1) },
   dashBoardButton:{ borderColor: GetAppColor.white, borderWidth: 0.8, borderRadius: 5 },
   dashText:{ fontFamily: FONTS.robotRegular, fontSize: AppUtil.getHP(1.5), color: GetAppColor.white, marginHorizontal: AppUtil.getHP(1), marginVertical: AppUtil.getHP(0.5) },
   menuButton:{ marginHorizontal: AppUtil.getWP(4), height: AppUtil.getHP(6), borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1, flexDirection: 'row', alignItems: 'center', },
