@@ -5,7 +5,7 @@ import FONTS from '../../utils/Fonts';
 import { buttonFontSize } from '../../utils/Constant';
 import { buttonHeight } from '../../utils/Constant';
 
-const HomeStyle = StyleSheet.create({
+const Style = StyleSheet.create({
     MainView: { width: '100%', flex:1, backgroundColor:GetAppColor.white},
 
     firstPos:{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) },
@@ -18,4 +18,4 @@ const HomeStyle = StyleSheet.create({
 
 });
 
-export default HomeStyle; 
+export default Style; 

@@ -23,7 +23,7 @@ import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen'
 import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 
 import UserCategory from '../screen/category/UserCategory';
-import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen'
+import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
 
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
