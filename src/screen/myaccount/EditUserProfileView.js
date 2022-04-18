@@ -7,6 +7,8 @@ import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { GetAppColor } from '../../utils/Colors'
+
+const EditUserProfileView = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"UserEditProfile"} onEditProfile={() => props.navigation.navigate('EditUserProfileView')} onMenuClick={() => { props.navigation.openDrawer() }} />
