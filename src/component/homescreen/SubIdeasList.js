@@ -22,7 +22,7 @@ import { GetAppColor } from "../../utils/Colors";
 const SubIdeasList = (props) => {
 
   const renderItem = ({ item }) => (
-    <View style={Style.renderMainView}>
+    <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress()}>
 
       <View style={Style.itemsView}>
 
@@ -88,7 +88,7 @@ const SubIdeasList = (props) => {
 
       </View>
 
-    </View>
+    </TouchableOpacity>
   );
 
 

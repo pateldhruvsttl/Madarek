@@ -1,4 +1,5 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
+import { View, Text, StatusBar, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useRef, useEffect } from 'react'
 import { Label } from '../../utils/StringUtil'
 import { GetAppColor } from '../../utils/Colors'
@@ -12,9 +13,10 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
+import { deviceId } from '../../utils/Constant'
 
 const Signup = (props) => {
-
+    
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
@@ -46,7 +48,7 @@ const Signup = (props) => {
             mobile_phone: mobileNumber,
             email: emaiId,
             pwd: password,
-            device_id: "136356",
+            device_id: deviceId,
             job_title: "Developer",
             token: "1236547780",
         }

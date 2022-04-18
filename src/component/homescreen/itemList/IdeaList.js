@@ -3,6 +3,7 @@ import { View, Image, Text, TouchableOpacity, useWindowDimensions } from "react-
 import { AppUtil } from "../../../utils/AppUtil";
 import { GetAppColor } from "../../../utils/Colors";
 import FONTS from "../../../utils/Fonts";
+import { Loger } from "../../../utils/Loger";
 import { Label } from "../../../utils/StringUtil";
 import Style from './IdealListStyle'
 
@@ -12,16 +13,18 @@ const IdeaList = (props) => {
 
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const list = props.data.slice(0, 2);
+    const popularIdeaArr = props?.data?.popularIdeaArr;;
+    const newIdeaArr = props?.data?.newIdeaArr;;
+    const winningIdeaArr = props?.data?.winningIdeaArr;;
 
     const onSelectTab = (value) => {
         setSelectedIndex(value)
     }
     const onTabNavigate = () => {
         return (
-            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={list}/> :
-                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={props.data}/> :
-                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={props.data}/> : null
+            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeaArr}/> :
+                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeaArr}/> :
+                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaArr}/> : null
         )
     }
 

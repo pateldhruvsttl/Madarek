@@ -1,5 +1,5 @@
 import React, { useState, memo, useRef, useEffect } from "react";
-import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Dimensions, } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, ScrollView, Dimensions, } from "react-native";
 import PAGESTYLE from "./LoginStyle";
 import MadarekLogo from "../../assets/svg/loginLogo/MadarekLogo";
 import BackIcon from "../../assets/svg/loginLogo/BackIcon"
@@ -14,7 +14,9 @@ import { AppUtil } from "../../utils/AppUtil";
 import SocialLogo from '../../component/logindetails/SocialLogo'
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
-
+import { Loger } from "../../utils/Loger";
+import { deviceId } from "../../utils/Constant";
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const LoginScreen = (props) => {
@@ -43,14 +45,29 @@ const LoginScreen = (props) => {
     const input5 = useRef();
     const input6 = useRef();
 
-   
+    let otpNumber = 123456
+    let pin = 1234567
 
-    const setFocusInput = (inputRef) => {
-        inputRef.current.focus();
+
+    // const setFocusInput = (inputRef) => {
+    //     inputRef.current.focus();
+    // }
+
+    const loginData = {
+        pwd: password,
+        email_mobile: email,
+        device_id: deviceId,
     }
 
-    let pin = 12345678
-    let otpNumber = 123456
+    const signIn = () => {
+        Service.post(EndPoints.login, loginData, (res) => {
+            Loger.onLog('Login screen Response  ========>', res)
+            alert('Login successFully')
+        }, (err) => {
+            Loger.onLog('Login screen error ========>', err)
+        })
+    }
+
 
     const navigateHomeScreen = () => {
         props.navigation.navigate("HomeScreen")
@@ -131,36 +148,36 @@ const LoginScreen = (props) => {
 
 
     const validateFields = () => {
-        if (isMobilelogin) {
-            if (!mobileNumber.trim()) {
-                showMessage(Label.Phone)
-                return false
-            }
-            if (showPassword) {
-                if (pin != password) {
-                    showMessage(Label.PasswordLogin)
-                    return false
-                }
-            } else {
-                const otpJoin = first + second + third + fourth + fifth + sixth;
-                // alert( typeof Number(otpJoin))
-                if (otpNumber != Number(otpJoin)) {
-                    showMessage(Label.Pin)
-                    return false
-                }
-            }
-        }
-        else {
-            if (!email.trim() || !emailValidate(email)) {
-                showMessage(Label.Email)
-                return false
-            } else if (pin != password) {
-                showMessage(Label.PasswordLogin)
-                return false
-            }
-        }
-
-        resetField()
+        // if (isMobilelogin) {
+        //     if (!mobileNumber.trim()) {
+        //         showMessage(Label.Phone)
+        //         return false
+        //     }
+        //     if (showPassword) {
+        //         if (loginData.pwd != password) {
+        //             showMessage(Label.PasswordLogin)
+        //             return false
+        //         }
+        //     } else {
+        //         const otpJoin = first + second + third + fourth + fifth + sixth;
+        //         // alert( typeof Number(otpJoin))
+        //         if (otpNumber != Number(otpJoin)) {
+        //             showMessage(Label.Pin)
+        //             return false
+        //         }
+        //     }
+        // }
+        // else {
+        //     if (!email.trim() || !emailValidate(email)) {
+        //         showMessage(Label.Email)
+        //         return false
+        //     } else if (pin != password) {
+        //         showMessage(Label.PasswordLogin)
+        //         return false
+        //     }
+        // }
+        // signIn()
+        // resetField()
         navigateHomeScreen()
 
     }

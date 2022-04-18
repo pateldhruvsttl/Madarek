@@ -3,10 +3,14 @@ import { View } from 'react-native'
 import ChallengeListImage from "../ChallengeListImage";
 import Style from "./ViewMoreChallengeStyle";
 
-function ViewMoreChallenges(props) {
+const ViewMoreChallenges =(props) =>{
+
+    
     return (
         <View style={Style.MainView}>
-            <ChallengeListImage navigateDetail={()=>props.navigateDetail()} data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true} />
+            <ChallengeListImage
+                data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true}
+                navigateDetail={() => props.navigateDetail()} />
         </View>
     )
 }

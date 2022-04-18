@@ -94,13 +94,7 @@ const SubIdeasListWithImage = (props) => {
 
     return (
         <View style={LISTSTYLE.MainView}>
-            {/* {
-                props?.isTitle &&
-                <View style={LISTSTYLE.titleView}>
-                    <Text style={props.screen ? LISTSTYLE.titleAnotherScreen : LISTSTYLE.txtTitle}>{props?.isTitle}</Text>
-                    <Text style={props.screen ? LISTSTYLE.seeMoreAnotherScreen : LISTSTYLE.txtSeeMore}>{Label.seeMore}</Text>
-                </View>
-            } */}
+           
 
             <FlatList
                 data={props.data}

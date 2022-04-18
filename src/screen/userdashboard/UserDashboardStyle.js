@@ -15,7 +15,7 @@ const HomeStyle = StyleSheet.create({
     txtBtnTitle:{fontSize:AppUtil.getHP(2), fontFamily: FONTS.robotMedium, color:GetAppColor.innovationGrey},
     btn:{width:'90%',height:buttonHeight, justifyContent:'center', alignItems:'center', marginTop:AppUtil.getHP(2), borderRadius:AppUtil.getHP(1), marginHorizontal:AppUtil.getHP(2), backgroundColor:GetAppColor.lightOrange},
     txtBtn:{fontSize:buttonFontSize, color:GetAppColor.white, fontFamily:FONTS.robotMedium},
-    
+
 });
 
-export default HomeStyle;
+export default HomeStyle; 

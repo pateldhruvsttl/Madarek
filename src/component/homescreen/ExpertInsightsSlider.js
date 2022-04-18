@@ -1,5 +1,7 @@
 import React, { memo, useState } from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+
 import styles, { sliderWidth, itemWidth } from "./ExpertInsightsStyle";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
@@ -12,6 +14,7 @@ import IcnComment from "../../assets/svg/IcnComment"
 
 const ExpertInsightsSlider = ({ Entries, screen }) => {
 
+    const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
 
     const setExpertInsights = () => {
@@ -101,10 +104,11 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
     return (
         <View style={styles.MainView}>
             <View style={styles.titleView}>
-                <Text style={screen ? styles.txtTitleOne : styles.txtTitle}>
-                    {Label.expertInsights}</Text>
-                <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}>
-                    {Label.viewAll}</Text>
+                <Text style={screen ? styles.txtTitleOne : styles.txtTitle}> {Label.expertInsights}</Text>
+
+                <TouchableOpacity onPress={()=> navigation.navigate("ExpertDirectoryScreen")}> 
+                    <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}> {Label.viewAll}</Text>
+                </TouchableOpacity>
             </View>
             {setExpertInsights()}
 

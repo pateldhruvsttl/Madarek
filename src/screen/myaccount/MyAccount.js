@@ -1,5 +1,6 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
 import { GetAppColor } from '../../utils/Colors'
@@ -16,8 +17,10 @@ const MyAccount = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
+
             <CommonHeader isType={"MyAccount"} onMenuClick={() => { props.navigation.openDrawer() }} />
+
             <TouchableOpacity onPress={()=>props.navigation.navigate('UserProfileView')} style={[MyAccountStyle.btnView, MyAccountStyle.topMargin]} >
                 <View style={MyAccountStyle.iconTextView}>
                     <UserProfile height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
@@ -52,6 +55,7 @@ const MyAccount = (props) => {
 
         </SafeAreaView>
     )
+    
 }
 
-export default MyAccount
+export default memo(MyAccount);

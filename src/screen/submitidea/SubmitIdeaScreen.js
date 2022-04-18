@@ -11,14 +11,14 @@ import { Loger } from "../../utils/Loger";
 import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
-  const [selectIndex, setSelectIndex] = useState(0);
+  const [selectIndex, setSelectIndex] = useState(3);
 
   const [step1Obj, setStep1Obj] = useState(null);
   const [step2Obj, setStep2Obj] = useState(null);
   const [step3Obj, setStep3Obj] = useState(null);
 
   const onSubmit = () => {
-
+    props.navigation.navigate("UserDashboardScreen");
   }
 
   return (

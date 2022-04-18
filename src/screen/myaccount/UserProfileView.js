@@ -1,11 +1,13 @@
-import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, Image } from 'react-native'
+import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
 import { Label } from '../../utils/StringUtil'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const UserProfileView = (props) => {
     return (
+        <View style={{flex:1}}>
         <SafeAreaView>
             <CommonHeader isType={"UserProfile"} onEditProfile={()=>props.navigation.navigate('EditUserProfileView')} onMenuClick={() => { props.navigation.openDrawer() }} />
 
@@ -87,7 +89,8 @@ const UserProfileView = (props) => {
             </ScrollView>
 
         </SafeAreaView>
+        </View>
     )
 }
 
-export default UserProfileView
+export default memo(UserProfileView);

@@ -18,6 +18,10 @@ import { Loger } from "../../utils/Loger";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import BannerList from "../../model/BannerList";
+import IdeaList from "../../model/IdeaList";
+import OpenChallenges from "../../model/OpenChallenges";
+import MadarekSportlight from "../../model/MadarekSportlight";
+import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 
 
 
@@ -25,21 +29,103 @@ const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     const list = DATA.slice(0, 2);
+
+    const [modalVisible, setModalVisible] = useState(false);
     const [bannerList, setBannerList] = useState([])
+    const [ideasList, setIdeasList] = useState(null);
+    const [openChallenges, setOpenChallenges] = useState([]);
+    const [spotLight, setSpotLight] = useState([]);
 
     useEffect(() => {
+        onSlider();
+        onIdeas();
+        onOpenChallenge();
+        onSpotlight();
+
+    }, []);
+
+    onSlider = () => {
         var banner = [];
-        Service.post(EndPoints.bannerList, {}, (res) => {
-            Loger.onLog('homeScreen bannerlist Response of banner list ========>', JSON.stringify(res.result))
+        Service.get(EndPoints.bannerList, (res) => {
             res.result.forEach(element => {
                 let model = new BannerList(element);
                 banner.push(model)
             });
             setBannerList(banner)
         }, (err) => {
-            Loger.onLog('homeScreen bannerlist error ========>', err)
         })
-    }, []);
+    }
+
+    onIdeas = () => {
+
+        const data = new FormData();
+        data.append('ideaList', 48);
+        data.append('language', "ar");
+
+        Service.post(EndPoints.ideaList, data, (res) => {
+
+            var popularIdeaArr = [];
+            var newIdeaArr = [];
+            var winningIdeaArr = [];
+
+            res.list.popularIdea.forEach(element => {
+                let model = new IdeaList(element);
+                popularIdeaArr.push(model);
+            });
+            res.list.newIdea.forEach(element => {
+                let model = new IdeaList(element);
+                newIdeaArr.push(model);
+            });
+            res.list.winningIdea.forEach(element => {
+                let model = new IdeaList(element);
+                winningIdeaArr.push(model);
+            });
+
+            let obj = { popularIdeaArr: popularIdeaArr, newIdeaArr: newIdeaArr, winningIdeaArr: winningIdeaArr };
+            setIdeasList(obj)
+
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
+
+    onOpenChallenge = () => {
+
+        const data = new FormData();
+        data.append('', '');
+        Service.post(EndPoints.openChallenges, data, (res) => {
+            var opChallenges = [];
+            Loger.onLog("res", res.list);
+            res.list.forEach(element => {
+                let model = new OpenChallenges(element);
+                opChallenges.push(model);
+            });
+
+            setOpenChallenges(opChallenges)
+
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
+
+    onSpotlight = () => {
+        const data = new FormData();
+        data.append('', '');
+
+        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+            var spotLight = [];
+            Loger.onLog("res", res.list);
+            res.list.forEach(element => {
+                let model = new MadarekSportlight(element);
+                spotLight.push(model);
+            });
+
+            setSpotLight(spotLight)
+
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
 
     const onSetItem = (item) => {
 
@@ -47,25 +133,33 @@ const HomeScreen = (props) => {
         switch (item) {
 
             case 'Slider':
-                return <EventSlider Entries={testData} />
+                return bannerList.length > 0 && <EventSlider Entries={bannerList} />
                 break;
 
             case 'Tab':
-                return <IdealList data={sliderdata} />
+                return ideasList != null && <IdealList data={ideasList} />
                 break;
 
             case 'Challenges':
                 return (
+                    openChallenges.length > 0 &&
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                        <SubIdeasListWithImage data={list} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow} />
+                        <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow}
+                            onButtonPress={() => { setModalVisible(true) }}
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
+                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
                     </View>
                 )
                 break;
 
             case 'Spotlight':
                 return (
+                    spotLight.length > 0 &&
                     <View style={{ paddingVertical: AppUtil.getHP(2) }}>
-                        <SubIdeasListWithImage data={list} isTitle={Label.MadarekSpotlight} isType={"Spotlight"} />
+                        <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"}
+                            onButtonPress={() => { setModalVisible(true) }}
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
+                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
                     </View>
                 )
                 break;
@@ -101,13 +195,14 @@ const HomeScreen = (props) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
-
             <View style={Style.MainView}>
                 <FlatList
                     data={dtList}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => onSetItem(item)}
                 />
+                <ParticipateModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+
             </View>
         </SafeAreaView>
     );
@@ -116,67 +211,6 @@ const HomeScreen = (props) => {
 export default memo(HomeScreen);
 
 const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
-
-const testData = [
-    {
-        title: 'Favourites landscapes 1',
-        subtitle: 'Lorem ipsum dolor sit amet',
-        url: 'https://i.imgur.com/SsJmZ9jl.jpg'
-    },
-    {
-        title: 'Favourites landscapes 2',
-        subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg'
-    },
-    {
-        title: 'Favourites landscapes 3',
-        subtitle: 'Lorem ipsum dolor sit amet et nuncat',
-        url: 'https://i.imgur.com/pmSqIFZl.jpg'
-    },
-    {
-        title: 'Favourites landscapes 4',
-        subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-        url: 'https://i.imgur.com/cA8zoGel.jpg'
-    },
-    {
-        title: 'Favourites landscapes 5',
-        subtitle: 'Lorem ipsum dolor sit amet',
-        url: 'https://i.imgur.com/pewusMzl.jpg'
-    },
-    {
-        title: 'Favourites landscapes 6',
-        subtitle: 'Lorem ipsum dolor sit amet et nuncat',
-        url: 'https://i.imgur.com/l49aYS3l.jpg'
-    }
-];
-
-const sliderdata = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-
-];
 
 const DATA = [
     {
@@ -214,7 +248,6 @@ const DATA = [
     },
 
 ];
-
 const expertData = [
     {
         name: 'Naredra Modi',

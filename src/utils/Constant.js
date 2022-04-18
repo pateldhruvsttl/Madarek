@@ -3,6 +3,9 @@
 export const baseUrl = "http://138.68.152.151:3000/"; //live
 import { Alert, Platform } from "react-native";
 import { AppUtil } from "./AppUtil";
+import DeviceInfo from "react-native-device-info";
+
+export const deviceId = DeviceInfo.getUniqueId()
 
 export const isRTL = false;
 

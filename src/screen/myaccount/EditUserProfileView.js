@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TextInput, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native'
+import React, { memo } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MyAccountStyle from './MyAccountStyle'
 import Camera from '../../assets/svg/myaccount/Camera'
@@ -7,11 +7,6 @@ import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { GetAppColor } from '../../utils/Colors'
-import { useSelector } from 'react-redux'
-
-const EditUserProfileView = (props) => {
-
-  const { themeColor } = useSelector((state) => state)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"UserEditProfile"} onEditProfile={() => props.navigation.navigate('EditUserProfileView')} onMenuClick={() => { props.navigation.openDrawer() }} />
@@ -133,9 +128,10 @@ const EditUserProfileView = (props) => {
             <Text style={MyAccountStyle.submitText}>{Label.Submit}</Text>
           </TouchableOpacity>
         </View>
+        
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-export default EditUserProfileView
+export default memo(EditUserProfileView);

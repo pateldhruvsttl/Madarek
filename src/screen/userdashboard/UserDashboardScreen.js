@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
-import Style from "./UserDashboardSceenStyle";
+import Style from "./UserDashboardStyle";
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 

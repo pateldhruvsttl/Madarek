@@ -30,7 +30,7 @@ function SubmitIdeaStep4(props) {
 
     
     const onCheckField = () => {
-        // props.onNext();
+        props.onNext();
     }
     const onSelect = (country) => {
         setCountryCode(country.cca2)
@@ -174,7 +174,7 @@ function SubmitIdeaStep4(props) {
             </View>
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>
-                <Text style={Style.txtBtn}>{Label.Continue}</Text>
+                <Text style={Style.txtBtn}>{Label.Submit}</Text>
             </TouchableOpacity>
         </View>
     )

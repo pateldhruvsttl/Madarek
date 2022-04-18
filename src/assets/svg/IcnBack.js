@@ -12,7 +12,7 @@ const IcnBack = (props) => (
     <G
       transform="translate(-2.5 -1.464)"
       fill="none"
-      stroke="#fff"
+      stroke={props.color ? "#000000" : "#fff"}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={5}

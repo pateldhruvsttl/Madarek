@@ -1,5 +1,9 @@
 export const EndPoints = {
-    bannerList:"rest/banner",
+    madarekSpotlight:"madarekspotlight",
+    openChallenges:"openchallenges",
+    ideaList:"idealist?frontuser_id=48",
+    bannerList:"rest/banner?language=ar",
     categories:"rest/categories",
-    signUp : "signup"
+    signUp : "signup",
+    login : "login"
 }

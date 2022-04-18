@@ -38,12 +38,10 @@ const Style = StyleSheet.create({
         },
         shadowOpacity: 0.20,
         shadowRadius: 2.84,
-        
         elevation: 2,
-
     },
 
-    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1) },
+    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), borderWidth:0.5, borderColor:GetAppColor.disableBorder },
 
     rightItems: { width: '40%', },
     leftItems: { width: '55%' },

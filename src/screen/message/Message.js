@@ -1,4 +1,5 @@
-import { View, Text, SafeAreaView, FlatList, Image } from 'react-native'
+import { View, Text, FlatList, Image } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MessageStyle from './MessageStyle'

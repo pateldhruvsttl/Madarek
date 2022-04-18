@@ -6,12 +6,14 @@ export default class IdeaList {
             return;
         }
         
+        this.ideaTitle = obj?.contest_title;
+        this.categoryName = obj?.contest_description;
+        
+        
+        this.title = obj?.contest_title;
         this.id = obj?.id;
-        this.categoryName = obj?.category_name;
-        this.ideaTitle = obj?.idea_title;
         this.firstName = obj?.first_name;
         this.lastName = obj?.last_name;
-        this.title = obj?.title;
         this.section = obj?.section;
         this.ideaDescription = obj?.idea_description;
         this.ideaImage = obj?.idea_cover_image;
@@ -26,9 +28,9 @@ export default class IdeaList {
         this.insight = obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
         
         this.like = obj?.isLiked > 0 ? true : false;
-        this.totalView = obj?.totalViews;
-        this.totalLike = obj?.totalLikes;
-        this.totalComment = obj?.totalComments;
+        this.totalView = obj?.totalViews > 0 ? true : false;
+        this.totalLike = obj?.totalLikes > 0 ? true : false;
+        this.totalComment = obj?.totalComments > 0 ? true : false;
 
     }
 }

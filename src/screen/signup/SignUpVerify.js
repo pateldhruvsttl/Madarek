@@ -1,7 +1,8 @@
 import React, { useState, memo, useRef } from "react";
-import { Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, StatusBar } from "react-native";
-import IcnBack from '../../assets/svg/IcnBack'
-import { AppUtil } from '../../utils/AppUtil'
+import { Text, TextInput, TouchableOpacity, View, ScrollView, StatusBar } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import IcnBack from '../../assets/svg/IcnBack';
+import { AppUtil } from '../../utils/AppUtil';
 import verifyStyle from "./SignUpVerifyStyle";
 import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
