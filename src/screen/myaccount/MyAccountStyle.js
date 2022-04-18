@@ -114,7 +114,7 @@ const MyAccountStyle = StyleSheet.create({
         height:AppUtil.getHP(5),
         width:AppUtil.getHP(5),
         borderRadius:AppUtil.getHP(2.5),
-        backgroundColor:GetAppColor.catBorder,
+        // backgroundColor:GetAppColor.catBorder,
         position:'absolute',
         bottom:0,
         end:0,
@@ -130,7 +130,9 @@ const MyAccountStyle = StyleSheet.create({
         borderBottomColor:GetAppColor.editProfBorder,
         height:AppUtil.getHP(4),
         fontFamily:FONTS.robotMedium,
-        fontSize:AppUtil.getHP(1.8)
+        fontSize:AppUtil.getHP(1.8),
+        padding:0,
+        color:GetAppColor.pincolor
     },
     editPartView:{
         width:'45%',
@@ -147,7 +149,8 @@ const MyAccountStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        marginTop: AppUtil.getHP(2.5)
+        marginTop: AppUtil.getHP(2.5),
+         marginBottom:AppUtil.getHP(1.5)
     },
     submitText:{ color: GetAppColor.white, fontFamily:FONTS.robotMedium, fontSize:buttonFontSize },
     catView1:{
@@ -165,7 +168,8 @@ const MyAccountStyle = StyleSheet.create({
         fontSize:AppUtil.getHP(2),
         fontFamily:FONTS.robotRegular,
         marginEnd:AppUtil.getHP(1),
-        marginVertical:AppUtil.getHP(1)
+        marginVertical:AppUtil.getHP(1),
+        color:GetAppColor.textColor
     },
     addMoreButton:{
         width:AppUtil.getWP(30),

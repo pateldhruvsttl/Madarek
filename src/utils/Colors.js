@@ -36,7 +36,10 @@ export const GetAppColor = {
     buttonGreenColor : "#1FB779",
     grayShadeBorder : "#AAAAAA",
     editProfBorder:"#707070",
-    clearColor : "#8C67A9"
+    clearColor : "#8C67A9",
+    switchOnColor:"#D5BEE6",
+    switchOffColor:"#0000001A",
+    
 }
 
 

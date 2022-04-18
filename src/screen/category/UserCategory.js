@@ -90,7 +90,7 @@ const UserCategory = (props) => {
     const renderItem = ({ item, index }) => {
 
         return (
-            <TouchableOpacity style={[UserCategoryStyles.btnView,]}>
+            <TouchableOpacity style={[UserCategoryStyles.btnView,{borderColor:themeColor.headerColor}]}>
                 <View style={UserCategoryStyles.heartView}>
                     <Heart height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                 </View>
@@ -145,7 +145,7 @@ const UserCategoryStyles = StyleSheet.create({
         borderColor: GetAppColor.catBorder
     },
     heartView: { alignSelf: 'flex-end', end: 5, position:'absolute', top:5 },
-    input: { width: '90%', padding: 0, height: '100%' },
+    input: { width: '90%', padding: 0, height: '100%', padding:0, color:GetAppColor.textColor },
     searchView: { flexDirection: 'row', width: '100%', alignItems: 'center', paddingHorizontal: AppUtil.getWP(5), height: 50, backgroundColor: GetAppColor.white, justifyContent: 'space-between' },
     txtBtn: {
         fontSize: AppUtil.getHP(1.6),
