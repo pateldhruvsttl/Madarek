@@ -34,7 +34,8 @@ const SettingStyle = StyleSheet.create({
         marginTop:AppUtil.getHP(3),
     },
     radioBtnView:{
-        flexDirection:'row'
+        flexDirection:'row',
+        alignItems:"center"
     },
     yellowBorderView:{
         height:AppUtil.getHP(2.5),
@@ -75,7 +76,7 @@ const SettingStyle = StyleSheet.create({
     offText:{
         color:GetAppColor.grayBorder,
         fontFamily:FONTS.robotRegular,
-        fontSize:AppUtil.getHP(1.4)
+        fontSize:AppUtil.getHP(1.4),
     }
 })
 

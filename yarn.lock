@@ -6288,6 +6288,13 @@
     "css-select" "^2.1.0"
     "css-tree" "^1.0.0-alpha.39"
 
+"react-native-switch@^1.5.1":
+  "integrity" "sha512-nfuPrrPKzeZL1mQH0u1rlEGv9W1+okU/xOcNNaDNz/LhSdzWOZ04ogJ4iEj7Sth3hkBxv4XwFQZTgCc07we+cg=="
+  "resolved" "https://registry.npmjs.org/react-native-switch/-/react-native-switch-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "prop-types" "^15.6.0"
+
 "react-native-tab-view@>= 3.0.0":
   "integrity" "sha512-M5pRN6utQfytKWoKlKVzg5NbkYu308qNoW1khGTtEOTs1k14p2dHJ/BWOJoJYHKbPVUyZldbG9MFT7gUl4YHnw=="
   "resolved" "https://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-3.1.1.tgz"
@@ -6318,7 +6325,7 @@
     "prop-types" "^15.6.0"
     "react-timer-mixin" "^0.13.4"
 
-"react-native@*", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.60.0", "react-native@0.67.3":
+"react-native@*", "react-native@>=0.29", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.60.0", "react-native@0.67.3":
   "integrity" "sha512-epMVRMRH7dLCis97+YwiV4dmTVZO6qKmQgwcTNcxVt/kEMxAa+OYK7h81+99/n7XCeMFk/U2zYOBuQqc7c5Amg=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.67.3.tgz"
   "version" "0.67.3"

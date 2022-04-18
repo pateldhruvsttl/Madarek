@@ -13,9 +13,11 @@ import IcnAboutApp from '../../assets/svg/settingIcon/icnAboutApp'
 import IcnMessage from '../../assets/svg/settingIcon/IcnMessage'
 import IcnAlert from '../../assets/svg/IcnAlert'
 import { useSelector } from 'react-redux'
+import { Switch } from 'react-native-switch';
+
 
 const Setting = (props) => {
-  const { themeColor } = useSelector((state) => state)
+    const { themeColor } = useSelector((state) => state)
 
     return (
         <SafeAreaView>
@@ -39,11 +41,11 @@ const Setting = (props) => {
                     <Text style={SettingStyle.subTitleText}>Language</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
-                    <TouchableOpacity onPress={() => {}} style={SettingStyle.radioBtn}>
+                    <TouchableOpacity onPress={() => { }} style={SettingStyle.radioBtn}>
                         {
                             // selectedIndex == 0 ?
-                            <View style={[SettingStyle.yellowBorderView,{borderColor:themeColor.headerColor}]}>
-                                <View style={[SettingStyle.yellowFillView,{backgroundColor:themeColor.headerColor}]} />
+                            <View style={[SettingStyle.yellowBorderView, { borderColor: themeColor.headerColor }]}>
+                                <View style={[SettingStyle.yellowFillView, { backgroundColor: themeColor.headerColor }]} />
                             </View>
                             // :
                             // <View style={SettingStyle.grayBorderView} />
@@ -52,7 +54,7 @@ const Setting = (props) => {
                         <Text style={[SettingStyle.userTypeText, { marginTop: 0 }]} >{Label.English}</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => {}} style={SettingStyle.radioBtn}>
+                    <TouchableOpacity onPress={() => { }} style={SettingStyle.radioBtn}>
                         {
                             // selectedIndex == 0 ?
                             // <View style={[SettingStyle.yellowBorderView,{borderColor:themeColor.headerColor}]}>
@@ -74,11 +76,26 @@ const Setting = (props) => {
                     <Text style={SettingStyle.subTitleText}>Notifications</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
-                        <Text style={SettingStyle.offText}>OFF</Text>
-                        <TouchableOpacity></TouchableOpacity>
-                        <Text style={SettingStyle.offText}>ON</Text>
+                    <Text style={[SettingStyle.offText,{marginEnd:AppUtil.getWP(2)}]}>OFF</Text>
+                    <Switch
+                        value={false}
+                        onValueChange={(val) => console.log(val)}
+                        disabled={false}
+                        circleSize={AppUtil.getHP(3.5)}
+                        barHeight={AppUtil.getHP(2.5)}
+                        circleBorderWidth={0}
+                        backgroundActive={GetAppColor.switchOnColor}
+                        backgroundInactive={GetAppColor.switchOffColor}
+                        circleActiveColor={GetAppColor.catBorder}
+                        circleInActiveColor={GetAppColor.grayBorder}
+                        renderActiveText={false}
+                        renderInActiveText={false}
+                    />
+                    {/* <TouchableOpacity></TouchableOpacity> */}
+        
+                    <Text style={[SettingStyle.offText,{marginStart:AppUtil.getWP(2)}]}>ON</Text>
                 </View>
-                
+
             </TouchableOpacity>
 
             {/* message */}
@@ -89,9 +106,23 @@ const Setting = (props) => {
                     <Text style={SettingStyle.subTitleText}>message</Text>
                 </View>
                 <View style={SettingStyle.radioBtnView}>
-                        <Text style={SettingStyle.offText}>OFF</Text>
-                        <TouchableOpacity></TouchableOpacity>
-                        <Text style={SettingStyle.offText}>ON</Text>
+                    <Text style={[SettingStyle.offText,{marginEnd:AppUtil.getWP(2)}]}>OFF</Text>
+                    <Switch
+                        value={true}
+                        onValueChange={(val) => console.log(val)}
+                        disabled={false}
+                        circleSize={AppUtil.getHP(3.5)}
+                        barHeight={AppUtil.getHP(2.5)}
+                        circleBorderWidth={0}
+                        backgroundActive={GetAppColor.switchOnColor}
+                        backgroundInactive={GetAppColor.switchOffColor}
+                        circleActiveColor={GetAppColor.catBorder}
+                        circleInActiveColor={GetAppColor.grayBorder}
+                        renderActiveText={false}
+                        renderInActiveText={false}
+                    />
+                    {/* <TouchableOpacity></TouchableOpacity> */}
+                    <Text style={[SettingStyle.offText,{marginStart:AppUtil.getWP(2)}]}>ON</Text>
                 </View>
             </TouchableOpacity>
 
