@@ -5,9 +5,7 @@ import FastImage from 'react-native-fast-image'
 import styles, { sliderWidth, itemWidth } from "./EventSliderStyle";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
-import { AppUtil } from "../../utils/AppUtil";
 import { Label } from '../../utils/StringUtil'
-import { Loger } from "../../utils/Loger";
 import ImageLoad from "react-native-image-placeholder";
 
 const EventSlider = ({ Entries }) => {

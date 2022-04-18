@@ -129,7 +129,6 @@ const HomeScreen = (props) => {
 
     const onSetItem = (item) => {
 
-
         switch (item) {
 
             case 'Slider':
@@ -194,7 +193,8 @@ const HomeScreen = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"HomeScreenHeader"} onMenuClick={() => { props.navigation.openDrawer() }} />
+            <CommonHeader isType={"HomeScreenHeader"} />
+
             <View style={Style.MainView}>
                 <FlatList
                     data={dtList}
