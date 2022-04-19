@@ -31,7 +31,7 @@ import {
 } from 'react-native';
 import Video from 'react-native-video'; /// alreadyimported this
 import Icon from 'react-native-vector-icons/FontAwesome5'; // and this
-// import Orientation from 'react-native-orientation';
+import Orientation from 'react-native-orientation';
 
 const { width } = Dimensions.get('window');
 const samplevideo = { uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' };
@@ -167,7 +167,6 @@ export default class VideosPlayer extends Component {
               </View>}
           </View>
         </View>
-        <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 100, color: 'red', fontWeight: 'bold' }}>Hello Wellcome to TekNik GG</Text>
       </View>
     );
   }
