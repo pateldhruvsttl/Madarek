@@ -1,4 +1,16 @@
 export default class Login {
+    static noId = "";
+    static noUserType = "";
+    static noFirstName = "";
+    static noLastName = "";
+    static noNumber = "";
+    static noEmail = "";
+    static noCountryId = "";
+    static noCityId = "";
+    static noJobTitle = "";
+    static noToken = "";
+
+
 
     constructor(obj = null) {
         
@@ -6,17 +18,16 @@ export default class Login {
             return;
         }
         
-        this.id = obj?.id
-        this.userType = obj?.user_type
-        this.firstName = obj?.first_name
-        this.lastName = obj?.last_name
-        this.mobileNumber = obj?.mobile_phone
-        this.email = obj?.email
-        this.countryId = obj?.country_id
-        this.cityId = obj?.city_id
-        this.userType = obj?.user_type
-        this.jobTitle = obj?.job_title
-        this.token = obj?.token
+        this.id = obj?.id ?? this.noId
+        this.userType = obj?.user_type ?? this.noUserType
+        this.firstName = obj?.first_name ?? this.noFirstName
+        this.lastName = obj?.last_name ?? this.noLastName
+        this.mobileNumber = obj?.mobile_phone ?? this.noNumber
+        this.email = obj?.email ?? this.noEmail
+        this.countryId = obj?.country_id ?? this.noCountryId
+        this.cityId = obj?.city_id ?? this.noCityId
+        this.jobTitle = obj?.job_title ?? this.noJobTitle
+        this.token = obj?.token ?? this.noToken
 
     }
     
