@@ -4,7 +4,13 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const ListStyle = StyleSheet.create({
-    MainView: { flex:1, width: '100%',  backgroundColor:GetAppColor.white},
+
+    container: { flex: 1 },
+    MainView: { flex: 1, width: '100%', backgroundColor: GetAppColor.white },
+    tabHeader: { fontSize: 15, textTransform: 'capitalize', width: AppUtil.getWP(25) },
+    tabBarItem: { width: 100 },
+    itemBorder: { backgroundColor: GetAppColor.innovationGrey }
+
 });
 
 export default ListStyle;

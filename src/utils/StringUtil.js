@@ -233,6 +233,7 @@ export const Label = {
     Notifications : isRTL ? ARlabel._notifications : USlabel._notifications,
     NotNow : isRTL ? ARlabel._notNow : USlabel._notNow,
     Update : isRTL ? ARlabel._update : USlabel._update,
+    SignUpVerification : isRTL ? ARlabel._signUpVerification : USlabel._signUpVerification,
 }
 
 

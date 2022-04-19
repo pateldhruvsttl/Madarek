@@ -10,6 +10,7 @@ const LISTSTYLE = StyleSheet.create({
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
         marginBottom: AppUtil.getHP(1)
     },
+    bgImage:{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2) },
 
     titleAnotherScreen : {
         color: GetAppColor.pincolor,

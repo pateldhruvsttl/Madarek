@@ -62,7 +62,6 @@ const LoginScreen = (props) => {
     const signIn = () => {
         Service.post(EndPoints.login, loginData, (res) => {
             Loger.onLog('Login screen Response  ========>', res)
-            alert('Login successFully')
         }, (err) => {
             Loger.onLog('Login screen error ========>', err)
         })
@@ -148,36 +147,36 @@ const LoginScreen = (props) => {
 
 
     const validateFields = () => {
-        // if (isMobilelogin) {
-        //     if (!mobileNumber.trim()) {
-        //         showMessage(Label.Phone)
-        //         return false
-        //     }
-        //     if (showPassword) {
-        //         if (loginData.pwd != password) {
-        //             showMessage(Label.PasswordLogin)
-        //             return false
-        //         }
-        //     } else {
-        //         const otpJoin = first + second + third + fourth + fifth + sixth;
-        //         // alert( typeof Number(otpJoin))
-        //         if (otpNumber != Number(otpJoin)) {
-        //             showMessage(Label.Pin)
-        //             return false
-        //         }
-        //     }
-        // }
-        // else {
-        //     if (!email.trim() || !emailValidate(email)) {
-        //         showMessage(Label.Email)
-        //         return false
-        //     } else if (pin != password) {
-        //         showMessage(Label.PasswordLogin)
-        //         return false
-        //     }
-        // }
-        // signIn()
-        // resetField()
+        if (isMobilelogin) {
+            if (!mobileNumber.trim()) {
+                showMessage(Label.Phone)
+                return false
+            }
+            if (showPassword) {
+                if (password.trim() === '') {
+                    showMessage(Label.PasswordLogin)
+                    return false
+                }
+            } else {
+                const otpJoin = first + second + third + fourth + fifth + sixth;
+                // alert( typeof Number(otpJoin))
+                if (otpNumber != Number(otpJoin)) {
+                    showMessage(Label.Pin)
+                    return false
+                }
+            }
+        }
+        else {
+            if (!email.trim() || !emailValidate(email)) {
+                showMessage(Label.Email)
+                return false
+            } else if (password.trim() === '') {
+                showMessage(Label.PasswordLogin)
+                return false
+            }
+        }
+        signIn()
+        resetField()
         navigateHomeScreen()
 
     }
@@ -201,24 +200,12 @@ const LoginScreen = (props) => {
         setCallCode(country.callingCode[0]);
     }
     const Bold = ({ children }) => <Text style={{ fontFamily: FONTS.robotBold }}>{children}</Text>
-    // const success = response => {
-    //   }
-
-    //   const error = response => {
-    //   }
-
-    //   const loading = () => {
-    //   }
-
-    //   const logout = () => {
-    //   }
-
 
     return (
-        <ScrollView contentContainerStyle={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <SafeAreaView>
+                <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
                 <View style={PAGESTYLE.mainView}>
-                    <StatusBar hidden={false} backgroundColor={GetAppColor.barGrey} />
                     <View style={PAGESTYLE.headerPart}>
                         <View style={PAGESTYLE.headingMain}>
                             <MadarekLogo width={AppUtil.getWP(40)} height={AppUtil.getWP(40)} />
