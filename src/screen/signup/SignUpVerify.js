@@ -1,11 +1,10 @@
 import React, { useState, memo, useRef } from "react";
 import { Text, TextInput, TouchableOpacity, View, ScrollView, StatusBar } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import IcnBack from '../../assets/svg/IcnBack';
-import { AppUtil } from '../../utils/AppUtil';
 import verifyStyle from "./SignUpVerifyStyle";
 import { Label } from "../../utils/StringUtil";
 import { GetAppColor } from "../../utils/Colors";
+import CommonHeader from "../../component/commonheader/CommonHeader";
 
 const SignUpVerify = (props) => {
   const [first, setFirst] = useState('');
@@ -23,76 +22,78 @@ const SignUpVerify = (props) => {
 
   const handleKeyPress = (key, index) => {
     if (key === 'Backspace') {
-        switch (true) {
-            case (index === 1):
-                return false
-                break;
-            case (index === 2):
-                input1.current.focus()
-                break;
-            case (index === 3):
-                input2.current.focus()
-                break;
-            case (index === 4):
-                input3.current.focus()
-                break;
-            case (index === 5):
-                input4.current.focus()
-                break;
-            case (index === 6):
-                input5.current.focus()
-                break;
-            default:
-        }
+      switch (true) {
+        case (index === 1):
+          return false
+          break;
+        case (index === 2):
+          input1.current.focus()
+          break;
+        case (index === 3):
+          input2.current.focus()
+          break;
+        case (index === 4):
+          input3.current.focus()
+          break;
+        case (index === 5):
+          input4.current.focus()
+          break;
+        case (index === 6):
+          input5.current.focus()
+          break;
+        default:
+      }
     }
     else {
-        switch (true) {
-            case (index === 1):
-                input2.current.focus();
-                break;
-            case (index === 2):
-                input3.current.focus();
-                break;
-            case (index === 3):
-                input4.current.focus();
-                break;
-            case (index === 4):
-                input5.current.focus()
-                break;
-            case (index === 5):
-                input6.current.focus()
-                break;
-            default:
-        }
+      switch (true) {
+        case (index === 1):
+          input2.current.focus();
+          break;
+        case (index === 2):
+          input3.current.focus();
+          break;
+        case (index === 3):
+          input4.current.focus();
+          break;
+        case (index === 4):
+          input5.current.focus()
+          break;
+        case (index === 5):
+          input6.current.focus()
+          break;
+        default:
+      }
 
     }
-}
+  }
 
   const navigateToCategory = () => {
     props.navigation.navigate("Category")
   }
   const Bold = ({ children }) => <Text style={{ color: GetAppColor.pincolor }}>{children}</Text>
+
   return (
+
     <ScrollView contentContainerStyle={{ flex: 1 }}>
+
       <View style={verifyStyle.signHeaderView}>
-        <StatusBar barStyle="light-content" hidden={false}
-          backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
+
         <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
-        <View style={verifyStyle.headerView}>
-          <Text style={verifyStyle.headerText}>{Label.SignUpVerifyTitle}</Text>
-          <TouchableOpacity style={verifyStyle.backButton}>
-            <IcnBack height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-          </TouchableOpacity>
-        </View>
+        <CommonHeader isType={"SignUpVerify"} onMenuClick={() => { props.navigation.openDrawer() }} />
+
         <View style={verifyStyle.mainView}>
+
           <View style={verifyStyle.signView}>
+
             <View>
               <Text style={verifyStyle.headingTitle}>{Label.VerifyNumber}</Text>
             </View>
+
             <View style={verifyStyle.oneTimePinDetail}>
               <Text style={verifyStyle.oneTimepin}>{Label.OneTimePinDetail}<Bold> ({Label.OneTimePassword})</Bold></Text>
               <Text style={verifyStyle.oneTimepin}>{Label.ToMessage}<Bold> {Label.DefaultPhoneCode}</Bold></Text>
             </View>
+
             <View style={verifyStyle.otpSquareArea}>
               <TextInput
                 style={verifyStyle.squreBox}
@@ -149,19 +150,24 @@ const SignUpVerify = (props) => {
                 onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
               />
             </View>
+
             <View style={verifyStyle.resendOtpArea}>
               <Text style={verifyStyle.resendTextFirst}>{Label.ReceiveOtp}</Text>
               <TouchableOpacity style={verifyStyle.resendTextSecond}>
                 <Text style={verifyStyle.resendText}>{Label.ResendOtpTitle}</Text>
               </TouchableOpacity>
             </View>
+
             <View style={verifyStyle.bottomButtomArea}>
-              <TouchableOpacity style={verifyStyle.signInButton} onPress={() => {navigateToCategory()}}>
+              <TouchableOpacity style={verifyStyle.signInButton} onPress={() => { navigateToCategory() }}>
                 <Text style={verifyStyle.SignInbuttonText}>{Label.VerifyTitle}</Text>
               </TouchableOpacity>
             </View>
+
           </View>
+
         </View>
+
       </View>
     </ScrollView>
   )

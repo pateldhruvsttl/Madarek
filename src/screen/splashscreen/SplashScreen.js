@@ -17,12 +17,12 @@ import { EndPoints } from "../../service/EndPoints";
 
 const SplashScreen = (props) => {
 
-    const [selectLanguage, setselectLanguage] = useState(1);
+    const [selectLanguage, setselectLanguage] = useState(0);
     const [selectIndex, setSelectIndex] = useState(1)
 
-    // setTimeout(() => {
-    //     props.navigation.navigate("LoginScreen")
-    // }, 2500);
+    setTimeout(() => {
+        props.navigation.navigate("LoginScreen")
+    }, 2500);
 
     
 
@@ -36,7 +36,7 @@ const SplashScreen = (props) => {
 
                         <TouchableOpacity style={[STYLES.selections,]} onPress={() => { setselectLanguage(index); setSelectIndex(1) }}>
 
-                            <Text style={[STYLES.itemPicker, { color: selectLanguage === index && 'rgba(0,0,0,0.3)' }]}>{lang}</Text>
+                            <Text style={[STYLES.itemPicker, { color: selectLanguage === index  ? GetAppColor.black :'rgba(0,0,0,0.3)' }]}>{lang}</Text>
                         </TouchableOpacity>
                     ))
                 }
@@ -82,9 +82,9 @@ const SplashScreen = (props) => {
                     </View>
 
                     <TextInput
-                        placeholder={Label.English}
+                        // placeholder={Label.English}
                         style={STYLES.selectText}
-                        placeholderTextColor={GetAppColor.pincolor}
+                        // placeholderTextColor={GetAppColor.pincolor}
                         keyboardAppearance={false}
                         value={languageList[selectLanguage]}
                         editable={false}

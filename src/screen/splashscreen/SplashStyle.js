@@ -62,11 +62,10 @@ const STYLES = StyleSheet.create({
 
     itemPicker: {
         marginStart: AppUtil.getWP(8),
-        color: GetAppColor.grayBorder,
         fontFamily: FONTS.robotMedium,
     },
     container: {
-        borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1,
+        borderBottomColor: GetAppColor.disableBorder, borderBottomWidth: 1.5,
         marginHorizontal: 20,
         flexDirection: 'row',
         alignItems: 'center',

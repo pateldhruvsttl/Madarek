@@ -264,10 +264,10 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <TouchableOpacity>
-                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -458,6 +458,24 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+            case 'SignUpVerify':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={ GetAppColor.statusBarYellow}  />
+                        <View style={[Style.MainView, { backgroundColor:  GetAppColor.headerLightYellow }]}>
+    
+                            <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
+                                <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+    
+                            <View style={Style.centerIcnView}>
+                                <Text style={Style.txtHeader}>{Label.SignUpVerification}</Text>
+                            </View>
+                            <View style={Style.icnEmpty} />
+                        </View>
+                    </>
+                );
+                break;
         default: null;
     }
 }

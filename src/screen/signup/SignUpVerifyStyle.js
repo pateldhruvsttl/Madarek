@@ -51,7 +51,7 @@ const verifyStyle = StyleSheet.create({
         paddingTop : AppUtil.getHP(4.07),
         alignItems: 'center',
         height: '100%', width: '100%',
-        paddingHorizontal:15,
+        paddingHorizontal: AppUtil.getHP(2.5),
         marginBottom:20
     },
     signView: {
