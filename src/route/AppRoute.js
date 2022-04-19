@@ -22,8 +22,12 @@ import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
 import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 
+// import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
+
+// import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen'
+
 
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
@@ -37,6 +41,7 @@ import Message from '../screen/message/Message';
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
 import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
 import SearchLabel from '../screen/searchlabel/SearchLabel';
+import VideosPlayer from '../screen/videoplayer/VideosPlayer';
 
 
 const Stack = createStackNavigator();
@@ -44,7 +49,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"VideoPlayer"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -76,6 +81,7 @@ function ScreenStack() {
             <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
+            <Stack.Screen name="VideoPlayer" component={VideosPlayer} />
 
         </Stack.Navigator>
     )
