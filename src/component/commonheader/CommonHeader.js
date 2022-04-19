@@ -463,10 +463,7 @@ const CommonHeader = (props) => {
                     <>
                         <StatusBar barStyle="light-content" hidden={false} backgroundColor={ GetAppColor.statusBarYellow}  />
                         <View style={[Style.MainView, { backgroundColor:  GetAppColor.headerLightYellow }]}>
-    
-                            <TouchableOpacity onPress={() => navigation.goBack()} style={Style.LeftIcnView}>
-                                <IcnBack style={Style.headerProfile} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
+                        <BackButton/>
     
                             <View style={Style.centerIcnView}>
                                 <Text style={Style.txtHeader}>{Label.SignUpVerification}</Text>
