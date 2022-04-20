@@ -1,9 +1,4 @@
 export default class Categories {
-
-    static noCategory = "";
-    static noId = "";
-    static noParentId = "";
-    static noCategoryIcon = "";
 	
     constructor(obj = null) {
 
@@ -11,9 +6,9 @@ export default class Categories {
             return;
         }
 
-        this.id = obj?.id ?? this.noId
-        this.parentId = obj?.parent_id ?? this.parentId
-        this.categoryName = obj?.category_name ?? this.noCategory
-        this.categoryIcon = obj?.category_icon ?? this.noCategoryIcon
+        this.id = obj?.id || "noId"
+        this.parentId = obj?.parent_id || "noParentId"
+        this.categoryName = obj?.category_name || "noCategoryName"
+        this.categoryIcon = obj?.category_icon || "noIcon"
     }
 }
