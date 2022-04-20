@@ -20,14 +20,17 @@
 
 // const styles = StyleSheet.create({})
 
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
   Slider,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  TouchableHighlight,
+  TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import Video from 'react-native-video'; /// alreadyimported this
 import Icon from 'react-native-vector-icons/FontAwesome5'; // and this
@@ -39,6 +42,7 @@ const samplevideo = { uri: 'http://commondatastorage.googleapis.com/gtv-videos-b
 export default class VideosPlayer extends Component {
   constructor(p) {
     super(p);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     this.state = {
       currentTime: 0,
       duration: 0.1,
@@ -46,6 +50,23 @@ export default class VideosPlayer extends Component {
       overlay: false,
       fullscreen: false
     };
+  }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+  }
+
+  handleBackButtonClick() {
+    const { fullscreen } = this.state;
+    if (fullscreen) {
+      Orientation.lockToPortrait();
+    }
+    this.props.navigation.goBack(null);
+    return true;
   }
 
   lastTap = null;
@@ -116,14 +137,14 @@ export default class VideosPlayer extends Component {
 
   fullscreen = () => {
     const { fullscreen } = this.state;
-    if(fullscreen) {
+    if (fullscreen) {
       Orientation.lockToPortrait();
     } else {
       Orientation.lockToLandscape();
     }
     this.setState({ fullscreen: !fullscreen });
   }
-  
+
 
   render = () => {
     const { currentTime, duration, paused, overlay, fullscreen } = this.state;
@@ -158,13 +179,13 @@ export default class VideosPlayer extends Component {
                   minimumTrackTintColor='white'
                   thumbTintColor='white' // now the slider and the time will work
                   value={currentTime / duration} // slier input is 0 - 1 only so we want to convert sec to 0 - 1
-                  onValueChange={this.onslide} 
+                  onValueChange={this.onslide}
                 />
               </View>
             </View> : <View style={style.overlaySet}>
-                <TouchableNativeFeedback onPress={this.youtubeSeekLeft}><View style={{ flex: 1 }} /></TouchableNativeFeedback>
-                <TouchableNativeFeedback onPress={this.youtubeSeekRight}><View style={{ flex: 1 }} /></TouchableNativeFeedback>
-              </View>}
+              <TouchableOpacity style={{ width: '50%', height: '100%' }} onPress={this.youtubeSeekLeft}><View style={{ flex: 1, }} /></TouchableOpacity>
+              <TouchableOpacity style={{ width: '50%', height: '100%' }} onPress={this.youtubeSeekRight}><View style={{ flex: 1 }} /></TouchableOpacity>
+            </View>}
           </View>
         </View>
       </View>
