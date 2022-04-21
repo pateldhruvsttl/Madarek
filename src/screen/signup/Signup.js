@@ -14,6 +14,7 @@ import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import { deviceId } from '../../utils/Constant'
+import CommonHeader from '../../component/commonheader/CommonHeader'
 
 const Signup = (props) => {
     
@@ -118,17 +119,8 @@ const Signup = (props) => {
     }
 
     return (
-        <View >
-            <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} translucent={false} />
-
-            <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
-
-            <View style={SignupStyles.headerView}>
-                <Text style={SignupStyles.headerText}>{Label.SignupTitle}</Text>
-                <TouchableOpacity style={SignupStyles.backButton}>
-                    <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-                </TouchableOpacity>
-            </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <CommonHeader isType={"SignUp"} />
             <KeyboardAwareScrollView>
                 <View style={SignupStyles.roundMainView}>
                     {/* Radio button */}
@@ -306,7 +298,7 @@ const Signup = (props) => {
                     </TouchableOpacity>
                 </View>
             </KeyboardAwareScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 
