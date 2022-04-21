@@ -46,6 +46,10 @@ export const AppUtil = {
   isPortrait: () => {
     const dim = Dimensions.get('screen');
     return dim.height >= dim.width;
+  },
+  passwordValidate: (text) => {
+    let reg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return reg.test(text);
   }
 
 }

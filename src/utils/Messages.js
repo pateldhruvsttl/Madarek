@@ -69,7 +69,7 @@ export const ARlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _passwordLogin: "Please enter correct password",
+    _passwordLogin:"Please enter password",
     _pin: "Please enter correct otp",
     _socialLine: "or continue with",
 
@@ -286,6 +286,8 @@ export const ARlabel = {
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
 
+    _signUpVerification : "Sign Up Verification"
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -318,7 +320,7 @@ export const USlabel = {
     _toLogin: "to login",
     _email: "Please enter valid email",
     _phone: "Please enter valid mobile number",
-    _passwordLogin: "Please enter correct password",
+    _passwordLogin: "Please enter password",
     _pin: "Please enter correct otp",
     _ideas: "Ideas",
     _socialLine: "or continue with",
@@ -605,5 +607,7 @@ export const USlabel = {
     _update: "Update",
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
-    _clear: "Clear"
+    _clear: "Clear",
+
+    _signUpVerification : "Sign Up Verification"
 }

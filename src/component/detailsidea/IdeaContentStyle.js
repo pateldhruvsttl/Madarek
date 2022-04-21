@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
@@ -42,7 +42,7 @@ const IdeaContentStyle = StyleSheet.create({
     dateContentIdea: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: AppUtil.getHP(0.5),
+        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) :  AppUtil.getHP(1),
         paddingHorizontal: AppUtil.getWP(5),
     },
     dateSubContain: {
@@ -68,10 +68,10 @@ const IdeaContentStyle = StyleSheet.create({
         alignItems: 'center'
     },
     sectorCategoryArea: {
-        marginTop: AppUtil.getHP(0.5),
+        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) :  AppUtil.getHP(1),
         paddingHorizontal: AppUtil.getWP(5),
     },
-    winningIcn: { marginEnd: AppUtil.getWP(1.5) },
+    winningIcn: { marginEnd: AppUtil.getWP(1.8) },
     spacetoLeft: {
         marginStart: AppUtil.getWP(1.3),
     },

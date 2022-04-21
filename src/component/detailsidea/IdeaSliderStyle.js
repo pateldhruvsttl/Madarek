@@ -16,6 +16,7 @@ const IdeaSliderStyle = StyleSheet.create({
     
     sliderContainer: { marginTop: AppUtil.getHP(2), marginBottom: AppUtil.getHP(1) },
     paginationContainer: { position:'absolute',bottom:0,alignSelf:'center'},
+    bgImage:{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2) },
 
     paginationDot: {
         width: AppUtil.getHP(1.2),

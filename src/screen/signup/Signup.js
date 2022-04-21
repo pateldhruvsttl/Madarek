@@ -75,7 +75,7 @@ const Signup = (props) => {
             Alert.alert(Label.entermobilenumber);
         } else if (emaiId === "" || !AppUtil.validate(emaiId)) {
             Alert.alert(Label.enteremail);
-        } else if (password === "") {
+        } else if (password === "" || !AppUtil.passwordValidate(password)) {
             Alert.alert(Label.enterpassword);
         } else if (reTypePassword === "") {
             Alert.alert(Label.enterretypePassword);
