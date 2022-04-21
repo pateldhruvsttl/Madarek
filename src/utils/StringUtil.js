@@ -234,6 +234,6 @@ export const Label = {
     NotNow : isRTL ? ARlabel._notNow : USlabel._notNow,
     Update : isRTL ? ARlabel._update : USlabel._update,
     SignUpVerification : isRTL ? ARlabel._signUpVerification : USlabel._signUpVerification,
+    SearchCategory : isRTL ? ARlabel._searchCategory : USlabel._searchCategory,
+    UserCategories : isRTL ? ARlabel._userCategories : USlabel._userCategories,
 }
-
-
