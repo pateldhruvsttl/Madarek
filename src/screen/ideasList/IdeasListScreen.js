@@ -15,15 +15,16 @@ const Tab = createMaterialTopTabNavigator();
 const IdeasListScreen = (props) => {
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={Style.container}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
-                        tabBarLabelStyle: { fontSize: 12 },
-                        tabBarItemStyle: { width: 100 },
-                        tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
+                       tabBarLabelStyle: Style.tabHeader,
+                       tabBarItemStyle: Style.tabBarItem,
+                       tabBarIndicatorStyle: Style.itemBorder,
+                       tabBarScrollEnabled: true
                     }}
                     >
                         <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data: sliderdata }} />} />

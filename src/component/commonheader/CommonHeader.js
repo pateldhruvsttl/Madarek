@@ -238,7 +238,7 @@ const CommonHeader = (props) => {
                         <MenuButton/>
 
                         <View style={Style.centerIcnView}>
-                            <Text style={Style.txtHeader}>{Label.Category}</Text>
+                            <Text style={Style.txtHeader}>{Label.UserCategories}</Text>
                         </View>
 
                         <View style={Style.rightIcnView}>

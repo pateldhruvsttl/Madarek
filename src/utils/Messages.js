@@ -172,6 +172,8 @@ export const ARlabel = {
     _bankingandFinance: "Banking and Finance",
     _childLevelCat: "Child Level Cat",
 
+    _searchCategory : "Search Category",
+    _userCategories : "Categories",
 
     // ChallengeDetails screen message
 
@@ -394,14 +396,8 @@ export const USlabel = {
     _submitIdea: "Submit Idea",
     _myAccount: "My Account",
 
-    //  _signUpVerifyTitle: "Sign Up Verification",
-    // _verifyNumber: "Verify Your Mobile Number",
-    // _oneTimePinDetail: "We sent a one time password",
-    // _oneTimePassword: "OTP",
-    // _toMessage: "to",
-    // _defaultPhoneCode: "+971 877 887 7442",
-    // _verifyTitle: "Verify",
-
+      _searchCategory : "Search Category",
+      _userCategories : "Categories",
     // Expert Details message
     _ideaDetails: "Idea Detail",
     _academyDetails: "Academy of Development Research and Training Consulting Pvt Ltd",

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { AppUtil } from "../../utils/AppUtil";
 import { GetAppColor } from "../../utils/Colors";
 import FONTS from "../../utils/Fonts";
@@ -69,6 +69,7 @@ const STYLES = StyleSheet.create({
         marginHorizontal: 20,
         flexDirection: 'row',
         alignItems: 'center',
+        paddingVertical: Platform.OS === 'android' ? 0 : AppUtil.getHP(1)
     },
     langIcon: {
         flex: 0.2, alignItems: 'center',
@@ -102,7 +103,7 @@ const STYLES = StyleSheet.create({
     },
     bottomMenu: {
         backgroundColor: GetAppColor.white, paddingBottom: 10,
-        paddingBottom: AppUtil.getHP(1.8),
+        paddingBottom:Platform.OS === "android" ?  AppUtil.getHP(1.8) : AppUtil.getHP(2.8)
     },
     content: {
         color: GetAppColor.commonBorderGrey,
