@@ -41,10 +41,10 @@ const Style = StyleSheet.create({
         elevation: 2,
     },
 
-    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), borderWidth:0.5, borderColor:GetAppColor.disableBorder },
+    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), borderWidth:0.5, borderColor:GetAppColor.disableBorder,overflow:'hidden' },
 
     rightItems: { width: '40%', },
-    leftItems: { width: '55%' },
+    leftItems: { width: '55%'},
 
     calView: { flexDirection: 'row', alignItems: 'center' },
     
@@ -52,6 +52,7 @@ const Style = StyleSheet.create({
     callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart:AppUtil.getHP(1), },
 
     title: { fontSize: AppUtil.getHP(1.3), fontFamily:FONTS.robotMedium, color:GetAppColor.textColor},
+    
     SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily:FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
 
     secondCalView: {alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},

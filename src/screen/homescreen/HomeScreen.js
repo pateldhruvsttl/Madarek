@@ -95,14 +95,11 @@ const HomeScreen = (props) => {
         data.append('', '');
         Service.post(EndPoints.openChallenges, data, (res) => {
             var opChallenges = [];
-            Loger.onLog("res", res.list);
             res.list.forEach(element => {
                 let model = new OpenChallenges(element);
                 opChallenges.push(model);
             });
-
             setOpenChallenges(opChallenges)
-
         }, (err) => {
             Loger.onLog("", err)
         })
@@ -171,7 +168,7 @@ const HomeScreen = (props) => {
                 break;
             case 'FavouriteCategories':
                 return (
-                    <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2) }}>
+                    <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
                         <FavouriteCategories />
                     </View>
                 )

@@ -1,13 +1,17 @@
 export default class IdeaList {
 
+    noSector = "No Sector";
+    noCategoryName = "No category name";
+
     constructor(obj = null) {
 
         if (obj == null) {
             return;
         }
         
-        this.ideaTitle = obj?.contest_title;
-        this.categoryName = obj?.contest_description;
+        this.ideaTitle = obj?.contest_title ? obj?.contest_title : noSector;
+        this.categoryName = obj?.contest_description ? obj?.contest_description : this.noCategoryName;
+        this.createDate = obj?.created_at;
         
         
         this.title = obj?.contest_title;
@@ -18,7 +22,6 @@ export default class IdeaList {
         this.ideaDescription = obj?.idea_description;
         this.ideaImage = obj?.idea_cover_image;
         this.winning = obj?.winning;
-        this.createDate = obj?.created_at;
         this.madarekSpecial = obj?.madarek_special;
         this.favoriteIdea = obj?.toatal_favorite_idea;
         this.topRate = obj?.top_rated;

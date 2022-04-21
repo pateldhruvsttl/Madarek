@@ -35,7 +35,7 @@ const FavouriteCategories = ({ Entries }) => {
 
             <FlatList
                 data={testData.slice(0, 6)}
-                contentContainerStyle={styles.lisView}
+                style={styles.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}
