@@ -34,14 +34,16 @@ import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
 import Setting from '../screen/setting/Setting';
 import MyAccount from '../screen/myaccount/MyAccount';
-import UserProfileView from '../screen/myaccount/UserProfileView';
-import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
+// import UserProfileView from '../screen/myaccount/UserProfileView';
+// import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
 import Message from '../screen/message/Message';
 
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
 import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
 import SearchLabel from '../screen/searchlabel/SearchLabel';
 import VideosPlayer from '../screen/videoplayer/VideosPlayer';
+import UserProfileView from '../screen/userProfile/UserProfileView';
+import EditUserProfile from '../screen/userEditProfile/EditUserProfile';
 
 
 const Stack = createStackNavigator();
@@ -49,7 +51,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"Signup"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"UserProfileView"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -78,7 +80,7 @@ function ScreenStack() {
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="MyAccount" component={MyAccount} />
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
-            <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
+            <Stack.Screen name="EditUserProfileView" component={EditUserProfile} />
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
             <Stack.Screen name="VideoPlayer" component={VideosPlayer} />

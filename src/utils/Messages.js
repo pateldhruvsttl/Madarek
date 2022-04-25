@@ -288,8 +288,13 @@ export const ARlabel = {
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
 
+    _expertise: "Expertise",
+    _skill:"Skill",
+    _biography:"Biography",
+
+    _saveAndNext:"Save and Next",
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -586,8 +591,8 @@ export const USlabel = {
     _jobTitle: "Job Title (optional)",
     _country: "Country",
     _city: "City",
-    _categories: "Categories",
-    _shortDiscription: "Short Discription",
+    _categories: "Interested Categories",
+    _shortDiscription: "Headline",
     _facebookLink: "Facebook Link",
     _twitterLink: "Twitter Link",
     _linkdinLink: "Linkdin Link",
@@ -605,5 +610,11 @@ export const USlabel = {
     _becomeAnExpert: "Become anExpert",
     _clear: "Clear",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
+
+
+    _expertise: "Expertise",
+    _skill:"Skill",
+    _biography:"Biography",
+    _saveAndNext:"Save and Next",
 }
