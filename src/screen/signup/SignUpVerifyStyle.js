@@ -47,15 +47,15 @@ const verifyStyle = StyleSheet.create({
         marginVertical:15
     },
     mainView: {
-        backgroundColor: GetAppColor.lightGrey,
+        backgroundColor: GetAppColor.disableGrey,
         paddingTop : AppUtil.getHP(4.07),
         alignItems: 'center',
         height: '100%', width: '100%',
-        paddingHorizontal:15,
+        paddingHorizontal: AppUtil.getHP(2.5),
         marginBottom:20
     },
     signView: {
-        backgroundColor: GetAppColor.lightWhite,
+        backgroundColor: GetAppColor.white,
         borderRadius: 30,
         paddingHorizontal: 30,
         paddingVertical: 30,

@@ -33,7 +33,10 @@ const SubIdeasListWithImage = (props) => {
         <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
+
+                <View style={Style.img}>
                 <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                </View>
                 {
                     item.like ?
                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
@@ -58,7 +61,7 @@ const SubIdeasListWithImage = (props) => {
                     props.isType == "Ideas" ?
                         <View style={Style.calView}>
                             <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
+                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
 
                             <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
@@ -66,14 +69,12 @@ const SubIdeasListWithImage = (props) => {
                         :
                         <View style={Style.calView}>
                             <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            {/* <Text style={Style.title}>{item.createDate}</Text> */}
-                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "-"}</Text>
+                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
                         </View>
 
                 }
 
                 <View style={Style.secondCalView}>
-
                     <View style={Style.secondInnerCalView}>
                         <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>

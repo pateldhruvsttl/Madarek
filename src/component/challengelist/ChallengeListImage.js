@@ -19,6 +19,7 @@ import LISTSTYLE from "./ChallengeListImageStyle";
 import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
 import IcnSelectedHeartWithRound from "../../assets/svg/IcnSelectedHeartWithRound"
 import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWithRound"
+import ImageLoad from "react-native-image-placeholder";
 
 const SubIdeasListWithImage = (props) => {
 
@@ -28,11 +29,12 @@ const SubIdeasListWithImage = (props) => {
         <TouchableOpacity onPress={()=>props.navigateDetail()} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
-                <Image
+                {/* <Image
                     style={LISTSTYLE.img}
                     resizeMode='cover'
                     source={{ uri: item.url }}
-                />
+                /> */}
+                <ImageLoad style={LISTSTYLE.img} source={{ uri: item.url }} isShowActivity={false}/>
 
                 {
                     item.isLike ?

@@ -15,15 +15,16 @@ const Tab = createMaterialTopTabNavigator();
 const IdeasListScreen = (props) => {
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={Style.container}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
-                        tabBarLabelStyle: { fontSize: 12 },
-                        tabBarItemStyle: { width: 100 },
-                        tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
+                       tabBarLabelStyle: Style.tabHeader,
+                       tabBarItemStyle: Style.tabBarItem,
+                       tabBarIndicatorStyle: Style.itemBorder,
+                       tabBarScrollEnabled: true
                     }}
                     >
                         <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data: sliderdata }} />} />
@@ -42,9 +43,10 @@ export default memo(IdeasListScreen);
 const sliderdata = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+        firstName: 'Poonam',
+        lastName:'Madhav',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',
@@ -54,9 +56,10 @@ const sliderdata = [
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+        firstName: 'Poonam',
+        lastName:'Madhav',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',
@@ -66,9 +69,9 @@ const sliderdata = [
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+        firstName: 'Poonam',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',
@@ -78,9 +81,10 @@ const sliderdata = [
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+        firstName: 'Poonam',
+        lastName:'Madhav',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',
@@ -90,9 +94,9 @@ const sliderdata = [
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+                lastName:'Madhav',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',
@@ -102,9 +106,10 @@ const sliderdata = [
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Banking and Finance',
-        subTitle: 'Children Omani Dress Competition',
+        firstName: 'Poonam',
+        lastName:'Madhav',
+        ideaTitle: 'Banking and Finance',
+        categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
         date: "25 Jan 22",
         see: '700',

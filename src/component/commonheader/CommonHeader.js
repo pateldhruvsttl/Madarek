@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { View, Text, TouchableOpacity, StatusBar } from "react-native";
-import { useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import { useNavigation } from '@react-navigation/native';
 import Style from "./CommonHeaderStyle";
@@ -60,7 +60,7 @@ const CommonHeader = (props) => {
                             <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />
                         </View>
 
-                        <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
@@ -81,7 +81,7 @@ const CommonHeader = (props) => {
                             <Text style={Style.txtHeader}>{Label.Ideas}</Text>
                         </View>
 
-                        <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.rightIcnView}>
                             <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
@@ -105,7 +105,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.IdeaDetails}</Text>
                         </View>
 
-                       <BackButton/>
+                        <BackButton />
 
                         <View style={Style.rightIcnView}>
                             <TouchableOpacity>
@@ -126,7 +126,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.ExpertDetails}</Text>
@@ -151,7 +151,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ExpertsDirectory}</Text>
                         </View>
 
-                        <BackButton/>
+                        <BackButton />
 
                         <View style={Style.rightIcnView}>
                             <TouchableOpacity>
@@ -172,7 +172,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.Experts}</Text>
@@ -197,7 +197,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.UserDashboard}</Text>
                         </View>
 
-                        <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
@@ -218,7 +218,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.SmeDashboard}</Text>
                         </View>
 
-                      <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
@@ -235,10 +235,10 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                        <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.centerIcnView}>
-                            <Text style={Style.txtHeader}>{Label.Category}</Text>
+                            <Text style={Style.txtHeader}>{Label.UserCategories}</Text>
                         </View>
 
                         <View style={Style.rightIcnView}>
@@ -260,14 +260,14 @@ const CommonHeader = (props) => {
                         <View style={Style.middleIcnView}>
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Challenges}</Text>
                         </View>
-                        <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.rightIcnView}>
                             <TouchableOpacity>
-                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -280,7 +280,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.ChallengeDetail}</Text>
@@ -296,7 +296,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.SubmitYourIdeas}</Text>
@@ -312,7 +312,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.Notifications}</Text>
@@ -333,7 +333,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <MenuButton/>
+                        <MenuButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.Parners}</Text>
@@ -355,7 +355,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.BecomeAnExpert}</Text>
@@ -370,7 +370,7 @@ const CommonHeader = (props) => {
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Settings}</Text>
@@ -391,7 +391,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.MyAccount}</Text>
                         </View>
 
-                        <MenuButton/>
+                        <MenuButton />
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
                         </View>
@@ -406,7 +406,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
@@ -427,7 +427,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.UserProfile}</Text>
@@ -443,7 +443,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                    <BackButton/>
+                        <BackButton />
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.Message}</Text>
                         </View>
@@ -455,6 +455,36 @@ const CommonHeader = (props) => {
                         </View>
                     </View>
 
+                </>
+            );
+            break;
+        case 'SignUpVerify':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                        <BackButton />
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.SignUpVerification}</Text>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
+            break;
+        case 'SignUp':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                        <BackButton />
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.SignupTitle}</Text>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
                 </>
             );
             break;

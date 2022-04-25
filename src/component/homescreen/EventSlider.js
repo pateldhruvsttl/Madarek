@@ -51,12 +51,11 @@ const EventSlider = ({ Entries }) => {
     const onSliderRend = ({ item, index }, parallaxProps) => {
         return (
             <View style={styles.renderMainView}>
+                <View style={styles.bgImage}>
                 <ImageLoad style={styles.bgImage} source={{ uri: item.url }} isShowActivity={false}/>
-                {/* <FastImage style={styles.bgImage} resizeMode={FastImage.resizeMode.cover} source={{ uri: item.url, priority: FastImage.priority.normal, }} /> */}
-                {/* <Image style={{ width: '100%', height: "100%", borderRadius: AppUtil.getHP(2), }} resizeMode='cover' source={{ uri: item.url }} /> */}
-
+                </View>
                 <View style={styles.sliderRendTitleView}>
-                    <Text style={styles.txtsliderRendTitle}>{item.title}</Text>
+                    <Text numberOfLines={1} style={styles.txtsliderRendTitle}>{item.title}</Text>
                 </View>
 
                 <TouchableOpacity style={styles.btnSliderRend}>

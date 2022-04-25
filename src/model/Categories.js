@@ -1,5 +1,4 @@
 export default class Categories {
-    // Id = null
 	
     constructor(obj = null) {
 
@@ -7,9 +6,9 @@ export default class Categories {
             return;
         }
 
-        this.id = obj?.id;
-        this.parentId = obj?.parent_id
-        this.categoryName = obj?.category_name;
-        this.categoryIcon = obj?.category_icon;
+        this.id = obj?.id || "noId"
+        this.parentId = obj?.parent_id || "noParentId"
+        this.categoryName = obj?.category_name || "noCategoryName"
+        this.categoryIcon = obj?.category_icon || "noIcon"
     }
 }

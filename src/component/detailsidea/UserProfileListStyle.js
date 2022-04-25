@@ -45,9 +45,18 @@ const styles = StyleSheet.create({
     },
     imgStyle: {
         width: AppUtil.getHP(18), height: AppUtil.getHP(18), borderRadius: AppUtil.getHP(18 / 2),
-        borderColor: GetAppColor.profileYellowBorder,
-        borderWidth: AppUtil.getHP(0.8),
-        marginHorizontal: AppUtil.getHP(1.8)
+        // borderColor: GetAppColor.borderImgShadow,
+        // borderWidth: AppUtil.getHP(0.8),
+        marginHorizontal: AppUtil.getHP(1.8),
+        shadowColor: GetAppColor.borderImgShadow,
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.46,
+        shadowRadius: 11.14,
+        
+        elevation: 27,
     },
     imgChallengeListStyle: {
         width: AppUtil.getHP(18), height: AppUtil.getHP(18), borderRadius: AppUtil.getHP(18 / 2),

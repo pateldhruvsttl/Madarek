@@ -14,27 +14,27 @@ const PAGESTYLE = StyleSheet.create({
         backgroundColor: GetAppColor.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%', 
+        height: '100%',
         width: '100%',
-        paddingTop:Platform.OS === 'android' ? AppUtil.getHP(4) : AppUtil.getHP(2)
+        paddingTop : AppUtil.getHP(2)
     },
     headingMain: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
-    headerPart : {
+    headerPart: {
         width: '100%',
-         paddingHorizontal: 15 ,
-         height:'100%',
+        paddingHorizontal: 15,
+        height: '100%',
     },
     headingMainText: {
         fontSize: 25,
     },
     signView: {
-        backgroundColor: GetAppColor.lightWhite,
+        backgroundColor: GetAppColor.white,
         borderRadius: 20,
-        paddingHorizontal: 25,
-        paddingVertical: 10,
+        paddingHorizontal:AppUtil.getWP(4),
+        paddingVertical:AppUtil.getHP(1),
         shadowColor: GetAppColor.commonBorderGrey,
         shadowOffset: {
             width: 0,
@@ -42,8 +42,9 @@ const PAGESTYLE = StyleSheet.create({
         },
         shadowOpacity: 0.36,
         shadowRadius: 6.68,
-        
+
         elevation: 11,
+        
     },
     signText: {
         color: GetAppColor.lightOrange,
@@ -56,8 +57,7 @@ const PAGESTYLE = StyleSheet.create({
         borderWidth: 1,
         borderColor: GetAppColor.disableBorder,
         borderRadius: 20,
-        // padding:5,
-        marginTop: 10
+        marginTop:AppUtil.getHP(1.5)
     },
     loginEmailCredential: {
         padding: 6,
@@ -106,8 +106,8 @@ const PAGESTYLE = StyleSheet.create({
     },
     numberArea: {
         flexDirection: 'row',
-        marginTop: 25,
-        marginBottom: 10
+        marginTop: AppUtil.getHP(3),
+        marginBottom:  AppUtil.getHP(1),
     },
     toggleNumber: {
         justifyContent: 'center', width: 70
@@ -116,14 +116,13 @@ const PAGESTYLE = StyleSheet.create({
         borderWidth: 1,
         borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
-        padding: 8,
         marginEnd: 5,
         fontFamily: FONTS.robotRegular,
         width: 80,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        height:inputFieldHight
+        height: inputFieldHight
     },
     codePickerArea: {
         alignItems: 'center',
@@ -140,24 +139,24 @@ const PAGESTYLE = StyleSheet.create({
         padding: 8,
         width: '100%',
         paddingStart: 15,
-        height:inputFieldHight,
-        color:GetAppColor.black
+        height: inputFieldHight,
+        color: GetAppColor.black
     },
     showMobileDetail: {
         borderWidth: 1,
         borderColor: GetAppColor.disableBorder,
         borderRadius: 5,
         padding: 8,
-        height:inputFieldHight,
-        flex:1,
+        height: inputFieldHight,
+        flex: 1,
         paddingStart: 15,
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.black
+        color: GetAppColor.black
     },
     otpArea: {
         flexDirection: 'row',
-        marginBottom: 10,
-        marginTop: 5
+        marginBottom: AppUtil.getHP(1),
+        marginTop: AppUtil.getHP(0.5)
 
     },
     getOtpArea: {
@@ -169,12 +168,12 @@ const PAGESTYLE = StyleSheet.create({
 
     }, getOtpText: {
         color: GetAppColor.white,
-        fontFamily:FONTS.robotRegular
+        fontFamily: FONTS.robotRegular
     },
     addOtp: {
         fontSize: 16,
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonBorderGrey
+        color: GetAppColor.commonBorderGrey
     },
     resendOtpArea: {
         flexDirection: 'row',
@@ -186,12 +185,12 @@ const PAGESTYLE = StyleSheet.create({
     },
     showPassword: {
         width: '100%',
-        height:inputFieldHight,
+        height: inputFieldHight,
         borderColor: GetAppColor.disableBorder,
         borderWidth: 1,
         borderRadius: 5,
         paddingStart: 15,
-        color:GetAppColor.black
+        color: GetAppColor.black
     },
     resendText: {
         fontFamily: FONTS.robotMedium,
@@ -201,7 +200,7 @@ const PAGESTYLE = StyleSheet.create({
     resendTextFirst: {
         fontSize: 13,
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonTextColor
+        color: GetAppColor.commonTextColor
 
     },
     resendTextSecond: {
@@ -215,11 +214,11 @@ const PAGESTYLE = StyleSheet.create({
     },
     signInButton: {
         backgroundColor: GetAppColor.lightOrange,
-        height:buttonHeight,
+        height: buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius:buttonBorderRadius
-        
+        borderRadius: buttonBorderRadius
+
     },
     SignInbuttonText: {
         color: GetAppColor.white,
@@ -242,18 +241,18 @@ const PAGESTYLE = StyleSheet.create({
     },
     reciveAccount: {
         fontFamily: FONTS.robotRegular,
-        color:GetAppColor.commonTextColor
+        color: GetAppColor.commonTextColor
     },
     continueArea: {
-        flex:1,
-        width:'100%',
+        flex: 1,
+        width: '100%',
         justifyContent: 'flex-end',
         marginBottom: AppUtil.getHP(3),
     },
-    
+
     squreBox: {
-        flex:1,
-        height:inputFieldHight,
+        flex: 1,
+        height: inputFieldHight,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
@@ -264,12 +263,12 @@ const PAGESTYLE = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         fontSize: 20,
         textAlign: 'center',
-        color:GetAppColor.black
+        color: GetAppColor.black
     },
     usePassword: {
         color: GetAppColor.black,
         fontFamily: FONTS.robotMedium,
-        fontSize:13
+        fontSize: 13
     },
     hidePascod: {
         position: 'absolute',

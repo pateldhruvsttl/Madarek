@@ -8,29 +8,27 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import ListStyle from "./ChallengesListStyle";
 import ViewMoreChallenges from "../../component/challengelist/listing/ViewMoreChallenges"
 import { Label } from "../../utils/StringUtil";
-import { GetAppColor } from "../../utils/Colors";
-import { AppUtil } from "../../utils/AppUtil";
 
 const Tab = createMaterialTopTabNavigator();
 
 const ChallengesListScreen = (props) => {
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={ListStyle.container}>
             <CommonHeader isType={"ChallengesListing"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={ListStyle.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
-                        tabBarLabelStyle: { fontSize: 14,textTransform: 'capitalize',width:AppUtil.getWP(25) },
-                        tabBarItemStyle: { width: 100 },
-                        tabBarIndicatorStyle: { backgroundColor: GetAppColor.innovationGrey },
-                        tabBarScrollEnabled:true
-                   }}>
-                        <Tab.Screen name={Label.Open} children={() => <ViewMoreChallenges propName={{ type: "OpenChallenge", data: sliderdata }} navigateDetail={()=>props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Upcoming} children={() => <ViewMoreChallenges propName={{ type: "UpcomingChallenge", data: sliderdata }} navigateDetail={()=>props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Closed} children={() => <ViewMoreChallenges propName={{ type: "ClosedChallenge", data: sliderdata }} navigateDetail={()=>props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Voting} children={() => <ViewMoreChallenges propName={{ type: "Challenge", data: sliderdata }} navigateDetail={()=>props.navigation.navigate("ChallengeDetail")} />} />
+                        tabBarLabelStyle: ListStyle.tabHeader,
+                        tabBarItemStyle: ListStyle.tabBarItem,
+                        tabBarIndicatorStyle: ListStyle.itemBorder,
+                        tabBarScrollEnabled: true
+                    }}>
+                        <Tab.Screen name={Label.Open} children={() => <ViewMoreChallenges propName={{ type: "OpenChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
+                        <Tab.Screen name={Label.Upcoming} children={() => <ViewMoreChallenges propName={{ type: "UpcomingChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
+                        <Tab.Screen name={Label.Closed} children={() => <ViewMoreChallenges propName={{ type: "ClosedChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
+                        <Tab.Screen name={Label.Voting} children={() => <ViewMoreChallenges propName={{ type: "Challenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

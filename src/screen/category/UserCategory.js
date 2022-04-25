@@ -1,53 +1,19 @@
-import { View, Text, StatusBar, StyleSheet, FlatList, TouchableOpacity , Image} from 'react-native'
+import { View, Text,FlatList, TouchableOpacity , Image} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { GetAppColor } from '../../utils/Colors'
 import { TextInput } from 'react-native-gesture-handler'
 import GraySearchIcon from '../../assets/svg/GraySearchIcon'
 import { AppUtil } from '../../utils/AppUtil'
-import IcnBack from '../../assets/svg/IcnBack'
 import { Label } from '../../utils/StringUtil'
 import { useSelector } from 'react-redux'
-import FONTS from '../../utils/Fonts'
-import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 import Heart from '../../assets/svg/Heart'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
-
-const testData = [
-    {
-        title: 'Favourites landscapes 1',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 2',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 3',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 4',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 5',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 6',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    },
-    {
-        title: 'Favourites landscapes 6',
-        icon: <IcnBack height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
-    }
-];
+import Style from './UserCategoryStyle'
 
 const UserCategory = (props) => {
 
@@ -88,16 +54,15 @@ const UserCategory = (props) => {
         setCategories(cat)
     }
     const renderItem = ({ item, index }) => {
-
         return (
-            <TouchableOpacity style={[UserCategoryStyles.btnView,{borderColor:themeColor.headerColor}]}>
-                <View style={UserCategoryStyles.heartView}>
-                    <Heart height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+            <TouchableOpacity style={[Style.btnView,{borderColor:themeColor.headerColor}]}>
+                <View style={Style.heartView}>
+                    <Heart height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </View>
                 {/* <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} /> */}
                 <Image style={{height:AppUtil.getHP(3.6), width:AppUtil.getHP(3.6)}} source={{uri:item.categoryIcon}} />
                 {/* {item.icon} */}
-                <Text style={UserCategoryStyles.txtBtn}>{item.categoryName}</Text>
+                <Text style={Style.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>
         )
     }
@@ -105,11 +70,11 @@ const UserCategory = (props) => {
     return (
         <SafeAreaView>
             <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
-            <View style={UserCategoryStyles.searchView}>
+            <View style={Style.searchView}>
                 <TextInput
-                    style={UserCategoryStyles.input}
-                    placeholder='Search'
-                    placeholderTextColor={GetAppColor.grayBorder}
+                    style={Style.input}
+                    placeholder={Label.SearchCategory}
+                    placeholderTextColor={GetAppColor.grayShadeBorder}
                     onChangeText={(text)=>onWriteText(text)}
                 />
                 <GraySearchIcon height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
@@ -117,8 +82,8 @@ const UserCategory = (props) => {
 
             <FlatList
                 data={categories}
-                style={UserCategoryStyles.flatelist}
-                contentContainerStyle={UserCategoryStyles.lisView}
+                style={Style.flatelist}
+                contentContainerStyle={Style.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}
@@ -129,37 +94,3 @@ const UserCategory = (props) => {
 }
 
 export default UserCategory
-
-const UserCategoryStyles = StyleSheet.create({
-    btnView: {
-        width: AppUtil.getWP(30),
-        height: AppUtil.getHP(12),
-        borderWidth: 0.5,
-        borderBottomWidth: AppUtil.getHP(.4),
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginHorizontal: "1%",
-        marginVertical: '1%',
-        borderRadius: 5,
-        backgroundColor: GetAppColor.white,
-        borderColor: GetAppColor.catBorder
-    },
-    heartView: { alignSelf: 'flex-end', end: 5, position:'absolute', top:5 },
-    input: { width: '90%', padding: 0, height: '100%', padding:0, color:GetAppColor.textColor },
-    searchView: { flexDirection: 'row', width: '100%', alignItems: 'center', paddingHorizontal: AppUtil.getWP(5), height: 50, backgroundColor: GetAppColor.white, justifyContent: 'space-between' },
-    txtBtn: {
-        fontSize: AppUtil.getHP(1.6),
-        marginTop: AppUtil.getHP(0.9),
-        color: GetAppColor.textColor,
-        fontFamily: FONTS.robotRegular,
-        textAlign: 'center'
-    },
-    lisView: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    flatelist:{
-        marginTop:AppUtil.getHP(1.6)
-    }
-
-})
