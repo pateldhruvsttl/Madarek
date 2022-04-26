@@ -288,7 +288,8 @@ export const ARlabel = {
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
+    _mayAlsoInterested : "You May Also be Interested in"
 
 }
 export const USlabel = {
@@ -605,5 +606,6 @@ export const USlabel = {
     _becomeAnExpert: "Become anExpert",
     _clear: "Clear",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
+    _mayAlsoInterested : "You May Also be Interested in"
 }

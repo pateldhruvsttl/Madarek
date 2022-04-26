@@ -12,7 +12,7 @@ export default class IdeaList {
         
         this.title = obj?.contest_title;
         this.id = obj?.id;
-        this.firstName = obj?.first_name;
+        this.name = obj?.publish_by || "no name"
         this.lastName = obj?.last_name;
         this.section = obj?.section;
         this.ideaDescription = obj?.idea_description;

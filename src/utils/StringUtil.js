@@ -236,4 +236,6 @@ export const Label = {
     SignUpVerification : isRTL ? ARlabel._signUpVerification : USlabel._signUpVerification,
     SearchCategory : isRTL ? ARlabel._searchCategory : USlabel._searchCategory,
     UserCategories : isRTL ? ARlabel._userCategories : USlabel._userCategories,
+    MayAlsoInterested : isRTL ? ARlabel._mayAlsoInterested : USlabel._mayAlsoInterested,
+
 }

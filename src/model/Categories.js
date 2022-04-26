@@ -6,9 +6,9 @@ export default class Categories {
             return;
         }
 
-        this.id = obj?.id || "noId"
-        this.parentId = obj?.parent_id || "noParentId"
-        this.categoryName = obj?.category_name || "noCategoryName"
-        this.categoryIcon = obj?.category_icon || "noIcon"
+        this.id = obj?.id || "No Id"
+        this.parentId = obj?.parent_id || "No ParentId"
+        this.categoryName = obj?.category_name || "No CategoryName"
+        this.categoryIcon = obj?.category_icon || "No Icon"
     }
 }

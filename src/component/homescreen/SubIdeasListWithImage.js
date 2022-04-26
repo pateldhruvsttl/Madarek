@@ -27,15 +27,16 @@ import { Loger } from "../../utils/Loger";
 
 const SubIdeasListWithImage = (props) => {
 
-    
+
 
     const renderItem = ({ item }) => (
+
         <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
 
                 <View style={Style.img}>
-                <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                    <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
                 </View>
                 {
                     item.like ?
@@ -57,8 +58,9 @@ const SubIdeasListWithImage = (props) => {
                 <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
                 <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
-                {
-                    props.isType == "Ideas" ?
+                    {
+                        props.isType == "Ideas" ?
+
                         <View style={Style.calView}>
                             <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
@@ -66,13 +68,27 @@ const SubIdeasListWithImage = (props) => {
                             <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
                         </View>
-                        :
-                        <View style={Style.calView}>
-                            <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-                        </View>
 
-                }
+                        :
+
+                        props.isType == "Spotlight" ?
+
+                            <View style={Style.calView}>
+                                <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+
+                                <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item.name}</Text>
+                            </View>
+
+                            :
+
+                            <View style={Style.calView}>
+                                <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                            </View>
+
+                    }
 
                 <View style={Style.secondCalView}>
                     <View style={Style.secondInnerCalView}>
@@ -91,6 +107,7 @@ const SubIdeasListWithImage = (props) => {
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                     </TouchableOpacity>
                 </View>
+
             </View>
 
         </TouchableOpacity>
