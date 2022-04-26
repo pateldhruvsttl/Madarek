@@ -11,7 +11,7 @@ export const itemWidth = slideWidth + itemHorizontalMargin * 10;
 
 const Style = StyleSheet.create({
     MainView: { width: '100%', flex:1,},
-    lisView:{justifyContent:'center', alignItems:'center'},
+    lisView:{flexGrow: 1, justifyContent:'center', alignItems:'center'},
    
     titleView:{flexDirection:'row', justifyContent:'space-between', marginHorizontal:AppUtil.getHP(2), marginVertical:AppUtil.getHP(2),alignItems:'center'},
     

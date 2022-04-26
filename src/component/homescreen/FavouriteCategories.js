@@ -10,6 +10,7 @@ import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 
 
 const FavouriteCategories = (props) => {
+    console.log('props.data',props.data);
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
 
@@ -33,7 +34,7 @@ const FavouriteCategories = (props) => {
 
             <FlatList
                 data={props.data}
-                style={styles.lisView}
+                contentContainerStyle={styles.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
                 renderItem={renderItem}
