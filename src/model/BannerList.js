@@ -6,9 +6,9 @@ export default class BannerList {
             return;
         }
         
-        this.id = obj?.id || "noId"
-        this.title = obj?.banner_title || "noTitle"
-        this.subtitle = obj?.banner_desc || "noSubTitle"
+        this.id = obj?.id || "No Id"
+        this.title = obj?.banner_title || "No Title"
+        this.subtitle = obj?.banner_desc || "No SubTitle"
         this.url = obj?.banner_image || ""
     }
 }

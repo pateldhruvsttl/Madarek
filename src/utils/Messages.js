@@ -289,6 +289,7 @@ export const ARlabel = {
     _becomeAnExpert: "Become anExpert",
 
     _signUpVerification : "Sign Up Verification",
+    _mayAlsoInterested : "You May Also be Interested in",
 
     _expertise: "Expertise",
     _skill:"Skill",
@@ -617,4 +618,5 @@ export const USlabel = {
     _skill:"Skill",
     _biography:"Biography",
     _saveAndNext:"Save and Next",
+    _mayAlsoInterested : "You May Also be Interested in"
 }

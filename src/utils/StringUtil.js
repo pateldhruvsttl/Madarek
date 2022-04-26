@@ -242,4 +242,6 @@ export const Label = {
     Biography:isRTL?ARlabel._biography:USlabel._biography,
 
     SaveAndNext:isRTL?ARlabel._saveAndNext:USlabel._saveAndNext,
+    MayAlsoInterested : isRTL ? ARlabel._mayAlsoInterested : USlabel._mayAlsoInterested,
+
 }

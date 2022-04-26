@@ -22,6 +22,8 @@ import IdeaList from "../../model/IdeaList";
 import OpenChallenges from "../../model/OpenChallenges";
 import MadarekSportlight from "../../model/MadarekSportlight";
 import ParticipateModal from "../../component/challengedetail/ParticipateModal";
+import ExpertInsight from "../../model/ExpertInsights";
+import category from "../../model/FavouriteCategories";
 
 
 
@@ -35,48 +37,57 @@ const HomeScreen = (props) => {
     const [ideasList, setIdeasList] = useState(null);
     const [openChallenges, setOpenChallenges] = useState([]);
     const [spotLight, setSpotLight] = useState([]);
+    const [expertInsight, setExpertInsight] = useState([]);
+    const [favouriteCategories, setFavouriteCategories] = useState([]);
 
     useEffect(() => {
         onSlider();
         onIdeas();
         onOpenChallenge();
         onSpotlight();
+        onFavouriteCategories();
+        onExpertInsights();
 
     }, []);
 
-    onSlider = () => {
+   const onSlider = () => {
         var banner = [];
         Service.get(EndPoints.bannerList, (res) => {
-            res.result.forEach(element => {
+            res.data.forEach(element => {
                 let model = new BannerList(element);
                 banner.push(model)
             });
             setBannerList(banner)
         }, (err) => {
+            Loger.onLog("bannerList error ------>", err)
         })
     }
 
-    onIdeas = () => {
+   const onIdeas = () => {
 
-        const data = new FormData();
-        data.append('ideaList', 48);
-        data.append('language', "ar");
+        // const data = new FormData();
+        // data.append('ideaList', 48);
+        // data.append('language', "ar");
 
-        Service.post(EndPoints.ideaList, data, (res) => {
+        const data = JSON.stringify({
+            "limit": 2
+          });
+        Service.post(EndPoints.ideaList, data,(res) => {
 
+            console.log('res of idea',res);
             var popularIdeaArr = [];
             var newIdeaArr = [];
             var winningIdeaArr = [];
 
-            res.list.popularIdea.forEach(element => {
+            res.data.popularIdea.forEach(element => {
                 let model = new IdeaList(element);
                 popularIdeaArr.push(model);
             });
-            res.list.newIdea.forEach(element => {
+            res.data.newIdea.forEach(element => {
                 let model = new IdeaList(element);
                 newIdeaArr.push(model);
             });
-            res.list.winningIdea.forEach(element => {
+            res.data.winningIdea.forEach(element => {
                 let model = new IdeaList(element);
                 winningIdeaArr.push(model);
             });
@@ -85,17 +96,15 @@ const HomeScreen = (props) => {
             setIdeasList(obj)
 
         }, (err) => {
-            Loger.onLog("", err)
+            Loger.onLog(" ideaList error ------->", err)
         })
     }
 
-    onOpenChallenge = () => {
-
-        const data = new FormData();
-        data.append('', '');
-        Service.post(EndPoints.openChallenges, data, (res) => {
+  const onOpenChallenge = () => {
+    const data = '';
+        Service.post(EndPoints.openChallenges,data,(res) => {
             var opChallenges = [];
-            res.list.forEach(element => {
+            res.data.forEach(element => {
                 let model = new OpenChallenges(element);
                 opChallenges.push(model);
             });
@@ -105,14 +114,15 @@ const HomeScreen = (props) => {
         })
     }
 
-    onSpotlight = () => {
-        const data = new FormData();
-        data.append('', '');
+   const onSpotlight = () => {
+    const data = JSON.stringify({
+        "frontuser_id": 48
+      });
 
-        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+        Service.post(EndPoints.madarekSpotlight,data, (res) => {
             var spotLight = [];
-            Loger.onLog("res", res.list);
-            res.list.forEach(element => {
+            Loger.onLog("res madarekSpotlight", res);
+            res.data.forEach(element => {
                 let model = new MadarekSportlight(element);
                 spotLight.push(model);
             });
@@ -123,6 +133,46 @@ const HomeScreen = (props) => {
             Loger.onLog("", err)
         })
     }
+
+
+    const onExpertInsights = () => {
+        const data = { "frontuser_id": 48 }
+        Service.post(EndPoints.expertInsights,data, (res) => {
+            Loger.onLog('expertInsights Response  ========>',JSON.stringify(res.data))
+            if(res?.statusCode === "1"){
+                const expertInsightArr = [];
+                res.data.map((ele) => {
+                    const model = new ExpertInsight(ele)
+                    expertInsightArr.push(model);
+
+                })
+                setExpertInsight(expertInsightArr)
+            }
+           
+        }, (err) => {
+            Loger.onLog('expertInsights  error ========>',err)
+        })
+    }
+
+    const onFavouriteCategories = () => {
+        const data = { "id": 48 }
+        Service.post(EndPoints.favouriteCategories,data, (res) => {
+            Loger.onLog('favouriteCategories Response ========>',res.data[0].category_info)
+            if (res?.statusCode === "1") {
+                const favouriteCategoriesArr = [];
+                res?.data[0]?.category_info.map((ele) => {
+                    const model = new category(ele);
+                    favouriteCategoriesArr.push(model);
+                })
+                setFavouriteCategories(favouriteCategoriesArr);
+            }
+         
+          
+        }, (err) => {
+            Loger.onLog('favouriteCategories  error ========>',err)
+        })
+    }
+
 
     const onSetItem = (item) => {
 
@@ -162,14 +212,14 @@ const HomeScreen = (props) => {
             case 'ExpertInsightsSlider':
                 return (
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                        <ExpertInsightsSlider Entries={expertData} />
+                        <ExpertInsightsSlider Entries={expertInsight.slice(0, 2)} />
                     </View>
                 )
                 break;
             case 'FavouriteCategories':
                 return (
                     <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
-                        <FavouriteCategories />
+                        <FavouriteCategories data={favouriteCategories.slice(0,5)}/>
                     </View>
                 )
                 break;
