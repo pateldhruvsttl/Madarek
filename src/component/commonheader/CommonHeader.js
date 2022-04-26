@@ -488,6 +488,29 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+        case 'ExpertInsight':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Challenges}</Text>
+                        </View>
+                        <MenuButton />
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity>
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </>
+            )
+            break;
         default: null;
     }
 }

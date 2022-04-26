@@ -2,7 +2,6 @@ import { View, Text , SafeAreaView} from 'react-native'
 import React from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import UserProfileStyle from './UserProfileStyle';
 import Personal from './Personal';
 import OtherDetail from './OtherDetail';

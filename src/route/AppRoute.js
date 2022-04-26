@@ -44,6 +44,7 @@ import SearchLabel from '../screen/searchlabel/SearchLabel';
 import VideosPlayer from '../screen/videoplayer/VideosPlayer';
 import UserProfileView from '../screen/userProfile/UserProfileView';
 import EditUserProfile from '../screen/userEditProfile/EditUserProfile';
+import ExpertInsightScreen from '../screen/expertinsight/ExpertInsightScreen';
 
 
 const Stack = createStackNavigator();
@@ -51,7 +52,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"UserProfileView"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"ExpertInsightScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -84,6 +85,7 @@ function ScreenStack() {
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
             <Stack.Screen name="VideoPlayer" component={VideosPlayer} />
+            <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
 
         </Stack.Navigator>
     )
