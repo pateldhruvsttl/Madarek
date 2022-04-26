@@ -219,7 +219,7 @@ const HomeScreen = (props) => {
             case 'FavouriteCategories':
                 return (
                     <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
-                        <FavouriteCategories data={favouriteCategories.slice(0,5)}/>
+                        <FavouriteCategories data={favouriteCategories.slice(0,6)}/>
                     </View>
                 )
                 break;

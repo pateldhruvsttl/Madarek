@@ -55,11 +55,10 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
     }
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
-        const categoryDetail = typeof item.categoryInfo !== 'string' ? item.categoryInfo : []
+        const categoryDetail = typeof item?.categoryInfo !== 'string' ? item.categoryInfo : []
       
-
         const getCategories = () => 
-        categoryDetail.length !== 0 && categoryDetail.map((ele) => (
+        categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
             <TouchableOpacity style={styles.btn}>
                 <Text style={styles.categoryLabel}>{ele.category_name}</Text>
             </TouchableOpacity>

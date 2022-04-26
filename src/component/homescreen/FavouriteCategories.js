@@ -32,7 +32,7 @@ const FavouriteCategories = (props) => {
             </View>
 
             <FlatList
-                data={props.data.slice(0, 6)}
+                data={props.data}
                 style={styles.lisView}
                 numColumns={'3'}
                 scrollEnabled={false}
