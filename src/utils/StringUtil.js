@@ -234,6 +234,16 @@ export const Label = {
     NotNow : isRTL ? ARlabel._notNow : USlabel._notNow,
     Update : isRTL ? ARlabel._update : USlabel._update,
     SignUpVerification : isRTL ? ARlabel._signUpVerification : USlabel._signUpVerification,
+    SearchCategory : isRTL ? ARlabel._searchCategory : USlabel._searchCategory,
+    UserCategories : isRTL ? ARlabel._userCategories : USlabel._userCategories,
+
+    Expertise: isRTL?ARlabel._expertise:USlabel._expertise,
+    Skill:isRTL?ARlabel._skill:USlabel._skill,
+    Biography:isRTL?ARlabel._biography:USlabel._biography,
+
+    SaveAndNext:isRTL?ARlabel._saveAndNext:USlabel._saveAndNext,
+    MayAlsoInterested : isRTL ? ARlabel._mayAlsoInterested : USlabel._mayAlsoInterested,
+
+    Maturation:isRTL?ARlabel._maturation:USlabel._maturation,
+
 }
-
-

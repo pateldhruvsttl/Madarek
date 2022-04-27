@@ -22,21 +22,30 @@ import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
 import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 
+// import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
+
 import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
+// import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen'
+
 
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
 import Setting from '../screen/setting/Setting';
 import MyAccount from '../screen/myaccount/MyAccount';
-import UserProfileView from '../screen/myaccount/UserProfileView';
-import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
+// import UserProfileView from '../screen/myaccount/UserProfileView';
+// import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
 import Message from '../screen/message/Message';
 
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
 import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
 import SearchLabel from '../screen/searchlabel/SearchLabel';
+import VideosPlayer from '../screen/videoplayer/VideosPlayer';
+import UserProfileView from '../screen/userProfile/UserProfileView';
+import EditUserProfile from '../screen/userEditProfile/EditUserProfile';
+import ExpertInsightScreen from '../screen/expertinsight/ExpertInsightScreen';
+import ExpertInsightDetail from '../screen/expertInsightDetail/ExpertInsightDetail';
 
 
 const Stack = createStackNavigator();
@@ -73,9 +82,12 @@ function ScreenStack() {
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="MyAccount" component={MyAccount} />
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
-            <Stack.Screen name="EditUserProfileView" component={EditUserProfileView} />
+            <Stack.Screen name="EditUserProfileView" component={EditUserProfile} />
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
+            <Stack.Screen name="VideoPlayer" component={VideosPlayer} />
+            <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
+            <Stack.Screen name="ExpertInsightDetail" component={ExpertInsightDetail} />
 
         </Stack.Navigator>
     )

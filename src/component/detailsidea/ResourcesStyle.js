@@ -27,9 +27,9 @@ const IdeaContentStyle = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: GetAppColor.white,
         alignItems: 'center',
-        height: AppUtil.getHP(7),
+        height: AppUtil.getHP(5),
         // paddingHorizontal: AppUtil.getWP(3),
-        marginBottom: AppUtil.getHP(2),
+        marginBottom: AppUtil.getHP(1),
         shadowColor: "#000",
         borderRadius:buttonBorderRadius,
         shadowOffset: {

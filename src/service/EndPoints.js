@@ -5,5 +5,7 @@ export const EndPoints = {
     bannerList:"rest/banner?language=ar",
     categories:"rest/categories",
     signUp : "signup",
-    login : "login"
+    login : "login",
+    expertInsights : "expertinsights",
+    favouriteCategories : "usercategories"
 }

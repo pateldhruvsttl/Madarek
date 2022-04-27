@@ -139,9 +139,7 @@ const IdeaDetails = (props) => {
         <CommonHeader isType={"IdeaDetails"}  />
         <View style={IdeaStyle.MainView}>
           <ScrollView>
-            <View style={{ height: '100%',width:'100%', backgroundColor: GetAppColor.lightGrey ,paddingBottom:AppUtil.getHP(3),
-         
-          }}>
+            <View style={IdeaStyle.container}>
               <IdeaSlider Entries={testData} />
               <IdeaContent data={DATA} />
               <View style={IdeaStyle.contentBox}>
@@ -150,12 +148,12 @@ const IdeaDetails = (props) => {
               </View>
               <UserProfileList profileData={userProfile} />
               <View style={IdeaStyle.videoPlay}>
-                <VideoPlayer />
+                {/* <VideoPlayer /> */}
               </View>
               <Resources resource={resource} />
               <ExpertInsightsSlider Entries={expertData} screen="IdeaDetail"/>
               <View style={IdeaStyle.subIdeaList}>
-                <SubIdeasListWithImage data={DATAPERSON} isTitle={"You May Also be Interested in "} screen="IdeaDetail" 
+                <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
                 onItemPress={() => { navigation.navigate("IdeaDetails") }} />
               </View>

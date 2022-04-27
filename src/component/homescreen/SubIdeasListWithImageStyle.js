@@ -55,8 +55,8 @@ const Style = StyleSheet.create({
     
     SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily:FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
 
-    secondCalView: {alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},
-    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems:'center' },
+    secondCalView: { alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},
+    secondInnerCalView: {flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems:'center' },
 
     bottomBtn: {
         height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor:GetAppColor.white,

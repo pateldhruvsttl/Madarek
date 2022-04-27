@@ -11,11 +11,13 @@ import { Label } from '../../utils/StringUtil'
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
+import ImageLoad from "react-native-image-placeholder";
 
 const ExpertInsightsSlider = ({ Entries, screen }) => {
 
     const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
+
 
     const setExpertInsights = () => {
         return (
@@ -53,48 +55,51 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
     }
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
+        const categoryDetail = typeof item?.categoryInfo !== 'string' ? item.categoryInfo : []
+      
+        const getCategories = () => 
+        categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
+            <TouchableOpacity style={styles.btn}>
+                <Text style={styles.categoryLabel}>{ele.category_name}</Text>
+            </TouchableOpacity>
+        ))
         return (
             <View style={styles.renderMainView}>
 
                 <View style={styles.renderProfileView}>
-                    <Image
+                    <ImageLoad
                         style={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: item.profilePic }} />
+                        source={{ uri: item.profilePhoto }} />
                 </View>
 
-                <Text style={styles.txtNameView}>{item.name}</Text>
-                <Text style={styles.txtSubNameView}>{item.job}</Text>
+                <Text style={styles.txtNameView}>{item.firstName}</Text>
+                <Text style={styles.txtSubNameView}>{item.jobTitle}</Text>
 
                 <View style={styles.borderLine} />
 
-                <Text numberOfLines={1} style={styles.txtTitleView}>{item.title}</Text>
-                <Text numberOfLines={2} style={styles.txtSubtitleView}>{item.subTitle}</Text>
+                <Text numberOfLines={1} style={styles.txtTitleView}>{item.ideaTitle}</Text>
+                <Text numberOfLines={2} style={styles.txtSubtitleView}>{item.ideaDescription}</Text>
 
-                <View style={styles.btnGrp}>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.txtBtn}>{Label.renewableEnergy}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.txtBtn}>{Label.health}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.txtBtn}>{Label.education}</Text>
-                    </TouchableOpacity>
-                </View>
+               
+               {
+                   <View style={styles.btnGrp}>
+                    {getCategories()}
+                    </View>
+               }
 
                 <View style={styles.secondCalView}>
                     <View style={styles.secondInnerCalView}>
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{item.see}</Text>
+                        <Text style={styles.title}>{item.totalViews}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{item.like}</Text>
+                        <Text style={styles.title}>{item.totalLikes}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{item.comment}</Text>
+                        <Text style={styles.title}>{item.totalComments}</Text>
                     </View>
                 </View>
             </View>
@@ -106,7 +111,7 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
             <View style={styles.titleView}>
                 <Text style={screen ? styles.txtTitleOne : styles.txtTitle}> {Label.expertInsights}</Text>
 
-                <TouchableOpacity onPress={()=> navigation.navigate("ExpertDirectoryScreen")}> 
+                <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
                     <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}> {Label.viewAll}</Text>
                 </TouchableOpacity>
             </View>

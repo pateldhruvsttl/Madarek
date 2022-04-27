@@ -5,9 +5,9 @@ function EditProfile(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
-      width={props.width}
-      height={props.height}
-      viewBox="0 0 50.378 48.162"
+      width={55.177}
+      height={55.177}
+      viewBox="0 0 55.177 55.177"
       {...props}
     >
       <G
@@ -18,14 +18,14 @@ function EditProfile(props) {
         strokeWidth={5}
       >
         <Path
-          data-name="Path 37967"
-          d="M25.689 46.041h22.689"
-          transform="translate(-.5 -.379)"
+          data-name="Path 37969"
+          d="M24.444 7.169H6.987A4.987 4.987 0 002 12.156v34.913a4.987 4.987 0 004.987 4.987H41.9a4.987 4.987 0 004.987-4.987V29.613"
+          transform="translate(.5 .621)"
         />
         <Path
-          data-name="Path 37968"
-          d="M37.033 4.445a5.35 5.35 0 117.567 7.563L13.084 43.52 3 46.041l2.521-10.084z"
-          transform="translate(-.5 -.379)"
+          data-name="Path 37970"
+          d="M43.146 3.428a5.29 5.29 0 017.481 7.481L26.937 34.6l-9.975 2.494 2.494-9.975z"
+          transform="translate(.5 .621)"
         />
       </G>
     </Svg>

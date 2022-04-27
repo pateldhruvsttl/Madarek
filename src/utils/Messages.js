@@ -172,6 +172,8 @@ export const ARlabel = {
     _bankingandFinance: "Banking and Finance",
     _childLevelCat: "Child Level Cat",
 
+    _searchCategory : "Search Category",
+    _userCategories : "Categories",
 
     // ChallengeDetails screen message
 
@@ -286,7 +288,16 @@ export const ARlabel = {
     _clearAll: "Clear all",
     _becomeAnExpert: "Become anExpert",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
+    _mayAlsoInterested : "You May Also be Interested in",
+
+    _expertise: "Expertise",
+    _skill:"Skill",
+    _biography:"Biography",
+
+    _saveAndNext:"Save and Next",
+
+    _maturation:"Maturation",
 
 }
 export const USlabel = {
@@ -394,14 +405,8 @@ export const USlabel = {
     _submitIdea: "Submit Idea",
     _myAccount: "My Account",
 
-    //  _signUpVerifyTitle: "Sign Up Verification",
-    // _verifyNumber: "Verify Your Mobile Number",
-    // _oneTimePinDetail: "We sent a one time password",
-    // _oneTimePassword: "OTP",
-    // _toMessage: "to",
-    // _defaultPhoneCode: "+971 877 887 7442",
-    // _verifyTitle: "Verify",
-
+      _searchCategory : "Search Category",
+      _userCategories : "Categories",
     // Expert Details message
     _ideaDetails: "Idea Detail",
     _academyDetails: "Academy of Development Research and Training Consulting Pvt Ltd",
@@ -590,8 +595,8 @@ export const USlabel = {
     _jobTitle: "Job Title (optional)",
     _country: "Country",
     _city: "City",
-    _categories: "Categories",
-    _shortDiscription: "Short Discription",
+    _categories: "Interested Categories",
+    _shortDiscription: "Headline",
     _facebookLink: "Facebook Link",
     _twitterLink: "Twitter Link",
     _linkdinLink: "Linkdin Link",
@@ -609,5 +614,14 @@ export const USlabel = {
     _becomeAnExpert: "Become anExpert",
     _clear: "Clear",
 
-    _signUpVerification : "Sign Up Verification"
+    _signUpVerification : "Sign Up Verification",
+
+
+    _expertise: "Expertise",
+    _skill:"Skill",
+    _biography:"Biography",
+    _saveAndNext:"Save and Next",
+    _mayAlsoInterested : "You May Also be Interested in",
+
+    _maturation:"Maturation"
 }
