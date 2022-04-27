@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux'
 import IcnLikeblack from '../../assets/svg/IcnLikeblack'
 import IcnBlockChain from '../../assets/svg/IcnBlockChain'
 import IcnShareIcon from '../../assets/svg/IcnShareIcon'
+import Heart from '../../assets/svg/Heart'
+import IcnTimer from '../../assets/svg/IcnTimer'
 
 const IdeaContent = (props) => {
     const { themeColor } = useSelector((state) => state)
@@ -29,7 +31,7 @@ const IdeaContent = (props) => {
     return (
         <View style={[Style.headerAcademyContainer,
         { backgroundColor: props.isType == 'ChallengeDetail' ? GetAppColor.white : GetAppColor.lightGrey }]}>
-            
+
             <View style={Style.headerAcademyTitle}>
                 <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.title}</Text>
             </View>
@@ -79,10 +81,18 @@ const IdeaContent = (props) => {
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.like}</Text>
                     </View>
-                    <View style={Style.secondInnerCalViewOne}>
+                    <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.comment}</Text>
                     </View>
+                    {
+                        props.isMyIdeaDetail ?
+                            <View style={Style.secondInnerCalViewOne}>
+                                <Heart height={iconSize} width={iconSize} />
+                                <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.comment}</Text>
+                            </View> : null
+                    }
+
                 </View>
 
             </View>
@@ -110,14 +120,22 @@ const IdeaContent = (props) => {
                     <>
                         <View style={Style.leftSide}>
                             <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor }]}>
-                                <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor }]}>{Label.VoteNow}</Text>
+                                <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor }]}>{props.isMyIdeaDetail?Label.Maturation:Label.VoteNow}</Text>
                             </TouchableOpacity>
                         </View>
-                        
+
                         <View style={Style.rightSide}>
-                            <TouchableOpacity style={Style.likeBtn}>
+                            {
+                                props.isMyIdeaDetail?
+                                <TouchableOpacity style={[Style.likeBtn,{backgroundColor: GetAppColor.lightBlue,}]}>
+                                <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                            </TouchableOpacity>
+                                :
+                                <TouchableOpacity style={Style.likeBtn}>
                                 <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                             </TouchableOpacity>
+                            }
+                            
                             <TouchableOpacity style={Style.likeBtn}>
                                 <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                             </TouchableOpacity>

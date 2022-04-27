@@ -13,23 +13,20 @@ import { Label } from '../../utils/StringUtil';
 const Tab = createMaterialTopTabNavigator();
 
 
-const ExpertInsightScreen = () => {
+const ExpertInsightScreen = (props) => {
   return (
     <SafeAreaView>
         <CommonHeader isType={'ExpertInsight'} />
         <View style={[ExpertInsightStyle.MainView,{ height:'95%'}]}>
-                {/* <NavigationContainer > */}
                     <Tab.Navigator screenOptions={{
                         tabBarLabelStyle: ExpertInsightStyle.tabHeader,
                         tabBarItemStyle: ExpertInsightStyle.tabBarItem,
                         tabBarIndicatorStyle: ExpertInsightStyle.itemBorder,
-                        // tabBarScrollEnabled: true
                     }}>
                         <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert />} />
                         <Tab.Screen name={"Contest"} children={() => <ContestExpert />} />
                         <Tab.Screen name={"General"} children={() => <GeneralExpert />} />
                     </Tab.Navigator>
-                {/* </NavigationContainer> */}
             </View>
     </SafeAreaView>
   )

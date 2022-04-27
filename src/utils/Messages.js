@@ -296,6 +296,9 @@ export const ARlabel = {
     _biography:"Biography",
 
     _saveAndNext:"Save and Next",
+
+    _maturation:"Maturation",
+
 }
 export const USlabel = {
     _homeTitle: "HomeScreen",
@@ -618,5 +621,7 @@ export const USlabel = {
     _skill:"Skill",
     _biography:"Biography",
     _saveAndNext:"Save and Next",
-    _mayAlsoInterested : "You May Also be Interested in"
+    _mayAlsoInterested : "You May Also be Interested in",
+
+    _maturation:"Maturation"
 }

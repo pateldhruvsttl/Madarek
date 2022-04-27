@@ -244,4 +244,6 @@ export const Label = {
     SaveAndNext:isRTL?ARlabel._saveAndNext:USlabel._saveAndNext,
     MayAlsoInterested : isRTL ? ARlabel._mayAlsoInterested : USlabel._mayAlsoInterested,
 
+    Maturation:isRTL?ARlabel._maturation:USlabel._maturation,
+
 }

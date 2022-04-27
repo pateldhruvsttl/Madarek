@@ -1,27 +1,20 @@
-import { View, Text, StatusBar, Image, TouchableOpacity } from 'react-native'
-import React, { memo } from 'react'
-import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux'
+import { View, Text, ScrollView, SafeAreaView } from 'react-native'
+import React from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
-import IdeaStyle from './IdeaDetailsStyle'
-import { ScrollView } from 'react-native-gesture-handler'
-import { GetAppColor } from '../../utils/Colors'
 import IdeaSlider from '../../component/detailsidea/IdeaSlider'
-import { Label } from '../../utils/StringUtil'
 import IdeaContent from '../../component/detailsidea/IdeaContent'
-import { AppUtil } from '../../utils/AppUtil'
 import UserProfileList from '../../component/detailsidea/UserProfileList'
+import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import Resources from '../../component/detailsidea/Resources'
 import ExpertInsightsSlider from '../../component/homescreen/ExpertInsightsSlider'
-import SubIdeasList from '../../component/homescreen/SubIdeasList'
-import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { Label } from '../../utils/StringUtil'
+import ExpertInsightDetailStyle from './ExpertInsightDetailStyle'
 
-
-const IdeaDetails = (props) => {
-
-  const navigation = useNavigation();
+const ExpertInsightDetail = (props) => {
+    const navigation = useNavigation();
   const { themeColor } = useSelector((state) => state)
 
   const testData = [
@@ -56,6 +49,7 @@ const IdeaDetails = (props) => {
     see: '700',
     like: '200',
     comment: '80',
+    favourite:"2",
     isLike: true,
     Description: 'Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adielit. Ultricies at iaculis eu at Idea description Lorem ipsudjm dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description. Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description.'
   }
@@ -133,26 +127,25 @@ const IdeaDetails = (props) => {
 
   ];
 
-
   return (
-      <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
         <CommonHeader isType={"IdeaDetails"}  />
-        <View style={IdeaStyle.MainView}>
+        <View style={ExpertInsightDetailStyle.MainView}>
           <ScrollView>
-            <View style={IdeaStyle.container}>
+            <View style={ExpertInsightDetailStyle.container}>
               <IdeaSlider Entries={testData} />
-              <IdeaContent data={DATA} />
-              <View style={IdeaStyle.contentBox}>
-                <Text style={IdeaStyle.heading}>{Label.Description}</Text>
-                <Text style={IdeaStyle.descriptionContent}>{DATA.Description}</Text>
+              <IdeaContent data={DATA} isMyIdeaDetail={true} />
+              <View style={ExpertInsightDetailStyle.contentBox}>
+                <Text style={ExpertInsightDetailStyle.heading}>{Label.Description}</Text>
+                <Text style={ExpertInsightDetailStyle.descriptionContent}>{DATA.Description}</Text>
               </View>
               <UserProfileList profileData={userProfile} />
-              <View style={IdeaStyle.videoPlay}>
+              <View style={ExpertInsightDetailStyle.videoPlay}>
                 {/* <VideoPlayer /> */}
               </View>
               <Resources resource={resource} />
               <ExpertInsightsSlider Entries={expertData} screen="IdeaDetail"/>
-              <View style={IdeaStyle.subIdeaList}>
+              <View style={ExpertInsightDetailStyle.subIdeaList}>
                 <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
                 onItemPress={() => { navigation.navigate("IdeaDetails") }} />
@@ -164,4 +157,4 @@ const IdeaDetails = (props) => {
   )
 }
 
-export default memo(IdeaDetails)
+export default ExpertInsightDetail
