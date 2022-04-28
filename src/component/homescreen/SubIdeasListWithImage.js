@@ -21,17 +21,25 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
 import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
-import { Loger } from "../../utils/Loger";
-
-
 
 const SubIdeasListWithImage = (props) => {
 
+    const likeUnlikeRender = (id) => {
 
+        if (props?.isType == "Ideas") {
+            props.likeIdea(id);
+        }
+        else if (props?.isType == "Challenges") {
+            props.likeChallenge(id);
+        }
+        else {
+            props.likeSpotLight(id)
+        }
+    }
 
-    const renderItem = ({ item }) => (
+    const renderIdeaItem = ({ item }) => {
 
-        <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
+        return (<TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
 
@@ -39,11 +47,16 @@ const SubIdeasListWithImage = (props) => {
                     <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
                 </View>
                 {
-                    item.like ?
-                        <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                    item?.like ?
+                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                            <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
                         :
-                        <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                            <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
                 }
+
                 <View style={Style.rewordView}>
                     {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
                     {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
@@ -58,8 +71,8 @@ const SubIdeasListWithImage = (props) => {
                 <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
                 <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
-                    {
-                        props.isType == "Ideas" ?
+                {
+                    props?.isType == "Ideas" ?
 
                         <View style={Style.calView}>
                             <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -71,7 +84,7 @@ const SubIdeasListWithImage = (props) => {
 
                         :
 
-                        props.isType == "Spotlight" ?
+                        props?.isType == "Spotlight" ?
 
                             <View style={Style.calView}>
                                 <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -88,7 +101,7 @@ const SubIdeasListWithImage = (props) => {
                                 <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
                             </View>
 
-                    }
+                }
 
                 <View style={Style.secondCalView}>
                     <View style={Style.secondInnerCalView}>
@@ -110,8 +123,8 @@ const SubIdeasListWithImage = (props) => {
 
             </View>
 
-        </TouchableOpacity>
-    );
+        </TouchableOpacity>)
+    };
 
     return (
         <View style={Style.MainView}>
@@ -128,7 +141,7 @@ const SubIdeasListWithImage = (props) => {
             <FlatList
                 data={props.data}
                 scrollEnabled={props?.scrollEnabled ? true : false}
-                renderItem={renderItem}
+                renderItem={renderIdeaItem}
                 keyExtractor={item => item.id}
             />
             {

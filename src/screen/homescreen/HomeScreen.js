@@ -50,7 +50,96 @@ const HomeScreen = (props) => {
 
     }, []);
 
-   const onSlider = () => {
+    const likeIdea = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": 48,
+            "model": 'LikedislikeIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? false : true;
+            const popularListArr = ideasList.popularIdeaArr
+            const newListArr = ideasList.newIdeaArr
+            const winningListArr = ideasList.winningIdeaArr
+
+            popularListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    popularListArr[index].like = likeDislike;
+                }
+            })
+            newListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    newListArr[index].like = likeDislike;
+                }
+            })
+            winningListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    winningListArr[index].like = likeDislike;
+                }
+            })
+             setIdeasList({...ideasList, popularIdeaArr: popularListArr,newIdeaArr:newListArr,winningIdeaArr:winningListArr})
+            
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+
+    const likeChallenge = (id) => {
+        var data =
+        {
+            "field_name": "contest_id",
+            "id": id,
+            "frontuser_id": 48,
+            "model": "LikedislikeContests"
+        }
+
+        Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
+
+        //     const likeDislike = res?.data === "dislike" ? false : true
+        //     const challengeArr = openChallenges
+        //     challengeArr.map((ele,index) => {
+        //         if(ele.id == id){
+        //             challengeArr[index].like = likeDislike
+        //         }
+        //     })
+        //    setOpenChallenges([...openChallenges,challengeArr])
+           
+           onOpenChallenge()
+
+        }, (err) => {
+            Loger.onLog("err of challengeLikeUnlike", err)
+        })
+    }
+    const likeSpotLight = (id) => {
+        var data =
+        {
+            "field_name": "formdata_id",
+            "id": id,
+            "frontuser_id": 48,
+            "model": "LikedislikeGeneral",
+            "general_status": "spotlight"
+        }
+
+        Service.post(EndPoints.spotlightLikeUnlike, data, (res) => {
+
+            // const likeDislike = res?.data === 'dislike' ? false : true
+            // const spotLightArr = spotLight
+            // spotLightArr.map((ele,index) => {
+            //     if(ele.id == id){
+            //         spotLightArr[index].like = likeDislike
+            //     }
+            // })
+            // setSpotLight([...spotLight,spotLightArr])
+
+            onSpotlight()
+        }, (err) => {
+            Loger.onLog("err of spotlightLikeUnlike", err)
+        })
+    }
+
+    const onSlider = () => {
         var banner = [];
         Service.get(EndPoints.bannerList, (res) => {
             res.data.forEach(element => {
@@ -63,18 +152,13 @@ const HomeScreen = (props) => {
         })
     }
 
-   const onIdeas = () => {
-
-        // const data = new FormData();
-        // data.append('ideaList', 48);
-        // data.append('language', "ar");
-
-        const data = JSON.stringify({
+    const onIdeas = () => {
+        const data = {
+            "frontuser_id": 48,
             "limit": 2
-          });
-        Service.post(EndPoints.ideaList, data,(res) => {
+        }
+        Service.post(EndPoints.ideaList, data, (res) => {
 
-            console.log('res of idea',res);
             var popularIdeaArr = [];
             var newIdeaArr = [];
             var winningIdeaArr = [];
@@ -94,15 +178,15 @@ const HomeScreen = (props) => {
 
             let obj = { popularIdeaArr: popularIdeaArr, newIdeaArr: newIdeaArr, winningIdeaArr: winningIdeaArr };
             setIdeasList(obj)
-
+          
         }, (err) => {
             Loger.onLog(" ideaList error ------->", err)
         })
     }
 
-  const onOpenChallenge = () => {
-    const data = '';
-        Service.post(EndPoints.openChallenges,data,(res) => {
+    const onOpenChallenge = () => {
+        const data = '';
+        Service.post(EndPoints.openChallenges, data, (res) => {
             var opChallenges = [];
             res.data.forEach(element => {
                 let model = new OpenChallenges(element);
@@ -113,13 +197,12 @@ const HomeScreen = (props) => {
             Loger.onLog("", err)
         })
     }
+    const onSpotlight = () => {
+        const data = JSON.stringify({
+            "frontuser_id": 48
+        });
 
-   const onSpotlight = () => {
-    const data = JSON.stringify({
-        "frontuser_id": 48
-      });
-
-        Service.post(EndPoints.madarekSpotlight,data, (res) => {
+        Service.post(EndPoints.madarekSpotlight, data, (res) => {
             var spotLight = [];
             Loger.onLog("res madarekSpotlight", res);
             res.data.forEach(element => {
@@ -137,9 +220,9 @@ const HomeScreen = (props) => {
 
     const onExpertInsights = () => {
         const data = { "frontuser_id": 48 }
-        Service.post(EndPoints.expertInsights,data, (res) => {
-            Loger.onLog('expertInsights Response  ========>',JSON.stringify(res.data))
-            if(res?.statusCode === "1"){
+        Service.post(EndPoints.expertInsights, data, (res) => {
+            Loger.onLog('expertInsights Response  ========>', JSON.stringify(res.data))
+            if (res?.statusCode === "1") {
                 const expertInsightArr = [];
                 res.data.map((ele) => {
                     const model = new ExpertInsight(ele)
@@ -148,16 +231,16 @@ const HomeScreen = (props) => {
                 })
                 setExpertInsight(expertInsightArr)
             }
-           
+
         }, (err) => {
-            Loger.onLog('expertInsights  error ========>',err)
+            Loger.onLog('expertInsights  error ========>', err)
         })
     }
 
     const onFavouriteCategories = () => {
         const data = { "id": 48 }
-        Service.post(EndPoints.favouriteCategories,data, (res) => {
-            Loger.onLog('favouriteCategories Response ========>',res.data[0].category_info)
+        Service.post(EndPoints.favouriteCategories, data, (res) => {
+            Loger.onLog('favouriteCategories Response ========>', res.data[0].category_info)
             if (res?.statusCode === "1") {
                 const favouriteCategoriesArr = [];
                 res?.data[0]?.category_info.map((ele) => {
@@ -166,10 +249,10 @@ const HomeScreen = (props) => {
                 })
                 setFavouriteCategories(favouriteCategoriesArr);
             }
-         
-          
+
+
         }, (err) => {
-            Loger.onLog('favouriteCategories  error ========>',err)
+            Loger.onLog('favouriteCategories  error ========>', err)
         })
     }
 
@@ -183,14 +266,16 @@ const HomeScreen = (props) => {
                 break;
 
             case 'Tab':
-                return ideasList != null && <IdealList data={ideasList} />
+                return ideasList != null && <IdealList data={ideasList} likeIdea={(id) => likeIdea(id)} />
                 break;
 
             case 'Challenges':
                 return (
                     openChallenges.length > 0 &&
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                        <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges} isType={"Challenges"} btn={Label.ParticipateNow}
+                        <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges}
+                            isType={"Challenges"} btn={Label.ParticipateNow}
+                            likeChallenge={() => likeChallenge()}
                             onButtonPress={() => { setModalVisible(true) }}
                             onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
                             onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
@@ -203,6 +288,7 @@ const HomeScreen = (props) => {
                     spotLight.length > 0 &&
                     <View style={{ paddingVertical: AppUtil.getHP(2) }}>
                         <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"}
+                            likeSpotLight={likeSpotLight}
                             onButtonPress={() => { setModalVisible(true) }}
                             onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
                             onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
@@ -219,7 +305,7 @@ const HomeScreen = (props) => {
             case 'FavouriteCategories':
                 return (
                     <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
-                        <FavouriteCategories data={favouriteCategories.slice(0,6)}/>
+                        <FavouriteCategories data={favouriteCategories.slice(0, 6)} />
                     </View>
                 )
                 break;
