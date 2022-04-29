@@ -20,6 +20,8 @@ import { Label } from '../../utils/StringUtil'
 import MyAccount from '../../assets/svg/drawerIcon/MyAccount'
 import LogoutIcn from '../../assets/svg/drawerIcon/LogoutIcn'
 import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
+import { UserManager } from '../../manager/UserManager'
+import ImageLoad from 'react-native-image-placeholder'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -38,18 +40,18 @@ const MyDrawerScreen = (props) => {
   const onselectButtonMenu = (index, screen) => {
     setSelectedButtonIndex(index)
 
-    if(screen)
+    if (screen)
       props.navigation.navigate(screen);
-  
+
   }
 
   const renderCollapseView = () => {
     return (
       <View>
         {
-          [Label.PopularIdeas,Label.LatestIdeas,Label.MadarekSpotlight,Label.WinningIdeas].map((item, index) => {
+          [Label.PopularIdeas, Label.LatestIdeas, Label.MadarekSpotlight, Label.WinningIdeas].map((item, index) => {
             return (
-              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(2, "IdeasListScreen")}>
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={() => onselectButtonMenu(2, "IdeasListScreen")}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
               </TouchableOpacity>
             )
@@ -65,9 +67,9 @@ const MyDrawerScreen = (props) => {
     return (
       <View>
         {
-          [Label.Open,Label.Upcoming,Label.Closed,Label.Voting].map((item, index) => {
+          [Label.Open, Label.Upcoming, Label.Closed, Label.Voting].map((item, index) => {
             return (
-              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={()=>onselectButtonMenu(3, "ChallengesListScreen")}>
+              <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={() => onselectButtonMenu(3, "ChallengesListScreen")}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
               </TouchableOpacity>
             )
@@ -79,16 +81,15 @@ const MyDrawerScreen = (props) => {
     )
   }
 
-
   return (
     <View style={{ flex: 1 }}>
 
       {/* header */}
-      <View style={{  backgroundColor: themeColor.headerColor, }}>
+      <View style={{ backgroundColor: themeColor.headerColor, }}>
         <View style={drawerStyles.headerView}>
           <View style={drawerStyles.centerIcnView}>
             <IcnMenuHeader height={AppUtil.getHP(5)} width={AppUtil.getHP(20)} />
-            <TouchableOpacity onPress={()=> props.navigation.closeDrawer()}>
+            <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
               <IcnClose height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
             </TouchableOpacity>
           </View>
@@ -96,17 +97,22 @@ const MyDrawerScreen = (props) => {
         </View>
 
         <View style={[drawerStyles.profileView]}>
-          <Image style={drawerStyles.profileImage} />
+          {/* <Image style={drawerStyles.profileImage} /> */}
+
+          <View style={drawerStyles.profileImageView}>
+            <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.getUserProfilePicture() }} isShowActivity={false} />
+          </View>
+
           <View style={{ marginStart: 5 }}>
             <Text style={drawerStyles.welcomeText}>Welcome</Text>
-            <Text style={drawerStyles.userNameText}>Abimanyu Gayakwad</Text>
+            <Text style={drawerStyles.userNameText}>{UserManager.userName}</Text>
           </View>
         </View>
         <View style={drawerStyles.dsButtonView}>
-          <TouchableOpacity onPress={()=>props.navigation.navigate('UserDashboardScreen')} style={drawerStyles.dashBoardButton}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('UserDashboardScreen')} style={drawerStyles.dashBoardButton}>
             <Text style={drawerStyles.dashText}>{Label.Dashboard}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>props.navigation.navigate('SubmitIdeaScreen')} style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('SubmitIdeaScreen')} style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
             <Text style={drawerStyles.dashText}>{Label.SubmitIdea}</Text>
           </TouchableOpacity>
         </View>
@@ -115,16 +121,16 @@ const MyDrawerScreen = (props) => {
 
       {/*  */}
 
-      <TouchableOpacity onPress={()=>{onSelectMenu(0);onselectButtonMenu(1, "HomeScreen")}} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(0); onselectButtonMenu(1, "HomeScreen") }} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
         <HomeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==1? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Home}</Text>
+        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 1 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Home}</Text>
       </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={() => { onSelectMenu(1);onselectButtonMenu(2) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(1); onselectButtonMenu(2) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==2? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Ideas}</Text>
+          <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 2 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Ideas}</Text>
         </View>
         {
           selectedIndex == 1 ?
@@ -141,10 +147,10 @@ const MyDrawerScreen = (props) => {
       }
 
 
-      <TouchableOpacity onPress={() => { onSelectMenu(2);onselectButtonMenu(3) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(2); onselectButtonMenu(3) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <ChallengeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==3? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Challenges}</Text>
+          <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 3 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Challenges}</Text>
         </View>
         {
           selectedIndex == 2 ?
@@ -158,15 +164,15 @@ const MyDrawerScreen = (props) => {
         selectedIndex == 2 ? renderChallangeCollapseView() : null
       }
       {/*  */}
-      <TouchableOpacity onPress={()=>onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={() => onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>
         <UserIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==4? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Experts}</Text>
+        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 4 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Experts}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => { onSelectMenu(3);onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(3); onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <EnterpriseIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==5? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Enterprises}</Text>
+          <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 5 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Enterprises}</Text>
         </View>
         {
           selectedIndex == 3 ?
@@ -180,28 +186,29 @@ const MyDrawerScreen = (props) => {
       }
       {/*  */}
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(6)} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={() => onselectButtonMenu(6)} style={drawerStyles.menuButton}>
         <HowItWorksIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==6? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.HowitWorks}</Text>
+        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 6 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(7,'PartnerScreen')} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={() => onselectButtonMenu(7, 'PartnerScreen')} style={drawerStyles.menuButton}>
         <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==7? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.Partners}</Text>
+        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 7 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Partners}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>onselectButtonMenu(8,'MyAccount')} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={() => onselectButtonMenu(8, 'MyAccount')} style={drawerStyles.menuButton}>
         <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText,{fontFamily: selectedButtonIndex==8? FONTS.robotBold :FONTS.robotRegular,}]}>{Label.MyAccount}</Text>
+        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 8 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.MyAccount}</Text>
       </TouchableOpacity>
 
       <View style={drawerStyles.bottomView}>
-        <TouchableOpacity onPress={()=>onselectButtonMenu(9,'Setting')} style={drawerStyles.settingButton}>
+        <TouchableOpacity onPress={() => onselectButtonMenu(9, 'Setting')} style={drawerStyles.settingButton}>
           <SettingIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Settings}</Text>
         </TouchableOpacity>
         <View style={drawerStyles.line} />
-        <TouchableOpacity style={drawerStyles.settingButton}>
+
+        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => props.navigation.navigate("LoginScreen")}>
           <LogoutIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>

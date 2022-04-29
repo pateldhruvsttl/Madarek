@@ -4,6 +4,7 @@ import { Loger } from '../utils/Loger';
 
 const axiosInstance = axios.create();
 const baseURL = 'http://madarek.php-staging.com/apiv1/';
+
 axios.defaults.headers.common['Authorization'] = "";
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
