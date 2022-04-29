@@ -28,6 +28,7 @@ export const ARlabel = {
     _aviation: 'Aviation',
     _informationTechnology: 'Information Technology?',
     _submitIdea: "Submit Idea",
+    _mySubmitIdea: "My Submit Idea",
     _ideas: "Ideas",
     _expertInsights: 'Expert Insights',
     _viewAll: 'View All',
@@ -623,5 +624,7 @@ export const USlabel = {
     _saveAndNext:"Save and Next",
     _mayAlsoInterested : "You May Also be Interested in",
 
-    _maturation:"Maturation"
+    _maturation:"Maturation",
+    _mySubmitIdea: "My Submit Idea",
+
 }
