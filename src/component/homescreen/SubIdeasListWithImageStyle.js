@@ -65,7 +65,7 @@ const Style = StyleSheet.create({
     txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily:FONTS.robotMedium },
 
     likeUnlikeIcn: { paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 },
-
+    likeUnlikeBtn : {width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5},
     rewordView: {
         width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomEndRadius: AppUtil.getHP(1),
         borderBottomStartRadius: AppUtil.getHP(1),

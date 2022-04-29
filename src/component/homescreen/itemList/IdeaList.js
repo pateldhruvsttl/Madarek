@@ -10,21 +10,21 @@ import Style from './IdealListStyle'
 import TabPopularIdeas from "./TabPopularIdeas";
 
 const IdeaList = (props) => {
-
+    
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const popularIdeaArr = props?.data?.popularIdeaArr;;
-    const newIdeaArr = props?.data?.newIdeaArr;;
-    const winningIdeaArr = props?.data?.winningIdeaArr;;
-
+    const popularIdeaArr = props?.data?.popularIdeaArr;
+    const newIdeaArr = props?.data?.newIdeaArr;
+    const winningIdeaArr = props?.data?.winningIdeaArr;
+   
     const onSelectTab = (value) => {
         setSelectedIndex(value)
     }
     const onTabNavigate = () => {
         return (
-            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeaArr}/> :
-                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeaArr}/> :
-                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaArr}/> : null
+            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeaArr} likeIdea={props.likeIdea}/> :
+                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeaArr} likeIdea={props.likeIdea}/> :
+                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaArr} likeIdea={props.likeIdea}/> : null
         )
     }
 
