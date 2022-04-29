@@ -7,7 +7,7 @@ function IcnAboutApp(props) {
       xmlns="http://www.w3.org/2000/svg"
       width={52.03}
       height={74.992}
-      viewBox="0 0 52.03 74.992"
+      viewBox="0 0 50 72.900"
       {...props}
     >
       <G
