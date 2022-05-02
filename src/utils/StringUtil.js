@@ -245,5 +245,7 @@ export const Label = {
     MayAlsoInterested : isRTL ? ARlabel._mayAlsoInterested : USlabel._mayAlsoInterested,
 
     Maturation:isRTL?ARlabel._maturation:USlabel._maturation,
+    MySubmitIdea: isRTL?ARlabel._mySubmitIdea:USlabel._mySubmitIdea,
+
 
 }

@@ -511,6 +511,30 @@ const CommonHeader = (props) => {
                 </>
             )
             break;
+            case 'MySubmittedIdea':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={Style.txtHeader}>{Label.MySubmitIdea}</Text>
+                        </View>
+
+                        <MenuButton />
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </>
+            );
+            break
         default: null;
     }
 }
