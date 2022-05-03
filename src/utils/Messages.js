@@ -612,7 +612,7 @@ export const USlabel = {
     _notNow: "Not now",
     _update: "Update",
     _clearAll: "Clear all",
-    _becomeAnExpert: "Become anExpert",
+    _becomeAnExpert: "Become an Expert",
     _clear: "Clear",
 
     _signUpVerification : "Sign Up Verification",
