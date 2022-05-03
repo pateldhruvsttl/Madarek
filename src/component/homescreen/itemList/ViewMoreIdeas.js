@@ -14,7 +14,8 @@ import { GetAppColor } from "../../../utils/Colors";
 import Styles from './ViewMoreIdeasStyle'
 
 function ViewMoreIdeas(props) {
-
+    console.log('here accepted',props?.propName?.data);
+    const likeIdea = props?.propName?.likeIdea
     const [selectFilter, setSelectFilter] = useState(0);
     const onSetFilter = (value) => {
         setSelectFilter(value)
@@ -46,9 +47,9 @@ function ViewMoreIdeas(props) {
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
-                {selectFilter == 1 && <SubIdeasList onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
-                {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} />}
+                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 1 && <SubIdeasList onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea}/>}
+                {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea}/>}
             </View>
 
         </View>

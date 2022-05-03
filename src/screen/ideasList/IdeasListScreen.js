@@ -17,11 +17,10 @@ import { Service } from "../../service/Service";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
-
-    const [popularIdeaArr, setpopularIdeaArr] = useState([])
-    const [newIdeaArr, setnewIdeaArr] = useState([])
-    const [winningIdeaArr, setwinningIdeaArr] = useState([])
-    const [allIdeaArr, setallIdeaArr] = useState([])
+    const [popularIdeaArr, setpopularIdeaArr] = useState()
+    const [newIdeaArr, setnewIdeaArr] = useState()
+    const [winningIdeaArr, setwinningIdeaArr] = useState()
+    const [allIdeaArr, setallIdeaArr] = useState()
     const [count, setCount] = useState('25')
     
     useEffect(() => {
@@ -84,6 +83,50 @@ const IdeasListScreen = (props) => {
             Loger.onLog(" ideaList error ------->", err)
         })
     }
+    const likeIdea = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": 48,
+            "model": 'LikedislikeIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? false : true;
+            const popularListArr = popularIdeaArr
+            const newListArr = newIdeaArr
+            const winningListArr = winningIdeaArr
+            const allListArr = allIdeaArr
+
+            allListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    allListArr[index].like = likeDislike;
+                }
+            })
+            popularListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    popularListArr[index].like = likeDislike;
+                }
+            })
+            newListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    newListArr[index].like = likeDislike;
+                }
+            })
+            winningListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    winningListArr[index].like = likeDislike;
+                }
+            })
+          setallIdeaArr({...allIdeaArr,allIdeaArr:allListArr})
+          setpopularIdeaArr({...popularIdeaArr,popularIdeaArr:popularListArr});
+          setnewIdeaArr({...newIdeaArr,newIdeaArr:newListArr});
+          setwinningIdeaArr({...winningIdeaArr,winningIdeaArr:winningListArr})
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
 
     return (
         <SafeAreaView style={Style.container}>
@@ -98,10 +141,10 @@ const IdeasListScreen = (props) => {
                         tabBarScrollEnabled: true
                     }}
                     >
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data:allIdeaArr ,count:count  }} />} />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data:newIdeaArr,count:count }} />} />
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas",  data:popularIdeaArr,count:count  }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas",  data:winningIdeaArr ,count:count }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data:allIdeaArr ,count:count,likeIdea:likeIdea  }} />} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data:newIdeaArr,count:count,likeIdea:likeIdea }} />} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas",  data:popularIdeaArr,count:count ,likeIdea:likeIdea }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas",  data:winningIdeaArr ,count:count ,likeIdea:likeIdea }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>
