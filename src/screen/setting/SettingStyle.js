@@ -77,6 +77,10 @@ const SettingStyle = StyleSheet.create({
         color:GetAppColor.grayBorder,
         fontFamily:FONTS.robotRegular,
         fontSize:AppUtil.getHP(1.4),
+    },
+    settingScrollViewStyle:{
+        height:'100%',
+        width:'100%'
     }
 })
 

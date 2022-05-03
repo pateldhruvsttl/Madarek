@@ -27,7 +27,7 @@ const UserCategory = (props) => {
         var cat=[];
         Service.post(EndPoints.categories, {}, (res) => {
             Loger.onLog('User category categorylist Response of category list ========>',JSON.stringify(res.result))
-            res.result.forEach(element => {
+            res.data.forEach(element => {
                 let model = new Categories(element);
                 cat.push(model)
             });

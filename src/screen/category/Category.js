@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, TouchableOpacity, ScrollView, Image, TextInput, Keyboard } from 'react-native'
+import { View, Text, StatusBar, TouchableOpacity, ScrollView, Image, TextInput, Keyboard, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { GetAppColor } from '../../utils/Colors'
 import { GetIcon, GetImage } from '../../utils/Assets'
@@ -18,6 +18,8 @@ import { Service } from '../../service/Service'
 import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import saveUserCategory from '../../service/EndPoints'
+
 
 
 // const category = [
@@ -47,48 +49,75 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 // ]
 
 const Category = (props) => {
-    const [category, setCategory]=useState([])
+    const [category, setCategory] = useState([])
     const [categories, setCategories] = useState([])
     const [selectedCategories, setSelectedCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
+    const [selectedCategoriesId, setSelectedCategoriesId] = useState([])
 
 
-    const {themeColor} = useSelector((state) => state)
+    const { themeColor } = useSelector((state) => state)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        var cat=[];
+        var cat = [];
         Service.post(EndPoints.categories, {}, (res) => {
-            // Loger.onLog('category categorylist Response of category list ========>',JSON.stringify(res.result))
-            res.result.forEach(element => {
+            Loger.onLog('category categorylist Response of category list ========>', JSON.stringify(res.result))
+            res.data.forEach(element => {
                 let model = new Categories(element);
                 cat.push(model)
             });
             setCategories(cat)
             setCategory(cat)
         }, (err) => {
-            Loger.onLog('category bannerlist error ========>',err)
+            Loger.onLog('category bannerlist error ========>', err)
         })
+
     }, []);
 
     const navigateToHomeScreen = () => {
-        props.navigation.navigate("ChallengeDetail")
-      }
+
+
+        var selCat = [];
+        const data = {
+            'user_id': 48,
+            'category_id': selectedCategoriesId,
+            'status': 1
+        };
+
+        Service.post(EndPoints.saveUserCategory, data, (res) => {
+            if (res.statusCode == 1) {
+                //  Prompt success message
+                props.navigation.navigate("ChallengeDetail");
+            } else {
+                //  Prompt failure message
+            }
+        }, (err) => {
+            Loger.onLog('category bannerlist error ========>', err)
+        })
+    }
 
     const onPressCategory = (index) => {
         var cat = [...categories];
-        var selectedCat = [...selectedCategories];
-            if (!selectedCat.includes(cat[index])) {
-                selectedCat.push(cat[index])
-            }else{
-                let idx = selectedCat.indexOf(cat[index])
-                selectedCat.splice(idx, 1)
-            }
-        setSelectedCategories(selectedCat)
-        setCategories(cat)
-    }
 
+        var selectedCat = [...selectedCategories];
+        if (!selectedCat.includes(cat[index])) {
+            selectedCat.push(cat[index])
+        } else {
+            let idx = selectedCat.indexOf(cat[index])
+            selectedCat.splice(idx, 1)
+        }
+        setSelectedCategories(selectedCat)
+
+        setCategories(cat)
+        for (let i = 0; i < selectedCat.length; i++) {
+
+            if (!selectedCategoriesId.includes(JSON.stringify(selectedCat[i].id))) {
+                selectedCategoriesId.push(JSON.stringify(selectedCat[i].id));
+            }
+        }
+    }
     const onWriteText = (text) => {
         if (text === "") {
             setSearch(false)
@@ -113,13 +142,13 @@ const Category = (props) => {
         // dispatch(updateTheme(blueTheme))
         props.navigation.navigate('HomeScreen')
     }
-    
+
     return (
         <View style={{ height: '100%', backgroundColor: '#F5F7FB' }}>
             <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
             <SafeAreaView backgroundColor={GetAppColor.statusBarYellow} />
-           
-            <View style={[CategoryStyle.headerView,{backgroundColor:themeColor.headerColor}]}>
+
+            <View style={[CategoryStyle.headerView, { backgroundColor: themeColor.headerColor }]}>
                 <Text style={CategoryStyle.headerText}>{Label.CatTitle}</Text>
                 <TouchableOpacity onPress={() => onSkip()} style={CategoryStyle.skipBtn}>
                     <Text style={CategoryStyle.skipText}>{Label.Skip}</Text>
@@ -171,8 +200,8 @@ const Category = (props) => {
                 </View>
             </ScrollView>
 
-            <TouchableOpacity style={[CategoryStyle.continueButton,{backgroundColor:themeColor.headerColor}]}
-            onPress={() => {navigateToHomeScreen()}}
+            <TouchableOpacity style={[CategoryStyle.continueButton, { backgroundColor: themeColor.headerColor }]}
+                onPress={() => { navigateToHomeScreen() }}
             >
                 <Text style={CategoryStyle.continueText}>{Label.Continue}</Text>
             </TouchableOpacity>

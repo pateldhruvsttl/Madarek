@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
@@ -36,7 +35,6 @@ const SubIdeasListWithImage = (props) => {
             props.likeSpotLight(id)
         }
     }
-
     const renderIdeaItem = ({ item }) => {
 
         return (<TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
