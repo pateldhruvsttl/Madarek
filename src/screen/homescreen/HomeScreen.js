@@ -34,11 +34,18 @@ const HomeScreen = (props) => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [bannerList, setBannerList] = useState([])
-    const [ideasList, setIdeasList] = useState(null);
     const [openChallenges, setOpenChallenges] = useState([]);
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
+    const [type, setType] = useState('latest')
+    const [ideasList, setIdeasList] = useState(null);
+    const [popularIdeaArr, setpopularIdeaArr] = useState([])
+    const [newIdeaArr, setnewIdeaArr] = useState([])
+    const [winningIdeaArr, setwinningIdeaArr] = useState([])
+    const [allIdeaArr, setallIdeaArr] = useState([])
+    
+
 
     useEffect(() => {
         onSlider();
@@ -60,9 +67,9 @@ const HomeScreen = (props) => {
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
             const likeDislike = res?.data === 'dislike' ? false : true;
-            const popularListArr = ideasList.popularIdeaArr
-            const newListArr = ideasList.newIdeaArr
-            const winningListArr = ideasList.winningIdeaArr
+            const popularListArr = popularIdeaArr
+            const newListArr = newIdeaArr
+            const winningListArr = winningIdeaArr
 
             popularListArr.map((ele, index) => {
                 if (ele.id == id) {
@@ -156,31 +163,52 @@ const HomeScreen = (props) => {
         })
     }
 
-    const onIdeas = () => {
+    const onIdeas = (type = "latest") => {
         const data = {
             "frontuser_id": 48,
-            "limit": 2
+            "limit": 2,
+            "categories": "",
+            "sectors": "6,7",
+            "listtype": type ,
+            "language": "ar"
         }
+        // alert(JSON.stringify(data))
+
         Service.post(EndPoints.ideaList, data, (res) => {
+            // alert()
+             
+            if (type === "all") {
+                const allIdeaArrTmp = []
+                res?.data?.allIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    allIdeaArrTmp.push(model);
+                })
+                setIdeasList(allIdeaArrTmp)
+            } 
+            else if (type === "popular") {
+                const popularIdeaArrTmp = [];
+                res?.data?.popularIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    popularIdeaArrTmp.push(model);
+                })
+                setpopularIdeaArr(popularIdeaArrTmp)
+            } else if (type === "latest") {
+                const newIdeaArrTmp = [];
+                res?.data?.newIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    newIdeaArrTmp.push(model);
+                });
+                setnewIdeaArr(newIdeaArrTmp)
+            } else if (type === "winning") {
+                const winningIdeaArrTmp = []
+                res?.data?.winningIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    winningIdeaArrTmp.push(model);
+                });
+                setwinningIdeaArr(winningIdeaArrTmp)
+            }
 
-            var popularIdeaArr = [];
-            var newIdeaArr = [];
-            var winningIdeaArr = [];
-
-            res.data.popularIdea.forEach(element => {
-                let model = new IdeaList(element);
-                popularIdeaArr.push(model);
-            });
-            res.data.newIdea.forEach(element => {
-                let model = new IdeaList(element);
-                newIdeaArr.push(model);
-            });
-            res.data.winningIdea.forEach(element => {
-                let model = new IdeaList(element);
-                winningIdeaArr.push(model);
-            });
-
-            let obj = { popularIdeaArr: popularIdeaArr, newIdeaArr: newIdeaArr, winningIdeaArr: winningIdeaArr };
+            let obj = {allIdeaArr , popularIdeaArr, newIdeaArr, winningIdeaArr };
             setIdeasList(obj)
 
         }, (err) => {
@@ -270,7 +298,7 @@ const HomeScreen = (props) => {
                 break;
 
             case 'Tab':
-                return ideasList != null && <IdealList data={ideasList} likeIdea={(id) => likeIdea(id)} />
+                return ideasList != null && <IdealList data={ideasList} likeIdea={(id) => likeIdea(id)} onIdeas={onIdeas}  />
                 break;
 
             case 'Challenges':

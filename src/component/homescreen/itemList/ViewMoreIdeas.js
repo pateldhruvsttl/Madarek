@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from 'react-native'
 
 import SubIdeasListWithImage from "../SubIdeasListWithImage";
@@ -16,15 +16,15 @@ import Styles from './ViewMoreIdeasStyle'
 function ViewMoreIdeas(props) {
 
     const [selectFilter, setSelectFilter] = useState(0);
-
     const onSetFilter = (value) => {
         setSelectFilter(value)
     }
 
+
     return (
         <View style={Styles.MainView}>
 
-            <Text style={Styles.HeadertxtRecodes}><Text style={Styles.txt}>68</Text> {"Records Found"}</Text>
+            <Text style={Styles.HeadertxtRecodes}><Text style={Styles.txt}>{props?.propName?.count}</Text> {"Records Found"}</Text>
             <View style={Styles.HeaderBtn}>
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(0)}>
                     <IcnIdeasImageAndTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />

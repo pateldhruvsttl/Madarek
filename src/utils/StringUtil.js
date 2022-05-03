@@ -246,6 +246,7 @@ export const Label = {
 
     Maturation:isRTL?ARlabel._maturation:USlabel._maturation,
     MySubmitIdea: isRTL?ARlabel._mySubmitIdea:USlabel._mySubmitIdea,
+    Filter: isRTL?ARlabel._filter:USlabel._filter,
 
 
 }

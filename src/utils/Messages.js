@@ -299,6 +299,7 @@ export const ARlabel = {
     _saveAndNext:"Save and Next",
 
     _maturation:"Maturation",
+    _filter: "Filter",
 
 }
 export const USlabel = {
@@ -612,7 +613,7 @@ export const USlabel = {
     _notNow: "Not now",
     _update: "Update",
     _clearAll: "Clear all",
-    _becomeAnExpert: "Become anExpert",
+    _becomeAnExpert: "Become an Expert",
     _clear: "Clear",
 
     _signUpVerification : "Sign Up Verification",
@@ -626,5 +627,6 @@ export const USlabel = {
 
     _maturation:"Maturation",
     _mySubmitIdea: "My Submit Idea",
+    _filter: "Filter",
 
 }

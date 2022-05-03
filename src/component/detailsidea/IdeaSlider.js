@@ -52,7 +52,7 @@ const IdeaSlider = ({ Entries }) => {
             <View style={{ height: "100%", width:'100%'}}>
                 {/* <Image style={{ width: '100%', height: "100%", }}
                     resizeMode='cover' source={{ uri: item.url }} /> */}
-            <ImageLoad style={IdeaSliderStyle.bgImage} source={{ uri: item.url }} isShowActivity={false}/>
+            <ImageLoad style={IdeaSliderStyle.bgImage} source={{ uri: item.url }} isShowActivity={false}  />
 
                  </View>
         );

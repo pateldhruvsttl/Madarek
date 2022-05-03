@@ -19,7 +19,7 @@ const SplashScreen = (props) => {
 
     setTimeout(() => {
         props.navigation.navigate("LoginScreen")
-    }, 2500);
+    }, 3500);
 
     const languageList = [Label.English, Label.Arabic]
     const Bold = ({ children }) => <Text style={{ fontWeight: 'bold' }}>{children}</Text>

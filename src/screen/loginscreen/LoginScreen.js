@@ -17,6 +17,8 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import { deviceId } from "../../utils/Constant";
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { UserManager } from "../../manager/UserManager";
+import { AppConfig } from "../../manager/AppConfig";
 
 
 const LoginScreen = (props) => {
@@ -54,14 +56,28 @@ const LoginScreen = (props) => {
     // }
 
     const loginData = {
-        pwd: password,
-        email_mobile: email,
-        device_id: deviceId,
+        // pwd: password,
+        // email_mobile: email,
+        // device_id: deviceId,
+
+        "email_mobile": "jaydipsinh.vi@gmail.com",
+        "pwd": "1234567",
+        "device_id": "1BC986C3-0B2E-4698-AE31-5EA8121E0713"
     }
 
     const signIn = () => {
         Service.post(EndPoints.login, loginData, (res) => {
-            Loger.onLog('Login screen Response  ========>', res)
+
+            UserManager.userId = res.data.userId;
+            UserManager.email = res.data.email;
+            UserManager.profilePicture = res.data.profilePicture;
+            UserManager.mobile = res.data.mobile;
+            UserManager.userName = res.data.userName;
+
+            AppConfig.lang = res.lang;
+            AppConfig.token = res.token;
+
+
         }, (err) => {
             Loger.onLog('Login screen error ========>', err)
         })
@@ -97,7 +113,6 @@ const LoginScreen = (props) => {
             default:
         }
     }
-
     const handleKeyPress = (key, index) => {
         if (key === 'Backspace') {
             switch (true) {
@@ -147,34 +162,34 @@ const LoginScreen = (props) => {
 
 
     const validateFields = () => {
-        if (isMobilelogin) {
-            if (!mobileNumber.trim()) {
-                showMessage(Label.Phone)
-                return false
-            }
-            if (showPassword) {
-                if (password.trim() === '') {
-                    showMessage(Label.PasswordLogin)
-                    return false
-                }
-            } else {
-                const otpJoin = first + second + third + fourth + fifth + sixth;
-                // alert( typeof Number(otpJoin))
-                if (otpNumber != Number(otpJoin)) {
-                    showMessage(Label.Pin)
-                    return false
-                }
-            }
-        }
-        else {
-            if (!email.trim() || !emailValidate(email)) {
-                showMessage(Label.Email)
-                return false
-            } else if (password.trim() === '') {
-                showMessage(Label.PasswordLogin)
-                return false
-            }
-        }
+        // if (isMobilelogin) {
+        //     if (!mobileNumber.trim()) {
+        //         showMessage(Label.Phone)
+        //         return false
+        //     }
+        //     if (showPassword) {
+        //         if (password.trim() === '') {
+        //             showMessage(Label.PasswordLogin)
+        //             return false
+        //         }
+        //     } else {
+        //         const otpJoin = first + second + third + fourth + fifth + sixth + '7';
+        //         // alert( typeof Number(otpJoin))
+        //         if (otpNumber != Number(otpJoin)) {
+        //             showMessage(Label.Pin)
+        //             return false
+        //         }
+        //     }
+        // }
+        // else {
+        //     if (!email.trim() || !emailValidate(email)) {
+        //         showMessage(Label.Email)
+        //         return false
+        //     } else if (password.trim() === '') {
+        //         showMessage(Label.PasswordLogin)
+        //         return false
+        //     }
+        // }
         signIn()
         resetField()
         navigateHomeScreen()
@@ -199,6 +214,7 @@ const LoginScreen = (props) => {
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
+   
     const Bold = ({ children }) => <Text style={{ fontFamily: FONTS.robotBold }}>{children}</Text>
 
     return (
@@ -357,6 +373,8 @@ const LoginScreen = (props) => {
                                                 onChangeText={(val) => { setSixth(val); }}
                                                 onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
                                             />
+
+                                            
                                         </View>
                                 }
                                 {

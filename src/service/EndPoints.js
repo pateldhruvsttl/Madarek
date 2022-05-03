@@ -11,4 +11,5 @@ export const EndPoints = {
     ideaLikeUnlike : "mylikedislike",
     challengeLikeUnlike : "mylikedislike",
     spotlightLikeUnlike : "mylikedislike",
+    saveUserCategory:"saveusercategory"
 }

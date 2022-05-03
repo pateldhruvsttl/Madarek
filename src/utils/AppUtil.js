@@ -9,7 +9,7 @@ export const AppUtil = {
     return !isLoding
   },
 
-  onLoding: (value) => {
+  onLoding: (value: Boolean) => {
     isLoding = value;
 
     Loader.onLoding(value);

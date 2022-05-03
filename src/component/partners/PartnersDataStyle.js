@@ -2,9 +2,6 @@ import { StyleSheet } from 'react-native'
 import { GetAppColor } from '../../utils/Colors'
 import { AppUtil } from '../../utils/AppUtil'
 import FONTS from '../../utils/Fonts'
-import App from '../../../App'
-
-
 
 const STYLE = StyleSheet.create({
     mainView: {
