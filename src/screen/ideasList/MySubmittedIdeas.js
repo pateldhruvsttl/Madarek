@@ -1,15 +1,21 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import Style from "./IdeasListStyle";
+import IdeasFilter from '../../component/filter/IdeasFilter';
 
 
 const MySubmittedIdeas = () => {
+
+    const [isFilterVisible, setFilterVisible] = useState(false);
+
     return (
         <SafeAreaView style={Style.container}>
-            <CommonHeader isType={"MySubmittedIdea"} onMenuClick={() => { props.navigation.openDrawer() }} />
-            <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} isMySubmitType={true} propName={{ type: "AllIdeas", data: sliderdata }} />
+            <CommonHeader isType={"MySubmittedIdea"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={()=> setFilterVisible(!isFilterVisible)}/>
+            <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')}
+                isMySubmitType={true} propName={{ type: "AllIdeas", data: sliderdata }} />
+                <IdeasFilter visible = {isFilterVisible} onClose={()=> setFilterVisible(!isFilterVisible)}/>
         </SafeAreaView>
     )
 }
@@ -20,7 +26,7 @@ const sliderdata = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
         firstName: 'Poonam',
-        lastName:'Madhav',
+        lastName: 'Madhav',
         ideaTitle: 'Banking and Finance',
         categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
@@ -33,7 +39,7 @@ const sliderdata = [
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
         firstName: 'Poonam',
-        lastName:'Madhav',
+        lastName: 'Madhav',
         ideaTitle: 'Banking and Finance',
         categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
@@ -58,7 +64,7 @@ const sliderdata = [
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
         firstName: 'Poonam',
-        lastName:'Madhav',
+        lastName: 'Madhav',
         ideaTitle: 'Banking and Finance',
         categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
@@ -70,7 +76,7 @@ const sliderdata = [
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-                lastName:'Madhav',
+        lastName: 'Madhav',
         ideaTitle: 'Banking and Finance',
         categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',
@@ -83,7 +89,7 @@ const sliderdata = [
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
         firstName: 'Poonam',
-        lastName:'Madhav',
+        lastName: 'Madhav',
         ideaTitle: 'Banking and Finance',
         categoryName: 'Children Omani Dress Competition',
         url: 'https://i.imgur.com/5tj6S7Ol.jpg',

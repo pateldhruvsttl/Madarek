@@ -299,6 +299,7 @@ export const ARlabel = {
     _saveAndNext:"Save and Next",
 
     _maturation:"Maturation",
+    _filter: "Filter",
 
 }
 export const USlabel = {
@@ -626,5 +627,6 @@ export const USlabel = {
 
     _maturation:"Maturation",
     _mySubmitIdea: "My Submit Idea",
+    _filter: "Filter",
 
 }
