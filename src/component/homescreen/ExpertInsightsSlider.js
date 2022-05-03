@@ -31,9 +31,9 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                     firstItem={1}
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={0.7}
-                    loop={true}
+                    loop={false}
                     loopClonesPerSide={2}
-                    autoplay={true}
+                    autoplay={false}
                     autoplayDelay={1000}
                     autoplayInterval={3000}
                     onSnapToItem={(index) => setSelectIndicator(index)}

@@ -1,4 +1,4 @@
-import { View, Text,FlatList, TouchableOpacity , Image} from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Image, Keyboard } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import { GetAppColor } from '../../utils/Colors'
@@ -14,19 +14,21 @@ import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Style from './UserCategoryStyle'
+import CloseIcon from '../../assets/svg/CloseIcon'
+import IcnClose from '../../assets/svg/IcnClose'
 
 const UserCategory = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-    const [category, setCategory]=useState([])
-    const [categories, setCategories]=useState([])
+    const [category, setCategory] = useState([])
+    const [categories, setCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
 
     useEffect(() => {
-        var cat=[];
+        var cat = [];
         Service.post(EndPoints.categories, {}, (res) => {
-            Loger.onLog('User category categorylist Response of category list ========>',JSON.stringify(res.result))
+            Loger.onLog('User category categorylist Response of category list ========>', JSON.stringify(res.result))
             res.data.forEach(element => {
                 let model = new Categories(element);
                 cat.push(model)
@@ -34,7 +36,7 @@ const UserCategory = (props) => {
             setCategories(cat)
             setCategory(cat)
         }, (err) => {
-            Loger.onLog('user category category list error ========>',err)
+            Loger.onLog('user category category list error ========>', err)
         })
     }, []);
 
@@ -53,14 +55,19 @@ const UserCategory = (props) => {
         });
         setCategories(cat)
     }
+    const onCloseSearch = () => {
+
+        onWriteText("")
+        Keyboard.dismiss()
+    }
     const renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity style={[Style.btnView,{borderColor:themeColor.headerColor}]}>
+            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]}>
                 <View style={Style.heartView}>
                     <Heart height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </View>
                 {/* <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} /> */}
-                <Image style={{height:AppUtil.getHP(3.6), width:AppUtil.getHP(3.6)}} source={{uri:item.categoryIcon}} />
+                <Image style={{ height: AppUtil.getHP(3.6), width: AppUtil.getHP(3.6) }} source={{ uri: item.categoryIcon }} />
                 {/* {item.icon} */}
                 <Text style={Style.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>
@@ -75,9 +82,18 @@ const UserCategory = (props) => {
                     style={Style.input}
                     placeholder={Label.SearchCategory}
                     placeholderTextColor={GetAppColor.grayShadeBorder}
-                    onChangeText={(text)=>onWriteText(text)}
+                    value={searchStr}
+                    onChangeText={(text) => onWriteText(text)}
                 />
-                <GraySearchIcon height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+                {
+                    isSearch ?
+                        <TouchableOpacity onPress={() => onCloseSearch()}>
+                            <IcnClose height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} color={GetAppColor.grayBorder} />
+                        </TouchableOpacity> :
+                        <GraySearchIcon height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+
+                }
+
             </View>
 
             <FlatList

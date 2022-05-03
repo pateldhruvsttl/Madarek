@@ -151,7 +151,11 @@ const HomeScreen = (props) => {
         Service.get(EndPoints.bannerList, (res) => {
             res.data.forEach(element => {
                 let model = new BannerList(element);
-                banner.push(model)
+                if (banner.length < 5) {
+                    banner.push(model)
+                }else{
+                    return;
+                }
             });
             setBannerList(banner)
         }, (err) => {

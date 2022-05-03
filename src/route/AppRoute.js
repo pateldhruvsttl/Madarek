@@ -52,7 +52,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"IdeasListScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"UserCategory"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />

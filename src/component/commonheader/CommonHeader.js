@@ -403,7 +403,7 @@ const CommonHeader = (props) => {
         case 'UserProfile':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <BackButton />
@@ -424,7 +424,7 @@ const CommonHeader = (props) => {
         case 'UserEditProfile':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <BackButton />

@@ -39,6 +39,7 @@ const FavouriteCategories = (props) => {
                 scrollEnabled={false}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                style={{paddingHorizontal:AppUtil.getWP(2)}}
             />
 
         </View>
