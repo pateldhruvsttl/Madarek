@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, StatusBar, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AppUtil } from '../../utils/AppUtil'
@@ -81,9 +81,11 @@ const MyDrawerScreen = (props) => {
 
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+    {/* <View style={{ flex: 1 }}> */}
 
       {/* header */}
+      <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
       <View style={{  backgroundColor: themeColor.headerColor, }}>
         <View style={drawerStyles.headerView}>
           <View style={drawerStyles.centerIcnView}>
@@ -206,7 +208,8 @@ const MyDrawerScreen = (props) => {
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    {/* </View> */}
+    </SafeAreaView>
   )
 }
 

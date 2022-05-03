@@ -31,7 +31,9 @@ const Style = StyleSheet.create({
     },
     lisView: {
         justifyContent: 'center',
-        alignItems: 'center'
+        paddingHorizontal:AppUtil.getWP(2)
+        // alignItems: 'center',
+        
     },
     flatelist:{
         marginTop:AppUtil.getHP(1.6),

@@ -79,8 +79,8 @@ const HomeScreen = (props) => {
                     winningListArr[index].like = likeDislike;
                 }
             })
-             setIdeasList({...ideasList, popularIdeaArr: popularListArr,newIdeaArr:newListArr,winningIdeaArr:winningListArr})
-            
+            setIdeasList({ ...ideasList, popularIdeaArr: popularListArr, newIdeaArr: newListArr, winningIdeaArr: winningListArr })
+
         }, (err) => {
             Loger.onLog("err of likeUnlike", err)
         })
@@ -97,16 +97,16 @@ const HomeScreen = (props) => {
 
         Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
 
-        //     const likeDislike = res?.data === "dislike" ? false : true
-        //     const challengeArr = openChallenges
-        //     challengeArr.map((ele,index) => {
-        //         if(ele.id == id){
-        //             challengeArr[index].like = likeDislike
-        //         }
-        //     })
-        //    setOpenChallenges([...openChallenges,challengeArr])
-           
-           onOpenChallenge()
+            //     const likeDislike = res?.data === "dislike" ? false : true
+            //     const challengeArr = openChallenges
+            //     challengeArr.map((ele,index) => {
+            //         if(ele.id == id){
+            //             challengeArr[index].like = likeDislike
+            //         }
+            //     })
+            //    setOpenChallenges([...openChallenges,challengeArr])
+
+            onOpenChallenge()
 
         }, (err) => {
             Loger.onLog("err of challengeLikeUnlike", err)
@@ -144,7 +144,11 @@ const HomeScreen = (props) => {
         Service.get(EndPoints.bannerList, (res) => {
             res.data.forEach(element => {
                 let model = new BannerList(element);
-                banner.push(model)
+                if (banner.length < 5) {
+                    banner.push(model)
+                }else{
+                    return;
+                }
             });
             setBannerList(banner)
         }, (err) => {
@@ -178,7 +182,7 @@ const HomeScreen = (props) => {
 
             let obj = { popularIdeaArr: popularIdeaArr, newIdeaArr: newIdeaArr, winningIdeaArr: winningIdeaArr };
             setIdeasList(obj)
-          
+
         }, (err) => {
             Loger.onLog(" ideaList error ------->", err)
         })

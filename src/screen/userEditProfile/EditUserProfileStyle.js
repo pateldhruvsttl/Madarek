@@ -147,7 +147,7 @@ marginTop:AppUtil.getHP(1),
    },
    titleText:{
     color:GetAppColor.grayBorder,
-    fontSize:AppUtil.getHP(1.5),
+    fontSize:AppUtil.getHP(1.6),
     fontFamily:FONTS.robotRegular,
     marginTop:AppUtil.getHP(3),
 },
