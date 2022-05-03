@@ -1,4 +1,4 @@
-import React, { memo ,useEffect} from "react";
+import React, { memo, useEffect } from "react";
 import { View } from "react-native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,33 +13,35 @@ import { useState } from "react";
 import IdeaList from "../../model/IdeaList";
 import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
+import { Loger } from "../../utils/Loger";
 
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
-    const [popularIdeaArr, setpopularIdeaArr] = useState()
-    const [newIdeaArr, setnewIdeaArr] = useState()
-    const [winningIdeaArr, setwinningIdeaArr] = useState()
-    const [allIdeaArr, setallIdeaArr] = useState()
-    const [count, setCount] = useState('25')
-    
+    const [allIdeaArr, setaAllIdeaArr] = useState([]);
+    const [newIdeaArr, setNewIdeaArr] = useState([]);
+    const [popularIdeaArr, setPopularIdeaArr] = useState([]);
+    const [winningIdeaArr, setWinningIdeaArr] = useState([]);
+
+    const [count, setCount] = useState('2');
+
     useEffect(() => {
-        onIdeas('all');
-        onIdeas('latest');
+        // onIdeas('all');
+        // onIdeas('latest');
         onIdeas('popular');
         onIdeas('winning');
-    },[])
-   
+    }, []);
+
+
     const onIdeas = (tabType = "all") => {
         const data = {
             "frontuser_id": 48,
             "limit": count,
             "categories": "",
             "sectors": "6,7",
-            "listtype": tabType ,
+            "listtype": tabType,
             "language": "ar"
         }
-        // alert(JSON.stringify(data))
 
         Service.post(EndPoints.ideaList, data, (res) => {
 
@@ -49,40 +51,43 @@ const IdeasListScreen = (props) => {
                 const allIdeaArrTmp = []
                 res?.data?.allIdea.map((element) => {
                     let model = new IdeaList(element);
+                    Loger.onLog("List Like", element.isLiked);
                     allIdeaArrTmp.push(model);
                 })
-                setallIdeaArr(allIdeaArrTmp)
-            } 
-            else if (tabType === "popular") {
-                const popularIdeaArrTmp = [];
-                res?.data?.popularIdea.map((element) => {
-                    let model = new IdeaList(element);
-                    popularIdeaArrTmp.push(model);
-                })
-                setpopularIdeaArr(popularIdeaArrTmp)
+                setaAllIdeaArr(allIdeaArrTmp)
 
-            } else if (tabType === "latest") {
+            }
+            else if (tabType === "latest") {
                 const newIdeaArrTmp = [];
                 res?.data?.newIdea.map((element) => {
                     let model = new IdeaList(element);
                     newIdeaArrTmp.push(model);
                 });
-                setnewIdeaArr(newIdeaArrTmp)
-
-            } else if (tabType === "winning") {
+                setNewIdeaArr(newIdeaArrTmp)
+            }
+            else if (tabType === "popular") {
+                const popularIdeaArrTmp = [];
+                res?.data?.popularIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    popularIdeaArrTmp.push(model);
+                });
+                setPopularIdeaArr(popularIdeaArrTmp);
+            }
+            else if (tabType === "winning") {
                 const winningIdeaArrTmp = []
                 res?.data?.winningIdea.map((element) => {
                     let model = new IdeaList(element);
                     winningIdeaArrTmp.push(model);
                 });
-                setwinningIdeaArr(winningIdeaArrTmp)
+                setWinningIdeaArr(winningIdeaArrTmp);
             }
 
 
         }, (err) => {
-            Loger.onLog(" ideaList error ------->", err)
+            // Loger.onLog(" ideaList error ------->", err)
         })
     }
+
     const likeIdea = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -90,41 +95,51 @@ const IdeasListScreen = (props) => {
             "frontuser_id": 48,
             "model": 'LikedislikeIdeas'
         }
+
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
             const likeDislike = res?.data === 'dislike' ? false : true;
-            const popularListArr = popularIdeaArr
-            const newListArr = newIdeaArr
-            const winningListArr = winningIdeaArr
-            const allListArr = allIdeaArr
 
-            allListArr.map((ele, index) => {
+            let newAllIdeasArr = [];
+            newAllIdeasArr = allIdeaArr;
+            newAllIdeasArr.map((ele, index) => {
                 if (ele.id == id) {
-                    allListArr[index].like = likeDislike;
+                    newAllIdeasArr[index].like = likeDislike;
                 }
-            })
-            popularListArr.map((ele, index) => {
+            });
+            setaAllIdeaArr([...newAllIdeasArr]);
+
+            let updateNewIdeaArr = [];
+            updateNewIdeaArr = newIdeaArr;
+            updateNewIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    popularListArr[index].like = likeDislike;
+                    updateNewIdeaArr[index].like = likeDislike;
                 }
-            })
-            newListArr.map((ele, index) => {
+            });
+            setNewIdeaArr([...updateNewIdeaArr]);
+
+            let updatePopularIdeaArr = [];
+            updatePopularIdeaArr = popularIdeaArr;
+            updatePopularIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    newListArr[index].like = likeDislike;
+                    updatePopularIdeaArr[index].like = likeDislike;
                 }
-            })
-            winningListArr.map((ele, index) => {
+            });
+            setPopularIdeaArr([...updatePopularIdeaArr]);
+
+            let updateWinningIdeaArr = [];
+            updateWinningIdeaArr = winningIdeaArr;
+            updateWinningIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    winningListArr[index].like = likeDislike;
+                    updateWinningIdeaArr[index].like = likeDislike;
                 }
-            })
-          setallIdeaArr({...allIdeaArr,allIdeaArr:allListArr})
-          setpopularIdeaArr({...popularIdeaArr,popularIdeaArr:popularListArr});
-          setnewIdeaArr({...newIdeaArr,newIdeaArr:newListArr});
-          setwinningIdeaArr({...winningIdeaArr,winningIdeaArr:winningListArr})
+            });
+            setWinningIdeaArr([...updateWinningIdeaArr]);
+
+
+
 
         }, (err) => {
-            Loger.onLog("err of likeUnlike", err)
         })
     }
 
@@ -139,12 +154,11 @@ const IdeasListScreen = (props) => {
                         tabBarItemStyle: Style.tabBarItem,
                         tabBarIndicatorStyle: Style.itemBorder,
                         tabBarScrollEnabled: true
-                    }}
-                    >
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data:allIdeaArr ,count:count,likeIdea:likeIdea  }} />} />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data:newIdeaArr,count:count,likeIdea:likeIdea }} />} />
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas",  data:popularIdeaArr,count:count ,likeIdea:likeIdea }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas",  data:winningIdeaArr ,count:count ,likeIdea:likeIdea }} />} />
+                    }}>
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, count: count, likeIdea: likeIdea }} />} navigateDetail={() => props.navigation.navigate('IdeaDetails')} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, count: count, likeIdea: likeIdea }} />} navigateDetail={() => props.navigation.navigate('IdeaDetails')} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, count: count, likeIdea: likeIdea }} />} navigateDetail={() => props.navigation.navigate('IdeaDetails')} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, count: count, likeIdea: likeIdea }} />} navigateDetail={() => props.navigation.navigate('IdeaDetails')} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

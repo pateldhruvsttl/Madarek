@@ -14,7 +14,6 @@ import { GetAppColor } from "../../../utils/Colors";
 import Styles from './ViewMoreIdeasStyle'
 
 function ViewMoreIdeas(props) {
-    console.log('here accepted',props?.propName?.data);
     const likeIdea = props?.propName?.likeIdea
     const [selectFilter, setSelectFilter] = useState(0);
     const onSetFilter = (value) => {

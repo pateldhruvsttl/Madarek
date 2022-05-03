@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AppUtil } from '../utils/AppUtil';
 import { Loger } from '../utils/Loger';
 
 const axiosInstance = axios.create();
@@ -18,10 +19,14 @@ export const Service = {
     post: (endPoint,params, success, error) => {
         Loger.onServerLog("Req",baseURL+endPoint,params);
 
+        AppUtil.onLoding(true);
+
         axios.post(baseURL+endPoint, params).then((response) => {
             Loger.onServerLog("Res",baseURL+endPoint,response.data);
-           return success(response.data)
+            AppUtil.onLoding(false);
+            return success(response.data)
         }).catch((err)=>{
+            AppUtil.onLoding(false);
             return error(err)
         });  
     },
