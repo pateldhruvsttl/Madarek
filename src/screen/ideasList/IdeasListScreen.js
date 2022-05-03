@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
+import React, { memo ,useEffect} from "react";
+import { View } from "react-native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -9,10 +9,81 @@ import Style from "./IdeasListStyle";
 
 import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import { Label } from "../../utils/StringUtil";
-import { GetAppColor } from "../../utils/Colors";
+import { useState } from "react";
+import IdeaList from "../../model/IdeaList";
+import { EndPoints } from "../../service/EndPoints";
+import { Service } from "../../service/Service";
+
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
+
+    const [popularIdeaArr, setpopularIdeaArr] = useState([])
+    const [newIdeaArr, setnewIdeaArr] = useState([])
+    const [winningIdeaArr, setwinningIdeaArr] = useState([])
+    const [allIdeaArr, setallIdeaArr] = useState([])
+    const [count, setCount] = useState('25')
+    
+    useEffect(() => {
+        onIdeas('all');
+        onIdeas('latest');
+        onIdeas('popular');
+        onIdeas('winning');
+    },[])
+   
+    const onIdeas = (tabType = "all") => {
+        const data = {
+            "frontuser_id": 48,
+            "limit": count,
+            "categories": "",
+            "sectors": "6,7",
+            "listtype": tabType ,
+            "language": "ar"
+        }
+        // alert(JSON.stringify(data))
+
+        Service.post(EndPoints.ideaList, data, (res) => {
+
+            setCount(res.totalcount)
+
+            if (tabType === "all") {
+                const allIdeaArrTmp = []
+                res?.data?.allIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    allIdeaArrTmp.push(model);
+                })
+                setallIdeaArr(allIdeaArrTmp)
+            } 
+            else if (tabType === "popular") {
+                const popularIdeaArrTmp = [];
+                res?.data?.popularIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    popularIdeaArrTmp.push(model);
+                })
+                setpopularIdeaArr(popularIdeaArrTmp)
+
+            } else if (tabType === "latest") {
+                const newIdeaArrTmp = [];
+                res?.data?.newIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    newIdeaArrTmp.push(model);
+                });
+                setnewIdeaArr(newIdeaArrTmp)
+
+            } else if (tabType === "winning") {
+                const winningIdeaArrTmp = []
+                res?.data?.winningIdea.map((element) => {
+                    let model = new IdeaList(element);
+                    winningIdeaArrTmp.push(model);
+                });
+                setwinningIdeaArr(winningIdeaArrTmp)
+            }
+
+
+        }, (err) => {
+            Loger.onLog(" ideaList error ------->", err)
+        })
+    }
 
     return (
         <SafeAreaView style={Style.container}>
@@ -21,16 +92,16 @@ const IdeasListScreen = (props) => {
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
-                       tabBarLabelStyle: Style.tabHeader,
-                       tabBarItemStyle: Style.tabBarItem,
-                       tabBarIndicatorStyle: Style.itemBorder,
-                       tabBarScrollEnabled: true
+                        tabBarLabelStyle: Style.tabHeader,
+                        tabBarItemStyle: Style.tabBarItem,
+                        tabBarIndicatorStyle: Style.itemBorder,
+                        tabBarScrollEnabled: true
                     }}
                     >
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={()=>props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "AllIdeas", data:allIdeaArr ,count:count  }} />} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "LatestIdeas", data:newIdeaArr,count:count }} />} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "PopularIdeas",  data:popularIdeaArr,count:count  }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')} propName={{ type: "WinningIdeas",  data:winningIdeaArr ,count:count }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>
@@ -40,85 +111,6 @@ const IdeasListScreen = (props) => {
 
 export default memo(IdeasListScreen);
 
-const sliderdata = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        firstName: 'Poonam',
-        lastName:'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName:'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        firstName: 'Poonam',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName:'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-                lastName:'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName:'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-
-];
 
 
 
