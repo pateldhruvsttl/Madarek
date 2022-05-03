@@ -185,8 +185,10 @@ const MyAccountStyle = StyleSheet.create({
         color:GetAppColor.catBorder,
         fontFamily:FONTS.robotMedium,
         fontSize:AppUtil.getHP(1.8),
+    },
+    myAccountScrollStyle:{
+        height:'100%',
+        width:'100%'
     }
-       
-
 })
 export default MyAccountStyle

@@ -24,8 +24,8 @@ const PartnerScreen = (props) => {
                         tabBarIndicatorStyle: Style.barBorder,
                         tabBarScrollEnabled:true
                    }}>
-                        <Tab.Screen name={Label.Sponsors} children={() => <Partners propName={{ type: "Sponsors", data: sliderdata }} />} />
                         <Tab.Screen name={Label.EducationResearch} children={() => <Partners propName={{ type: "Education & Research", data: sliderdata }} />} />
+                        <Tab.Screen name={Label.Sponsors} children={() => <Partners propName={{ type: "Sponsors", data: sliderdata }} />} />
                       </Tab.Navigator>
                 </NavigationContainer>
             </View>
