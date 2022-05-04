@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, StatusBar, SafeAreaView } from 'react-native'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AppUtil } from '../../utils/AppUtil'
 import IcnMenuHeader from '../../assets/svg/IcnMenuHeader'
@@ -223,7 +223,7 @@ const MyDrawerScreen = (props) => {
   )
 }
 
-export default MyDrawerScreen;
+export default memo(MyDrawerScreen);
 
 
 
