@@ -25,7 +25,7 @@ import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 // import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
 
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen'
 
 
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';

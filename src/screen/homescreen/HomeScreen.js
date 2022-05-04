@@ -183,7 +183,7 @@ const HomeScreen = (props) => {
                     let model = new IdeaList(element);
                     allIdeaArrTmp.push(model);
                 })
-                setIdeasList(allIdeaArrTmp)
+                setallIdeaArr(allIdeaArrTmp)
             } 
             else if (type === "popular") {
                 const popularIdeaArrTmp = [];
