@@ -322,7 +322,7 @@ const HomeScreen = (props) => {
                         <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"}
                             likeSpotLight={likeSpotLight}
                             onButtonPress={() => { setModalVisible(true) }}
-                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
+                            onSeeMorePress={() => {  }}//props.navigation.navigate("ChallengesListScreen")
                             onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
                     </View>
                 )
