@@ -26,8 +26,8 @@ const IdeasListScreen = (props) => {
     const [count, setCount] = useState('2');
 
     useEffect(() => {
-        // onIdeas('all');
-        // onIdeas('latest');
+        onIdeas('all');
+        onIdeas('latest');
         onIdeas('popular');
         onIdeas('winning');
     }, []);
