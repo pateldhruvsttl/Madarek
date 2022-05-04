@@ -52,7 +52,7 @@ const CommonHeader = (props) => {
         case 'HomeScreenHeader':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
 
@@ -74,7 +74,7 @@ const CommonHeader = (props) => {
         case 'IdeasListScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
@@ -123,7 +123,7 @@ const CommonHeader = (props) => {
         case 'ExpertDetailsScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <BackButton />
@@ -144,7 +144,7 @@ const CommonHeader = (props) => {
         case 'ExpertDirectoryScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
@@ -169,7 +169,7 @@ const CommonHeader = (props) => {
         case 'ExpertScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <MenuButton />
@@ -190,7 +190,7 @@ const CommonHeader = (props) => {
         case 'UserDashboardScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
@@ -211,7 +211,7 @@ const CommonHeader = (props) => {
         case 'SmeDashboardScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
@@ -232,7 +232,7 @@ const CommonHeader = (props) => {
         case 'userCategoryScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <MenuButton />
@@ -293,7 +293,7 @@ const CommonHeader = (props) => {
         case 'SubmitIdeaScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <BackButton />
@@ -309,7 +309,7 @@ const CommonHeader = (props) => {
         case 'NotificationsScreen':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <BackButton />
@@ -384,7 +384,7 @@ const CommonHeader = (props) => {
         case 'MyAccount':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
@@ -514,7 +514,7 @@ const CommonHeader = (props) => {
             case 'MySubmittedIdea':
             return (
                 <>
-                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={true} />
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>

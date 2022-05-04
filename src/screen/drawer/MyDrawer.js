@@ -38,10 +38,13 @@ const MyDrawerScreen = (props) => {
   }
 
   const onselectButtonMenu = (index, screen) => {
-    setSelectedButtonIndex(index)
 
-    if (screen)
-      props.navigation.navigate(screen);
+    if (screen){
+      props.navigation.replace(screen);
+      props.navigation.closeDrawer()
+    }
+      
+    setSelectedButtonIndex(index)
 
   }
 
@@ -123,7 +126,7 @@ const MyDrawerScreen = (props) => {
 
       {/*  */}
 
-      <TouchableOpacity onPress={() => { onSelectMenu(0); onselectButtonMenu(1, "HomeScreen") }} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
+      <TouchableOpacity onPress={() => { onselectButtonMenu(1, "HomeScreen"); onSelectMenu(0);  }} style={[drawerStyles.menuButton, { marginTop: AppUtil.getHP(1) }]}>
         <HomeIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 1 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Home}</Text>
       </TouchableOpacity>
