@@ -19,8 +19,6 @@ function ViewMoreIdeas(props) {
     const onSetFilter = (value) => {
         setSelectFilter(value)
     }
-
-
     return (
         <View style={Styles.MainView}>
 
@@ -46,9 +44,9 @@ function ViewMoreIdeas(props) {
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
-                {selectFilter == 1 && <SubIdeasList onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea}/>}
-                {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea}/>}
+                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={() =>props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 1 && <SubIdeasList onItemPress={() =>props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
             </View>
 
         </View>
