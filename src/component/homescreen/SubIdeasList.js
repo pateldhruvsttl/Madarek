@@ -16,6 +16,7 @@ import IcnRewordComment from "../../assets/svg/IcnRewordComment"
 import IcnRewordLight from "../../assets/svg/IcnRewordLight"
 import IcnAvtarBg from "../../assets/svg/IcnAvtarBg"
 import IcnMenu from "../../assets/svg/IcnMenuDote"
+import moment from "moment";
 
 import { GetAppColor } from "../../utils/Colors";
 
@@ -52,16 +53,17 @@ const SubIdeasList = (props) => {
                 }
         </View>
 
-        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.subTitle}</Text>
+        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
         {
           props.isType == "Ideas" ?
             <View style={Style.calView}>
               <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.date}</Text>
+              <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+
 
               <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.name}</Text>
+              <Text style={Style.title}>{item.firstName}</Text>
             </View>
             :
             <View style={Style.calView}>
@@ -83,15 +85,15 @@ const SubIdeasList = (props) => {
           <View style={Style.rowRightView}>
             <View style={Style.secondInnerCalView}>
               <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.see}</Text>
+              <Text style={Style.title}>{item.totalView}</Text>
             </View>
             <View style={Style.secondInnerCalView}>
               <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.like}</Text>
+              <Text style={Style.title}>{item.totalLike}</Text>
             </View>
             <View style={Style.secondInnerCalView}>
               <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.comment}</Text>
+              <Text style={Style.title}>{item.totalComment}</Text>
             </View>
             <TouchableOpacity style={Style.secondInnerCalView}>
               <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
