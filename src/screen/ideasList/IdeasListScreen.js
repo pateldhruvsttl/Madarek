@@ -23,7 +23,7 @@ const IdeasListScreen = (props) => {
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
 
-    const [count, setCount] = useState('2');
+    const [count, setCount] = useState('10');
 
     useEffect(() => {
         onIdeas('all');
@@ -38,14 +38,12 @@ const IdeasListScreen = (props) => {
             "frontuser_id": 48,
             "limit": count,
             "categories": "",
-            "sectors": "6,7",
+            "sectors": "",
             "listtype": tabType,
             "language": "ar"
         }
 
         Service.post(EndPoints.ideaList, data, (res) => {
-
-            setCount(res.totalcount)
 
             if (tabType === "all") {
                 const allIdeaArrTmp = []
@@ -157,10 +155,10 @@ const IdeasListScreen = (props) => {
                         tabBarIndicatorStyle: Style.itemBorder,
                         tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, count: count, likeIdea: likeIdea, navigateDetail:navigateDetail }} />}  />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, count: count, likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, count: count, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, count: count, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />}  />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr,likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

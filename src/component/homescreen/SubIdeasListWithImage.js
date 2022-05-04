@@ -142,7 +142,7 @@ const SubIdeasListWithImage = (props) => {
                 renderItem={renderIdeaItem}
                 keyExtractor={item => item.id}
             />
-            {console.log('props btn ====>',props.btn)}
+            
             {
                 
                 (props?.btn=="" || props?.btn == undefined) ?null:
