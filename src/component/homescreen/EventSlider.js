@@ -27,9 +27,9 @@ const EventSlider = ({ Entries }) => {
                     inactiveSlideOpacity={0.7}
                     containerCustomStyle={styles.slider}
                     contentContainerCustomStyle={styles.sliderContentContainer}
-                    loop={true}
+                    loop={false}
                     loopClonesPerSide={2}
-                    autoplay={true}
+                    autoplay={false}
                     autoplayDelay={1000}
                     autoplayInterval={3000}
                     onSnapToItem={(index) => setSelectIndecater(index)}

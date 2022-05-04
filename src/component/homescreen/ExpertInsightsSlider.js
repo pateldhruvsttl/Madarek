@@ -70,7 +70,9 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                     <ImageLoad
                         style={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: item.profilePhoto }} />
+                        source={{ uri: item.profilePhoto }} 
+                        borderRadius={AppUtil.getHP(15)}
+                        />
                 </View>
 
                 <Text style={styles.txtNameView}>{item.firstName}</Text>

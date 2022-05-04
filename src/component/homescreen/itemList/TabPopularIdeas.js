@@ -10,9 +10,10 @@ import { useNavigation } from '@react-navigation/native';
 
 const TabPopularIdeas = (props) => {
     const navigation = useNavigation();
+    console.log('log for see all ideas ===========> ', props.data);
     return (
         <View style={Style.MainView}>
-            <SubIdeasListWithImage data={props.data} btn={Label.SeeAllIdeas} isType={props.isType}
+            <SubIdeasListWithImage data={props.data} btn={props.data.length > 0?Label.SeeAllIdeas:""} isType={props.isType}
                 likeIdea={props.likeIdea}
                 onButtonPress={() => { navigation.navigate("IdeasListScreen")}}
                 onItemPress={() => { navigation.navigate("IdeaDetails") }} />
