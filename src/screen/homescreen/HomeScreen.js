@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
-import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity, FlatList } from "react-native";
-import { useSelector, useDispatch } from 'react-redux'
+import { View, Text,TouchableOpacity, FlatList } from "react-native";
+import { useSelector } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
@@ -183,7 +183,7 @@ const HomeScreen = (props) => {
                     let model = new IdeaList(element);
                     allIdeaArrTmp.push(model);
                 })
-                setIdeasList(allIdeaArrTmp)
+                setallIdeaArr(allIdeaArrTmp)
             } 
             else if (type === "popular") {
                 const popularIdeaArrTmp = [];

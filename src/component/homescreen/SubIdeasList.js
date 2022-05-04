@@ -20,7 +20,19 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
 
 const SubIdeasList = (props) => {
+  
+  const likeUnlikeRender = (id) => {
 
+    if (props?.isType == "Ideas") {
+        props.likeIdea(id);
+    }
+    else if (props?.isType == "Challenges") {
+        props.likeChallenge(id);
+    }
+    else {
+        props.likeSpotLight(id)
+    }
+}
   const renderItem = ({ item }) => (
     <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress()}>
 
@@ -29,11 +41,15 @@ const SubIdeasList = (props) => {
         <View style={Style.TitleView}>
           <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
           {
-            item.isLike ?
-              <IcnSelectedHeart height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-              :
-              <IcnUnSelectedHeart fill={GetAppColor.textColor} stroke={GetAppColor.textColor} height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          }
+                    item?.like ?
+                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                            <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                            <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
+                }
         </View>
 
         <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.subTitle}</Text>

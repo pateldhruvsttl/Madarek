@@ -22,11 +22,15 @@ export const Service = {
         AppUtil.onLoding(true);
         Loger.onServerLog("Req",baseURL+endPoint,params);
 
+        AppUtil.onLoding(true);
+
         axios.post(baseURL+endPoint, params).then((response) => {
             AppUtil.onLoding(false);
             Loger.onServerLog("Res",baseURL+endPoint,response.data);
-           return success(response.data)
+            AppUtil.onLoding(false);
+            return success(response.data)
         }).catch((err)=>{
+            AppUtil.onLoding(false);
             return error(err)
         });  
     },
