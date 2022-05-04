@@ -1,39 +1,36 @@
 export default class IdeaList {
 
-    noSector = "No Sector";
-    noCategoryName = "No category name";
-
     constructor(obj = null) {
 
         if (obj == null) {
             return;
         }
 
-        this.ideaTitle = obj?.idea_title ? obj?.idea_title : noSector;
-        this.categoryName = obj?.category_name ? obj?.category_name: noCategoryName;
-        this.createDate = obj?.created_at;
+        this.ideaTitle = obj?.idea_title || "No Sector";
+        this.categoryName = obj?.category_name || "No Category"
+        this.createDate = obj?.created_at || "No Date"
 
 
-        this.id = obj?.id;
-        this.firstName = obj?.first_name;
-        this.lastName = obj?.last_name;
-        this.title = obj?.title;
-        this.section = obj?.section;
-        this.ideaDescription = obj?.idea_description;
-        this.ideaImage = obj?.idea_cover_image;
-        this.winning = obj?.winning;
-        this.madarekSpecial = obj?.madarek_special;
-        this.favoriteIdea = obj?.toatal_favorite_idea;
-        this.topRate = obj?.top_rated;
+        this.id = obj?.id
+        this.firstName = obj?.first_name || "No First Name"
+        this.lastName = obj?.last_name || "No Last Name"
+        this.title = obj?.title || "No Title"
+        this.section = obj?.section || "0"
+        this.ideaDescription = obj?.idea_description || "No Description"
+        this.ideaImage = obj?.idea_cover_image || ""
+        this.winning = obj?.winning || "0"
+        this.madarekSpecial = obj?.madarek_special || "0"
+        this.favoriteIdea = obj?.toatal_favorite_idea || "0"
+        this.topRate = obj?.top_rated || "0"
 
         this.trophy = obj?.isTrophy == null && obj?.isTrophy != 0 ? true : false;
         this.favorite = obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;
         this.insight = obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
 
         this.like = obj?.isLiked > 0 ? true : false;
-        this.totalView = obj?.totalViews;
-        this.totalLike = obj?.totalLikes;
-        this.totalComment = obj?.totalComments;
+        this.totalView = obj?.totalViews || "0"
+        this.totalLike = obj?.totalLikes || "0"
+        this.totalComment = obj?.totalComments || "0"
 
     }
 }
