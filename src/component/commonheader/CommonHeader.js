@@ -558,6 +558,21 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+            case 'NotificationSetting':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                        <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                            <BackButton />
+    
+                            <View style={Style.centerIcnView}>
+                                <Text style={Style.txtHeader}>{Label.NotificationsSettings}</Text>
+                            </View>
+                            <View style={Style.icnEmpty} />
+                        </View>
+                    </>
+                );
+                break;
         default: null;
     }
 }

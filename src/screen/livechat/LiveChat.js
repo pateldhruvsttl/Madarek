@@ -49,14 +49,15 @@ const LiveChat = () => {
             <View style={STYLE.container}>
                 <View style={STYLE.listing}>
                     <FlatList
-                        data={newMessage}
+                        data={[...newMessage].reverse()}
                         extraData={listUpdate}
                         ref={flatListRef}
                         multiline={true}
+                        inverted={true}
                         onContentSizeChange={() => flatListRef?.current?.scrollToEnd()}
                         renderItem={renderItem}
                         keyExtractor={(item, index) => index}
-                        contentContainerStyle={{ flexGrow: 1 }}
+                        contentContainerStyle={{ flexGrow: 1 ,paddingTop:AppUtil.getHP(2),}}
                     />
                 </View>
                 <View style={STYLE.textArea}>

@@ -11,7 +11,9 @@ const STYLE = StyleSheet.create({
     },
     listing: {
         width: '100%',
-        marginBottom: AppUtil.getHP(10)
+        marginBottom: AppUtil.getHP(10),
+        flex:1,
+        height:'100%'
     },
     textArea: {
         width: '100%',
@@ -51,25 +53,26 @@ const STYLE = StyleSheet.create({
     },
     leftMsg: {
         backgroundColor: GetAppColor.chatInputColor,
-        width: AppUtil.getWP(50),
         borderBottomRightRadius: AppUtil.getHP(2),
         borderTopLeftRadius: AppUtil.getHP(2),
         borderTopRightRadius: AppUtil.getHP(2),
-        padding: AppUtil.getHP(1.5),
+        paddingVertical: AppUtil.getWP(1.5),
+        paddingHorizontal: AppUtil.getHP(1.5),
+        maxWidth : '70%'
 
     },
     rightMsg: {
         backgroundColor: GetAppColor.chatInputColor,
-        width: AppUtil.getWP(50),
         borderTopLeftRadius: AppUtil.getHP(2),
         borderTopRightRadius: AppUtil.getHP(2),
         borderBottomLeftRadius: AppUtil.getHP(2),
-        padding: AppUtil.getHP(1.5),
-        paddingStart: AppUtil.getHP(2.5),
+        paddingVertical: AppUtil.getWP(1.5),
+        paddingHorizontal: AppUtil.getHP(1.5),
+        maxWidth : '70%'
     },
     messageContainer: {
         // margin: 20,
-        marginHorizontal :  AppUtil.getHP(1.5), 
+        paddingHorizontal :  AppUtil.getHP(1.5), 
         flex: 1,
     },
     leftLabel: {
