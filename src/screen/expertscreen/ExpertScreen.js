@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
 import { useSelector } from 'react-redux'
 
@@ -14,10 +14,34 @@ import { AppUtil } from "../../utils/AppUtil";
 
 import { DrawerActions } from '@react-navigation/native';
 import SimilarExperts from "../../component/expertscreen/SimilarExperts";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import { Loger } from "../../utils/Loger";
+import Categories from "../../model/Categories";
 
 const ExpertScreen = (porps) => {
-
+    const [category, setCategory] = useState([])
+    const [categories, setCategories] = useState([])
     const { themeColor } = useSelector((state) => state)
+    useEffect(() => {
+        var cat = [];
+        Service.post(EndPoints.categories, {}, (res) => {
+            Loger.onLog('category expert categorylist Response of category list ========>', JSON.stringify(res.data))
+            res.data.forEach(element => {
+                let model = new Categories(element);
+                if (cat.length < 6) {
+                    cat.push(model)
+                }else{
+                    return;
+                }
+            });
+            setCategories(cat)
+            setCategory(cat)
+        }, (err) => {
+            Loger.onLog('category bannerlist error ========>', err)
+        })
+
+    }, []);
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -28,7 +52,7 @@ const ExpertScreen = (porps) => {
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
 
                         <View style={Style.favouriteCategoriesView}>
-                            <FavouriteCategories />
+                            <FavouriteCategories data={categories}/>
                         </View>
 
                         <View style={Style.similarExpertView}>

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { View, FlatList, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,16 +7,21 @@ import styles from "./FavouriteCategoriesStyle";
 import { Label } from '../../utils/StringUtil'
 import { AppUtil } from "../../utils/AppUtil";
 import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import Categories from "../../model/Categories";
 
 
 const FavouriteCategories = (props) => {
-   
+    
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
 
+    
+
     const renderItem = ({ item }) => {
         return (
-            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={()=> navigation.navigate("ExpertDirectoryScreen")}>
+            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
                 <IcnInformationTechnology fill={themeColor.buttonColor} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 <Text style={styles.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>
@@ -27,7 +32,7 @@ const FavouriteCategories = (props) => {
         <View style={styles.MainView}>
             <View style={styles.titleView}>
                 <Text style={[styles.txtTitle, { color: themeColor.buttonColor }]}>{Label.favouriteCategories}</Text>
-                <TouchableOpacity onPress={()=>{navigation.navigate("UserCategory")}}>
+                <TouchableOpacity onPress={() => { navigation.navigate("UserCategory") }}>
                     <Text style={styles.txtSeeMore}> {Label.viewAll}</Text>
                 </TouchableOpacity>
             </View>
@@ -39,7 +44,7 @@ const FavouriteCategories = (props) => {
                 scrollEnabled={false}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-                style={{paddingHorizontal:AppUtil.getWP(2)}}
+                style={{ paddingHorizontal: AppUtil.getWP(2) }}
             />
 
         </View>

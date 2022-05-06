@@ -6,22 +6,18 @@ export default class IdeaList {
             return;
         }
         
-        this.ideaTitle = obj?.general_title;
-        this.categoryName = obj?.general_description;
+        this.ideaTitle = obj?.general_title || "No Title"
+        this.categoryName = obj?.general_description || "No Description"
         
         
-        this.title = obj?.contest_title;
-        this.id = obj?.id;
-        this.name = obj?.publish_by || "no name"
-        this.lastName = obj?.last_name;
-        this.section = obj?.section;
-        this.ideaDescription = obj?.idea_description;
-        this.ideaImage = obj?.idea_cover_image;
-        this.winning = obj?.winning;
-        this.createDate = obj?.created_at;
-        this.madarekSpecial = obj?.madarek_special;
-        this.favoriteIdea = obj?.toatal_favorite_idea;
-        this.topRate = obj?.top_rated;
+        this.title = obj?.contest_title || "No Title"
+        this.id = obj?.id
+        this.name = obj?.publish_by || "No Name"
+        this.ideaImage = obj?.image_upload_filesfile || ""
+        this.winning = obj?.winning || "0"
+        this.madarekSpecial = obj?.madarek_special || "0"
+        this.favoriteIdea = obj?.toatal_favorite_idea || "0"
+        this.topRate = obj?.top_rated || "0"
         
         this.trophy = obj.isTrophy && obj?.isTrophy == null && obj?.isTrophy != 0 ? true : false;
         this.favorite = obj.isFavourite && obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;

@@ -142,8 +142,10 @@ const SubIdeasListWithImage = (props) => {
                 renderItem={renderIdeaItem}
                 keyExtractor={item => item.id}
             />
+            
             {
-                props?.btn &&
+                
+                (props?.btn=="" || props?.btn == undefined) ?null:
                 <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
                     <Text style={Style.txtBottomBtn}> {props.btn}</Text>
                 </TouchableOpacity>

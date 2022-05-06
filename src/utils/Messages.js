@@ -300,6 +300,8 @@ export const ARlabel = {
 
     _maturation:"Maturation",
     _filter: "Filter",
+    _writeReply : "Write a reply...",
+    _online : "Online"
 
 }
 export const USlabel = {
@@ -628,5 +630,8 @@ export const USlabel = {
     _maturation:"Maturation",
     _mySubmitIdea: "My Submit Idea",
     _filter: "Filter",
+
+    _writeReply : "Write a reply...",
+    _online : "Online"
 
 }
