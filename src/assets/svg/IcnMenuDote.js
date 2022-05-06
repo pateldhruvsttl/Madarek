@@ -5,10 +5,10 @@ function SvgComponent(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
-      height="36px"
+      height={props.height}
       viewBox="0 0 24 24"
-      width="36px"
-      fill="#FFF"
+      width={props.width}
+      fill= {props?.color || "#FFF"}
       {...props}
     >
       <Path d="M0 0h24v24H0V0z" fill="none" />

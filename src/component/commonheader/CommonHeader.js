@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, TouchableOpacity, StatusBar } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar, Image } from "react-native";
 import { useSelector } from 'react-redux'
 import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +19,8 @@ import EditProfile from "../../assets/svg/UserProfile/EditProfile";
 import NotificationsButton from "../button/NotificationsButton";
 import MenuButton from "../button/MenuButton";
 import BackButton from "../button/BackButton";
+import ImageLoad from "react-native-image-placeholder";
+
 
 
 const CommonHeader = (props) => {
@@ -511,7 +513,7 @@ const CommonHeader = (props) => {
                 </>
             )
             break;
-            case 'MySubmittedIdea':
+        case 'MySubmittedIdea':
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
@@ -527,7 +529,7 @@ const CommonHeader = (props) => {
                             <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={()=> props.onFilter()}>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -535,6 +537,27 @@ const CommonHeader = (props) => {
                 </>
             );
             break
+        case 'LiveChat':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow}]}>
+                        <BackButton />
+
+                        <View style={Style.container}>
+                            <View style={Style.profile}>
+                                <Image height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+                            </View>
+                            <View style={Style.chatDetail}>
+                                <Text style={Style.chatTxt}>Abhimanyu Bhatacharya</Text>
+                                <Text style={[Style.chatTxt,Style.onlineTxt]}>{Label.Online}</Text>
+                            </View>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
+            break;
         default: null;
     }
 }
