@@ -40,8 +40,10 @@ export const GetAppColor = {
     switchOnColor:"#D5BEE6",
     switchOffColor:"#0000001A",
     borderImgShadow : "#00000014",
-    
     editRoundColor:"#DBAEFF",
+    
+    borderColor : "#00000033",
+    lightOrange1 : "#F0F0F0",
     
 }
 

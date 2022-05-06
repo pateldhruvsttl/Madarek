@@ -23,11 +23,11 @@ const IdeasListScreen = (props) => {
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
 
-    const [count, setCount] = useState('2');
+    const [count, setCount] = useState('10');
 
     useEffect(() => {
-        // onIdeas('all');
-        // onIdeas('latest');
+        onIdeas('all');
+        onIdeas('latest');
         onIdeas('popular');
         onIdeas('winning');
     }, []);
