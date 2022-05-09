@@ -39,17 +39,17 @@ const HomeScreen = (props) => {
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
     const [type, setType] = useState('latest')
-    const [ideasList, setIdeasList] = useState(null);
-    const [popularIdeaArr, setpopularIdeaArr] = useState([])
-    const [newIdeaArr, setnewIdeaArr] = useState([])
-    const [winningIdeaArr, setwinningIdeaArr] = useState([])
-    const [allIdeaArr, setallIdeaArr] = useState([])
+
+
+    const [allIdeaArr, setAllIdeaArr] = useState([])
+    const [popularIdeaArr, setPopularIdeaArr] = useState([])
+    const [newIdeaArr, setNewIdeaArr] = useState([])
+    const [winningIdeaArr, setWinningIdeaArr] = useState([])
     
 
 
     useEffect(() => {
         onSlider();
-        onIdeas();
         onOpenChallenge();
         onSpotlight();
         onFavouriteCategories();
@@ -57,42 +57,91 @@ const HomeScreen = (props) => {
 
     }, []);
 
-    const likeIdea = (id) => {
-        var data = {
-            "field_name": "idea_id",
-            "id": id,
-            "frontuser_id": 48,
-            "model": 'LikedislikeIdeas'
-        }
-        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
-
-            const likeDislike = res?.data === 'dislike' ? false : true;
-            const popularListArr = popularIdeaArr
-            const newListArr = newIdeaArr
-            const winningListArr = winningIdeaArr
-
-            popularListArr.map((ele, index) => {
-                if (ele.id == id) {
-                    popularListArr[index].like = likeDislike;
+  
+    const onSlider = () => {
+        var banner = [];
+        Service.get(EndPoints.bannerList, (res) => {
+            res.data.forEach(element => {
+                let model = new BannerList(element);
+                if (banner.length < 5) {
+                    banner.push(model)
+                }else{
+                    return;
                 }
-            })
-            newListArr.map((ele, index) => {
-                if (ele.id == id) {
-                    newListArr[index].like = likeDislike;
-                }
-            })
-            winningListArr.map((ele, index) => {
-                if (ele.id == id) {
-                    winningListArr[index].like = likeDislike;
-                }
-            })
-            setIdeasList({ ...ideasList, popularIdeaArr: popularListArr, newIdeaArr: newListArr, winningIdeaArr: winningListArr })
-
+            });
+            setBannerList(banner)
         }, (err) => {
-            Loger.onLog("err of likeUnlike", err)
+            Loger.onLog("bannerList error ------>", err)
         })
     }
+    const onOpenChallenge = () => {
+        const data = '';
+        Service.post(EndPoints.openChallenges, data, (res) => {
+            var opChallenges = [];
+            res.data.forEach(element => {
+                let model = new OpenChallenges(element);
+                opChallenges.push(model);
+            });
+            setOpenChallenges(opChallenges)
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
+    const onSpotlight = () => {
+        const data = JSON.stringify({
+            "frontuser_id": 48
+        });
 
+        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+            var spotLight = [];
+            Loger.onLog("res madarekSpotlight", res);
+            res.data.forEach(element => {
+                let model = new MadarekSportlight(element);
+                spotLight.push(model);
+            });
+
+            setSpotLight(spotLight)
+
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
+    const onFavouriteCategories = () => {
+        const data = { "id": 48 }
+        Service.post(EndPoints.favouriteCategories, data, (res) => {
+            Loger.onLog('favouriteCategories Response ========>', res.data[0].category_info)
+            if (res?.statusCode === "1") {
+                const favouriteCategoriesArr = [];
+                res?.data[0]?.category_info.map((ele) => {
+                    const model = new category(ele);
+                    favouriteCategoriesArr.push(model);
+                })
+                setFavouriteCategories(favouriteCategoriesArr);
+            }
+
+
+        }, (err) => {
+            Loger.onLog('favouriteCategories  error ========>', err)
+        })
+    }
+    const onExpertInsights = () => {
+        const data = { "frontuser_id": 48 }
+        Service.post(EndPoints.expertInsights, data, (res) => {
+            Loger.onLog('expertInsights Response  ========>', JSON.stringify(res.data))
+            if (res?.statusCode === "1") {
+                const expertInsightArr = [];
+                res.data.map((ele) => {
+                    const model = new ExpertInsight(ele)
+                    expertInsightArr.push(model);
+
+                })
+                setExpertInsight(expertInsightArr)
+            }
+
+        }, (err) => {
+            Loger.onLog('expertInsights  error ========>', err)
+        })
+    }
     const likeChallenge = (id) => {
         var data =
         {
@@ -146,149 +195,6 @@ const HomeScreen = (props) => {
         })
     }
 
-    const onSlider = () => {
-        var banner = [];
-        Service.get(EndPoints.bannerList, (res) => {
-            res.data.forEach(element => {
-                let model = new BannerList(element);
-                if (banner.length < 5) {
-                    banner.push(model)
-                }else{
-                    return;
-                }
-            });
-            setBannerList(banner)
-        }, (err) => {
-            Loger.onLog("bannerList error ------>", err)
-        })
-    }
-
-    const onIdeas = (type = "latest") => {
-        const data = {
-            "frontuser_id": 48,
-            "limit": 2,
-            "categories": "",
-            "sectors": "6,7",
-            "listtype": type ,
-            "language": "ar"
-        }
-        // alert(JSON.stringify(data))
-
-        Service.post(EndPoints.ideaList, data, (res) => {
-            // alert()
-             
-            if (type === "all") {
-                const allIdeaArrTmp = []
-                res?.data?.allIdea.map((element) => {
-                    let model = new IdeaList(element);
-                    allIdeaArrTmp.push(model);
-                })
-                setallIdeaArr(allIdeaArrTmp)
-            } 
-            else if (type === "popular") {
-                const popularIdeaArrTmp = [];
-                res?.data?.popularIdea.map((element) => {
-                    let model = new IdeaList(element);
-                    popularIdeaArrTmp.push(model);
-                })
-                setpopularIdeaArr(popularIdeaArrTmp)
-            } else if (type === "latest") {
-                const newIdeaArrTmp = [];
-                res?.data?.newIdea.map((element) => {
-                    let model = new IdeaList(element);
-                    newIdeaArrTmp.push(model);
-                });
-                setnewIdeaArr(newIdeaArrTmp)
-            } else if (type === "winning") {
-                const winningIdeaArrTmp = []
-                res?.data?.winningIdea.map((element) => {
-                    let model = new IdeaList(element);
-                    winningIdeaArrTmp.push(model);
-                });
-                setwinningIdeaArr(winningIdeaArrTmp)
-            }
-
-            let obj = {allIdeaArr , popularIdeaArr, newIdeaArr, winningIdeaArr };
-            setIdeasList(obj)
-
-        }, (err) => {
-            Loger.onLog(" ideaList error ------->", err)
-        })
-    }
-
-    const onOpenChallenge = () => {
-        const data = '';
-        Service.post(EndPoints.openChallenges, data, (res) => {
-            var opChallenges = [];
-            res.data.forEach(element => {
-                let model = new OpenChallenges(element);
-                opChallenges.push(model);
-            });
-            setOpenChallenges(opChallenges)
-        }, (err) => {
-            Loger.onLog("", err)
-        })
-    }
-    const onSpotlight = () => {
-        const data = JSON.stringify({
-            "frontuser_id": 48
-        });
-
-        Service.post(EndPoints.madarekSpotlight, data, (res) => {
-            var spotLight = [];
-            Loger.onLog("res madarekSpotlight", res);
-            res.data.forEach(element => {
-                let model = new MadarekSportlight(element);
-                spotLight.push(model);
-            });
-
-            setSpotLight(spotLight)
-
-        }, (err) => {
-            Loger.onLog("", err)
-        })
-    }
-
-
-    const onExpertInsights = () => {
-        const data = { "frontuser_id": 48 }
-        Service.post(EndPoints.expertInsights, data, (res) => {
-            Loger.onLog('expertInsights Response  ========>', JSON.stringify(res.data))
-            if (res?.statusCode === "1") {
-                const expertInsightArr = [];
-                res.data.map((ele) => {
-                    const model = new ExpertInsight(ele)
-                    expertInsightArr.push(model);
-
-                })
-                setExpertInsight(expertInsightArr)
-            }
-
-        }, (err) => {
-            Loger.onLog('expertInsights  error ========>', err)
-        })
-    }
-
-    const onFavouriteCategories = () => {
-        const data = { "id": 48 }
-        Service.post(EndPoints.favouriteCategories, data, (res) => {
-            Loger.onLog('favouriteCategories Response ========>', res.data[0].category_info)
-            if (res?.statusCode === "1") {
-                const favouriteCategoriesArr = [];
-                res?.data[0]?.category_info.map((ele) => {
-                    const model = new category(ele);
-                    favouriteCategoriesArr.push(model);
-                })
-                setFavouriteCategories(favouriteCategoriesArr);
-            }
-
-
-        }, (err) => {
-            Loger.onLog('favouriteCategories  error ========>', err)
-        })
-    }
-
-
     const onSetItem = (item) => {
 
         switch (item) {
@@ -298,7 +204,7 @@ const HomeScreen = (props) => {
                 break;
 
             case 'Tab':
-                return ideasList != null && <IdealList data={ideasList} likeIdea={(id) => likeIdea(id)} onIdeas={onIdeas}  />
+                return <IdealList/>
                 break;
 
             case 'Challenges':

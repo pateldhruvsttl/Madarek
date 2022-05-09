@@ -14,6 +14,7 @@ import IdeaList from "../../model/IdeaList";
 import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { Loger } from "../../utils/Loger";
+import { AppConfig } from "../../manager/AppConfig";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -22,8 +23,6 @@ const IdeasListScreen = (props) => {
     const [newIdeaArr, setNewIdeaArr] = useState([]);
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
-
-    const [count, setCount] = useState('10');
 
     useEffect(() => {
         onIdeas('all');
@@ -35,12 +34,12 @@ const IdeasListScreen = (props) => {
 
     const onIdeas = (tabType = "all") => {
         const data = {
-            "frontuser_id": 48,
-            "limit": count,
-            "categories": "",
-            "sectors": "",
-            "listtype": tabType,
-            "language": "ar"
+            frontuser_id: 48,
+            limit: AppConfig.pageLimit,
+            categories: "",
+            sectors: "6,7",
+            listtype: tabType,
+            language: AppConfig.lang
         }
 
         Service.post(EndPoints.ideaList, data, (res) => {
@@ -49,7 +48,6 @@ const IdeasListScreen = (props) => {
                 const allIdeaArrTmp = []
                 res?.data?.allIdea.map((element) => {
                     let model = new IdeaList(element);
-                    Loger.onLog("List Like", element.isLiked);
                     allIdeaArrTmp.push(model);
                 })
                 setaAllIdeaArr(allIdeaArrTmp)
@@ -155,10 +153,10 @@ const IdeasListScreen = (props) => {
                         tabBarIndicatorStyle: Style.itemBorder,
                         tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />}  />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr,likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

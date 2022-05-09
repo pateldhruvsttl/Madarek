@@ -44,6 +44,7 @@ const LISTSTYLE = StyleSheet.create({
 
     },
 
+    imgView: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), overflow:'hidden' },
     img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1) },
 
     rightItems: { width: '40%', },

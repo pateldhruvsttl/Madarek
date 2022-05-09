@@ -28,7 +28,7 @@ function ViewMoreIdeas(props) {
 
             <Text style={Styles.HeadertxtRecodes}><Text style={Styles.txt}>{length}</Text> {"Records Found"}</Text>
             <View style={Styles.HeaderBtn}>
-                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(0)}>
+                <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor}]} onPress={() => onSetFilter(0)}>
                     <IcnIdeasImageAndTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
 

@@ -12,10 +12,21 @@ const TabPopularIdeas = (props) => {
     const navigation = useNavigation();
     return (
         <View style={Style.MainView}>
-            <SubIdeasListWithImage data={props.data} btn={props.data.length > 0?Label.SeeAllIdeas:""} isType={props.isType}
-                likeIdea={props.likeIdea}
-                onButtonPress={() => { navigation.navigate("IdeasListScreen",{likeIdea : props.likeIdea})}}
-                onItemPress={() => { navigation.navigate("IdeaDetails") }} />
+            {
+                props?.data?.length > 0 ?
+                    <SubIdeasListWithImage
+                        data={props.data}
+                        isType={props.isType}
+                        likeIdea={props.likeIdea}
+                        btn={props.data.length > 0 ? Label.SeeAllIdeas : ""}
+                        onButtonPress={() => { navigation.navigate("IdeasListScreen", { likeIdea: props.likeIdea }) }}
+                        onItemPress={() => { navigation.navigate("IdeaDetails") }} />
+
+                    :
+                    <View style={ Style.emptyView}>
+                        <Text>No Idea List Found</Text>
+                    </View>
+            }
         </View>
     );
 }

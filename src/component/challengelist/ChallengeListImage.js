@@ -26,16 +26,13 @@ const SubIdeasListWithImage = (props) => {
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={()=>props.navigateDetail()} style={LISTSTYLE.renderMainView}>
+        <TouchableOpacity onPress={() => props.navigateDetail()} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
-                {/* <Image
-                    style={LISTSTYLE.img}
-                    resizeMode='cover'
-                    source={{ uri: item.url }}
-                /> */}
-                <ImageLoad style={LISTSTYLE.img} source={{ uri: item.url }} isShowActivity={false}/>
 
+                <View style={LISTSTYLE.imgView}>
+                    <ImageLoad style={LISTSTYLE.img} source={{ uri: item.url }} isShowActivity={false} />
+                </View>
                 {
                     item.isLike ?
                         <IcnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
@@ -85,7 +82,7 @@ const SubIdeasListWithImage = (props) => {
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={LISTSTYLE.title}>{item.comment}</Text>
                     </View>
-                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end'}}>
+                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                     </TouchableOpacity>
                 </View>
@@ -96,7 +93,7 @@ const SubIdeasListWithImage = (props) => {
 
     return (
         <View style={LISTSTYLE.MainView}>
-           
+
 
             <FlatList
                 data={props.data}

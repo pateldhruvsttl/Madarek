@@ -1,6 +1,7 @@
 export const AppConfig = {
     token: '',
-    lang: '',
+    lang: 'ar',
+    pageLimit:'10',
 }
 
 

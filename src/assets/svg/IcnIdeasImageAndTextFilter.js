@@ -8,9 +8,10 @@ function SvgComponent(props) {
       width={62}
       height={58}
       viewBox="0 0 62 58"
+      fill="#ccc"
       {...props}
     >
-      <G data-name="Group 3756" transform="translate(-739 -411)" fill="#ccc">
+      <G data-name="Group 3756" transform="translate(-739 -411)" >
         <Rect
           data-name="Rectangle 1799"
           width={12}
