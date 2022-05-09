@@ -12,7 +12,9 @@ import { Label } from '../../utils/StringUtil'
 
 const LiveChat = () => {
 
-    let id = Math.floor(Math.random() * (999 - 100 + 1) + 100)
+    const getId = () => {
+        return Math.floor(Math.random() * (999 - 100 + 1) + 100)
+    }
 
     const messageList = [
         { id: 0, message: "Hi there!", Time: "10:40", name: "Jalpa" },
@@ -25,14 +27,14 @@ const LiveChat = () => {
     const [newMessage, setNewMessage] = useState(messageList)
     const flatListRef = useRef();
 
-    const [listUpdate, setListUpdate] = useState(id)
+    const [listUpdate, setListUpdate] = useState(getId())
 
     const sendMessage = () => {
         const storeArray = newMessage
-        storeArray.push({ message, id: id, Time: "10:25", name: 'jalpa' })
+        storeArray.push({ message, id: getId(), Time: "10:25", name: 'jalpa' })
         setNewMessage(storeArray)
         setMessage('')
-        setListUpdate(id)
+        setListUpdate(getId())
     }
     const renderItem = ({ item }) => (
 
@@ -52,7 +54,7 @@ const LiveChat = () => {
                         data={[...newMessage].reverse()}
                         extraData={listUpdate}
                         ref={flatListRef}
-                        multiline={true}
+                        // multiline={true}
                         inverted={true}
                         onContentSizeChange={() => flatListRef?.current?.scrollToEnd()}
                         renderItem={renderItem}

@@ -13,7 +13,7 @@ export default class IdeaList {
 
         this.id = obj?.id
         this.firstName = obj?.first_name || "No First Name"
-        this.lastName = obj?.last_name || "No Last Name"
+        this.lastName = obj?.last_name || ""
         this.title = obj?.title || "No Title"
         this.section = obj?.section || "0"
         this.ideaDescription = obj?.idea_description || "No Description"
