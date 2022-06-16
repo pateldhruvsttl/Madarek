@@ -312,6 +312,8 @@ export const ARlabel = {
   _collaborateNotifications : "Collaborate Notifications",
   _expertNotifications : "Expert Notifications",
 
+  _expertInsightsDetail: 'Expert Insight Details',
+
 
 }
 export const USlabel = {
@@ -652,5 +654,8 @@ export const USlabel = {
   _ideaNotifications : "Idea Notifications",
   _collaborateNotifications : "Collaborate Notifications",
   _expertNotifications : "Expert Notifications",
+
+  _expertInsightsDetail: 'Expert Insight Details',
+
 
 }

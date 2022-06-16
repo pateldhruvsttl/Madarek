@@ -256,4 +256,6 @@ export const Label = {
     ExpertNotifications : isRTL?ARlabel._expertNotifications :USlabel._expertNotifications ,
     IdeaNotifications : isRTL?ARlabel._ideaNotifications :USlabel._ideaNotifications ,
 
+  ExpertInsightsDetail: isRTL?ARlabel._expertInsightsDetail:USlabel._expertInsightsDetail,
+
 }

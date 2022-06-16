@@ -25,7 +25,7 @@ import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 // import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
 
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen'
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen'
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
@@ -47,6 +47,7 @@ import MySubmittedIdeas from '../screen/ideasList/MySubmittedIdeas';
 import CategoryList from '../screen/categoryList/CategoryList';
 import LiveChat from '../screen/livechat/LiveChat';
 import NotificationSetting from '../screen/notifications/NotificationSetting';
+import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithComment/ExpertInsightDetailWithComment';
 
 
 const Stack = createStackNavigator();
@@ -54,7 +55,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"MySubmittedIdeas"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"ExpertInsightDetailWithComment"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -95,6 +96,7 @@ function ScreenStack() {
 
             <Stack.Screen name="LiveChat" component={LiveChat} />
             <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
+            <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
 
         </Stack.Navigator>
     )
