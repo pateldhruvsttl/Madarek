@@ -14,7 +14,7 @@ const CommonHeaderStyle = StyleSheet.create({
 
 
     LeftIcnView: { alignItems: 'center', marginStart: AppUtil.getWP(3) },
-    centerIcnView: { alignItems: 'center', },
+    centerIcnView: { alignItems: 'center',},
     rightSingleIcnView: { alignItems: 'flex-end', marginEnd: AppUtil.getWP(3) },
     rightIcnView: { flexDirection: 'row', justifyContent: 'space-around', marginEnd: AppUtil.getWP(3) },
 

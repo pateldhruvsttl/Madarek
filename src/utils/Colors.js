@@ -42,8 +42,10 @@ export const GetAppColor = {
     borderImgShadow : "#00000014",
     editRoundColor:"#DBAEFF",
     
+    lightGreyColor : "#E8ECF3",
     borderColor : "#00000033",
     lightOrange1 : "#F0F0F0",
+    lightblac:"#BFBFBF",
     
 }
 

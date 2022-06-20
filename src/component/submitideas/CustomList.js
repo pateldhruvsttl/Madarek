@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { GetAppColor } from '../../utils/Colors'
 import IcnNext from "../../assets/svg/IcnNext";
 
-import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
+import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 import { AppUtil } from '../../utils/AppUtil'
 
 function CustomList(props) {

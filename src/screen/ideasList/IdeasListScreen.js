@@ -138,9 +138,11 @@ const IdeasListScreen = (props) => {
         }, (err) => {
         })
     }
+
     const navigateDetail = () => {
         props.navigation.navigate('IdeaDetails')
     }
+    
     return (
         <SafeAreaView style={Style.container}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />

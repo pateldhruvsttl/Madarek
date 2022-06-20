@@ -8,7 +8,7 @@ function SvgComponent(props) {
       width={props.width}
       height={props.height}
       viewBox="0 0 55 59"
-      stroke="#848484"
+      stroke="##fff"
       {...props}
     >
       <G

@@ -557,6 +557,20 @@ const CommonHeader = (props) => {
                     </View>
                 </>
             );
+        case 'Edit Idea':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                        <BackButton />
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.EditIdea}</Text>
+                        </View>
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
             break;
         default: null;
     }

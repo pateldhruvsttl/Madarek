@@ -38,13 +38,7 @@ const HomeScreen = (props) => {
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
-    const [type, setType] = useState('latest')
-
-
-    const [allIdeaArr, setAllIdeaArr] = useState([])
-    const [popularIdeaArr, setPopularIdeaArr] = useState([])
-    const [newIdeaArr, setNewIdeaArr] = useState([])
-    const [winningIdeaArr, setWinningIdeaArr] = useState([])
+    const [type, setT, setWinningIdeaArr] = useState([])
     
 
 
@@ -127,7 +121,6 @@ const HomeScreen = (props) => {
     const onExpertInsights = () => {
         const data = { "frontuser_id": 48 }
         Service.post(EndPoints.expertInsights, data, (res) => {
-            Loger.onLog('expertInsights Response  ========>', JSON.stringify(res.data))
             if (res?.statusCode === "1") {
                 const expertInsightArr = [];
                 res.data.map((ele) => {
@@ -194,7 +187,6 @@ const HomeScreen = (props) => {
             Loger.onLog("err of spotlightLikeUnlike", err)
         })
     }
-
     const onSetItem = (item) => {
 
         switch (item) {

@@ -249,5 +249,6 @@ export const Label = {
     Filter: isRTL?ARlabel._filter:USlabel._filter,
     WriteReply : isRTL?ARlabel._writeReply :USlabel._writeReply ,
     Online : isRTL?ARlabel._online :USlabel._online ,
+    EditIdea : isRTL?ARlabel._editIdea :USlabel._editIdea ,
     
 }

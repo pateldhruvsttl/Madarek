@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import Style from "./IdeasListStyle";
@@ -12,10 +12,12 @@ const MySubmittedIdeas = () => {
 
     return (
         <SafeAreaView style={Style.container}>
-            <CommonHeader isType={"MySubmittedIdea"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={()=> setFilterVisible(!isFilterVisible)}/>
+            <CommonHeader isType={"MySubmittedIdea"} onMenuClick={() => { props.navigation.openDrawer() }}
+                onFilter={() => setFilterVisible(!isFilterVisible)} />
+
             <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')}
                 isMySubmitType={true} propName={{ type: "AllIdeas", data: sliderdata }} />
-                <IdeasFilter visible = {isFilterVisible} onClose={()=> setFilterVisible(!isFilterVisible)}/>
+            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     )
 }
