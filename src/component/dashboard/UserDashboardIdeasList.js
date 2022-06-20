@@ -34,7 +34,7 @@ const UserDashboardIdeasList = (props) => {
                 <Image
                     style={Style.img}
                     resizeMode='cover'
-                    source={{ uri: item.url }}
+                    source={{ uri: item.userPhoto }}
                 />
 
 
@@ -49,16 +49,16 @@ const UserDashboardIdeasList = (props) => {
 
             <View style={Style.leftItems}>
 
-                <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
+                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
                 {
                     props.isType == 'Challenges'?
                     <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
                     :
                     props.isType == 'Request'?
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.ideaSubTitle}</Text>
                     :
                     props.isType == 'Maturation'?
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.ideaSubTitle}</Text>
                     :
                     <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed}]}>{item.subTitle}</Text>
 
@@ -71,7 +71,7 @@ const UserDashboardIdeasList = (props) => {
                         <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={Style.title}>{item.date}</Text>
                         <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item.name}</Text>
+                        <Text style={Style.title}>{item.fullName}</Text>
                     </View>
 
 
@@ -81,12 +81,13 @@ const UserDashboardIdeasList = (props) => {
 
                     {props.isType == "Request" ?
 
-                        item.btn === "Rejected" ?
+                        item.joinStatus === "Rejected" ?
                             <TouchableOpacity style={Style.btnReject}>
                                 <Text style={Style.txtbtnReject}> {(Label.Rejected).toUpperCase()}</Text>
                             </TouchableOpacity>
+                            //(Label.Rejected).toUpperCase()
                             :
-                            item.btn === "Accepted" ?
+                            item.joinStatus === "Accepted" ?
                                 <TouchableOpacity style={Style.btnAccept}>
                                     <Text style={Style.txtbtnAccept}>{(Label.Accepted).toUpperCase()}</Text>
                                 </TouchableOpacity>

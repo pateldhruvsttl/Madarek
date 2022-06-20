@@ -14,7 +14,7 @@ import IcnRewordComment from "../../assets/svg/IcnRewordComment"
 import IcnClock from "../../assets/svg/IcnClock"
 
 function ExpertInsights(props) {
-
+    let data = props.data
     const { themeColor } = useSelector((state) => state)
 
     const renderItem = ({ item }) => (
@@ -24,7 +24,7 @@ function ExpertInsights(props) {
                 <Image
                     style={Style.img}
                     resizeMode='cover'
-                    source={{ uri: item.url }}
+                    source={{ uri: item.profilePhoto }}
                 />
 
                 <View style={Style.rewordView}>
@@ -38,20 +38,20 @@ function ExpertInsights(props) {
 
             <View style={Style.leftItems}>
 
-                <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
-                <Text numberOfLines={2} style={Style.SubTitle}>{item.subTitle}</Text>
+                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
+                <Text numberOfLines={2} style={Style.SubTitle}>{item.title}</Text>
 
                 <View style={Style.calView}>
                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                     <Text style={Style.txtTime}>{item.date}</Text>
 
                     <IcnClock style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.txtTime}>{item.min}</Text>
+                    <Text style={Style.txtTime}>{item.time}</Text>
                 </View>
 
                 <View style={Style.secondCalView}>
                     <Text numberOfLines={1} style={Style.title}>{Label.Publishby}</Text>
-                    <Text numberOfLines={1} style={Style.txtName}>{item.name}</Text>
+                    <Text numberOfLines={1} style={Style.txtName}>{item.firstName} {item.lastName}</Text>
                 </View>
             </View>
 
@@ -69,11 +69,9 @@ function ExpertInsights(props) {
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{paddingEnd:AppUtil.getHP(2)}}
+                contentContainerStyle={{ paddingEnd: AppUtil.getHP(2) }}
                 data={list}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                
+                renderItem={(item) => renderItem(item)}
             />
 
         </View>

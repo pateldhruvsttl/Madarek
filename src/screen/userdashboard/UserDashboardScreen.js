@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect,useState } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -10,12 +10,55 @@ import { AppUtil } from "../../utils/AppUtil";
 
 import UserDashboardIdeasList from "../../component/dashboard/UserDashboardIdeasList";
 import UserDetails from "../../component/dashboard/UserDetails";
-
+import { Service } from "../../service/Service";
+import { Loger } from "../../utils/Loger";
+import { EndPoints } from "../../service/EndPoints";
+import Dashboard from "../../model/Dashboard";
 
 const UserDashboardScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
+    const [dahboardData, setdahboardData] = useState([])
+    const [requestData, setrequestData] = useState([])
+    const [favouriteData, setfavouriteData] = useState([])
+
     const list = DATA.slice(0, 2);
+    
+    
+    useEffect(() => {
+        onUserDashboard();
+    },[])
+    
+    const onUserDashboard = () => {
+        const data = { "frontuser_id": 48 }
+        Service.post(EndPoints.dashboard, data, (res) => {
+            Loger.onLog('dashboard Response  ========>', JSON.stringify(res.data))
+            if (res?.statusCode === "1") {
+                const dashboardArr = []
+                const joinRequest = []
+                const favouriteIdeas = []
+                
+                res.data.Dashboard.dashboard_data.map((ele) => {
+                    const model = new Dashboard(ele)
+                    dashboardArr.push(model)//{title: model.title, count: model.count}
+                    setdahboardData(dashboardArr)
+                })
+                res.data.Join_Request.map((ele) => {
+                    const model = new Dashboard(ele)
+                    joinRequest.push(model);
+                    setrequestData(joinRequest)
+                })
+                res.data.Favourite_Ideas.map((ele) => {
+                    const model = new Dashboard(ele)
+                    favouriteIdeas.push(model);
+                    setfavouriteData(favouriteIdeas)
+                })
+            }
+            
+        }, (err) => {
+            Loger.onLog('dashboard  error ========>', err)
+        })
+    }
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"UserDashboardScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
@@ -23,15 +66,15 @@ const UserDashboardScreen = (props) => {
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                        <UserDetails data={SmeDetailsData}/>
+                        <UserDetails data={dahboardData}/>
                     </View>
 
                     <View style={Style.secondPos}>
-                        <UserDashboardIdeasList data={list} isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
+                        <UserDashboardIdeasList data={requestData} isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
                     </View>
 
                     <View style={Style.firstPos}>
-                        <UserDashboardIdeasList data={MaturationData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
+                        <UserDashboardIdeasList data={favouriteData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
                     </View>
 
                     <View style={Style.bottomBarView}>

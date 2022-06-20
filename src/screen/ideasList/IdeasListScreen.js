@@ -18,6 +18,7 @@ import { Loger } from "../../utils/Loger";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
+   
     const [allIdeaArr, setaAllIdeaArr] = useState([]);
     const [newIdeaArr, setNewIdeaArr] = useState([]);
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
@@ -140,8 +141,8 @@ const IdeasListScreen = (props) => {
         }, (err) => {
         })
     }
-    const navigateDetail = () => {
-        props.navigation.navigate('IdeaDetails')
+    const navigateDetail = (item) => {
+        props.navigation.navigate('IdeaDetails',item)
     }
     return (
         <SafeAreaView style={Style.container}>
@@ -155,7 +156,7 @@ const IdeasListScreen = (props) => {
                         tabBarIndicatorStyle: Style.itemBorder,
                         tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />}  />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail}} />}  />
                         <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr,likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
                         <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
                         <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />

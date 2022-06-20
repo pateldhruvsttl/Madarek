@@ -32,9 +32,17 @@ const IdeaContent = (props) => {
         <View style={[Style.headerAcademyContainer,
         { backgroundColor: props.isType == 'ChallengeDetail' ? GetAppColor.white : GetAppColor.lightGrey }]}>
 
-            <View style={Style.headerAcademyTitle}>
-                <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.title}</Text>
-            </View>
+            {
+                props.isType == 'ChallengeDetail' ?
+                    <View style={Style.headerAcademyTitle}>
+                        <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.title}</Text>
+                    </View>
+                    :
+                    <View style={Style.headerAcademyTitle}>
+                        <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.ideaTitle}</Text>
+                    </View>
+            }
+
 
             {
                 props.isType == 'ChallengeDetail' ?
@@ -53,15 +61,23 @@ const IdeaContent = (props) => {
                         <Text style={Style.contentTitle}>{props.data.date}</Text>
                         <View style={Style.profileArea}>
                             <IcnAvtarBg height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data.name}</Text>
+                            <Text style={Style.contentTitle}>{props.data.firstName} {props.data.lastName}</Text>
                         </View>
                     </View>
             }
+            {
+                props.isType == 'ChallengeDetail' ?
+                    <View style={Style.sectorCategoryArea}>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data.sector}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data.categoryName}</Bold> </Text>
+                    </View>
+                    :
+                    <View style={Style.sectorCategoryArea}>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data.sectorName}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data.categoryName}</Bold> </Text>
+                    </View>
 
-            <View style={Style.sectorCategoryArea}>
-                <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data.sector}</Bold></Text>
-                <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data.category}</Bold> </Text>
-            </View>
+            }
 
             <View style={Style.performanceContainer}>
 
@@ -75,15 +91,15 @@ const IdeaContent = (props) => {
                 <View style={Style.winningIcnContainerRight}>
                     <View style={Style.secondInnerCalView}>
                         <IcnWatchDone height={iconSize} width={iconSize} />
-                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.see}</Text>
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalView}</Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
-                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.like}</Text>
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalLike}</Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
-                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.comment}</Text>
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalComment}</Text>
                     </View>
                     {
                         props.isMyIdeaDetail ?
@@ -120,22 +136,22 @@ const IdeaContent = (props) => {
                     <>
                         <View style={Style.leftSide}>
                             <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor }]}>
-                                <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor }]}>{props.isMyIdeaDetail?Label.Maturation:Label.VoteNow}</Text>
+                                <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor }]}>{props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View style={Style.rightSide}>
                             {
-                                props.isMyIdeaDetail?
-                                <TouchableOpacity style={[Style.likeBtn,{backgroundColor: GetAppColor.lightBlue,}]}>
-                                <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                            </TouchableOpacity>
-                                :
-                                <TouchableOpacity style={Style.likeBtn}>
-                                <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                            </TouchableOpacity>
+                                props.isMyIdeaDetail ?
+                                    <TouchableOpacity style={[Style.likeBtn, { backgroundColor: GetAppColor.lightBlue, }]}>
+                                        <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity style={Style.likeBtn}>
+                                        <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                    </TouchableOpacity>
                             }
-                            
+
                             <TouchableOpacity style={Style.likeBtn}>
                                 <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                             </TouchableOpacity>
