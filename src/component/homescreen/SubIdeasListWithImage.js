@@ -20,9 +20,10 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
 import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
+import { useNavigation } from '@react-navigation/native';
 
 const SubIdeasListWithImage = (props) => {
-
+   
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -35,9 +36,11 @@ const SubIdeasListWithImage = (props) => {
             props.likeSpotLight(id)
         }
     }
-    const renderIdeaItem = ({ item }) => {
 
-        return (<TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
+    
+    const renderIdeaItem = ({ item }) => {
+        
+        return (<TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
 
@@ -65,9 +68,21 @@ const SubIdeasListWithImage = (props) => {
             </View>
 
             <View style={Style.leftItems}>
+                {
+                    props?.isType == "Ideas" || props?.isType == "Spotlight" ?
+                        <>
+                            <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
+                            <Text numberOfLines={2}
+                                style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
+                        </>
+                        :
+                        <>
+                            <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
+                            <Text numberOfLines={2}
+                                style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryDetails}</Text>
+                        </>
+                }
 
-                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
                 {
                     props?.isType == "Ideas" ?
@@ -96,7 +111,7 @@ const SubIdeasListWithImage = (props) => {
 
                             <View style={Style.calView}>
                                 <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                <Text style={Style.title}>{item.date}</Text>
                             </View>
 
                 }
@@ -142,13 +157,13 @@ const SubIdeasListWithImage = (props) => {
                 renderItem={renderIdeaItem}
                 keyExtractor={item => item.id}
             />
-            
+
             {
-                
-                (props?.btn=="" || props?.btn == undefined) ?null:
-                <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
-                    <Text style={Style.txtBottomBtn}> {props.btn}</Text>
-                </TouchableOpacity>
+
+                (props?.btn == "" || props?.btn == undefined) ? null :
+                    <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
+                        <Text style={Style.txtBottomBtn}> {props.btn}</Text>
+                    </TouchableOpacity>
             }
         </View>
     );

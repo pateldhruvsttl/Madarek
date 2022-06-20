@@ -8,8 +8,10 @@ export default class ExpertInsight {
 
         this.id = obj?.expert_id
         this.firstName = obj?.first_name || "No first Name"
+        this.date = obj?.date || "25 Jan 22"
+        this.time = obj?.time || "57 min read"
         this.lastName =  obj?.last_name || "No last Name"
-        this.profilePhoto =  obj?.user_photo || ""
+        this.profilePhoto =  obj?.user_photo || "https://i.imgur.com/5tj6S7Ol.jpg"
         this.ideaTitle =  obj?.idea_title || "No Title"
         this.jobTitle =  obj?.job_title || "No job Title"
         this.organization_name =  obj?.organization_name || "No organization Name"

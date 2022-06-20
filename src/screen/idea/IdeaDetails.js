@@ -23,7 +23,7 @@ const IdeaDetails = (props) => {
 
   const navigation = useNavigation();
   const { themeColor } = useSelector((state) => state)
-
+  const item = props.route.params
   const testData = [
     {
       url: 'https://i.imgur.com/SsJmZ9jl.jpg'
@@ -133,7 +133,7 @@ const IdeaDetails = (props) => {
 
   ];
 
-
+  
   return (
       <SafeAreaView style={{ flex: 1 }}>
         <CommonHeader isType={"IdeaDetails"}  />
@@ -141,10 +141,10 @@ const IdeaDetails = (props) => {
           <ScrollView>
             <View style={IdeaStyle.container}>
               <IdeaSlider Entries={testData} />
-              <IdeaContent data={DATA} />
+              <IdeaContent data={item} />
               <View style={IdeaStyle.contentBox}>
                 <Text style={IdeaStyle.heading}>{Label.Description}</Text>
-                <Text style={IdeaStyle.descriptionContent}>{DATA.Description}</Text>
+                <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
               </View>
               <UserProfileList profileData={userProfile} />
               <View style={IdeaStyle.videoPlay}>

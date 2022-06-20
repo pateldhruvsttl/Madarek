@@ -7,14 +7,14 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import SimilarExperts from '../../component/expertscreen/SimilarExperts';
 import Style from './ExpertDirectoryStyle';
 
-function ExpertDirectoryScreen() {
+function ExpertDirectoryScreen(props) {
     const { themeColor } = useSelector((state) => state)
 
     return (
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} />
             <View style={Style.MainView}>
-                <SimilarExperts data={expertInsightsData} maxLimit={0} />
+                <SimilarExperts data={props.route.params.data} />
             </View>
         </SafeAreaView>
     )

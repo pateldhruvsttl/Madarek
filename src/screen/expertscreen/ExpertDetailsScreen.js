@@ -1,5 +1,5 @@
 import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,9 +12,17 @@ import Style from './ExpertDetailsStyle';
 import { Label } from '../../utils/StringUtil';
 import { GetAppColor } from '../../utils/Colors';
 import { useNavigation } from '@react-navigation/native';
+import { EndPoints } from '../../service/EndPoints';
+import { Service } from '../../service/Service';
+import { useEffect } from 'react';
+import { Loger } from '../../utils/Loger';
+import ExpertInsight from '../../model/ExpertInsights';
 
-function ExpertDetailsScreen() {
+function ExpertDetailsScreen(props) {
     const { themeColor } = useSelector((state) => state)
+
+    const expertData = props.route.params.data
+    const ExpertInsight = props.route.params.item
 
     const navigation = useNavigation()
     return (
@@ -22,17 +30,17 @@ function ExpertDetailsScreen() {
             <CommonHeader isType={"ExpertDetailsScreen"} onMenuClick={() => null} />
             <View style={Style.MainView}>
                 <ScrollView>
-                    <ExpertProfile data={testProfileData} />
-                    <ExpertInsights data={expertInsightsData} />
-                    
+                    <ExpertProfile data={ExpertInsight} />
+                    <ExpertInsights data={expertData} />
+
                     <View style={Style.similarExpertView}>
-                        <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.SimilarExperts} />
+                        <SimilarExperts data={expertData} maxLimit={2} title={Label.SimilarExperts} />
                     </View>
 
                     <View style={Style.footerView}>
                         <Text style={Style.txtTitle}>{Label.ExpertDes}</Text>
                         <View style={Style.btnView}>
-                            <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={()=> navigation.navigate("BecomeAnExpert")}>
+                            <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("BecomeAnExpert")}>
                                 <Text style={[Style.txt, { color: themeColor.buttonColor }]}>{Label.LearnMore}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]}>

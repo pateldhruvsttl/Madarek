@@ -35,7 +35,7 @@ const SubIdeasList = (props) => {
     }
 }
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress()}>
+    <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress(item)}>
 
       <View style={Style.itemsView}>
 

@@ -6,10 +6,11 @@ export default class IdeaList {
             return;
         }
 
-        this.ideaTitle = obj?.idea_title || "No Sector";
+        this.ideaTitle = obj?.idea_title || "No Title";
         this.categoryName = obj?.category_name || "No Category"
         this.createDate = obj?.created_at || "No Date"
-
+        this.date = obj?.date || "15 Mar 22 - 29 Mar 22"
+        this.sectorName = obj?.sector_name || "No Sector"
 
         this.id = obj?.id
         this.firstName = obj?.first_name || "No First Name"

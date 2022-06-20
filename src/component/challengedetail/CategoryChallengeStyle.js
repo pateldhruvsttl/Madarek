@@ -4,7 +4,7 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const STYLE = StyleSheet.create({
-    MainView: { width: '100%', flex: 1, },
+    MainView: { width: '100%', flex: 1,marginVertical:AppUtil.getHP(1.5) ,paddingHorizontal:AppUtil.getWP(2)},
     subMainView: {
         width: '100%', flex: 1, flexDirection: 'row',
         paddingTop:AppUtil.getHP(1),

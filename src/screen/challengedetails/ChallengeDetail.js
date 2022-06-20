@@ -16,9 +16,10 @@ import ResourceChallenge from '../../component/challengedetail/ResourceChallenge
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
-const ChallengeDetail = () => {
+const ChallengeDetail = (props) => {
 
   const title = "ChallengeDetail"
+  const item = props.route.params
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={title} />
@@ -28,11 +29,11 @@ const ChallengeDetail = () => {
           <View style={PAGESTYLE.subMainView}>
 
             <IdeaSlider Entries={testData} />
-            <IdeaContent data={DATA} isType={title} />
+            <IdeaContent data={item} isType={title} />
 
             <View style={PAGESTYLE.contentBoxChallenge}>
               <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
-              <Text style={PAGESTYLE.descriptionContent}>{DATA.Description}</Text>
+              <Text style={PAGESTYLE.descriptionContent}>{item.categoryDetails}</Text>
               <Text style={PAGESTYLE.termsAndConTitle}>{Label.TermsAndCondition}</Text>
             </View>
 

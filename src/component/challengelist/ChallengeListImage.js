@@ -22,11 +22,11 @@ import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWith
 import ImageLoad from "react-native-image-placeholder";
 
 const SubIdeasListWithImage = (props) => {
-
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={()=>props.navigateDetail()} style={LISTSTYLE.renderMainView}>
+        
+        <TouchableOpacity onPress={() => props.navigateDetail(item)} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
                 {/* <Image
@@ -75,15 +75,15 @@ const SubIdeasListWithImage = (props) => {
 
                     <View style={LISTSTYLE.secondInnerCalView}>
                         <IcnWatchDone style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={LISTSTYLE.title}>{item.see}</Text>
+                        <Text style={LISTSTYLE.title}>{item.totalView}</Text>
                     </View>
                     <View style={LISTSTYLE.secondInnerCalView}>
                         <IcnThumsUp style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={LISTSTYLE.title}>{item.like}</Text>
+                        <Text style={LISTSTYLE.title}>{item.totalLike}</Text>
                     </View>
                     <View style={LISTSTYLE.secondInnerCalView}>
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={LISTSTYLE.title}>{item.comment}</Text>
+                        <Text style={LISTSTYLE.title}>{item.totalComment}</Text>
                     </View>
                     <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end'}}>
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
