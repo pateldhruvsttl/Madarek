@@ -24,24 +24,46 @@ const IdeaContent = (props) => {
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
 
-    const Bold = ({ children }) =>
-        <Text style={{ color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle }}>
-            {children}</Text>
+    const Bold = ({ children }) => (
+        <Text
+            style={{
+                color:
+                    props.isType == "ChallengeDetail"
+                        ? themeColor.headerColor
+                        : GetAppColor.acedemyRedtitle,
+            }}
+        >
+            {children}
+        </Text>
+    );
 
     return (
-        <View style={[Style.headerAcademyContainer,
-        { backgroundColor: props.isType == 'ChallengeDetail' ? GetAppColor.white : GetAppColor.lightGrey }]}>
-
-            {
-                props.isType == 'ChallengeDetail' ?
-                    <View style={Style.headerAcademyTitle}>
-                        <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.title}</Text>
-                    </View>
-                    :
-                    <View style={Style.headerAcademyTitle}>
-                        <Text style={[Style.academyTitle, { color: props.isType == 'ChallengeDetail' ? themeColor.headerColor : GetAppColor.acedemyRedtitle }]}>{props.data.ideaTitle}</Text>
-                    </View>
-            }
+        <View
+            style={[
+                Style.headerAcademyContainer,
+                {
+                    backgroundColor:
+                        props.isType == "ChallengeDetail"
+                            ? GetAppColor.white
+                            : GetAppColor.lightGrey,
+                },
+            ]}
+        >
+            <View style={Style.headerAcademyTitle}>
+                <Text
+                    style={[
+                        Style.academyTitle,
+                        {
+                            color:
+                                props.isType == "ChallengeDetail"
+                                    ? themeColor.headerColor
+                                    : GetAppColor.acedemyRedtitle,
+                        },
+                    ]}
+                >
+                    {props.data.title}
+                </Text>
+            </View>
 
             {
                 props.isType == 'ChallengeDetail' ?
@@ -64,6 +86,7 @@ const IdeaContent = (props) => {
                         </View>
                     </View>
             }
+
             {
                 props.isType == 'ChallengeDetail' ?
                     <View style={Style.sectorCategoryArea}>
@@ -78,154 +101,155 @@ const IdeaContent = (props) => {
 
             }
 
+            <View style={Style.performanceContainer}>
+                {props.isExpert ? null : (
+                    <View style={Style.winningIcnContainerLeft}>
+                        <IcnTrophy
+                            isType={props.isType}
+                            style={Style.winningIcn}
+                            height={iconSize}
+                            width={iconSize}
+                        />
+                        <IcnStar
+                            isType={props.isType}
+                            style={Style.winningIcn}
+                            height={iconSize}
+                            width={iconSize}
+                        />
+                        <IcnRewordComment
+                            isType={props.isType}
+                            style={Style.winningIcn}
+                            height={iconSize}
+                            width={iconSize}
+                        />
+                        <IcnRewordLight
+                            isType={props.isType}
+                            style={Style.winningIcn}
+                            height={iconSize}
+                            width={iconSize}
+                        />
+                    </View>
+                )}
 
-            <View style={Style.winningIcnContainerRight}>
-                <View style={Style.secondInnerCalView}>
-                    <IcnWatchDone height={iconSize} width={iconSize} />
-                    <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalView}</Text>
-                </View>
-                <View style={Style.secondInnerCalView}>
-                    <IcnThumsUp height={iconSize} width={iconSize} />
-                    <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalLike}</Text>
-                </View>
-                <View style={Style.secondInnerCalView}>
-                    <IcnComment height={iconSize} width={iconSize} />
-                    <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.totalComment}</Text>
-                </View>
-                {
-                    props.isMyIdeaDetail ?
+                <View style={Style.winningIcnContainerRight}>
+                    <View style={Style.secondInnerCalView}>
+                        <IcnWatchDone height={iconSize} width={iconSize} />
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                            {props.data.totalView}
+                        </Text>
+                    </View>
+                    <View style={Style.secondInnerCalView}>
+                        <IcnThumsUp height={iconSize} width={iconSize} />
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                            {props.data.totalLike}
+                        </Text>
+                    </View>
+                    <View style={Style.secondInnerCalView}>
+                        <IcnComment height={iconSize} width={iconSize} />
+                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                            {props.data.totalComment}
+                        </Text>
+                    </View>
+                    {props.isMyIdeaDetail ? (
                         <View style={Style.secondInnerCalViewOne}>
                             <Heart height={iconSize} width={iconSize} />
-                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>{props.data.comment}</Text>
-                        </View> : null
-                }
-
-                <View style={Style.performanceContainer}>
-                    {props.isExpert ? null : (
-                        <View style={Style.winningIcnContainerLeft}>
-                            <IcnTrophy
-                                isType={props.isType}
-                                style={Style.winningIcn}
-                                height={iconSize}
-                                width={iconSize}
-                            />
-                            <IcnStar
-                                isType={props.isType}
-                                style={Style.winningIcn}
-                                height={iconSize}
-                                width={iconSize}
-                            />
-                            <IcnRewordComment
-                                isType={props.isType}
-                                style={Style.winningIcn}
-                                height={iconSize}
-                                width={iconSize}
-                            />
-                            <IcnRewordLight
-                                isType={props.isType}
-                                style={Style.winningIcn}
-                                height={iconSize}
-                                width={iconSize}
-                            />
-                        </View>
-                    )}
-
-                    <View style={Style.winningIcnContainerRight}>
-                        <View style={Style.secondInnerCalView}>
-                            <IcnWatchDone height={iconSize} width={iconSize} />
-                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                                {props.data.see}
-                            </Text>
-                        </View>
-                        <View style={Style.secondInnerCalView}>
-                            <IcnThumsUp height={iconSize} width={iconSize} />
-                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                                {props.data.like}
-                            </Text>
-                        </View>
-                        <View style={Style.secondInnerCalView}>
-                            <IcnComment height={iconSize} width={iconSize} />
                             <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
                                 {props.data.comment}
                             </Text>
                         </View>
-                        {props.isMyIdeaDetail ? (
-                            <View style={Style.secondInnerCalViewOne}>
-                                <Heart height={iconSize} width={iconSize} />
-                                <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                                    {props.data.comment}
-                                </Text>
-                            </View>
-                        ) : null}
-                    </View>
+                    ) : null}
                 </View>
-                {props.isExpert ? <View style={Style.line} /> : (
-                    <View style={Style.btnArea}>
-                        {props.isType == "ChallengeDetail" ? (
-                            <>
-                                <View style={Style.leftSide}>
-                                    <TouchableOpacity style={[Style.followBtn]}>
+            </View>
+            {props.isExpert ? <View style={Style.line} /> : (
+                <View style={Style.btnArea}>
+                    {props.isType == "ChallengeDetail" ? (
+                        <>
+                            <View style={Style.leftSide}>
+                                <TouchableOpacity style={[Style.followBtn]}>
+                                    <IcnLikeblack
+                                        height={AppUtil.getHP(3.2)}
+                                        width={AppUtil.getHP(3.2)}
+                                    />
+                                    <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={Style.rightSide}>
+                                <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnBlockChain
+                                        height={AppUtil.getHP(3.2)}
+                                        width={AppUtil.getHP(3.2)}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnShareIcon
+                                        height={AppUtil.getHP(3.2)}
+                                        width={AppUtil.getHP(3.2)}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                    ) : (
+                        <>
+                            <View style={Style.leftSide}>
+                                <TouchableOpacity
+                                    style={[
+                                        Style.votingBtn,
+                                        { backgroundColor: themeColor.buttonColor },
+                                    ]}
+                                >
+                                    <Text
+                                        style={[
+                                            Style.voteNowBtnTitle,
+                                            { color: themeColor.buttonFontColor },
+                                        ]}
+                                    >
+                                        {props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={Style.rightSide}>
+                                {props.isMyIdeaDetail ? (
+                                    <TouchableOpacity
+                                        style={[
+                                            Style.likeBtn,
+                                            { backgroundColor: GetAppColor.lightBlue },
+                                        ]}
+                                    >
+                                        <IcnTimer
+                                            height={AppUtil.getHP(3.2)}
+                                            width={AppUtil.getHP(3.2)}
+                                        />
+                                    </TouchableOpacity>
+                                ) : (
+                                    <TouchableOpacity style={Style.likeBtn}>
                                         <IcnLikeblack
                                             height={AppUtil.getHP(3.2)}
                                             width={AppUtil.getHP(3.2)}
                                         />
-                                        <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
                                     </TouchableOpacity>
-                                </View>
+                                )}
 
-                                <View style={Style.rightSide}>
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnBlockChain
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnShareIcon
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            </>
-                        ) : (
-
-                            <>
-                                <View style={Style.leftSide}>
-                                    <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor }]}>
-                                        <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor }]}>{props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}</Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={Style.rightSide}>
-                                    {
-                                        props.isMyIdeaDetail ?
-                                            <TouchableOpacity style={[Style.likeBtn, { backgroundColor: GetAppColor.lightBlue, }]}>
-                                                <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                                            </TouchableOpacity>
-                                            :
-                                            <TouchableOpacity style={Style.likeBtn}>
-                                                <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                                            </TouchableOpacity>
-                                    }
-
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                                    </TouchableOpacity>
-                                </View>
-                            </>
-                        )
-                        }
-                    </View>
-                )
-                }
-            </View>
+                                <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnBlockChain
+                                        height={AppUtil.getHP(3.2)}
+                                        width={AppUtil.getHP(3.2)}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnShareIcon
+                                        height={AppUtil.getHP(3.2)}
+                                        width={AppUtil.getHP(3.2)}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                    )}
+                </View>
+            )}
         </View>
     );
-            }
+};
 
-
-    export default IdeaContent
+export default IdeaContent;
