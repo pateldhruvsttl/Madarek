@@ -36,6 +36,7 @@ const SubIdeasListWithImage = (props) => {
             props.likeSpotLight(id)
         }
     }
+    const renderIdeaItem = ({ item }) => {
 
         return (
             <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
