@@ -572,6 +572,46 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
+            case 'NotificationSetting':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                        <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                            <BackButton />
+    
+                            <View style={Style.centerIcnView}>
+                                <Text style={Style.txtHeader}>{Label.NotificationsSettings}</Text>
+                            </View>
+                            <View style={Style.icnEmpty} />
+                        </View>
+                    </>
+                );
+                break;
+                case 'ExpertInsightDetailWithComment':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ExpertInsightsDetail}</Text>
+                        </View>
+
+                        <BackButton />
+
+                        <View style={Style.rightIcnView}>
+                            {/* <TouchableOpacity>
+                                <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity> */}
+                            <TouchableOpacity>
+                                <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </>
+            )
+            break
         default: null;
     }
 }

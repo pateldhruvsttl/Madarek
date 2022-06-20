@@ -19,6 +19,7 @@ import { AppConfig } from "../../manager/AppConfig";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
+   
     const [allIdeaArr, setaAllIdeaArr] = useState([]);
     const [newIdeaArr, setNewIdeaArr] = useState([]);
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
@@ -155,10 +156,10 @@ const IdeasListScreen = (props) => {
                         tabBarIndicatorStyle: Style.itemBorder,
                         tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail}} />}  />
+                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr,likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
+                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
+                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

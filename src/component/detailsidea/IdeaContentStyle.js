@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { buttonBorderRadius } from '../../utils/Constant';
 
 const IdeaContentStyle = StyleSheet.create({
+    line:{height:1,width:AppUtil.getWP(90),alignSelf:"center",marginTop:AppUtil.getHP(1.5), backgroundColor:GetAppColor.barGrey, paddingHorizontal:AppUtil.getWP(5)},
     academyTitle: {
         fontFamily: FONTS.robotMedium,
         fontSize: AppUtil.getHP(2.3)

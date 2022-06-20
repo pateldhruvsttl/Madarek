@@ -16,12 +16,11 @@ const FavouriteCategories = (props) => {
     
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
-
     
 
     const renderItem = ({ item }) => {
         return (
-            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
+            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("ExpertDirectoryScreen",{data:props.Entries})}>
                 <IcnInformationTechnology fill={themeColor.buttonColor} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 <Text style={styles.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>

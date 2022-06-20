@@ -48,8 +48,8 @@ function ViewMoreIdeas(props) {
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={() =>props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
-                {selectFilter == 1 && <SubIdeasList onItemPress={() =>props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={(item) =>props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 1 && <SubIdeasList onItemPress={(item) =>props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
                 {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
             </View>
 

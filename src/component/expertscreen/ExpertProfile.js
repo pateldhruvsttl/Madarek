@@ -21,24 +21,33 @@ import IcnLinkedin from "../../assets/svg/IcnLinkedin"
 import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import { Label } from '../../utils/StringUtil'
+import ImageLoad from 'react-native-image-placeholder'
 
 
 function ExpertProfile(props) {
 
     const { themeColor } = useSelector((state) => state)
+    const data = props.data
+    let expertItemList = props?.data?.categoryInfo;
 
-    let expertItemList = props?.data?.expert;
+    const categoryDetail = typeof data?.categoryInfo !== 'string' ? data.categoryInfo : []
 
+    const getCategories = () =>
+        categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
+            <TouchableOpacity style={styles.btn}>
+                <Text style={styles.txtBtn}>{ele.category_name}</Text>
+            </TouchableOpacity>
+        ))
     return (
         <View style={styles.MainView}>
 
             <View style={styles.FirstView}>
 
                 <View style={styles.renderProfileView}>
-                    <Image
+                    <ImageLoad
                         style={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: props.data.profilePic }} />
+                        source={{ uri: data.profilePhoto }} />
 
                     <View style={[styles.expertIcnViewL, { backgroundColor: themeColor.buttonColor }]}>
                         <IcnBulb height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
@@ -46,21 +55,21 @@ function ExpertProfile(props) {
 
                 </View>
 
-                <Text style={styles.txtNameView}>{props.data.name}</Text>
-                <Text style={styles.txtSubNameView}>{props.data.job} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
+                <Text style={styles.txtNameView}>{data.firstName} {data.lastName}</Text>
+                <Text style={styles.txtSubNameView}>{data.jobTitle} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
 
                 <View style={styles.rowRightView}>
                     <View style={styles.secondInnerCalView}>
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{props.data.see}</Text>
+                        <Text style={styles.title}>{data.totalViews}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{props.data.like}</Text>
+                        <Text style={styles.title}>{data.totalLikes}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{props.data.comment}</Text>
+                        <Text style={styles.title}>{data.totalComments}</Text>
                     </View>
                 </View>
 
@@ -95,18 +104,11 @@ function ExpertProfile(props) {
 
 
                 </View>
-
-                <View style={styles.scrollSubView}>
-                    {
-                        expertItemList.map((item, index) => {
-                            return (
-                                <TouchableOpacity style={styles.btn}>
-                                    <Text style={styles.txtBtn}>{item}</Text>
-                                </TouchableOpacity>
-                            )
-                        })
-                    }
-                </View>
+                {
+                    <View style={styles.scrollSubView}>
+                        {getCategories()}
+                    </View>
+                }
 
                 <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]}>
                     <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
@@ -116,7 +118,7 @@ function ExpertProfile(props) {
 
             <View style={styles.aboutView}>
                 <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.About}</Text>
-                <Text style={styles.txtAboutDes}>{props.data.About}</Text>
+                <Text style={styles.txtAboutDes}>{data.ideaDescription}</Text>
             </View>
 
         </View>

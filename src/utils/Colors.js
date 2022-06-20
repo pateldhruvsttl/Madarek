@@ -46,6 +46,9 @@ export const GetAppColor = {
     borderColor : "#00000033",
     lightOrange1 : "#F0F0F0",
     lightblac:"#BFBFBF",
+
+    chatInputColor : "#F5F6FA",
+    inputBorder:"#0066CB",
     
 }
 

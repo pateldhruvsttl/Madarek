@@ -251,4 +251,13 @@ export const Label = {
     Online : isRTL?ARlabel._online :USlabel._online ,
     EditIdea : isRTL?ARlabel._editIdea :USlabel._editIdea ,
     
+    NotificationsSettings : isRTL?ARlabel._notificationsSettings :USlabel._notificationsSettings ,
+    AllNotifications : isRTL?ARlabel._allNotifications :USlabel._allNotifications ,
+    UserNotifications : isRTL?ARlabel._userNotifications :USlabel._userNotifications ,
+    CollaborateNotifications : isRTL?ARlabel._collaborateNotifications :USlabel._collaborateNotifications ,
+    ExpertNotifications : isRTL?ARlabel._expertNotifications :USlabel._expertNotifications ,
+    IdeaNotifications : isRTL?ARlabel._ideaNotifications :USlabel._ideaNotifications ,
+
+  ExpertInsightsDetail: isRTL?ARlabel._expertInsightsDetail:USlabel._expertInsightsDetail,
+
 }

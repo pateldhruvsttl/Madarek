@@ -20,9 +20,10 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
 import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
+import { useNavigation } from '@react-navigation/native';
 
 const SubIdeasListWithImage = (props) => {
-
+   
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -35,7 +36,6 @@ const SubIdeasListWithImage = (props) => {
             props.likeSpotLight(id)
         }
     }
-    const renderIdeaItem = ({ item }) => {
 
         return (
             <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>

@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect } from "react";
-import { View, Text,TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { useSelector } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -38,9 +38,12 @@ const HomeScreen = (props) => {
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
-    const [type, setT, setWinningIdeaArr] = useState([])
-    
-
+    const [type, setType] = useState('latest')
+    const [ideasList, setIdeasList] = useState(null);
+    const [popularIdeaArr, setpopularIdeaArr] = useState([])
+    const [newIdeaArr, setnewIdeaArr] = useState([])
+    const [winningIdeaArr, setwinningIdeaArr] = useState([])
+    const [allIdeaArr, setallIdeaArr] = useState([])
 
     useEffect(() => {
         onSlider();
@@ -207,8 +210,9 @@ const HomeScreen = (props) => {
                             isType={"Challenges"} btn={Label.ParticipateNow}
                             likeChallenge={() => likeChallenge()}
                             onButtonPress={() => { setModalVisible(true) }}
-                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen") }}
-                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen",{data:openChallenges}) }}
+                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail",item) }} 
+                            />
                     </View>
                 )
                 break;
@@ -220,22 +224,22 @@ const HomeScreen = (props) => {
                         <SubIdeasListWithImage data={spotLight.slice(0, 2)} isTitle={Label.MadarekSpotlight} isType={"Spotlight"}
                             likeSpotLight={likeSpotLight}
                             onButtonPress={() => { setModalVisible(true) }}
-                            onSeeMorePress={() => {  }}//props.navigation.navigate("ChallengesListScreen")
-                            onItemPress={() => { props.navigation.navigate("ChallengeDetail") }} />
+                            onSeeMorePress={() => { }}//props.navigation.navigate("ChallengesListScreen")
+                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail",item) }} />
                     </View>
                 )
                 break;
             case 'ExpertInsightsSlider':
                 return (
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
-                        <ExpertInsightsSlider Entries={expertInsight.slice(0, 2)} />
+                        <ExpertInsightsSlider Entries={expertInsight} />
                     </View>
                 )
                 break;
             case 'FavouriteCategories':
                 return (
                     <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
-                        <FavouriteCategories data={favouriteCategories.slice(0, 6)} />
+                        <FavouriteCategories data={favouriteCategories.slice(0, 6)} Entries={expertInsight}/>
                     </View>
                 )
                 break;
@@ -256,7 +260,7 @@ const HomeScreen = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"HomeScreenHeader"} />
+            <CommonHeader isType={"HomeScreenHeader"}/>
 
             <View style={Style.MainView}>
                 <FlatList

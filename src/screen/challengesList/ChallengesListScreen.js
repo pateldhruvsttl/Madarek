@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,10 +8,34 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import ListStyle from "./ChallengesListStyle";
 import ViewMoreChallenges from "../../component/challengelist/listing/ViewMoreChallenges"
 import { Label } from "../../utils/StringUtil";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import OpenChallenge from "../../model/OpenChallenges";
+
 
 const Tab = createMaterialTopTabNavigator();
 
 const ChallengesListScreen = (props) => {
+    const [openChallenge, setOpenChallenge] = useState([])
+    useEffect(() => {
+        onOpenChallenge()
+    }, [])
+
+    const onOpenChallenge = () => {
+        const data = '';
+        Service.post(EndPoints.openChallenges, data, (res) => {
+            var opChallenges = [];
+            res.data.forEach(element => {
+                let model = new OpenChallenge(element);
+                opChallenges.push(model);
+            });
+            setOpenChallenge(opChallenges)
+        }, (err) => {
+            Loger.onLog("", err)
+        })
+    }
+
+    // const data = props?.route?.params?.data ? props?.route?.params?.data : sliderdata
 
     return (
         <SafeAreaView style={ListStyle.container}>
@@ -25,10 +49,10 @@ const ChallengesListScreen = (props) => {
                         tabBarIndicatorStyle: ListStyle.itemBorder,
                         tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={Label.Open} children={() => <ViewMoreChallenges propName={{ type: "OpenChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Upcoming} children={() => <ViewMoreChallenges propName={{ type: "UpcomingChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Closed} children={() => <ViewMoreChallenges propName={{ type: "ClosedChallenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
-                        <Tab.Screen name={Label.Voting} children={() => <ViewMoreChallenges propName={{ type: "Challenge", data: sliderdata }} navigateDetail={() => props.navigation.navigate("ChallengeDetail")} />} />
+                        <Tab.Screen name={Label.Open} children={() => <ViewMoreChallenges propName={{ type: "OpenChallenge", data: openChallenge }}  navigateDetail={(item) => props.navigation.navigate("ChallengeDetail",item)} />} />
+                        <Tab.Screen name={Label.Upcoming} children={() => <ViewMoreChallenges propName={{ type: "UpcomingChallenge", data: openChallenge }} navigateDetail={(item) => props.navigation.navigate("ChallengeDetail",item)} />} />
+                        <Tab.Screen name={Label.Closed} children={() => <ViewMoreChallenges propName={{ type: "ClosedChallenge", data: openChallenge }} navigateDetail={(item) => props.navigation.navigate("ChallengeDetail",item)} />} />
+                        <Tab.Screen name={Label.Voting} children={() => <ViewMoreChallenges propName={{ type: "Challenge", data: openChallenge }} navigateDetail={(item) => props.navigation.navigate("ChallengeDetail",item)} />} />
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

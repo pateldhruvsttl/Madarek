@@ -17,13 +17,13 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
 
     const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
-
+    const data = Entries.slice(0, 2)
 
     const setExpertInsights = () => {
         return (
             <View style={styles.sliderContainer}>
                 <Carousel
-                    data={Entries}
+                    data={data}
                     renderItem={onSliderRend}
                     sliderWidth={sliderWidth}
                     itemWidth={itemWidth}
@@ -40,7 +40,7 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                 />
                 <View style={styles.paginView}>
                     <Pagination
-                        dotsLength={Entries.length}
+                        dotsLength={data.length}
                         activeDotIndex={isSelectIndicator}
                         containerStyle={styles.paginationContainer}
                         dotColor={GetAppColor.lightBlue}
@@ -56,13 +56,13 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
         const categoryDetail = typeof item?.categoryInfo !== 'string' ? item.categoryInfo : []
-      
-        const getCategories = () => 
-        categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
-            <TouchableOpacity style={styles.btn}>
-                <Text style={styles.categoryLabel}>{ele.category_name}</Text>
-            </TouchableOpacity>
-        ))
+
+        const getCategories = () =>
+            categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.categoryLabel}>{ele.category_name}</Text>
+                </TouchableOpacity>
+            ))
         return (
             <View style={styles.renderMainView}>
 
@@ -70,9 +70,9 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                     <ImageLoad
                         style={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: item.profilePhoto }} 
+                        source={{ uri: item.profilePhoto }}
                         borderRadius={AppUtil.getHP(15)}
-                        />
+                    />
                 </View>
 
                 <Text style={styles.txtNameView}>{item.firstName}</Text>
@@ -83,12 +83,12 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                 <Text numberOfLines={1} style={styles.txtTitleView}>{item.ideaTitle}</Text>
                 <Text numberOfLines={2} style={styles.txtSubtitleView}>{item.ideaDescription}</Text>
 
-               
-               {
-                   <View style={styles.btnGrp}>
-                    {getCategories()}
+
+                {
+                    <View style={styles.btnGrp}>
+                        {getCategories()}
                     </View>
-               }
+                }
 
                 <View style={styles.secondCalView}>
                     <View style={styles.secondInnerCalView}>
@@ -113,7 +113,7 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
             <View style={styles.titleView}>
                 <Text style={screen ? styles.txtTitleOne : styles.txtTitle}> {Label.expertInsights}</Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen")}>
+                <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: Entries })}>
                     <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}> {Label.viewAll}</Text>
                 </TouchableOpacity>
             </View>
