@@ -46,8 +46,11 @@ function ExpertProfile(props) {
                 <View style={styles.renderProfileView}>
                     <ImageLoad
                         style={styles.profilePicView}
+                        placeholderStyle={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: data.profilePhoto }} />
+                        source={{ uri: data.profilePhoto }}
+                        borderRadius={AppUtil.getHP(20)}
+                    />
 
                     <View style={[styles.expertIcnViewL, { backgroundColor: themeColor.buttonColor }]}>
                         <IcnBulb height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />

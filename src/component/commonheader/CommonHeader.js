@@ -541,16 +541,22 @@ const CommonHeader = (props) => {
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
-                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow}]}>
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
                         <BackButton />
 
                         <View style={Style.container}>
                             <View style={Style.profile}>
-                                <Image height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+                                <ImageLoad
+                                    style={Style.subProfile}
+                                    resizeMode='cover'
+                                    source={{ uri:"" }}
+                                    borderRadius={AppUtil.getHP(2.5)}
+                                    placeholderStyle={Style.subProfile}
+                                />
                             </View>
                             <View style={Style.chatDetail}>
                                 <Text style={Style.chatTxt}>Abhimanyu Bhatacharya</Text>
-                                <Text style={[Style.chatTxt,Style.onlineTxt]}>{Label.Online}</Text>
+                                <Text style={[Style.chatTxt, Style.onlineTxt]}>{Label.Online}</Text>
                             </View>
                         </View>
                         <View style={Style.icnEmpty} />
@@ -572,22 +578,22 @@ const CommonHeader = (props) => {
                 </>
             );
             break;
-            case 'NotificationSetting':
-                return (
-                    <>
-                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
-                        <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
-                            <BackButton />
-    
-                            <View style={Style.centerIcnView}>
-                                <Text style={Style.txtHeader}>{Label.NotificationsSettings}</Text>
-                            </View>
-                            <View style={Style.icnEmpty} />
+        case 'NotificationSetting':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={GetAppColor.statusBarYellow} />
+                    <View style={[Style.MainView, { backgroundColor: GetAppColor.headerLightYellow }]}>
+                        <BackButton />
+
+                        <View style={Style.centerIcnView}>
+                            <Text style={Style.txtHeader}>{Label.NotificationsSettings}</Text>
                         </View>
-                    </>
-                );
-                break;
-                case 'ExpertInsightDetailWithComment':
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            );
+            break;
+        case 'ExpertInsightDetailWithComment':
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />

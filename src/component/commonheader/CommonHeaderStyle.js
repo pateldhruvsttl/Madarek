@@ -43,9 +43,14 @@ const CommonHeaderStyle = StyleSheet.create({
         height: AppUtil.getHP(5),
         borderRadius: AppUtil.getHP(2.5)
     },
+    subProfile: {
+        width: AppUtil.getHP(5),
+        height: AppUtil.getHP(5),
+        borderRadius: AppUtil.getHP(2.5)
+    },
 
     chatDetail: { alignItems: 'flex-start', justifyContent: 'center', marginStart: AppUtil.getWP(2) },
-    onlineTxt : {
+    onlineTxt: {
         fontFamily: FONTS.robotRegular,
     },
     chatTxt: {

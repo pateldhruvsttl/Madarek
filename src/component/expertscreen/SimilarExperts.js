@@ -12,6 +12,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
+import ImageLoad from 'react-native-image-placeholder';
 
 function SimilarExperts(props) {
 
@@ -19,12 +20,18 @@ function SimilarExperts(props) {
     const { themeColor } = useSelector((state) => state)
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={Style.renderMainView} onPress={() => navigation.navigate("ExpertDetailsScreen", { data: props.data,item:item })}>
+        <TouchableOpacity style={Style.renderMainView} onPress={() => navigation.navigate("ExpertDetailsScreen", { data: props.data, item: item })}>
 
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
             <View style={Style.rightItems}>
-                <Image style={Style.img} resizeMode='cover' source={{ uri: item.profilePhoto }} />
+                <ImageLoad
+                    style={Style.img}
+                    resizeMode='cover'
+                    source={{ uri: item.profilePhoto }}
+                    placeholderStyle={Style.img}
+                    borderRadius={AppUtil.getHP(4)}
+                />
             </View>
 
             <View style={Style.leftItems}>
