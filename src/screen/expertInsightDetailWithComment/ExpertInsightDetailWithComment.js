@@ -29,6 +29,7 @@ import IcnDownload from "../../assets/svg/IcnDownload";
 
 import { AppUtil } from "../../utils/AppUtil";
 import { TextInput } from "react-native-gesture-handler";
+import ImageLoad from "react-native-image-placeholder";
 
 const ExpertInsightDetailWithComment = (props) => {
   const navigation = useNavigation();
@@ -161,11 +162,14 @@ const ExpertInsightDetailWithComment = (props) => {
           marginTop: AppUtil.getHP(2),
         }}
       >
-        <Image
+        <ImageLoad
           style={[
             ExpertInsightDetailStyle.userImage,
             { marginTop: AppUtil.getHP(1) },
           ]}
+          source={{ uri: '' }}
+          borderRadius={AppUtil.getHP(2.5)}
+          placeholderStyle={ExpertInsightDetailStyle.userImage}
         />
         <View style={ExpertInsightDetailStyle.leftItems1}>
           <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
@@ -178,7 +182,7 @@ const ExpertInsightDetailWithComment = (props) => {
           </Text>
 
           <View style={ExpertInsightDetailStyle.calView}>
-          <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+            <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
 
             <Text style={ExpertInsightDetailStyle.icnTitle}>{589}</Text>
 
@@ -244,7 +248,7 @@ const ExpertInsightDetailWithComment = (props) => {
           showsHorizontalScrollIndicator={false}
         >
           {DATAPERSON.map((item) => (
-            <Image
+            <ImageLoad
               style={ExpertInsightDetailStyle.img}
               resizeMode="cover"
               source={{ uri: item.url }}
@@ -264,7 +268,15 @@ const ExpertInsightDetailWithComment = (props) => {
             <IdeaSlider Entries={testData} />
             <IdeaContent data={DATA} isMyIdeaDetail={false} isExpert={true} />
             <View style={ExpertInsightDetailStyle.userFlexView}>
-              <Image style={ExpertInsightDetailStyle.userImage} />
+              <ImageLoad
+                style={[
+                  ExpertInsightDetailStyle.userImage,
+                  { marginTop: AppUtil.getHP(1) },
+                ]}
+                source={{ uri: '' }}
+                borderRadius={AppUtil.getHP(2.5)}
+                placeholderStyle={ExpertInsightDetailStyle.userImage}
+              />
               <View>
                 <Text style={ExpertInsightDetailStyle.userName}>
                   Abhimanyu Ramanuj
