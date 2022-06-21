@@ -3,7 +3,7 @@ import React from 'react'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
 import FONTS from '../../utils/Fonts'
-import { buttonHeight } from '../../utils/Constant';
+import { buttonFontSize, buttonHeight } from '../../utils/Constant';
 const Style = StyleSheet.create({
 
 
