@@ -21,7 +21,7 @@ const TabPopularIdeas = (props) => {
                         likeIdea={props.likeIdea}
                         btn={props.data.length > 0 ? Label.SeeAllIdeas : ""}
                         onButtonPress={() => { navigation.navigate("IdeasListScreen", { likeIdea: props.likeIdea }) }}
-                        onItemPress={() => { navigation.navigate("IdeaDetails") }} />
+                        onItemPress={(item) => { navigation.navigate("IdeaDetails",item) }} />
 
                     :
                     <View style={ Style.emptyView}>

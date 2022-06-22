@@ -140,8 +140,8 @@ const IdeasListScreen = (props) => {
         })
     }
 
-    const navigateDetail = () => {
-        props.navigation.navigate('IdeaDetails')
+    const navigateDetail = (item) => {
+        props.navigation.navigate('IdeaDetails',item)
     }
     
     return (
