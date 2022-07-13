@@ -21,7 +21,7 @@ import IcnSelectedHeartWithRound from "../../assets/svg/IcnSelectedHeartWithRoun
 import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import ImageLoad from "react-native-image-placeholder";
 
-const SubIdeasListWithImage = (props) => {
+const ChallengeListImage = (props) => {
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
@@ -110,7 +110,7 @@ const SubIdeasListWithImage = (props) => {
         </View>
     );
 }
-export default memo(SubIdeasListWithImage);
+export default memo(ChallengeListImage);
 
 
 

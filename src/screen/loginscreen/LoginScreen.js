@@ -56,13 +56,9 @@ const LoginScreen = (props) => {
     // }
 
     const loginData = {
-        // pwd: password,
-        // email_mobile: email,
-        // device_id: deviceId,
-
-        "email_mobile": "jaydipsinh.vi@gmail.com",
-        "pwd": "1234567",
-        "device_id": "1BC986C3-0B2E-4698-AE31-5EA8121E0713"
+        pwd: password,
+        email_mobile: email,
+        device_id: deviceId,
     }
 
     const signIn = () => {
@@ -162,34 +158,34 @@ const LoginScreen = (props) => {
 
 
     const validateFields = () => {
-        // if (isMobilelogin) {
-        //     if (!mobileNumber.trim()) {
-        //         showMessage(Label.Phone)
-        //         return false
-        //     }
-        //     if (showPassword) {
-        //         if (password.trim() === '') {
-        //             showMessage(Label.PasswordLogin)
-        //             return false
-        //         }
-        //     } else {
-        //         const otpJoin = first + second + third + fourth + fifth + sixth + '7';
-        //         // alert( typeof Number(otpJoin))
-        //         if (otpNumber != Number(otpJoin)) {
-        //             showMessage(Label.Pin)
-        //             return false
-        //         }
-        //     }
-        // }
-        // else {
-        //     if (!email.trim() || !emailValidate(email)) {
-        //         showMessage(Label.Email)
-        //         return false
-        //     } else if (password.trim() === '') {
-        //         showMessage(Label.PasswordLogin)
-        //         return false
-        //     }
-        // }
+        if (isMobilelogin) {
+            if (!mobileNumber.trim()) {
+                showMessage(Label.Phone)
+                return false
+            }
+            if (showPassword) {
+                if (password.trim() === '') {
+                    showMessage(Label.PasswordLogin)
+                    return false
+                }
+            } else {
+                const otpJoin = first + second + third + fourth + fifth + sixth + '7';
+                // alert( typeof Number(otpJoin))
+                if (otpNumber != Number(otpJoin)) {
+                    showMessage(Label.Pin)
+                    return false
+                }
+            }
+        }
+        else {
+            if (!email.trim() || !emailValidate(email)) {
+                showMessage(Label.Email)
+                return false
+            } else if (password.trim() === '') {
+                showMessage(Label.PasswordLogin)
+                return false
+            }
+        }
         signIn()
         resetField()
         navigateHomeScreen()

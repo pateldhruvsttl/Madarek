@@ -21,8 +21,9 @@ const IdeaList = (props) => {
     const [winningIdeaList, setWinningIdeaList] = useState([])
 
     useEffect(()=>{
-        Loger.onLog("",newIdeasList);
-    }, [newIdeasList])
+        onSelectTab(0, "popular")
+    }, [])
+
     const onSelectTab = (value, type) => {
 
         const data = {
