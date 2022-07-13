@@ -38,12 +38,7 @@ const HomeScreen = (props) => {
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
-    const [type, setType] = useState('latest')
-    const [ideasList, setIdeasList] = useState(null);
-    const [popularIdeaArr, setpopularIdeaArr] = useState([])
-    const [newIdeaArr, setnewIdeaArr] = useState([])
-    const [winningIdeaArr, setwinningIdeaArr] = useState([])
-    const [allIdeaArr, setallIdeaArr] = useState([])
+   
 
     useEffect(() => {
         onSlider();

@@ -36,125 +36,127 @@ const SubIdeasListWithImage = (props) => {
             props.likeSpotLight(id)
         }
     }
+    const renderIdeaItem = ({ item }) => {
 
-    return (
-        <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
-<Text>hello world</Text>
-            {/* <View style={Style.rightItems}>
+        return (
+            <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
+                <View style={Style.rightItems}>
 
-                <View style={Style.img}>
-                    <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                    <View style={Style.img}>
+                        <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                    </View>
+                    {
+                        item?.like ?
+                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                                <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                            </TouchableOpacity>
+                            :
+                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                                <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                            </TouchableOpacity>
+                    }
+
+                    <View style={Style.rewordView}>
+                        {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                        {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                        {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                        {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                    </View>
+
                 </View>
-                {
-                    item?.like ?
-                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
-                            <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        </TouchableOpacity>
-                        :
-                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
-                            <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        </TouchableOpacity>
-                }
 
-                <View style={Style.rewordView}>
-                    {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                </View>
+                <View style={Style.leftItems}>
 
-            </View>
+                    <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
-            <View style={Style.leftItems}>
-
-                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
-
-                {
-                    props?.isType == "Ideas" ?
-
-                        <View style={Style.calView}>
-                            <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-
-                            <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
-                        </View>
-
-                        :
-
-                        props?.isType == "Spotlight" ?
+                    {
+                        props?.isType == "Ideas" ?
 
                             <View style={Style.calView}>
                                 <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                 <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
 
                                 <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.name}</Text>
+                                <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
                             </View>
 
                             :
 
-                            <View style={Style.calView}>
-                                <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-                            </View>
+                            props?.isType == "Spotlight" ?
 
-                }
+                                <View style={Style.calView}>
+                                    <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
 
-                <View style={Style.secondCalView}>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
+                                    <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    <Text style={Style.title}>{item.name}</Text>
+                                </View>
+
+                                :
+
+                                <View style={Style.calView}>
+                                    <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                </View>
+
+                    }
+
+                    <View style={Style.secondCalView}>
+                        <View style={Style.secondInnerCalView}>
+                            <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
+                        </View>
+                        <View style={Style.secondInnerCalView}>
+                            <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
+                        </View>
+                        <View style={Style.secondInnerCalView}>
+                            <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
+                        </View>
+                        <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                            <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                        </TouchableOpacity>
                     </View>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
-                    </View>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
-                    </View>
-                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
-                        <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                    </TouchableOpacity>
+
                 </View>
 
-            </View> */}
+            </TouchableOpacity>
+        )
+    };
 
-        </TouchableOpacity>)
-};
+    return (
+        <View style={Style.MainView}>
 
-// return (
-//     <View style={Style.MainView}>
-
-//         {
-//             props?.isTitle &&
-//             <View style={Style.titleView}>
-//                 <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
-//                 <TouchableOpacity onPress={() => props.onSeeMorePress()}>
-//                     <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
-//                 </TouchableOpacity>
-//             </View>
-//         }
+            {
+                props?.isTitle &&
+                <View style={Style.titleView}>
+                    <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
+                    <TouchableOpacity onPress={() => props.onSeeMorePress()}>
+                        <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+                    </TouchableOpacity>
+                </View>
+            }
 
 
-//         <FlatList
-//             data={props.data}
-//             scrollEnabled={props?.scrollEnabled ? true : false}
-//             renderItem={renderIdeaItem}
-//             keyExtractor={item => item.id}
+            <FlatList
+                data={props.data}
+                scrollEnabled={props?.scrollEnabled ? true : false}
+                renderItem={renderIdeaItem}
+                keyExtractor={item => item.id}
 
-            
-//         />
-//         {
-//          (props?.btn == "" || props?.btn == undefined) ? null :
-//         <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
-//             <Text style={Style.txtBottomBtn}> {props.btn}</Text>
-//         </TouchableOpacity>
-//         }
-//     </View>
 
+            />
+            {
+                (props?.btn == "" || props?.btn == undefined) ? null :
+                    <TouchableOpacity style={Style.bottomBtn} onPress={() => props.onButtonPress()}>
+                        <Text style={Style.txtBottomBtn}> {props.btn}</Text>
+                    </TouchableOpacity>
+            }
+        </View>
+    )
+}
 
 
 
