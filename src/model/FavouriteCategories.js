@@ -7,7 +7,7 @@ export default class FavouriteCategories {
         }
 
         this.id = obj?.category_id 
-        this.categoryName = obj?.category_name || "No Category"
+        this.categoryName = obj?.category_name ? obj?.category_name : "No Category"
         this.categoryIcon =  obj?.category_icon || ""
     }
 }

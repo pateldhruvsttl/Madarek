@@ -29,6 +29,7 @@ export const Service = {
             Loger.onServerLog("Res",baseURL+endPoint,response.data);
             AppUtil.onLoding(false);
             return success(response.data)
+            
         }).catch((err)=>{
             AppUtil.onLoding(false);
             return error(err)

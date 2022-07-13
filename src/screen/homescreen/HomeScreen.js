@@ -24,14 +24,13 @@ import MadarekSportlight from "../../model/MadarekSportlight";
 import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 import ExpertInsight from "../../model/ExpertInsights";
 import category from "../../model/FavouriteCategories";
+import { UserManager } from "../../manager/UserManager";
 
 
 
 const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-    const list = DATA.slice(0, 2);
-
     const [modalVisible, setModalVisible] = useState(false);
     const [bannerList, setBannerList] = useState([])
     const [openChallenges, setOpenChallenges] = useState([]);
@@ -42,10 +41,10 @@ const HomeScreen = (props) => {
 
     useEffect(() => {
         onSlider();
-        onOpenChallenge();
-        onSpotlight();
-        onFavouriteCategories();
-        onExpertInsights();
+        //  onOpenChallenge();
+        // onSpotlight();
+        // onFavouriteCategories();
+        // onExpertInsights();
 
     }, []);
 
@@ -67,21 +66,21 @@ const HomeScreen = (props) => {
         })
     }
     const onOpenChallenge = () => {
-        const data = '';
-        Service.post(EndPoints.openChallenges, data, (res) => {
+        Service.post(EndPoints.openChallenges, "", (res) => {
             var opChallenges = [];
-            res.data.forEach(element => {
+            res.data.popularIdea.forEach(element => {
+                Loger.onLog("", element);
                 let model = new OpenChallenges(element);
                 opChallenges.push(model);
             });
             setOpenChallenges(opChallenges)
         }, (err) => {
-            Loger.onLog("", err)
+            Loger.onLog("###", err)
         })
     }
     const onSpotlight = () => {
         const data = JSON.stringify({
-            "frontuser_id": 48
+            "frontuser_id": UserManager.userId,
         });
 
         Service.post(EndPoints.madarekSpotlight, data, (res) => {
@@ -272,63 +271,6 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
-const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
+const dtList = [ "Slider", "Tab","Challenges"];
+// const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
 
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        title: 'Family business',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-
-];
-const expertData = [
-    {
-        name: 'Naredra Modi',
-        job: 'Game Tester',
-        title: 'Clean ocena plastic with HP SS',
-        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        see: '700',
-        like: '210',
-        comment: '180',
-    },
-    {
-        name: 'Bhupendra Patel',
-        job: 'App Tester',
-        title: 'Clean ocena plastic with HP SS',
-        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        see: '700',
-        like: '200',
-        comment: '80',
-    },
-]
