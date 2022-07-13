@@ -23,7 +23,7 @@
     "react-google-login": "^5.2.2",
     "react-native": "0.67.3",
     "react-native-country-picker-modal": "^2.0.0",
-    "react-native-device-info": "^8.7.0",
+    "react-native-device-info": "^8.7.1",
     "react-native-fast-image": "^8.5.11",
     "react-native-gesture-handler": "^2.2.0",
     "react-native-image-picker": "^4.7.3",

@@ -22,6 +22,11 @@ import LogoutIcn from '../../assets/svg/drawerIcon/LogoutIcn'
 import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
 import { UserManager } from '../../manager/UserManager'
 import ImageLoad from 'react-native-image-placeholder'
+import { Service } from '../../service/Service'
+import { deviceId } from '../../utils/Constant'
+import { EndPoints } from '../../service/EndPoints'
+import { Loger } from '../../utils/Loger'
+import Login from '../../model/Login'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -46,6 +51,22 @@ const MyDrawerScreen = (props) => {
       
     setSelectedButtonIndex(index)
 
+  }
+
+  onLogoutPressed=()=>{
+    const data={
+      "lang" :"en",
+      "frontuser_id": 48,
+      "device_id":deviceId,
+      "token" : "62c7e1e43fe44"
+  }
+    Service.post(EndPoints.logout, data, (res)=>{
+      Loger.onLog('Drawer Logout response',res);
+      props.navigation.navigate("LoginScreen")
+
+    },(err)=>{
+      Loger.onLog('Drawer Logout error',err);
+    })
   }
 
   const renderCollapseView = () => {
@@ -213,7 +234,7 @@ const MyDrawerScreen = (props) => {
         </TouchableOpacity>
         <View style={drawerStyles.line} />
 
-        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => props.navigation.navigate("LoginScreen")}>
+        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => onLogoutPressed()}>
           <LogoutIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
