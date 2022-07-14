@@ -14,6 +14,8 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import { onLoding } from "../../../App";
 import { deviceId } from "../../utils/Constant";
+import { UserManager } from "../../manager/UserManager";
+import { AppConfig } from "../../manager/AppConfig";
 
 function NotificationsScreen() {
   let item1 = {
@@ -39,9 +41,9 @@ function NotificationsScreen() {
       
     const data = {
       lang: "en",
-      frontuser_id: 48,
+      frontuser_id: UserManager.userId,
       device_id: deviceId,
-      token: "62cd03d7f20fc",
+      token: AppConfig.token,
       page: "1",
     };
     Service.post(

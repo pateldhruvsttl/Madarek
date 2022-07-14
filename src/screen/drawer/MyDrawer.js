@@ -27,6 +27,7 @@ import { deviceId } from '../../utils/Constant'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
+import { AppConfig } from '../../manager/AppConfig'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -56,9 +57,9 @@ const MyDrawerScreen = (props) => {
   onLogoutPressed=()=>{
     const data={
       "lang" :"en",
-      "frontuser_id": 48,
+      "frontuser_id": UserManager.userId,
       "device_id":deviceId,
-      "token" : "62c7e1e43fe44"
+      "token" : AppConfig.token
   }
     Service.post(EndPoints.logout, data, (res)=>{
       Loger.onLog('Drawer Logout response',res);
