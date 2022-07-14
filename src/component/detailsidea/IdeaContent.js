@@ -42,22 +42,15 @@ const IdeaContent = (props) => {
             style={[
                 Style.headerAcademyContainer,
                 {
-                    backgroundColor:
-                        props.isType == "ChallengeDetail"
-                            ? GetAppColor.white
-                            : GetAppColor.lightGrey,
+                    backgroundColor: props.isType == "ChallengeDetail" ? GetAppColor.white : GetAppColor.lightGrey,
                 },
             ]}
         >
             <View style={Style.headerAcademyTitle}>
                 <Text
-                    style={[
-                        Style.academyTitle,
+                    style={[ Style.academyTitle,
                         {
-                            color:
-                                props.isType == "ChallengeDetail"
-                                    ? themeColor.headerColor
-                                    : GetAppColor.acedemyRedtitle,
+                            color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle,
                         },
                     ]}
                 >
@@ -160,6 +153,7 @@ const IdeaContent = (props) => {
                     ) : null}
                 </View>
             </View>
+
             {props.isExpert ? <View style={Style.line} /> : (
                 <View style={Style.btnArea}>
                     {props.isType == "ChallengeDetail" ? (
@@ -192,56 +186,33 @@ const IdeaContent = (props) => {
                     ) : (
                         <>
                             <View style={Style.leftSide}>
-                                <TouchableOpacity
-                                    style={[
-                                        Style.votingBtn,
-                                        { backgroundColor: themeColor.buttonColor },
-                                    ]}
-                                >
-                                    <Text
-                                        style={[
-                                            Style.voteNowBtnTitle,
-                                            { color: themeColor.buttonFontColor },
-                                        ]}
-                                    >
+                                <TouchableOpacity style={[Style.votingBtn,{ backgroundColor: themeColor.buttonColor },]} >
+                                    <Text style={[ Style.voteNowBtnTitle,{ color: themeColor.buttonFontColor },]}>
                                         {props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}
                                     </Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={Style.rightSide}>
-                                {props.isMyIdeaDetail ? (
-                                    <TouchableOpacity
-                                        style={[
-                                            Style.likeBtn,
-                                            { backgroundColor: GetAppColor.lightBlue },
-                                        ]}
-                                    >
-                                        <IcnTimer
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        />
+                                {props.isMyIdeaDetail ? 
+                                (
+                                    <TouchableOpacity style={[Style.likeBtn,{ backgroundColor: GetAppColor.lightBlue },]}>
+                                        <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
                                     </TouchableOpacity>
-                                ) : (
+                                ) 
+                                : 
+                                (
                                     <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnLikeblack
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        />
+                                        <IcnLikeblack height={AppUtil.getHP(3.2)}width={AppUtil.getHP(3.2)}/>
                                     </TouchableOpacity>
                                 )}
 
                                 <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnBlockChain
-                                        height={AppUtil.getHP(3.2)}
-                                        width={AppUtil.getHP(3.2)}
-                                    />
+                                    <IcnBlockChain  height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
                                 </TouchableOpacity>
+
                                 <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnShareIcon
-                                        height={AppUtil.getHP(3.2)}
-                                        width={AppUtil.getHP(3.2)}
-                                    />
+                                    <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder}/>
                                 </TouchableOpacity>
                             </View>
                         </>

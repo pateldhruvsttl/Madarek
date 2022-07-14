@@ -64,16 +64,23 @@ const LoginScreen = (props) => {
     const signIn = () => {
         Service.post(EndPoints.login, loginData, (res) => {
 
-            UserManager.userId = res.data.userId;
-            UserManager.email = res.data.email;
-            UserManager.profilePicture = res.data.profilePicture;
-            UserManager.mobile = res.data.mobile;
-            UserManager.userName = res.data.userName;
+            if (res.statusCode == 1) {
 
-            AppConfig.lang = res.lang;
-            AppConfig.token = res.token;
+                UserManager.userId = res.data.userId;
+                UserManager.email = res.data.email;
+                UserManager.profilePicture = res.data.profilePicture;
+                UserManager.mobile = res.data.mobile;
+                UserManager.userName = res.data.userName;
 
+                AppConfig.lang = res.lang;
+                AppConfig.token = res.token;
 
+                navigateHomeScreen();
+            }
+            else if (res.statusCode == 0)
+            {
+                showMessage(res.message)
+            }
         }, (err) => {
             Loger.onLog('Login screen error ========>', err)
         })
@@ -169,8 +176,7 @@ const LoginScreen = (props) => {
                     return false
                 }
             } else {
-                const otpJoin = first + second + third + fourth + fifth + sixth + '7';
-                // alert( typeof Number(otpJoin))
+                const otpJoin = first + second + third + fourth + fifth + sixth;
                 if (otpNumber != Number(otpJoin)) {
                     showMessage(Label.Pin)
                     return false
@@ -181,14 +187,15 @@ const LoginScreen = (props) => {
             if (!email.trim() || !emailValidate(email)) {
                 showMessage(Label.Email)
                 return false
-            } else if (password.trim() === '') {
+            }
+            else if (password.trim() === '') {
                 showMessage(Label.PasswordLogin)
                 return false
             }
         }
         signIn()
         resetField()
-        navigateHomeScreen()
+
 
     }
     const resetField = () => {
@@ -210,7 +217,7 @@ const LoginScreen = (props) => {
         setCountry(country)
         setCallCode(country.callingCode[0]);
     }
-   
+
     const Bold = ({ children }) => <Text style={{ fontFamily: FONTS.robotBold }}>{children}</Text>
 
     return (
@@ -290,7 +297,9 @@ const LoginScreen = (props) => {
                             <View>
                                 <View style={PAGESTYLE.otpArea}>
                                     {
-                                        showPassword ? null :
+                                        showPassword ?
+                                            null
+                                            :
                                             <>
                                                 <Text style={PAGESTYLE.addOtp}>{Label.EnterOtpTitle}</Text>
                                                 <TouchableOpacity style={PAGESTYLE.getOtpArea}>
@@ -370,7 +379,7 @@ const LoginScreen = (props) => {
                                                 onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
                                             />
 
-                                            
+
                                         </View>
                                 }
                                 {

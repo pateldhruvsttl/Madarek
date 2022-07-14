@@ -41,10 +41,10 @@ const HomeScreen = (props) => {
 
     useEffect(() => {
         onSlider();
-        //  onOpenChallenge();
-        // onSpotlight();
-        // onFavouriteCategories();
-        // onExpertInsights();
+        onOpenChallenge();
+        onSpotlight();
+        onFavouriteCategories();
+        onExpertInsights();
 
     }, []);
 
@@ -54,6 +54,7 @@ const HomeScreen = (props) => {
         Service.get(EndPoints.bannerList, (res) => {
             res.data.forEach(element => {
                 let model = new BannerList(element);
+
                 if (banner.length < 5) {
                     banner.push(model)
                 }else{
@@ -66,9 +67,9 @@ const HomeScreen = (props) => {
         })
     }
     const onOpenChallenge = () => {
-        Service.post(EndPoints.openChallenges, "", (res) => {
+        Service.get(EndPoints.openChallenges,(res) => {
             var opChallenges = [];
-            res.data.popularIdea.forEach(element => {
+            res.data.forEach(element => {
                 Loger.onLog("", element);
                 let model = new OpenChallenges(element);
                 opChallenges.push(model);
@@ -79,11 +80,8 @@ const HomeScreen = (props) => {
         })
     }
     const onSpotlight = () => {
-        const data = JSON.stringify({
-            "frontuser_id": UserManager.userId,
-        });
 
-        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+        Service.get(EndPoints.madarekSpotlight, (res) => {
             var spotLight = [];
             Loger.onLog("res madarekSpotlight", res);
             res.data.forEach(element => {
@@ -116,7 +114,7 @@ const HomeScreen = (props) => {
         })
     }
     const onExpertInsights = () => {
-        const data = { "frontuser_id": 48 }
+        const data = { "frontuser_id": UserManager.userId }
         Service.post(EndPoints.expertInsights, data, (res) => {
             if (res?.statusCode === "1") {
                 const expertInsightArr = [];
@@ -271,6 +269,5 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
-const dtList = [ "Slider", "Tab","Challenges"];
-// const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
+const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
 

@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, Image, TouchableOpacity } from 'react-native'
-import React, { memo } from 'react'
+import React, { memo,useState, useEffect } from 'react'
+import { View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux'
 import CommonHeader from '../../component/commonheader/CommonHeader'
@@ -17,6 +17,11 @@ import SubIdeasList from '../../component/homescreen/SubIdeasList'
 import VideoPlayer from '../../component/detailsidea/VideoPlayer'
 import SubIdeasListWithImage from '../../component/homescreen/SubIdeasListWithImage'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { Loger } from '../../utils/Loger';
+import { UserManager } from '../../manager/UserManager';
+import { EndPoints } from '../../service/EndPoints';
+import ExpertInsight from '../../model/ExpertInsights';
+import { Service } from '../../service/Service';
 
 
 const IdeaDetails = (props) => {
@@ -24,6 +29,33 @@ const IdeaDetails = (props) => {
   const navigation = useNavigation();
   const { themeColor } = useSelector((state) => state)
   const item = props.route.params
+
+  const [expertInsight, setExpertInsight] = useState([]);
+
+  useEffect(() => {
+    onExpertInsights();
+
+}, []);
+
+  const onExpertInsights = () => {
+    // const data = { "frontuser_id": UserManager.userId }
+    const data = {"frontuser_id":48}
+    Service.post(EndPoints.expertInsights, data, (res) => {
+        if (res?.statusCode === "1") {
+            const expertInsightArr = [];
+            res.data.map((ele) => {
+                const model = new ExpertInsight(ele)
+                expertInsightArr.push(model);
+            })
+            setExpertInsight(expertInsightArr)
+        }
+
+    }, (err) => {
+        Loger.onLog('expertInsights  error ========>', err)
+    })
+}
+
+
   const testData = [
     {
       url: 'https://i.imgur.com/SsJmZ9jl.jpg'
@@ -44,21 +76,6 @@ const IdeaDetails = (props) => {
       url: 'https://i.imgur.com/l49aYS3l.jpg'
     }
   ];
-  const DATA =
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Academy of Development Research and Training Consulting Pvt Ltd',
-    sector: 'Sector A',
-    category: 'Banking and Finance',
-    url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-    date: "25 Nov 21",
-    name: "Mitansh Bhavsar",
-    see: '700',
-    like: '200',
-    comment: '80',
-    isLike: true,
-    Description: 'Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adielit. Ultricies at iaculis eu at Idea description Lorem ipsudjm dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description. Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description.'
-  }
 
   const userProfile = [
     {
@@ -85,28 +102,6 @@ const IdeaDetails = (props) => {
     resourceName: "Idea module lorem ipsum",
   }];
 
-  const expertData = [
-    {
-      name: 'Naredra Modi',
-      job: 'Game Tester',
-      title: 'Clean ocena plastic with HP SS',
-      subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-      profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-      see: '700',
-      like: '210',
-      comment: '180',
-    },
-    {
-      name: 'Bhupendra Patel',
-      job: 'App Tester',
-      title: 'Clean ocena plastic with HP SS',
-      subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-      profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-      see: '700',
-      like: '200',
-      comment: '80',
-    },
-  ]
   const DATAPERSON = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -139,19 +134,24 @@ const IdeaDetails = (props) => {
         <CommonHeader isType={"IdeaDetails"}  />
         <View style={IdeaStyle.MainView}>
           <ScrollView>
+
             <View style={IdeaStyle.container}>
               <IdeaSlider Entries={testData} />
+            
               <IdeaContent data={item} />
               <View style={IdeaStyle.contentBox}>
                 <Text style={IdeaStyle.heading}>{Label.Description}</Text>
                 <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
               </View>
+
               <UserProfileList profileData={userProfile} />
               <View style={IdeaStyle.videoPlay}>
                 {/* <VideoPlayer /> */}
               </View>
               <Resources resource={resource} />
-              <ExpertInsightsSlider Entries={expertData} screen="IdeaDetail"/>
+              
+              <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail"/>
+
               <View style={IdeaStyle.subIdeaList}>
                 <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
