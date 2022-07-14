@@ -25,7 +25,7 @@ const LoginScreen = (props) => {
     const [showPassword, setShowPassword] = useState(false)
     const [isMobilelogin, setMobilelogin] = useState(true)
     const [mobileNumber, setMobileNumber] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState()
     const [email, setEmail] = useState()
 
     const [first, setFirst] = useState('');
@@ -50,18 +50,16 @@ const LoginScreen = (props) => {
     let otpNumber = 123456
     let pin = 1234567
 
-
-    // const setFocusInput = (inputRef) => {
-    //     inputRef.current.focus();
-    // }
-
-    const loginData = {
-        pwd: password,
-        email_mobile: email,
-        device_id: deviceId,
-    }
+   
 
     const signIn = () => {
+
+        const loginData = {
+            pwd: password,
+            email_mobile: email,
+            device_id: deviceId,
+        }
+
         Service.post(EndPoints.login, loginData, (res) => {
 
             if (res.statusCode == 1) {
@@ -85,8 +83,6 @@ const LoginScreen = (props) => {
             Loger.onLog('Login screen error ========>', err)
         })
     }
-
-
     const navigateHomeScreen = () => {
         props.navigation.navigate("HomeScreen")
     }
@@ -162,8 +158,6 @@ const LoginScreen = (props) => {
 
         }
     }
-
-
     const validateFields = () => {
         if (isMobilelogin) {
             if (!mobileNumber.trim()) {

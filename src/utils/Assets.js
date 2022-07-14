@@ -27,3 +27,9 @@ export const getControl = {
     playVideo :require('../assets/image/PlayWhite.png'),
     
 }
+
+export const GetVideoControll = {
+    playVideoFullScreenOn :require('../assets/image/icn_fullscreen_on.png'),
+    playVideoFullScreenOff :require('../assets/image/icn_fullscreen_off.png'),
+    
+}

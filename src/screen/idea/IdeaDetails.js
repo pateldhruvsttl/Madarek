@@ -1,4 +1,4 @@
-import React, { memo,useState, useEffect } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux'
@@ -27,33 +27,32 @@ import { Service } from '../../service/Service';
 const IdeaDetails = (props) => {
 
   const navigation = useNavigation();
-  const { themeColor } = useSelector((state) => state)
   const item = props.route.params
-
   const [expertInsight, setExpertInsight] = useState([]);
 
   useEffect(() => {
     onExpertInsights();
 
-}, []);
+    Loger.onLog("", item)
+  }, []);
 
   const onExpertInsights = () => {
-    // const data = { "frontuser_id": UserManager.userId }
-    const data = {"frontuser_id":48}
+    const data = { "frontuser_id": UserManager.userId }
+
     Service.post(EndPoints.expertInsights, data, (res) => {
-        if (res?.statusCode === "1") {
-            const expertInsightArr = [];
-            res.data.map((ele) => {
-                const model = new ExpertInsight(ele)
-                expertInsightArr.push(model);
-            })
-            setExpertInsight(expertInsightArr)
-        }
+      if (res?.statusCode === "1") {
+        const expertInsightArr = [];
+        res.data.map((ele) => {
+          const model = new ExpertInsight(ele)
+          expertInsightArr.push(model);
+        })
+        setExpertInsight(expertInsightArr)
+      }
 
     }, (err) => {
-        Loger.onLog('expertInsights  error ========>', err)
+      Loger.onLog('expertInsights  error ========>', err)
     })
-}
+  }
 
 
   const testData = [
@@ -128,39 +127,43 @@ const IdeaDetails = (props) => {
 
   ];
 
-  
+
   return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <CommonHeader isType={"IdeaDetails"}  />
-        <View style={IdeaStyle.MainView}>
-          <ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <CommonHeader isType={"IdeaDetails"} />
+      <View style={IdeaStyle.MainView}>
+        <ScrollView>
 
-            <View style={IdeaStyle.container}>
-              <IdeaSlider Entries={testData} />
-            
-              <IdeaContent data={item} />
-              <View style={IdeaStyle.contentBox}>
-                <Text style={IdeaStyle.heading}>{Label.Description}</Text>
-                <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
-              </View>
+          <View style={IdeaStyle.container}>
+            <IdeaSlider Entries={[item.ideaImage]} />
 
-              <UserProfileList profileData={userProfile} />
+            <IdeaContent data={item} />
+
+            <View style={IdeaStyle.contentBox}>
+              <Text style={IdeaStyle.heading}>{Label.Description}</Text>
+              <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
+            </View>
+
+            {item.team && <UserProfileList profileData={item.team} />}
+
+            {item.video &&
               <View style={IdeaStyle.videoPlay}>
-                {/* <VideoPlayer /> */}
-              </View>
-              <Resources resource={resource} />
-              
-              <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail"/>
+                <VideoPlayer />
+              </View>}
 
-              <View style={IdeaStyle.subIdeaList}>
-                <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
+            <Resources resource={resource} />
+
+            {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
+
+            <View style={IdeaStyle.subIdeaList}>
+              <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
                 onItemPress={() => { navigation.navigate("IdeaDetails") }} />
-              </View>
             </View>
-          </ScrollView>
-        </View>
-      </SafeAreaView>
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   )
 }
 
