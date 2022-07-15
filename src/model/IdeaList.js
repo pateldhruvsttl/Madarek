@@ -35,5 +35,7 @@ export default class IdeaList {
         this.totalLike = obj?.totalLikes || "0"
         this.totalComment = obj?.totalComments || "0"
 
+        this.team = obj?.team;
+
     }
 }

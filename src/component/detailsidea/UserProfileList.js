@@ -5,22 +5,20 @@ import { Label } from '../../utils/StringUtil'
 import styles from './UserProfileListStyle'
 import { useSelector } from 'react-redux'
 import ParticipateModal from '../challengedetail/ParticipateModal'
+import ImageLoad from "react-native-image-placeholder";
 
 const UserProfileList = (props) => {
     const { themeColor } = useSelector((state) => state)
     const [modalVisible, setModalVisible] = useState(false);
-   
+
     const renderItem = ({ item }) => (
 
         <ScrollView horizontal={true}>
             <View style={styles.profileDetails}>
-                <Image
-                    style={styles.imgStyle}
-                    horizontal
-                    resizeMode='cover'
-                    source={{ uri: item.url }}
-                />
-                <Text style={styles.personName}>{item.name}</Text>
+                <View style={styles.imgStyle}>
+                    <ImageLoad style={styles.img} resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={true} />
+                </View>
+                <Text style={styles.personName}>{item.first_name}</Text>
             </View>
         </ScrollView>
 
@@ -63,7 +61,7 @@ const UserProfileList = (props) => {
 
                     <View style={styles.footerbtnView}>
                         <TouchableOpacity style={[styles.bottomBtn,
-                        { backgroundColor: themeColor.buttonColor }]} onPress={() => {setModalVisible(true)}}>
+                        { backgroundColor: themeColor.buttonColor }]} onPress={() => { setModalVisible(true) }}>
                             <Text style={[styles.txtBottomBtn, { color: themeColor.buttonFontColor }]}>{Label.ParticipateNow}</Text>
                         </TouchableOpacity>
                     </View>
@@ -82,8 +80,8 @@ const UserProfileList = (props) => {
                         keyExtractor={item => item.id}
                     />
                 </View>}
-                <ParticipateModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
-                
+            <ParticipateModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+
         </>
     )
 }

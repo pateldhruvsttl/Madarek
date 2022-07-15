@@ -24,7 +24,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
 
 const SubIdeasListWithImage = (props) => {
-
+    
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -38,7 +38,6 @@ const SubIdeasListWithImage = (props) => {
         }
     }
     const renderIdeaItem = ({ item }) => {
-
         return (
             <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
