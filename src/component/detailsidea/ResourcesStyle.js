@@ -58,7 +58,7 @@ const IdeaContentStyle = StyleSheet.create({
     },
     icnDocument :{
         marginEnd:AppUtil.getWP(1.5)
-    }
+    },
 })
 
 
