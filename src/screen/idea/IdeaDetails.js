@@ -43,6 +43,7 @@ const IdeaDetails = (props) => {
       "device_id": deviceId,
     }
     Service.post(EndPoints.expertInsights, data, (res) => {
+      console.log('response of idea detail api calling==============>>>>>',res.data);
       if (res?.statusCode === "1") {
         const expertInsightArr = [];
         res.data.map((ele) => {
