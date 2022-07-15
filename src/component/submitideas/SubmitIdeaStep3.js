@@ -23,8 +23,8 @@ function SubmitIdeaStep3(props) {
     
 
     const onCheckField = () => {
-        var obj ={countryCode:countryCode, mobileNumber:mobileNumber, nationality:nationality,message:message, imageList:imageList}
-        props.onNext(obj);
+        // var obj ={countryCode:countryCode, mobileNumber:mobileNumber, nationality:nationality,message:message, imageList:imageList}
+        props.onNext(/*obj*/);
     }
     const onSelect = (country) => {
         setCountryCode(country.cca2)
