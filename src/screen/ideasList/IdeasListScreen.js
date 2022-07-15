@@ -16,6 +16,7 @@ import { Service } from "../../service/Service";
 import { Loger } from "../../utils/Loger";
 import { AppConfig } from "../../manager/AppConfig";
 import IdeasFilter from "../../component/filter/IdeasFilter";
+import { UserManager } from "../../manager/UserManager";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -37,7 +38,7 @@ const IdeasListScreen = (props) => {
 
     const onIdeas = (tabType = "all") => {
         const data = {
-            frontuser_id: 48,
+            frontuser_id: UserManager.userId,
             limit: AppConfig.pageLimit,
             categories: "",
             sectors: "6,7",
@@ -91,7 +92,7 @@ const IdeasListScreen = (props) => {
         var data = {
             "field_name": "idea_id",
             "id": id,
-            "frontuser_id": 48,
+            "frontuser_id": UserManager.userId,
             "model": 'LikedislikeIdeas'
         }
 

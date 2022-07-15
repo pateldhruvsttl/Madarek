@@ -18,12 +18,12 @@ function SubmitIdeaStep1(props) {
     const [subCategory, setSubCategory] = useState("Selected");
 
     const onCheckField = () => {
-        var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
+        // var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
 
-        if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        else     
-            props.onNext(obj);
+        // if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // else     
+            props.onNext(/*obj*/);
     }
     return (
         <View style={Style.MainView}>

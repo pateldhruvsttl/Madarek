@@ -15,10 +15,13 @@ import IcnAlert from '../../assets/svg/IcnAlert'
 import { useSelector } from 'react-redux'
 import { Switch } from 'react-native-switch';
 import styles from '../../component/detailsidea/UserProfileListStyle'
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const Setting = (props) => {
     const { themeColor } = useSelector((state) => state)
+    const navigation = useNavigation();
 
     return (
         <SafeAreaView>
@@ -72,31 +75,15 @@ const Setting = (props) => {
                 </View>
 
                 {/* Notifications */}
-                <TouchableOpacity style={SettingStyle.btnView} >
+                <TouchableOpacity style={SettingStyle.btnView} onPress={() => navigation.navigate("NotificationSetting")} >
                     <View style={SettingStyle.iconTextView}>
                         <IcnAlert height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={SettingStyle.subTitleText}>Notifications</Text>
                     </View>
-                    <View style={SettingStyle.radioBtnView}>
-                        <Text style={[SettingStyle.offText, { marginEnd: AppUtil.getWP(2) }]}>OFF</Text>
-                        <Switch
-                            value={false}
-                            onValueChange={(val) => console.log(val)}
-                            disabled={false}
-                            circleSize={AppUtil.getHP(3.5)}
-                            barHeight={AppUtil.getHP(2.5)}
-                            circleBorderWidth={0}
-                            backgroundActive={GetAppColor.switchOnColor}
-                            backgroundInactive={GetAppColor.switchOffColor}
-                            circleActiveColor={GetAppColor.catBorder}
-                            circleInActiveColor={GetAppColor.grayBorder}
-                            renderActiveText={false}
-                            renderInActiveText={false}
-                        />
-                        {/* <TouchableOpacity></TouchableOpacity> */}
+                    <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)}  />
 
-                        <Text style={[SettingStyle.offText, { marginStart: AppUtil.getWP(2) }]}>ON</Text>
-                    </View>
+                    {/* <TouchableOpacity></TouchableOpacity> */}
+
 
                 </TouchableOpacity>
 

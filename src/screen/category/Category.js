@@ -19,6 +19,7 @@ import Categories from '../../model/Categories'
 import { Loger } from '../../utils/Loger'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import saveUserCategory from '../../service/EndPoints'
+import { UserManager } from '../../manager/UserManager'
 
 
 
@@ -81,7 +82,7 @@ const Category = (props) => {
 
         var selCat = [];
         const data = {
-            'user_id': 48,
+            'user_id': UserManager.userId,
             'category_id': selectedCategoriesId,
             'status': 1
         };
