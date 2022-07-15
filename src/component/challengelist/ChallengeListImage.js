@@ -23,7 +23,6 @@ import ImageLoad from "react-native-image-placeholder";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
-
     const renderItem = ({ item }) => (
         
         <TouchableOpacity onPress={() => props.navigateDetail(item)} style={LISTSTYLE.renderMainView}>
@@ -31,7 +30,7 @@ const ChallengeListImage = (props) => {
             <View style={LISTSTYLE.rightItems}>
 
                 <View style={LISTSTYLE.imgView}>
-                    <ImageLoad style={LISTSTYLE.img} source={{ uri: item.url }} isShowActivity={false} />
+                    <ImageLoad style={LISTSTYLE.img} source={{ uri: item.image }} isShowActivity={false} />
                 </View>
                 {
                     item.isLike ?

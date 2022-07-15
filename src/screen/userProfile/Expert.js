@@ -26,7 +26,7 @@ const Expert = (props) => {
                     <Text style={UserProfileStyle.subTitleText}>{data.skills}</Text>
 
                     <Text style={[UserProfileStyle.titleText]}>{Label.Biography}</Text>
-                    <Text style={UserProfileStyle.subTitleText}>Lorem</Text>
+                    <Text style={UserProfileStyle.subTitleText}>{data.biography}</Text>
 
                     <Text style={UserProfileStyle.titleText}>{Label.Description}</Text>
                     <Text style={UserProfileStyle.subTitleText}>{data.expertiseBrief}</Text>

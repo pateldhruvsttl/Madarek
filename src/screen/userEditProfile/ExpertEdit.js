@@ -18,6 +18,7 @@ const ExpertEdit = (props) => {
 
         setSkill(userData.skills)
         setDescription(userData.expertiseBrief)
+        setBiography(userData.biography)
 
     }, [userData])
 
@@ -56,6 +57,7 @@ const ExpertEdit = (props) => {
                 <Text style={EditUserProfileStyle.titleText}>{Label.Biography}</Text>
                 <TextInput
                     style={EditUserProfileStyle.input}
+                    value={biography}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Description}<Text style={{ color: 'red' }}>*</Text></Text>

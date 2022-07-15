@@ -33,7 +33,7 @@ const IdeaDetails = (props) => {
   useEffect(() => {
     onExpertInsights();
 
-    Loger.onLog("", item)
+    Loger.onLog("------------>", item)
   }, []);
 
   const onExpertInsights = () => {

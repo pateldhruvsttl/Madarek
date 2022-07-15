@@ -12,12 +12,13 @@ import OtherDetailEdit from './OtherDetailEdit'
 import ExpertEdit from './ExpertEdit'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
-import { deviceId } from '../../utils/Constant'
+import { baseURL, deviceId } from '../../utils/Constant'
 import { AppConfig } from '../../manager/AppConfig'
 import UserProfile from '../../model/UserProfile'
 import { Label } from '../../utils/StringUtil'
 import { Loger } from '../../utils/Loger'
 import { showMessageWithCallBack, showMessage } from '../../utils/Constant'
+import axios from 'axios'
 
 const EditUserProfile = (props) => {
 
@@ -87,32 +88,22 @@ const EditUserProfile = (props) => {
 
             const { firstName, lastName, jobTitle, organization, userPhoto, countryId,
                 about, category, facebookLink, linkdinLink, twitterLink,
-                description, skill } = newData
-            let data = new FormData()
-            // data.append('device_id', deviceId)
-            // data.append('lang', "en")
-            // data.append('token', AppConfig.token)
-            // data.append('first_name', firstName)
-            // data.append( 'last_name', lastName)
-            // data.append( 'job_title', jobTitle)
-            // data.append( 'organization_name', organization)
-            // data.append(  'country_id', countryId,)
-            // data.append(  'city_id', "1512325823",)
-            // data.append('user_photo', userPhoto)
-            // data.append(  'user_categories', category,)
-            // data.append( 'organization_name', organization)
+                description, skill, cityId } = newData
 
+            var data = new FormData()
+
+           Loger.onLog('newData', newData);
 
             data.append('device_id', deviceId)
             data.append('lang', "en")
-            data.append('token', AppConfig.token)
+            data.append('token', AppConfig.token.toString())
             data.append('first_name', firstName)
             data.append('last_name', lastName)
             data.append('job_title', jobTitle)
             data.append('organization_name', organization)
             data.append('country_id', countryId)
-            data.append('city_id', "1512325823")
-            data.append('user_photo', userPhoto)
+            data.append('city_id', cityId)
+            // data.append('user_photo', userPhoto)
             data.append('user_categories', category)
             data.append('about_expert', about)
             data.append('expertise_brief', description)
@@ -122,7 +113,7 @@ const EditUserProfile = (props) => {
             data.append('SME_User_Fees', "250")
             data.append('twitter_link', twitterLink)
             data.append('skills', skill)
-            
+
             console.log('AppConfig.token ----->', AppConfig.token);
 
             // const data = {
@@ -147,26 +138,55 @@ const EditUserProfile = (props) => {
             //     skills: skill
 
             // }
-            Service.post(EndPoints.editProfile, data, (res) => {
-                Loger.onLog("Response of update profile ", res);
-                if (res.statusCode == "1") {
-                    setUpdateData(res.data)
-                    showMessageWithCallBack(Label.UpdateProfie, () => {
-                        refresh()
-                    })
-                }
-                else {
-                    showMessage(res.message)
-                }
-            },
-                (err) => {
-                    Loger.onLog("Error of update profile", err);
-                }
-            )
+            // Service.post(EndPoints.editProfile, data, (res) => {
+            //     Loger.onLog("Response of update profile ", res);
+            //     if (res.statusCode == "1") {
+            //         setUpdateData(res.data)
+            //         showMessageWithCallBack(Label.UpdateProfie, () => {
+            //             refresh()
+            //         })
+            //     }
+            //     else {
+            //         showMessage(res.message)
+            //     }
+            // },
+            //     (err) => {
+            //         Loger.onLog("Error of update profile", err);
+            //     }
+            // )
+
+            fetch(baseURL + EndPoints.editProfile, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                body: data
+            }).then(response => {
+                console.log("image uploaded", response)
+            }).catch(err => {
+                console.log('erroe of editprofile', err)
+            })
+
+
+
+            // axios({
+            //     method: "post",
+            //     url:baseURL+EndPoints.editProfile,
+            //     data: data,
+            //     headers: { "Content-Type": "multipart/form-data" },
+            // })
+            //     .then(function (response) {
+            //         //handle success
+            //         console.log('res of editprofile',response);
+            //     })
+            //     .catch(function (response) {
+            //         //handle error
+            //         console.log(response);
+            //     });
         }
 
     }
-    Loger.onLog('Update Data', updateData);
+    // Loger.onLog('Update Data', updateData);
 
     const renderPersonalSlide = () => (
         <View style={EditUserProfileStyle.roundSlide}>

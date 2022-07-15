@@ -37,6 +37,8 @@ const PersonalEdit = (props) => {
     const [cityData, setCityData] = useState();
     const [cityName, setCityName] = useState()
     const [countryId, setCountryId] = useState()
+    const [cityId, setCityId] = useState()
+    
     useEffect(() => {
 
         setUserType(userData.userType)
@@ -48,13 +50,14 @@ const PersonalEdit = (props) => {
         setCountryName(userData.countryName)
         setCity(userData.city)
         setNumber(userData.number)
-        setUserPhoto(userData.userPhoto)
+        // setUserPhoto(userData.userPhoto)
 
     }, [userData])
 
     useEffect(() => {
         selectCountry()
         selectCity()
+        onSelectCity();
     }, [])
 
     const onSelectCountry = (index) => {
@@ -113,7 +116,8 @@ const PersonalEdit = (props) => {
         city: city,
         number: number,
         userPhoto: userPhoto,
-        countryId: countryId
+        countryId: countryId,
+        cityId:cityId
     }
 
     const renderCountry = () => {
@@ -147,7 +151,7 @@ const PersonalEdit = (props) => {
                         // contentContainerStyle={{ flexGrow:1}}
                         renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity TouchableOpacity style={[EditUserProfileStyle.selections]} onPress={() => { setSelectLanguage(index), setCityIndex(1), onSelectCity(index) }} >
+                                <TouchableOpacity TouchableOpacity style={[EditUserProfileStyle.selections]} onPress={() => { setSelectLanguage(index), setCityIndex(1), onSelectCity(index),setCityId(item.id) }} >
                                     <Text style={EditUserProfileStyle.label}>{item.city}</Text>
                                 </TouchableOpacity>
                             )
@@ -277,12 +281,12 @@ const PersonalEdit = (props) => {
                                     <TextInput
                                         style={[EditUserProfileStyle.input, EditUserProfileStyle.addWidth]}
                                         keyboardAppearance={false}
-                                        value={cityData?.city || 'Muscat'}
+                                        value={cityData?.city || "Matrah"}
                                         editable={false}
 
 
                                     />
-
+{console.log('cityData[0].city',cityData)}
                                     {
                                         cityIndex == 0 ?
                                             <View style={EditUserProfileStyle.upArrowIcon}>

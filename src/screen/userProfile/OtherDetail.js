@@ -6,15 +6,15 @@ import { AppUtil } from '../../utils/AppUtil'
 
 const OtherDetail = (props) => {
     const data = props.data
-    const categoryDetail = props?.data?.categoryInfo
-    console.log('categoryDetail',categoryDetail);
-    categoryDetail ? categoryDetail : []
+    const categoryDetail = props?.data?.categoryInfo || []
+
     const getCategories = () =>
     categoryDetail && categoryDetail.map((ele) => (
             <View style={UserProfileStyle.catView}>
                 <Text style={UserProfileStyle.catText}>{ele.category_name}</Text>
             </View>
         ))
+
     return (
         <View>
             <ScrollView>
@@ -31,7 +31,7 @@ const OtherDetail = (props) => {
                                 )
                             })
                         } */}
-                        {getCategories()}
+                        {props?.data?.categoryInfo  && getCategories()}
                     </View>
 
                     <Text style={UserProfileStyle.titleText}>{Label.ShortDiscription}</Text>

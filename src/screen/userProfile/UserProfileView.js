@@ -24,7 +24,7 @@ const UserProfileView = (props) => {
     }, [])
 
     const userProfile = () => {
-        alert('in userProfile')
+        // alert('in userProfile')
         const data =
         {
             lang: "en",
@@ -52,7 +52,7 @@ const UserProfileView = (props) => {
     }
     const onReferesh = () => {
         userProfile();
-        alert('refresh callled at 49')
+        // alert('refresh callled at 49')
     }
     return (
 
