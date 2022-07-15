@@ -12,5 +12,9 @@ export const EndPoints = {
     challengeLikeUnlike : "mylikedislike",
     spotlightLikeUnlike : "mylikedislike",
     saveUserCategory:"saveusercategory",
-    dashboard:"dashboard"
+    dashboard:"dashboard",
+    getProfile:"getprofile",
+    editProfile:"editprofile",
+    countries: "rest/countries?language=ar",
+    cities: "rest/cities?language=ar"
 }
