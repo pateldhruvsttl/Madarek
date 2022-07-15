@@ -33,12 +33,6 @@ const IdeaList = (props) => {
             "language": AppConfig.lang,
             "listtype": type,
             "searchkeywords": "",
-            // "frontuser_id": 48,
-            // "limit": 
-            // "categories": "",
-            // "sectors": "6,7",
-            // "listtype": type,
-            // "language": AppConfig.lang,
         }
         Service.post(EndPoints.ideaList, data, (res) => {
 
@@ -73,7 +67,6 @@ const IdeaList = (props) => {
             setPopularIdeasList(popularIdeaArrTmp);
             setNewIdeasList(newIdeaArrTmp);
             setWinningIdeaList(winningIdeaArrTmp);
-
             setSelectedIndex(value);
 
         }, (err) => {

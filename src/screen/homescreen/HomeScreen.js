@@ -19,14 +19,18 @@ import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import BannerList from "../../model/BannerList";
 import IdeaList from "../../model/IdeaList";
-import OpenChallenges from "../../model/OpenChallenges";
+import OpenChallenges from "../../model/OpenChallengesModel";
 import MadarekSportlight from "../../model/MadarekSportlight";
 import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 import ExpertInsight from "../../model/ExpertInsights";
 import category from "../../model/FavouriteCategories";
 import { UserManager } from "../../manager/UserManager";
+import ChallengeListImage from "../../component/challengelist/ChallengeListImage";
+import OpenChalangeHomeModel from "../../model/OpenChalangeHomeModel";
 
-
+import { AppConfig } from "../../manager/AppConfig";
+import DeviceInfo from "react-native-device-info";
+export const deviceId = DeviceInfo.getUniqueId()
 
 const HomeScreen = (props) => {
 
@@ -37,7 +41,7 @@ const HomeScreen = (props) => {
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
-   
+
 
     useEffect(() => {
         onSlider();
@@ -48,7 +52,7 @@ const HomeScreen = (props) => {
 
     }, []);
 
-  
+
     const onSlider = () => {
         var banner = [];
         Service.get(EndPoints.bannerList, (res) => {
@@ -57,7 +61,7 @@ const HomeScreen = (props) => {
 
                 if (banner.length < 5) {
                     banner.push(model)
-                }else{
+                } else {
                     return;
                 }
             });
@@ -67,11 +71,12 @@ const HomeScreen = (props) => {
         })
     }
     const onOpenChallenge = () => {
-        Service.get(EndPoints.openChallenges,(res) => {
+        Service.get(EndPoints.openChallenges, (res) => {
             var opChallenges = [];
             res.data.forEach(element => {
-                Loger.onLog("", element);
-                let model = new OpenChallenges(element);
+                let model = new OpenChalangeHomeModel(element);
+
+                Loger.onLog("model", model)
                 opChallenges.push(model);
             });
             setOpenChallenges(opChallenges)
@@ -114,7 +119,11 @@ const HomeScreen = (props) => {
         })
     }
     const onExpertInsights = () => {
-        const data = { "frontuser_id": UserManager.userId }
+        const data = {
+            "frontuser_id": UserManager.userId,
+            "language": AppConfig.lang,
+            "device_id": deviceId,
+        }
         Service.post(EndPoints.expertInsights, data, (res) => {
             if (res?.statusCode === "1") {
                 const expertInsightArr = [];
@@ -141,17 +150,14 @@ const HomeScreen = (props) => {
 
         Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
 
-            //     const likeDislike = res?.data === "dislike" ? false : true
-            //     const challengeArr = openChallenges
-            //     challengeArr.map((ele,index) => {
-            //         if(ele.id == id){
-            //             challengeArr[index].like = likeDislike
-            //         }
-            //     })
-            //    setOpenChallenges([...openChallenges,challengeArr])
-
-            onOpenChallenge()
-
+            const likeDislike = res?.data === "dislike" ? false : true
+            const challengeArr = openChallenges
+            challengeArr.map((ele, index) => {
+                if (ele.id == id) {
+                    challengeArr[index].like = likeDislike
+                }
+            })
+            setOpenChallenges([...openChallenges, challengeArr])
         }, (err) => {
             Loger.onLog("err of challengeLikeUnlike", err)
         })
@@ -161,23 +167,22 @@ const HomeScreen = (props) => {
         {
             "field_name": "formdata_id",
             "id": id,
-            "frontuser_id": UserManager,userId,
+            "frontuser_id": UserManager.userId,
             "model": "LikedislikeGeneral",
             "general_status": "spotlight"
         }
 
         Service.post(EndPoints.spotlightLikeUnlike, data, (res) => {
 
-            // const likeDislike = res?.data === 'dislike' ? false : true
-            // const spotLightArr = spotLight
-            // spotLightArr.map((ele,index) => {
-            //     if(ele.id == id){
-            //         spotLightArr[index].like = likeDislike
-            //     }
-            // })
-            // setSpotLight([...spotLight,spotLightArr])
+            const likeDislike = res?.data === 'dislike' ? false : true
+            const spotLightArr = spotLight
+            spotLightArr.map((ele, index) => {
+                if (ele.id == id) {
+                    spotLightArr[index].like = likeDislike
+                }
+            })
+            setSpotLight([...spotLight, spotLightArr])
 
-            onSpotlight()
         }, (err) => {
             Loger.onLog("err of spotlightLikeUnlike", err)
         })
@@ -191,7 +196,7 @@ const HomeScreen = (props) => {
                 break;
 
             case 'Tab':
-                return <IdealList/>
+                return <IdealList />
                 break;
 
             case 'Challenges':
@@ -200,11 +205,12 @@ const HomeScreen = (props) => {
                     <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2) }}>
                         <SubIdeasListWithImage data={openChallenges} isTitle={Label.OpenChallenges}
                             isType={"Challenges"} btn={Label.ParticipateNow}
-                            likeChallenge={() => likeChallenge()}
+                            likeChallenge={(id) => likeChallenge(id)}
                             onButtonPress={() => { setModalVisible(true) }}
-                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen",{data:openChallenges}) }}
-                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail",item) }} 
-                            />
+                            onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", { data: openChallenges }) }}
+                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item) }}
+                        />
+
                     </View>
                 )
                 break;
@@ -217,7 +223,7 @@ const HomeScreen = (props) => {
                             likeSpotLight={likeSpotLight}
                             onButtonPress={() => { setModalVisible(true) }}
                             onSeeMorePress={() => { }}//props.navigation.navigate("ChallengesListScreen")
-                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail",item) }} />
+                            onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item) }} />
                     </View>
                 )
                 break;
@@ -231,7 +237,7 @@ const HomeScreen = (props) => {
             case 'FavouriteCategories':
                 return (
                     <View style={{ backgroundColor: GetAppColor.white, paddingVertical: AppUtil.getHP(2), }}>
-                        <FavouriteCategories data={favouriteCategories.slice(0, 6)} Entries={expertInsight}/>
+                        <FavouriteCategories data={favouriteCategories.slice(0, 6)} Entries={expertInsight} />
                     </View>
                 )
                 break;
@@ -252,7 +258,7 @@ const HomeScreen = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"HomeScreenHeader"}/>
+            <CommonHeader isType={"HomeScreenHeader"} />
 
             <View style={Style.MainView}>
                 <FlatList
@@ -269,5 +275,6 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
+// const dtList = ["ExpertInsightsSlider"];
 const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
 

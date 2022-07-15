@@ -10,7 +10,7 @@ import ViewMoreChallenges from "../../component/challengelist/listing/ViewMoreCh
 import { Label } from "../../utils/StringUtil";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
-import OpenChallenge from "../../model/OpenChallenges";
+import OpenChallenge from "../../model/OpenChallengesModel";
 import IdeasFilter from "../../component/filter/IdeasFilter";
 
 
@@ -67,81 +67,6 @@ const ChallengesListScreen = (props) => {
 
 export default memo(ChallengesListScreen);
 
-const sliderdata = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Family Business',
-        subTitle: 'Organize Specialty Travel Tours',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "15 Mar 22 - 29 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Renewable Energy',
-        subTitle: 'Green Mountain Power & Energy Transformation',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "03 Mar 22 - 23 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Banking and Finance',
-        subTitle: 'Create an Airport-Centric Application',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "20 Mar 22 - 30 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Family Business',
-        subTitle: 'Become a Destination Wedding Planner',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "15 Mar 22 - 29 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Poonam Madhav',
-        title: 'Family Business',
-        subTitle: 'Create a Local Grocery Delivery Service',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "15 Mar 22 - 29 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Mitansh Bhavsar',
-        title: 'Family Business',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "15 Mar 22 - 29 Mar 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-
-];
 
 
 
