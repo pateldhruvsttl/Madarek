@@ -50,7 +50,7 @@ const IdeaSlider = ({ Entries }) => {
     const onSliderRend = ({ item, index }, parallaxProps) => {
         return (
             <View style={{ height: "100%", width: '100%' }}>
-                <ImageLoad style={IdeaSliderStyle.bgImage} source={{ uri: item.url }} isShowActivity={false} />
+                <ImageLoad style={IdeaSliderStyle.bgImage} source={{ uri: item }} isShowActivity={false} />
             </View>
         );
     }
