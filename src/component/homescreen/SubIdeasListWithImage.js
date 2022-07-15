@@ -39,7 +39,6 @@ const SubIdeasListWithImage = (props) => {
     }
     const renderIdeaItem = ({ item }) => {
 
-        Loger.onLog("image url", item.ideaImage)
         return (
             <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>

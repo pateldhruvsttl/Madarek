@@ -25,7 +25,7 @@ import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 // import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
 
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
@@ -49,6 +49,7 @@ import LiveChat from '../screen/livechat/LiveChat';
 import MyIdeaEdit from '../screen//myIdeaEdit/MyIdeaEdit';
 import NotificationSetting from '../screen/notifications/NotificationSetting';
 import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithComment/ExpertInsightDetailWithComment';
+import IdeasFilter from '../component/filter/IdeasFilter';
 
 
 const Stack = createStackNavigator();
@@ -99,6 +100,7 @@ function ScreenStack() {
             <Stack.Screen name="MyIdeaEdit" component={MyIdeaEdit} />
             <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
             <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
+            <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
 
         </Stack.Navigator>
     )
