@@ -28,7 +28,6 @@ const UserProfileStyle = StyleSheet.create({
         height:AppUtil.getHP(14),
         width:AppUtil.getHP(14),
         borderRadius:AppUtil.getHP(7),
-         backgroundColor:'red', 
           alignSelf:'center',
           marginTop:AppUtil.getHP(-9)
     },

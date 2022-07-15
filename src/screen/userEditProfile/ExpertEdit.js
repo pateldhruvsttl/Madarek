@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import IcnClose from '../../assets/svg/IcnClose'
 import { GetAppColor } from '../../utils/Colors'
@@ -9,6 +9,23 @@ import EditUserProfileStyle from './EditUserProfileStyle'
 
 const ExpertEdit = (props) => {
     const { themeColor } = useSelector((state) => state)
+    const [userData, setUserData] = useState(props?.data)
+    const [skill, setSkill] = useState()
+    const [biography, setBiography] = useState()
+    const [description, setDescription] = useState()
+
+    useEffect(() => {
+
+        setSkill(userData.skills)
+        setDescription(userData.expertiseBrief)
+        setBiography(userData.biography)
+
+    }, [userData])
+
+    let expertDetail = {
+        skill: skill,
+        description: description
+    }
 
     return (
         <ScrollView >
@@ -18,7 +35,7 @@ const ExpertEdit = (props) => {
                     {
                         [1, 2, 3, 4, 5, 6].map((item, index) => {
                             return (
-                                <View style={EditUserProfileStyle.catView1}>
+                                <View style={EditUserProfileStyle.catView1} key={index}>
                                     <Text style={EditUserProfileStyle.catText1}>Health</Text>
                                     <IcnClose color={GetAppColor.black} height={AppUtil.getHP(1)} width={AppUtil.getHP(1)} />
                                 </View>
@@ -33,18 +50,23 @@ const ExpertEdit = (props) => {
                 <Text style={EditUserProfileStyle.titleText}>{Label.Skill}</Text>
                 <TextInput
                     style={EditUserProfileStyle.input}
+                    value={skill}
+                    onChangeText={(skill) => setSkill(skill)}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Biography}</Text>
                 <TextInput
                     style={EditUserProfileStyle.input}
+                    value={biography}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Description}<Text style={{ color: 'red' }}>*</Text></Text>
                 <TextInput
                     style={EditUserProfileStyle.input}
+                    value={description}
+                    onChangeText={(description) => setDescription(description)}
                 />
-                <TouchableOpacity onPress={() => { props.saveNext() }} style={EditUserProfileStyle.submitButton}>
+                <TouchableOpacity onPress={() => {props.saveProfile({expertDetail:expertDetail})}} style={EditUserProfileStyle.submitButton}>
                     <Text style={EditUserProfileStyle.submitText}>{Label.Submit}</Text>
                 </TouchableOpacity>
             </View>

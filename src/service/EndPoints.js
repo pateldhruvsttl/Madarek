@@ -13,6 +13,10 @@ export const EndPoints = {
     spotlightLikeUnlike : "mylikedislike",
     saveUserCategory:"saveusercategory",
     dashboard:"dashboard",
+    getProfile:"getprofile",
+    editProfile:"editprofile",
+    countries: "rest/countries?language=ar",
+    cities: "rest/cities?language=ar",
     notification:"notification",
     logout:"logout",
 }
