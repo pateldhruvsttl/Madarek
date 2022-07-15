@@ -54,7 +54,7 @@ const IdeaContent = (props) => {
                         },
                     ]}
                 >
-                    {props.data.title}
+                    {props?.data?.title}
                 </Text>
             </View>
 
@@ -63,7 +63,7 @@ const IdeaContent = (props) => {
                     <View style={Style.dateContentChallenge}>
                         <View style={Style.dateSubContain}>
                             <IcnClander height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data.date}</Text>
+                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
                         </View>
                         <TouchableOpacity style={Style.openBtn}>
                             <Text style={Style.openBtnTitle}>{Label.OpenTitle}</Text>
@@ -72,10 +72,10 @@ const IdeaContent = (props) => {
                     :
                     <View style={Style.dateContentIdea}>
                         <IcnClander height={iconSize} width={iconSize} />
-                        <Text style={Style.contentTitle}>{props.data.date}</Text>
+                        <Text style={Style.contentTitle}>{props.data?.date}</Text>
                         <View style={Style.profileArea}>
                             <IcnAvtarBg height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data.firstName} {props.data.lastName}</Text>
+                            <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
                         </View>
                     </View>
             }
@@ -83,13 +83,13 @@ const IdeaContent = (props) => {
             {
                 props.isType == 'ChallengeDetail' ?
                     <View style={Style.sectorCategoryArea}>
-                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data.sector}</Bold></Text>
-                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data.categoryName}</Bold> </Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sector}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.categoryName}</Bold> </Text>
                     </View>
                     :
                     <View style={Style.sectorCategoryArea}>
-                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data.sectorName}</Bold></Text>
-                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data.categoryName}</Bold> </Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sectorName}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.categoryName}</Bold> </Text>
                     </View>
 
             }
@@ -128,26 +128,26 @@ const IdeaContent = (props) => {
                     <View style={Style.secondInnerCalView}>
                         <IcnWatchDone height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data.totalView}
+                            {props.data?.totalView}
                         </Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data.totalLike}
+                            {props.data?.totalLike}
                         </Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data.totalComment}
+                            {props.data?.totalComment}
                         </Text>
                     </View>
                     {props.isMyIdeaDetail ? (
                         <View style={Style.secondInnerCalViewOne}>
                             <Heart height={iconSize} width={iconSize} />
                             <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                                {props.data.comment}
+                                {props.data?.comment}
                             </Text>
                         </View>
                     ) : null}
