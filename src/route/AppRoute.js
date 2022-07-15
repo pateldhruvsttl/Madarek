@@ -49,6 +49,7 @@ import LiveChat from '../screen/livechat/LiveChat';
 import MyIdeaEdit from '../screen//myIdeaEdit/MyIdeaEdit';
 import NotificationSetting from '../screen/notifications/NotificationSetting';
 import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithComment/ExpertInsightDetailWithComment';
+import IdeasFilter from '../component/filter/IdeasFilter';
 
 
 const Stack = createStackNavigator();
@@ -56,7 +57,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"LoginScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"HomeScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
@@ -99,6 +100,7 @@ function ScreenStack() {
             <Stack.Screen name="MyIdeaEdit" component={MyIdeaEdit} />
             <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
             <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
+            <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
 
         </Stack.Navigator>
     )

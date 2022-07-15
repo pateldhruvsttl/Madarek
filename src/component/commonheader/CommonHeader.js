@@ -89,7 +89,7 @@ const CommonHeader = (props) => {
                             <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -110,7 +110,7 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("Message")}>
                                 <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity>
@@ -156,10 +156,10 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -181,7 +181,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightSingleIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -244,7 +244,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -265,10 +265,10 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -321,7 +321,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -342,7 +342,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -451,7 +451,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -502,10 +502,10 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>

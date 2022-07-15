@@ -46,7 +46,12 @@ const MyDrawerScreen = (props) => {
   const onselectButtonMenu = (index, screen) => {
 
     if (screen){
-      props.navigation.replace(screen);
+      if (index==9) {
+        props.navigation.push(screen);
+      }else{
+        props.navigation.replace(screen);
+
+      }
       props.navigation.closeDrawer()
     }
       

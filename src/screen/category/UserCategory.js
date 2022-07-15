@@ -16,6 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Style from './UserCategoryStyle'
 import CloseIcon from '../../assets/svg/CloseIcon'
 import IcnClose from '../../assets/svg/IcnClose'
+import IdeasFilter from '../../component/filter/IdeasFilter'
 
 const UserCategory = (props) => {
 
@@ -24,6 +25,7 @@ const UserCategory = (props) => {
     const [categories, setCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
+    const [isFilterVisible, setFilterVisible] = useState(false);
 
     useEffect(() => {
         var cat = [];
@@ -76,7 +78,7 @@ const UserCategory = (props) => {
 
     return (
         <SafeAreaView>
-            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
+            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }}  onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.searchView}>
                 <TextInput
                     style={Style.input}
@@ -105,6 +107,8 @@ const UserCategory = (props) => {
                 renderItem={renderItem}
             // keyExtractor={item => item.id}
             />
+            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+
         </SafeAreaView>
     )
 }

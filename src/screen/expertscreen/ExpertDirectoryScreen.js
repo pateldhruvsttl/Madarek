@@ -1,21 +1,24 @@
 import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 import SimilarExperts from '../../component/expertscreen/SimilarExperts';
 import Style from './ExpertDirectoryStyle';
+import IdeasFilter from '../../component/filter/IdeasFilter';
 
 function ExpertDirectoryScreen(props) {
     const { themeColor } = useSelector((state) => state)
+    const [isFilterVisible, setFilterVisible] = useState(false);
 
     return (
         <SafeAreaView style={Style.SafeAryView}>
-            <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} />
+            <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
                 <SimilarExperts data={props.route.params.data} />
             </View>
+            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     )
 }
