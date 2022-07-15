@@ -7,6 +7,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { GetAppColor } from "../../utils/Colors";
 import { Label } from '../../utils/StringUtil'
 import ImageLoad from "react-native-image-placeholder";
+import { AppConfig } from "../../manager/AppConfig";
 
 const EventSlider = ({ Entries }) => {
 
@@ -49,10 +50,11 @@ const EventSlider = ({ Entries }) => {
     }
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
+        console.log("url", item.url)
         return (
             <View style={styles.renderMainView}>
                 <View style={styles.bgImage}>
-                <ImageLoad style={styles.bgImage} source={{ uri: item.url }} isShowActivity={false}/>
+                <ImageLoad style={styles.bgImage} source={{ uri:  item.url }} isShowActivity={false}/>
                 </View>
                 <View style={styles.sliderRendTitleView}>
                     <Text numberOfLines={1} style={styles.txtsliderRendTitle}>{item.title}</Text>

@@ -6,14 +6,14 @@ export default class OpenChallenge {
             return;
         }
 
-        this.title = obj?.contest_title || "No title"
-        this.categoryDetails= obj?.contest_description || "No Description"
-        this.subTitle = obj?.general_title || "No title"
-        this.sector = obj?.sector || "No Sector "
-        this.categoryName = obj?.category || "No Category "
+        this.title = obj?.contest_title ? obj?.contest_title : "No title"
+        this.categoryDetails= obj?.contest_description ? obj?.contest_description : "No Description"
+        this.subTitle = obj?.general_title ? obj?.general_title : "No title"
+        this.sector = obj?.sector ? obj?.sector : "No Sector "
+        this.categoryName = obj?.category ? obj?.category : "No Category "
         this.id = obj?.id
         this.date = obj?.date || "15 Mar 22 - 29 Mar 22"
-        this.firstName = obj?.first_name || "No name"
+        this.firstName = obj?.first_name ? obj?.first_name : "No name"
         this.ideaImage = obj?.contest_image_upload_files || ""
         this.winning = obj?.winning || "0"
         this.madarekSpecial = obj?.madarek_special || "0"

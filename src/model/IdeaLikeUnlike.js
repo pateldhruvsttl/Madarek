@@ -8,7 +8,7 @@ export default class IdeaLikeUnlike {
            
            this.id = obj?.totalcount || "0"
            this.likeUnlike = obj?.data || "false"
-           this.message = obj?.message || "No message"
+           this.message = obj?.message ? obj?.message : "No message"
        }
    }
   

@@ -21,6 +21,7 @@ import { GetAppColor } from "../../utils/Colors";
 import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
 import { useNavigation } from '@react-navigation/native';
+import { Loger } from "../../utils/Loger";
 
 const SubIdeasListWithImage = (props) => {
 
@@ -43,7 +44,7 @@ const SubIdeasListWithImage = (props) => {
                 <View style={Style.rightItems}>
 
                     <View style={Style.img}>
-                        <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                        <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
                     {
                         item?.like ?

@@ -24,26 +24,20 @@ import MadarekSportlight from "../../model/MadarekSportlight";
 import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 import ExpertInsight from "../../model/ExpertInsights";
 import category from "../../model/FavouriteCategories";
+import { UserManager } from "../../manager/UserManager";
 
 
 
 const HomeScreen = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-    const list = DATA.slice(0, 2);
-
     const [modalVisible, setModalVisible] = useState(false);
     const [bannerList, setBannerList] = useState([])
     const [openChallenges, setOpenChallenges] = useState([]);
     const [spotLight, setSpotLight] = useState([]);
     const [expertInsight, setExpertInsight] = useState([]);
     const [favouriteCategories, setFavouriteCategories] = useState([]);
-    const [type, setType] = useState('latest')
-    const [ideasList, setIdeasList] = useState(null);
-    const [popularIdeaArr, setpopularIdeaArr] = useState([])
-    const [newIdeaArr, setnewIdeaArr] = useState([])
-    const [winningIdeaArr, setwinningIdeaArr] = useState([])
-    const [allIdeaArr, setallIdeaArr] = useState([])
+   
 
     useEffect(() => {
         onSlider();
@@ -60,6 +54,7 @@ const HomeScreen = (props) => {
         Service.get(EndPoints.bannerList, (res) => {
             res.data.forEach(element => {
                 let model = new BannerList(element);
+
                 if (banner.length < 5) {
                     banner.push(model)
                 }else{
@@ -72,24 +67,21 @@ const HomeScreen = (props) => {
         })
     }
     const onOpenChallenge = () => {
-        const data = '';
-        Service.post(EndPoints.openChallenges, data, (res) => {
+        Service.get(EndPoints.openChallenges,(res) => {
             var opChallenges = [];
             res.data.forEach(element => {
+                Loger.onLog("", element);
                 let model = new OpenChallenges(element);
                 opChallenges.push(model);
             });
             setOpenChallenges(opChallenges)
         }, (err) => {
-            Loger.onLog("", err)
+            Loger.onLog("###", err)
         })
     }
     const onSpotlight = () => {
-        const data = JSON.stringify({
-            "frontuser_id": 48
-        });
 
-        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+        Service.get(EndPoints.madarekSpotlight, (res) => {
             var spotLight = [];
             Loger.onLog("res madarekSpotlight", res);
             res.data.forEach(element => {
@@ -122,7 +114,7 @@ const HomeScreen = (props) => {
         })
     }
     const onExpertInsights = () => {
-        const data = { "frontuser_id": 48 }
+        const data = { "frontuser_id": UserManager.userId }
         Service.post(EndPoints.expertInsights, data, (res) => {
             if (res?.statusCode === "1") {
                 const expertInsightArr = [];
@@ -279,61 +271,3 @@ export default memo(HomeScreen);
 
 const dtList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];
 
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        title: 'Family business',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-        subTitle: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Dec 21 - 29 Dec 21",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-
-];
-const expertData = [
-    {
-        name: 'Naredra Modi',
-        job: 'Game Tester',
-        title: 'Clean ocena plastic with HP SS',
-        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        see: '700',
-        like: '210',
-        comment: '180',
-    },
-    {
-        name: 'Bhupendra Patel',
-        job: 'App Tester',
-        title: 'Clean ocena plastic with HP SS',
-        subTitle: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePic: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        see: '700',
-        like: '200',
-        comment: '80',
-    },
-]

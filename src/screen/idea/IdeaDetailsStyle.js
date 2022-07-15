@@ -49,10 +49,11 @@ const IdeaStyle = StyleSheet.create({
     contentBox: {
     width: '100%',
     paddingHorizontal: AppUtil.getWP(5),
-    marginBottom: AppUtil.getHP(1),
-    paddingBottom: AppUtil.getHP(2)
+    
 },
-    videoPlay: { width: '100%', paddingHorizontal: AppUtil.getWP(5), height: AppUtil.getHP(40), marginBottom: AppUtil.getHP(1), marginTop: AppUtil.getHP(1) }
+    videoPlay: { width: '100%', height: AppUtil.getHP(35), 
+    paddingHorizontal: AppUtil.getWP(5),
+     marginBottom: AppUtil.getHP(1)}
 
 })
 
