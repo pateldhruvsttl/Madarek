@@ -15,6 +15,7 @@ import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { Loger } from "../../utils/Loger";
 import { AppConfig } from "../../manager/AppConfig";
+import IdeasFilter from "../../component/filter/IdeasFilter";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -24,6 +25,7 @@ const IdeasListScreen = (props) => {
     const [newIdeaArr, setNewIdeaArr] = useState([]);
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
+    const [isFilterVisible, setFilterVisible] = useState(false);
 
     useEffect(() => {
         onIdeas('all');
@@ -146,8 +148,7 @@ const IdeasListScreen = (props) => {
     
     return (
         <SafeAreaView style={Style.container}>
-            <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
-
+            <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
@@ -163,6 +164,7 @@ const IdeasListScreen = (props) => {
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>
+            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     );
 }

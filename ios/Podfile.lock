@@ -364,7 +364,7 @@ PODS:
     - React-perflogger (= 0.67.3)
   - RNCMaskedView (0.1.11):
     - React
-  - RNDeviceInfo (8.7.0):
+  - RNDeviceInfo (8.7.1):
     - React-Core
   - RNFastImage (8.5.11):
     - React-Core
@@ -648,7 +648,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: af1946623656f9c5fd64ca6f36f3863516193446
   ReactCommon: 650e33cde4fb7d36781cd3143f5276da0abb2f96
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNDeviceInfo: 36286df381fcaf1933ff9d2d3c34ba2abeb2d8d8
+  RNDeviceInfo: aad3c663b25752a52bf8fce93f2354001dd185aa
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
@@ -662,4 +662,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 82255fa6785faf1a1f3366798eb413f46cdeec14
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.11.2

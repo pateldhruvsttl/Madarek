@@ -12,5 +12,7 @@ export const EndPoints = {
     challengeLikeUnlike : "mylikedislike",
     spotlightLikeUnlike : "mylikedislike",
     saveUserCategory:"saveusercategory",
-    dashboard:"dashboard"
+    dashboard:"dashboard",
+    notification:"notification",
+    logout:"logout",
 }

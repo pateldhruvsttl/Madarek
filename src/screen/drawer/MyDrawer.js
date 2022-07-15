@@ -22,6 +22,12 @@ import LogoutIcn from '../../assets/svg/drawerIcon/LogoutIcn'
 import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
 import { UserManager } from '../../manager/UserManager'
 import ImageLoad from 'react-native-image-placeholder'
+import { Service } from '../../service/Service'
+import { deviceId } from '../../utils/Constant'
+import { EndPoints } from '../../service/EndPoints'
+import { Loger } from '../../utils/Loger'
+import Login from '../../model/Login'
+import { AppConfig } from '../../manager/AppConfig'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -40,12 +46,33 @@ const MyDrawerScreen = (props) => {
   const onselectButtonMenu = (index, screen) => {
 
     if (screen){
-      props.navigation.replace(screen);
+      if (index==9) {
+        props.navigation.push(screen);
+      }else{
+        props.navigation.replace(screen);
+
+      }
       props.navigation.closeDrawer()
     }
       
     setSelectedButtonIndex(index)
 
+  }
+
+  onLogoutPressed=()=>{
+    const data={
+      "lang" :"en",
+      "frontuser_id": UserManager.userId,
+      "device_id":deviceId,
+      "token" : AppConfig.token
+  }
+    Service.post(EndPoints.logout, data, (res)=>{
+      Loger.onLog('Drawer Logout response',res);
+      props.navigation.navigate("LoginScreen")
+
+    },(err)=>{
+      Loger.onLog('Drawer Logout error',err);
+    })
   }
 
   const renderCollapseView = () => {
@@ -132,7 +159,7 @@ const MyDrawerScreen = (props) => {
       </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={() => { onSelectMenu(1); onselectButtonMenu(2,"IdeasListScreen") }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(1) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
           <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 2 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Ideas}</Text>
@@ -213,7 +240,7 @@ const MyDrawerScreen = (props) => {
         </TouchableOpacity>
         <View style={drawerStyles.line} />
 
-        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => props.navigation.navigate("LoginScreen")}>
+        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => onLogoutPressed()}>
           <LogoutIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>

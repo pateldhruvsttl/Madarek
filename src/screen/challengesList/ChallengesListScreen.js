@@ -11,12 +11,15 @@ import { Label } from "../../utils/StringUtil";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import OpenChallenge from "../../model/OpenChallenges";
+import IdeasFilter from "../../component/filter/IdeasFilter";
 
 
 const Tab = createMaterialTopTabNavigator();
 
 const ChallengesListScreen = (props) => {
     const [openChallenge, setOpenChallenge] = useState([])
+    const [isFilterVisible, setFilterVisible] = useState(false);
+
     useEffect(() => {
         onOpenChallenge()
     }, [])
@@ -39,7 +42,7 @@ const ChallengesListScreen = (props) => {
 
     return (
         <SafeAreaView style={ListStyle.container}>
-            <CommonHeader isType={"ChallengesListing"} onMenuClick={() => { props.navigation.openDrawer() }} />
+            <CommonHeader isType={"ChallengesListing"} onMenuClick={() => { props.navigation.openDrawer() }}  onFilter={() => setFilterVisible(!isFilterVisible)}/>
 
             <View style={ListStyle.MainView}>
                 <NavigationContainer independent={true}>
@@ -56,6 +59,8 @@ const ChallengesListScreen = (props) => {
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>
+            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+
         </SafeAreaView>
     );
 }
