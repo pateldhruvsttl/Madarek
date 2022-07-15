@@ -149,7 +149,6 @@ const EditUserProfileStyle = StyleSheet.create({
         borderWidth: 5,
         borderColor: GetAppColor.white,
         borderRadius: AppUtil.getHP(9),
-        backgroundColor: 'red',
     },
     cameraIconBtn: {
         height: AppUtil.getHP(5),
