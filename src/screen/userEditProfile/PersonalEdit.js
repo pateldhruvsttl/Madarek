@@ -50,7 +50,7 @@ const PersonalEdit = (props) => {
         setCountryName(userData.countryName)
         setCity(userData.city)
         setNumber(userData.number)
-        // setUserPhoto(userData.userPhoto)
+        setUserPhoto(userData.userPhoto)
 
     }, [userData])
 
