@@ -46,7 +46,12 @@ const MyDrawerScreen = (props) => {
   const onselectButtonMenu = (index, screen) => {
 
     if (screen){
-      props.navigation.replace(screen);
+      if (index==9) {
+        props.navigation.push(screen);
+      }else{
+        props.navigation.replace(screen);
+
+      }
       props.navigation.closeDrawer()
     }
       
@@ -154,7 +159,7 @@ const MyDrawerScreen = (props) => {
       </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={() => { onSelectMenu(1); onselectButtonMenu(2,"IdeasListScreen") }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      <TouchableOpacity onPress={() => { onSelectMenu(1) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <IdeaIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
           <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 2 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Ideas}</Text>
