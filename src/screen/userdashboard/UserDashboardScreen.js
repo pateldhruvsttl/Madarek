@@ -14,6 +14,7 @@ import { Service } from "../../service/Service";
 import { Loger } from "../../utils/Loger";
 import { EndPoints } from "../../service/EndPoints";
 import Dashboard from "../../model/Dashboard";
+import { UserManager } from "../../manager/UserManager";
 
 const UserDashboardScreen = (props) => {
 
@@ -30,7 +31,7 @@ const UserDashboardScreen = (props) => {
     },[])
     
     const onUserDashboard = () => {
-        const data = { "frontuser_id": 48 }
+        const data = { "frontuser_id": UserManager.userId }
         Service.post(EndPoints.dashboard, data, (res) => {
             Loger.onLog('dashboard Response  ========>', JSON.stringify(res.data))
             if (res?.statusCode === "1") {

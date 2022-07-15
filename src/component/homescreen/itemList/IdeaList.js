@@ -12,6 +12,7 @@ import { Service } from "../../../service/Service";
 import { EndPoints } from "../../../service/EndPoints";
 import IdeaListModel from "../../../model/IdeaList";
 import { AppConfig } from "../../../manager/AppConfig";
+import { UserManager } from "../../../manager/UserManager";
 
 const IdeaList = (props) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -27,7 +28,7 @@ const IdeaList = (props) => {
     const onSelectTab = (value, type) => {
 
         const data = {
-            "frontuser_id": 48,
+            "frontuser_id":UserManager.userId,
             "limit": AppConfig.pageLimit,
             "categories": "",
             "sectors": "6,7",
@@ -75,7 +76,7 @@ const IdeaList = (props) => {
         var data = {
             "field_name": "idea_id",
             "id": id,
-            "frontuser_id": 48,
+            "frontuser_id": UserManager.userId,
             "model": 'LikedislikeIdeas'
         }
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {

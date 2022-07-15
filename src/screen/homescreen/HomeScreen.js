@@ -96,7 +96,7 @@ const HomeScreen = (props) => {
         })
     }
     const onFavouriteCategories = () => {
-        const data = { "id": 48 }
+        const data = { "id": UserManager.userId }
         Service.post(EndPoints.favouriteCategories, data, (res) => {
             Loger.onLog('favouriteCategories Response ========>', res.data[0].category_info)
             if (res?.statusCode === "1") {
@@ -135,7 +135,7 @@ const HomeScreen = (props) => {
         {
             "field_name": "contest_id",
             "id": id,
-            "frontuser_id": 48,
+            "frontuser_id": UserManager.userId,
             "model": "LikedislikeContests"
         }
 
@@ -161,7 +161,7 @@ const HomeScreen = (props) => {
         {
             "field_name": "formdata_id",
             "id": id,
-            "frontuser_id": 48,
+            "frontuser_id": UserManager,userId,
             "model": "LikedislikeGeneral",
             "general_status": "spotlight"
         }
