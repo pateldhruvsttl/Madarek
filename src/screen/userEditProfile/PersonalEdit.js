@@ -50,7 +50,7 @@ const PersonalEdit = (props) => {
         setCountryName(userData.countryName)
         setCity(userData.city)
         setNumber(userData.number)
-        // setUserPhoto(userData.userPhoto)
+        setUserPhoto(userData.userPhoto)
 
     }, [userData])
 
@@ -130,7 +130,7 @@ const PersonalEdit = (props) => {
                         // contentContainerStyle={{ flexGrow: 1}}
                         renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => { setSelectLanguage(index), setCountryIndex(1), onSelectCountry(index), setCountryId(item.id) }} >
+                                <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => { setSelectLanguage(index); setCountryIndex(1); onSelectCountry(index); setCountryId(item.id) }} >
                                     <Text style={EditUserProfileStyle.label}>{item.countryName}{` (+${item.countryCode})`}</Text>
                                 </TouchableOpacity>
                             )
@@ -151,7 +151,7 @@ const PersonalEdit = (props) => {
                         // contentContainerStyle={{ flexGrow:1}}
                         renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity TouchableOpacity style={[EditUserProfileStyle.selections]} onPress={() => { setSelectLanguage(index), setCityIndex(1), onSelectCity(index),setCityId(item.id) }} >
+                                <TouchableOpacity TouchableOpacity style={[EditUserProfileStyle.selections]} onPress={() => { setSelectLanguage(index); setCityIndex(1); onSelectCity(index);setCityId(item.id) }} >
                                     <Text style={EditUserProfileStyle.label}>{item.city}</Text>
                                 </TouchableOpacity>
                             )
