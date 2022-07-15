@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux'
+import ImageLoad from "react-native-image-placeholder";
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import IdeaStyle from './IdeaDetailsStyle'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -22,7 +22,9 @@ import { UserManager } from '../../manager/UserManager';
 import { EndPoints } from '../../service/EndPoints';
 import ExpertInsight from '../../model/ExpertInsights';
 import { Service } from '../../service/Service';
-
+import { AppConfig } from '../../manager/AppConfig';
+import DeviceInfo from "react-native-device-info";
+export const deviceId = DeviceInfo.getUniqueId()
 
 const IdeaDetails = (props) => {
 
@@ -32,13 +34,14 @@ const IdeaDetails = (props) => {
 
   useEffect(() => {
     onExpertInsights();
-
-    Loger.onLog("", item)
   }, []);
 
   const onExpertInsights = () => {
-    const data = { "frontuser_id": UserManager.userId }
-
+    const data = {
+      "frontuser_id": UserManager.userId,
+      "language": AppConfig.lang,
+      "device_id": deviceId,
+    }
     Service.post(EndPoints.expertInsights, data, (res) => {
       if (res?.statusCode === "1") {
         const expertInsightArr = [];
@@ -47,6 +50,7 @@ const IdeaDetails = (props) => {
           expertInsightArr.push(model);
         })
         setExpertInsight(expertInsightArr)
+        
       }
 
     }, (err) => {
@@ -54,42 +58,6 @@ const IdeaDetails = (props) => {
     })
   }
 
-
-  const testData = [
-    {
-      url: 'https://i.imgur.com/SsJmZ9jl.jpg'
-    },
-    {
-      url: 'https://i.imgur.com/5tj6S7Ol.jpg'
-    },
-    {
-      url: 'https://i.imgur.com/pmSqIFZl.jpg'
-    },
-    {
-      url: 'https://i.imgur.com/cA8zoGel.jpg'
-    },
-    {
-      url: 'https://i.imgur.com/pewusMzl.jpg'
-    },
-    {
-      url: 'https://i.imgur.com/l49aYS3l.jpg'
-    }
-  ];
-
-  const userProfile = [
-    {
-      url: 'https://ath2.unileverservices.com/wp-content/uploads/sites/3/2017/09/professional-mens-hairstyles-combed-min-1024x683.jpg',
-      name: 'Yashpal Sinha'
-    },
-    {
-      url: 'https://ath2.unileverservices.com/wp-content/uploads/sites/3/2017/09/professional-mens-hairstyles-light-styling-min-532x355.jpg',
-      name: 'Aadrsh Acharya'
-    },
-    {
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9QdsoL3XdTix4C40wyn5XpV3nUoC2phXcxQ&usqp=CAU',
-      name: 'Abhimayu Laghari'
-    },
-  ];
 
   const resource = [{
     resourceName: "Idea module lorem ipsum",
@@ -127,7 +95,6 @@ const IdeaDetails = (props) => {
 
   ];
 
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"IdeaDetails"} />
@@ -135,7 +102,13 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            <IdeaSlider Entries={[item.ideaImage]} />
+            {item.additional_images ? 
+            <IdeaSlider Entries={item.additional_images} />
+             :
+             <View style={IdeaStyle.imgStyle}>
+               <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={false} />
+             </View>
+             }
 
             <IdeaContent data={item} />
 
@@ -144,14 +117,14 @@ const IdeaDetails = (props) => {
               <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
             </View>
 
-            {item.team && <UserProfileList profileData={item.team} />}
+            {item.team &&<UserProfileList profileData={item.team} />}
 
             {item.video &&
               <View style={IdeaStyle.videoPlay}>
                 <VideoPlayer />
               </View>}
 
-            <Resources resource={resource} />
+            {item.resources && <Resources resource={item.resources} />}
 
             {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
 

@@ -43,10 +43,14 @@ const styles = StyleSheet.create({
         marginBottom: AppUtil.getHP(1),
         paddingVertical: AppUtil.getHP(3)
     },
+
+    img: {width: AppUtil.getHP(18), height: AppUtil.getHP(18)},
+
     imgStyle: {
         width: AppUtil.getHP(18), height: AppUtil.getHP(18), borderRadius: AppUtil.getHP(18 / 2),
-        // borderColor: GetAppColor.borderImgShadow,
-        // borderWidth: AppUtil.getHP(0.8),
+        borderColor: GetAppColor.borderImgShadow,
+        overflow:'hidden',
+        borderWidth: AppUtil.getHP(0.1),
         marginHorizontal: AppUtil.getHP(1.8),
         shadowColor: GetAppColor.borderImgShadow,
         shadowOffset: {
@@ -78,7 +82,9 @@ const styles = StyleSheet.create({
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.7),
         marginTop: AppUtil.getHP(1),
-    }
+    },
+
+
 })
 
 export default styles

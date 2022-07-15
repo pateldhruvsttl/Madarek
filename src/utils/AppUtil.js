@@ -50,7 +50,15 @@ export const AppUtil = {
   passwordValidate: (text) => {
     let reg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return reg.test(text);
-  }
+  },
+  GetImageNameFromUrl:(url)=>{
+    return url.substring(url.lastIndexOf('/')+1);
+  },
+  GetFileExtention: (fileUrl) => {
+    // To get the file extension
+    return /[.]/.exec(fileUrl) ?
+             /[^.]+$/.exec(fileUrl) : undefined;
+  },
 
 }
 

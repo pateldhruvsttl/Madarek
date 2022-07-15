@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const TabPopularIdeas = (props) => {
-   
+
     const navigation = useNavigation();
     return (
         <View style={Style.MainView}>

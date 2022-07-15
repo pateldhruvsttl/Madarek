@@ -21,7 +21,7 @@ const IdeaList = (props) => {
     const [newIdeasList, setNewIdeasList] = useState([])
     const [winningIdeaList, setWinningIdeaList] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         onSelectTab(0, "popular")
     }, [])
 
@@ -30,16 +30,25 @@ const IdeaList = (props) => {
         const data = {
             "frontuser_id":UserManager.userId,
             "limit": AppConfig.pageLimit,
-            "categories": "",
-            "sectors": "6,7",
-            "listtype": type,
             "language": AppConfig.lang,
+            "listtype": type,
+            "searchkeywords": "",
+            // "frontuser_id": 48,
+            // "limit": 
+            // "categories": "",
+            // "sectors": "6,7",
+            // "listtype": type,
+            // "language": AppConfig.lang,
         }
         Service.post(EndPoints.ideaList, data, (res) => {
 
             let popularIdeaArrTmp = [];
             let newIdeaArrTmp = [];
             let winningIdeaArrTmp = [];
+            setPopularIdeasList([]);
+            setNewIdeasList([]);
+            setWinningIdeaList([winningIdeaArrTmp]);
+
 
             if (type === "popular") {
                 res?.data?.popularIdea.map((element) => {

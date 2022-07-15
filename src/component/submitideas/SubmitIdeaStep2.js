@@ -17,19 +17,19 @@ function SubmitIdeaStep2(props) {
     const [email, setEmail] = useState("");
 
     const onCheckField = () => {
-        let gender = "";
-        if(selectedIndex == 0) gender = "Male";
-        else if(selectedIndex == 1) gender = "Female";    
-        else if(selectedIndex == 2) gender = "Other";    
+        // let gender = "";
+        // if(selectedIndex == 0) gender = "Male";
+        // else if(selectedIndex == 1) gender = "Female";    
+        // else if(selectedIndex == 2) gender = "Other";    
 
-        var obj = { firstName: firstName, lastName: lastName, gender: gender, email: email }
+        // var obj = { firstName: firstName, lastName: lastName, gender: gender, email: email }
 
-        if(email === "" || !AppUtil.validate(email))
-            Alert.alert(Label.enteremail)
-        else if(firstName === "" || lastName === "" || gender === 5 || email === "")
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        else     
-            props.onNext(obj);
+        // if(email === "" || !AppUtil.validate(email))
+        //     Alert.alert(Label.enteremail)
+        // else if(firstName === "" || lastName === "" || gender === 5 || email === "")
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // else     
+            props.onNext(/*obj*/);
 
         
     }
