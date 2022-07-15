@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux'
+import ImageLoad from "react-native-image-placeholder";
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import IdeaStyle from './IdeaDetailsStyle'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -34,18 +34,14 @@ const IdeaDetails = (props) => {
 
   useEffect(() => {
     onExpertInsights();
-
-    
   }, []);
 
   const onExpertInsights = () => {
-    const data = { 
-    "frontuser_id": UserManager.userId,
-    "language":  AppConfig.lang,
-    "device_id":deviceId,
-   }
-
-   Loger.onLog("deviceId", data);
+    const data = {
+      "frontuser_id": UserManager.userId,
+      "language": AppConfig.lang,
+      "device_id": deviceId,
+    }
     Service.post(EndPoints.expertInsights, data, (res) => {
       if (res?.statusCode === "1") {
         const expertInsightArr = [];
@@ -54,15 +50,13 @@ const IdeaDetails = (props) => {
           expertInsightArr.push(model);
         })
         setExpertInsight(expertInsightArr)
+        
       }
 
     }, (err) => {
       Loger.onLog('expertInsights  error ========>', err)
     })
   }
-
-
-
 
 
   const resource = [{
@@ -108,7 +102,13 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            <IdeaSlider Entries={[item.ideaImage]} />
+            {item.additional_images ? 
+            <IdeaSlider Entries={item.additional_images} />
+             :
+             <View style={IdeaStyle.imgStyle}>
+               <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={false} />
+             </View>
+             }
 
             <IdeaContent data={item} />
 
@@ -117,14 +117,14 @@ const IdeaDetails = (props) => {
               <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
             </View>
 
-            {item.team && <UserProfileList profileData={item.team} />}
+            {item.team &&<UserProfileList profileData={item.team} />}
 
             {item.video &&
               <View style={IdeaStyle.videoPlay}>
                 <VideoPlayer />
               </View>}
 
-            <Resources resource={resource} />
+            {item.resources && <Resources resource={item.resources} />}
 
             {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
 
