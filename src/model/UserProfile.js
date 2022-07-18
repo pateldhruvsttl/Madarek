@@ -24,7 +24,7 @@ export default class UserProfile {
         this.SMEUserFees =  obj?.SME_User_Fees || "0"
         this.feesType =  obj?.Fees_Type || "No Type"
         this.userType =  obj?.user_type || "No Type"
-        this.categoryInfo =  obj?.category_info || "No Category"
+        this.categoryInfo =  obj?.category_info || ['One','Two']
         this.categoryId =  obj?.category_id || "0"
         this.categoryName =  obj?.category_name || "No Category Name"
         

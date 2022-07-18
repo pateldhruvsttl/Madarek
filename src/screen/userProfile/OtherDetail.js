@@ -6,12 +6,13 @@ import { AppUtil } from '../../utils/AppUtil'
 
 const OtherDetail = (props) => {
     const data = props.data
+    console.log('props.data',props.data);
     const categoryDetail = props?.data?.categoryInfo || []
 
     const getCategories = () =>
     categoryDetail && categoryDetail.map((ele) => (
             <View style={UserProfileStyle.catView}>
-                <Text style={UserProfileStyle.catText}>{ele.category_name}</Text>
+                <Text style={UserProfileStyle.catText}>{ele.category_name || "No Category"}</Text>
             </View>
         ))
 
@@ -31,7 +32,7 @@ const OtherDetail = (props) => {
                                 )
                             })
                         } */}
-                        {props?.data?.categoryInfo  && getCategories()}
+                        {getCategories()}
                     </View>
 
                     <Text style={UserProfileStyle.titleText}>{Label.ShortDiscription}</Text>
