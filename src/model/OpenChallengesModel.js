@@ -1,4 +1,4 @@
-export default class OpenChallenge {
+export default class OpenChallengeModel {
 
     constructor(obj = null) {
 

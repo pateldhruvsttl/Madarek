@@ -4,7 +4,8 @@ import { Label } from '../../utils/StringUtil'
 import UserProfileStyle from './UserProfileStyle'
 import { AppUtil } from '../../utils/AppUtil'
 
-const Expert = () => {
+const Expert = (props) => {
+    const data = props.data
     return (
         <View>
             <ScrollView>
@@ -22,13 +23,13 @@ const Expert = () => {
                         }
                     </View>
                     <Text style={[UserProfileStyle.titleText]}>{Label.Skill}</Text>
-                    <Text style={UserProfileStyle.subTitleText}>Lorem</Text>
+                    <Text style={UserProfileStyle.subTitleText}>{data.skills}</Text>
 
                     <Text style={[UserProfileStyle.titleText]}>{Label.Biography}</Text>
-                    <Text style={UserProfileStyle.subTitleText}>Lorem</Text>
+                    <Text style={UserProfileStyle.subTitleText}>{data.biography}</Text>
 
                     <Text style={UserProfileStyle.titleText}>{Label.Description}</Text>
-                    <Text style={UserProfileStyle.subTitleText}>Lorem</Text>
+                    <Text style={UserProfileStyle.subTitleText}>{data.expertiseBrief}</Text>
                 </View>
 
             </ScrollView>

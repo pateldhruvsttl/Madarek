@@ -167,7 +167,7 @@ const ExpertInsightDetailWithComment = (props) => {
             ExpertInsightDetailStyle.userImage,
             { marginTop: AppUtil.getHP(1) },
           ]}
-          source={{ uri: '' }}
+          source={{ uri: 'https://i.imgur.com/pewusMzl.jpg' }}
           borderRadius={AppUtil.getHP(2.5)}
           placeholderStyle={ExpertInsightDetailStyle.userImage}
         />
@@ -184,7 +184,7 @@ const ExpertInsightDetailWithComment = (props) => {
           <View style={ExpertInsightDetailStyle.calView}>
             <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
 
-            <Text style={ExpertInsightDetailStyle.icnTitle}>{589}</Text>
+            <Text style={ExpertInsightDetailStyle.icnTitle}>{'589'}</Text>
 
             <TouchableOpacity>
               <Text style={ExpertInsightDetailStyle.icnTitle}>{"Replay"}</Text>
@@ -273,7 +273,7 @@ const ExpertInsightDetailWithComment = (props) => {
                   ExpertInsightDetailStyle.userImage,
                   { marginTop: AppUtil.getHP(1) },
                 ]}
-                source={{ uri: '' }}
+                source={{ uri: 'https://i.imgur.com/pewusMzl.jpg' }}
                 borderRadius={AppUtil.getHP(2.5)}
                 placeholderStyle={ExpertInsightDetailStyle.userImage}
               />

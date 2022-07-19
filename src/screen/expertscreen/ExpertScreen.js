@@ -12,17 +12,23 @@ import FavouriteCategories from "../../component/homescreen/FavouriteCategories"
 import { Label } from "../../utils/StringUtil";
 import { AppUtil } from "../../utils/AppUtil";
 
-import { DrawerActions } from '@react-navigation/native';
+import ExpertInsight from "../../model/ExpertInsights";
 import SimilarExperts from "../../component/expertscreen/SimilarExperts";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import Categories from "../../model/Categories";
+import { UserManager } from "../../manager/UserManager";
+import { AppConfig } from "../../manager/AppConfig";
+import DeviceInfo from "react-native-device-info";
+export const deviceId = DeviceInfo.getUniqueId()
 
 const ExpertScreen = (porps) => {
     const [category, setCategory] = useState([])
     const [categories, setCategories] = useState([])
     const { themeColor } = useSelector((state) => state)
+    const [expertInsight, setExpertInsight] = useState([]);
+
     useEffect(() => {
         var cat = [];
         Service.post(EndPoints.categories, {}, (res) => {
@@ -39,6 +45,26 @@ const ExpertScreen = (porps) => {
             setCategory(cat)
         }, (err) => {
             Loger.onLog('category bannerlist error ========>', err)
+        })
+
+        const data = {
+            "frontuser_id": UserManager.userId,
+            "language": AppConfig.lang,
+            "device_id": deviceId,
+        }
+        Service.post(EndPoints.expertInsights, data, (res) => {
+            if (res?.statusCode === "1") {
+                const expertInsightArr = [];
+                res.data.map((ele) => {
+                    const model = new ExpertInsight(ele)
+                    expertInsightArr.push(model);
+
+                })
+                setExpertInsight(expertInsightArr)
+            }
+
+        }, (err) => {
+            Loger.onLog('expertInsights  error ========>', err)
         })
 
     }, []);
@@ -64,7 +90,7 @@ const ExpertScreen = (porps) => {
                         </View>
 
                         <View style={Style.similarExpertView}>
-                            <ExpertInsightsSlider Entries={expertData} />
+                            <ExpertInsightsSlider Entries={expertInsight} />
                         </View>
 
                         <View style={Style.footerView}>
@@ -88,28 +114,7 @@ const ExpertScreen = (porps) => {
 
 export default memo(ExpertScreen);
 
-const expertData = [
-    {
-        firstName: 'Naredra Modi',
-        jobTitle: 'Game Tester',
-        ideaTitle: 'Clean ocena plastic with HP SS',
-        ideaDescription: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePhoto: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        totalViews: '700',
-        totalLikes: '210',
-        totalComments: '180',
-    },
-    {
-        firstName: 'Bhupendra Patel',
-        jobTitle: 'App Tester',
-        ideaTitle: 'Clean ocena plastic with HP SS',
-        ideaDescription: "harvesting Hydroelectric Power and Cleaning up Ocean Plastic Global climate change isn't the",
-        profilePhoto: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        totalViews: '700',
-        totalLikes: '200',
-        totalComments: '80',
-    },
-]
+
 const expertInsightsData = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',

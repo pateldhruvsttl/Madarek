@@ -33,7 +33,6 @@ const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-console.log('user manager dtaa====================================', UserManager.getUserProfilePicture());
  
   const onSelectMenu = (index) => {
     if (index == selectedIndex) {
@@ -41,9 +40,7 @@ console.log('user manager dtaa====================================', UserManager
     } else {
       setSelectedIndex(index)
     }
-
   }
-
   const onselectButtonMenu = (index, screen) => {
 
     if (screen){

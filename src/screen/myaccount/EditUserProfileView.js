@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 const EditUserProfileView = (props) => {
 const { themeColor } = useSelector((state) => state)
 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"UserEditProfile"} onEditProfile={() => props.navigation.navigate('EditUserProfileView')} onMenuClick={() => { props.navigation.openDrawer() }} />

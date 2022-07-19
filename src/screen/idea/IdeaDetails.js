@@ -24,16 +24,21 @@ import ExpertInsight from '../../model/ExpertInsights';
 import { Service } from '../../service/Service';
 import { AppConfig } from '../../manager/AppConfig';
 import DeviceInfo from "react-native-device-info";
+import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
 
 const IdeaDetails = (props) => {
 
+  
+
   const navigation = useNavigation();
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);
-
+  const [isAllIdeas, setAllIdeas] = useState([]);
+  console.log("item", item)
   useEffect(() => {
     onExpertInsights();
+    onIdeas()
   }, []);
 
   const onExpertInsights = () => {
@@ -43,7 +48,6 @@ const IdeaDetails = (props) => {
       "device_id": deviceId,
     }
     Service.post(EndPoints.expertInsights, data, (res) => {
-      console.log('response of idea detail api calling==============>>>>>',res.data);
       if (res?.statusCode === "1") {
         const expertInsightArr = [];
         res.data.map((ele) => {
@@ -51,7 +55,7 @@ const IdeaDetails = (props) => {
           expertInsightArr.push(model);
         })
         setExpertInsight(expertInsightArr)
-        
+
       }
 
     }, (err) => {
@@ -59,43 +63,54 @@ const IdeaDetails = (props) => {
     })
   }
 
+  const onIdeas = () => {
+    const data = {
+      "frontuser_id": UserManager.userId,
+      "limit": 2,
+      "language": AppConfig.lang,
+      "listtype": "all",
+      "searchkeywords": "",
+    }
+    Service.post(EndPoints.ideaList, data, (res) => {
 
-  const resource = [{
-    resourceName: "Idea module lorem ipsum",
-  }, {
-    resourceName: "Idea module lorem",
-  }, {
-    resourceName: "Idea module lorem ipsum doler",
-  }, {
-    resourceName: "Idea module lorem ipsum",
-  }];
+      Loger.onLog("res", res)
+      let _isAllIdeas = [];
+      setAllIdeas([]);
 
-  const DATAPERSON = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Family business',
-      subTitle: 'Children Omani Dress Competition',
-      url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-      date: "25 Dec 21 - 29 Dec 21",
-      see: '700',
-      like: '200',
-      comment: '80',
-      isLike: true,
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-      subTitle: 'Children Omani Dress Competition',
-      url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-      date: "25 Dec 21 - 29 Dec 21",
-      see: '700',
-      like: '200',
-      comment: '80',
-      isLike: false,
-    },
+      res?.data?.allIdea.map((element) => {
+        let model = new IdeaListModel(element);
+        _isAllIdeas.push(model);
+      })
+      setAllIdeas(_isAllIdeas)
 
-  ];
+    }, (err) => {
+      Loger.onLog("err", err)
+    })
+  }
 
+  const onLikeIdeas = (id) => {
+    var data = {
+      "field_name": "idea_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": 'LikedislikeIdeas'
+    }
+    Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+      const likeDislike = res?.data === 'dislike' ? false : true;
+      const _isAllIdeas = isAllIdeas
+
+      _isAllIdeas.map((ele, index) => {
+        if (ele.id == id) {
+          _isAllIdeas[index].like = likeDislike;
+        }
+      })
+      setAllIdeas([..._isAllIdeas]);
+
+    }, (err) => {
+      Loger.onLog("err of likeUnlike", err)
+    })
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"IdeaDetails"} />
@@ -103,36 +118,41 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            {item.additional_images ? 
-            <IdeaSlider Entries={item.additional_images} />
-             :
-             <View style={IdeaStyle.imgStyle}>
-               <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={false} />
-             </View>
-             }
+            {item?.additional_images ?
+              <IdeaSlider Entries={item?.additional_images} />
+              :
+              <View style={IdeaStyle.imgStyle}>
+                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.user_photo }} isShowActivity={false} />
+              </View>
+            }
 
             <IdeaContent data={item} />
 
             <View style={IdeaStyle.contentBox}>
-              <Text style={IdeaStyle.heading}>{Label.Description}</Text>
-              <Text style={IdeaStyle.descriptionContent}>{item.ideaDescription}</Text>
+              <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
+              <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text>
             </View>
 
-            {item.team &&<UserProfileList profileData={item.team} />}
+            {item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
 
-            {item.video &&
+            {item?.video &&
               <View style={IdeaStyle.videoPlay}>
                 <VideoPlayer />
               </View>}
 
-            {item.resources && <Resources resource={item.resources} />}
+            {item?.resources && <Resources resource={item?.resources} />}
 
             {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
 
             <View style={IdeaStyle.subIdeaList}>
-              <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"
+              <SubIdeasListWithImage
+                data={isAllIdeas}
+                isType="Ideas"
+                likeIdea={onLikeIdeas}
+                isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
-                onItemPress={() => { navigation.navigate("IdeaDetails") }} />
+                onItemPress={(item) => { navigation.replace("IdeaDetails", item) }} />
+
             </View>
           </View>
         </ScrollView>

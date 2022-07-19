@@ -80,9 +80,12 @@ export const ARlabel = {
   _entermobilenumber: "Please Enter Mobile Number",
   _enteremail: "Please Enter Proper Email",
   _enterpassword: "Please Enter Password",
+  _organizationName: "Please Enter Organization Name",
   _enterretypePassword: "Please Enter Retype Password",
   _enterSamePassword: "Please Match both Password and Re-type Password are same",
   _readyToSubmitYourIdea: "Ready to submit your Idea",
+  _enterJobTitle: "Please Enter Job Title",
+  _updateProfie: "User Profile Update Successfully",
 
 
   // SignUp verification message
@@ -307,18 +310,18 @@ export const ARlabel = {
 
   // Notification Setting
   _notificationsSettings: "Notifications Settings",
-  _allNotifications : "All Notifications",
-  _userNotifications : "User Notifications",
-  _collaborateNotifications : "Collaborate Notifications",
-  _expertNotifications : "Expert Notifications",
+  _allNotifications: "All Notifications",
+  _userNotifications: "User Notifications",
+  _collaborateNotifications: "Collaborate Notifications",
+  _expertNotifications: "Expert Notifications",
 
   _expertInsightsDetail: 'Expert Insight Details',
 
-    _maturation:"Maturation",
-    _filter: "Filter",
-    _writeReply : "Write a reply...",
-    _online : "Online",
-    _editIdea:"Edit Idea"
+  _maturation: "Maturation",
+  _filter: "Filter",
+  _writeReply: "Write a reply...",
+  _online: "Online",
+  _editIdea: "Edit Idea"
 
 }
 export const USlabel = {
@@ -398,6 +401,9 @@ export const USlabel = {
   _enterretypePassword: "Please Enter Retype Password",
   _enterSamePassword: "Please Match both Password and Re-type Password are same",
   _readyToSubmitYourIdea: "Ready to submit your Idea?",
+  _organizationName: "Please Enter Organization Name",
+  _enterJobTitle: "Please Enter Job Title",
+  _updateProfie: "User Profile Update Successfully",
 
   // SignUp verification message
   _signUpVerifyTitle: "Sign Up Verification",
@@ -654,16 +660,20 @@ export const USlabel = {
 
   // Notification Setting
   _notificationsSettings: "Notifications Settings",
-  _allNotifications : "All Notifications",
-  _userNotifications : "User Notifications",
-  _ideaNotifications : "Idea Notifications",
-  _collaborateNotifications : "Collaborate Notifications",
-  _expertNotifications : "Expert Notifications",
+  _allNotifications: "All Notifications",
+  _userNotifications: "User Notifications",
+  _ideaNotifications: "Idea Notifications",
+  _collaborateNotifications: "Collaborate Notifications",
+  _expertNotifications: "Expert Notifications",
 
   _expertInsightsDetail: 'Expert Insight Details',
 
-    _writeReply : "Write a reply...",
-    _online : "Online",
-    _editIdea:"Edit Idea"
+  _writeReply: "Write a reply...",
+  _online: "Online",
+  _editIdea: "Edit Idea",
+
+  // UserProfile model messages
+
+
 
 }

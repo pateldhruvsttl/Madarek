@@ -51,7 +51,7 @@ const LoginScreen = (props) => {
     let otpNumber = 123456
     let pin = 1234567
 
-   
+
 
     const signIn = () => {
 
@@ -75,9 +75,10 @@ const LoginScreen = (props) => {
                 AppConfig.token = res.token;
                 AsyncStorage.setItem('@user', JSON.stringify(res))
                 navigateHomeScreen();
+                resetField();
+
             }
-            else if (res.statusCode == 0)
-            {
+            else if (res.statusCode == 0) {
                 showMessage(res.message)
             }
         }, (err) => {
@@ -189,9 +190,8 @@ const LoginScreen = (props) => {
             }
         }
         signIn()
-        resetField()
 
-
+        
     }
     const resetField = () => {
         setMobileNumber('')
@@ -270,12 +270,13 @@ const LoginScreen = (props) => {
                                             style={PAGESTYLE.showMobileDetail}
                                             value={mobileNumber}
                                             onChangeText={mobileNumber => setMobileNumber(mobileNumber)}
+                                            autoCapitalize="none"
                                         />
                                     </View>
                                     :
                                     <View style={PAGESTYLE.numberArea}>
                                         <TextInput
-                                            autoCapitalize={false}
+                                            autoCapitalize="none"
                                             ref={t1}
                                             returnKeyType={"next"}
                                             placeholderTextColor={GetAppColor.grayBorder}
@@ -286,6 +287,7 @@ const LoginScreen = (props) => {
                                             style={PAGESTYLE.showEmailDetail}
                                             value={email}
                                             onChangeText={email => setEmail(email)}
+
                                         ></TextInput>
                                     </View>
                             }
@@ -316,10 +318,13 @@ const LoginScreen = (props) => {
                                             maxLength={30}
                                             onChangeText={password => setPassword(password)}
                                             style={PAGESTYLE.showPassword}
+                                            autoCapitalize="none"
+
                                         />
                                         :
                                         <View style={PAGESTYLE.otpSquareArea}>
                                             <TextInput
+                                                autoCapitalize="none"
                                                 style={PAGESTYLE.squreBox}
                                                 keyboardType="number-pad"
                                                 value={first}
@@ -330,6 +335,7 @@ const LoginScreen = (props) => {
                                             />
                                             <TextInput
                                                 style={PAGESTYLE.squreBox}
+                                                autoCapitalize="none"
                                                 keyboardType="number-pad"
                                                 value={second}
                                                 ref={input2}
@@ -339,6 +345,7 @@ const LoginScreen = (props) => {
                                             />
                                             <TextInput
                                                 style={PAGESTYLE.squreBox}
+                                                autoCapitalize="none"
                                                 keyboardType="number-pad"
                                                 value={third}
                                                 ref={input3}
@@ -349,6 +356,7 @@ const LoginScreen = (props) => {
                                             <TextInput
                                                 style={PAGESTYLE.squreBox}
                                                 keyboardType="number-pad"
+                                                autoCapitalize="none"
                                                 value={fourth}
                                                 ref={input4}
                                                 maxLength={1}
@@ -356,6 +364,7 @@ const LoginScreen = (props) => {
                                                 onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 4) }}
                                             />
                                             <TextInput
+                                                autoCapitalize="none"
                                                 style={PAGESTYLE.squreBox}
                                                 keyboardType="number-pad"
                                                 value={fifth}
@@ -366,6 +375,7 @@ const LoginScreen = (props) => {
                                             />
                                             <TextInput
                                                 style={PAGESTYLE.squreBox}
+                                                autoCapitalize="none"
                                                 keyboardType="number-pad"
                                                 value={sixth}
                                                 ref={input6}
@@ -382,7 +392,7 @@ const LoginScreen = (props) => {
                                         <View style={PAGESTYLE.resendOtpArea}>
                                             <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
                                             <View style={PAGESTYLE.passwordView}>
-                                                <TouchableOpacity onPress={() => { setShowPassword(false); resetField() }} >
+                                                <TouchableOpacity onPress={() => { setShowPassword(false); }} >
                                                     <Text style={PAGESTYLE.usePassword}>{Label.UseOtpTitle} </Text>
                                                 </TouchableOpacity>
                                                 <Text style={PAGESTYLE.resendTextFirst}>{Label.ToLogin}</Text>
@@ -393,7 +403,7 @@ const LoginScreen = (props) => {
                                             <Text style={PAGESTYLE.resendText}>{Label.ResendOtpTitle}</Text>
                                             <View style={PAGESTYLE.passwordView}>
                                                 <Text style={PAGESTYLE.resendTextFirst}>{Label.ReceiveOtp}</Text>
-                                                <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => { setShowPassword(true); resetField() }} >
+                                                <TouchableOpacity style={PAGESTYLE.resendTextSecond} onPress={() => { setShowPassword(true); }} >
                                                     <Text style={PAGESTYLE.usePassword}>{Label.UsePinTitle}</Text>
                                                 </TouchableOpacity>
                                             </View>
