@@ -18,5 +18,6 @@ export const EndPoints = {
     countries: "rest/countries?language=ar",
     cities: "rest/cities?language=ar",
     notification:"notification",
+    clearnotification:"clearnotification",
     logout:"logout",
 }

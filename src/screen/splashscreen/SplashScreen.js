@@ -57,6 +57,9 @@ const SplashScreen = (props) => {
             onPress={() => {
               setselectLanguage(index);
               setSelectIndex(1);
+              if (selectIndex == 0) {
+                props.navigation.navigate("LoginScreen");
+              }
             }}
           >
             <Text

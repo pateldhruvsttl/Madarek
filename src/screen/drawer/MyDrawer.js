@@ -67,7 +67,7 @@ const MyDrawerScreen = (props) => {
   }
     Service.post(EndPoints.logout, data, (res)=>{
       Loger.onLog('Drawer Logout response',res);
-      AsyncStorage.setItem("@user", null)
+      AsyncStorage.setItem('@user', JSON.stringify(null))
       props.navigation.navigate("LoginScreen")
 
     },(err)=>{

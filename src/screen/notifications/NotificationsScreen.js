@@ -84,7 +84,32 @@ function NotificationsScreen() {
               {moment(item.created_at).format("DD MMM YY  HH:MM a")}
             </Text>
           </View>
-          {item?.notification_type === "Idea request" && (
+          
+          {item?.notification_type === "Expert request" && (
+            <View style={Style.btnView}>
+              <TouchableOpacity
+                style={[
+                  Style.btnApplyNow,
+                  { backgroundColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: GetAppColor.white }]}>
+                  {Label.Accept}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  Style.btnLearMore,
+                  { borderColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
+                  {Label.Reject}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          {/* {item?.notification_type === "Idea request" && (
             <View style={Style.btnView}>
               <TouchableOpacity
                 style={[
@@ -107,19 +132,33 @@ function NotificationsScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
-          )}
+          )} */}
         </View>
+        <TouchableOpacity
+            onPress={() => {
+              onClear(item.id);
+            }}
+          >
+            <Text style={[Style.clearView,{fontSize:25, marginEnd:10}]}>
+              {"x"}
+            </Text>
+          </TouchableOpacity>
       </View>
     );
   };
 
-  const onClear = () => {
+  const onClear = (id) => {
     const data = {
       device_id: deviceId,
       token: AppConfig.token,
       frontuser_id: UserManager.userId,
-      notificationid: "12",
+      notificationid: id,
     };
+    Service.post(EndPoints.clearnotification,data,(res)=>{
+      console.log("Clear notification response", res)
+    },(err)=>{
+      console.log("Clear notification error response", err)
+    })
   };
 
   return (
@@ -139,7 +178,7 @@ function NotificationsScreen() {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              onClear();
+              onClear("");
             }}
           >
             <Text style={Style.clearView}>
