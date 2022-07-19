@@ -2,7 +2,7 @@ import {
     View, Text, TouchableOpacity, FlatList, TextInput,
     SectionList, SafeAreaView, ScrollView
 } from 'react-native'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useSt } from 'react'
 import Style from './SearchLabelStyle'
 import IcnBack from '../../assets/svg/IcnBack'
 import IcnSearch from '../../assets/svg/IcnSearch'
@@ -29,22 +29,24 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 
 import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
+import { Loger } from '../../utils/Loger'
+import { UserManager } from '../../manager/UserManager'
+import { AppConfig } from '../../manager/AppConfig'
+import { Service } from '../../service/Service'
+import { EndPoints } from '../../service/EndPoints'
+import IdeaListModel from '../../model/IdeaList'
 
 const Item = ({ title, index }) => (
 
 
     <View style={Style.seachView}>
         {
-            index == 0 ?
-                <IcnRecentIcon style={Style.recent} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                :
-                null
+            index == 0 && <IcnRecentIcon style={Style.recent} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
         }
         <Text style={Style.subLabel} >{title}</Text>
     </View>
 
 )
-
 
 const RenderItem = ({ item, index, clearData }) => (
 
@@ -72,31 +74,80 @@ const RenderItem = ({ item, index, clearData }) => (
 )
 
 const SearchLabel = (props) => {
+
+    const [isCurrentScreen, setCurrentScreen] = useState(props?.route?.params?.screen)
+
     const [isSearchActive, setSearchActive] = useState(false)
     const textInput = useRef(null);
     const [searchStr, setSearchStr] = useState("")
     const [labels, setLabels] = useState(search)
+    const [isSugestions, setSugestions] = useState(false)
+
+    const [isAllIdeas, setAllIdeas] = useState([]);
 
 
-    let arr = labels.map((ele) => ele.map((element) => { return element.data }))
-    let masterData = arr
 
+    const onChangeText = (text) => {
+        setSearchStr(text); 
+        text.length > 0 ? setSugestions(true) : setSugestions(false)
+        text.length > 0 && setAllIdeas([]);
+
+    }
+    const onCurrentType = (item) => {
+        switch (item) {
+
+            case 'IDEAS':
+                onGetIdeasList();
+                break
+            default: null;
+        }
+    }
+    const onGetIdeasList = () => {
+        if (searchStr.length == 0)
+            return
+
+        const data = {
+            "frontuser_id": UserManager.userId,
+            "limit": 2,
+            "language": AppConfig.lang,
+            "listtype": "all",
+            "searchkeywords": searchStr,
+        }
+        Service.post(EndPoints.ideaList, data, (res) => {
+
+            let _isAllIdeas = [];
+            setAllIdeas([]);
+
+            res?.data?.allIdea.map((element) => {
+                let model = new IdeaListModel(element);
+                _isAllIdeas.push(model);
+            })
+            setAllIdeas(_isAllIdeas)
+
+        }, (err) => {
+            Loger.onLog("err", err)
+        })
+    }
 
     const onPressSearchButton = () => {
-        setSearchActive(true)
+        if (isCurrentScreen === "HomeScreen") {
+
+        }
+        else if (isCurrentScreen === "") {
+
+        }
     }
     const onPressCloseButton = () => {
-        setSearchActive(false)
+        setAllIdeas([]);
+        setSearchActive(false);
         setTimeout(() => {
             setSearchStr('')
             textInput.current.clear()
-        }, 500)
+        }, 500);
     }
     const clearData = () => {
         setLabels([])
     }
-
-
     const renderResultCell = ({ item }) => (
 
         <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
@@ -104,7 +155,7 @@ const SearchLabel = (props) => {
             <View style={Style.rightItems}>
 
                 <View style={Style.img}>
-                    <ImageLoad style={Style.img} source={{ uri: item.url }} isShowActivity={false} />
+                    <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                 </View>
                 {
                     item.like ?
@@ -196,52 +247,58 @@ const SearchLabel = (props) => {
                         value={searchStr}
                         style={Style.txtHeader}
                         placeholderTextColor={GetAppColor.pincolor}
-                        onChangeText={text => setSearchStr(text)}
+                        onChangeText={text => { onChangeText(text); }}
                     />
                 </View>
 
                 <View style={Style.rightSingleIcnView}>
 
-                    {isSearchActive ?
-                        <TouchableOpacity onPress={() => { onPressCloseButton() }} >
-                            <IcnClose color={GetAppColor.black} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                        </TouchableOpacity> :
+                    {searchStr.length > 0 ?
+                        <TouchableOpacity style={[Style.searchBtnStyle, { marginBottom: 2 }]} onPress={() => { onPressCloseButton() }} >
+                            <IcnClose color={GetAppColor.black} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                        </TouchableOpacity>
+                        :
+                        <View style={Style.searchBtnStyle} />
+                    }
 
-                        <TouchableOpacity onPress={() => { onPressSearchButton() }}>
-                            <IcnSearch color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                        </TouchableOpacity>}
+                    <TouchableOpacity style={Style.searchBtnStyle} onPress={() => { onPressSearchButton() }}>
+                        <IcnSearch color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                    </TouchableOpacity>
                 </View>
             </View>
-            {
-                isSearchActive ?
-                    <View style={Style.listing}>
-                        <FlatList
-                            data={labels}
-                            renderItem={({ item, index }) => <RenderItem item={item} index={index} clearData={clearData} />}
-                            keyExtractor={item => item.key}
-                        />
-                    </View>
-                    :
-                    <View>
-                        <ScrollView contentContainerStyle={{ paddingStart: AppUtil.getWP(3) }} horizontal={true} showsHorizontalScrollIndicator={false}>
-                            {
-                                [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
-                                    return (
-                                        <TouchableOpacity style={[Style.cateButton, { backgroundColor: GetAppColor.white }]}>
-                                            <Text style={Style.catTextRegular}>Ideas</Text>
-                                        </TouchableOpacity>
-                                    )
-                                })
-                            }
-                        </ScrollView>
+            {/* {
+                searchStr.length > 0 &&
+                <View style={Style.listing}>
+                    <FlatList
+                        data={labels}
+                        renderItem={({ item, index }) => <RenderItem item={item} index={index} clearData={clearData} />}
+                        keyExtractor={item => item.key}
+                    />
+                </View>
+            } */}
+            <View>
+                {
+                    isCurrentScreen === "HomeScreen" &&
+                    <ScrollView contentContainerStyle={{ paddingStart: AppUtil.getWP(3) }} horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {
+                            ["IDEAS", "CHALLENGE", "EXPERT DIRECTORY", "EXPERT INSIGHTS"].map((item, index) => {
+                                return (
+                                    <TouchableOpacity onPress={() => onCurrentType(item)} style={[Style.cateButton, { backgroundColor: GetAppColor.white }]}>
+                                        <Text style={Style.catTextRegular}>{item}</Text>
+                                    </TouchableOpacity>
+                                )
+                            })
+                        }
+                    </ScrollView>
+                }
 
-                        <FlatList
-                            data={sliderdata}
-                            renderItem={renderResultCell}
-                        />
+                <FlatList
+                    data={isAllIdeas}
+                    renderItem={renderResultCell}
+                />
 
-                    </View>
-            }
+            </View>
+
 
         </SafeAreaView>
     )

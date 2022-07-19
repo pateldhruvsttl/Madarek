@@ -40,7 +40,7 @@ const CommonHeader = (props) => {
                         <IcnMsg stroke={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Message}</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => navigation.navigate("SearchLabel")} style={Style.menuView}>
+                    <MenuOption onSelect={() => navigation.navigate("SearchLabel",{screen:"HomeScreen"})} style={Style.menuView}>
                         <IcnSearch fill={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Search}</Text>
                     </MenuOption>
