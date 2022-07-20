@@ -18,7 +18,7 @@ export default class Dashboard {
         this.ideaCoverImage = obj?.idea_cover_image || "https://i.imgur.com/5tj6S7Ol.jpg"
         this.ideaDescription = obj?.idea_description ? obj?.idea_description : "No Description"
         this.ideaCode = obj?.idea_code ? obj?.idea_code : "0"
-        this.id = obj?.id || "0"
+        this.expertId = obj?.expert_id || "0"
         
     
     }
