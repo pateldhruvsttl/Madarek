@@ -86,7 +86,6 @@ const Style = StyleSheet.create({
     },
     catTextRegular:{
         fontSize:AppUtil.getHP(1.5),
-        fontFamily:FONTS.robotRegular,
         color:GetAppColor.textColor
     },
     catTextMedium:{

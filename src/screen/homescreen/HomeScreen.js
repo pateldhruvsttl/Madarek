@@ -75,8 +75,6 @@ const HomeScreen = (props) => {
             var opChallenges = [];
             res.data.forEach(element => {
                 let model = new OpenChalangeHomeModel(element);
-
-                Loger.onLog("model", model)
                 opChallenges.push(model);
             });
             setOpenChallenges(opChallenges)

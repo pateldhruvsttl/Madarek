@@ -34,44 +34,13 @@ import { UserManager } from '../../manager/UserManager'
 import { AppConfig } from '../../manager/AppConfig'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
+import FONTS from '../../utils/Fonts'
+
 import IdeaListModel from '../../model/IdeaList'
+import OpenChalangeHomeModel from '../../model/OpenChalangeHomeModel'
 
-const Item = ({ title, index }) => (
+import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithImage";
 
-
-    <View style={Style.seachView}>
-        {
-            index == 0 && <IcnRecentIcon style={Style.recent} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-        }
-        <Text style={Style.subLabel} >{title}</Text>
-    </View>
-
-)
-
-const RenderItem = ({ item, index, clearData }) => (
-
-    <View style={Style.subListing}>
-        <SectionList
-            sections={item}
-            keyExtractor={(item, index) => item + index}
-            renderItem={({ item }) => <Item title={item} index={index} />}
-            renderSectionHeader={({ section: { title } }) => (
-                <View style={Style.header}>
-                    <Text style={Style.title}>{title}</Text>
-
-                    {
-                        index == 0 ? <TouchableOpacity onPress={clearData}>
-                            <Text style={[Style.title, Style.clear]}>{Label.Clear}</Text>
-                        </TouchableOpacity> :
-                            null
-                    }
-                </View>
-            )}
-        />
-
-    </View>
-
-)
 
 const SearchLabel = (props) => {
 
@@ -80,27 +49,58 @@ const SearchLabel = (props) => {
     const [isSearchActive, setSearchActive] = useState(false)
     const textInput = useRef(null);
     const [searchStr, setSearchStr] = useState("")
-    const [labels, setLabels] = useState(search)
-    const [isSugestions, setSugestions] = useState(false)
+    const [isData, setData] = useState([]);
+    const [isType, setType] = useState(["IDEAS", "CHALLENGE", "EXPERT DIRECTORY", "EXPERT INSIGHTS"]);
+    const [isSelectIndex, setSelectIndex] = useState(0);
 
-    const [isAllIdeas, setAllIdeas] = useState([]);
+
+    useState(() => {
+
+        if (isCurrentScreen === "HomeScreen")
+            setSelectIndex(0);
+        else if (isCurrentScreen === "CHALLENGE")
+            setSelectIndex(1);
+        else if (isCurrentScreen === "EXPERT DIRECTORY")
+            setSelectIndex(2);
 
 
+    }, [])
 
     const onChangeText = (text) => {
-        setSearchStr(text); 
-        text.length > 0 ? setSugestions(true) : setSugestions(false)
-        text.length > 0 && setAllIdeas([]);
+        setSearchStr(text);
+        text.length > 0 && setData([]);
     }
-    const onCurrentType = (item) => {
+
+    const onCurrentType = (item, index) => {
+        setSelectIndex(index)
+        setData([]);
         switch (item) {
 
             case 'IDEAS':
                 onGetIdeasList();
                 break
+            case 'CHALLENGE':
+                onGetChallengeList();
+                break
+            case 'EXPERT DIRECTORY':
+                onGetExpertDirectory(2);
+                break
             default: null;
         }
     }
+
+    const onPressSearchButton = () => {
+        if (isCurrentScreen === "HomeScreen") {
+            onGetIdeasList();
+        }
+        else if (isCurrentScreen === "CHALLENGE") {
+            onGetChallengeList();
+        }
+        else if (isCurrentScreen === "EXPERT DIRECTORY") {
+            onGetExpertDirectory();
+        }
+    }
+
     const onGetIdeasList = () => {
         if (searchStr.length == 0)
             return
@@ -115,121 +115,100 @@ const SearchLabel = (props) => {
         Service.post(EndPoints.ideaList, data, (res) => {
 
             let _isAllIdeas = [];
-            setAllIdeas([]);
-
             res?.data?.allIdea.map((element) => {
                 let model = new IdeaListModel(element);
                 _isAllIdeas.push(model);
             })
-            setAllIdeas(_isAllIdeas)
+            setData(_isAllIdeas)
 
         }, (err) => {
             Loger.onLog("err", err)
         })
     }
+    
+    const onGetChallengeList = () => {
+        if (searchStr.length == 0)
+            return
 
-    const onPressSearchButton = () => {
-        if (isCurrentScreen === "HomeScreen") {
+        Service.get(EndPoints.openChallenges, (res) => {
 
-        }
-        else if (isCurrentScreen === "") {
+            let _isAllIdeas = [];
+            res.data.forEach(element => {
+                let model = new OpenChalangeHomeModel(element);
+                _isAllIdeas.push(model);
+            });
 
-        }
+            setData(_isAllIdeas);
+        }, (err) => {
+            Loger.onLog("###", err)
+        })
     }
+    
+    const onGetExpertDirectory = () => {
+        if (searchStr.length == 0)
+            return
+            
+        // Service.get(EndPoints.openChallenges, (res) => {
+
+        //     let _isAllIdeas = [];
+        //     res.data.forEach(element => {
+        //         let model = new OpenChalangeHomeModel(element);
+        //         _isAllIdeas.push(model);
+        //     });
+
+        //     setData(_isAllIdeas);
+        // }, (err) => {
+        //     Loger.onLog("###", err)
+        // })
+    }
+
+
     const onPressCloseButton = () => {
-        setAllIdeas([]);
+        setData([]);
         setSearchActive(false);
         setTimeout(() => {
             setSearchStr('')
             textInput.current.clear()
         }, 500);
     }
-    const clearData = () => {
-        setLabels([])
+
+    const renderResultCell = () => {
+
+        if (isSelectIndex === 0)
+            return renderIdea();
+        else if (isSelectIndex === 1)
+            return renderChallenge();
+        else if (isSelectIndex === 2)
+            return renderExpertDirectory();
+
+    };
+
+    const renderIdea = () => {
+        return (
+            <SubIdeasListWithImage
+                data={isData}
+                isType={"Ideas"}
+                likeChallenge={(id) => likeChallenge(id)}
+                onItemPress={(item) => { navigation.navigate("IdeaDetails", item) }} />
+        )
     }
-    const renderResultCell = ({ item }) => (
+    const renderChallenge = () => {
+        return (
+            <SubIdeasListWithImage
+                data={isData}
+                isType={"Challenges"}
+                likeChallenge={(id) => likeChallenge(id)}
+                onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item) }}
+            />
+        )
 
-        <TouchableOpacity onPress={() => props.onItemPress()} style={Style.renderMainView}>
+    }
+    const renderExpertDirectory = () => {
+        return (
+            <SimilarExperts data={isData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"} />
+        )
 
-            <View style={Style.rightItems}>
-
-                <View style={Style.img}>
-                    <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
-                </View>
-                {
-                    item.like ?
-                        <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        :
-                        <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                }
-                <View style={Style.rewordView}>
-                    {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                </View>
-
-            </View>
-
-            <View style={Style.leftItems}>
-
-                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
-
-                {
-                    props.isType == "Ideas" ?
-
-                        <View style={Style.calView}>
-                            <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-
-                            <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
-                        </View>
-
-                        :
-
-                        props.isType == "Spotlight" ?
-
-                            <View style={Style.calView}>
-                                <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-
-                                <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.name}</Text>
-                            </View>
-
-                            :
-
-                            <View style={Style.calView}>
-                                <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
-                            </View>
-
-                }
-
-                <View style={Style.secondCalView}>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
-                    </View>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
-                    </View>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
-                    </View>
-                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
-                        <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                    </TouchableOpacity>
-                </View>
-
-            </View>
-
-        </TouchableOpacity>
-    );
+    }
 
 
     return (
@@ -265,36 +244,25 @@ const SearchLabel = (props) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            {/* {
-                searchStr.length > 0 &&
-                <View style={Style.listing}>
-                    <FlatList
-                        data={labels}
-                        renderItem={({ item, index }) => <RenderItem item={item} index={index} clearData={clearData} />}
-                        keyExtractor={item => item.key}
-                    />
-                </View>
-            } */}
-            <View>
-                {
-                    isCurrentScreen === "HomeScreen" &&
-                    <ScrollView contentContainerStyle={{ paddingStart: AppUtil.getWP(3) }} horizontal={true} showsHorizontalScrollIndicator={false}>
-                        {
-                            ["IDEAS", "CHALLENGE", "EXPERT DIRECTORY", "EXPERT INSIGHTS"].map((item, index) => {
-                                return (
-                                    <TouchableOpacity onPress={() => onCurrentType(item)} style={[Style.cateButton, { backgroundColor: GetAppColor.white }]}>
-                                        <Text style={Style.catTextRegular}>{item}</Text>
-                                    </TouchableOpacity>
-                                )
-                            })
-                        }
-                    </ScrollView>
-                }
 
-                <FlatList
-                    data={isAllIdeas}
+            <View>
+                <ScrollView contentContainerStyle={{ paddingStart: AppUtil.getWP(3) }} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {
+                        isType.map((item, index) => {
+                            return (
+                                <TouchableOpacity onPress={() => onCurrentType(item, index)} style={[Style.cateButton, { backgroundColor: GetAppColor.white }]}>
+                                    <Text style={[Style.catTextRegular, { fontFamily: isSelectIndex !== index ? FONTS.robotRegular : FONTS.robotBold, }]}>{item}</Text>
+                                </TouchableOpacity>
+                            )
+                        })
+                    }
+                </ScrollView>
+
+                {renderResultCell()}
+                {/* <FlatList
+                    data={isData}
                     renderItem={renderResultCell}
-                />
+                /> */}
 
             </View>
 
@@ -304,109 +272,3 @@ const SearchLabel = (props) => {
 }
 
 export default SearchLabel
-
-
-const search = [
-
-    [{
-
-        title: "Recent Searches",
-        data: [
-            "Technology Equipment Service",
-            "IT Support Company",
-            "Internet Infrastructure Building",
-            "Mobile Wallet Payment Solution Company",
-            "SEO Specialist Company"
-        ],
-    }],
-
-    [{
-
-        title: "Popular Searches",
-        data: [
-            "Banking and Finance",
-            "Vikash Agrawal",
-            "Corporate",
-            "Renewable Energy",
-            "Quality of Living",
-        ]
-    }]
-
-]
-const sliderdata = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        firstName: 'Poonam',
-        lastName: 'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName: 'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        firstName: 'Poonam',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName: 'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    },
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        lastName: 'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: true,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        firstName: 'Poonam',
-        lastName: 'Madhav',
-        ideaTitle: 'Banking and Finance',
-        categoryName: 'Children Omani Dress Competition',
-        url: 'https://i.imgur.com/5tj6S7Ol.jpg',
-        date: "25 Jan 22",
-        see: '700',
-        like: '200',
-        comment: '80',
-        isLike: false,
-    }]

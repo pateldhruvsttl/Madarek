@@ -265,7 +265,7 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", {screen:"CHALLENGE"})}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
