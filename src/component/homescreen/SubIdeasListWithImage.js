@@ -1,4 +1,4 @@
-import React, { memo} from "react";
+import React, { memo } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 
 import { AppUtil } from "../../utils/AppUtil";
@@ -10,7 +10,6 @@ import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
-
 import IcnTrophy from "../../assets/svg/IcnTrophy"
 import IcnStar from "../../assets/svg/IcnStar"
 import IcnRewordComment from "../../assets/svg/IcnRewordComment"
@@ -22,10 +21,11 @@ import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
 import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
+import { EndPoints } from "../../service/EndPoints";
 
 const SubIdeasListWithImage = (props) => {
-  
-    
+
+
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -47,7 +47,7 @@ const SubIdeasListWithImage = (props) => {
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
                     {
-                        item.favorite ?
+                       item.favorite ?
                             <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
                                 <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                             </TouchableOpacity>
@@ -56,13 +56,15 @@ const SubIdeasListWithImage = (props) => {
                                 <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                             </TouchableOpacity>
                     }
-
-                    <View style={Style.rewordView}>
-                        {item.trophy ?<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null }
-                        {item.top ?<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                        {item.favorite ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />:null}
-                        {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />:null}
-                    </View>
+                    {(item.trophy || item.starred || item.topRate || item.insight) ?
+                        <View style={Style.rewordView}>
+                            {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                            {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                            {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                            {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                        </View> :
+                        <View style={Style.rewordViewAlt}></View>
+                    }
 
                 </View>
 

@@ -93,7 +93,7 @@ const IdeaDetails = (props) => {
       "field_name": "idea_id",
       "id": id,
       "frontuser_id": UserManager.userId,
-      "model": 'LikedislikeIdeas'
+      "model": 'FavoriteIdeas'
     }
     Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
@@ -102,7 +102,7 @@ const IdeaDetails = (props) => {
 
       _isAllIdeas.map((ele, index) => {
         if (ele.id == id) {
-          _isAllIdeas[index].like = likeDislike;
+          _isAllIdeas[index].favorite = likeDislike;
         }
       })
       setAllIdeas([..._isAllIdeas]);

@@ -28,8 +28,8 @@ export default class IdeaList {
 
         this.trophy = obj?.isTrophy == null || obj?.isTrophy == 0 ? false : true;
         this.favorite = obj?.isFavourite == null || obj?.isFavourite == 0 ? false : true;
-        this.insight = obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
-
+        this.insight = obj?.isInsight == null || obj?.isInsight == 0 ? false : true;
+        this.starred = obj?.isStarred == null || obj?.isStarred == 0 ? false : true;
         this.like = obj?.isLiked > 0 ? true : false;
         this.totalView = obj?.totalViews || "0"
         this.totalLike = obj?.totalLikes || "0"
