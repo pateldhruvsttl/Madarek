@@ -113,7 +113,7 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
             <View style={styles.titleView}>
                 <Text style={screen ? styles.txtTitleOne : styles.txtTitle}> {Label.expertInsights}</Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: Entries })}>
+                <TouchableOpacity onPress={() => navigation.navigate("ExpertInsightScreen", { data: Entries })}>
                     <Text style={screen ? styles.txtSeeMoreOne : styles.txtSeeMore}> {Label.viewAll}</Text>
                 </TouchableOpacity>
             </View>

@@ -10,12 +10,12 @@ import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 const UserDetails = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-   
-    const renderItem = ({ item }) => {
 
+    const renderItem = ({ item }) => {
         return (
-            <TouchableOpacity style={[styles.btnView,{borderColor:themeColor.buttonColor}]}>
-               <Text style={[styles.txtTitle, {color:themeColor.buttonColor}]}>{item.count}</Text>
+            item &&
+            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]}>
+                <Text style={[styles.txtTitle, { color: themeColor.buttonColor }]}>{item.count}</Text>
                 <Text numberOfLines={2} style={styles.txtBtn}>{item.title}</Text>
             </TouchableOpacity>
         )

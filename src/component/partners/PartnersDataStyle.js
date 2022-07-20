@@ -2,18 +2,21 @@ import { StyleSheet } from 'react-native'
 import { GetAppColor } from '../../utils/Colors'
 import { AppUtil } from '../../utils/AppUtil'
 import FONTS from '../../utils/Fonts'
+import { Platform } from 'react-native'
 
 const STYLE = StyleSheet.create({
     mainView: {
         backgroundColor: GetAppColor.lightGrey,
         width: '100%',
         paddingHorizontal: AppUtil.getWP(3.5),
+        flex:1
     },
     listing: {
         marginTop: AppUtil.getHP(1), paddingBottom: AppUtil.getHP(2)
     },
     img: {
-        width: AppUtil.getWP(40), height: AppUtil.getHP(13),
+        width:Platform.OS == "android" ? AppUtil.getWP(36) : AppUtil.getWP(34),
+        height:Platform.OS == "android" ? AppUtil.getHP(9) : AppUtil.getHP(8),
         borderRadius: AppUtil.getHP(1),
         marginHorizontal: AppUtil.getWP(4),
         marginVertical: AppUtil.getHP(1),

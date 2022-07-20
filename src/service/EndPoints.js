@@ -19,4 +19,7 @@ export const EndPoints = {
     cities: "rest/cities?language=ar",
     notification:"notification",
     logout:"logout",
+    partner:"partners",
+    expertInsightsList : "expertinsightslist",
+    expertsInsiteDetail : "expertsinsitedetail",
 }
