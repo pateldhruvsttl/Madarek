@@ -23,4 +23,5 @@ export const EndPoints = {
     partner:"partners",
     expertInsightsList : "expertinsightslist",
     expertsInsiteDetail : "expertsinsitedetail",
+    acceptReject:"acceptreject"
 }
