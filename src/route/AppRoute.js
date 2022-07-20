@@ -25,7 +25,7 @@ import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
 // import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
 
-import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
+import UserDashboardScreen from '../screen/userDashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
 import PartnerScreen from '../screen/partnerscreen/PartnerScreen';
@@ -57,7 +57,7 @@ const Drawer = createDrawerNavigator();
 
 function ScreenStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"LoginScreen"}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"SplashScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />

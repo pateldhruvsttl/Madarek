@@ -20,6 +20,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { UserManager } from "../../manager/UserManager";
 import { AppConfig } from "../../manager/AppConfig";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = (props) => {
     const [showPassword, setShowPassword] = useState(false)
@@ -72,7 +73,7 @@ const LoginScreen = (props) => {
 
                 AppConfig.lang = res.lang;
                 AppConfig.token = res.token;
-
+                AsyncStorage.setItem('@user', JSON.stringify(res))
                 navigateHomeScreen();
                 resetField();
 

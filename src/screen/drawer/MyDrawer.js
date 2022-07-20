@@ -28,6 +28,7 @@ import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
 import { AppConfig } from '../../manager/AppConfig'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -66,6 +67,7 @@ const MyDrawerScreen = (props) => {
   }
     Service.post(EndPoints.logout, data, (res)=>{
       Loger.onLog('Drawer Logout response',res);
+      AsyncStorage.setItem('@user', JSON.stringify(null))
       props.navigation.navigate("LoginScreen")
 
     },(err)=>{

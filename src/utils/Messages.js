@@ -288,6 +288,8 @@ export const ARlabel = {
 
   _notNow: "Not now",
   _update: "Update",
+  _accept:"Accept",
+  _reject:"Reject",
   _newNotifications: "new notifications",
   _clearAll: "Clear all",
   _becomeAnExpert: "Become anExpert",
@@ -637,6 +639,8 @@ export const USlabel = {
   _submit: "Submit",
   _notNow: "Not now",
   _update: "Update",
+  _accept:"Accept",
+  _reject:"Reject",
   _clearAll: "Clear all",
   _becomeAnExpert: "Become an Expert",
   _clear: "Clear",
