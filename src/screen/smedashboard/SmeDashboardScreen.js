@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo,useState,useEffect } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -10,9 +10,55 @@ import { Label } from "../../utils/StringUtil";
 import UserDashboardIdeasList from "../../component/dashboard/UserDashboardIdeasList";
 import UserDetails from "../../component/dashboard/UserDetails";
 import JointRequest from "../../component/dashboard/JointRequest";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import { Loger } from "../../utils/Loger";
+import Dashboard from "../../model/Dashboard";
+import { UserManager } from "../../manager/UserManager";
 
 
 const SmeDashboardScreen = (props) => {
+    const [dahboardData, setdahboardData] = useState([])
+    const [requestData, setrequestData] = useState([])
+    const [favouriteData, setfavouriteData] = useState([])
+
+    // const list = DATA.slice(0, 2);
+    
+    
+    useEffect(() => {
+        onSmeDashboard();
+    },[])
+    
+    const onSmeDashboard = () => {
+        const data = { "frontuser_id": UserManager.userId }
+        Service.post(EndPoints.dashboard, data, (res) => {
+            Loger.onLog('dashboard Response  ========>', JSON.stringify(res.data))
+            if (res?.statusCode === "1") {
+                const dashboardArr = []
+                const joinRequest = []
+                const favouriteIdeas = []
+                
+                res.data.Dashboard.dashboard_data.map((ele) => {
+                    const model = new Dashboard(ele)
+                    dashboardArr.push(model)//{title: model.title, count: model.count}
+                    setdahboardData(dashboardArr)
+                })
+                res.data.Join_Request.map((ele) => {
+                    const model = new Dashboard(ele)
+                    joinRequest.push(model);
+                    setrequestData(joinRequest)
+                })
+                res.data.Favourite_Ideas.map((ele) => {
+                    const model = new Dashboard(ele)
+                    favouriteIdeas.push(model);
+                    setfavouriteData(favouriteIdeas)
+                })
+            }
+            
+        }, (err) => {
+            Loger.onLog('dashboard  error ========>', err)
+        })
+    }
 
     const { themeColor } = useSelector((state) => state)
     return (
@@ -22,16 +68,16 @@ const SmeDashboardScreen = (props) => {
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                        <UserDetails data={SmeDetailsData}/>
+                        <UserDetails data={dahboardData}/>
                     </View>
 
                     <View style={Style.secondPos}>
-                        <JointRequest data={DATA.slice(0, 3)} isTitle={Label.UserJoinRequest}/>
+                        <JointRequest data={requestData.slice(0, 3)} isTitle={Label.UserJoinRequest}/>
                     </View>
 
-                    <View style={Style.firstPos}>
-                        <UserDashboardIdeasList data={MaturationData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
-                    </View>
+                    {/* <View style={Style.firstPos}>
+                        <UserDashboardIdeasList data={favouriteData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
+                    </View> */}
                 </ScrollView >
             </View>
         </SafeAreaView>
