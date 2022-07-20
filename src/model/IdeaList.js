@@ -37,6 +37,8 @@ export default class IdeaList {
 
         this.team = obj?.team;
         this.resources = obj?.resources;
+        this.ideaVideo = obj?.idea_upload_videos || ""
+
 
     }
 }

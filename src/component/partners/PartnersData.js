@@ -10,7 +10,6 @@ const PartnersData = (props) => {
 
     // code here : //code here
     // }
-
     const renderData = ({ item, index }) => {
         return (
           
@@ -18,11 +17,11 @@ const PartnersData = (props) => {
                     <Image
                         style={STYLE.img}
                         resizeMode='cover'
-                        source={{ uri: item.url }}
+                        source={{ uri: item.photo_image }}
                     />
                     <View style={STYLE.line}></View>
                     <View style={STYLE.labelView}>
-                    <Text style={STYLE.labelTxt}>{item.label}</Text>
+                    <Text style={STYLE.labelTxt}>{item.photo_title}</Text>
                     </View>
                 </TouchableOpacity>
         

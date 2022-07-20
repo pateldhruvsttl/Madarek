@@ -20,6 +20,7 @@ import IcnRewordLight from "../../assets/svg/IcnRewordLight"
 import IcnAvtarBg from "../../assets/svg/IcnAvtarBg"
 import IcnMenu from "../../assets/svg/IcnMenuDote"
 import { GetAppColor } from "../../utils/Colors";
+import ImageLoad from "react-native-image-placeholder";
 
 
 const UserDashboardIdeasList = (props) => {
@@ -28,13 +29,14 @@ const UserDashboardIdeasList = (props) => {
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
+        item &&
         <View style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
-                <Image
+                <ImageLoad
                     style={Style.img}
                     resizeMode='cover'
-                    source={{ uri: item.userPhoto }}
+                    source={{ uri: item.ideaCoverImage }}
                 />
 
 
@@ -48,22 +50,21 @@ const UserDashboardIdeasList = (props) => {
             </View>
 
             <View style={Style.leftItems}>
-
                 <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
                 {
-                    props.isType == 'Challenges'?
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.subTitle}</Text>
-                    :
-                    props.isType == 'Request'?
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.ideaSubTitle}</Text>
-                    :
-                    props.isType == 'Maturation'?
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black}]}>{item.ideaSubTitle}</Text>
-                    :
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed}]}>{item.subTitle}</Text>
+                    props.isType == 'Challenges' ?
+                        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black }]}>{item.subTitle}</Text>
+                        :
+                        props.isType == 'Request' ?
+                            <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black }]}>{item.ideaSubTitle}</Text>
+                            :
+                            props.isType == 'Maturation' ?
+                                <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black }]}>{item.ideaSubTitle}</Text>
+                                :
+                                <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.subTitle}</Text>
 
                 }
-                
+
 
                 {
 
@@ -97,7 +98,7 @@ const UserDashboardIdeasList = (props) => {
                         : null
                     }
 
-                    {props.isType == "Maturation" && item.btn === "Completed" &&
+                    {props.isType == "Maturation" &&
                         <TouchableOpacity style={Style.btnComplited}>
                             <Text style={Style.txtbtnComplited}> {(Label.Completed).toUpperCase()}</Text>
                         </TouchableOpacity>
@@ -107,6 +108,7 @@ const UserDashboardIdeasList = (props) => {
             </View>
 
         </View>
+
     );
 
     return (

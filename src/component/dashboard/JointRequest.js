@@ -9,6 +9,7 @@ import Style from "./JointRequestStyle";
 
 import IcnAcceptRound from "../../assets/svg/IcnAcceptRound"
 import IcnRejectRound from "../../assets/svg/IcnRejectRound"
+import ImageLoad from "react-native-image-placeholder";
 
 
 
@@ -21,16 +22,21 @@ const JointRequest = (props) => {
         <View style={Style.renderMainView}>
 
             <View style={Style.rightItems}>
-                <Image style={Style.img} resizeMode='cover' source={{ uri: item.url }} />
+                <ImageLoad style={Style.img}
+                    resizeMode='cover'
+                    source={{ uri: item.userPhoto }}
+                    borderRadius={AppUtil.getHP(7)}
+                    placeholderStyle={Style.img}
+                />
             </View>
 
             <View style={Style.leftItems}>
-                <Text numberOfLines={2} style={Style.txtTitle}>{item.name}</Text>
+                <Text numberOfLines={2} style={Style.txtTitle}>{item.fullName}</Text>
             </View>
 
             <View style={Style.endItems}>
                 {
-                    item.btn != "Accepted" ?
+                    item.joinStatus != "Accepted" ?
                         <View style={Style.btnView}>
                             <TouchableOpacity>
                                 <IcnAcceptRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
