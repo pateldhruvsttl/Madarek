@@ -91,7 +91,6 @@ const SearchLabel = (props) => {
         setSearchStr(text); 
         text.length > 0 ? setSugestions(true) : setSugestions(false)
         text.length > 0 && setAllIdeas([]);
-
     }
     const onCurrentType = (item) => {
         switch (item) {
