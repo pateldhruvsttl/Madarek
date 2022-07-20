@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo} from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 
 import { AppUtil } from "../../utils/AppUtil";
@@ -24,6 +24,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
 
 const SubIdeasListWithImage = (props) => {
+  
     
     const likeUnlikeRender = (id) => {
 
@@ -46,7 +47,7 @@ const SubIdeasListWithImage = (props) => {
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
                     {
-                        item?.like ?
+                        item.favorite ?
                             <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
                                 <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                             </TouchableOpacity>
@@ -57,10 +58,10 @@ const SubIdeasListWithImage = (props) => {
                     }
 
                     <View style={Style.rewordView}>
-                        {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+                        {item.trophy ?<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null }
+                        {item.top ?<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                        {item.favorite ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />:null}
+                        {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />:null}
                     </View>
 
                 </View>
@@ -128,7 +129,6 @@ const SubIdeasListWithImage = (props) => {
 
     return (
         <View style={Style.MainView}>
-
             {
                 props?.isTitle &&
                 <View style={Style.titleView}>

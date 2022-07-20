@@ -41,7 +41,7 @@ const IdeasListScreen = (props) => {
             frontuser_id: UserManager.userId,
             limit: AppConfig.pageLimit,
             categories: "",
-            sectors: "6,7",
+            sectors: "",
             listtype: tabType,
             language: AppConfig.lang
         }

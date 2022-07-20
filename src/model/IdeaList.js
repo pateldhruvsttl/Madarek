@@ -24,10 +24,10 @@ export default class IdeaList {
         this.winning = obj?.winning || "0"
         this.madarekSpecial = obj?.madarek_special || "0"
         this.favoriteIdea = obj?.toatal_favorite_idea || "0"
-        this.topRate = obj?.top_rated || "0"
+        this.topRate = obj?.top_rated == null && obj?.top_rated != 0 ? true : false;
 
-        this.trophy = obj?.isTrophy == null && obj?.isTrophy != 0 ? true : false;
-        this.favorite = obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;
+        this.trophy = obj?.isTrophy == null || obj?.isTrophy == 0 ? false : true;
+        this.favorite = obj?.isFavourite == null || obj?.isFavourite == 0 ? false : true;
         this.insight = obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
 
         this.like = obj?.isLiked > 0 ? true : false;

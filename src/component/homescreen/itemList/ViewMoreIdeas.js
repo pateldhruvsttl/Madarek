@@ -25,7 +25,6 @@ function ViewMoreIdeas(props) {
     }
     return (
         <View style={Styles.MainView}>
-
             <Text style={Styles.HeadertxtRecodes}><Text style={Styles.txt}>{length}</Text> {"Records Found"}</Text>
             <View style={Styles.HeaderBtn}>
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor}]} onPress={() => onSetFilter(0)}>
