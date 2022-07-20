@@ -1,6 +1,6 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { useSelector } from "react-redux";
 import Style from "./NotificationsStyle";
@@ -16,6 +16,8 @@ import { onLoding } from "../../../App";
 import { deviceId } from "../../utils/Constant";
 import { UserManager } from "../../manager/UserManager";
 import { AppConfig } from "../../manager/AppConfig";
+import { ScrollView } from "react-native-gesture-handler";
+import moment from "moment";
 
 function NotificationsScreen() {
   let item1 = {
@@ -38,7 +40,6 @@ function NotificationsScreen() {
   const [record, setRecord] = useState(0);
 
   useEffect(() => {
-      
     const data = {
       lang: "en",
       frontuser_id: UserManager.userId,
@@ -51,8 +52,8 @@ function NotificationsScreen() {
       data,
       (res) => {
         Loger.onLog("Notification response of data", res);
-        setNotificatioData(res.data)
-        setRecord(res.totalRecords)
+        setNotificatioData(res.data);
+        setRecord(res.totalRecords);
       },
       (err) => {
         Loger.onLog("Notification error response", err);
@@ -63,47 +64,102 @@ function NotificationsScreen() {
   const renderItem = ({ item }) => {
     return (
       <View style={Style.renderMainView}>
-        <Text style={Style.txtRenderTitle}>{item.notification_type}</Text>
-        <Text style={Style.txtRenderDes}>{item.notification_message}</Text>
-
-        <View style={Style.dateView}>
-          <IcnClander
-            style={Style.icnCal}
-            height={AppUtil.getHP(2)}
-            width={AppUtil.getHP(2)}
-          />
-          <Text style={Style.txtRenderDes}>{item.created_at}</Text>
+        <View style={Style.imgRenderView}>
+          <Image
+            style={Style.imgRenderImage}
+            source={{ uri: item.user_photo }}
+          ></Image>
         </View>
+        <View style={Style.notifDesc}>
+          <Text style={Style.txtRenderTitle}>{item.notification_type}</Text>
+          <Text style={Style.txtRenderDes}>{item.notification_message}</Text>
 
-        {item?.notification_type === "Idea request" && (
-          <View style={Style.btnView}>
-            <TouchableOpacity
-              style={[
-                Style.btnApplyNow,
-                { backgroundColor: themeColor.buttonColor },
-              ]}
-            >
-              <Text style={[Style.txt, { color: GetAppColor.white }]}>
-                {Label.Update}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                Style.btnLearMore,
-                { borderColor: themeColor.buttonColor },
-              ]}
-            >
-              <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
-                {Label.NotNow}
-              </Text>
-            </TouchableOpacity>
+          <View style={Style.dateView}>
+            <IcnClander
+              style={Style.icnCal}
+              height={AppUtil.getHP(2)}
+              width={AppUtil.getHP(2)}
+            />
+            <Text style={Style.txtRenderDes}>
+              {moment(item.created_at).format("DD MMM YY  HH:MM a")}
+            </Text>
           </View>
-        )}
+          
+          {item?.notification_type === "Expert request" && (
+            <View style={Style.btnView}>
+              <TouchableOpacity
+                style={[
+                  Style.btnApplyNow,
+                  { backgroundColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: GetAppColor.white }]}>
+                  {Label.Accept}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  Style.btnLearMore,
+                  { borderColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
+                  {Label.Reject}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          {/* {item?.notification_type === "Idea request" && (
+            <View style={Style.btnView}>
+              <TouchableOpacity
+                style={[
+                  Style.btnApplyNow,
+                  { backgroundColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: GetAppColor.white }]}>
+                  {Label.Update}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  Style.btnLearMore,
+                  { borderColor: themeColor.buttonColor },
+                ]}
+              >
+                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
+                  {Label.NotNow}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )} */}
+        </View>
+        <TouchableOpacity
+            onPress={() => {
+              onClear(item.id);
+            }}
+          >
+            <Text style={[Style.clearView,{fontSize:25, marginEnd:10}]}>
+              {"x"}
+            </Text>
+          </TouchableOpacity>
       </View>
     );
   };
 
-  const onClear = () => {};
+  const onClear = (id) => {
+    const data = {
+      device_id: deviceId,
+      token: AppConfig.token,
+      frontuser_id: UserManager.userId,
+      notificationid: id,
+    };
+    Service.post(EndPoints.clearnotification,data,(res)=>{
+      console.log("Clear notification response", res)
+    },(err)=>{
+      console.log("Clear notification error response", err)
+    })
+  };
 
   return (
     <View style={Style.MainView}>
@@ -117,7 +173,7 @@ function NotificationsScreen() {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              onClear();
+              onClear("");
             }}
           >
             <Text style={Style.clearView}>
@@ -125,12 +181,13 @@ function NotificationsScreen() {
             </Text>
           </TouchableOpacity>
         </View>
-
-        <FlatList
-          data={notiData}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        <ScrollView style={Style.scrollinview}>
+          <FlatList
+            data={notiData}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </ScrollView>
       </SafeAreaView>
     </View>
   );

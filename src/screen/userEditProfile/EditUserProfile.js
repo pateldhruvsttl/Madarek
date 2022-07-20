@@ -138,34 +138,33 @@ const EditUserProfile = (props) => {
             //     skills: skill
 
             // }
-            // Service.post(EndPoints.editProfile, data, (res) => {
-            //     Loger.onLog("Response of update profile ", res);
-            //     if (res.statusCode == "1") {
-            //         setUpdateData(res.data)
-            //         showMessageWithCallBack(Label.UpdateProfie, () => {
-            //             refresh()
-            //         })
-            //     }
-            //     else {
-            //         showMessage(res.message)
-            //     }
-            // },
-            //     (err) => {
-            //         Loger.onLog("Error of update profile", err);
-            //     }
-            // )
+            Service.post(EndPoints.editProfile, data, (res) => {
+                Loger.onLog("Response of update profile ", res);
+                if (res.statusCode == "1") {
+                    showMessageWithCallBack(Label.UpdateProfie, () => {
+                        refresh()
+                    })
+                }
+                else {
+                    showMessage(res.message)
+                }
+            },
+                (err) => {
+                    Loger.onLog("Error of update profile", err);
+                }
+            )
 
-            fetch(baseURL + EndPoints.editProfile, {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                body: data
-            }).then(response => {
-                console.log("image uploaded", response)
-            }).catch(err => {
-                console.log('erroe of editprofile', err)
-            })
+            // fetch(baseURL + EndPoints.editProfile, {
+            //     method: 'post',
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data',
+            //     },
+            //     body: data
+            // }).then(response => {
+            //     console.log("image uploaded", response)
+            // }).catch(err => {
+            //     console.log('erroe of editprofile', err)
+            // })
 
 
 

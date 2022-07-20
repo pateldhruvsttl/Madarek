@@ -22,7 +22,7 @@ const STYLES = StyleSheet.create({
     logoText: {
         fontSize: 35,
         letterSpacing: 10,
-        fontFamily: FONTS.trajanProRegular,
+        // fontFamily: FONTS.trajanProRegular,
         color: GetAppColor.splashLogoColor
     },
     innovationDetails: {
