@@ -497,7 +497,7 @@ const CommonHeader = (props) => {
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
-                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Challenges}</Text>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ExpertInsight}</Text>
                         </View>
                         <MenuButton />
 
