@@ -61,7 +61,7 @@ function NotificationsScreen() {
     );
   }, []);
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index }) => {
     return (
       <View style={Style.renderMainView}>
         <View style={Style.imgRenderView}>
@@ -136,7 +136,7 @@ function NotificationsScreen() {
         </View>
         <TouchableOpacity
             onPress={() => {
-              onClear(item.id);
+              onClear(item.id, index);
             }}
           >
             <Text style={[Style.clearView,{fontSize:25, marginEnd:10}]}>
@@ -147,7 +147,7 @@ function NotificationsScreen() {
     );
   };
 
-  const onClear = (id) => {
+  const onClear = (id, index) => {
     const data = {
       device_id: deviceId,
       token: AppConfig.token,
@@ -156,6 +156,14 @@ function NotificationsScreen() {
     };
     Service.post(EndPoints.clearnotification,data,(res)=>{
       console.log("Clear notification response", res)
+      if (id=="") {
+        setNotificatioData([])
+      }else{
+        var notData = [...notiData];
+        notData.splice(index, 1);
+        setRecord(notData.length)
+        setNotificatioData(notData);
+      }
     },(err)=>{
       console.log("Clear notification error response", err)
     })
@@ -178,7 +186,7 @@ function NotificationsScreen() {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              onClear("");
+              onClear("",-1);
             }}
           >
             <Text style={Style.clearView}>
