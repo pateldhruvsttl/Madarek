@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { View } from "react-native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,27 +7,78 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import Partners from "../../component/partners/PartnersData";
 import Style from "./PartnerScreenStyle";
 import { Label } from "../../utils/StringUtil";
+import { deviceId } from "../../utils/Constant";
+import { AppConfig } from "../../manager/AppConfig";
+import { EndPoints } from "../../service/EndPoints";
+import { Service } from "../../service/Service";
+import { showMessageWithCallBack } from "../../utils/Constant";
+import { showMessage } from "../../utils/Constant";
+import { Loger } from "../../utils/Loger";
+import Partner from "../../model/Partners";
 
 const Tab = createMaterialTopTabNavigator();
 
 const PartnerScreen = (props) => {
 
+    const [partnerData, setPartnerData] = useState([])
+
+    useEffect(() => {
+        partnerRender();
+    }, [])
+
+    const partnerRender = () => {
+
+        const data =
+        {
+            device_id: deviceId,
+            token: AppConfig.token,
+            lang: "ar",
+        }
+
+        Service.post(EndPoints.partner, data, (res) => {
+            Loger.onLog('res of partners', res);
+            const data = []
+            if (res.statusCode == "1") {
+                res.data.map((ele, index) => {
+                    let model = new Partner(ele)
+                    data.push(model)
+                })
+
+                setPartnerData(data)
+            }
+            else (
+                showMessage(res.message)
+            )
+        },
+            (error) => {
+                Loger.onLog(error);
+            }
+        )
+    }
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <CommonHeader isType={"Partners"} onMenuClick={() => { props.navigation.openDrawer() }} />
 
             <View style={Style.MainView}>
+                {
+                    partnerData.length !== 0 &&
                 <NavigationContainer independent={true}>
                     <Tab.Navigator screenOptions={{
                         tabBarLabelStyle: Style.tabBarTxt,
                         tabBarItemStyle: Style.tabBarItem,
                         tabBarIndicatorStyle: Style.barBorder,
-                        tabBarScrollEnabled:true
-                   }}>
-                        <Tab.Screen name={Label.EducationResearch} children={() => <Partners propName={{ type: "Education & Research", data: sliderdata }} />} />
-                        <Tab.Screen name={Label.Sponsors} children={() => <Partners propName={{ type: "Sponsors", data: sliderdata }} />} />
-                      </Tab.Navigator>
+                        tabBarScrollEnabled: true
+                    }}>
+                        {partnerData.length !== 0 && partnerData.map((ele) => {
+                            return (
+                                <Tab.Screen name={ele.categoryName} children={() => <Partners propName={{ type: "Education & Research", data: ele.items }} />} />
+
+                            )
+                        })}
+                        {/* <Tab.Screen name={Label.Sponsors} children={() => <Partners propName={{ type: "Sponsors", data: partnerData }} />} /> */}
+                    </Tab.Navigator>
                 </NavigationContainer>
+                }
             </View>
         </SafeAreaView>
     );
@@ -35,45 +86,8 @@ const PartnerScreen = (props) => {
 
 export default memo(PartnerScreen);
 
-const sliderdata = [
-    {
-        url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS87pyIQtlZbkutJq1l57d2MMPUCrnthttn5-RcnBBvHZHpyHwrMMoIONgGELLww6qMafw&usqp=CAU',
-        label : "Sultan Qaboos University"
-       
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/8-50-foreign-brands-logos.png',
-        label : "Oman Ministry Of Sports Affairs"
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/9-50-foreign-brands-logos.png',
-        label : "Oman Ministry Of Sports Affairs"
-       
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/17-50-foreign-brands-logos.png',
-        label : "Sultan Qaboos University"
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/14-50-foreign-brands-logos.png',
-        label : "Sultan Qaboos University"
-       
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/12-50-foreign-brands-logos.png',
-        label : "Oman Ministry Of Sports Affairs"
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/9-50-foreign-brands-logos.png',
-        label : "Oman Ministry Of Sports Affairs"
-       
-    },
-    {
-        url : 'https://cdn.designcrowd.com/blog/Oct2012/Indian-Logos/6-50-foreign-brands-logos.png',
-        label : "Sultan Qaboos University"
-    },
- 
-];
+
+
 
 
 

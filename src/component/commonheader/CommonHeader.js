@@ -40,7 +40,7 @@ const CommonHeader = (props) => {
                         <IcnMsg stroke={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Message}</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => navigation.navigate("SearchLabel")} style={Style.menuView}>
+                    <MenuOption onSelect={() => navigation.navigate("SearchLabel",{screen:"HomeScreen"})} style={Style.menuView}>
                         <IcnSearch fill={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
                         <Text>{Label.Search}</Text>
                     </MenuOption>
@@ -265,7 +265,7 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", {screen:"CHALLENGE"})}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
@@ -497,7 +497,7 @@ const CommonHeader = (props) => {
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
-                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Challenges}</Text>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ExpertInsight}</Text>
                         </View>
                         <MenuButton />
 

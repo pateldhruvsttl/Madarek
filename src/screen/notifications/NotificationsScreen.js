@@ -171,13 +171,8 @@ function NotificationsScreen() {
 
   return (
     <View style={Style.MainView}>
-      <SafeAreaView style={Style.innerMainView}>
-        <CommonHeader
-          isType={"NotificationsScreen"}
-          onMenuClick={() => {
-            props.navigation.openDrawer();
-          }}
-        />
+      <SafeAreaView>
+        <CommonHeader isType={"NotificationsScreen"} onMenuClick={() => { props.navigation.openDrawer(); }}/>
 
         <View style={Style.bodyView}>
           <Text style={Style.notificationsCounter}>

@@ -75,8 +75,6 @@ const HomeScreen = (props) => {
             var opChallenges = [];
             res.data.forEach(element => {
                 let model = new OpenChalangeHomeModel(element);
-
-                Loger.onLog("model", model)
                 opChallenges.push(model);
             });
             setOpenChallenges(opChallenges)
@@ -120,9 +118,11 @@ const HomeScreen = (props) => {
     }
     const onExpertInsights = () => {
         const data = {
-            "frontuser_id": UserManager.userId,
-            "language": AppConfig.lang,
-            "device_id": deviceId,
+            device_id: deviceId,
+            token: AppConfig.token,
+            frontuser_id: UserManager.userId,
+            idea_id: "146",
+            language: "ar"
         }
         Service.post(EndPoints.expertInsights, data, (res) => {
             if (res?.statusCode === "1") {

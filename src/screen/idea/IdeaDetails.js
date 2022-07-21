@@ -29,13 +29,12 @@ export const deviceId = DeviceInfo.getUniqueId()
 
 const IdeaDetails = (props) => {
 
-  
+
 
   const navigation = useNavigation();
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
-  console.log("item", item)
   useEffect(() => {
     onExpertInsights();
     onIdeas()
@@ -135,9 +134,9 @@ const IdeaDetails = (props) => {
 
             {item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
 
-            {item?.video &&
+            {item?.ideaVideo &&
               <View style={IdeaStyle.videoPlay}>
-                <VideoPlayer />
+                <VideoPlayer path={item?.ideaVideo} />
               </View>}
 
             {item?.resources && <Resources resource={item?.resources} />}

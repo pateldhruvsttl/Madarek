@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux'
@@ -9,66 +9,114 @@ import Style from "./JointRequestStyle";
 
 import IcnAcceptRound from "../../assets/svg/IcnAcceptRound"
 import IcnRejectRound from "../../assets/svg/IcnRejectRound"
+import ImageLoad from "react-native-image-placeholder";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
+import { Loger } from "../../utils/Loger";
+import { showMessage, showMessageWithCallBack } from "../../utils/Constant";
+import { UserManager } from "../../manager/UserManager";
 
 
 
 const JointRequest = (props) => {
+    const [requestData, setRequestData] = useState(props?.data)
+    Loger.onLog('requestData', requestData);
+
+    useEffect(() => {
+        setRequestData(props.data);
+    }, [props])
+    
+    const joinRequest = (id, status) => {
+
+        const data = {
+            "request_id": id,
+            "frontuser_id":UserManager.userId,
+            "status": status
+
+        }
+        Service.post(EndPoints.acceptReject, data, (res) => {
+            Loger.onLog('acceptReject Response  ========>', res)
+            if (res?.statusCode === "1") {
+                if (res.status == "approve" || res.status == "reject") {
+                    const updateData = requestData
+                    const newData = updateData.filter(item => item.expertId !== id)
+                    // showMessageWithCallBack(res.message, () => setRequestData(newData))
+                    setRequestData(newData)
+
+                }
+            }
+            else {
+                showMessage(res.message)
+            }
+
+        }, (err) => {
+            Loger.onLog('acceptReject  error ========>', err)
+        })
+    }
+
 
     const { themeColor } = useSelector((state) => state)
     const navigation = useNavigation();
 
-    const renderItem = ({ item }) => (
-        <View style={Style.renderMainView}>
+    const renderItem = ({ item, index }) => {
+        return (
+            <View style={Style.renderMainView}>
+                <View style={Style.rightItems}>
+                    <ImageLoad style={Style.img}
+                        resizeMode='cover'
+                        // source={{ uri: item.url }}
+                        source={{ uri: item.userPhoto }}
+                        borderRadius={AppUtil.getHP(7)}
+                        placeholderStyle={Style.img}
+                    />
+                </View>
 
-            <View style={Style.rightItems}>
-                <Image style={Style.img} resizeMode='cover' source={{ uri: item.url }} />
-            </View>
+                <View style={Style.leftItems}>
+                    {/* <Text numberOfLines={2} style={Style.txtTitle}>{item.fullName}</Text> */}
+                    <Text numberOfLines={2} style={Style.txtTitle}>{item.fullName}</Text>
+                </View>
 
-            <View style={Style.leftItems}>
-                <Text numberOfLines={2} style={Style.txtTitle}>{item.name}</Text>
-            </View>
-
-            <View style={Style.endItems}>
-                {
-                    item.btn != "Accepted" ?
-                        <View style={Style.btnView}>
-                            <TouchableOpacity>
-                                <IcnAcceptRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
+                <View style={Style.endItems}>
+                    {
+                        item.joinStatus == "Pending" ?
+                            <View style={Style.btnView}>
+                                <TouchableOpacity onPress={() => joinRequest(item.expertId, 1)}>
+                                    <IcnAcceptRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => joinRequest(item.expertId, 2)}>
+                                    <IcnRejectRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
+                                </TouchableOpacity>
+                            </View>
+                            :
+                            <TouchableOpacity style={Style.btnAccept}>
+                                <Text style={Style.txtBtnAccept}>{item.joinStatus.toUpperCase()}</Text>
                             </TouchableOpacity>
-
-                            <TouchableOpacity>
-                                <IcnRejectRound style={Style.callLeftIcn} height={AppUtil.getHP(4)} width={AppUtil.getHP(4)} />
-                            </TouchableOpacity>
-                        </View>
-                        :
-                        <TouchableOpacity style={Style.btnAccept}>
-                            <Text style={Style.txtBtnAccept}>{(Label.Accepted).toUpperCase()}</Text>
-                        </TouchableOpacity>
-                }
+                    }
+                </View>
             </View>
-        </View>
-    );
+        )
+    };
 
     return (
         <View style={Style.MainView}>
             {
-                props?.isTitle &&
+                requestData?.isTitle &&
                 <View style={Style.titleView}>
-                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props?.isTitle}</Text>
+                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{requestData?.isTitle}</Text>
                     <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>
                 </View>
             }
 
             <FlatList
-                data={props.data}
+                data={requestData}
                 scrollEnabled={props?.scrollEnabled ? true : false}
-                renderItem={renderItem}
+                renderItem={(item, index) => renderItem(item, index)}
                 keyExtractor={item => item.id}
             />
             {
-                props?.btn &&
+                requestData?.btn &&
                 <TouchableOpacity style={Style.bottomBtn} onPress={() => navigation.navigate("IdeasListScreen")}>
-                    <Text style={Style.txtBottomBtn}> {props.btn}</Text>
+                    <Text style={Style.txtBottomBtn}> {requestData.btn}</Text>
                 </TouchableOpacity>
             }
         </View>

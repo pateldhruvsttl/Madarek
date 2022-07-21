@@ -20,4 +20,8 @@ export const EndPoints = {
     notification:"notification",
     clearnotification:"clearnotification",
     logout:"logout",
+    partner:"partners",
+    expertInsightsList : "expertinsightslist",
+    expertsInsiteDetail : "expertsinsitedetail",
+    acceptReject:"acceptreject"
 }

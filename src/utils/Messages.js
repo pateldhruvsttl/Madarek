@@ -323,7 +323,8 @@ export const ARlabel = {
   _filter: "Filter",
   _writeReply: "Write a reply...",
   _online: "Online",
-  _editIdea: "Edit Idea"
+  _editIdea: "Edit Idea",
+  _expertInsight: "Expert Insight",
 
 }
 export const USlabel = {
@@ -675,6 +676,7 @@ export const USlabel = {
   _writeReply: "Write a reply...",
   _online: "Online",
   _editIdea: "Edit Idea",
+  _expertInsight: "Expert Insight",
 
   // UserProfile model messages
 

@@ -22,10 +22,10 @@ const Style = StyleSheet.create({
     txtHeader: {
         fontFamily: FONTS.robotMedium,
         fontSize: AppUtil.getHP(2.3),
-        width:'70%'
-    }
-    ,
-    rightSingleIcnView: { alignItems: 'flex-end', marginEnd: AppUtil.getWP(3) },
+        width:'70%', 
+    },
+    searchBtnStyle:{width:'20%'},
+    rightSingleIcnView: { alignItems: 'flex-end', flexDirection:'row' },
     listing: {
         backgroundColor: GetAppColor.backGround,
 
@@ -86,7 +86,6 @@ const Style = StyleSheet.create({
     },
     catTextRegular:{
         fontSize:AppUtil.getHP(1.5),
-        fontFamily:FONTS.robotRegular,
         color:GetAppColor.textColor
     },
     catTextMedium:{
