@@ -69,7 +69,6 @@ const IdeaList = (props) => {
             setSelectedIndex(value);
 
         }, (err) => {
-            Loger.onLog(" ideaList error ------->", err)
         })
     }
 

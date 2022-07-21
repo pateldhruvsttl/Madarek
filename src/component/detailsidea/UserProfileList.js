@@ -16,7 +16,9 @@ const UserProfileList = (props) => {
         <ScrollView horizontal={true}>
             <View style={styles.profileDetails}>
                 <View style={styles.imgStyle}>
-                    <ImageLoad style={styles.img} resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={true} />
+                    <ImageLoad style={styles.img}
+                    borderRadius={ AppUtil.getHP(9)}
+                    resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={true} />
                 </View>
                 <Text style={styles.personName}>{item.first_name}</Text>
             </View>

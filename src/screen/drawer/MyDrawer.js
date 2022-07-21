@@ -141,7 +141,7 @@ const MyDrawerScreen = (props) => {
           </View>
         </View>
         <View style={drawerStyles.dsButtonView}>
-          <TouchableOpacity onPress={() => props.navigation.navigate('UserDashboardScreen')} style={drawerStyles.dashBoardButton}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('SmeDashboardScreen')} style={drawerStyles.dashBoardButton}>
             <Text style={drawerStyles.dashText}>{Label.Dashboard}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => props.navigation.navigate('SubmitIdeaScreen')} style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
