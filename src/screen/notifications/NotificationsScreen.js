@@ -20,20 +20,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import moment from "moment";
 
 function NotificationsScreen() {
-  let item1 = {
-    title: "Upload successful",
-    Des:
-      "Renewable Energy idea.pdf was uploaded successfully. Lorem Ipsum is simply dummy text.",
-    Type: "Button",
-    date: "25 Mar 22 at 15:30 PM",
-  };
-  let item2 = {
-    title: "Update available successful",
-    Des: "A new application version is available ",
-    Type: "",
-    date: "25 Mar 22 at 15:30 PM",
-  };
-  let List = [item2, item2, item1, item2, item2];
 
   const { themeColor } = useSelector((state) => state);
   const [notiData, setNotificatioData] = useState([]);
@@ -47,11 +33,7 @@ function NotificationsScreen() {
       token: AppConfig.token,
       page: "1",
     };
-    Service.post(
-      EndPoints.notification,
-      data,
-      (res) => {
-        Loger.onLog("Notification response of data", res);
+    Service.post(EndPoints.notification,data,(res) => {
         setNotificatioData(res.data);
         setRecord(res.totalRecords);
       },
@@ -67,13 +49,9 @@ function NotificationsScreen() {
       status: status,
       frontuser_id: UserManager.userId,
     };
-    Service.post(
-      EndPoints.acceptrejectrequest,
-      data,
-      (res) => {
-        Loger.onLog("Notification accept reject response of data", res);
-      },
-      (err) => {
+    Service.post(EndPoints.acceptrejectrequest, data, (res) => {
+      Loger.onLog("Notification accept reject response of data", res);
+    },(err) => {
         Loger.onLog("Notification accept reject error response", err);
       }
     );
@@ -83,10 +61,7 @@ function NotificationsScreen() {
     return (
       <View style={Style.renderMainView}>
         <View style={Style.imgRenderView}>
-          <Image
-            style={Style.imgRenderImage}
-            source={{ uri: item.user_photo }}
-          ></Image>
+          <Image style={Style.imgRenderImage} source={{ uri: item.user_photo }} />
         </View>
         <View style={Style.notifDesc}>
           <Text style={Style.txtRenderTitle}>{item.notification_type}</Text>
@@ -103,32 +78,29 @@ function NotificationsScreen() {
             </Text>
           </View>
 
-          {item?.notification_type === "Expert request" && (
+          {item?.notification_type === "Expert request" ? (
             <View style={Style.btnView}>
-              <TouchableOpacity
-                onPress={() => onAcceptReject("accept", item.id)}
-                style={[
-                  Style.btnApplyNow,
-                  { backgroundColor: themeColor.buttonColor },
-                ]}
-              >
+              <TouchableOpacity onPress={() => onAcceptReject("accept", item.id)} style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor },]}>
                 <Text style={[Style.txt, { color: GetAppColor.white }]}>
                   {Label.Accept}
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onAcceptReject("reject", item.id)}
-                style={[
-                  Style.btnLearMore,
-                  { borderColor: themeColor.buttonColor },
-                ]}
-              >
+              <TouchableOpacity onPress={() => onAcceptReject("reject", item.id)}style={[Style.btnLearMore,{ borderColor: themeColor.buttonColor },]}>
                 <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
                   {Label.Reject}
                 </Text>
               </TouchableOpacity>
             </View>
-          )}
+          )
+        :
+        (
+          <View style={Style.btnView}>
+                <Text style={[Style.txt1]}>
+                  {Label.Approved}
+                </Text>
+            </View>
+        )
+        }
           {/* {item?.notification_type === "Idea request" && (
             <View style={Style.btnView}>
               <TouchableOpacity
@@ -154,11 +126,7 @@ function NotificationsScreen() {
             </View>
           )} */}
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            onClear(item.id, index);
-          }}
-        >
+        <TouchableOpacity onPress={() => { onClear(item.id, index);}}>
           <Text style={[Style.clearView, { fontSize: 25, marginEnd: 10 }]}>
             {"x"}
           </Text>
@@ -174,11 +142,7 @@ function NotificationsScreen() {
       frontuser_id: UserManager.userId,
       notificationid: id,
     };
-    Service.post(
-      EndPoints.clearnotification,
-      data,
-      (res) => {
-        console.log("Clear notification response", res);
+    Service.post( EndPoints.clearnotification,data,(res) => {
         if (id == "") {
           setNotificatioData([]);
         } else {

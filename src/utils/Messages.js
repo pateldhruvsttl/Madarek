@@ -325,7 +325,8 @@ export const ARlabel = {
   _online: "Online",
   _editIdea: "Edit Idea",
   _expertInsight: "Expert Insight",
-
+  _approved: "Approved",
+  
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -677,6 +678,7 @@ export const USlabel = {
   _online: "Online",
   _editIdea: "Edit Idea",
   _expertInsight: "Expert Insight",
+  _approved: "Approved",
 
   // UserProfile model messages
 
