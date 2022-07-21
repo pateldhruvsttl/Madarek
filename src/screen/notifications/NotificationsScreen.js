@@ -61,6 +61,24 @@ function NotificationsScreen() {
     );
   }, []);
 
+  const onAcceptReject = (status, id) => {
+    const data = {
+      notificationid: id,
+      status: status,
+      frontuser_id: UserManager.userId,
+    };
+    Service.post(
+      EndPoints.acceptrejectrequest,
+      data,
+      (res) => {
+        Loger.onLog("Notification accept reject response of data", res);
+      },
+      (err) => {
+        Loger.onLog("Notification accept reject error response", err);
+      }
+    );
+  };
+
   const renderItem = ({ item, index }) => {
     return (
       <View style={Style.renderMainView}>
@@ -84,10 +102,11 @@ function NotificationsScreen() {
               {moment(item.created_at).format("DD MMM YY  HH:MM a")}
             </Text>
           </View>
-          
+
           {item?.notification_type === "Expert request" && (
             <View style={Style.btnView}>
               <TouchableOpacity
+                onPress={() => onAcceptReject("accept", item.id)}
                 style={[
                   Style.btnApplyNow,
                   { backgroundColor: themeColor.buttonColor },
@@ -98,6 +117,7 @@ function NotificationsScreen() {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={() => onAcceptReject("reject", item.id)}
                 style={[
                   Style.btnLearMore,
                   { borderColor: themeColor.buttonColor },
@@ -135,14 +155,14 @@ function NotificationsScreen() {
           )} */}
         </View>
         <TouchableOpacity
-            onPress={() => {
-              onClear(item.id, index);
-            }}
-          >
-            <Text style={[Style.clearView,{fontSize:25, marginEnd:10}]}>
-              {"x"}
-            </Text>
-          </TouchableOpacity>
+          onPress={() => {
+            onClear(item.id, index);
+          }}
+        >
+          <Text style={[Style.clearView, { fontSize: 25, marginEnd: 10 }]}>
+            {"x"}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -154,25 +174,35 @@ function NotificationsScreen() {
       frontuser_id: UserManager.userId,
       notificationid: id,
     };
-    Service.post(EndPoints.clearnotification,data,(res)=>{
-      console.log("Clear notification response", res)
-      if (id=="") {
-        setNotificatioData([])
-      }else{
-        var notData = [...notiData];
-        notData.splice(index, 1);
-        setRecord(notData.length)
-        setNotificatioData(notData);
+    Service.post(
+      EndPoints.clearnotification,
+      data,
+      (res) => {
+        console.log("Clear notification response", res);
+        if (id == "") {
+          setNotificatioData([]);
+        } else {
+          var notData = [...notiData];
+          notData.splice(index, 1);
+          setRecord(notData.length);
+          setNotificatioData(notData);
+        }
+      },
+      (err) => {
+        console.log("Clear notification error response", err);
       }
-    },(err)=>{
-      console.log("Clear notification error response", err)
-    })
+    );
   };
 
   return (
     <View style={Style.MainView}>
       <SafeAreaView>
-        <CommonHeader isType={"NotificationsScreen"} onMenuClick={() => { props.navigation.openDrawer(); }}/>
+        <CommonHeader
+          isType={"NotificationsScreen"}
+          onMenuClick={() => {
+            props.navigation.openDrawer();
+          }}
+        />
 
         <View style={Style.bodyView}>
           <Text style={Style.notificationsCounter}>
@@ -181,7 +211,7 @@ function NotificationsScreen() {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              onClear("",-1);
+              onClear("", -1);
             }}
           >
             <Text style={Style.clearView}>
