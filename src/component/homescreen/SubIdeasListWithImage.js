@@ -125,6 +125,7 @@ const SubIdeasListWithImage = (props) => {
             </TouchableOpacity>
         )
     };
+   
 
     return (
         <View style={Style.MainView}>

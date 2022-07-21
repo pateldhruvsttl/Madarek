@@ -12,12 +12,16 @@ import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import OpenChallenge from "../../model/OpenChallengesModel";
 import IdeasFilter from "../../component/filter/IdeasFilter";
+import { UserManager } from "../../manager/UserManager";
 
 
 const Tab = createMaterialTopTabNavigator();
 
 const ChallengesListScreen = (props) => {
     const [openChallenge, setOpenChallenge] = useState([])
+    const [upcomingChallenge, setUpcomingChallenge] = useState([])
+    const [closeChallenge, setCloseChallenge] = useState([])
+    const [vottingChallenge, setVottingChallenge] = useState([])
     const [isFilterVisible, setFilterVisible] = useState(false);
 
     useEffect(() => {
@@ -25,10 +29,19 @@ const ChallengesListScreen = (props) => {
     }, [])
 
     const onOpenChallenge = () => {
-        const data = '';
+        const data = {
+            frontuser_id: UserManager.userId,
+            searchkeywords: "",
+            keywords: "",
+            categories: "",
+            statusinputdata: "",
+            layout: "list",
+            limit: 10,
+          };
         Service.post(EndPoints.openChallenges, data, (res) => {
             var opChallenges = [];
             res.data.forEach(element => {
+                
                 let model = new OpenChallenge(element);
                 opChallenges.push(model);
             });
