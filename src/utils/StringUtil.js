@@ -265,6 +265,7 @@ export const Label = {
   JobTilte: isRTL ? ARlabel._enterJobTitle : USlabel._enterJobTitle,
   UpdateProfie: isRTL ? ARlabel._updateProfie : USlabel._updateProfie,
   ExpertInsight: isRTL ? ARlabel._expertInsight : USlabel._expertInsight,
+  Approved: isRTL ? ARlabel._approved : USlabel._approved,
 
 
 }

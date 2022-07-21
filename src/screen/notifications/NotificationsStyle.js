@@ -34,6 +34,7 @@ const HomeStyle = StyleSheet.create({
     btnLearMore:{width:AppUtil.getWP(30), height:AppUtil.getHP(4.8), borderWidth:AppUtil.getHP(0.2), borderRadius:AppUtil.getHP(0.5), justifyContent:'center', alignItems:'center', marginStart:AppUtil.getHP(1.5)},
     btnApplyNow:{width:AppUtil.getWP(30), height:AppUtil.getHP(4.8), borderRadius:AppUtil.getHP(0.5), justifyContent:'center', alignItems:'center'},
     txt:{fontSize:buttonFontSize, fontFamily:FONTS.robotMedium},
+    txt1:{fontSize:buttonFontSize, fontFamily:FONTS.robotRegular, color:GetAppColor.textColor},
 });
 
 export default HomeStyle;
