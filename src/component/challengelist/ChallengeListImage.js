@@ -24,6 +24,7 @@ import ImageLoad from "react-native-image-placeholder";
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
     const renderItem = ({ item }) => (
+        console.log('item of render challange',item),
         
         <TouchableOpacity onPress={() => props.navigateDetail(item)} style={LISTSTYLE.renderMainView}>
 

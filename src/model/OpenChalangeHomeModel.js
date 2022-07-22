@@ -6,12 +6,12 @@ export default class IdeaList {
             return;
         }
         
-        this.ideaTitle = obj?.general_title ? obj?.general_title : "No Title"
-        this.categoryName = obj?.general_description ? obj?.general_description : "No Description"
-        this.ideaImage = obj?.photos_image;
+        this.ideaTitle = obj?.title ? obj?.title : "No Title"
+        this.categoryName = obj?.contest_description ? obj?.contest_description : "No Description"
+        this.ideaImage = obj?.image || "https://i.imgur.com/5tj6S7Ol.jpg";
+        this.createDate = obj.date?obj.date:"No Date"
         
-        
-        this.title = obj?.contest_title ? obj?.contest_title : "No Title"
+        this.title = obj?.title ? obj?.title : "No Title"
         this.id = obj?.id
         this.name = obj?.publish_by ? obj?.publish_by : "No Name"
         this.winning = obj?.winning || "0"
@@ -24,9 +24,9 @@ export default class IdeaList {
         this.insight = obj.isInsight && obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
         
         this.like = obj?.isLiked > 0 && obj?.isLiked != null ? true : false;
-        this.totalView = obj?.totalViews > 0 && obj?.totalViews ? true : false;
-        this.totalLike = obj?.totalLikes > 0 && obj?.totalLikes ? true : false;
-        this.totalComment = obj?.totalComments > 0 && obj?.totalComments ? true : false;
+        this.totalView = obj?.toatal_view_contest || "0"
+        this.totalLike = obj?.toatal_liked_contest || "0"
+        this.totalComment = obj?.toatal_contest_comments || "0";
 
     }
 }

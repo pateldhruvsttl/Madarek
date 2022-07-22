@@ -103,7 +103,7 @@ const SubIdeasListWithImage = (props) => {
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                    <Text style={Style.title}>{item.createDate ? item.createDate : "No date"}</Text>
                                 </View>
 
                     }
@@ -131,6 +131,7 @@ const SubIdeasListWithImage = (props) => {
             </TouchableOpacity>
         )
     };
+   
 
     return (
         <View style={Style.MainView}>

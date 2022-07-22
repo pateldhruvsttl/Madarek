@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { buttonBorderRadius } from '../../utils/Constant';
 
 const IdeaContentStyle = StyleSheet.create({
-    line:{height:1,width:AppUtil.getWP(90),alignSelf:"center",marginTop:AppUtil.getHP(1.5), backgroundColor:GetAppColor.barGrey, paddingHorizontal:AppUtil.getWP(5)},
+    line: { height: 1, width: AppUtil.getWP(90), alignSelf: "center", marginTop: AppUtil.getHP(1.5), backgroundColor: GetAppColor.barGrey, paddingHorizontal: AppUtil.getWP(5) },
     academyTitle: {
         fontFamily: FONTS.robotMedium,
         fontSize: AppUtil.getHP(2.3)
@@ -32,8 +32,8 @@ const IdeaContentStyle = StyleSheet.create({
         backgroundColor: GetAppColor.buttonGreenColor,
         borderRadius: AppUtil.getHP(3),
         paddingHorizontal: AppUtil.getHP(1.3),
-        paddingVertical:AppUtil.getHP(0.2),
-        alignItems:'center',justifyContent:'center'
+        paddingVertical: AppUtil.getHP(0.2),
+        alignItems: 'center', justifyContent: 'center'
     },
     openBtnTitle: {
         color: GetAppColor.white,
@@ -43,7 +43,7 @@ const IdeaContentStyle = StyleSheet.create({
     dateContentIdea: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) :  AppUtil.getHP(1),
+        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) : AppUtil.getHP(1),
         paddingHorizontal: AppUtil.getWP(5),
     },
     dateSubContain: {
@@ -57,6 +57,9 @@ const IdeaContentStyle = StyleSheet.create({
         color: GetAppColor.textColor,
         textAlign: 'center'
     },
+    textSize: {
+        width: AppUtil.getWP(50)
+    },
     contentTitleSecond: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
@@ -69,7 +72,7 @@ const IdeaContentStyle = StyleSheet.create({
         alignItems: 'center'
     },
     sectorCategoryArea: {
-        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) :  AppUtil.getHP(1),
+        marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) : AppUtil.getHP(1),
         paddingHorizontal: AppUtil.getWP(5),
     },
     winningIcn: { marginEnd: AppUtil.getWP(1.8) },
@@ -117,26 +120,26 @@ const IdeaContentStyle = StyleSheet.create({
         // marginEnd: AppUtil.getHP(1),
 
     },
-    followBtn : {
-            height: buttonHeight,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: buttonBorderRadius,
-            flexDirection:'row',
-            borderColor:GetAppColor.grayBorder,
-            borderWidth:1,
-            backgroundColor:GetAppColor.white
+    followBtn: {
+        height: buttonHeight,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: buttonBorderRadius,
+        flexDirection: 'row',
+        borderColor: GetAppColor.grayBorder,
+        borderWidth: 1,
+        backgroundColor: GetAppColor.white
     },
     voteNowBtnTitle: {
         fontSize: buttonFontSize,
         fontFamily: FONTS.robotMedium
     },
-    followBtnTitle : {
-        color:GetAppColor.grayBorder,
-        fontSize : buttonFontSize,
+    followBtnTitle: {
+        color: GetAppColor.grayBorder,
+        fontSize: buttonFontSize,
         fontFamily: FONTS.robotMedium,
-        paddingStart:AppUtil.getWP(3)
-        
+        paddingStart: AppUtil.getWP(3)
+
     },
     likeBtn: {
         height: buttonHeight,
