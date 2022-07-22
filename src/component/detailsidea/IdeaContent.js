@@ -208,13 +208,13 @@ const IdeaContent = (props) => {
                         </>
                     ) : (
                         <>
-                            <View style={Style.leftSide}>
+                            {/* <View style={Style.leftSide}>
                                 <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor },]} >
                                     <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor },]}>
                                         {props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}
                                     </Text>
                                 </TouchableOpacity>
-                            </View>
+                            </View> */}
 
                             <View style={Style.rightSide}>
                                 {isFavorite ?
@@ -232,13 +232,13 @@ const IdeaContent = (props) => {
 
                                     )}
 
-                                <TouchableOpacity style={Style.likeBtn}>
+                                {/* <TouchableOpacity style={Style.likeBtn}>
                                     <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
 
-                                <TouchableOpacity style={Style.likeBtn}>
+                                {/* <TouchableOpacity style={Style.likeBtn}>
                                     <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder} />
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                         </>
                     )}

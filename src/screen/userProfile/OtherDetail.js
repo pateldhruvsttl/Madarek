@@ -21,9 +21,9 @@ const OtherDetail = (props) => {
             <ScrollView>
 
                 <View style={[UserProfileStyle.cornerView, { marginTop: AppUtil.getHP(2), }]} >
-                    <Text style={[UserProfileStyle.titleText, { marginTop: AppUtil.getHP(0) }]}>{Label.Categories}</Text>
+                    {/* <Text style={[UserProfileStyle.titleText, { marginTop: AppUtil.getHP(0) }]}>{Label.Categories}</Text>
                     <View style={UserProfileStyle.scrollSubView}>
-                        {/* {
+                        {
                             data.categoryInfo.map((item, index) => {
                                 return (
                                     <View style={UserProfileStyle.catView}>
@@ -31,9 +31,9 @@ const OtherDetail = (props) => {
                                     </View>
                                 )
                             })
-                        } */}
+                        }
                         {getCategories()}
-                    </View>
+                    </View> */}
 
                     <Text style={UserProfileStyle.titleText}>{Label.ShortDiscription}</Text>
                     <Text style={UserProfileStyle.subTitleText}>{data.about}</Text>

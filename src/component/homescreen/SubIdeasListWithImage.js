@@ -42,30 +42,33 @@ const SubIdeasListWithImage = (props) => {
         return (
             <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
-
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
-                    {
-                       item.favorite ?
-                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
-                                <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
-                                <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                            </TouchableOpacity>
-                    }
-                    {(item.trophy || item.starred || item.topRate || item.insight) ?
-                        <View style={Style.rewordView}>
-                            {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                            {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                            {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                            {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                        </View> :
-                        <View style={Style.rewordViewAlt}></View>
-                    }
+                    {props?.isType != "Spotlight" ?
 
+                        <>
+                            {
+                                (item.favorite) ?
+
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                                        <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                                        <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                            }
+                            {(item.trophy || item.starred || item.topRate || item.insight) ?
+                                <View style={Style.rewordView}>
+                                    {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                </View> :
+                                <View style={Style.rewordViewAlt}></View>
+                            }
+                        </> : null}
                 </View>
 
                 <View style={Style.leftItems}>
@@ -104,7 +107,7 @@ const SubIdeasListWithImage = (props) => {
                                 </View>
 
                     }
-
+  {props?.isType != "Spotlight" ?
                     <View style={Style.secondCalView}>
                         <View style={Style.secondInnerCalView}>
                             <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -118,10 +121,10 @@ const SubIdeasListWithImage = (props) => {
                             <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
                         </View>
-                        <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                        {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                             <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                        </TouchableOpacity>
-                    </View>
+                        </TouchableOpacity> */}
+                    </View>:null}
 
                 </View>
 
@@ -135,9 +138,11 @@ const SubIdeasListWithImage = (props) => {
                 props?.isTitle &&
                 <View style={Style.titleView}>
                     <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
-                    <TouchableOpacity onPress={() => props.onSeeMorePress()}>
-                        <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
-                    </TouchableOpacity>
+                    {/* {props?.isType != "Spotlight" ? */}
+                        <TouchableOpacity onPress={() => props.onSeeMorePress()}>
+                            <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+                        </TouchableOpacity> 
+                        {/* : null} */}
                 </View>
             }
 

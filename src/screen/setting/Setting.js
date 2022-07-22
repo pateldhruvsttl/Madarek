@@ -75,21 +75,21 @@ const Setting = (props) => {
                 </View>
 
                 {/* Notifications */}
-                <TouchableOpacity style={SettingStyle.btnView} onPress={() => navigation.navigate("NotificationSetting")} >
+                {/* <TouchableOpacity style={SettingStyle.btnView} onPress={() => navigation.navigate("NotificationSetting")} >
                     <View style={SettingStyle.iconTextView}>
                         <IcnAlert height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={SettingStyle.subTitleText}>Notifications</Text>
                     </View>
                     <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)}  />
 
-                    {/* <TouchableOpacity></TouchableOpacity> */}
+                    <TouchableOpacity></TouchableOpacity>
 
 
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 {/* message */}
 
-                <TouchableOpacity style={SettingStyle.btnView} >
+                {/* <TouchableOpacity style={SettingStyle.btnView} >
                     <View style={SettingStyle.iconTextView}>
                         <IcnMessage height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={SettingStyle.subTitleText}>message</Text>
@@ -110,20 +110,20 @@ const Setting = (props) => {
                             renderActiveText={false}
                             renderInActiveText={false}
                         />
-                        {/* <TouchableOpacity></TouchableOpacity> */}
+                        <TouchableOpacity></TouchableOpacity>
                         <Text style={[SettingStyle.offText, { marginStart: AppUtil.getWP(2) }]}>ON</Text>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
 
                 {/* About App  */}
-                <TouchableOpacity style={SettingStyle.btnView} >
+                {/* <TouchableOpacity style={SettingStyle.btnView} >
                     <View style={SettingStyle.iconTextView}>
                         <IcnAboutApp height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={SettingStyle.subTitleText}>About App</Text>
                     </View>
                     <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </ScrollView>
         </SafeAreaView>
     )
