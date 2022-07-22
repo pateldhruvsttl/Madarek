@@ -16,10 +16,10 @@ export default class ExpertInsightDetail {
         this.headingTitle =  obj?.heading_title || "No Title"
         this.jobTitle =  obj?.job_title || "No job Title"
         this.metaKeywords =  obj?.meta_keywords || "No organization Name"
-        this.totalViews =  obj?.totalViews || "0"
+        this.totalView =  obj?.totalViews || "0"
         this.totalFavoriteIdea =  obj?.toatal_favorite_idea || "0"
-        this.totalComments =  obj?.toatal_idea_comment || "0"
-        this.totalLikes =  obj?.toatal_liked_idea || "0"
+        this.totalComment =  obj?.toatal_idea_comment || "0"
+        this.totalLike =  obj?.toatal_liked_idea || "0"
         this.title =  obj?.title || "No title"
         this.insightDescription =  obj?.insight_description || "No Description"
         this.sectorName =  obj?.sector_name || "No sector"
@@ -28,6 +28,8 @@ export default class ExpertInsightDetail {
         this.contestDescription =  obj?.contest_description || "No contest Description"
         this.ideaCreatedDate =  obj?.idea_created_date || "25 jun 22"
         this.publishBy =  obj?.publish_by || "no name"
+        this.ideaTitle =  obj?.idea_title || "no ideaTitle"
+        this.ideaDescription =  obj?.idea_description || "no desc"
              
         
     }

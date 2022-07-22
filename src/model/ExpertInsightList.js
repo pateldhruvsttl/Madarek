@@ -12,7 +12,6 @@ export default class ExpertInsightList {
         this.date = obj?.created_date || "25 Jan 22"
         this.lastName =  obj?.last_name || "No last Name"
         this.profilePhoto =  obj?.image_upload_files || "https://i.imgur.com/5tj6S7Ol.jpg"
-        this.ideaTitle =  obj?.idea_title ? obj?.idea_title : "No Title"
         this.jobTitle =  obj?.job_title || "No job Title"
         this.metaKeywords =  obj?.meta_keywords || "No organization Name"
         this.totalViews =  obj?.totalViews || "0"

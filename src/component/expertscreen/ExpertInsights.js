@@ -14,7 +14,6 @@ import IcnRewordComment from "../../assets/svg/IcnRewordComment"
 import IcnClock from "../../assets/svg/IcnClock"
 
 function ExpertInsights(props) {
-    let data = props.data
     const { themeColor } = useSelector((state) => state)
 
     const renderItem = ({ item }) => (
@@ -38,27 +37,26 @@ function ExpertInsights(props) {
 
             <View style={Style.leftItems}>
 
-                <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                <Text numberOfLines={2} style={Style.SubTitle}>{item.title}</Text>
+                <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
+                <Text numberOfLines={2} style={Style.SubTitle}>{item.subTitle}</Text>
 
                 <View style={Style.calView}>
                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                     <Text style={Style.txtTime}>{item.date}</Text>
 
                     <IcnClock style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.txtTime}>{item.time}</Text>
+                    <Text style={Style.txtTime}>{item.min}</Text>
                 </View>
 
                 <View style={Style.secondCalView}>
                     <Text numberOfLines={1} style={Style.title}>{Label.Publishby}</Text>
-                    <Text numberOfLines={1} style={Style.txtName}>{item.firstName} {item.lastName}</Text>
+                    <Text numberOfLines={1} style={Style.txtName}>{item.name}</Text>
                 </View>
             </View>
 
         </View>
     );
 
-    const list = props.data.slice(0, 2);
     return (
         <View style={Style.MainView}>
             <View style={Style.titleView}>
@@ -70,7 +68,7 @@ function ExpertInsights(props) {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ paddingEnd: AppUtil.getHP(2) }}
-                data={list}
+                data={props.data}
                 renderItem={(item) => renderItem(item)}
             />
 
