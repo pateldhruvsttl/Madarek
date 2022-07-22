@@ -30,6 +30,7 @@ import OpenChalangeHomeModel from "../../model/OpenChalangeHomeModel";
 
 import { AppConfig } from "../../manager/AppConfig";
 import DeviceInfo from "react-native-device-info";
+import OpenChallengeModel from "../../model/OpenChallengesModel";
 export const deviceId = DeviceInfo.getUniqueId();
 
 const HomeScreen = (props) => {
