@@ -1,5 +1,5 @@
 import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
-import React, { memo, useState } from 'react'
+import React, { memo, useState,useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,15 +14,18 @@ import { GetAppColor } from '../../utils/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { EndPoints } from '../../service/EndPoints';
 import { Service } from '../../service/Service';
-import { useEffect } from 'react';
 import { Loger } from '../../utils/Loger';
 import ExpertInsight from '../../model/ExpertInsights';
+import { deviceId } from '../../utils/Constant';
+import ExpertInsightDetail from '../../model/ExpertInsightDetail';
+import { AppConfig } from '../../manager/AppConfig';
+import { UserManager } from '../../manager/UserManager';
 
 function ExpertDetailsScreen(props) {
     const { themeColor } = useSelector((state) => state)
 
-    const expertData = props.route.params.data
-    const ExpertInsight = props.route.params.item
+    // const expertData = props.route.params.data
+    // const ExpertInsight = props.route.params.item
 
     const navigation = useNavigation()
     return (
@@ -30,11 +33,11 @@ function ExpertDetailsScreen(props) {
             <CommonHeader isType={"ExpertDetailsScreen"} onMenuClick={() => null} />
             <View style={Style.MainView}>
                 <ScrollView>
-                    <ExpertProfile data={ExpertInsight} />
-                    <ExpertInsights data={expertData} />
+                    <ExpertProfile data={testProfileData} />
+                    <ExpertInsights data={expertInsightsData} />
 
                     <View style={Style.similarExpertView}>
-                        <SimilarExperts data={expertData} maxLimit={2} title={Label.SimilarExperts} />
+                        <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.SimilarExperts} />
                     </View>
 
                     <View style={Style.footerView}>

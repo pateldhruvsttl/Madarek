@@ -1,73 +1,66 @@
-import { View, Text, FlatList, Image } from 'react-native'
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import ExpertInsightStyle from './ExpertInsightStyle'
-import { AppUtil } from '../../utils/AppUtil'
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
+import { AppUtil } from '../../utils/AppUtil'
 
 const IdeaExpert = (props) => {
 
-    const renderSubCell=()=>{
-        return(
-            <View style={ExpertInsightStyle.leftItems}>
-
-                <Text numberOfLines={1} style={ExpertInsightStyle.title}>{"Lorem Ipsum is simply dummy"}</Text>
-                <Text numberOfLines={0} style={ExpertInsightStyle.SubTitle}>{"We aim to clean up 90% of floating ocean plastic pollution. The Ocean Cleanup is a non-profit organization developing and scaling technologies to rid the oceans"} </Text>
-
-                <View style={ExpertInsightStyle.calView}>
-
-                    <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={ExpertInsightStyle.icnTitle}>{589}</Text>
-
-                    <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={ExpertInsightStyle.icnTitle}>{25}</Text>
-
-                    <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={ExpertInsightStyle.icnTitle}>{45}</Text>
-                </View>
-                <View style={ExpertInsightStyle.line}/>
-
-            </View>
-        )
-    }
-
-    const renderCell = () => {
+    const renderCell = ({ item }) => {
         return (
-            <View style={ExpertInsightStyle.cellView}>
-                <View style={ExpertInsightStyle.topFlexView}>
-                    <Image style={ExpertInsightStyle.smallRadiousImage} />
-                    <View style={ExpertInsightStyle.subFlexView}>
-                        <Text style={ExpertInsightStyle.catText}>Banking and Finance</Text>
-                        <Text style={ExpertInsightStyle.titleText}>Finance Consulting Firm Banking and Finance</Text>
+            <>
+                <TouchableOpacity style={ExpertInsightStyle.cellView} onPress={() => props.navigateScreen(item.id)}>
+                    <View style={ExpertInsightStyle.topFlexView}>
+                        <Image
+                            source={{ uri: item.profilePhoto }}
+                            style={ExpertInsightStyle.smallRadiousImage} />
+                        <View style={ExpertInsightStyle.subFlexView}>
+                            <Text style={ExpertInsightStyle.catText}>{item.title}</Text>
+                            <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={ExpertInsightStyle.userFlexView}>
-                    <Image style={ExpertInsightStyle.userImage} />
-                    <View>
-                        <Text style={ExpertInsightStyle.userName}>Abhimanyu Ramanuj</Text>
-                        <Text style={ExpertInsightStyle.userCatName}>Subject Matter Expert</Text>
+                    <View style={ExpertInsightStyle.userFlexView}>
+                        <Image style={ExpertInsightStyle.userImage} />
+                        <View>
+                            <Text style={ExpertInsightStyle.userName}>{item.firstName}</Text>
+                            <Text style={ExpertInsightStyle.userCatName}>{item.jobTitle}</Text>
+                        </View>
                     </View>
-                </View>
 
-                <FlatList 
-                data={[1,2]}
+                    {/* <FlatList 
+                data={props.data}
                 renderItem={renderSubCell}
-                />
+                /> */}
+                    <View style={ExpertInsightStyle.leftItems}>
 
-                {/* {renderSubCell()}
-                {renderSubCell()} */}
+                        <View style={ExpertInsightStyle.calView}>
 
-            </View>
+                            <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalViews}</Text>
+
+                            <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
+
+                            <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
+                        </View>
+                        <View style={ExpertInsightStyle.line} />
+
+                    </View>
+                </TouchableOpacity>
+
+            </>
         )
     }
     return (
         <View>
 
             <FlatList
-                data={[1,2]}
-                style={{marginTop:AppUtil.getHP(1)}}
-                renderItem={renderCell}
+                data={props.data}
+                style={{ marginTop:AppUtil.getHP(1)  }}
+                renderItem={(item) => renderCell(item)}
             />
         </View>
     )
