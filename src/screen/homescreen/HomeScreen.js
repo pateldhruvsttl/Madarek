@@ -241,7 +241,7 @@ const HomeScreen = (props) => {
                 data={openChallenges}
                 isTitle={Label.OpenChallenges}
                 isType={"Challenges"}
-                btn={Label.ParticipateNow}
+                // btn={Label.ParticipateNow}
                 likeChallenge={(id) => likeChallenge(id)}
                 onButtonPress={() => {
                   setModalVisible(true);

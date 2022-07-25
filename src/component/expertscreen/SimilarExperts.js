@@ -62,9 +62,9 @@ function SimilarExperts(props) {
                 props.maxLimit != 0 &&
                 <View style={Style.titleView}>
                     <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: props.newData })}>
+                    {/* <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: props.newData })}>
                         <Text style={Style.txtSeeMore}>{props.type === "ExpertScreen" ? Label.viewMore : Label.viewAll}</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             }
             <FlatList

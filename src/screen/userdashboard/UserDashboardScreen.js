@@ -74,9 +74,9 @@ const UserDashboardScreen = (props) => {
                         <UserDashboardIdeasList data={requestData} isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
                     </View>
 
-                    <View style={Style.firstPos}>
+                    {/* <View style={Style.firstPos}>
                         <UserDashboardIdeasList data={favouriteData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
-                    </View>
+                    </View> */}
 
                     <View style={Style.bottomBarView}>
                             <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>

@@ -38,6 +38,7 @@ const IdeaDetails = (props) => {
   useEffect(() => {
     onExpertInsights();
     onIdeas()
+    console.log("kirsh", item);
   }, []);
 
   const onExpertInsights = () => {
@@ -65,7 +66,7 @@ const IdeaDetails = (props) => {
   const onIdeas = () => {
     const data = {
       "frontuser_id": UserManager.userId,
-      "limit": 2,
+      "limit": 10,
       "language": AppConfig.lang,
       "listtype": "all",
       "searchkeywords": "",
@@ -134,10 +135,10 @@ const IdeaDetails = (props) => {
 
             {item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
 
-            {item?.ideaVideo &&
+            {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
                 <VideoPlayer path={item?.ideaVideo} />
-              </View>}
+              </View>:null}
 
             {item?.resources && <Resources resource={item?.resources} />}
 

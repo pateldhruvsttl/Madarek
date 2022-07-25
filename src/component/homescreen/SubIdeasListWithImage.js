@@ -45,7 +45,7 @@ const SubIdeasListWithImage = (props) => {
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
-                    {props?.isType != "Spotlight" ?
+                    {props?.isType != "Spotlight"  ?
 
                         <>
                             {
@@ -68,7 +68,8 @@ const SubIdeasListWithImage = (props) => {
                                 </View> :
                                 <View style={Style.rewordViewAlt}></View>
                             }
-                        </> : null}
+                        </> : null
+                    }
                 </View>
 
                 <View style={Style.leftItems}>
@@ -107,9 +108,9 @@ const SubIdeasListWithImage = (props) => {
                                 </View>
 
                     }
-  {props?.isType != "Spotlight" ?
-                    <View style={Style.secondCalView}>
-                        <View style={Style.secondInnerCalView}>
+                    {props?.isType != "Spotlight" ?
+                        <View style={Style.secondCalView}>
+                            {/* <View style={Style.secondInnerCalView}>
                             <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
                         </View>
@@ -121,17 +122,18 @@ const SubIdeasListWithImage = (props) => {
                             <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
                         </View>
-                        {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                        <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                             <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                         </TouchableOpacity> */}
-                    </View>:null}
+                        </View> : null
+                    }
 
                 </View>
 
             </TouchableOpacity>
         )
     };
-   
+
 
     return (
         <View style={Style.MainView}>
@@ -140,10 +142,10 @@ const SubIdeasListWithImage = (props) => {
                 <View style={Style.titleView}>
                     <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
                     {/* {props?.isType != "Spotlight" ? */}
-                        <TouchableOpacity onPress={() => props.onSeeMorePress()}>
-                            <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
-                        </TouchableOpacity> 
-                        {/* : null} */}
+                    <TouchableOpacity onPress={() => props.onSeeMorePress()}>
+                        <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
+                    </TouchableOpacity>
+                    {/* : null} */}
                 </View>
             }
 

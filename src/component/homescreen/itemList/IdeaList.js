@@ -87,17 +87,17 @@ const IdeaList = (props) => {
             const winningListArr = winningIdeaList
             popularListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    popularListArr[index].like = likeDislike;
+                    popularListArr[index].favorite = likeDislike;
                 }
             })
             newListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    newListArr[index].like = likeDislike;
+                    newListArr[index].favorite = likeDislike;
                 }
             })
             winningListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    winningListArr[index].like = likeDislike;
+                    winningListArr[index].favorite = likeDislike;
                 }
             })
 
