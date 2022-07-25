@@ -93,23 +93,23 @@ const IdeaContent = (props) => {
                     </View>
                     :
                     props.isType == 'ExpertInsightDetailWithComment' ?
-                    <View style={Style.dateContentIdea}>
-                    <IcnClander height={iconSize} width={iconSize} />
-                    <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
-                    <View style={Style.profileArea}>
-                        <IcnAvtarBg height={iconSize} width={iconSize} />
-                        <Text numberOfLines={1} style={[Style.contentTitle,Style.textSize]}>{props.data?.publishBy}</Text>
-                    </View>
-                </View>
-                :
-                    <View style={Style.dateContentIdea}>
-                        <IcnClander height={iconSize} width={iconSize} />
-                        <Text style={Style.contentTitle}>{props.data?.date}</Text>
-                        <View style={Style.profileArea}>
-                            <IcnAvtarBg height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text numberOfLines={1} style={Style.contentTitle}>{props.data?.publishBy}</Text>
+                            </View>
                         </View>
-                    </View>
+                        :
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                            </View>
+                        </View>
             }
 
             {
@@ -158,12 +158,15 @@ const IdeaContent = (props) => {
                 )}
 
                 <View style={Style.winningIcnContainerRight}>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnWatchDone height={iconSize} width={iconSize} />
-                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalView}
-                        </Text>
-                    </View>
+                    {props.isType != 'ExpertInsightDetailWithComment' &&
+                        <View style={Style.secondInnerCalView}>
+                            <IcnWatchDone height={iconSize} width={iconSize} />
+                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                                {props.data?.totalView}
+                            </Text>
+                        </View>
+                    }
+
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>

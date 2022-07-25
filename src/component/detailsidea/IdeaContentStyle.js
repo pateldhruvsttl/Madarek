@@ -55,10 +55,7 @@ const IdeaContentStyle = StyleSheet.create({
         fontSize: AppUtil.getHP(1.8), //2.5
         marginStart: AppUtil.getWP(1.5),
         color: GetAppColor.textColor,
-        textAlign: 'center'
-    },
-    textSize: {
-        width: AppUtil.getWP(50)
+        textAlign: 'center',
     },
     contentTitleSecond: {
         fontFamily: FONTS.robotRegular,
@@ -69,7 +66,7 @@ const IdeaContentStyle = StyleSheet.create({
     profileArea: {
         marginStart: AppUtil.getWP(5),
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     sectorCategoryArea: {
         marginTop: Platform.OS === "android" ? AppUtil.getHP(0.5) : AppUtil.getHP(1),
