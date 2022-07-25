@@ -59,7 +59,9 @@ const SubIdeasListWithImage = (props) => {
                                         <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                                     </TouchableOpacity>
                             }
-                            {(item.trophy || item.starred || item.topRate || item.insight) ?
+                            {
+                                props.isType != "Challenges" ?
+                            (  item.trophy || item.starred || item.topRate || item.insight ) ?
                                 <View style={Style.rewordView}>
                                     {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
                                     {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
@@ -67,7 +69,8 @@ const SubIdeasListWithImage = (props) => {
                                     {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
                                 </View> :
                                 <View style={Style.rewordViewAlt}></View>
-                            }
+                                :null}
+                            
                         </> : null
                     }
                 </View>
@@ -90,7 +93,7 @@ const SubIdeasListWithImage = (props) => {
 
                             :
 
-                            props?.isType == "Spotlight" ?
+                            (props?.isType == "Spotlight" && props?.isType == "Challenges")?
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
