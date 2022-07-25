@@ -241,57 +241,78 @@ const ExpertInsightDetailWithComment = (props) => {
   };
   const renderSubCell = (props) => {
     return (
-      <View style={ExpertInsightDetailStyle.leftItems}>
-        <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
-        {props.ideaTitle}
-        </Text>
-        <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}>
-          {props.ideaDescription}
-        </Text>
-
-        <View style={ExpertInsightDetailStyle.calView}>
-          <IcnWatchDone
-            height={AppUtil.getHP(1.5)}
-            width={AppUtil.getHP(1.5)}
+      <>
+        <View style={ExpertInsightDetailStyle.userFlexView}>
+          <ImageLoad
+            style={[
+              ExpertInsightDetailStyle.userImage,
+              { marginTop: AppUtil.getHP(1) },
+            ]}
+            source={{ uri: props.profilePhoto }}
+            borderRadius={AppUtil.getHP(2.5)}
+            placeholderStyle={ExpertInsightDetailStyle.userImage}
           />
-          <Text style={ExpertInsightDetailStyle.icnTitle}>{589}</Text>
-
-          <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-          <Text style={ExpertInsightDetailStyle.icnTitle}>{25}</Text>
-
-          <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-          <Text style={ExpertInsightDetailStyle.icnTitle}>{45}</Text>
-
-          <IcnClander height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-          <Text style={ExpertInsightDetailStyle.icnTitle}>
-            {"25 Apr 22 at 15:30 PM"}
-          </Text>
+          <View>
+            <Text style={ExpertInsightDetailStyle.userName}>
+              {props.insightBy}
+            </Text>
+            {/* <Text style={ExpertInsightDetailStyle.userCatName}>
+              Subject Matter Expert
+            </Text> */}
+          </View>
         </View>
-        <View style={ExpertInsightDetailStyle.resourceContainer}>
-          <View style={ExpertInsightDetailStyle.resourceSubTitle}>
-            <Text style={ExpertInsightDetailStyle.resourceTitle}>
-              {"Idea module lorem ipsum"}
+        <View style={ExpertInsightDetailStyle.leftItems}>
+          <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
+            {props.ideaTitle}
+          </Text>
+          <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}>
+            {props.ideaDescription}
+          </Text>
+
+          {/* <View style={ExpertInsightDetailStyle.calView}>
+            <IcnWatchDone
+              height={AppUtil.getHP(1.5)}
+              width={AppUtil.getHP(1.5)}
+            />
+            <Text style={ExpertInsightDetailStyle.icnTitle}>{589}</Text>
+
+            <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+            <Text style={ExpertInsightDetailStyle.icnTitle}>{25}</Text>
+
+            <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+            <Text style={ExpertInsightDetailStyle.icnTitle}>{45}</Text>
+
+            <IcnClander height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+            <Text style={ExpertInsightDetailStyle.icnTitle}>
+              {"25 Apr 22 at 15:30 PM"}
             </Text>
           </View>
-          <TouchableOpacity style={ExpertInsightDetailStyle.downloadIcon}>
-            <IcnDownload height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-          </TouchableOpacity>
+          <View style={ExpertInsightDetailStyle.resourceContainer}>
+            <View style={ExpertInsightDetailStyle.resourceSubTitle}>
+              <Text style={ExpertInsightDetailStyle.resourceTitle}>
+                {"Idea module lorem ipsum"}
+              </Text>
+            </View>
+            <TouchableOpacity style={ExpertInsightDetailStyle.downloadIcon}>
+              <IcnDownload height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+            </TouchableOpacity>
+          </View>
+          <ScrollView
+            contentContainerStyle={ExpertInsightDetailStyle.imgView}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          >
+            {DATAPERSON.map((item) => (
+              <ImageLoad
+                style={ExpertInsightDetailStyle.img}
+                resizeMode="cover"
+                source={{ uri: item.url }}
+              />
+            ))}
+          </ScrollView> */}
+          {/* <View style={ExpertInsightDetailStyle.line} /> */}
         </View>
-        <ScrollView
-          contentContainerStyle={ExpertInsightDetailStyle.imgView}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          {DATAPERSON.map((item) => (
-            <ImageLoad
-              style={ExpertInsightDetailStyle.img}
-              resizeMode="cover"
-              source={{ uri: item.url }}
-            />
-          ))}
-        </ScrollView>
-        {/* <View style={ExpertInsightDetailStyle.line} /> */}
-      </View>
+      </>
     );
   };
   return (
@@ -301,28 +322,10 @@ const ExpertInsightDetailWithComment = (props) => {
         <ScrollView>
           <View style={ExpertInsightDetailStyle.container}>
             <IdeaSlider Entries={testData} />
-            <IdeaContent data={detail} isMyIdeaDetail={false} isExpert={true} isType={'ExpertInsightDetailWithComment'}/>
-            <View style={ExpertInsightDetailStyle.userFlexView}>
-              <ImageLoad
-                style={[
-                  ExpertInsightDetailStyle.userImage,
-                  { marginTop: AppUtil.getHP(1) },
-                ]}
-                source={{ uri: 'https://i.imgur.com/pewusMzl.jpg' }}
-                borderRadius={AppUtil.getHP(2.5)}
-                placeholderStyle={ExpertInsightDetailStyle.userImage}
-              />
-              <View>
-                <Text style={ExpertInsightDetailStyle.userName}>
-                  Abhimanyu Ramanuj
-                </Text>
-                <Text style={ExpertInsightDetailStyle.userCatName}>
-                  Subject Matter Expert
-                </Text>
-              </View>
-            </View>
+            <IdeaContent data={detail} isMyIdeaDetail={false} isExpert={true} isType={'ExpertInsightDetailWithComment'} />
+
             {renderSubCell(detail)}
-            <View style={ExpertInsightDetailStyle.commentView}>
+            {/* <View style={ExpertInsightDetailStyle.commentView}>
               <Text style={ExpertInsightDetailStyle.commentText}>Comments</Text>
               <TextInput style={ExpertInsightDetailStyle.input} />
               <View
@@ -340,7 +343,7 @@ const ExpertInsightDetailWithComment = (props) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <FlatList data={[1, 2]} renderItem={renderComentCell} />
+            <FlatList data={[1, 2]} renderItem={renderComentCell} /> */}
           </View>
         </ScrollView>
       </View>

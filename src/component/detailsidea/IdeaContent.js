@@ -23,7 +23,6 @@ import IcnTimer from "../../assets/svg/IcnTimer";
 const IdeaContent = (props) => {
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
-
     const Bold = ({ children }) => (
         <Text
             style={{
@@ -48,10 +47,10 @@ const IdeaContent = (props) => {
         >
             <View style={Style.headerAcademyTitle}>
                 <Text
-                    style={[ Style.academyTitle,
-                        {
-                            color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle,
-                        },
+                    style={[Style.academyTitle,
+                    {
+                        color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle,
+                    },
                     ]}
                 >
                     {props?.data?.title}
@@ -71,23 +70,23 @@ const IdeaContent = (props) => {
                     </View>
                     :
                     props.isType == 'ExpertInsightDetailWithComment' ?
-                    <View style={Style.dateContentIdea}>
-                    <IcnClander height={iconSize} width={iconSize} />
-                    <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
-                    <View style={Style.profileArea}>
-                        <IcnAvtarBg height={iconSize} width={iconSize} />
-                        <Text numberOfLines={1} style={[Style.contentTitle,Style.textSize]}>{props.data?.publishBy}</Text>
-                    </View>
-                </View>
-                :
-                    <View style={Style.dateContentIdea}>
-                        <IcnClander height={iconSize} width={iconSize} />
-                        <Text style={Style.contentTitle}>{props.data?.date}</Text>
-                        <View style={Style.profileArea}>
-                            <IcnAvtarBg height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text numberOfLines={1} style={Style.contentTitle}>{props.data?.publishBy}</Text>
+                            </View>
                         </View>
-                    </View>
+                        :
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                            </View>
+                        </View>
             }
 
             {
@@ -135,12 +134,15 @@ const IdeaContent = (props) => {
                 )}
 
                 <View style={Style.winningIcnContainerRight}>
-                    <View style={Style.secondInnerCalView}>
-                        <IcnWatchDone height={iconSize} width={iconSize} />
-                        <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalView}
-                        </Text>
-                    </View>
+                    {props.isType != 'ExpertInsightDetailWithComment' &&
+                        <View style={Style.secondInnerCalView}>
+                            <IcnWatchDone height={iconSize} width={iconSize} />
+                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                                {props.data?.totalView}
+                            </Text>
+                        </View>
+                    }
+
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
@@ -196,33 +198,33 @@ const IdeaContent = (props) => {
                     ) : (
                         <>
                             <View style={Style.leftSide}>
-                                <TouchableOpacity style={[Style.votingBtn,{ backgroundColor: themeColor.buttonColor },]} >
-                                    <Text style={[ Style.voteNowBtnTitle,{ color: themeColor.buttonFontColor },]}>
+                                <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor },]} >
+                                    <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor },]}>
                                         {props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}
                                     </Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={Style.rightSide}>
-                                {props.isMyIdeaDetail ? 
-                                (
-                                    <TouchableOpacity style={[Style.likeBtn,{ backgroundColor: GetAppColor.lightBlue },]}>
-                                        <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
-                                    </TouchableOpacity>
-                                ) 
-                                : 
-                                (
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnLikeblack height={AppUtil.getHP(3.2)}width={AppUtil.getHP(3.2)}/>
-                                    </TouchableOpacity>
-                                )}
+                                {props.isMyIdeaDetail ?
+                                    (
+                                        <TouchableOpacity style={[Style.likeBtn, { backgroundColor: GetAppColor.lightBlue },]}>
+                                            <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        </TouchableOpacity>
+                                    )
+                                    :
+                                    (
+                                        <TouchableOpacity style={Style.likeBtn}>
+                                            <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        </TouchableOpacity>
+                                    )}
 
                                 <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnBlockChain  height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
+                                    <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder}/>
+                                    <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder} />
                                 </TouchableOpacity>
                             </View>
                         </>
