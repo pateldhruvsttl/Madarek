@@ -63,7 +63,7 @@ const IdeaContent = (props) => {
                     <View style={Style.dateContentChallenge}>
                         <View style={Style.dateSubContain}>
                             <IcnClander height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
+                            <Text style={Style.contentTitle}>{props.data?.start_date}</Text>
                         </View>
                         <TouchableOpacity style={Style.openBtn}>
                             <Text style={Style.openBtnTitle}>{Label.OpenTitle}</Text>
@@ -83,8 +83,8 @@ const IdeaContent = (props) => {
             {
                 props.isType == 'ChallengeDetail' ?
                     <View style={Style.sectorCategoryArea}>
-                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sector}</Bold></Text>
-                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.categoryName}</Bold> </Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sector_name}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.category_name}</Bold> </Text>
                     </View>
                     :
                     <View style={Style.sectorCategoryArea}>
@@ -128,19 +128,19 @@ const IdeaContent = (props) => {
                     <View style={Style.secondInnerCalView}>
                         <IcnWatchDone height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalView}
+                            {props.data?.toatal_view_contest}
                         </Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalLike}
+                            {props.data?.toatal_liked_contest}
                         </Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalComment}
+                            {props.data?.toatal_contest_comments}
                         </Text>
                     </View>
                     {props.isMyIdeaDetail ? (
