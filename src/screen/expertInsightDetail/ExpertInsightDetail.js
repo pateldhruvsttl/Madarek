@@ -54,30 +54,9 @@ const ExpertInsightDetail = (props) => {
     Description: 'Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adielit. Ultricies at iaculis eu at Idea description Lorem ipsudjm dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description. Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description.'
   }
 
-  const userProfile = [
-    {
-      url: 'https://ath2.unileverservices.com/wp-content/uploads/sites/3/2017/09/professional-mens-hairstyles-combed-min-1024x683.jpg',
-      name: 'Yashpal Sinha'
-    },
-    {
-      url: 'https://ath2.unileverservices.com/wp-content/uploads/sites/3/2017/09/professional-mens-hairstyles-light-styling-min-532x355.jpg',
-      name: 'Aadrsh Acharya'
-    },
-    {
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9QdsoL3XdTix4C40wyn5XpV3nUoC2phXcxQ&usqp=CAU',
-      name: 'Abhimayu Laghari'
-    },
-  ];
+ 
 
-  const resource = [{
-    resourceName: "Idea module lorem ipsum",
-  }, {
-    resourceName: "Idea module lorem",
-  }, {
-    resourceName: "Idea module lorem ipsum doler",
-  }, {
-    resourceName: "Idea module lorem ipsum",
-  }];
+
 
   const expertData = [
     {

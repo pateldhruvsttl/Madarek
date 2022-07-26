@@ -96,7 +96,7 @@ const SubIdeasList = (props) => {
               <Text style={Style.title}>{item.totalComment}</Text>
             </View>
             <TouchableOpacity style={Style.secondInnerCalView}>
-              <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+              {/* <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} /> */}
             </TouchableOpacity>
           </View>
 

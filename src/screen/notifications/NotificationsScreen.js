@@ -127,7 +127,7 @@ function NotificationsScreen() {
           )} */}
         </View>
         <TouchableOpacity onPress={() => { onClear(item.id, index);}}>
-          <Text style={[Style.clearView, { fontSize: 25, marginEnd: 10 }]}>
+          <Text style={[Style.clearView, { fontSize: AppUtil.getHP(2.4), marginEnd: 10 }]}>
             {"x"}
           </Text>
         </TouchableOpacity>

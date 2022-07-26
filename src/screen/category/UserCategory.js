@@ -66,7 +66,7 @@ const UserCategory = (props) => {
         return (
             <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]}>
                 <View style={Style.heartView}>
-                    <Heart height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                    {/* <Heart height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} /> */}
                 </View>
                 {/* <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} /> */}
                 <Image style={{ height: AppUtil.getHP(3.6), width: AppUtil.getHP(3.6) }} source={{ uri: item.categoryIcon }} />

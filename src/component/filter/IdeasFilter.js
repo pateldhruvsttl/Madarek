@@ -170,7 +170,7 @@ function IdeasFilter(props) {
                         </View>
 
                         <TouchableOpacity onPress={() => { setSelectedCatIndex(!selectedCatIndex) }} style={Style.menuButton}>
-                            <Text style={Style.txtSortBy} >{"Sectors " + selectorList}</Text>
+                            <Text style={Style.txtSortBy} >{"Sectors ("+ selectorList + ')'}</Text>
                             {
                                 selectedCatIndex ?
                                     <IcnUpArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />

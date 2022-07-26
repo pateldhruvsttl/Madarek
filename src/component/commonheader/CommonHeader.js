@@ -113,12 +113,12 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("Message")}>
+                            {/* <TouchableOpacity onPress={() => navigation.navigate("Message")}>
                                 <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
 
                     </View>
@@ -206,7 +206,10 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
-                            {onMenu()}
+                            <TouchableOpacity onPress={() => navigation.navigate("Message")}>
+                                <IcnMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                            {/* {onMenu()} */}
                         </View>
 
                     </View>
@@ -227,7 +230,11 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
-                            {onMenu()}
+                            <TouchableOpacity onPress={() => navigation.navigate("Message")}>
+                                <IcnMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+
+                            {/* {onMenu()} */}
                         </View>
 
                     </View>
@@ -613,7 +620,7 @@ const CommonHeader = (props) => {
                                 <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity> */}
                             <TouchableOpacity>
-                                <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                {/* <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} /> */}
                             </TouchableOpacity>
                         </View>
 

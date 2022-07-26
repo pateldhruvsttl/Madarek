@@ -117,7 +117,7 @@ const ChallengesListScreen = (props) => {
                     }
                   />
                   :
-                  <Text>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
             />
             <Tab.Screen
@@ -131,7 +131,7 @@ const ChallengesListScreen = (props) => {
                     }
                   />
                   :
-                  <Text>No data found</Text>
+                 <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
             />
             <Tab.Screen
@@ -144,7 +144,7 @@ const ChallengesListScreen = (props) => {
                       props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   /> :
-                  <Text>No data found</Text>
+                 <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
             />
             <Tab.Screen
@@ -158,13 +158,14 @@ const ChallengesListScreen = (props) => {
                       props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   /> :
-                  <Text>No data found</Text>
+                 <Text style={ListStyle.txtNodata}>No data found</Text>
 
               )}
             />
           </Tab.Navigator>
         </NavigationContainer>
       </View>
+     
       <IdeasFilter
         visible={isFilterVisible}
         onClose={() => setFilterVisible(!isFilterVisible)}
