@@ -26,7 +26,7 @@ const ChallengeListImage = (props) => {
     const renderItem = ({ item }) => (
         console.log('item of render challange',item),
         
-        <TouchableOpacity onPress={() => props.navigateDetail(item)} style={LISTSTYLE.renderMainView}>
+        <TouchableOpacity onPress={() => props.navigateDetail(item.id)} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
 

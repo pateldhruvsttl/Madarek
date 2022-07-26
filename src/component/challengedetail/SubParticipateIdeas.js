@@ -44,13 +44,13 @@ const SubParticipateIdeas = (props) => {
             <View style={STYLE.leftItems}>
 
                 <Text numberOfLines={2} style={[STYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>
-                    {item.contest_title==""?"No Title":item.contest_title}</Text>
+                    {item.contestTitle}</Text>
 
 
                 <View style={STYLE.calView}>
                     <View style={STYLE.inerContentLeft}>
                         <IcnClander style={STYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={STYLE.title}>{moment(item.created_at).format('DD-MMM-YYYY') }</Text>
+                        <Text style={STYLE.title}>{moment(item.createdAt).format('DD-MMM-YYYY')}</Text>
                     </View>
                     <View style={STYLE.inerContentRight}>
                         <IcnAvtarBg style={STYLE.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -68,7 +68,7 @@ const SubParticipateIdeas = (props) => {
                         <Text style={STYLE.title}>{Label.TotalScore}{"\n"}<Bold>{item.totalScore}</Bold></Text>
                     </View>
                     <View style={STYLE.secondInnerCalViewLast}>
-                    <Text style={STYLE.title}>{Label.Votes}{"\n"}<Bold>{item.votes}</Bold></Text>
+                        <Text style={STYLE.title}>{Label.Votes}{"\n"}<Bold>{item.votes}</Bold></Text>
                     </View>
                 </View>
             </View>
@@ -78,6 +78,9 @@ const SubParticipateIdeas = (props) => {
 
     return (
         <View style={STYLE.MainView}>
+            <Text style={STYLE.heading}>
+                {Label.ParticipateIdeas}
+            </Text>
             <FlatList
                 data={props.data}
                 scrollEnabled={props?.scrollEnabled ? true : false}

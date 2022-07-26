@@ -9,6 +9,6 @@ export default class Categories {
         this.id = obj?.id
         this.parentId = obj?.parent_id
         this.categoryName = obj?.category_name ?obj?.category_name : "No Category Name"
-        this.categoryIcon = obj?.category_icon ? obj?.category_icon: ""
+        this.categoryIcon = obj?.category_icon || ""
     }
 }

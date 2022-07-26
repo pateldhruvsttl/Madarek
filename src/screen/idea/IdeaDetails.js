@@ -38,7 +38,6 @@ const IdeaDetails = (props) => {
   useEffect(() => {
     onExpertInsights();
     onIdeas()
-    console.log("kirsh", item);
   }, []);
 
   const onExpertInsights = () => {
@@ -118,11 +117,11 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            {item?.additional_images ?
-              <IdeaSlider Entries={item?.additional_images} />
+            {item?.additionalImages ?
+              <IdeaSlider Entries={item?.additionalImages} />
               :
               <View style={IdeaStyle.imgStyle}>
-                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.user_photo }} isShowActivity={false} />
+                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.userPhoto }}  />
               </View>
             }
 
@@ -133,7 +132,7 @@ const IdeaDetails = (props) => {
               <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text>
             </View>
 
-            {item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
+            {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
 
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
@@ -146,7 +145,7 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas}
+                data={isAllIdeas.splice(0,2)}
                 isType="Ideas"
                 likeIdea={onLikeIdeas}
                 isTitle={Label.MayAlsoInterested} screen="IdeaDetail"

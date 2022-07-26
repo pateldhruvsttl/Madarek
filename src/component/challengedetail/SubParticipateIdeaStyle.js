@@ -4,7 +4,7 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const STYLE = StyleSheet.create({
-    MainView: { width: '100%' },
+    MainView: { width: '100%',paddingHorizontal: AppUtil.getWP(3), },
 
     titleView: {
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
@@ -103,6 +103,14 @@ const STYLE = StyleSheet.create({
     bottomBtn: {
         height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor: GetAppColor.white,
         borderRadius: AppUtil.getHP(1), borderWidth: AppUtil.getHP(0.1), justifyContent: 'center', alignItems: 'center', margin: AppUtil.getHP(2),
+    },
+    heading: {
+        color: GetAppColor.pincolor,
+        fontFamily: FONTS.robotBold,
+        fontSize: AppUtil.getHP(2.2),
+        textAlign: 'left',
+        marginBottom: AppUtil.getHP(1),
+        marginStart:AppUtil.getWP(2)
     },
     txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily: FONTS.robotMedium },
 

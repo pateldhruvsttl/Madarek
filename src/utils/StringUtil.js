@@ -267,6 +267,7 @@ export const Label = {
   ExpertInsight: isRTL ? ARlabel._expertInsight : USlabel._expertInsight,
   Approved: isRTL ? ARlabel._approved : USlabel._approved,
   TeamCollaboration: isRTL ? ARlabel._teamCollaboration : USlabel._teamCollaboration,
+  ParticipateIdeas: isRTL ? ARlabel._participateIdeas : USlabel._participateIdeas,
 
 
 }

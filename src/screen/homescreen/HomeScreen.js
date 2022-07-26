@@ -235,7 +235,7 @@ const HomeScreen = (props) => {
                 likeChallenge={(id) => likeChallenge(id)}
                 onButtonPress={() => { setModalVisible(true); }}
                 onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", { data: openChallenges, }); }}
-                onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item); }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", {id:id}); }}
               />
             </View>
           )

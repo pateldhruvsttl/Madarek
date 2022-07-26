@@ -57,6 +57,13 @@ const IdeaContentStyle = StyleSheet.create({
         color: GetAppColor.textColor,
         textAlign: 'center',
     },
+    otherSpace: {
+        alignItems: 'flex-start',
+        width: AppUtil.getWP(40),fontFamily: FONTS.robotRegular,
+        fontSize: AppUtil.getHP(1.8), //2.5
+        marginStart: AppUtil.getWP(1.5),
+        color: GetAppColor.textColor,
+    },
     contentTitleSecond: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
