@@ -57,7 +57,8 @@ const CommonHeaderStyle = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.white,
         fontSize: AppUtil.getHP(1.8),
-    }
+    },
+    txtMenuOptions:{color:GetAppColor.black}
 });
 
 export default CommonHeaderStyle;

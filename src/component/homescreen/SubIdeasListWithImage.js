@@ -45,7 +45,7 @@ const SubIdeasListWithImage = (props) => {
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
-                    {props?.isType != "Spotlight"  ?
+                    {props?.isType != "Spotlight" ?
 
                         <>
                             {
@@ -61,16 +61,16 @@ const SubIdeasListWithImage = (props) => {
                             }
                             {
                                 props.isType != "Challenges" ?
-                            (  item.trophy || item.starred || item.topRate || item.insight ) ?
-                                <View style={Style.rewordView}>
-                                    {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                                    {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                                    {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                                    {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
-                                </View> :
-                                <View style={Style.rewordViewAlt}></View>
-                                :null}
-                            
+                                    (item.trophy || item.starred || item.topRate || item.insight) ?
+                                        <View style={Style.rewordView}>
+                                            {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                            {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                            {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                            {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                        </View> :
+                                        <View style={Style.rewordViewAlt}></View>
+                                    : null}
+
                         </> : null
                     }
                 </View>
@@ -93,7 +93,7 @@ const SubIdeasListWithImage = (props) => {
 
                             :
 
-                            (props?.isType == "Spotlight" && props?.isType == "Challenges")?
+                            (props?.isType == "Spotlight" && props?.isType == "Challenges") ?
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -102,9 +102,7 @@ const SubIdeasListWithImage = (props) => {
                                     <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                     <Text style={Style.title}>{item.name}</Text>
                                 </View>
-
                                 :
-
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                     <Text style={Style.title}>{item.createDate ? item.createDate : "No date"}</Text>
@@ -113,21 +111,21 @@ const SubIdeasListWithImage = (props) => {
                     }
                     {props?.isType != "Spotlight" ?
                         <View style={Style.secondCalView}>
-                            {/* <View style={Style.secondInnerCalView}>
-                            <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
-                        </View>
-                        <View style={Style.secondInnerCalView}>
-                            <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
-                        </View>
-                        <View style={Style.secondInnerCalView}>
-                            <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
-                        </View>
-                        <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
-                            <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                        </TouchableOpacity> */}
+                            <View style={Style.secondInnerCalView}>
+                                <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
+                            </View>
+                            <View style={Style.secondInnerCalView}>
+                                <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
+                            </View>
+                            <View style={Style.secondInnerCalView}>
+                                <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
+                            </View>
+                            {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                                <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                            </TouchableOpacity> */}
                         </View> : null
                     }
 

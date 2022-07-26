@@ -36,13 +36,14 @@ const CommonHeader = (props) => {
                 </MenuTrigger>
 
                 <MenuOptions>
+
                     <MenuOption onSelect={() => navigation.navigate("Message")} style={Style.menuView}>
                         <IcnMsg stroke={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                        <Text>{Label.Message}</Text>
+                        <Text style={Style.txtMenuOptions}>{Label.Message}</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => navigation.navigate("SearchLabel",{screen:"HomeScreen"})} style={Style.menuView}>
+                    <MenuOption onSelect={() => navigation.navigate("SearchLabel", { screen: "HomeScreen" })} style={Style.menuView}>
                         <IcnSearch fill={GetAppColor.black} style={Style.headerProfileIcn} height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                        <Text>{Label.Search}</Text>
+                        <Text style={Style.txtMenuOptions}>{Label.Search}</Text>
                     </MenuOption>
                 </MenuOptions>
             </Menu>
@@ -66,7 +67,9 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
-                            {onMenu()}
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
                         </View>
 
                     </View>
@@ -265,7 +268,7 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", {screen:"CHALLENGE"})}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "CHALLENGE" })}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
