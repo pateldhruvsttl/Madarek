@@ -33,10 +33,10 @@ const UserProfileList = (props) => {
                     style={styles.imgChallengeListStyle}
                     horizontal
                     resizeMode='cover'
-                    source={{ uri: item.url }}
+                    source={{ uri: item.user_photo }}
                 />
-                <Text style={styles.personName}>{item.name}</Text>
-                <Text style={styles.personOccupation}>{item.occupation}</Text>
+                <Text style={styles.personName}>{item.first_name} {item.last_name}</Text>
+                <Text style={styles.personOccupation}>{item.job_title}</Text>
             </View>
         </ScrollView>
 

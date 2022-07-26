@@ -326,6 +326,7 @@ export const ARlabel = {
   _editIdea: "Edit Idea",
   _expertInsight: "Expert Insight",
   _approved: "Approved",
+  _teamCollaboration: "Team Collaboration",
   
 }
 export const USlabel = {
@@ -679,6 +680,7 @@ export const USlabel = {
   _editIdea: "Edit Idea",
   _expertInsight: "Expert Insight",
   _approved: "Approved",
+  _teamCollaboration: "Team Collaboration",
 
   // UserProfile model messages
 

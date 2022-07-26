@@ -549,13 +549,13 @@ const CommonHeader = (props) => {
                                 <ImageLoad
                                     style={Style.subProfile}
                                     resizeMode='cover'
-                                    source={{ uri:"" }}
+                                    source={{ uri: props.url }}
                                     borderRadius={AppUtil.getHP(2.5)}
                                     placeholderStyle={Style.subProfile}
                                 />
                             </View>
                             <View style={Style.chatDetail}>
-                                <Text style={Style.chatTxt}>Abhimanyu Bhatacharya</Text>
+                                <Text style={Style.chatTxt}>{props.isName}</Text>
                                 <Text style={[Style.chatTxt, Style.onlineTxt]}>{Label.Online}</Text>
                             </View>
                         </View>
@@ -613,6 +613,21 @@ const CommonHeader = (props) => {
                                 <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
+
+                    </View>
+                </>
+            )
+            break
+        case 'Team Collaboration':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.TeamCollaboration}</Text>
+                        </View>
+                        <BackButton />
 
                     </View>
                 </>

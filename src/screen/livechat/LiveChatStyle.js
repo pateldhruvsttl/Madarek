@@ -26,7 +26,7 @@ const STYLE = StyleSheet.create({
     labelContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: AppUtil.getWP(55),
+        width: "80%",
         borderRadius: AppUtil.getHP(3),
         backgroundColor: GetAppColor.chatInputColor,
         height: AppUtil.getHP(5.5),
@@ -34,17 +34,18 @@ const STYLE = StyleSheet.create({
         marginStart: AppUtil.getWP(4),
         justifyContent: 'space-between'
     },
+    icnContainer: {
+        marginStart: AppUtil.getWP(4),
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
     chatInput: {
         color: GetAppColor.pincolor,
         fontSize: AppUtil.getHP(1.8),
         width: AppUtil.getWP(40),
     },
-    icnContainer: {
-        marginStart: AppUtil.getWP(4),
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
+    
     icons: {
         marginEnd: AppUtil.getWP(4)
     },
@@ -71,7 +72,6 @@ const STYLE = StyleSheet.create({
         maxWidth : '70%'
     },
     messageContainer: {
-        // margin: 20,
         paddingHorizontal :  AppUtil.getHP(1.5), 
         flex: 1,
     },
