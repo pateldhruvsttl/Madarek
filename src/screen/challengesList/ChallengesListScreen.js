@@ -112,8 +112,8 @@ const ChallengesListScreen = (props) => {
                 openChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "OpenChallenge", data: openChallenge }}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", item)
+                    navigateDetail={(id) =>
+                      props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   />
                   :
@@ -126,8 +126,8 @@ const ChallengesListScreen = (props) => {
                 upcomingChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "UpcomingChallenge", data: upcomingChallenge }}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", item)
+                    navigateDetail={(id) =>
+                      props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   />
                   :
@@ -140,8 +140,8 @@ const ChallengesListScreen = (props) => {
                 closeChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "ClosedChallenge", data: closeChallenge }}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", item)
+                    navigateDetail={(id) =>
+                      props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   /> :
                   <Text>No data found</Text>
@@ -154,8 +154,8 @@ const ChallengesListScreen = (props) => {
 
                   <ViewMoreChallenges
                     propName={{ type: "Challenge", data: vottingChallenge }}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", item)
+                    navigateDetail={(id) =>
+                      props.navigation.navigate("ChallengeDetail", {id:id})
                     }
                   /> :
                   <Text>No data found</Text>

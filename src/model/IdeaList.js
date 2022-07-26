@@ -38,6 +38,8 @@ export default class IdeaList {
         this.team = obj?.team;
         this.resources = obj?.resources;
         this.ideaVideo = obj?.idea_upload_videos || ""
+        this.additionalImages = obj?.additional_images || ""
+        this.userPhoto = obj?.user_photo || "https://i.imgur.com/5tj6S7Ol.jpg"
 
 
     }

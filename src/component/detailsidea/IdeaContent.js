@@ -23,8 +23,10 @@ import IcnTimer from "../../assets/svg/IcnTimer";
 import { UserManager } from "../../manager/UserManager";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
+import { Loger } from "../../utils/Loger";
 
 const IdeaContent = (props) => {
+  
     const [isFavorite,setFavorite] = useState(props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
@@ -68,6 +70,7 @@ const IdeaContent = (props) => {
                 },
             ]}
         >
+            
             <View style={Style.headerAcademyTitle}>
                 <Text
                     style={[Style.academyTitle,
@@ -76,7 +79,7 @@ const IdeaContent = (props) => {
                     },
                     ]}
                 >
-                    {props?.data?.title}
+                   { props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaTitle}
                 </Text>
             </View>
 
@@ -85,7 +88,7 @@ const IdeaContent = (props) => {
                     <View style={Style.dateContentChallenge}>
                         <View style={Style.dateSubContain}>
                             <IcnClander height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.start_date}</Text>
+                            <Text style={Style.contentTitle}>{props.data?.contestDate}</Text>
                         </View>
                         <TouchableOpacity style={Style.openBtn}>
                             <Text style={Style.openBtnTitle}>{Label.OpenTitle}</Text>
@@ -107,7 +110,7 @@ const IdeaContent = (props) => {
                             <Text style={Style.contentTitle}>{props.data?.date}</Text>
                             <View style={Style.profileArea}>
                                 <IcnAvtarBg height={iconSize} width={iconSize} />
-                                <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                                <Text numberOfLines={1} style={Style.otherSpace}>{props.data?.firstName} {props.data?.lastName}</Text>
                             </View>
                         </View>
             }
@@ -115,8 +118,8 @@ const IdeaContent = (props) => {
             {
                 props.isType == 'ChallengeDetail' ?
                     <View style={Style.sectorCategoryArea}>
-                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sector_name}</Bold></Text>
-                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.category_name}</Bold> </Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sector}</Bold></Text>
+                        <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.categoryName}</Bold> </Text>
                     </View>
                     :
                     <View style={Style.sectorCategoryArea}>
@@ -176,13 +179,13 @@ const IdeaContent = (props) => {
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.toatal_liked_contest}
+                            {props.data?.totalLike}
                         </Text>
                     </View>
                     <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.toatal_contest_comments}
+                            {props.data?.totalComment}
                         </Text>
                     </View>
                     {props.isMyIdeaDetail ? (
@@ -221,6 +224,7 @@ const IdeaContent = (props) => {
                                     <IcnShareIcon
                                         height={AppUtil.getHP(3.2)}
                                         width={AppUtil.getHP(3.2)}
+                                        stroke={"#848484"}
                                     />
                                 </TouchableOpacity>
                             </View>

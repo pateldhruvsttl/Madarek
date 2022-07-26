@@ -10,7 +10,7 @@ const ViewMoreChallenges =(props) =>{
         <View style={Style.MainView}>
             <ChallengeListImage
                 data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true}
-                navigateDetail={(item) => props.navigateDetail(item)} />
+                navigateDetail={(id) => props.navigateDetail(id)} />
         </View>
     )
 }

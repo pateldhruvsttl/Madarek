@@ -40,7 +40,7 @@ const SubIdeasListWithImage = (props) => {
     }
     const renderIdeaItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
+            <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />

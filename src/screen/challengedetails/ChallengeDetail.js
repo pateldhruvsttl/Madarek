@@ -17,30 +17,77 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { UserManager } from "../../manager/UserManager";
+import { Loger } from "../../utils/Loger";
+import OpenChallengeDetail from "../../model/OpenChallengeDetail";
+import { showMessage } from "../../utils/Constant";
+import IdeasListScreen from "../ideasList/IdeasListScreen";
 
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
-  const item = props.route.params;
-  console.log("item of detail", item.id);
-  const [detailData, setDetailData]=useState([])
+  const id = props.route.params.id;
+  // Loger.onLog('id of challengeDetail', id);
+  const [contestData, setContestData] = useState({})
+  const [similarData, setSimilarData] = useState([])
+  const [evaluationData, setEvaluationData] = useState([])
+  const [rowData, setRowData] = useState()
+  const [resourceData, setResourceData] = useState([])
+
   useEffect(() => {
-    const data = {
-      frontuser_id: UserManager.userId,
-      contest_id:item.id,
-    };
-    Service.post(
-      EndPoints.challengedetails,
-      data,
-      (res) => {
-        console.log("response of challange detail", res.data);
-        setDetailData(res.data)
-      },
-      (err) => {
-        Loger.onLog("", err);
-      }
-    );
+    challengeDetail();
   }, []);
 
+  const challengeDetail = () => {
+    const data = {
+      frontuser_id: UserManager.userId,
+      contest_id: id,
+    };
+    Service.post(
+      EndPoints.challengedetails, data,
+      (res) => {
+        Loger.onLog("response of challange detail", res.data);
+
+        const similarRow = []
+        const contestData = res.data.contestDetail
+        const evaluationPannel = []
+        const resources = []
+        const termsRow = res.data.termsrow
+
+        if (res.statusCode) {
+          let contestModel = new OpenChallengeDetail(contestData)
+          setContestData(contestModel)
+
+          res.data.similarrow.map((ele) => {
+            let similarModel = new OpenChallengeDetail(ele)
+            similarRow.push(similarModel)
+            setSimilarData(similarRow)
+          })
+
+          res.data.evaluationPannel.map((ele) => {
+            let evaluationModel = new OpenChallengeDetail(ele)
+            evaluationPannel.push(evaluationModel)
+            setEvaluationData(evaluationPannel)
+          })
+
+          res.data.resources.map((ele) => {
+            let resourcesModel = new OpenChallengeDetail(ele)
+            resources.push(resourcesModel)
+            setResourceData(resources)
+          })
+
+
+          let termsModel = new OpenChallengeDetail(termsRow)
+          setRowData(termsModel)
+        }
+        else {
+          showMessage(res.message)
+        }
+
+      },
+      (err) => {
+        Loger.onLog("error of challange detail", err);
+      }
+    );
+  }
   // console.log('detailData.contestDetail.total_expert_insight', detailData.contestDetail.contest_description);
 
   return (
@@ -51,12 +98,12 @@ const ChallengeDetail = (props) => {
         <ScrollView>
           <View style={PAGESTYLE.subMainView}>
             <IdeaSlider Entries={testData} />
-            <IdeaContent data={detailData.contestDetail} isType={title} />
+            {contestData && <IdeaContent data={contestData} isType={title} />}
 
             <View style={PAGESTYLE.contentBoxChallenge}>
               <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
               <Text style={PAGESTYLE.descriptionContent}>
-                {detailData.contestDetail?detailData.contestDetail.contest_description:""}
+                {contestData && contestData.contestDescription}
               </Text>
               <Text style={PAGESTYLE.termsAndConTitle}>
                 {Label.TermsAndCondition}
@@ -64,13 +111,14 @@ const ChallengeDetail = (props) => {
             </View>
 
             <CategoryChallenge isType={title} />
-            <SubInformation data={detailData.contestDetail} />
+            {contestData && <SubInformation data={contestData} />}
 
-            <View style={PAGESTYLE.subIdeaList}>
-              <SubParticipateIdeas data={detailData.similarrow} />
-            </View>
-
-            <View style={PAGESTYLE.loadMoreView}>
+            {similarData && similarData.length > 0 &&
+              <View style={PAGESTYLE.subIdeaList}>
+                <SubParticipateIdeas data={similarData.slice(0, 2)} />
+              </View>
+            }
+            {/* <View style={PAGESTYLE.loadMoreView}>
               <TouchableOpacity style={PAGESTYLE.loadingMore}>
                 <View style={PAGESTYLE.spacing}>
                   <IcnLoadMore
@@ -80,10 +128,14 @@ const ChallengeDetail = (props) => {
                 </View>
                 <Text style={PAGESTYLE.txtLoadMore}>{Label.LoadMore}</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
 
-            <ResourceChallenge resource={resource} isType={title} />
-            <UserProfileList profileData={detailData.evaluationPannel} isType={title} />
+
+            {resourceData && resourceData.length > 0 &&
+              <ResourceChallenge resource={resourceData} isType={title} />}
+            {evaluationData && evaluationData.length > 0 &&
+              <UserProfileList profileData={evaluationData} isType={title} />}
+
           </View>
         </ScrollView>
       </View>
