@@ -13,6 +13,7 @@ import IcnRewordLight from "../../assets/svg/IcnRewordLight"
 import IcnAvtarBg from "../../assets/svg/IcnAvtarBg"
 import { GetAppColor } from "../../utils/Colors";
 import STYLE from "./SubParticipateIdeaStyle";
+import moment from "moment";
 
 
 const SubParticipateIdeas = (props) => {
@@ -43,13 +44,13 @@ const SubParticipateIdeas = (props) => {
             <View style={STYLE.leftItems}>
 
                 <Text numberOfLines={2} style={[STYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>
-                    {item.subTitle}</Text>
+                    {item.contest_title==""?"No Title":item.contest_title}</Text>
 
 
                 <View style={STYLE.calView}>
                     <View style={STYLE.inerContentLeft}>
                         <IcnClander style={STYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={STYLE.title}>{item.date}</Text>
+                        <Text style={STYLE.title}>{moment(item.created_at).format('DD-MMM-YYYY') }</Text>
                     </View>
                     <View style={STYLE.inerContentRight}>
                         <IcnAvtarBg style={STYLE.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />

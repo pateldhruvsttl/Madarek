@@ -64,10 +64,10 @@ const ChallengeDetail = (props) => {
             </View>
 
             <CategoryChallenge isType={title} />
-            <SubInformation />
+            <SubInformation data={detailData.contestDetail} />
 
             <View style={PAGESTYLE.subIdeaList}>
-              <SubParticipateIdeas data={DATAPERSON} />
+              <SubParticipateIdeas data={detailData.similarrow} />
             </View>
 
             <View style={PAGESTYLE.loadMoreView}>
