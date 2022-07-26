@@ -40,12 +40,12 @@ const ChallengeListImage = (props) => {
                         <IcnUnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                 }
 
-                <View style={LISTSTYLE.rewordView}>
+                {/* <View style={LISTSTYLE.rewordView}>
                     <IcnTrophy style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
                     <IcnStar style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
                     <IcnRewordComment style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
                     <IcnRewordLight style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                </View>
+                </View> */}
 
             </View>
 
@@ -82,9 +82,9 @@ const ChallengeListImage = (props) => {
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={LISTSTYLE.title}>{item.totalComment}</Text>
                     </View>
-                    <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                    {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                         <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
 

@@ -25,7 +25,6 @@ function ViewMoreIdeas(props) {
     }
     return (
         <View style={Styles.MainView}>
-
             <Text style={Styles.HeadertxtRecodes}><Text style={Styles.txt}>{length}</Text> {"Records Found"}</Text>
             <View style={Styles.HeaderBtn}>
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 0 ? GetAppColor.textColor : GetAppColor.btnBorderColor}]} onPress={() => onSetFilter(0)}>
@@ -35,14 +34,14 @@ function ViewMoreIdeas(props) {
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 1 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(1)}>
                     <IcnIdeasTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
-                {
+                {/* {
                     props.isMySubmitType ?
                         null
                         :
                         <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 2 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(2)}>
                             <IcnIdeasGraphFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                         </TouchableOpacity>
-                }
+                } */}
 
 
             </View>

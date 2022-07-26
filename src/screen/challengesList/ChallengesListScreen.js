@@ -55,21 +55,21 @@ const ChallengesListScreen = (props) => {
         res.data.forEach((element) => {
           switch (element.submission_status) {
             case "OPEN FOR SUBMISSION":
-                opChallenges.push(new OpenChallenge(element));
+              opChallenges.push(new OpenChallenge(element));
               break;
             case "COMING SOON":
-                coChallenges.push(new OpenChallenge(element));
+              coChallenges.push(new OpenChallenge(element));
               break;
             case "OPEN FOR VOTING":
-                voChallenges.push(new OpenChallenge(element));
+              voChallenges.push(new OpenChallenge(element));
               break;
             case "CLOSED":
-                clChallenges.push(new OpenChallenge(element));
+              clChallenges.push(new OpenChallenge(element));
               break;
             default:
               break;
           }
-         
+
         });
         setOpenChallenge(opChallenges);
         setUpcomingChallenge(coChallenges);
@@ -107,45 +107,57 @@ const ChallengesListScreen = (props) => {
             <Tab.Screen
               name={Label.Open}
               children={() => (
-                <ViewMoreChallenges
-                  propName={{ type: "OpenChallenge", data: openChallenge }}
-                  navigateDetail={(item) =>
-                    props.navigation.navigate("ChallengeDetail", item)
-                  }
-                />
+                openChallenge.length > 0 ?
+                  <ViewMoreChallenges
+                    propName={{ type: "OpenChallenge", data: openChallenge }}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", item)
+                    }
+                  />
+                  :
+                  <Text>No data found</Text>
               )}
             />
             <Tab.Screen
               name={Label.Upcoming}
               children={() => (
-                <ViewMoreChallenges
-                  propName={{ type: "UpcomingChallenge", data: upcomingChallenge }}
-                  navigateDetail={(item) =>
-                    props.navigation.navigate("ChallengeDetail", item)
-                  }
-                />
+                upcomingChallenge.length > 0 ?
+                  <ViewMoreChallenges
+                    propName={{ type: "UpcomingChallenge", data: upcomingChallenge }}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", item)
+                    }
+                  />
+                  :
+                  <Text>No data found</Text>
               )}
             />
             <Tab.Screen
               name={Label.Closed}
               children={() => (
-                <ViewMoreChallenges
-                  propName={{ type: "ClosedChallenge", data: closeChallenge }}
-                  navigateDetail={(item) =>
-                    props.navigation.navigate("ChallengeDetail", item)
-                  }
-                />
+                closeChallenge.length > 0 ?
+                  <ViewMoreChallenges
+                    propName={{ type: "ClosedChallenge", data: closeChallenge }}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", item)
+                    }
+                  /> :
+                  <Text>No data found</Text>
               )}
             />
             <Tab.Screen
               name={Label.Voting}
               children={() => (
-                <ViewMoreChallenges
-                  propName={{ type: "Challenge", data: vottingChallenge }}
-                  navigateDetail={(item) =>
-                    props.navigation.navigate("ChallengeDetail", item)
-                  }
-                />
+                vottingChallenge.length > 0 ?
+
+                  <ViewMoreChallenges
+                    propName={{ type: "Challenge", data: vottingChallenge }}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", item)
+                    }
+                  /> :
+                  <Text>No data found</Text>
+
               )}
             />
           </Tab.Navigator>

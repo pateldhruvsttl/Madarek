@@ -139,11 +139,11 @@ const ExpertInsightDetail = (props) => {
                 <Text style={ExpertInsightDetailStyle.heading}>{Label.Description}</Text>
                 <Text style={ExpertInsightDetailStyle.descriptionContent}>{DATA.Description}</Text>
               </View>
-              <UserProfileList profileData={userProfile} />
-              <View style={ExpertInsightDetailStyle.videoPlay}>
+              {/* <UserProfileList profileData={userProfile} /> */}
+              {/* <View style={ExpertInsightDetailStyle.videoPlay}> */}
                 {/* <VideoPlayer /> */}
-              </View>
-              <Resources resource={resource} />
+              {/* </View> */}
+              {/* <Resources resource={resource} /> */}
               <ExpertInsightsSlider Entries={expertData} screen="IdeaDetail"/>
               <View style={ExpertInsightDetailStyle.subIdeaList}>
                 <SubIdeasListWithImage data={DATAPERSON} isTitle={Label.MayAlsoInterested} screen="IdeaDetail" isType="Ideas"

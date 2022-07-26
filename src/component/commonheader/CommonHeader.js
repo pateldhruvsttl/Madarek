@@ -156,9 +156,9 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => props.onFilter()}>
+                            {/* <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                             <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
@@ -244,9 +244,9 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => props.onFilter()}>
+                            {/* <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
                     </View>
 

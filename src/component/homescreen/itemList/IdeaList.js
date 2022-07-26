@@ -16,7 +16,6 @@ import { UserManager } from "../../../manager/UserManager";
 
 const IdeaList = (props) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
-
     const [popularIdeasList, setPopularIdeasList] = useState([])
     const [newIdeasList, setNewIdeasList] = useState([])
     const [winningIdeaList, setWinningIdeaList] = useState([])
@@ -78,7 +77,7 @@ const IdeaList = (props) => {
             "field_name": "idea_id",
             "id": id,
             "frontuser_id": UserManager.userId,
-            "model": 'LikedislikeIdeas'
+            "model": 'FavoriteIdeas'
         }
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
@@ -86,20 +85,19 @@ const IdeaList = (props) => {
             const popularListArr = popularIdeasList
             const newListArr = newIdeasList
             const winningListArr = winningIdeaList
-
             popularListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    popularListArr[index].like = likeDislike;
+                    popularListArr[index].favorite = likeDislike;
                 }
             })
             newListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    newListArr[index].like = likeDislike;
+                    newListArr[index].favorite = likeDislike;
                 }
             })
             winningListArr.map((ele, index) => {
                 if (ele.id == id) {
-                    winningListArr[index].like = likeDislike;
+                    winningListArr[index].favorite = likeDislike;
                 }
             })
 

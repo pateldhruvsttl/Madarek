@@ -17,7 +17,7 @@ const SocialLogo = () => {
                 <TouchableOpacity style={IconStyle.socialIconn}>
                     <GoogleIcon width={AppUtil.getWP(11)} height={AppUtil.getWP(11)} />
                 </TouchableOpacity>
-                <TouchableOpacity style={IconStyle.socialIconn}>
+                {/* <TouchableOpacity style={IconStyle.socialIconn}>
                     <FacebookIcon width={AppUtil.getWP(11)} height={AppUtil.getWP(11)} />
                 </TouchableOpacity>
                 <TouchableOpacity style={IconStyle.socialIconn}>
@@ -28,7 +28,7 @@ const SocialLogo = () => {
                 </TouchableOpacity>
                 <TouchableOpacity style={IconStyle.socialIconn}>
                     <NewsIcon width={AppUtil.getWP(11)} height={AppUtil.getWP(11)} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </View>
     )

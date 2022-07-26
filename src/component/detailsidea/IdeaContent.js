@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Style from "./IdeaContentStyle";
 import { Label } from "../../utils/StringUtil";
 import IcnClander from "../../assets/svg/IcnClander";
@@ -18,11 +18,33 @@ import IcnLikeblack from "../../assets/svg/IcnLikeblack";
 import IcnBlockChain from "../../assets/svg/IcnBlockChain";
 import IcnShareIcon from "../../assets/svg/IcnShareIcon";
 import Heart from "../../assets/svg/Heart";
+import IcnLikeRed from "../../assets/svg/IcnLikeRed";
 import IcnTimer from "../../assets/svg/IcnTimer";
+import { UserManager } from "../../manager/UserManager";
+import { Service } from "../../service/Service";
+import { EndPoints } from "../../service/EndPoints";
 
 const IdeaContent = (props) => {
+    const [isFavorite,setFavorite] = useState(props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
+    const onIdeaContentChanges = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'FavoriteIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? false : true;
+            setFavorite(likeDislike)
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+    
 
     const Bold = ({ children }) => (
         <Text
@@ -48,10 +70,10 @@ const IdeaContent = (props) => {
         >
             <View style={Style.headerAcademyTitle}>
                 <Text
-                    style={[ Style.academyTitle,
-                        {
-                            color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle,
-                        },
+                    style={[Style.academyTitle,
+                    {
+                        color: props.isType == "ChallengeDetail" ? themeColor.headerColor : GetAppColor.acedemyRedtitle,
+                    },
                     ]}
                 >
                     {props?.data?.title}
@@ -70,14 +92,24 @@ const IdeaContent = (props) => {
                         </TouchableOpacity>
                     </View>
                     :
-                    <View style={Style.dateContentIdea}>
-                        <IcnClander height={iconSize} width={iconSize} />
-                        <Text style={Style.contentTitle}>{props.data?.date}</Text>
-                        <View style={Style.profileArea}>
-                            <IcnAvtarBg height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                    props.isType == 'ExpertInsightDetailWithComment' ?
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text numberOfLines={1} style={Style.contentTitle}>{props.data?.publishBy}</Text>
+                            </View>
                         </View>
-                    </View>
+                        :
+                        <View style={Style.dateContentIdea}>
+                            <IcnClander height={iconSize} width={iconSize} />
+                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
+                            <View style={Style.profileArea}>
+                                <IcnAvtarBg height={iconSize} width={iconSize} />
+                                <Text style={Style.contentTitle}>{props.data?.firstName} {props.data?.lastName}</Text>
+                            </View>
+                        </View>
             }
 
             {
@@ -97,40 +129,50 @@ const IdeaContent = (props) => {
             <View style={Style.performanceContainer}>
                 {props.isExpert ? null : (
                     <View style={Style.winningIcnContainerLeft}>
-                        <IcnTrophy
+
+                        {props.data.trophy ? <IcnTrophy
                             isType={props.isType}
                             style={Style.winningIcn}
                             height={iconSize}
                             width={iconSize}
-                        />
-                        <IcnStar
+                        /> : null}
+                        {props.data.starred ? <IcnStar
                             isType={props.isType}
                             style={Style.winningIcn}
                             height={iconSize}
                             width={iconSize}
-                        />
-                        <IcnRewordComment
+                        /> : null}
+                        {props.data.topRate ? <IcnRewordComment
                             isType={props.isType}
                             style={Style.winningIcn}
                             height={iconSize}
                             width={iconSize}
-                        />
-                        <IcnRewordLight
+                        /> : null}
+                        {props.data.insight ? <IcnRewordLight
                             isType={props.isType}
                             style={Style.winningIcn}
                             height={iconSize}
                             width={iconSize}
-                        />
+                        /> : null}
                     </View>
                 )}
 
                 <View style={Style.winningIcnContainerRight}>
-                    <View style={Style.secondInnerCalView}>
+                {/* <View style={Style.secondInnerCalView}>
                         <IcnWatchDone height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
                             {props.data?.toatal_view_contest}
                         </Text>
-                    </View>
+                    </View> */}
+                    {props.isType != 'ExpertInsightDetailWithComment' &&
+                        <View style={Style.secondInnerCalView}>
+                            <IcnWatchDone height={iconSize} width={iconSize} />
+                            <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
+                                {props.data?.totalView}
+                            </Text>
+                        </View>
+                    }
+
                     <View style={Style.secondInnerCalView}>
                         <IcnThumsUp height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
@@ -185,35 +227,37 @@ const IdeaContent = (props) => {
                         </>
                     ) : (
                         <>
-                            <View style={Style.leftSide}>
-                                <TouchableOpacity style={[Style.votingBtn,{ backgroundColor: themeColor.buttonColor },]} >
-                                    <Text style={[ Style.voteNowBtnTitle,{ color: themeColor.buttonFontColor },]}>
+                            {/* <View style={Style.leftSide}>
+                                <TouchableOpacity style={[Style.votingBtn, { backgroundColor: themeColor.buttonColor },]} >
+                                    <Text style={[Style.voteNowBtnTitle, { color: themeColor.buttonFontColor },]}>
                                         {props.isMyIdeaDetail ? Label.Maturation : Label.VoteNow}
                                     </Text>
                                 </TouchableOpacity>
-                            </View>
+                            </View> */}
 
                             <View style={Style.rightSide}>
-                                {props.isMyIdeaDetail ? 
-                                (
-                                    <TouchableOpacity style={[Style.likeBtn,{ backgroundColor: GetAppColor.lightBlue },]}>
-                                        <IcnTimer height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
-                                    </TouchableOpacity>
-                                ) 
-                                : 
-                                (
-                                    <TouchableOpacity style={Style.likeBtn}>
-                                        <IcnLikeblack height={AppUtil.getHP(3.2)}width={AppUtil.getHP(3.2)}/>
-                                    </TouchableOpacity>
-                                )}
+                                {isFavorite ?
+                                    (
+                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaContentChanges(props.data.id)}>
+                                            <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        </TouchableOpacity>
+                                    )
+                                    :
+                                    (
 
-                                <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnBlockChain  height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)}/>
-                                </TouchableOpacity>
+                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaContentChanges(props.data.id)}>
+                                            <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        </TouchableOpacity>
 
-                                <TouchableOpacity style={Style.likeBtn}>
-                                    <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder}/>
-                                </TouchableOpacity>
+                                    )}
+
+                                {/* <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                </TouchableOpacity> */}
+
+                                {/* <TouchableOpacity style={Style.likeBtn}>
+                                    <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder} />
+                                </TouchableOpacity> */}
                             </View>
                         </>
                     )}

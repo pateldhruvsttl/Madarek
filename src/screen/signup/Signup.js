@@ -274,7 +274,10 @@ const Signup = (props) => {
 
           {/* Email id */}
           <View style={{ marginTop: AppUtil.getHP(2) }}>
-            <Text style={SignupStyles.titleText}>{Label.emailID}</Text>
+            <Text style={SignupStyles.titleText}>
+              {Label.emailID}
+              <Text style={{ color: "red" }}>*</Text>
+            </Text>
             <View style={[SignupStyles.nameView, { marginTop: 0 }]}>
               <TextInput
                 ref={emailRef}

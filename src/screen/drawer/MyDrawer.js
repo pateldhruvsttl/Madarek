@@ -197,13 +197,12 @@ const MyDrawerScreen = (props) => {
       {
         selectedIndex == 2 ? renderChallangeCollapseView() : null
       }
-      {/*  */}
       <TouchableOpacity onPress={() => onselectButtonMenu(4, "ExpertScreen")} style={drawerStyles.menuButton}>
         <UserIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 4 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Experts}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => { onSelectMenu(3); onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
+      {/* <TouchableOpacity onPress={() => { onSelectMenu(3); onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
         <View style={{ flexDirection: 'row' }}>
           <EnterpriseIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
           <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 5 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Enterprises}</Text>
@@ -217,18 +216,18 @@ const MyDrawerScreen = (props) => {
       </TouchableOpacity>
       {
         selectedIndex == 3 ? renderCollapseView() : null
-      }
-      {/*  */}
+      } */}
+      
 
       <TouchableOpacity onPress={() => onselectButtonMenu(6)} style={drawerStyles.menuButton}>
         <HowItWorksIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 6 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onselectButtonMenu(7, 'PartnerScreen')} style={drawerStyles.menuButton}>
+      {/* <TouchableOpacity onPress={() => onselectButtonMenu(7, 'PartnerScreen')} style={drawerStyles.menuButton}>
         <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 7 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Partners}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity onPress={() => onselectButtonMenu(8, 'MyAccount')} style={drawerStyles.menuButton}>
         <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />

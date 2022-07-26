@@ -35,13 +35,13 @@ const UserProfileStyle = StyleSheet.create({
         color:GetAppColor.grayBorder,
         fontSize:AppUtil.getHP(1.5),
         fontFamily:FONTS.robotRegular,
-        marginTop:AppUtil.getHP(3),
+        marginTop:AppUtil.getHP(1.5),
     },
     subTitleText:{
         color:GetAppColor.pincolor,
         fontSize:AppUtil.getHP(2),
         fontFamily:FONTS.robotRegular,
-        marginTop:AppUtil.getHP(0.7),
+        marginTop:AppUtil.getHP(0.2),
     },
     flexView:{
         flexDirection:'row'
