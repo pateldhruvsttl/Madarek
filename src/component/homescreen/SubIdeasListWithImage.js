@@ -144,11 +144,9 @@ const SubIdeasListWithImage = (props) => {
                 props?.isTitle &&
                 <View style={Style.titleView}>
                     <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
-                    {/* {props?.isType != "Spotlight" ? */}
                     <TouchableOpacity onPress={() => props.onSeeMorePress()}>
                         <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
                     </TouchableOpacity>
-                    {/* : null} */}
                 </View>
             }
 

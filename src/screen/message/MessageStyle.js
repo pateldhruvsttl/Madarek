@@ -42,7 +42,6 @@ const MessageStyle = StyleSheet.create({
     rightItems: {
         width: AppUtil.getWP(18),
         alignItems: 'center',
-        marginTop: AppUtil.getHP(0.5),
     },
     img: {
         width: AppUtil.getHP(6),
@@ -53,7 +52,7 @@ const MessageStyle = StyleSheet.create({
     leftItems: {
         width: AppUtil.getWP(65),
         marginStart: 6,
-        marginTop: AppUtil.getHP(0.5),
+        marginTop: AppUtil.getHP(1),
     },
 
     title: {
