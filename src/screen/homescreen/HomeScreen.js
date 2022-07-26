@@ -18,16 +18,11 @@ import { Loger } from "../../utils/Loger";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import BannerList from "../../model/BannerList";
-import IdeaList from "../../model/IdeaList";
-import OpenChallenges from "../../model/OpenChallengesModel";
 import MadarekSportlight from "../../model/MadarekSportlight";
 import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 import ExpertInsight from "../../model/ExpertInsights";
 import category from "../../model/FavouriteCategories";
 import { UserManager } from "../../manager/UserManager";
-import ChallengeListImage from "../../component/challengelist/ChallengeListImage";
-import OpenChalangeHomeModel from "../../model/OpenChalangeHomeModel";
-
 import { AppConfig } from "../../manager/AppConfig";
 import DeviceInfo from "react-native-device-info";
 import OpenChallengeModel from "../../model/OpenChallengesModel";

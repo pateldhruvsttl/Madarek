@@ -37,9 +37,9 @@ import { EndPoints } from '../../service/EndPoints'
 import FONTS from '../../utils/Fonts'
 
 import IdeaListModel from '../../model/IdeaList'
-import OpenChalangeHomeModel from '../../model/OpenChalangeHomeModel'
 
 import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithImage";
+import OpenChallengeModel from '../../model/OpenChallengesModel'
 
 
 const SearchLabel = (props) => {
@@ -134,7 +134,7 @@ const SearchLabel = (props) => {
 
             let _isAllIdeas = [];
             res.data.forEach(element => {
-                let model = new OpenChalangeHomeModel(element);
+                let model = new OpenChallengeModel(element);
                 _isAllIdeas.push(model);
             });
 
