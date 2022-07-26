@@ -17,26 +17,26 @@ import { UserManager } from '../../manager/UserManager'
 import { deviceId } from '../../utils/Constant'
 import { AppConfig } from '../../manager/AppConfig'
 
-const LiveChat = () => {
+const LiveChat = (props) => {
 
+    console.log("props", props.route.params.name);
     const getId = () => {
         return Math.floor(Math.random() * (999 - 100 + 1) + 100)
     }
     const [isNewMessage, setNewMessage] = useState([])
+    const [isMessage, setMessage] = useState("")
 
 
-    const [message, setMessage] = useState([])
     const flatListRef = useRef();
     const [listUpdate, setListUpdate] = useState(getId())
 
     useEffect(() => {
         onLiveChatData();
-
     }, []);
 
     const onLiveChatData = () => {
         const data = {
-            "frontuser_id":UserManager.userId,
+            "frontuser_id": UserManager.userId,
             "device_id": deviceId,
             "token": AppConfig.token,
             "page": 1,
@@ -51,8 +51,8 @@ const LiveChat = () => {
                 res.data.map((ele) => {
                     const model = new ChatModel(ele)
                     Arr.push(model)
-                    setNewMessage(Arr)
                 })
+                setNewMessage(Arr.reverse());
             }
 
         }, (err) => {
@@ -60,20 +60,41 @@ const LiveChat = () => {
         })
     }
 
-
-
     const sendMessage = () => {
-        const storeArray = isNewMessage
-        storeArray.push({ message, id: getId(), Time: "10:25", name: 'jalpa' })
-        setNewMessage(storeArray)
-        setMessage('')
-        setListUpdate(getId())
+        if(isMessage === "")
+            return 
+
+        let obj = {
+            "frontuser_id": 48,
+            "device_id": deviceId,
+            "type": "add",
+            "idea_id": "1787",
+            "comment": isMessage,
+            "parent_id": ""
+        }
+        Service.post(EndPoints.teamcollaboration, obj, (res) => {
+            if (res?.statusCode === "1") {
+               
+                const storeArray = isNewMessage
+                storeArray.push({ id:UserManager.userId,comment:isMessage})
+                setNewMessage(storeArray)
+                setListUpdate(getId())
+
+                setMessage("");
+                // onLiveChatData();
+            }
+
+        }, (err) => {
+            Loger.onLog('error', err)
+        })
+
+        
     }
 
-    const renderItem = ({item}) => (
+    const renderItem = ({ item }) => (
 
-        <View style={[STYLE.messageContainer, { alignItems: item.full_name.toLowerCase() == 'jalpa' ? 'flex-end' : 'flex-start' }]}>
-            <View style={item?.full_name.toLowerCase() == 'jalpa' ? STYLE.rightMsg : STYLE.leftMsg}>
+        <View style={[STYLE.messageContainer, { alignItems: item?.email == UserManager.email ? 'flex-end' : 'flex-start' }]}>
+            <View style={item?.email == UserManager.email ? STYLE.rightMsg : STYLE.leftMsg}>
                 <Text ellipsizeMode='tail' style={STYLE.leftLabel}>{item.comment}</Text>
             </View>
             <Text style={STYLE.time}>{item.Time}</Text>
@@ -81,7 +102,7 @@ const LiveChat = () => {
     )
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"LiveChat"} />
+            <CommonHeader isType={"LiveChat"} isName={props?.route?.params?.name} url={props?.route?.params?.url} />
             <View style={STYLE.container}>
                 <View style={STYLE.listing}>
                     <FlatList
@@ -102,16 +123,16 @@ const LiveChat = () => {
                             style={STYLE.chatInput}
                             placeholder={Label.WriteReply}
                             placeholderTextColor={GetAppColor.disableBorder}
-                            value={message}
+                            value={isMessage}
                             onChangeText={(txt) => { setMessage(txt) }}
                         />
-                        <TouchableOpacity onPress={sendMessage}>
+                        <TouchableOpacity>
                             <IcnDocument width={AppUtil.getHP(2.8)} height={AppUtil.getHP(2.8)} style={STYLE.menuDocument} />
                         </TouchableOpacity>
                     </View>
-                    <View style={STYLE.icnContainer}>
+                    <TouchableOpacity onPress={sendMessage} style={STYLE.icnContainer}>
                         <IcnMenuDote width={AppUtil.getHP(3)} height={AppUtil.getHP(3)} color={GetAppColor.grayBorder} />
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
 

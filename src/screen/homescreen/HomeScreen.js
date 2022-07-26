@@ -87,7 +87,8 @@ const HomeScreen = (props) => {
       (res) => {
         var opChallenges = [];
         res.data.forEach((element) => {
-          let model = new OpenChalangeHomeModel(element);
+          let model = new OpenChallengeModel(element); 
+          // let model = new OpenChalangeHomeModel(element); 
           opChallenges.push(model);
         });
         setOpenChallenges(opChallenges);
@@ -231,29 +232,15 @@ const HomeScreen = (props) => {
       case "Challenges":
         return (
           openChallenges.length > 0 && (
-            <View
-              style={{
-                backgroundColor: GetAppColor.lightWhite,
-                paddingVertical: AppUtil.getHP(2),
-              }}
-            >
+            <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2), }}>
               <SubIdeasListWithImage
                 data={openChallenges}
                 isTitle={Label.OpenChallenges}
                 isType={"Challenges"}
-                // btn={Label.ParticipateNow}
                 likeChallenge={(id) => likeChallenge(id)}
-                onButtonPress={() => {
-                  setModalVisible(true);
-                }}
-                onSeeMorePress={() => {
-                  props.navigation.navigate("ChallengesListScreen", {
-                    data: openChallenges,
-                  });
-                }}
-                onItemPress={(item) => {
-                  props.navigation.navigate("ChallengeDetail", item);
-                }}
+                onButtonPress={() => { setModalVisible(true); }}
+                onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", { data: openChallenges, }); }}
+                onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item); }}
               />
             </View>
           )
@@ -272,7 +259,7 @@ const HomeScreen = (props) => {
                 onButtonPress={() => {
                   setModalVisible(true);
                 }}
-                onSeeMorePress={() => {}} //props.navigation.navigate("ChallengesListScreen")
+                onSeeMorePress={() => { }} //props.navigation.navigate("ChallengesListScreen")
                 onItemPress={(item) => {
                   props.navigation.navigate("ChallengeDetail", item);
                 }}

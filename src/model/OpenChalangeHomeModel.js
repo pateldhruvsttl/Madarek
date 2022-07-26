@@ -10,8 +10,8 @@ export default class IdeaList {
         this.categoryName = obj?.contest_description ? obj?.contest_description : "No Description"
         this.ideaImage = obj?.image || "https://i.imgur.com/5tj6S7Ol.jpg";
         this.createDate = obj.date?obj.date:"No Date"
-        
         this.title = obj?.title ? obj?.title : "No Title"
+        
         this.id = obj?.id
         this.name = obj?.publish_by ? obj?.publish_by : "No Name"
         this.winning = obj?.winning || "0"

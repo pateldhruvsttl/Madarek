@@ -549,13 +549,13 @@ const CommonHeader = (props) => {
                                 <ImageLoad
                                     style={Style.subProfile}
                                     resizeMode='cover'
-                                    source={{ uri:"" }}
+                                    source={{ uri: props.url }}
                                     borderRadius={AppUtil.getHP(2.5)}
                                     placeholderStyle={Style.subProfile}
                                 />
                             </View>
                             <View style={Style.chatDetail}>
-                                <Text style={Style.chatTxt}>Abhimanyu Bhatacharya</Text>
+                                <Text style={Style.chatTxt}>{props.isName}</Text>
                                 <Text style={[Style.chatTxt, Style.onlineTxt]}>{Label.Online}</Text>
                             </View>
                         </View>

@@ -53,7 +53,7 @@ const Message = (props) => {
     }
 
     const renderCell = ({ item }) => (
-        <TouchableOpacity style={MessageStyle.renderMainView} onPress={()=> props.navigation.navigate("LiveChat")}>
+        <TouchableOpacity style={MessageStyle.renderMainView} onPress={()=> props.navigation.navigate("LiveChat", {name:item.full_name, imgUrl:item.user_photo})}>
 
             <View style={MessageStyle.rightItems}>
                 <Image style={MessageStyle.img} resizeMode='cover' source={{ uri: item.user_photo }} />
