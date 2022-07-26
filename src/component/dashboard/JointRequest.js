@@ -20,10 +20,14 @@ import { UserManager } from "../../manager/UserManager";
 
 const JointRequest = (props) => {
     const [requestData, setRequestData] = useState(props?.data)
+    const [reqData, setReqData] = useState(props?.isTitle)
+
     Loger.onLog('requestData', requestData);
 
     useEffect(() => {
         setRequestData(props.data);
+        setReqData(props.isTitle);
+        console.log("vrrr",reqData);
     }, [props])
     
     const joinRequest = (id, status) => {
@@ -100,10 +104,10 @@ const JointRequest = (props) => {
     return (
         <View style={Style.MainView}>
             {
-                requestData?.isTitle &&
+                reqData  &&
                 <View style={Style.titleView}>
-                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{requestData?.isTitle}</Text>
-                    <Text style={Style.txtSeeMore}>{Label.seeMore}</Text>
+                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{reqData}</Text>
+                    {/* <Text style={Style.txtSeeMore}>{Label.seeMore}</Text> */}
                 </View>
             }
 
@@ -114,9 +118,9 @@ const JointRequest = (props) => {
                 keyExtractor={item => item.id}
             />
             {
-                requestData?.btn &&
+                reqData?.btn &&
                 <TouchableOpacity style={Style.bottomBtn} onPress={() => navigation.navigate("IdeasListScreen")}>
-                    <Text style={Style.txtBottomBtn}> {requestData.btn}</Text>
+                    <Text style={Style.txtBottomBtn}> {reqData.btn}</Text>
                 </TouchableOpacity>
             }
         </View>

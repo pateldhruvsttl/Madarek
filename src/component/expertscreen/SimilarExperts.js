@@ -15,12 +15,12 @@ import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import ImageLoad from 'react-native-image-placeholder';
 
 function SimilarExperts(props) {
-
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
+    
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={Style.renderMainView} onPress={() => navigation.navigate("ExpertDetailsScreen", { data: props.data, item: item })}>
+        <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail()}>
 
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
@@ -36,22 +36,22 @@ function SimilarExperts(props) {
 
             <View style={Style.leftItems}>
 
-                <Text numberOfLines={1} style={Style.title}>{item.firstName} {item.lastName}</Text>
-                <Text numberOfLines={2} style={Style.SubTitle}>{item.jobTitle} <Text style={{ color: themeColor.buttonColor, fontSize: AppUtil.getHP(1.7) }}>19</Text></Text>
+                <Text numberOfLines={1} style={Style.title}>{item.name}</Text>
+                <Text numberOfLines={2} style={Style.SubTitle}>{item.post} <Text style={{ color: themeColor.buttonColor, fontSize: AppUtil.getHP(1.7) }}>19</Text></Text>
 
                 <View style={Style.calView}>
 
                     <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.icnTitle}>{item.totalViews}</Text>
+                    <Text style={Style.icnTitle}>{item.see}</Text>
 
                     <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.icnTitle}>{item.totalLikes}</Text>
+                    <Text style={Style.icnTitle}>{item.like}</Text>
 
                     <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.icnTitle}>{item.totalComments}</Text>
+                    <Text style={Style.icnTitle}>{item.comment}</Text>
                 </View>
 
-                {item.ideaDescription && <Text numberOfLines={2} style={Style.icnDes}>{item.ideaDescription}</Text>}
+                {item.description && <Text numberOfLines={2} style={Style.icnDes}>{item.description}</Text>}
             </View>
         </TouchableOpacity>
     );
@@ -62,9 +62,9 @@ function SimilarExperts(props) {
                 props.maxLimit != 0 &&
                 <View style={Style.titleView}>
                     <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: props.data })}>
+                    {/* <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { data: props.newData })}>
                         <Text style={Style.txtSeeMore}>{props.type === "ExpertScreen" ? Label.viewMore : Label.viewAll}</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             }
             <FlatList

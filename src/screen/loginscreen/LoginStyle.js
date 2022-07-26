@@ -140,7 +140,8 @@ const PAGESTYLE = StyleSheet.create({
         width: '100%',
         paddingStart: 15,
         height: inputFieldHight,
-        color: GetAppColor.black
+        color: GetAppColor.black,
+        marginBottom: AppUtil.getHP(1.5),
     },
     showMobileDetail: {
         borderWidth: 1,
@@ -151,7 +152,9 @@ const PAGESTYLE = StyleSheet.create({
         flex: 1,
         paddingStart: 15,
         fontFamily: FONTS.robotRegular,
-        color: GetAppColor.black
+        color: GetAppColor.black,
+        marginBottom: AppUtil.getHP(1),
+
     },
     otpArea: {
         flexDirection: 'row',

@@ -37,7 +37,7 @@ const OtherDetailEdit = (props) => {
   return (
     <ScrollView >
       <View style={[EditUserProfileStyle.cornerView, { marginTop: AppUtil.getHP(2) }]} >
-        <Text style={EditUserProfileStyle.titleText}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
+        {/* <Text style={EditUserProfileStyle.titleText}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
         <View style={EditUserProfileStyle.scrollSubView}>
           {
            category && category.map((item, index) => {
@@ -52,7 +52,7 @@ const OtherDetailEdit = (props) => {
         </View>
         <TouchableOpacity style={[EditUserProfileStyle.addMoreButton, { borderColor: themeColor.headerColor }]}>
           <Text style={[EditUserProfileStyle.addMoreText, { color: themeColor.headerColor }]}>{Label.AddMore}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <Text style={EditUserProfileStyle.titleText}>{Label.ShortDiscription}</Text>
         <TextInput

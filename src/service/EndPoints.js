@@ -26,4 +26,5 @@ export const EndPoints = {
     acceptReject:"acceptreject",
     acceptrejectrequest:"acceptrejectrequest",
     teamcollaboration:"teamcollaboration",
+    challengedetails:"challengedetails",
 }

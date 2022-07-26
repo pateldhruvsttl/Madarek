@@ -161,25 +161,25 @@ const LoginScreen = (props) => {
         }
     }
     const validateFields = () => {
-        if (isMobilelogin) {
-            if (!mobileNumber.trim()) {
-                showMessage(Label.Phone)
-                return false
-            }
-            if (showPassword) {
-                if (password.trim() === '') {
-                    showMessage(Label.PasswordLogin)
-                    return false
-                }
-            } else {
-                const otpJoin = first + second + third + fourth + fifth + sixth;
-                if (otpNumber != Number(otpJoin)) {
-                    showMessage(Label.Pin)
-                    return false
-                }
-            }
-        }
-        else {
+        // if (isMobilelogin) {
+        //     if (!mobileNumber.trim()) {
+        //         showMessage(Label.Phone)
+        //         return false
+        //     }
+        //     if (showPassword) {
+        //         if (password.trim() === '') {
+        //             showMessage(Label.PasswordLogin)
+        //             return false
+        //         }
+        //     } else {
+        //         const otpJoin = first + second + third + fourth + fifth + sixth;
+        //         if (otpNumber != Number(otpJoin)) {
+        //             showMessage(Label.Pin)
+        //             return false
+        //         }
+        //     }
+        // }
+        // else {
             if (!email.trim() || !emailValidate(email)) {
                 showMessage(Label.Email)
                 return false
@@ -188,10 +188,10 @@ const LoginScreen = (props) => {
                 showMessage(Label.PasswordLogin)
                 return false
             }
-        }
+       // }
         signIn()
 
-        
+
     }
     const resetField = () => {
         setMobileNumber('')
@@ -228,7 +228,7 @@ const LoginScreen = (props) => {
                             <View style={PAGESTYLE.headingMain}>
                                 <Text style={PAGESTYLE.signText}>{Label.SignInTitle}</Text>
                             </View>
-                            <View style={PAGESTYLE.userInformation}>
+                            {/* <View style={PAGESTYLE.userInformation}>
 
                                 <TouchableOpacity style={[PAGESTYLE.loginMobileCredential, isMobilelogin ? null : PAGESTYLE.emailCredential]}
                                     onPress={() => { setMobilelogin(true); resetField(); }}>
@@ -239,11 +239,11 @@ const LoginScreen = (props) => {
                                     onPress={() => { setMobilelogin(false); resetField(); }} >
                                     <Text style={isMobilelogin ? PAGESTYLE.isDisableText : PAGESTYLE.isEnableText}>{Label.EmailTitle}</Text>
                                 </TouchableOpacity>
-                            </View>
-                            {
+                            </View> */}
+                            {/* {
                                 isMobilelogin ?
-                                    <View style={PAGESTYLE.numberArea}>
-                                        <View style={PAGESTYLE.numberAreaOne}>
+                            <View style={PAGESTYLE.numberArea}>
+                                <View style={PAGESTYLE.numberAreaOne}>
                                             <CountryPicker
                                                 {...{
                                                     countryCode,
@@ -259,22 +259,23 @@ const LoginScreen = (props) => {
                                                 <BackIcon width={12} height={12} />
                                             </View>
                                         </View>
-                                        <TextInput
-                                            keyboardType='phone-pad'
-                                            ref={t1}
-                                            returnKeyType={showPassword ? "next" : "done"}
-                                            placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue() }}
-                                            placeholder={Label.MobileNumber}
-                                            maxLength={12}
-                                            style={PAGESTYLE.showMobileDetail}
-                                            value={mobileNumber}
-                                            onChangeText={mobileNumber => setMobileNumber(mobileNumber)}
-                                            autoCapitalize="none"
-                                        />
-                                    </View>
-                                    :
-                                    <View style={PAGESTYLE.numberArea}>
+                                <TextInput
+                                    keyboardType='phone-pad'
+                                    ref={t1}
+                                    returnKeyType={showPassword ? "next" : "done"}
+                                    placeholderTextColor={GetAppColor.grayBorder}
+                                    onSubmitEditing={() => { showPassword ? t2.current.focus() : checkOtpValue() }}
+                                    placeholder={Label.MobileNumber}
+                                    maxLength={12}
+                                    style={PAGESTYLE.showMobileDetail}
+                                    value={mobileNumber}
+                                    onChangeText={mobileNumber => setMobileNumber(mobileNumber)}
+                                    autoCapitalize="none"
+                                />
+                            </View> */}
+                            {/* : */}
+                            
+                            <View style={PAGESTYLE.numberArea}>
                                         <TextInput
                                             autoCapitalize="none"
                                             ref={t1}
@@ -290,9 +291,9 @@ const LoginScreen = (props) => {
 
                                         ></TextInput>
                                     </View>
-                            }
+                            {/* } */}
                             <View>
-                                <View style={PAGESTYLE.otpArea}>
+                                {/* <View style={PAGESTYLE.otpArea}>
                                     {
                                         showPassword ?
                                             null
@@ -305,100 +306,104 @@ const LoginScreen = (props) => {
                                             </>
                                     }
 
-                                </View>
-                                {
-                                    showPassword ?
-                                        <TextInput
-                                            ref={t2}
-                                            returnKeyType={"done"}
-                                            value={password}
-                                            placeholderTextColor={GetAppColor.grayBorder}
-                                            placeholder={Label.password}
-                                            secureTextEntry={true}
-                                            maxLength={30}
-                                            onChangeText={password => setPassword(password)}
-                                            style={PAGESTYLE.showPassword}
-                                            autoCapitalize="none"
 
-                                        />
-                                        :
-                                        <View style={PAGESTYLE.otpSquareArea}>
-                                            <TextInput
-                                                autoCapitalize="none"
-                                                style={PAGESTYLE.squreBox}
-                                                keyboardType="number-pad"
-                                                value={first}
-                                                ref={input1}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setFirst(val); }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 1) }}
-                                            />
-                                            <TextInput
-                                                style={PAGESTYLE.squreBox}
-                                                autoCapitalize="none"
-                                                keyboardType="number-pad"
-                                                value={second}
-                                                ref={input2}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setSecond(val); }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 2) }}
-                                            />
-                                            <TextInput
-                                                style={PAGESTYLE.squreBox}
-                                                autoCapitalize="none"
-                                                keyboardType="number-pad"
-                                                value={third}
-                                                ref={input3}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setThird(val); }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 3) }}
-                                            />
-                                            <TextInput
-                                                style={PAGESTYLE.squreBox}
-                                                keyboardType="number-pad"
-                                                autoCapitalize="none"
-                                                value={fourth}
-                                                ref={input4}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setFourth(val); }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 4) }}
-                                            />
-                                            <TextInput
-                                                autoCapitalize="none"
-                                                style={PAGESTYLE.squreBox}
-                                                keyboardType="number-pad"
-                                                value={fifth}
-                                                ref={input5}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setFifth(val) }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 5) }}
-                                            />
-                                            <TextInput
-                                                style={PAGESTYLE.squreBox}
-                                                autoCapitalize="none"
-                                                keyboardType="number-pad"
-                                                value={sixth}
-                                                ref={input6}
-                                                maxLength={1}
-                                                onChangeText={(val) => { setSixth(val); }}
-                                                onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
-                                            />
+                                </View> */}
+
+                                {/* {
+                                    showPassword ? */}
+                                <TextInput
+                                    ref={t2}
+                                    returnKeyType={"done"}
+                                    value={password}
+                                    placeholderTextColor={GetAppColor.grayBorder}
+                                    placeholder={Label.password}
+                                    secureTextEntry={true}
+                                    maxLength={30}
+                                    onChangeText={password => setPassword(password)}
+                                    style={PAGESTYLE.showPassword}
+                                    autoCapitalize="none"
+
+                                />
+                                {/* : */}
+
+                                {/* <View style={PAGESTYLE.otpSquareArea}>
+                                    <TextInput
+                                        autoCapitalize="none"
+                                        style={PAGESTYLE.squreBox}
+                                        keyboardType="number-pad"
+                                        value={first}
+                                        ref={input1}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setFirst(val); }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 1) }}
+                                    />
+                                    <TextInput
+                                        style={PAGESTYLE.squreBox}
+                                        autoCapitalize="none"
+                                        keyboardType="number-pad"
+                                        value={second}
+                                        ref={input2}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setSecond(val); }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 2) }}
+                                    />
+                                    <TextInput
+                                        style={PAGESTYLE.squreBox}
+                                        autoCapitalize="none"
+                                        keyboardType="number-pad"
+                                        value={third}
+                                        ref={input3}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setThird(val); }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 3) }}
+                                    />
+                                    <TextInput
+                                        style={PAGESTYLE.squreBox}
+                                        keyboardType="number-pad"
+                                        autoCapitalize="none"
+                                        value={fourth}
+                                        ref={input4}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setFourth(val); }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 4) }}
+                                    />
+                                    <TextInput
+                                        autoCapitalize="none"
+                                        style={PAGESTYLE.squreBox}
+                                        keyboardType="number-pad"
+                                        value={fifth}
+                                        ref={input5}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setFifth(val) }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 5) }}
+                                    />
+                                    <TextInput
+                                        style={PAGESTYLE.squreBox}
+                                        autoCapitalize="none"
+                                        keyboardType="number-pad"
+                                        value={sixth}
+                                        ref={input6}
+                                        maxLength={1}
+                                        onChangeText={(val) => { setSixth(val); }}
+                                        onKeyPress={({ nativeEvent: { key } }) => { handleKeyPress(key, 6) }}
+                                    />
 
 
-                                        </View>
-                                }
-                                {
-                                    showPassword ?
-                                        <View style={PAGESTYLE.resendOtpArea}>
-                                            <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
-                                            <View style={PAGESTYLE.passwordView}>
+                                </View> */}
+                                {/* } */}
+
+                                {/* {
+                                    showPassword ? */}
+                                <View style={PAGESTYLE.resendOtpArea}>
+                                    <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
+                                    {/* <View style={PAGESTYLE.passwordView}>
                                                 <TouchableOpacity onPress={() => { setShowPassword(false); }} >
                                                     <Text style={PAGESTYLE.usePassword}>{Label.UseOtpTitle} </Text>
                                                 </TouchableOpacity>
                                                 <Text style={PAGESTYLE.resendTextFirst}>{Label.ToLogin}</Text>
-                                            </View>
-                                        </View>
-                                        :
+                                            </View> */}
+                                </View>
+                                {/* :
                                         <View style={PAGESTYLE.resendOtpArea}>
                                             <Text style={PAGESTYLE.resendText}>{Label.ResendOtpTitle}</Text>
                                             <View style={PAGESTYLE.passwordView}>
@@ -408,7 +413,7 @@ const LoginScreen = (props) => {
                                                 </TouchableOpacity>
                                             </View>
                                         </View>
-                                }
+                                } */}
                                 <View style={PAGESTYLE.bottomButtomArea}>
                                     <TouchableOpacity style={PAGESTYLE.signInButton}
                                         onPress={() => { validateFields() }}>

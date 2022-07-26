@@ -48,7 +48,7 @@ function ExpertProfile(props) {
                         style={styles.profilePicView}
                         placeholderStyle={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: data.profilePhoto }}
+                        source={{ uri: data.profilePic }}
                         borderRadius={AppUtil.getHP(20)}
                     />
 
@@ -57,22 +57,22 @@ function ExpertProfile(props) {
                     </View>
 
                 </View>
-
-                <Text style={styles.txtNameView}>{data.firstName} {data.lastName}</Text>
-                <Text style={styles.txtSubNameView}>{data.jobTitle} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
+                <Text style={styles.txtNameView}>{data.name} </Text>
+                {/* <Text style={styles.txtNameView}>{data.firstName} {data.lastName}</Text> */}
+                <Text style={styles.txtSubNameView}>{data.job} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
 
                 <View style={styles.rowRightView}>
                     <View style={styles.secondInnerCalView}>
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.totalViews}</Text>
+                        <Text style={styles.title}>{data.see}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.totalLikes}</Text>
+                        <Text style={styles.title}>{data.like}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.totalComments}</Text>
+                        <Text style={styles.title}>{data.comment}</Text>
                     </View>
                 </View>
 
@@ -121,7 +121,7 @@ function ExpertProfile(props) {
 
             <View style={styles.aboutView}>
                 <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.About}</Text>
-                <Text style={styles.txtAboutDes}>{data.ideaDescription}</Text>
+                <Text style={styles.txtAboutDes}>{data.insightDescription}</Text>
             </View>
 
         </View>

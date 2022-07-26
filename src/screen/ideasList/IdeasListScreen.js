@@ -41,7 +41,7 @@ const IdeasListScreen = (props) => {
             frontuser_id: UserManager.userId,
             limit: AppConfig.pageLimit,
             categories: "",
-            sectors: "6,7",
+            sectors: "",
             listtype: tabType,
             language: AppConfig.lang
         }
@@ -93,18 +93,17 @@ const IdeasListScreen = (props) => {
             "field_name": "idea_id",
             "id": id,
             "frontuser_id": UserManager.userId,
-            "model": 'LikedislikeIdeas'
+            "model": 'FavoriteIdeas'
         }
 
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
-
             const likeDislike = res?.data === 'dislike' ? false : true;
 
             let newAllIdeasArr = [];
             newAllIdeasArr = allIdeaArr;
             newAllIdeasArr.map((ele, index) => {
                 if (ele.id == id) {
-                    newAllIdeasArr[index].like = likeDislike;
+                    newAllIdeasArr[index].favorite = likeDislike;
                 }
             });
             setaAllIdeaArr([...newAllIdeasArr]);
@@ -113,7 +112,7 @@ const IdeasListScreen = (props) => {
             updateNewIdeaArr = newIdeaArr;
             updateNewIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    updateNewIdeaArr[index].like = likeDislike;
+                    updateNewIdeaArr[index].favorite = likeDislike;
                 }
             });
             setNewIdeaArr([...updateNewIdeaArr]);
@@ -122,7 +121,7 @@ const IdeasListScreen = (props) => {
             updatePopularIdeaArr = popularIdeaArr;
             updatePopularIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    updatePopularIdeaArr[index].like = likeDislike;
+                    updatePopularIdeaArr[index].favorite = likeDislike;
                 }
             });
             setPopularIdeaArr([...updatePopularIdeaArr]);
@@ -131,7 +130,7 @@ const IdeasListScreen = (props) => {
             updateWinningIdeaArr = winningIdeaArr;
             updateWinningIdeaArr.map((ele, index) => {
                 if (ele.id == id) {
-                    updateWinningIdeaArr[index].like = likeDislike;
+                    updateWinningIdeaArr[index].favorite = likeDislike;
                 }
             });
             setWinningIdeaArr([...updateWinningIdeaArr]);

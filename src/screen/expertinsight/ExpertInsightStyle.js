@@ -24,7 +24,6 @@ import FONTS from '../../utils/Fonts'
     smallRadiousImage:{
         height:AppUtil.getHP(8),
         width:AppUtil.getHP(10),
-        backgroundColor:'red',
          borderRadius:10,
 
     },

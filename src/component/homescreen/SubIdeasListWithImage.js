@@ -10,7 +10,6 @@ import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
-
 import IcnTrophy from "../../assets/svg/IcnTrophy"
 import IcnStar from "../../assets/svg/IcnStar"
 import IcnRewordComment from "../../assets/svg/IcnRewordComment"
@@ -22,9 +21,11 @@ import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
 import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
+import { EndPoints } from "../../service/EndPoints";
 
 const SubIdeasListWithImage = (props) => {
-    
+
+
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -41,28 +42,37 @@ const SubIdeasListWithImage = (props) => {
         return (
             <TouchableOpacity onPress={() => props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
-
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
-                    {
-                        item?.like ?
-                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
-                                <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
-                                <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                            </TouchableOpacity>
+                    {props?.isType != "Spotlight"  ?
+
+                        <>
+                            {
+                                (item.favorite) ?
+
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                                        <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                                        <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                            }
+                            {
+                                props.isType != "Challenges" ?
+                            (  item.trophy || item.starred || item.topRate || item.insight ) ?
+                                <View style={Style.rewordView}>
+                                    {item.trophy ? <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.starred ? <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.topRate ? <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                    {item.insight ? <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} /> : null}
+                                </View> :
+                                <View style={Style.rewordViewAlt}></View>
+                                :null}
+                            
+                        </> : null
                     }
-
-                    <View style={Style.rewordView}>
-                        {<IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                        {<IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
-                    </View>
-
                 </View>
 
                 <View style={Style.leftItems}>
@@ -83,7 +93,7 @@ const SubIdeasListWithImage = (props) => {
 
                             :
 
-                            props?.isType == "Spotlight" ?
+                            (props?.isType == "Spotlight" && props?.isType == "Challenges")?
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -97,13 +107,13 @@ const SubIdeasListWithImage = (props) => {
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                    <Text style={Style.title}>{item.createDate ? item.createDate : "No date"}</Text>
                                 </View>
 
                     }
-
-                    <View style={Style.secondCalView}>
-                        <View style={Style.secondInnerCalView}>
+                    {props?.isType != "Spotlight" ?
+                        <View style={Style.secondCalView}>
+                            {/* <View style={Style.secondInnerCalView}>
                             <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
                         </View>
@@ -117,8 +127,9 @@ const SubIdeasListWithImage = (props) => {
                         </View>
                         <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
                             <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                        </TouchableOpacity>
-                    </View>
+                        </TouchableOpacity> */}
+                        </View> : null
+                    }
 
                 </View>
 
@@ -126,16 +137,18 @@ const SubIdeasListWithImage = (props) => {
         )
     };
 
+
     return (
         <View style={Style.MainView}>
-
             {
                 props?.isTitle &&
                 <View style={Style.titleView}>
                     <Text style={props.screen ? Style.titleAnotherScreen : Style.txtTitle}>{props?.isTitle}</Text>
+                    {/* {props?.isType != "Spotlight" ? */}
                     <TouchableOpacity onPress={() => props.onSeeMorePress()}>
                         <Text style={props.screen ? Style.seeMoreAnotherScreen : Style.txtSeeMore}>{Label.seeMore}</Text>
                     </TouchableOpacity>
+                    {/* : null} */}
                 </View>
             }
 

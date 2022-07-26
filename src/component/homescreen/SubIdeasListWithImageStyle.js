@@ -72,6 +72,12 @@ const Style = StyleSheet.create({
         position: 'absolute', backgroundColor: GetAppColor.blackTransperent, flexDirection:'row',
         alignItems:'center'
     },
+    rewordViewAlt: {
+        width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomEndRadius: AppUtil.getHP(1),
+        borderBottomStartRadius: AppUtil.getHP(1),
+        position: 'absolute', flexDirection:'row',
+        alignItems:'center'
+    },
 
     winningIcn: { marginStart: AppUtil.getHP(1)},
 });
