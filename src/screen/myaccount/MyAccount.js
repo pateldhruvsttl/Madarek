@@ -29,7 +29,7 @@ const MyAccount = (props) => {
                     </View>
                     <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </TouchableOpacity>
-
+{/* 
                 <TouchableOpacity style={[MyAccountStyle.btnView,]} >
                     <View style={MyAccountStyle.iconTextView}>
                         <UpgradeUserType height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
@@ -52,7 +52,7 @@ const MyAccount = (props) => {
                         <Text style={MyAccountStyle.subbTitleText}>{Label.Help}</Text>
                     </View>
                     <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </ScrollView>
         </SafeAreaView>
     )
