@@ -29,6 +29,7 @@ const ChallengesListScreen = (props) => {
   const [closeChallenge, setCloseChallenge] = useState([]);
   const [vottingChallenge, setVottingChallenge] = useState([]);
   const [isFilterVisible, setFilterVisible] = useState(false);
+  const tab = props.route.params;
 
   useEffect(() => {
     onOpenChallenge();
@@ -97,6 +98,7 @@ const ChallengesListScreen = (props) => {
       <View style={ListStyle.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
+            initialRouteName={tab==0?Label.Open:tab==1?Label.Upcoming:tab==2?Label.Closed:Label.Voting}
             screenOptions={{
               tabBarLabelStyle: ListStyle.tabHeader,
               tabBarItemStyle: ListStyle.tabBarItem,

@@ -28,6 +28,7 @@ const IdeasListScreen = (props) => {
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
     const [isFilterVisible, setFilterVisible] = useState(false);
 
+    const tab = props.route.params;
     useEffect(() => {
         onIdeas('all');
         onIdeas('latest');
@@ -151,7 +152,9 @@ const IdeasListScreen = (props) => {
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
-                    <Tab.Navigator screenOptions={{
+                    <Tab.Navigator 
+                    initialRouteName={tab==0?Label.All:tab==1?Label.Latest:tab==2?Label.Popular:Label.Winning}
+                    screenOptions={{
                         tabBarLabelStyle: Style.tabHeader,
                         tabBarItemStyle: Style.tabBarItem,
                         tabBarIndicatorStyle: Style.itemBorder,
