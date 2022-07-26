@@ -618,6 +618,21 @@ const CommonHeader = (props) => {
                 </>
             )
             break
+        case 'Team Collaboration':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.TeamCollaboration}</Text>
+                        </View>
+                        <BackButton />
+
+                    </View>
+                </>
+            )
+            break
         default: null;
     }
 }

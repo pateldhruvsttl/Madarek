@@ -25,4 +25,5 @@ export const EndPoints = {
     expertsInsiteDetail : "expertsinsitedetail",
     acceptReject:"acceptreject",
     acceptrejectrequest:"acceptrejectrequest",
+    teamcollaboration:"teamcollaboration",
 }
