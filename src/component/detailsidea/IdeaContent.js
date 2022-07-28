@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity, } from "react-native";
+import React, { useState ,useEffect} from "react";
 import Style from "./IdeaContentStyle";
 import { Label } from "../../utils/StringUtil";
 import IcnClander from "../../assets/svg/IcnClander";
@@ -26,10 +26,12 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 
 const IdeaContent = (props) => {
-  
-    const [isFavorite,setFavorite] = useState(props.data.favorite)
+   
+    const [isFavorite,setFavorite] = useState( props.isType == "ChallengeDetail" ? props.data.favoriteChallenge : props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
+    
+
     const onIdeaContentChanges = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -47,6 +49,24 @@ const IdeaContent = (props) => {
         })
     }
     
+    const onChallengeContentChanges = (id) => {
+        console.log("jkt",id);
+        var data = {
+            "field_name":"contest_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": "LikedislikeContests"
+        }
+    
+        Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? false : true;
+            setFavorite(likeDislike)
+            console.log("koko",res);
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
 
     const Bold = ({ children }) => (
         <Text
@@ -204,11 +224,17 @@ const IdeaContent = (props) => {
                     {props.isType == "ChallengeDetail" ? (
                         <>
                             <View style={Style.leftSide}>
-                                <TouchableOpacity style={[Style.followBtn]}>
+                                <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeContentChanges(props.params.id)}>
+                                {isFavorite ?
                                     <IcnLikeblack
                                         height={AppUtil.getHP(3.2)}
                                         width={AppUtil.getHP(3.2)}
+                                    />:
+                                    <IcnLikeRed
+                                    height={AppUtil.getHP(3.2)}
+                                    width={AppUtil.getHP(3.2)}
                                     />
+                                }
                                     <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
                                 </TouchableOpacity>
                             </View>

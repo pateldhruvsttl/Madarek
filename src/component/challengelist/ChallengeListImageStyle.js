@@ -23,7 +23,8 @@ const LISTSTYLE = StyleSheet.create({
         color: GetAppColor.pincolor,
         fontFamily: FONTS.robotRegular
     },
-
+    likeUnlikeIcn: { paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 },
+    likeUnlikeBtn : {width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5},
 
     txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},

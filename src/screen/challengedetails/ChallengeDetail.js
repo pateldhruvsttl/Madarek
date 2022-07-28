@@ -25,11 +25,16 @@ import IdeasListScreen from "../ideasList/IdeasListScreen";
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
   const id = props.route.params.id;
-  // Loger.onLog('id of challengeDetail', id);
+  const data = props.route.params;
+  //  Loger.onLog('id of challengeDetail', id);
   const [contestData, setContestData] = useState({})
   const [similarData, setSimilarData] = useState([])
   const [evaluationData, setEvaluationData] = useState([])
   const [rowData, setRowData] = useState()
+  const [rowCount, setRowCount] = useState()
+  console.log("evaluationData", evaluationData);
+  console.log("similarData", similarData);
+
   const [resourceData, setResourceData] = useState([])
 
   useEffect(() => {
@@ -50,6 +55,7 @@ const ChallengeDetail = (props) => {
         const contestData = res.data.contestDetail
         const evaluationPannel = []
         const resources = []
+        const rowcount = res.data.participateRowsCount
         const termsRow = res.data.termsrow
 
         if (res.statusCode) {
@@ -75,6 +81,7 @@ const ChallengeDetail = (props) => {
           })
 
 
+
           let termsModel = new OpenChallengeDetail(termsRow)
           setRowData(termsModel)
         }
@@ -98,7 +105,7 @@ const ChallengeDetail = (props) => {
         <ScrollView>
           <View style={PAGESTYLE.subMainView}>
             <IdeaSlider Entries={testData} />
-            {contestData && <IdeaContent data={contestData} isType={title} />}
+            {contestData && <IdeaContent data={contestData} isType={title} params={data} />}
 
             <View style={PAGESTYLE.contentBoxChallenge}>
               <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
@@ -110,7 +117,7 @@ const ChallengeDetail = (props) => {
               </Text>
             </View>
 
-            <CategoryChallenge isType={title} />
+            <CategoryChallenge isType={title} data={contestData}  evedata={evaluationData}  similardata ={similarData} />
             {contestData && <SubInformation data={contestData} />}
 
             {similarData && similarData.length > 0 &&
