@@ -1,16 +1,18 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { View } from 'react-native'
 import ChallengeListImage from "../ChallengeListImage";
 import Style from "./ViewMoreChallengeStyle";
 
 const ViewMoreChallenges =(props) =>{
-
-    
+  
     return (
         <View style={Style.MainView}>
             <ChallengeListImage
-                data={props?.propName?.data} isType={"Challenges"} scrollEnabled={true}
-                navigateDetail={(id) => props.navigateDetail(id)} />
+                data={props?.propName?.data}
+                isType={"Challenges"} 
+                scrollEnabled={true}
+                navigateDetail={(id) => props.navigateDetail(id)}
+                likeChallenge={(id) => props.likeChallenge(id)} />
         </View>
     )
 }

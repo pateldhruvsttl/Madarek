@@ -77,7 +77,7 @@ const ExpertInsightScreen = (props) => {
     return props.navigation.navigate("ExpertInsightDetailWithComment",{expertId:id})
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{height:'100%' ,paddingBottom:30}}>
       <CommonHeader
         isType={"ExpertInsight"}
         onFilter={() => setFilterVisible(!isFilterVisible)}

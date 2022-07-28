@@ -20,6 +20,7 @@ import { EndPoints } from "../../service/EndPoints";
 import OpenChallenge from "../../model/OpenChallengesModel";
 import IdeasFilter from "../../component/filter/IdeasFilter";
 import { UserManager } from "../../manager/UserManager";
+import { Loger } from "../../utils/Loger";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -82,6 +83,57 @@ const ChallengesListScreen = (props) => {
       }
     );
   };
+  const likeChallenge = (id) => {
+    var data = {
+      "field_name": "contest_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": "LikedislikeContests"
+    }
+
+    Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
+      Loger.onLog('res of challengeLikeUnlike', res)
+      const likeDislike = res?.data === 'dislike' ? false : true;
+      let newOpenChallenge = [];
+      newOpenChallenge = openChallenge;
+      newOpenChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newOpenChallenge[index].favoriteChallenge = likeDislike;
+        }
+      });
+      setOpenChallenge([...newOpenChallenge]);
+
+      let newUpcomingChallenge = [];
+      newUpcomingChallenge = upcomingChallenge;
+      newUpcomingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newUpcomingChallenge[index].favoriteChallenge = likeDislike;
+        }
+      });
+      setUpcomingChallenge([...newUpcomingChallenge]);
+
+      let newCloseChallenge = [];
+      newCloseChallenge = closeChallenge;
+      newCloseChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newCloseChallenge[index].favoriteChallenge = likeDislike;
+        }
+      });
+      setCloseChallenge([...newCloseChallenge]);
+
+      let newVottingChallenge = [];
+      newVottingChallenge = vottingChallenge;
+      newVottingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newVottingChallenge[index].favoriteChallenge = likeDislike;
+        }
+      });
+      setVottingChallenge([...newVottingChallenge]);
+
+    }, (err) => {
+      Loger.onLog('Error of likeUnlike', err)
+    })
+  }
 
   // const data = props?.route?.params?.data ? props?.route?.params?.data : sliderdata
 
@@ -98,7 +150,7 @@ const ChallengesListScreen = (props) => {
       <View style={ListStyle.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={tab==0?Label.Open:tab==1?Label.Upcoming:tab==2?Label.Closed:Label.Voting}
+            initialRouteName={tab == 0 ? Label.Open : tab == 1 ? Label.Upcoming : tab == 2 ? Label.Closed : Label.Voting}
             screenOptions={{
               tabBarLabelStyle: ListStyle.tabHeader,
               tabBarItemStyle: ListStyle.tabBarItem,
@@ -112,9 +164,11 @@ const ChallengesListScreen = (props) => {
                 openChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "OpenChallenge", data: openChallenge }}
-                    navigateDetail={(id) =>
-                      props.navigation.navigate("ChallengeDetail", {id:id})
+                    likeChallenge={(id) => likeChallenge(id)}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", { id: item.id })
                     }
+
                   />
                   :
                   <Text style={ListStyle.txtNodata}>No data found</Text>
@@ -126,12 +180,13 @@ const ChallengesListScreen = (props) => {
                 upcomingChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "UpcomingChallenge", data: upcomingChallenge }}
-                    navigateDetail={(id) =>
-                      props.navigation.navigate("ChallengeDetail", {id:id})
+                    likeChallenge={(id) => likeChallenge(id)}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", { id: item.id })
                     }
                   />
                   :
-                 <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
             />
             <Tab.Screen
@@ -140,32 +195,34 @@ const ChallengesListScreen = (props) => {
                 closeChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "ClosedChallenge", data: closeChallenge }}
-                    navigateDetail={(id) =>
-                      props.navigation.navigate("ChallengeDetail", {id:id})
-                    }
+                    likeChallenge={(id) => likeChallenge(id)}
+                    navigateDetail={(item) => {
+                      console.log("plk", item)
+                      props.navigation.navigate("ChallengeDetail", { id: item })
+                    }}
                   /> :
-                 <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
             />
             <Tab.Screen
               name={Label.Voting}
               children={() => (
                 vottingChallenge.length > 0 ?
-
                   <ViewMoreChallenges
                     propName={{ type: "Challenge", data: vottingChallenge }}
-                    navigateDetail={(id) =>
-                      props.navigation.navigate("ChallengeDetail", {id:id})
+                    likeChallenge={(id) => likeChallenge(id)}
+                    navigateDetail={(item) =>
+                      props.navigation.navigate("ChallengeDetail", { id: item.id })
                     }
                   /> :
-                 <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>No data found</Text>
 
               )}
             />
           </Tab.Navigator>
         </NavigationContainer>
       </View>
-     
+
       <IdeasFilter
         visible={isFilterVisible}
         onClose={() => setFilterVisible(!isFilterVisible)}

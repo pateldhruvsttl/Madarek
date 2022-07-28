@@ -25,7 +25,7 @@ export default class OpenChallengeDetail {
         this.totalView = obj?.toatal_view_contest || "0"
         this.totalComment = obj?.toatal_contest_comments || "0"
         this.totalExpertInsight = obj?.total_expert_insight || "0"
-        this.contestDescription = obj?.contest_description || "No Description"
+        this.contestDescription = obj?.contest_description &&  obj?.contest_description !== " " ? obj.contest_description : "No Description"
         this.participateRowsCount = obj?.participaterowsCount || "0"
         this.evaluationPannel = obj?.evaluationPannel || "no data"
         this.participateMulti = obj?.who_should_participate_multi || "no type"
