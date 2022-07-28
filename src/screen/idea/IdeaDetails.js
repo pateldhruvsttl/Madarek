@@ -141,7 +141,7 @@ const IdeaDetails = (props) => {
               <View style={IdeaStyle.videoPlay}>
             <Text style={IdeaStyle.heading}>{Label.Video}</Text>
 
-                <VideosPlayer path={item?.ideaVideo}/>
+                <VideosPlayer path={item?.ideaVideo} navi={props.navigation}/>
                 {/* <VideoPlayer path={item?.ideaVideo} /> */}
               </View>:null}
 
