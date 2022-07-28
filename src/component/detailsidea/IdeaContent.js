@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, } from "react-native";
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Style from "./IdeaContentStyle";
 import { Label } from "../../utils/StringUtil";
 import IcnClander from "../../assets/svg/IcnClander";
@@ -27,11 +27,11 @@ import { Loger } from "../../utils/Loger";
 import WebViewComp from "../webview/WebViewComp";
 
 const IdeaContent = (props) => {
-   
-    const [isFavorite,setFavorite] = useState( props.isType == "ChallengeDetail" ? props.data.favoriteChallenge : props.data.favorite)
+
+    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.favoriteChallenge : props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
-    
+
 
     const onIdeaContentChanges = (id) => {
         var data = {
@@ -49,21 +49,19 @@ const IdeaContent = (props) => {
             Loger.onLog("err of likeUnlike", err)
         })
     }
-    
+
     const onChallengeContentChanges = (id) => {
-        console.log("jkt",id);
         var data = {
-            "field_name":"contest_id",
+            "field_name": "contest_id",
             "id": id,
             "frontuser_id": UserManager.userId,
             "model": "LikedislikeContests"
         }
-    
+
         Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
 
             const likeDislike = res?.data === 'dislike' ? false : true;
             setFavorite(likeDislike)
-            console.log("koko",res);
         }, (err) => {
             Loger.onLog("err of likeUnlike", err)
         })
@@ -226,16 +224,16 @@ const IdeaContent = (props) => {
                         <>
                             <View style={Style.leftSide}>
                                 <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeContentChanges(props.params.id)}>
-                                {isFavorite ?
-                                    <IcnLikeblack
-                                        height={AppUtil.getHP(3.2)}
-                                        width={AppUtil.getHP(3.2)}
-                                    />:
-                                    <IcnLikeRed
-                                    height={AppUtil.getHP(3.2)}
-                                    width={AppUtil.getHP(3.2)}
-                                    />
-                                }
+                                    {isFavorite ?
+                                        <IcnLikeblack
+                                            height={AppUtil.getHP(3.2)}
+                                            width={AppUtil.getHP(3.2)}
+                                        /> :
+                                        <IcnLikeRed
+                                            height={AppUtil.getHP(3.2)}
+                                            width={AppUtil.getHP(3.2)}
+                                        />
+                                    }
                                     <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
                                 </TouchableOpacity>
                             </View>
@@ -299,8 +297,6 @@ const IdeaContent = (props) => {
                 <View style={Style.contentBoxChallenge} >
                     <Text style={Style.heading}>{Label.Description}</Text>
                     <WebViewComp data={props.data.contestDescription} />
-
-
                     <Text style={Style.termsAndConTitle}>
                         {Label.TermsAndCondition}
                     </Text>

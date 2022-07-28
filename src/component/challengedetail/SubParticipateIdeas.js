@@ -17,7 +17,7 @@ import moment from "moment";
 
 
 const SubParticipateIdeas = (props) => {
-
+console.log('props',props);
     const navigation = useNavigation();
     const Bold = ({ children }) => <Text style={STYLE.boldView}>{children}</Text>
 
@@ -28,33 +28,35 @@ const SubParticipateIdeas = (props) => {
                 <Image
                     style={STYLE.img}
                     resizeMode='cover'
-                    source={{ uri: item.url }}
+                    source={{ uri: item.participateImage }}
                 />
 
-
-                <View style={STYLE.rewordView}>
-                    <IcnTrophy style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnStar style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnRewordComment style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnRewordLight style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                </View>
+                {
+                    props.isType != 'ChallengeDetail' &&
+                    <View style={STYLE.rewordView}>
+                        <IcnTrophy style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
+                        <IcnStar style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
+                        <IcnRewordComment style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
+                        <IcnRewordLight style={STYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
+                    </View>
+                }
 
             </View>
 
             <View style={STYLE.leftItems}>
 
                 <Text numberOfLines={2} style={[STYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>
-                    {item.contestTitle}</Text>
+                    {item.participateTitle}</Text>
 
 
                 <View style={STYLE.calView}>
                     <View style={STYLE.inerContentLeft}>
                         <IcnClander style={STYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={STYLE.title}>{moment(item.createdAt).format('DD-MMM-YYYY')}</Text>
+                        <Text style={STYLE.title}>{item.participateDate}</Text>
                     </View>
                     <View style={STYLE.inerContentRight}>
                         <IcnAvtarBg style={STYLE.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={STYLE.title}>{item.name}</Text>
+                        <Text style={STYLE.title}>{item.participateBy}</Text>
                     </View>
                 </View>
 
@@ -65,10 +67,10 @@ const SubParticipateIdeas = (props) => {
                         {/* <Text style={STYLE.titleScore}>{item.rank}</Text> */}
                     </View>
                     <View style={STYLE.totalScoree}>
-                        <Text style={STYLE.title}>{Label.TotalScore}{"\n"}<Bold>{item.totalScore}</Bold></Text>
+                        <Text style={STYLE.title}>{Label.TotalScore}{"\n"}<Bold>{Number(item.totalScore).toFixed(2)}</Bold></Text>
                     </View>
                     <View style={STYLE.secondInnerCalViewLast}>
-                        <Text style={STYLE.title}>{Label.Votes}{"\n"}<Bold>{item.votes}</Bold></Text>
+                        <Text style={STYLE.title}>{Label.Votes}{"\n"}<Bold>{item.totalVote}</Bold></Text>
                     </View>
                 </View>
             </View>
