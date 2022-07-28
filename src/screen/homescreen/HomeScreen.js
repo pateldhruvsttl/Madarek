@@ -229,7 +229,7 @@ const HomeScreen = (props) => {
           openChallenges.length > 0 && (
             <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2), }}>
               <SubIdeasListWithImage
-                data={openChallenges}
+                data={openChallenges.slice(0, 2)}
                 isTitle={Label.OpenChallenges}
                 isType={"Challenges"}
                 likeChallenge={(id) => likeChallenge(id)}
