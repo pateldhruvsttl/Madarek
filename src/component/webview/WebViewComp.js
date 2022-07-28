@@ -18,7 +18,6 @@ export default function WebViewComp(props) {
             useWebKit={true}
             source={{ html: props.data }}
             scrollEnabled={false}
-            useWebKit={true}
             originWhitelist={['*']}
             style={{ height: webViewHeight ,backgroundColor:props.backgroundColor}}
             javaScriptEnabled={true}
