@@ -57,6 +57,13 @@ const IdeaContentStyle = StyleSheet.create({
         color: GetAppColor.textColor,
         textAlign: 'center',
     },
+    otherSpace: {
+        alignItems: 'flex-start',
+        width: AppUtil.getWP(40),fontFamily: FONTS.robotRegular,
+        fontSize: AppUtil.getHP(1.8), //2.5
+        marginStart: AppUtil.getWP(1.5),
+        color: GetAppColor.textColor,
+    },
     contentTitleSecond: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
@@ -149,6 +156,27 @@ const IdeaContentStyle = StyleSheet.create({
         backgroundColor: GetAppColor.white,
         marginStart: AppUtil.getHP(1),
         // right:5
+    },
+    termsAndConTitle: {
+        color: GetAppColor.grayBorder,
+        fontFamily: FONTS.robotMedium,
+        fontSize: AppUtil.getHP(1.7),
+        textAlign: 'left',
+        marginTop: AppUtil.getHP(2),
+    },
+    heading: {
+        color: GetAppColor.pincolor,
+        fontFamily: FONTS.robotBold,
+        fontSize: AppUtil.getHP(2.2),
+        textAlign: 'left',
+        marginBottom: AppUtil.getHP(1),
+    },
+    contentBoxChallenge: {
+        width: '100%',
+        paddingHorizontal: AppUtil.getWP(5),
+        marginBottom: AppUtil.getHP(1),
+        backgroundColor: GetAppColor.white,
+        marginTop: AppUtil.getHP(2),
     },
 })
 

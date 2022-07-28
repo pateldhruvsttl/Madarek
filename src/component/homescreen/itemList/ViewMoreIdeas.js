@@ -34,20 +34,15 @@ function ViewMoreIdeas(props) {
                 <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 1 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(1)}>
                     <IcnIdeasTextFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                 </TouchableOpacity>
-                {/* {
-                    props.isMySubmitType ?
-                        null
-                        :
-                        <TouchableOpacity style={[Styles.btnView, { borderColor: selectFilter == 2 ? GetAppColor.textColor : GetAppColor.btnBorderColor }]} onPress={() => onSetFilter(2)}>
-                            <IcnIdeasGraphFilter height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                        </TouchableOpacity>
-                } */}
-
-
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={(item) =>props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
+                {selectFilter == 0 && <SubIdeasListWithImage 
+                onItemPress={(item) =>props?.propName?.navigateDetail(item)}
+                 data={props?.propName?.data}
+                  isType={"Ideas"} 
+                  scrollEnabled={true} 
+                  likeIdea={likeIdea} />}
                 {selectFilter == 1 && <SubIdeasList onItemPress={(item) =>props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
                 {selectFilter == 2 && <SubIdeasListGraph onItemPress={() => props?.propName?.navigateDetail()} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} likeIdea={likeIdea} />}
             </View>

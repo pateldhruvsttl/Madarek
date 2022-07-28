@@ -20,8 +20,8 @@ const Style = StyleSheet.create({
     centerIcnView: { alignItems: 'center', flexDirection: 'row' },
 
     txtHeader: {
-        fontFamily: FONTS.robotMedium,
-        fontSize: AppUtil.getHP(2.3),
+        fontFamily: FONTS.robotRegular,
+        fontSize: AppUtil.getHP(2.1),
         width:'70%', 
     },
     searchBtnStyle:{width:'20%'},

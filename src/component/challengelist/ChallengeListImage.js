@@ -23,10 +23,23 @@ import ImageLoad from "react-native-image-placeholder";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
+    const likeUnlikeRender = (id) => {
+
+        if (props?.isType == "Ideas") {
+            props.likeIdea(id);
+
+        }
+        else if (props?.isType == "Challenges") {
+            props.likeChallenge(id);
+        }
+        else {
+            props.likeSpotLight(id)
+        }
+    }
     const renderItem = ({ item }) => (
         console.log('item of render challange',item),
         
-        <TouchableOpacity onPress={() => props.navigateDetail(item)} style={LISTSTYLE.renderMainView}>
+        <TouchableOpacity onPress={() => props.navigateDetail(item.id)} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
 
@@ -34,12 +47,16 @@ const ChallengeListImage = (props) => {
                     <ImageLoad style={LISTSTYLE.img} source={{ uri: item.image }} isShowActivity={false} />
                 </View>
                 {
-                    item.isLike ?
-                        <IcnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        :
-                        <IcnUnSelectedHeartWithRound style={LISTSTYLE.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                }
+                                (item.favoriteChallenge) ?
 
+                                    <TouchableOpacity style={{width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} onPress={() => likeUnlikeRender(item.id)}  >
+                                        <IcnSelectedHeartWithRound style={{paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity style={{width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} onPress={() => likeUnlikeRender(item.id)}  >
+                                        <IcnUnSelectedHeartWithRound style={{paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                                    </TouchableOpacity>
+                            }
                 {/* <View style={LISTSTYLE.rewordView}>
                     <IcnTrophy style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
                     <IcnStar style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />

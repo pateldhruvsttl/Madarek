@@ -23,7 +23,7 @@ import { AppConfig } from "../../manager/AppConfig";
 import DeviceInfo from "react-native-device-info";
 export const deviceId = DeviceInfo.getUniqueId()
 
-const ExpertScreen = (porps) => {
+const ExpertScreen = (props) => {
     const [category, setCategory] = useState([])
     const [categories, setCategories] = useState([])
     const { themeColor } = useSelector((state) => state)
@@ -72,7 +72,7 @@ const ExpertScreen = (porps) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             
-            <CommonHeader isType={"ExpertScreen"} onMenuClick={() => { porps.navigation.openDrawer() }} />
+            <CommonHeader isType={"ExpertScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={{ height: '100%', backgroundColor: GetAppColor.greyBg }}>
@@ -82,11 +82,15 @@ const ExpertScreen = (porps) => {
                         </View>
 
                         <View style={Style.similarExpertView}>
-                            <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.ConnectedExperts} type={"ExpertScreen"}/>
+                            <SimilarExperts data={expertInsightsData} 
+                            navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")}
+                            maxLimit={2} title={Label.ConnectedExperts} type={"ExpertScreen"}/>
                         </View>
 
                         <View style={Style.popularExpertView}>
-                            <SimilarExperts data={populerExpertData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"}/>
+                            <SimilarExperts data={populerExpertData}
+                            navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")}
+                            maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"}/>
                         </View>
 
                         <View style={Style.similarExpertView}>

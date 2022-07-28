@@ -50,7 +50,6 @@ const EventSlider = ({ Entries }) => {
     }
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
-        console.log("url", item.url)
         return (
             <View style={styles.renderMainView}>
                 <View style={styles.bgImage}>

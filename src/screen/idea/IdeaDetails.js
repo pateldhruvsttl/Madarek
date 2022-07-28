@@ -26,6 +26,7 @@ import { AppConfig } from '../../manager/AppConfig';
 import DeviceInfo from "react-native-device-info";
 import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
+import WebViewComp from '../../component/webview/WebViewComp';
 
 const IdeaDetails = (props) => {
 
@@ -38,7 +39,6 @@ const IdeaDetails = (props) => {
   useEffect(() => {
     onExpertInsights();
     onIdeas()
-    console.log("kirsh", item);
   }, []);
 
   const onExpertInsights = () => {
@@ -118,11 +118,11 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            {item?.additional_images ?
-              <IdeaSlider Entries={item?.additional_images} />
+            {item?.additionalImages.length > 0 ?
+              <IdeaSlider Entries={item?.additionalImages} />
               :
               <View style={IdeaStyle.imgStyle}>
-                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.user_photo }} isShowActivity={false} />
+                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.ideaImage }}  />
               </View>
             }
 
@@ -130,10 +130,11 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.contentBox}>
               <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
-              <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text>
+              {/* <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text> */}
+              <WebViewComp data={item?.ideaDescription} />
             </View>
 
-            {item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
+            {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
 
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
@@ -146,7 +147,7 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas}
+                data={isAllIdeas.splice(0,2)}
                 isType="Ideas"
                 likeIdea={onLikeIdeas}
                 isTitle={Label.MayAlsoInterested} screen="IdeaDetail"

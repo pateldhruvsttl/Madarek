@@ -22,6 +22,7 @@ import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import { Label } from '../../utils/StringUtil'
 import ImageLoad from 'react-native-image-placeholder'
+import WebViewComp from '../webview/WebViewComp'
 
 
 function ExpertProfile(props) {
@@ -121,7 +122,8 @@ function ExpertProfile(props) {
 
             <View style={styles.aboutView}>
                 <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.About}</Text>
-                <Text style={styles.txtAboutDes}>{data.insightDescription}</Text>
+                {/* <Text style={styles.txtAboutDes}>{data.About}</Text> */}
+                <WebViewComp data={data.About} />
             </View>
 
         </View>

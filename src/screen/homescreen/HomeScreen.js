@@ -83,7 +83,6 @@ const HomeScreen = (props) => {
         var opChallenges = [];
         res.data.forEach((element) => {
           let model = new OpenChallengeModel(element); 
-          // let model = new OpenChalangeHomeModel(element); 
           opChallenges.push(model);
         });
         setOpenChallenges(opChallenges);
@@ -235,7 +234,7 @@ const HomeScreen = (props) => {
                 likeChallenge={(id) => likeChallenge(id)}
                 onButtonPress={() => { setModalVisible(true); }}
                 onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", { data: openChallenges, }); }}
-                onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item); }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", {id:id}); }}
               />
             </View>
           )
@@ -308,6 +307,7 @@ const HomeScreen = (props) => {
         null;
     }
   };
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"HomeScreenHeader"} />

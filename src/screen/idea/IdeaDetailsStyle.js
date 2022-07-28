@@ -57,10 +57,10 @@ const IdeaStyle = StyleSheet.create({
         marginBottom: AppUtil.getHP(1)
     },
 
-    img: { width: AppUtil.getHP(18), height: AppUtil.getHP(18) },
+    img: { width: '100%', height: AppUtil.getHP(32),},
 
     imgStyle: {
-        width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1, justifyContent:'center', alignItems:'center'
+        width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1, justifyContent:'center', alignItems:'center', backgroundColor:"red"
     }
 })
 

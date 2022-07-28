@@ -9,7 +9,7 @@ const Style = StyleSheet.create({
         width: '100%', height: 50, flexDirection: 'row', justifyContent: 'space-between',
         alignItems: 'center', paddingHorizontal: AppUtil.getWP(3), backgroundColor: GetAppColor.lightWhite
     },
-    txtTitle: { fontFamily: FONTS.robotMedium, fontSize: AppUtil.getHP(2.5) },
+    txtTitle: { fontFamily: FONTS.robotMedium, fontSize: AppUtil.getHP(2.5), color:GetAppColor.black },
     bodyView: { paddingHorizontal: AppUtil.getWP(3), marginVertical: AppUtil.getWP(3) },
     txtSortBy: {
         fontFamily: FONTS.robotMedium,

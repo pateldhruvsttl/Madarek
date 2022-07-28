@@ -14,12 +14,12 @@ const SubInformation = (props) => {
 
             <View style={[STYLE.container, STYLE.spacing]}>
                 <Text style={STYLE.objectiveTxt}>{Label.WhoParticipate}</Text>
-                <Text style={STYLE.subObjectiveTxt}>{props.data?props.data.who_should_participate_multi:""}</Text>
+                <Text style={STYLE.subObjectiveTxt}>{props.data.participateMulti}</Text>
             </View>
 
             <View style={[STYLE.container, STYLE.spacing]}>
                 <Text style={STYLE.objectiveTxt}>{Label.Reward}</Text>
-                <Text style={STYLE.subObjectiveTxt}>{props.data?props.data.reward:""}</Text>
+                <Text style={STYLE.subObjectiveTxt}>{props.data.reward}</Text>
             </View>
 
             <View style={[STYLE.container, STYLE.spacingSchedule]}>
@@ -27,34 +27,34 @@ const SubInformation = (props) => {
 
                 <View style={STYLE.submissionDetail}>
                     <Text style={STYLE.scheduleDate}>{Label.Announcement} </Text>
-                    <Text style={STYLE.scheduleDate}>{props.data?props.data.announcement:""}</Text>
+                    <Text style={STYLE.scheduleDate}>{props.data.announcementDate}</Text>
                 </View>
 
                 <View style={STYLE.submissionDetail}>
                     <Text style={STYLE.scheduleDate}>{Label.OpenForSubmissiom}</Text>
-                    <Text style={STYLE.scheduleDate}>{props.data?props.data.start_date:""}</Text>
+                    <Text style={STYLE.scheduleDate}>{props.data.startDate}</Text>
                 </View>
 
                 <View style={STYLE.submissionDetail}>
                     <Text style={STYLE.scheduleDate}>{Label.CloseForSubmission}</Text>
-                    <Text style={STYLE.scheduleDate}>{props.data?props.data.end_date:""}</Text>
+                    <Text style={STYLE.scheduleDate}>{props.data.endDate}</Text>
                 </View>
 
                 <View style={STYLE.submissionDetail}>
                     <Text style={STYLE.scheduleDate}>{Label.PublicEvaluation}</Text>
-                    <Text style={STYLE.scheduleDate}>{props.data?props.data.public_evaluation:""}</Text>
+                    <Text style={STYLE.scheduleDate}>{props.data.publicEvaluation}</Text>
                 </View>
 
                 <View style={STYLE.submissionDetail}>
                     <Text style={STYLE.scheduleDate}>{Label.AwardAnnouncement}</Text>
-                    <Text style={STYLE.scheduleDate}>{props.data?props.data.award_announcement:""}</Text>
+                    <Text style={STYLE.scheduleDate}>{props.data.awardAnnouncement}</Text>
                 </View>
 
             </View>
 
             <View style={STYLE.spacing}>
                 <Text style={STYLE.objectiveTxt}>{Label.VotingMechanisam}</Text>
-                <Text style={STYLE.subObjectiveTxt}>{props.data?props.data.voting_mechanism_new:""}</Text>
+                <Text style={STYLE.subObjectiveTxt}>{props.data.votingMechanism}</Text>
             </View>
 
         </View>

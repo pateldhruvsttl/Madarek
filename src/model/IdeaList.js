@@ -24,8 +24,9 @@ export default class IdeaList {
         this.winning = obj?.winning || "0"
         this.madarekSpecial = obj?.madarek_special || "0"
         this.favoriteIdea = obj?.toatal_favorite_idea || "0"
+        this.favoriteChallenge = obj?.totalFavoriteContest == null || obj?.totalFavoriteContest == 0 ? false : true;
         this.topRate = obj?.top_rated == null && obj?.top_rated != 0 ? true : false;
-
+       
         this.trophy = obj?.isTrophy == null || obj?.isTrophy == 0 ? false : true;
         this.favorite = obj?.isFavourite == null || obj?.isFavourite == 0 ? false : true;
         this.insight = obj?.isInsight == null || obj?.isInsight == 0 ? false : true;
@@ -38,6 +39,8 @@ export default class IdeaList {
         this.team = obj?.team;
         this.resources = obj?.resources;
         this.ideaVideo = obj?.idea_upload_videos || ""
+        this.additionalImages = obj?.additional_images || ""
+        this.userPhoto = obj?.user_photo || "https://i.imgur.com/5tj6S7Ol.jpg"
 
 
     }

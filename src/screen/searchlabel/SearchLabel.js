@@ -221,10 +221,10 @@ const SearchLabel = (props) => {
 
                     <TextInput
                         ref={textInput}
-                        placeholder={"Information Technology"}
+                        placeholder={"Type to search..."}
                         value={searchStr}
                         style={Style.txtHeader}
-                        placeholderTextColor={GetAppColor.pincolor}
+                        placeholderTextColor={GetAppColor.grayBorder}
                         onChangeText={text => { onChangeText(text); }}
                     />
                 </View>
