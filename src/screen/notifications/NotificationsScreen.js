@@ -50,7 +50,6 @@ function NotificationsScreen() {
       frontuser_id: UserManager.userId,
     };
     Service.post(EndPoints.acceptrejectrequest, data, (res) => {
-      Loger.onLog("Notification accept reject response of data", res);
     },(err) => {
         Loger.onLog("Notification accept reject error response", err);
       }
@@ -160,7 +159,7 @@ function NotificationsScreen() {
 
   return (
     <View style={Style.MainView}>
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
         <CommonHeader
           isType={"NotificationsScreen"}
           onMenuClick={() => {
@@ -183,13 +182,15 @@ function NotificationsScreen() {
             </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={Style.scrollinview}>
+
+        <View style={Style.scrollinview}>
           <FlatList
             data={notiData}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
           />
-        </ScrollView>
+        </View>
+
       </SafeAreaView>
     </View>
   );

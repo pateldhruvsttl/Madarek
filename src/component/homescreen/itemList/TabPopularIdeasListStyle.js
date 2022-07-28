@@ -20,7 +20,8 @@ const Style = StyleSheet.create({
         shadowRadius: 3,
         elevation: 3,
         justifyContent:"center"
-    }
+    },
+    txtNoDataFound:{color:GetAppColor.black, fontSize:AppUtil.getHP(1.6)}
    
 });
 

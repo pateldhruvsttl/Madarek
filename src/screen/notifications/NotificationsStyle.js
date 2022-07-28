@@ -8,18 +8,18 @@ import { buttonHeight } from '../../utils/Constant';
 const HomeStyle = StyleSheet.create({
     MainView: { backgroundColor:GetAppColor.white, flex: 1},
     innerMainView: { flex: 1},
-    scrollinview:{height: '100%'},
+    scrollinview:{flex:1},
     
     bodyView:{flexDirection:'row', paddingHorizontal:AppUtil.getWP(2.5), paddingVertical:AppUtil.getHP(2.5), 
     justifyContent:'space-between', backgroundColor:GetAppColor.lightGrey},
     
     txtTitle:{fontSize:AppUtil.getHP(2.2), fontFamily:FONTS.robotBold, color:GetAppColor.grayBorder},
-    notificationsCounter:{fontSize:AppUtil.getHP(2), fontFamily:FONTS.robotBold},
+    notificationsCounter:{fontSize:AppUtil.getHP(2), fontFamily:FONTS.robotBold, color:GetAppColor.black},
 
     clearView:{color:GetAppColor.borderRed, fontFamily:FONTS.robotBold, borderBottomColor:GetAppColor.innovationGrey, borderBottomWidth:1.5},
     txtClear:{color:GetAppColor.innovationGrey, fontFamily:FONTS.robotRegular, borderBottomColor:GetAppColor.innovationGrey, borderBottomWidth:1.2},
 
-    renderMainView:{paddingHorizontal:AppUtil.getWP(2), paddingVertical:AppUtil.getHP(1.8), borderBottomWidth:0.5, borderBottomColor:GetAppColor.disableBorder,flexDirection:'row', flex: 1},
+    renderMainView:{paddingHorizontal:AppUtil.getWP(2), paddingVertical:AppUtil.getHP(3.8), borderBottomWidth:0.5, borderBottomColor:GetAppColor.disableBorder,flexDirection:'row', flex: 1},
     imgRenderImage:{width: AppUtil.getHP(7), height: AppUtil.getHP(7),borderRadius: 50 },
     imgRenderView:{borderRadius:AppUtil.getHP(3.5),width: AppUtil.getHP(7), height: AppUtil.getHP(7),},
     notifDesc:{marginLeft:AppUtil.getHP(2.1), flex: 1},

@@ -151,6 +151,7 @@ const ChallengesListScreen = (props) => {
         <NavigationContainer independent={true}>
           <Tab.Navigator
             initialRouteName={tab == 0 ? Label.Open : tab == 1 ? Label.Upcoming : tab == 2 ? Label.Closed : Label.Voting}
+            swipeEnabled={false}
             screenOptions={{
               tabBarLabelStyle: ListStyle.tabHeader,
               tabBarItemStyle: ListStyle.tabBarItem,

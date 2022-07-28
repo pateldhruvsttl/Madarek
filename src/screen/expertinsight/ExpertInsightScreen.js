@@ -83,6 +83,7 @@ const ExpertInsightScreen = (props) => {
       />
       <View style={[ExpertInsightStyle.MainView, { height: "95%" }]}>
         <Tab.Navigator
+           swipeEnabled={false}
           screenOptions={{
             tabBarLabelStyle: ExpertInsightStyle.tabHeader,
             tabBarItemStyle: ExpertInsightStyle.tabBarItem,

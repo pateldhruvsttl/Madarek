@@ -163,11 +163,13 @@ const IdeasListScreen = (props) => {
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
                     <Tab.Navigator initialRouteName={tab == 0 ? Label.All : tab == 1 ? Label.Latest : tab == 2 ? Label.Popular : Label.Winning}
+                        swipeEnabled={false}
                         screenOptions={{
                             tabBarLabelStyle: Style.tabHeader,
                             tabBarItemStyle: Style.tabBarItem,
                             tabBarIndicatorStyle: Style.itemBorder,
                             tabBarScrollEnabled: true
+                            
                         }}>
                         <Tab.Screen listeners={{ tabPress: e => { onIdeas('all') } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
                         <Tab.Screen listeners={{ tabPress: e => { onIdeas('latest') } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
