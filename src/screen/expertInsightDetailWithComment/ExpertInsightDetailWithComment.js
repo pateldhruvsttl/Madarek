@@ -37,6 +37,8 @@ import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import ExpertInsightDetail from "../../model/ExpertInsightDetail";
 import { Loger } from "../../utils/Loger";
+import WebViewComp from "../../component/webview/WebViewComp";
+import { GetAppColor } from "../../utils/Colors";
 
 const ExpertInsightDetailWithComment = (props) => {
   const navigation = useNavigation();
@@ -265,9 +267,11 @@ const ExpertInsightDetailWithComment = (props) => {
           <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
             {props.ideaTitle}
           </Text>
-          <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}>
-            {props.ideaDescription}
-          </Text>
+          {/* <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}> */}
+          <View>
+          <WebViewComp data={props.ideaDescription} backgroundColor={GetAppColor.lightGrey}/>
+          </View>
+          {/* </Text> */}
 
           {/* <View style={ExpertInsightDetailStyle.calView}>
             <IcnWatchDone

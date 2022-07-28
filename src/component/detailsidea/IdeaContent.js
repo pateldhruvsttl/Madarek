@@ -24,10 +24,11 @@ import { UserManager } from "../../manager/UserManager";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
+import WebViewComp from "../webview/WebViewComp";
 
 const IdeaContent = (props) => {
-  
-    const [isFavorite,setFavorite] = useState(props.data.favorite)
+
+    const [isFavorite, setFavorite] = useState(props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
     const onIdeaContentChanges = (id) => {
@@ -46,7 +47,7 @@ const IdeaContent = (props) => {
             Loger.onLog("err of likeUnlike", err)
         })
     }
-    
+
 
     const Bold = ({ children }) => (
         <Text
@@ -70,7 +71,7 @@ const IdeaContent = (props) => {
                 },
             ]}
         >
-            
+
             <View style={Style.headerAcademyTitle}>
                 <Text
                     style={[Style.academyTitle,
@@ -79,7 +80,7 @@ const IdeaContent = (props) => {
                     },
                     ]}
                 >
-                   { props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaTitle}
+                    {props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaTitle}
                 </Text>
             </View>
 
@@ -161,7 +162,7 @@ const IdeaContent = (props) => {
                 )}
 
                 <View style={Style.winningIcnContainerRight}>
-                {/* <View style={Style.secondInnerCalView}>
+                    {/* <View style={Style.secondInnerCalView}>
                         <IcnWatchDone height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
                             {props.data?.toatal_view_contest}
@@ -267,6 +268,18 @@ const IdeaContent = (props) => {
                     )}
                 </View>
             )}
+            {
+                props.isType == "ChallengeDetail" &&
+                <View style={Style.contentBoxChallenge} >
+                    <Text style={Style.heading}>{Label.Description}</Text>
+                    <WebViewComp data={props.data.contestDescription} />
+
+
+                    <Text style={Style.termsAndConTitle}>
+                        {Label.TermsAndCondition}
+                    </Text>
+                </View>
+            }
         </View>
     );
 };

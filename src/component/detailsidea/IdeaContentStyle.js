@@ -157,6 +157,27 @@ const IdeaContentStyle = StyleSheet.create({
         marginStart: AppUtil.getHP(1),
         // right:5
     },
+    termsAndConTitle: {
+        color: GetAppColor.grayBorder,
+        fontFamily: FONTS.robotMedium,
+        fontSize: AppUtil.getHP(1.7),
+        textAlign: 'left',
+        marginTop: AppUtil.getHP(2),
+    },
+    heading: {
+        color: GetAppColor.pincolor,
+        fontFamily: FONTS.robotBold,
+        fontSize: AppUtil.getHP(2.2),
+        textAlign: 'left',
+        marginBottom: AppUtil.getHP(1),
+    },
+    contentBoxChallenge: {
+        width: '100%',
+        paddingHorizontal: AppUtil.getWP(5),
+        marginBottom: AppUtil.getHP(1),
+        backgroundColor: GetAppColor.white,
+        marginTop: AppUtil.getHP(2),
+    },
 })
 
 export default IdeaContentStyle;
