@@ -145,7 +145,7 @@ const IdeaDetails = (props) => {
                 {/* <VideoPlayer path={item?.ideaVideo} /> */}
               </View>:null}
 
-            {item?.resources && <Resources resource={item?.resources} />}
+            {item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
             {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
 
