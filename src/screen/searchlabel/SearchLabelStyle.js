@@ -23,6 +23,7 @@ const Style = StyleSheet.create({
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(2.1),
         width:'70%', 
+        color:GetAppColor.black
     },
     searchBtnStyle:{width:'20%'},
     rightSingleIcnView: { alignItems: 'flex-end', flexDirection:'row' },

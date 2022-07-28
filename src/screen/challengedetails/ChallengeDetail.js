@@ -104,8 +104,8 @@ const ChallengeDetail = (props) => {
         <CommonHeader isType={title} />
         <ScrollView style={PAGESTYLE.MainView}>
           <View style={PAGESTYLE.subMainView}>
-            <IdeaSlider Entries={testData} />
-            {contestData && <IdeaContent data={contestData} isType={title} />}
+            {/* <IdeaSlider Entries={testData} />
+            {contestData && <IdeaContent data={contestData} isType={title} />} */}
 
             <View style={PAGESTYLE.MainView}>
               <ScrollView>

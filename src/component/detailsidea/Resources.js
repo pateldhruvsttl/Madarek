@@ -106,7 +106,7 @@ const Resources = (props) => {
                     return (
                         <View style={ResourcesStyle.resourceContainer}>
                             <View style={ResourcesStyle.resourceSubTitle}>
-                                <Text style={ResourcesStyle.resourceTitle}>{AppUtil.GetImageNameFromUrl(item.url)}</Text>
+                                <Text numberOfLines={1} style={ResourcesStyle.resourceTitle}>{AppUtil.GetImageNameFromUrl(item.url)}</Text>
                             </View>
                             <TouchableOpacity style={ResourcesStyle.downloadIcon} onPress={() => onDownloadFile(item, index)}>
                                 {!item.dowbloading ?

@@ -3,7 +3,7 @@ export const AppConfig = {
     imageBaseURL : "http://madarekdev.silvertouch-staging.com/webroot/Default/assets/front/",
     token: '',
     lang: 'ar',
-    pageLimit:'20',
+    pageLimit:'100',
 }
 
 

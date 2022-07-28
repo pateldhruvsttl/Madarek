@@ -52,9 +52,10 @@ const IdeaContentStyle = StyleSheet.create({
     },
 
     resourceTitle: {
+        width:'90%',
         fontSize: AppUtil.getHP(1.7),
         color: GetAppColor.pincolor,
-        fontFamily: FONTS.robotRegular
+        fontFamily: FONTS.robotRegular,
     },
     icnDocument :{
         marginEnd:AppUtil.getWP(1.5)

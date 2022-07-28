@@ -88,7 +88,7 @@ const SubIdeasListWithImage = (props) => {
                                 <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
 
                                 <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.firstName + " " + item.lastName}</Text>
+                                <Text style={Style.title}>{(item.firstName + " " + item.lastName).slice(0,15)}...</Text>
                             </View>
 
                             :

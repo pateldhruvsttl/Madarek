@@ -21,19 +21,19 @@ import moment from "moment";
 import { GetAppColor } from "../../utils/Colors";
 
 const SubIdeasList = (props) => {
-  
+
   const likeUnlikeRender = (id) => {
 
     if (props?.isType == "Ideas") {
-        props.likeIdea(id);
+      props.likeIdea(id);
     }
     else if (props?.isType == "Challenges") {
-        props.likeChallenge(id);
+      props.likeChallenge(id);
     }
     else {
-        props.likeSpotLight(id)
+      props.likeSpotLight(id)
     }
-}
+  }
   const renderItem = ({ item }) => (
     <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress(item)}>
 
@@ -42,15 +42,15 @@ const SubIdeasList = (props) => {
         <View style={Style.TitleView}>
           <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
           {
-                    item?.like ?
-                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
-                            <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        </TouchableOpacity>
-                        :
-                        <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
-                            <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                        </TouchableOpacity>
-                }
+            item?.like ?
+              <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+                <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+              </TouchableOpacity>
+              :
+              <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+              </TouchableOpacity>
+          }
         </View>
 
         <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.categoryName}</Text>
@@ -76,10 +76,13 @@ const SubIdeasList = (props) => {
         <View style={Style.icnView}>
 
           <View style={Style.rowLeftView}>
-            <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-            <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-            <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-            <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
+
+            {item.trophy && <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+            {item.starred && <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+            {item.topRate && <IcnRewordComment style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+            {item.insight && <IcnRewordLight style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
+
+
           </View>
 
           <View style={Style.rowRightView}>
@@ -95,9 +98,6 @@ const SubIdeasList = (props) => {
               <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
               <Text style={Style.title}>{item.totalComment}</Text>
             </View>
-            <TouchableOpacity style={Style.secondInnerCalView}>
-              {/* <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} /> */}
-            </TouchableOpacity>
           </View>
 
         </View>

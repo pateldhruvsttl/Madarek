@@ -11,7 +11,7 @@ const ListStyle = StyleSheet.create({
     tabBarItem: { width: 100 },
     itemBorder: { backgroundColor: GetAppColor.innovationGrey },
 
-    txtNodata:{position:'absolute', alignSelf:'center', top: AppUtil.getHP(25)},
+    txtNodata:{position:'absolute', alignSelf:'center', top: AppUtil.getHP(25), color:GetAppColor.black},
 
 });
 
