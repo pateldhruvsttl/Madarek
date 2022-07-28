@@ -139,6 +139,8 @@ const IdeaDetails = (props) => {
 
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
+            <Text style={IdeaStyle.heading}>{Label.Video}</Text>
+
                 <VideosPlayer path={item?.ideaVideo}/>
                 {/* <VideoPlayer path={item?.ideaVideo} /> */}
               </View>:null}
