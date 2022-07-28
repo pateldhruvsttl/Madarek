@@ -117,11 +117,11 @@ const IdeaDetails = (props) => {
         <ScrollView>
 
           <View style={IdeaStyle.container}>
-            {item?.additionalImages ?
+            {item?.additionalImages.length > 0 ?
               <IdeaSlider Entries={item?.additionalImages} />
               :
               <View style={IdeaStyle.imgStyle}>
-                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.userPhoto }}  />
+                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.ideaImage }}  />
               </View>
             }
 

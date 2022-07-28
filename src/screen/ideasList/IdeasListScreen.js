@@ -21,7 +21,7 @@ import { UserManager } from "../../manager/UserManager";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
-   
+
     const [allIdeaArr, setaAllIdeaArr] = useState([]);
     const [newIdeaArr, setNewIdeaArr] = useState([]);
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
@@ -30,10 +30,16 @@ const IdeasListScreen = (props) => {
 
     const tab = props.route.params;
     useEffect(() => {
-        onIdeas('all');
-        onIdeas('latest');
-        onIdeas('popular');
-        onIdeas('winning');
+        if (tab === undefined || tab === 0)
+            onIdeas('all');
+        else if (tab === 1)
+            onIdeas('latest');
+        else if (tab === 2)
+            onIdeas('popular');
+        else if (tab === 3)
+            onIdeas('winning');
+        else
+            onIdeas('all');
     }, []);
 
 
@@ -46,6 +52,10 @@ const IdeasListScreen = (props) => {
             listtype: tabType,
             language: AppConfig.lang
         }
+        // setaAllIdeaArr([]);
+        // setNewIdeaArr([]);
+        // setPopularIdeaArr([]);
+        // setWinningIdeaArr([]);
 
         Service.post(EndPoints.ideaList, data, (res) => {
 
@@ -94,7 +104,7 @@ const IdeasListScreen = (props) => {
             "field_name": "idea_id",
             "id": id,
             "frontuser_id": UserManager.userId,
-            "model": 'FavoriteIdeas'
+            "model": 'FavoriteIdeas',
         }
 
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
@@ -144,27 +154,26 @@ const IdeasListScreen = (props) => {
     }
 
     const navigateDetail = (item) => {
-        props.navigation.navigate('IdeaDetails',item)
+        props.navigation.navigate('IdeaDetails', item)
     }
-    
+
     return (
         <SafeAreaView style={Style.container}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
                 <NavigationContainer independent={true}>
-                    <Tab.Navigator 
-                    initialRouteName={tab==0?Label.All:tab==1?Label.Latest:tab==2?Label.Popular:Label.Winning}
-                    screenOptions={{
-                        tabBarLabelStyle: Style.tabHeader,
-                        tabBarItemStyle: Style.tabBarItem,
-                        tabBarIndicatorStyle: Style.itemBorder,
-                        tabBarScrollEnabled: true
-                    }}>
-                        <Tab.Screen name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail}} />}  />
-                        <Tab.Screen name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr,likeIdea: likeIdea, navigateDetail:navigateDetail }} />}/>
-                        <Tab.Screen name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
-                        <Tab.Screen name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail:navigateDetail }} />} />
-                  
+                    <Tab.Navigator initialRouteName={tab == 0 ? Label.All : tab == 1 ? Label.Latest : tab == 2 ? Label.Popular : Label.Winning}
+                        screenOptions={{
+                            tabBarLabelStyle: Style.tabHeader,
+                            tabBarItemStyle: Style.tabBarItem,
+                            tabBarIndicatorStyle: Style.itemBorder,
+                            tabBarScrollEnabled: true
+                        }}>
+                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('all') } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('latest') } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('popular') } }} name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('winning') } }} name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>

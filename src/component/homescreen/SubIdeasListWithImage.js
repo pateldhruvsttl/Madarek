@@ -109,7 +109,8 @@ const SubIdeasListWithImage = (props) => {
                                 </View>
 
                     }
-                    {props?.isType != "Spotlight" ?
+                    {
+                        props?.isType != "Spotlight" &&
                         <View style={Style.secondCalView}>
                             <View style={Style.secondInnerCalView}>
                                 <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -123,10 +124,8 @@ const SubIdeasListWithImage = (props) => {
                                 <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                 <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
                             </View>
-                            {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
-                                <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                            </TouchableOpacity> */}
-                        </View> : null
+
+                        </View>
                     }
 
                 </View>
@@ -135,6 +134,11 @@ const SubIdeasListWithImage = (props) => {
         )
     };
 
+    const onGetPaginations =()=>{
+
+        if(props?.data?.length > 19)
+            Loger.onLog("","-------------------->")
+    }
 
     return (
         <View style={Style.MainView}>
@@ -154,7 +158,7 @@ const SubIdeasListWithImage = (props) => {
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderIdeaItem}
                 keyExtractor={item => item.id}
-
+                onScrollEndDrag={isLast=> onGetPaginations()}
 
             />
             {
