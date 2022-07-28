@@ -52,9 +52,10 @@ const IdeaStyle = StyleSheet.create({
 
     },
     videoPlay: {
-        width: '100%', height: AppUtil.getHP(35),
+        width: '100%', height: AppUtil.getHP(30),
         paddingHorizontal: AppUtil.getWP(5),
-        marginBottom: AppUtil.getHP(1)
+        // marginBottom: AppUtil.getHP(1),
+        marginTop: AppUtil.getHP(1),
     },
 
     img: { width: '100%', height: AppUtil.getHP(32),},
