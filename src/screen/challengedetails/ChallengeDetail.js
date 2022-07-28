@@ -21,6 +21,8 @@ import { Loger } from "../../utils/Loger";
 import OpenChallengeDetail from "../../model/OpenChallengeDetail";
 import { showMessage } from "../../utils/Constant";
 import IdeasListScreen from "../ideasList/IdeasListScreen";
+import { PixelRatio } from "react-native";
+import WebViewComp from "../../component/webview/WebViewComp";
 
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
@@ -95,37 +97,44 @@ const ChallengeDetail = (props) => {
       }
     );
   }
-  // console.log('detailData.contestDetail.total_expert_insight', detailData.contestDetail.contest_description);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <CommonHeader isType={title} />
-
-      <View style={PAGESTYLE.MainView}>
-        <ScrollView>
+    <>
+      <SafeAreaView style={{ flex: 1 }}>
+        <CommonHeader isType={title} />
+        <ScrollView style={PAGESTYLE.MainView}>
           <View style={PAGESTYLE.subMainView}>
             <IdeaSlider Entries={testData} />
-            {contestData && <IdeaContent data={contestData} isType={title} params={data} />}
+            {contestData && <IdeaContent data={contestData} isType={title} />}
 
-            <View style={PAGESTYLE.contentBoxChallenge}>
-              <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
-              <Text style={PAGESTYLE.descriptionContent}>
-                {contestData && contestData.contestDescription}
-              </Text>
-              <Text style={PAGESTYLE.termsAndConTitle}>
-                {Label.TermsAndCondition}
-              </Text>
-            </View>
+            <View style={PAGESTYLE.MainView}>
+              <ScrollView>
+                <View style={PAGESTYLE.subMainView}>
+                  <IdeaSlider Entries={testData} />
+                  {contestData && <IdeaContent data={contestData} isType={title} params={data} />}
+                  {/* <View style={PAGESTYLE.contentBoxChallenge} >
+                <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
+                <WebViewComp data={contestData.contestDescription} />
+                <Text style={PAGESTYLE.termsAndConTitle}>
+                  {Label.TermsAndCondition}
+                </Text>
+              </View> */}
 
-            <CategoryChallenge isType={title} data={contestData}  evedata={evaluationData}  similardata ={similarData} />
-            {contestData && <SubInformation data={contestData} />}
+                  <CategoryChallenge isType={title} data={contestData} evedata={evaluationData} similardata={similarData} />
+                  {contestData && <SubInformation data={contestData} />}
 
-            {similarData && similarData.length > 0 &&
-              <View style={PAGESTYLE.subIdeaList}>
-                <SubParticipateIdeas data={similarData.slice(0, 2)} />
-              </View>
-            }
-            {/* <View style={PAGESTYLE.loadMoreView}>
+                  {similarData && similarData.length > 0 &&
+                    <View style={PAGESTYLE.subIdeaList}>
+                      <SubParticipateIdeas data={similarData.slice(0, 2)} />
+                    </View>
+                  }
+                  {/* <View style={PAGESTYLE.loadMoreView}>
+              {similarData && similarData.length > 0 &&
+                <View style={PAGESTYLE.subIdeaList}>
+                  <SubParticipateIdeas data={similarData.slice(0, 2)} />
+                </View>
+              }
+              {/* <View style={PAGESTYLE.loadMoreView}>
               <TouchableOpacity style={PAGESTYLE.loadingMore}>
                 <View style={PAGESTYLE.spacing}>
                   <IcnLoadMore
@@ -138,15 +147,17 @@ const ChallengeDetail = (props) => {
             </View> */}
 
 
-            {resourceData && resourceData.length > 0 &&
-              <ResourceChallenge resource={resourceData} isType={title} />}
-            {evaluationData && evaluationData.length > 0 &&
-              <UserProfileList profileData={evaluationData} isType={title} />}
-
+                  {resourceData && resourceData.length > 0 &&
+                    <ResourceChallenge resource={resourceData} isType={title} />}
+                  {evaluationData && evaluationData.length > 0 &&
+                    <UserProfileList profileData={evaluationData} isType={title} />}
+                </View>
+              </ScrollView>
+            </View>
           </View>
         </ScrollView>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </>
   );
 };
 
