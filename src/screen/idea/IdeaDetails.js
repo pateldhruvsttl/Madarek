@@ -26,6 +26,7 @@ import { AppConfig } from '../../manager/AppConfig';
 import DeviceInfo from "react-native-device-info";
 import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
+import WebViewComp from '../../component/webview/WebViewComp';
 
 const IdeaDetails = (props) => {
 
@@ -129,7 +130,8 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.contentBox}>
               <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
-              <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text>
+              {/* <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text> */}
+              <WebViewComp data={item?.ideaDescription} />
             </View>
 
             {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
