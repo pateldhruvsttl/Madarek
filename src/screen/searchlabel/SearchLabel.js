@@ -40,6 +40,7 @@ import IdeaListModel from '../../model/IdeaList'
 
 import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithImage";
 import OpenChallengeModel from '../../model/OpenChallengesModel'
+import SimilarExperts from '../../component/expertscreen/SimilarExperts'
 
 
 const SearchLabel = (props) => {
@@ -90,13 +91,14 @@ const SearchLabel = (props) => {
     }
 
     const onPressSearchButton = () => {
-        if (isCurrentScreen === "HomeScreen") {
+
+        if (isSelectIndex === 0) {
             onGetIdeasList();
         }
-        else if (isCurrentScreen === "CHALLENGE") {
+        else if (isSelectIndex === 1) {
             onGetChallengeList();
         }
-        else if (isCurrentScreen === "EXPERT DIRECTORY") {
+        else if (isSelectIndex === 2) {
             onGetExpertDirectory();
         }
     }
@@ -107,7 +109,7 @@ const SearchLabel = (props) => {
 
         const data = {
             "frontuser_id": UserManager.userId,
-            "limit": 2,
+            "limit": AppConfig.pageLimit,
             "language": AppConfig.lang,
             "listtype": "all",
             "searchkeywords": searchStr,
@@ -125,12 +127,22 @@ const SearchLabel = (props) => {
             Loger.onLog("err", err)
         })
     }
-    
+
     const onGetChallengeList = () => {
         if (searchStr.length == 0)
             return
 
-        Service.get(EndPoints.openChallenges, (res) => {
+        let data = {
+            "frontuser_id": UserManager.userId,
+            "searchkeywords": searchStr,
+            "limit": AppConfig.pageLimit,
+            "keywords": "",
+            "categories": "",
+            "statusinputdata": "",
+            "layout": "list",
+        }
+
+        Service.post(EndPoints.openChallenges, data, (res) => {
 
             let _isAllIdeas = [];
             res.data.forEach(element => {
@@ -143,11 +155,11 @@ const SearchLabel = (props) => {
             Loger.onLog("###", err)
         })
     }
-    
+
     const onGetExpertDirectory = () => {
         if (searchStr.length == 0)
             return
-            
+
         // Service.get(EndPoints.openChallenges, (res) => {
 
         //     let _isAllIdeas = [];
@@ -205,7 +217,8 @@ const SearchLabel = (props) => {
     }
     const renderExpertDirectory = () => {
         return (
-            <SimilarExperts data={isData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"} />
+            null
+            // <SimilarExperts data={isData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"} />
         )
 
     }
@@ -257,13 +270,9 @@ const SearchLabel = (props) => {
                         })
                     }
                 </ScrollView>
-
-                {renderResultCell()}
-                {/* <FlatList
-                    data={isData}
-                    renderItem={renderResultCell}
-                /> */}
-
+                <ScrollView contentContainerStyle={{width:'100%', paddingBottom:'50%'}} horizontal={false}>
+                    {renderResultCell()}
+                </ScrollView>
             </View>
 
 

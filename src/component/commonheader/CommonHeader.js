@@ -67,7 +67,7 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel",{screen:"HomeScreen"})}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
