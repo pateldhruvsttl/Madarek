@@ -28,7 +28,6 @@ const ExpertInsightScreen = (props) => {
   useEffect(() => {
     expertList();
   }, [])
-  console.log('ideas---------->', contestData);
   const expertList = () => {
     const data = {
       "device_id": deviceId,
@@ -42,7 +41,7 @@ const ExpertInsightScreen = (props) => {
 
     }
     Service.post(EndPoints.expertInsightsList, data, (res) => {
-      Loger.onLog('response of expertInsightList', res.data)
+      
       const ideas = []
       const contest = []
       const general = []

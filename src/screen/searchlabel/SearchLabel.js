@@ -201,7 +201,7 @@ const SearchLabel = (props) => {
                 data={isData}
                 isType={"Ideas"}
                 likeChallenge={(id) => likeChallenge(id)}
-                onItemPress={(item) => { navigation.navigate("IdeaDetails", item) }} />
+                onItemPress={(item) => { props.navigation.navigate("IdeaDetails", item) }} />
         )
     }
     const renderChallenge = () => {
@@ -210,7 +210,7 @@ const SearchLabel = (props) => {
                 data={isData}
                 isType={"Challenges"}
                 likeChallenge={(id) => likeChallenge(id)}
-                onItemPress={(item) => { props.navigation.navigate("ChallengeDetail", item) }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", {id:id}) }}
             />
         )
 

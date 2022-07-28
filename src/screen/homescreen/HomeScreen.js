@@ -74,7 +74,7 @@ const HomeScreen = (props) => {
       categories: "",
       statusinputdata: "",
       layout: "list",
-      limit: 2,
+      limit: AppConfig.pageLimit,
     };
     Service.post(
       EndPoints.openChallenges,
@@ -254,8 +254,8 @@ const HomeScreen = (props) => {
                   setModalVisible(true);
                 }}
                 onSeeMorePress={() => { }} //props.navigation.navigate("ChallengesListScreen")
-                onItemPress={(item) => {
-                  props.navigation.navigate("ChallengeDetail", item);
+                onItemPress={(id) => {
+                  props.navigation.navigate("ChallengeDetail", {id:id});
                 }}
               />
             </View>

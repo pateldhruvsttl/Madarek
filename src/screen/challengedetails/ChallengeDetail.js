@@ -26,7 +26,6 @@ import WebViewComp from "../../component/webview/WebViewComp";
 
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
-  const id = props.route.params.id;
   const [contestData, setContestData] = useState({})
   const [similarData, setSimilarData] = useState([])
   const [evaluationData, setEvaluationData] = useState([])
@@ -34,19 +33,17 @@ const ChallengeDetail = (props) => {
   const [resourceData, setResourceData] = useState([])
   const [participateData, setParticipateData] = useState([])  
 
+ 
   useEffect(() => {
-    challengeDetail();
+    challengeDetail(props?.route?.params?.id);
   }, []);
 
-  const challengeDetail = () => {
+  const challengeDetail = (id) => {
     const data = {
       frontuser_id: UserManager.userId,
       contest_id: id,
     };
-    Service.post(
-      EndPoints.challengedetails, data,
-      (res) => {
-        Loger.onLog("response of challange detail", res.data);
+    Service.post( EndPoints.challengedetails, data,(res) => {
 
         const similarRow = []
         const contestData = res.data.contestDetail
@@ -59,25 +56,25 @@ const ChallengeDetail = (props) => {
           let contestModel = new OpenChallengeDetail(contestData)
           setContestData(contestModel)
 
-          res.data.similarrow.map((ele) => {
+          res?.data?.similarrow?.map((ele) => {
             let similarModel = new OpenChallengeDetail(ele)
             similarRow.push(similarModel)
             setSimilarData(similarRow)
           })
 
-          res.data.evaluationPannel.map((ele) => {
+          res?.data?.evaluationPannel?.map((ele) => {
             let evaluationModel = new OpenChallengeDetail(ele)
             evaluationPannel.push(evaluationModel)
             setEvaluationData(evaluationPannel)
           })
 
-          res.data.resources.map((ele) => {
+          res?.data?.resources?.map((ele) => {
             let resourcesModel = new OpenChallengeDetail(ele)
             resources.push(resourcesModel)
             setResourceData(resources)
           })
 
-          res.data.participaterowsData.map((ele) => {
+          res?.data?.participaterowsData?.map((ele) => {
             let participate = new OpenChallengeDetail(ele)
             participateRowsData.push(participate)
             setParticipateData(participateRowsData)
@@ -120,7 +117,7 @@ const ChallengeDetail = (props) => {
 
               {participateData && participateData.length > 0 &&
                 <View style={PAGESTYLE.subIdeaList}>
-                  <SubParticipateIdeas data={participateData.slice(0, 2)} isType={title}/>
+                  <SubParticipateIdeas data={participateData} isType={title}/>
                 </View>
               }
               {/* <View style={PAGESTYLE.loadMoreView}>

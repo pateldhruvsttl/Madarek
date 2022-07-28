@@ -21,6 +21,7 @@ import OpenChallenge from "../../model/OpenChallengesModel";
 import IdeasFilter from "../../component/filter/IdeasFilter";
 import { UserManager } from "../../manager/UserManager";
 import { Loger } from "../../utils/Loger";
+import { AppConfig } from "../../manager/AppConfig";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -44,7 +45,7 @@ const ChallengesListScreen = (props) => {
       categories: "",
       statusinputdata: "",
       layout: "list",
-      limit: 10,
+      limit: AppConfig.pageLimit,
     };
     Service.post(
       EndPoints.openChallenges,
@@ -92,7 +93,6 @@ const ChallengesListScreen = (props) => {
     }
 
     Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
-      Loger.onLog('res of challengeLikeUnlike', res)
       const likeDislike = res?.data === 'dislike' ? false : true;
       let newOpenChallenge = [];
       newOpenChallenge = openChallenge;
@@ -165,10 +165,7 @@ const ChallengesListScreen = (props) => {
                   <ViewMoreChallenges
                     propName={{ type: "OpenChallenge", data: openChallenge }}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", { id: item.id })
-                    }
-
+                    navigateDetail={(id) => props.navigation.navigate("ChallengeDetail", { id: id })}
                   />
                   :
                   <Text style={ListStyle.txtNodata}>No data found</Text>
@@ -196,10 +193,7 @@ const ChallengesListScreen = (props) => {
                   <ViewMoreChallenges
                     propName={{ type: "ClosedChallenge", data: closeChallenge }}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(item) => {
-                      console.log("plk", item)
-                      props.navigation.navigate("ChallengeDetail", { id: item })
-                    }}
+                    navigateDetail={(id) => {props.navigation.navigate("ChallengeDetail", { id: id })}}
                   /> :
                   <Text style={ListStyle.txtNodata}>No data found</Text>
               )}
