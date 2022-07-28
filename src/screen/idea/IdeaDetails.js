@@ -27,6 +27,7 @@ import DeviceInfo from "react-native-device-info";
 import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
 import WebViewComp from '../../component/webview/WebViewComp';
+import VideosPlayer from '../videoplayer/VideosPlayer';
 
 const IdeaDetails = (props) => {
 
@@ -138,7 +139,8 @@ const IdeaDetails = (props) => {
 
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
-                <VideoPlayer path={item?.ideaVideo} />
+                <VideosPlayer path={item?.ideaVideo}/>
+                {/* <VideoPlayer path={item?.ideaVideo} /> */}
               </View>:null}
 
             {item?.resources && <Resources resource={item?.resources} />}

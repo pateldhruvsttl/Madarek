@@ -9,7 +9,7 @@ const SubInformation = (props) => {
 
             <View style={STYLE.container}>
                 <Text style={STYLE.objectiveTxt}>{Label.Objective}</Text>
-                <Text style={STYLE.subObjectiveTxt}>{""}</Text>
+                <Text style={STYLE.subObjectiveTxt}>{props?.data.objective}</Text>
             </View>
 
             <View style={[STYLE.container, STYLE.spacing]}>
@@ -54,7 +54,7 @@ const SubInformation = (props) => {
 
             <View style={STYLE.spacing}>
                 <Text style={STYLE.objectiveTxt}>{Label.VotingMechanisam}</Text>
-                <Text style={STYLE.subObjectiveTxt}>{props.data.votingMechanism}</Text>
+                <Text style={STYLE.subObjectiveTxt}>{`${props.data.votingMechanism}${props.data.mixVoting}`}</Text>
             </View>
 
         </View>
@@ -63,14 +63,3 @@ const SubInformation = (props) => {
 
 export default SubInformation
 
-const data = {
-    objective: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    participateType: "Business Owner",
-    rewards: "2 Lakh",
-    announcement: "02 March 2022",
-    openforSubmission: "03 March 2022",
-    closeforSubmission: " 23 March 2022",
-    publicEvaluation: "24 March 2022",
-    awardAnnouncement: "25 March 2022",
-    votingMechanisam: "Public"
-}

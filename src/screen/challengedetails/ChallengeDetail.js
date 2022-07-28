@@ -27,17 +27,12 @@ import WebViewComp from "../../component/webview/WebViewComp";
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
   const id = props.route.params.id;
-  const data = props.route.params;
-  //  Loger.onLog('id of challengeDetail', id);
   const [contestData, setContestData] = useState({})
   const [similarData, setSimilarData] = useState([])
   const [evaluationData, setEvaluationData] = useState([])
   const [rowData, setRowData] = useState()
-  const [rowCount, setRowCount] = useState()
-  console.log("evaluationData", evaluationData);
-  console.log("similarData", similarData);
-
   const [resourceData, setResourceData] = useState([])
+  const [participateData, setParticipateData] = useState([])  
 
   useEffect(() => {
     challengeDetail();
@@ -57,8 +52,8 @@ const ChallengeDetail = (props) => {
         const contestData = res.data.contestDetail
         const evaluationPannel = []
         const resources = []
-        const rowcount = res.data.participateRowsCount
         const termsRow = res.data.termsrow
+        const participateRowsData = []
 
         if (res.statusCode) {
           let contestModel = new OpenChallengeDetail(contestData)
@@ -82,8 +77,12 @@ const ChallengeDetail = (props) => {
             setResourceData(resources)
           })
 
-
-
+          res.data.participaterowsData.map((ele) => {
+            let participate = new OpenChallengeDetail(ele)
+            participateRowsData.push(participate)
+            setParticipateData(participateRowsData)
+          })
+          
           let termsModel = new OpenChallengeDetail(termsRow)
           setRowData(termsModel)
         }
@@ -103,16 +102,12 @@ const ChallengeDetail = (props) => {
       <SafeAreaView style={{ flex: 1 }}>
         <CommonHeader isType={title} />
         <ScrollView style={PAGESTYLE.MainView}>
-          <View style={PAGESTYLE.subMainView}>
-            {/* <IdeaSlider Entries={testData} />
-            {contestData && <IdeaContent data={contestData} isType={title} />} */}
+          <View>
+            <View style={PAGESTYLE.subMainView}>
+              <IdeaSlider Entries={testData} />
+              {contestData && <IdeaContent data={contestData} isType={title} />}
 
-            <View style={PAGESTYLE.MainView}>
-              <ScrollView>
-                <View style={PAGESTYLE.subMainView}>
-                  <IdeaSlider Entries={testData} />
-                  {contestData && <IdeaContent data={contestData} isType={title} params={data} />}
-                  {/* <View style={PAGESTYLE.contentBoxChallenge} >
+              {/* <View style={PAGESTYLE.contentBoxChallenge} >
                 <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
                 <WebViewComp data={contestData.contestDescription} />
                 <Text style={PAGESTYLE.termsAndConTitle}>
@@ -120,18 +115,12 @@ const ChallengeDetail = (props) => {
                 </Text>
               </View> */}
 
-                  <CategoryChallenge isType={title} data={contestData} evedata={evaluationData} similardata={similarData} />
-                  {contestData && <SubInformation data={contestData} />}
+              {contestData && <CategoryChallenge isType={title} data={contestData}/>}
+              {contestData && <SubInformation data={contestData} />}
 
-                  {similarData && similarData.length > 0 &&
-                    <View style={PAGESTYLE.subIdeaList}>
-                      <SubParticipateIdeas data={similarData.slice(0, 2)} />
-                    </View>
-                  }
-                  {/* <View style={PAGESTYLE.loadMoreView}>
-              {similarData && similarData.length > 0 &&
+              {participateData && participateData.length > 0 &&
                 <View style={PAGESTYLE.subIdeaList}>
-                  <SubParticipateIdeas data={similarData.slice(0, 2)} />
+                  <SubParticipateIdeas data={participateData.slice(0, 2)} isType={title}/>
                 </View>
               }
               {/* <View style={PAGESTYLE.loadMoreView}>
@@ -147,12 +136,11 @@ const ChallengeDetail = (props) => {
             </View> */}
 
 
-                  {resourceData && resourceData.length > 0 &&
-                    <ResourceChallenge resource={resourceData} isType={title} />}
-                  {evaluationData && evaluationData.length > 0 &&
-                    <UserProfileList profileData={evaluationData} isType={title} />}
-                </View>
-              </ScrollView>
+              {resourceData && resourceData.length > 0 &&
+                <ResourceChallenge resource={resourceData} isType={title} />}
+              {evaluationData && evaluationData.length > 0 &&
+                <UserProfileList profileData={evaluationData} isType={title} />}
+
             </View>
           </View>
         </ScrollView>

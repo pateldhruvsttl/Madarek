@@ -5,14 +5,8 @@ export default class OpenChallengeDetail {
         if (obj == null) {
             return;
         }
-
+        // contestDetail 
         this.id = obj?.id
-        // this.contestDetail = obj?.contestDetail || "No contestDetail"
-        // this.resources = obj?.resources || [];
-        // this.similarRow = obj.similarrow || []
-        // this.evaluationPannel = obj.evaluationPannel || []
-        // this.termsRow = obj.termsrow || ""
-
         this.contestTitle = obj?.contest_title || "No contest Title"
         this.contestImage = obj?.contest_image || "https://i.imgur.com/5tj6S7Ol.jpg"
         this.title = obj?.title || "No title"
@@ -27,7 +21,7 @@ export default class OpenChallengeDetail {
         this.totalExpertInsight = obj?.total_expert_insight || "0"
         this.contestDescription = obj?.contest_description &&  obj?.contest_description !== " " ? obj.contest_description : "No Description"
         this.participateRowsCount = obj?.participaterowsCount || "0"
-        this.evaluationPannel = obj?.evaluationPannel || "no data"
+        this.evaluationPannel = obj?.evaluationPannel || "0"
         this.participateMulti = obj?.who_should_participate_multi || "no type"
         this.reward = obj?.reward || "no reward"
         this.announcementDate = obj?.announcement || "18-07-2022"
@@ -36,8 +30,10 @@ export default class OpenChallengeDetail {
         this.publicEvaluation = obj?.public_evaluation || "18-07-2022"
         this.expertEvaluation = obj?.expert_evaluation || "18-07-2022"
         this.awardAnnouncement = obj?.award_announcement || "18-07-2022"
-        this.votingMechanism = obj?.voting_mechanism_new || ""
+        this.votingMechanism = obj?.voting_mechanism_new || "no data"
         this.mixVoting = obj?.mix_voting || ""
+        this.participantsCount = obj?.participantscount || "0"
+        this.objective = obj?.objective || "no objective"
         
         // similarrow
         this.madarekSpecial = obj?.madarek_special || ""
@@ -54,7 +50,14 @@ export default class OpenChallengeDetail {
         this.organization = obj?.organization_name || "No title"
         this.panelPhoto = obj?.user_photo || "No title"
 
-       
+        //participaterowsData
+        this.participateImage = obj?.idea_cover_image || "https://i.imgur.com/5tj6S7Ol.jpg"
+        this.participateTitle = obj?.idea_title || "No title"
+        this.participateDate = obj?.idea_participate_created || "01 July 2021"
+        this.participateBy = obj?.created_by || "No name"
+        this.totalScore = obj?.total_vote_data || "0"
+        this.rank = obj?.score || "0"
+        this.totalVote = obj?.total_vote || "0"
        
 
     }
