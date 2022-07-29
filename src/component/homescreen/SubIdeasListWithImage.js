@@ -22,6 +22,7 @@ import ImageLoad from "react-native-image-placeholder";
 import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
 import { EndPoints } from "../../service/EndPoints";
+import { AppConfig } from "../../manager/AppConfig";
 
 const SubIdeasListWithImage = (props) => {
 
@@ -39,7 +40,6 @@ const SubIdeasListWithImage = (props) => {
         }
     }
     const renderIdeaItem = ({ item }) => {
-        // Loger.onLog("item.favorite", item.id);
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
@@ -87,7 +87,7 @@ const SubIdeasListWithImage = (props) => {
                                 <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
 
                                 <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{(item.firstName + " " + item.lastName).slice(0,15)}...</Text>
+                                <Text style={Style.title}>{(item.firstName + " " + item.lastName).slice(0, 15)}...</Text>
                             </View>
 
                             :
@@ -133,10 +133,10 @@ const SubIdeasListWithImage = (props) => {
         )
     };
 
-    const onGetPaginations =()=>{
+    const onGetPaginations = () => {
 
-        if(props?.data?.length > 19)
-            Loger.onLog("","-------------------->")
+        if (props?.data?.length > (AppConfig.pageLimit-1) && props?.paginations)
+            props?.paginations()
     }
 
     return (
@@ -156,8 +156,9 @@ const SubIdeasListWithImage = (props) => {
                 data={props.data}
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderIdeaItem}
+                onEndReached={onGetPaginations}
+                key={(id)=> id}
                 keyExtractor={item => item.id}
-                onScrollEndDrag={isLast=> onGetPaginations()}
 
             />
             {

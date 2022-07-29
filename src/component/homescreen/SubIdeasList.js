@@ -19,6 +19,7 @@ import IcnMenu from "../../assets/svg/IcnMenuDote"
 import moment from "moment";
 
 import { GetAppColor } from "../../utils/Colors";
+import { AppConfig } from "../../manager/AppConfig";
 
 const SubIdeasList = (props) => {
 
@@ -34,6 +35,13 @@ const SubIdeasList = (props) => {
       props.likeSpotLight(id)
     }
   }
+
+  const onGetPaginations = () => {
+
+    if (props?.data?.length > (AppConfig.pageLimit-1) && props?.paginations)
+        props?.paginations()
+}
+
   const renderItem = ({ item }) => (
     <TouchableOpacity style={Style.renderMainView} onPress={() => props.onItemPress(item)}>
 
@@ -121,9 +129,10 @@ const SubIdeasList = (props) => {
       }
 
       <FlatList
-        data={props.data}
+        data={props?.data}
         scrollEnabled={props?.scrollEnabled ? true : false}
         renderItem={renderItem}
+        onEndReached={onGetPaginations}
         keyExtractor={item => item.id}
       />
       {

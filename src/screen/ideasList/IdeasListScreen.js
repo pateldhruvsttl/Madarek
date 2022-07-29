@@ -23,49 +23,64 @@ const Tab = createMaterialTopTabNavigator();
 const IdeasListScreen = (props) => {
 
     const [allIdeaArr, setaAllIdeaArr] = useState([]);
+    const [allIdeaArrPageNo, setAllIdeaArrPageNo] = useState(1);
+
     const [newIdeaArr, setNewIdeaArr] = useState([]);
+    const [newIdeaArrPageNo, setNewIdeaArrPageNo] = useState(1);
+
     const [popularIdeaArr, setPopularIdeaArr] = useState([]);
+    const [popularIdeaArrPageNo, setPopularIdeaArrPageNo] = useState(1);
+
     const [winningIdeaArr, setWinningIdeaArr] = useState([]);
+    const [winningIdeaArrPageNo, setWinningIdeaArrPageNo] = useState(1);
+
     const [isFilterVisible, setFilterVisible] = useState(false);
 
     const tab = props.route.params;
     useEffect(() => {
         if (tab === undefined || tab === 0)
-            onIdeas('all');
+            onIdeas('all', allIdeaArrPageNo);
         else if (tab === 1)
-            onIdeas('latest');
+            onIdeas('latest', newIdeaArrPageNo);
         else if (tab === 2)
-            onIdeas('popular');
+            onIdeas('popular', popularIdeaArrPageNo);
         else if (tab === 3)
-            onIdeas('winning');
+            onIdeas('winning', winningIdeaArrPageNo);
         else
-            onIdeas('all');
+            onIdeas('all', allIdeaArrPageNo);
     }, []);
 
 
-    const onIdeas = (tabType = "all") => {
+    const onIdeas = (tabType = "all", cpage = 1) => {
         const data = {
             frontuser_id: UserManager.userId,
             limit: AppConfig.pageLimit,
+            page: cpage,
             categories: "",
             sectors: "",
             listtype: tabType,
             language: AppConfig.lang
         }
-        // setaAllIdeaArr([]);
-        // setNewIdeaArr([]);
-        // setPopularIdeaArr([]);
-        // setWinningIdeaArr([]);
+
+        if (cpage == 1) {
+            setaAllIdeaArr([]);
+            setNewIdeaArr([]);
+            setPopularIdeaArr([]);
+            setWinningIdeaArr([]);
+        }
 
         Service.post(EndPoints.ideaList, data, (res) => {
-
             if (tabType === "all") {
                 const allIdeaArrTmp = []
                 res?.data?.allIdea.map((element) => {
                     let model = new IdeaList(element);
                     allIdeaArrTmp.push(model);
                 })
-                setaAllIdeaArr(allIdeaArrTmp)
+                if (cpage === 1)
+                    setaAllIdeaArr(allIdeaArrTmp)
+                else
+                    setaAllIdeaArr([...allIdeaArr, ...allIdeaArrTmp]);
+
 
             }
             else if (tabType === "latest") {
@@ -74,7 +89,10 @@ const IdeasListScreen = (props) => {
                     let model = new IdeaList(element);
                     newIdeaArrTmp.push(model);
                 });
-                setNewIdeaArr(newIdeaArrTmp)
+                if (cpage === 1)
+                    setNewIdeaArr(newIdeaArrTmp)
+                else
+                    setNewIdeaArr([...newIdeaArr, ...newIdeaArrTmp])
             }
             else if (tabType === "popular") {
                 const popularIdeaArrTmp = [];
@@ -82,7 +100,10 @@ const IdeasListScreen = (props) => {
                     let model = new IdeaList(element);
                     popularIdeaArrTmp.push(model);
                 });
-                setPopularIdeaArr(popularIdeaArrTmp);
+                if (cpage === 1)
+                    setPopularIdeaArr(popularIdeaArrTmp);
+                else
+                    setPopularIdeaArr([...popularIdeaArr, ...popularIdeaArrTmp]);
             }
             else if (tabType === "winning") {
                 const winningIdeaArrTmp = []
@@ -90,10 +111,11 @@ const IdeasListScreen = (props) => {
                     let model = new IdeaList(element);
                     winningIdeaArrTmp.push(model);
                 });
-                setWinningIdeaArr(winningIdeaArrTmp);
+                if (cpage === 1)
+                    setWinningIdeaArr(winningIdeaArrTmp);
+                else
+                    setWinningIdeaArr([...winningIdeaArr, ...winningIdeaArrTmp]);
             }
-
-
         }, (err) => {
             // Loger.onLog(" ideaList error ------->", err)
         })
@@ -157,6 +179,25 @@ const IdeasListScreen = (props) => {
         props.navigation.navigate('IdeaDetails', item)
     }
 
+    const paginations = (type) => {
+        if (type === "AllIdeas") {
+            setAllIdeaArrPageNo(allIdeaArrPageNo + 1)
+            onIdeas('all', allIdeaArrPageNo + 1);
+        }
+        else if (type === "LatestIdeas") {
+            setNewIdeaArrPageNo(newIdeaArrPageNo + 1)
+            onIdeas('latest', newIdeaArrPageNo + 1);
+        }
+        else if (type === "PopularIdeas") {
+            setPopularIdeaArrPageNo(popularIdeaArrPageNo + 1)
+            onIdeas('popular', popularIdeaArrPageNo + 1);
+        }
+        else if (type === "WinningIdeas") {
+            setWinningIdeaArrPageNo(winningIdeaArrPageNo + 1)
+            onIdeas('winning', winningIdeaArrPageNo + 1);
+        }
+    }
+
     return (
         <SafeAreaView style={Style.container}>
             <CommonHeader isType={"IdeasListScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
@@ -169,12 +210,11 @@ const IdeasListScreen = (props) => {
                             tabBarItemStyle: Style.tabBarItem,
                             tabBarIndicatorStyle: Style.itemBorder,
                             tabBarScrollEnabled: true
-                            
                         }}>
-                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('all') } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('latest') } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('popular') } }} name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { onIdeas('winning') } }} name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setAllIdeaArrPageNo(1), onIdeas('all', 1) } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("AllIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setNewIdeaArrPageNo(1), onIdeas('latest', 1) } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("LatestIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setPopularIdeaArrPageNo(1), onIdeas('popular', 1) } }} name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("PopularIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setWinningIdeaArrPageNo(1), onIdeas('winning', 1) } }} name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("WinningIdeas")} />} />
 
                     </Tab.Navigator>
                 </NavigationContainer>
