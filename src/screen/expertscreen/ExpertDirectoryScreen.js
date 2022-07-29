@@ -17,7 +17,7 @@ function ExpertDirectoryScreen(props) {
             <View style={Style.MainView}>
                 <SimilarExperts data={expertInsightsData} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} />
             </View>
-            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+            <IdeasFilter type="ExpertDirectory" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     )
 }

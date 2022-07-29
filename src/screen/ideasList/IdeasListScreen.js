@@ -179,7 +179,7 @@ const IdeasListScreen = (props) => {
                     </Tab.Navigator>
                 </NavigationContainer>
             </View>
-            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+            <IdeasFilter type="Ideas" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     );
 }

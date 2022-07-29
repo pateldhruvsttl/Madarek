@@ -220,6 +220,7 @@ const ChallengesListScreen = (props) => {
 
       <IdeasFilter
         visible={isFilterVisible}
+        type="Challange"
         onClose={() => setFilterVisible(!isFilterVisible)}
       />
     </SafeAreaView>
