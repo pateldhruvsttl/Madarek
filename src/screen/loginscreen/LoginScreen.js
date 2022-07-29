@@ -281,7 +281,8 @@ const LoginScreen = (props) => {
                                             ref={t1}
                                             returnKeyType={"next"}
                                             placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
+                                            onSubmitEditing={() => {t2.current.focus()}}
+                                            // onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
                                             maxLength={40}
                                             keyboardType="email-address"
                                             placeholder={Label.EmailAddress}
