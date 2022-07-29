@@ -19,6 +19,7 @@ import { EndPoints } from "../../service/EndPoints";
 function IdeasFilter(props) {
   const [selectedItemList, setSelectedItemList] = useState([]);
   const [selectedCatItemList, setSelectedCatItemList] = useState([]);
+  const [selectedSectorItemList, setSelectedSectorItemList] = useState([]);
   const [sectorsList, setSectorsList] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [selectorList, setSelectorList] = useState(0);
@@ -29,19 +30,24 @@ function IdeasFilter(props) {
   const [selectedCategoriesIndex, setSelectedCategoriesIndex] = useState(false);
 
   useEffect(() => {
-      
     let selectorList = sectorsList.filter((x) =>
       selectedItemList.includes(x.sector_name)
     );
     setSelectorList(selectorList.length);
+    let sect = [];
+    selectorList.forEach((element) => {
+      sect.push(element.id);
+    });
+    setSelectedSectorItemList(sect);
     let catSelectorList = categoriesList.filter((x) =>
       selectedItemList.includes(x.category_name)
     );
     setCatSelectorList(catSelectorList.length);
-    console.log('====================================');
-      console.log('list length of',selectorList.length,catSelectorList.length, selectedItemList);
-      console.log('====================================');
-
+    let cate = [];
+    catSelectorList.forEach((element) => {
+      cate.push(element.id);
+    });
+    setSelectedCatItemList(cate);
     let radioButtonValueSelection = selectedItemList.filter((x) =>
       sortByArr.includes(x)
     );
@@ -228,7 +234,7 @@ function IdeasFilter(props) {
         <View style={Style.MainView}>
           <View style={Style.headerView}>
             <Text style={Style.txtTitle}>{Label.Filter}</Text>
-            <TouchableOpacity onPress={() => props.onClose()}>
+            <TouchableOpacity onPress={() => props.onClose("", "", "")}>
               <IcnScreenClose
                 height={AppUtil.getHP(5)}
                 width={AppUtil.getHP(5)}
@@ -308,7 +314,16 @@ function IdeasFilter(props) {
             <View style={Style.bottomBlacker} />
           </ScrollView>
 
-          <TouchableOpacity style={Style.btnApply}>
+          <TouchableOpacity
+            onPress={() =>
+              props.onClose(
+                selectedCatItemList,
+                selectedSectorItemList,
+                selectedRadioButtonIndex
+              )
+            }
+            style={Style.btnApply}
+          >
             <Text style={Style.txtButton}>{"Apply Filter"}</Text>
           </TouchableOpacity>
         </View>
@@ -323,8 +338,8 @@ const sortByArr = [
   "Default",
   "Name(A-Z)",
   "Name(Z-A)",
-  "Rating(Highest)",
-  "Rating(Lowest)",
+  //   "Rating(Highest)",
+  //   "R ating(Lowest)",
 ];
 const buttonList = [
   "Latest",
