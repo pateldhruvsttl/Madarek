@@ -17,7 +17,7 @@ const MySubmittedIdeas = () => {
 
             <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')}
                 isMySubmitType={true} propName={{ type: "AllIdeas", data: sliderdata }} />
-            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+            <IdeasFilter type="SubmitIdea" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
         </SafeAreaView>
     )
 }

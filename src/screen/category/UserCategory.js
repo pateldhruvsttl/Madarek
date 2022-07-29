@@ -107,7 +107,7 @@ const UserCategory = (props) => {
                 renderItem={renderItem}
             // keyExtractor={item => item.id}
             />
-            <IdeasFilter visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+            <IdeasFilter type="UserCategory" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
 
         </SafeAreaView>
     )
