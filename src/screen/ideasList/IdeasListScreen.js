@@ -30,9 +30,9 @@ const IdeasListScreen = (props) => {
   const tab = props.route.params;
   useEffect(() => {
     if (tab === undefined || tab === 0) onIdeas("all","","","");
-    else if (tab === 1) onIdeas("latest");
-    else if (tab === 2) onIdeas("popular");
-    else if (tab === 3) onIdeas("winning");
+    else if (tab === 1) onIdeas("latest","","","");
+    else if (tab === 2) onIdeas("popular","","","");
+    else if (tab === 3) onIdeas("winning","","","");
     else onIdeas("all");
   }, []);
 
