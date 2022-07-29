@@ -28,7 +28,7 @@ import WebViewComp from "../webview/WebViewComp";
 
 const IdeaContent = (props) => {
 
-    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.favoriteChallenge : props.data.favorite)
+    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest : props.data.favorite)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
 
@@ -51,6 +51,8 @@ const IdeaContent = (props) => {
     }
 
     const onChallengeContentChanges = (id) => {
+
+        Loger.onLog("id", props.data)
         var data = {
             "field_name": "contest_id",
             "id": id,
@@ -59,9 +61,10 @@ const IdeaContent = (props) => {
         }
 
         Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
-
             const likeDislike = res?.data === 'dislike' ? false : true;
-            setFavorite(likeDislike)
+            Loger.onLog(likeDislike);
+            setFavorite(likeDislike);
+
         }, (err) => {
             Loger.onLog("err of likeUnlike", err)
         })
@@ -223,16 +226,11 @@ const IdeaContent = (props) => {
                     {props.isType == "ChallengeDetail" ? (
                         <>
                             <View style={Style.leftSide}>
-                                <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeContentChanges(props.params.id)}>
+                                <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeContentChanges(props?.id)}>
                                     {isFavorite ?
-                                        <IcnLikeblack
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        /> :
-                                        <IcnLikeRed
-                                            height={AppUtil.getHP(3.2)}
-                                            width={AppUtil.getHP(3.2)}
-                                        />
+                                        <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        :
+                                        <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                     }
                                     <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
                                 </TouchableOpacity>

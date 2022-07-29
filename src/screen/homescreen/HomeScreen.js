@@ -76,12 +76,9 @@ const HomeScreen = (props) => {
       layout: "list",
       limit: AppConfig.pageLimit,
     };
-    Service.post(
-      EndPoints.openChallenges,
-      data,
-      (res) => {
+    Service.post(EndPoints.openChallenges,data,(res) => {
         var opChallenges = [];
-        res.data.forEach((element) => {
+        (res.data).slice(0, 2).forEach((element) => {
           let model = new OpenChallengeModel(element); 
           opChallenges.push(model);
         });
@@ -168,18 +165,19 @@ const HomeScreen = (props) => {
       model: "LikedislikeContests",
     };
 
-    Service.post(
-      EndPoints.challengeLikeUnlike,
-      data,
-      (res) => {
+    Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
         const likeDislike = res?.data === "dislike" ? false : true;
         const challengeArr = openChallenges;
+       
         challengeArr.map((ele, index) => {
           if (ele.id == id) {
-            challengeArr[index].like = likeDislike;
+            challengeArr[index].favorite = likeDislike;
+          
           }
         });
-        setOpenChallenges([...openChallenges, challengeArr]);
+        setOpenChallenges([...challengeArr]);
+
+
       },
       (err) => {
         Loger.onLog("err of challengeLikeUnlike", err);
@@ -214,6 +212,7 @@ const HomeScreen = (props) => {
     );
   };
   const onSetItem = (item) => {
+    
     switch (item) {
       case "Slider":
         return bannerList.length > 0 && <EventSlider Entries={bannerList} />;
@@ -228,7 +227,7 @@ const HomeScreen = (props) => {
           openChallenges.length > 0 && (
             <View style={{ backgroundColor: GetAppColor.lightWhite, paddingVertical: AppUtil.getHP(2), }}>
               <SubIdeasListWithImage
-                data={openChallenges.slice(0, 2)}
+                data={openChallenges}
                 isTitle={Label.OpenChallenges}
                 isType={"Challenges"}
                 likeChallenge={(id) => likeChallenge(id)}

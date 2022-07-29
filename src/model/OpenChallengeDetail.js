@@ -15,7 +15,7 @@ export default class OpenChallengeDetail {
         this.favoriteContest = obj?.my_toatal_favorite_contest || "No Favorite Contest"
         this.contestDate = obj?.contest_date || "15 Mar 22 - 29 Mar 22"
         this.totalLike = obj?.toatal_liked_contest || "0"
-        this.totalFavoriteContest = obj?.toatal_favorite_contest || "0"
+        this.totalFavoriteContest = obj?.toatal_favorite_contest === 0 ? false : true;
         this.totalView = obj?.toatal_view_contest || "0"
         this.totalComment = obj?.toatal_contest_comments || "0"
         this.totalExpertInsight = obj?.total_expert_insight || "0"

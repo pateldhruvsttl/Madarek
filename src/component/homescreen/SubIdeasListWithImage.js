@@ -39,6 +39,7 @@ const SubIdeasListWithImage = (props) => {
         }
     }
     const renderIdeaItem = ({ item }) => {
+        // Loger.onLog("item.favorite", item.id);
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
@@ -46,11 +47,9 @@ const SubIdeasListWithImage = (props) => {
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
                     </View>
                     {props?.isType != "Spotlight" ?
-
                         <>
                             {
                                 (item.favorite) ?
-
                                     <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
                                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                                     </TouchableOpacity>

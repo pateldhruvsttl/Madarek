@@ -37,7 +37,6 @@ const ChallengeListImage = (props) => {
         }
     }
     const renderItem = ({ item }) => (
-        console.log('item of render challange',item),
         
         <TouchableOpacity onPress={() => props.navigateDetail(item.id)} style={LISTSTYLE.renderMainView}>
 

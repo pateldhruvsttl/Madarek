@@ -79,7 +79,13 @@ const PAGESTYLE = StyleSheet.create({
         paddingBottom: AppUtil.getHP(2),
         backgroundColor: GetAppColor.white
     },
-    videoPlay: { width: '100%', paddingHorizontal: AppUtil.getWP(5), height: AppUtil.getHP(40), marginBottom: AppUtil.getHP(1), marginTop: AppUtil.getHP(1) }
+    videoPlay: { width: '100%', paddingHorizontal: AppUtil.getWP(5), height: AppUtil.getHP(40), marginBottom: AppUtil.getHP(1), marginTop: AppUtil.getHP(1) },
+
+    img: { width: '100%', height: AppUtil.getHP(32),},
+
+    imgStyle: {
+        width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1, justifyContent:'center', alignItems:'center', backgroundColor:"red"
+    }
 
 })
 

@@ -72,7 +72,7 @@ function ScreenStack() {
             <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
-            <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />
+            <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />   
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />

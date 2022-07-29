@@ -37,6 +37,7 @@ const IdeaDetails = (props) => {
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
+
   useEffect(() => {
     onExpertInsights();
     onIdeas()
@@ -73,8 +74,6 @@ const IdeaDetails = (props) => {
       "searchkeywords": "",
     }
     Service.post(EndPoints.ideaList, data, (res) => {
-
-      Loger.onLog("res", res)
       let _isAllIdeas = [];
       setAllIdeas([]);
 
