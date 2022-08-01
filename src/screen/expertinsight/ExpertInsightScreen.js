@@ -21,6 +21,7 @@ const Tab = createMaterialTopTabNavigator();
 
 const ExpertInsightScreen = (props) => {
   const [isFilterVisible, setFilterVisible] = useState(false);
+  const [isFilter, setFilter] = useState(false);
   const [data, setData] = useState([])
   const [ideaData, setIdeaData] = useState([])
   const [contestData, setContestData] = useState([])
@@ -98,6 +99,7 @@ const ExpertInsightScreen = (props) => {
       <IdeasFilter
         visible={isFilterVisible}
         onClose={() => setFilterVisible(!isFilterVisible)}
+        isFilter={isFilter}
       />
     </SafeAreaView>
   );

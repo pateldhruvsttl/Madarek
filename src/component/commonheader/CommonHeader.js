@@ -94,6 +94,9 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                {/* isFilter */}
+                                
+                                {props.isFilter?<View style={Style.redDot} />:null}
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -280,6 +283,8 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                {props.isFilter?<View style={Style.redDot} />:null}
+
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -517,6 +522,8 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                {props.isFilter?<View style={Style.redDot} />:null}
+
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -541,6 +548,8 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                {props.isFilter?<View style={Style.redDot} />:null}
+
                             </TouchableOpacity>
                         </View>
                     </View>

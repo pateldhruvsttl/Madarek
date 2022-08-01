@@ -58,7 +58,15 @@ const CommonHeaderStyle = StyleSheet.create({
         color: GetAppColor.white,
         fontSize: AppUtil.getHP(1.8),
     },
-    txtMenuOptions:{color:GetAppColor.black}
+    txtMenuOptions:{color:GetAppColor.black},
+    redDot:{
+        height:AppUtil.getHP(1),
+        width:AppUtil.getHP(1),
+        position:'absolute',
+        right:0,
+        borderRadius:AppUtil.getHP(0.5),
+        backgroundColor:"#ef4d2f",
+    }
 });
 
 export default CommonHeaderStyle;

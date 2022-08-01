@@ -9,6 +9,7 @@ import IdeasFilter from '../../component/filter/IdeasFilter';
 const MySubmittedIdeas = () => {
 
     const [isFilterVisible, setFilterVisible] = useState(false);
+    const [isFilter, setFilter] = useState(false);
 
     return (
         <SafeAreaView style={Style.container}>
@@ -17,7 +18,7 @@ const MySubmittedIdeas = () => {
 
             <AllIdeas navigateDetail={() => props.navigation.navigate('IdeaDetails')}
                 isMySubmitType={true} propName={{ type: "AllIdeas", data: sliderdata }} />
-            <IdeasFilter type="SubmitIdea" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
+            <IdeasFilter type="SubmitIdea" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} isFilter={isFilter} />
         </SafeAreaView>
     )
 }

@@ -31,6 +31,7 @@ const ChallengesListScreen = (props) => {
   const [closeChallenge, setCloseChallenge] = useState([]);
   const [vottingChallenge, setVottingChallenge] = useState([]);
   const [isFilterVisible, setFilterVisible] = useState(false);
+  const [isFilter, setFilter] = useState(false);
   const tab = props.route.params;
 
   useEffect(() => {
@@ -328,6 +329,7 @@ const ChallengesListScreen = (props) => {
         onClose={(categories, sector, sortBy) =>
           onFilterClose(categories, sortBy)
         }
+        isFilter={isFilter}
       />
     </SafeAreaView>
   );

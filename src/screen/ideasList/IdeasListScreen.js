@@ -26,6 +26,8 @@ const IdeasListScreen = (props) => {
   const [popularIdeaArr, setPopularIdeaArr] = useState([]);
   const [winningIdeaArr, setWinningIdeaArr] = useState([]);
   const [isFilterVisible, setFilterVisible] = useState(false);
+  const [isFilter, setFilter] = useState(false);
+
 
   const [allIdeaArrPageNo, setAllIdeaArrPageNo] = useState(1);
   const [newIdeaArrPageNo, setNewIdeaArrPageNo] = useState(1);
@@ -46,7 +48,7 @@ const IdeasListScreen = (props) => {
     else if (tab === 3) onIdeas("winning", isCategories, isSector, isSortBy, winningIdeaArrPageNo);
   }, []);
 
-  onFilterClose = (categories, sector, sortBy) => {
+  const onFilterClose = (categories, sector, sortBy) => {
 
     setCategories(categories.toString());
     setSector(sector.toString());
@@ -54,6 +56,7 @@ const IdeasListScreen = (props) => {
 
     setFilterVisible(!isFilterVisible);
     if (categories.toString() != "" || sortBy != 0 || sector.toString() != "") {
+      setFilter(true);
       if (tab === undefined || tab === 0)
         onIdeas("all", categories.toString(), sector.toString(), sortBy);
       else if (tab === 1)
@@ -68,6 +71,8 @@ const IdeasListScreen = (props) => {
       setNewIdeaArrPageNo(1);
       setPopularIdeaArrPageNo(1);
       setWinningIdeaArrPageNo(1);
+    }else{
+      setFilter(false);
     }
   };
 
@@ -298,6 +303,7 @@ const IdeasListScreen = (props) => {
     <SafeAreaView style={Style.container}>
       <CommonHeader
         isType={"IdeasListScreen"}
+        isFilter={isFilter}
         onMenuClick={() => {
           props.navigation.openDrawer();
         }}
