@@ -28,12 +28,10 @@ import WebViewComp from "../../component/webview/WebViewComp";
 const ChallengeDetail = (props) => {
   const title = "ChallengeDetail";
   const [contestData, setContestData] = useState({})
-  const [similarData, setSimilarData] = useState([])
   const [evaluationData, setEvaluationData] = useState([])
   const [rowData, setRowData] = useState()
   const [resourceData, setResourceData] = useState([])
   const [participateData, setParticipateData] = useState([])
-
 
   useEffect(() => {
     challengeDetail(props?.route?.params?.id);
@@ -46,43 +44,39 @@ const ChallengeDetail = (props) => {
     };
     Service.post(EndPoints.challengedetails, data, (res) => {
 
-      let similarRow = []
-      let contestData = res.data.contestDetail
+      const similarRow = []
+      const contestData = {}
       let evaluationPannel = []
-      let resources = []
-      let termsRow = res.data.termsrow
-      let participateRowsData = []
+      const resources = []
+      const termsRow = res.data.termsrow
+      const participateRowsData = []
 
-      if (res.statusCode) {
-        let contestModel = new OpenChallengeDetail(contestData)
-        setContestData(contestModel)
+      if (res.statusCode === "1") {
 
-        res?.data?.similarrow?.map((ele) => {
-          let similarModel = new OpenChallengeDetail(ele)
-          similarRow.push(similarModel)
-          setSimilarData(similarRow)
-        })
+        let model = new OpenChallengeDetail(contestData)
+        setContestData(model)
 
-        res?.data?.evaluationPannel?.map((ele) => {
-          let evaluationModel = new OpenChallengeDetail(ele)
-          evaluationPannel.push(evaluationModel)
+        res.data.evaluationPannel.map((ele) => {
+
+          let model = new OpenChallengeDetail(ele)
+          evaluationPannel.push(model)
           setEvaluationData(evaluationPannel)
         })
 
-        res?.data?.resources?.map((ele) => {
-          let resourcesModel = new OpenChallengeDetail(ele)
-          resources.push(resourcesModel)
+        res?.data?.resources.map((ele) => {
+          let model = new OpenChallengeDetail(ele)
+          resources.push(model)
           setResourceData(resources)
         })
 
-        res?.data?.participaterowsData?.map((ele) => {
-          let participate = new OpenChallengeDetail(ele)
-          participateRowsData.push(participate)
+        res?.data?.participaterowsData.map((ele) => {
+          let model = new OpenChallengeDetail(ele)
+          participateRowsData.push(model)
           setParticipateData(participateRowsData)
         })
 
-        let termsModel = new OpenChallengeDetail(termsRow)
-        setRowData(termsModel)
+        // let model = new OpenChallengeDetail(model)
+        // setRowData(termsModel)
       }
       else {
         showMessage(res.message)
@@ -109,7 +103,7 @@ const ChallengeDetail = (props) => {
                 <ImageLoad style={PAGESTYLE.img} resizeMode='cover' source={{ uri: contestData?.contestImage }} />
               </View>
 
-              {contestData && <IdeaContent data={contestData} isType={title} id={props?.route?.params?.id}/>}
+              {contestData && <IdeaContent data={contestData} isType={title} id={props?.route?.params?.id} />}
 
               {/* <View style={PAGESTYLE.contentBoxChallenge} >
                 <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
