@@ -14,6 +14,7 @@ const ViewMoreChallenges =(props) =>{
                 navigateDetail={(id) => props.navigateDetail(id)}
                 likeChallenge={(id) => props.likeChallenge(id)}
                 favoriteChallenge={(id) => props.favoriteChallenge(id)}
+                paginations={props?.paginations}
                 />
         </View>
     )

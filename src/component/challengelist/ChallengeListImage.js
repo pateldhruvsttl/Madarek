@@ -21,6 +21,7 @@ import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
 import IcnSelectedHeartWithRound from "../../assets/svg/IcnSelectedHeartWithRound"
 import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import ImageLoad from "react-native-image-placeholder";
+import { AppConfig } from "../../manager/AppConfig";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
@@ -49,6 +50,12 @@ const ChallengeListImage = (props) => {
             props.favoriteChallenge(id)
         }
     }
+    const onGetPaginations = () => {
+
+        if (props?.data?.length > (AppConfig.pageLimit - 1) && props?.paginations)
+            props?.paginations()
+    }
+
     const renderItem = ({ item }) => (
 
         <TouchableOpacity onPress={() => props.navigateDetail(item.id)} style={LISTSTYLE.renderMainView}>
@@ -138,6 +145,7 @@ const ChallengeListImage = (props) => {
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                onEndReached={onGetPaginations}
             />
             {
                 props?.btn &&
