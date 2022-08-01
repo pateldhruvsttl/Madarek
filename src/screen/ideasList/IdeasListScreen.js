@@ -41,10 +41,9 @@ const IdeasListScreen = (props) => {
   useEffect(() => {
     if (tab === undefined || tab === 0)
       onIdeas("all", "", "", "", allIdeaArrPageNo);
-    else if (tab === 1) onIdeas("latest", _categories, _sector, _sortBy, newIdeaArrPageNo);
-    else if (tab === 2) onIdeas("popular", _categories, _sector, _sortBy, popularIdeaArrPageNo);
-    else if (tab === 3) onIdeas("winning", _categories, _sector, _sortBy, winningIdeaArrPageNo);
-    else onIdeas("all", "", "", "", allIdeaArrPageNo);
+    else if (tab === 1) onIdeas("latest", isCategories, isSector, isSortBy, newIdeaArrPageNo);
+    else if (tab === 2) onIdeas("popular", isCategories, isSector, isSortBy, popularIdeaArrPageNo);
+    else if (tab === 3) onIdeas("winning", isCategories, isSector, isSortBy, winningIdeaArrPageNo);
   }, []);
 
   onFilterClose = (categories, sector, sortBy) => {
@@ -71,11 +70,6 @@ const IdeasListScreen = (props) => {
       setWinningIdeaArrPageNo(1);
     }
   };
-
-  // setaAllIdeaArr([]);
-  // setNewIdeaArr([]);
-  // setPopularIdeaArr([]);
-  // setWinningIdeaArr([]);
 
   const onIdeas = (tabType = "all", categories = "", sector = "", sortBy = "", cpage = 1) => {
     const data = {
@@ -290,13 +284,13 @@ const IdeasListScreen = (props) => {
       onIdeas("all", isCategories, isSector, isSortBy, allIdeaArrPageNo + 1);
     } else if (type === "LatestIdeas") {
       setNewIdeaArrPageNo(newIdeaArrPageNo + 1);
-      onIdeas("latest", newIdeaArrPageNo + 1);
+      onIdeas("latest", isCategories, isSector, isSortBy, newIdeaArrPageNo + 1);
     } else if (type === "PopularIdeas") {
       setPopularIdeaArrPageNo(popularIdeaArrPageNo + 1);
-      onIdeas("popular", popularIdeaArrPageNo + 1);
+      onIdeas("popular", isCategories, isSector, isSortBy, popularIdeaArrPageNo + 1);
     } else if (type === "WinningIdeas") {
       setWinningIdeaArrPageNo(winningIdeaArrPageNo + 1);
-      onIdeas("winning", winningIdeaArrPageNo + 1);
+      onIdeas("winning", isCategories, isSector, isSortBy, winningIdeaArrPageNo + 1);
     }
   };
 
