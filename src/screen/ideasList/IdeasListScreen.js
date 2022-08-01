@@ -280,16 +280,16 @@ const IdeasListScreen = (props) => {
   const paginations = (type) => {
     if (type === "AllIdeas") {
       setAllIdeaArrPageNo(allIdeaArrPageNo + 1);
-      onIdeas("all", allIdeaArrPageNo + 1);
+      onIdeas("all","","","", allIdeaArrPageNo + 1);
     } else if (type === "LatestIdeas") {
       setNewIdeaArrPageNo(newIdeaArrPageNo + 1);
-      onIdeas("latest", newIdeaArrPageNo + 1);
+      onIdeas("latest","","","", newIdeaArrPageNo + 1);
     } else if (type === "PopularIdeas") {
       setPopularIdeaArrPageNo(popularIdeaArrPageNo + 1);
-      onIdeas("popular", popularIdeaArrPageNo + 1);
+      onIdeas("popular","","","", popularIdeaArrPageNo + 1);
     } else if (type === "WinningIdeas") {
       setWinningIdeaArrPageNo(winningIdeaArrPageNo + 1);
-      onIdeas("winning", winningIdeaArrPageNo + 1);
+      onIdeas("winning","","","", winningIdeaArrPageNo + 1);
     }
   };
 
