@@ -238,7 +238,7 @@ const ChallengesListScreen = (props) => {
     })
   }
 
-  onFilterClose = (categories, sortBy) => {
+  const onFilterClose = (categories, sortBy) => {
 
     setCategories(categories.toString());
     setSortBy(sortBy);
@@ -246,7 +246,8 @@ const ChallengesListScreen = (props) => {
     setFilterVisible(!isFilterVisible);
 
     Loger.onLog("=======>", isTab);
-    if (categories.toString() == "" || sortBy != 0) {
+    if (categories.toString() != "" || sortBy != 0) {
+      setFilter(true)
       if (isTab === undefined || isTab === 0)
         onOpenChallenge("open_submission", categories.toString(), sortBy, 1);
       else if (isTab === 1)
@@ -257,6 +258,8 @@ const ChallengesListScreen = (props) => {
       setOpenChallengePageNo(1);
       setUpCommingChallengePageNo(1);
       setCloseChallengePageNo(1);
+    }else{
+      setFilter(false)
     }
   };
 
