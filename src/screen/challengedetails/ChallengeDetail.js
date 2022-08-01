@@ -46,14 +46,14 @@ const ChallengeDetail = (props) => {
 
       const similarRow = []
       const contestData = {}
-      let evaluationPannel = []
+      const evaluationPannel = []
       const resources = []
       const termsRow = res.data.termsrow
       const participateRowsData = []
-
+      
       if (res.statusCode === "1") {
 
-        let model = new OpenChallengeDetail(contestData)
+        let model = new OpenChallengeDetail(res.data.contestDetail)
         setContestData(model)
 
         res.data.evaluationPannel.map((ele) => {
@@ -103,7 +103,9 @@ const ChallengeDetail = (props) => {
                 <ImageLoad style={PAGESTYLE.img} resizeMode='cover' source={{ uri: contestData?.contestImage }} />
               </View>
 
-              {contestData && <IdeaContent data={contestData} isType={title} id={props?.route?.params?.id} />}
+              {contestData && <IdeaContent data={contestData}
+                isType={title}
+                id={props?.route?.params?.id} />}
 
               {/* <View style={PAGESTYLE.contentBoxChallenge} >
                 <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
