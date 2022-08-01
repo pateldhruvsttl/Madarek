@@ -26,13 +26,14 @@ export default class OpenChallengeModel {
         this.participants= obj?.participants || "0"
         this.expertEngage = obj?.expertEngage || "0"
         this.trophy = obj?.isTrophy == null && obj?.isTrophy != 0 ? true : false;
-        this.favorite = obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;
+        // this.favorite = obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;
         this.insight = obj?.isInsight == null && obj?.isInsight != 0 ? true : false;
 
-        this.like = obj?.isLiked > 0 ? true : false;
+        this.like = obj?.toatal_liked_contest > 0 ? true : false;
         this.totalView = obj?.toatal_view_contest || "0"
         this.totalLike = obj?.toatal_liked_contest || "0"
         this.totalComment = obj?.toatal_contest_comments || "0"
+        this.favorite = obj?.toatal_favorite_contest == null || obj?.toatal_favorite_contest == 0 ? false : true;
 
     }
 }

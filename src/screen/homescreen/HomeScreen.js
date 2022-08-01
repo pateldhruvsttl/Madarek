@@ -157,22 +157,54 @@ const HomeScreen = (props) => {
       }
     );
   };
-  const likeChallenge = (id) => {
-    var data = {
-      field_name: "contest_id",
-      id: id,
-      frontuser_id: UserManager.userId,
-      model: "LikedislikeContests",
-    };
 
-    Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
-        const likeDislike = res?.data === "dislike" ? false : true;
+  const onLikeIdeas = (id) => {
+    var data = {
+      "field_name": "contest_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": 'LikedislikeContests'
+    }
+    Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+      const likeDislike = res?.data === 'dislike' ? 1 : 0;
+      const challengeArr = openChallenges;
+      challengeArr.map((ele, index) => {
+        if (ele.id == id) {
+          
+          if (likeDislike == 1) {
+            challengeArr[index].like = likeDislike
+            challengeArr[index].totalLike = Number(challengeArr[index].totalLike) + 1;
+          }
+          else {
+            challengeArr[index].like = likeDislike
+            challengeArr[index].totalLike = Number(challengeArr[index].totalLike) - 1;
+          }
+        }
+      });
+      setOpenChallenges([...challengeArr]);
+
+    }, (err) => {
+      Loger.onLog("err of likeUnlike", err)
+    })
+  }
+  const onFavoriteIdeas = (id) => {
+    var data = {
+      "field_name": "contest_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": 'FavoriteContests'
+    }
+    Service.post(
+      EndPoints.challengeLikeUnlike,
+      data,
+      (res) => {
+        const likeDislike = res?.data === 'dislike' ? true : false;
         const challengeArr = openChallenges;
        
         challengeArr.map((ele, index) => {
           if (ele.id == id) {
             challengeArr[index].favorite = likeDislike;
-          
           }
         });
         setOpenChallenges([...challengeArr]);
@@ -183,7 +215,8 @@ const HomeScreen = (props) => {
         Loger.onLog("err of challengeLikeUnlike", err);
       }
     );
-  };
+  }
+
   const likeSpotLight = (id) => {
     var data = {
       field_name: "formdata_id",
@@ -230,10 +263,11 @@ const HomeScreen = (props) => {
                 data={openChallenges}
                 isTitle={Label.OpenChallenges}
                 isType={"Challenges"}
-                likeChallenge={(id) => likeChallenge(id)}
+                onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
+                onLikeIdeas={(id) => onLikeIdeas(id)}
                 onButtonPress={() => { setModalVisible(true); }}
                 onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", 0, { data: openChallenges, }); }}
-                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", {id:id}); }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }); }}
               />
             </View>
           )
@@ -254,7 +288,7 @@ const HomeScreen = (props) => {
                 }}
                 onSeeMorePress={() => { }} //props.navigation.navigate("ChallengesListScreen")
                 onItemPress={(id) => {
-                  props.navigation.navigate("ChallengeDetail", {id:id});
+                  props.navigation.navigate("ChallengeDetail", { id: id });
                 }}
               />
             </View>
@@ -306,7 +340,7 @@ const HomeScreen = (props) => {
         null;
     }
   };
-  
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"HomeScreenHeader"} />

@@ -121,7 +121,7 @@ const IdeasListScreen = (props) => {
         })
     }
 
-    const likeIdea = (id) => {
+    const favoriteIdea = (id) => {
         var data = {
             "field_name": "idea_id",
             "id": id,
@@ -130,7 +130,7 @@ const IdeasListScreen = (props) => {
         }
 
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
-            const likeDislike = res?.data === 'dislike' ? false : true;
+            const likeDislike = res?.data === 'dislike' ? true : false;
 
             let newAllIdeasArr = [];
             newAllIdeasArr = allIdeaArr;
@@ -174,6 +174,83 @@ const IdeasListScreen = (props) => {
         }, (err) => {
         })
     }
+    const onLikeIdeas = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'LikedislikeIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+
+            let newAllIdeasArr = [];
+            newAllIdeasArr = allIdeaArr;
+            newAllIdeasArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        newAllIdeasArr[index].like = likeDislike
+                        newAllIdeasArr[index].totalLike = Number(newAllIdeasArr[index].totalLike) + 1;
+                    }
+                    else {
+                        newAllIdeasArr[index].like = likeDislike
+                        newAllIdeasArr[index].totalLike = Number(newAllIdeasArr[index].totalLike) - 1;
+                    }
+                }
+            });
+
+            let updateNewIdeaArr = [];
+            updateNewIdeaArr = newIdeaArr;
+            updateNewIdeaArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        updateNewIdeaArr[index].like = likeDislike
+                        updateNewIdeaArr[index].totalLike = Number(updateNewIdeaArr[index].totalLike) + 1;
+                    }
+                    else {
+                        updateNewIdeaArr[index].like = likeDislike
+                        updateNewIdeaArr[index].totalLike = Number(updateNewIdeaArr[index].totalLike) - 1;
+                    }
+                }
+            });
+            setNewIdeaArr([...updateNewIdeaArr]);
+
+            let updatePopularIdeaArr = [];
+            updatePopularIdeaArr = popularIdeaArr;
+            updatePopularIdeaArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        updatePopularIdeaArr[index].like = likeDislike
+                        updatePopularIdeaArr[index].totalLike = Number(updatePopularIdeaArr[index].totalLike) + 1;
+                    }
+                    else {
+                        updatePopularIdeaArr[index].like = likeDislike
+                        updatePopularIdeaArr[index].totalLike = Number(updatePopularIdeaArr[index].totalLike) - 1;
+                    }
+                }
+            });
+            setPopularIdeaArr([...updatePopularIdeaArr]);
+
+            let updateWinningIdeaArr = [];
+            updateWinningIdeaArr = winningIdeaArr;
+            updateWinningIdeaArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        updateWinningIdeaArr[index].like = likeDislike
+                        updateWinningIdeaArr[index].totalLike = Number(updateWinningIdeaArr[index].totalLike) + 1;
+                    }
+                    else {
+                        updateWinningIdeaArr[index].like = likeDislike
+                        updateWinningIdeaArr[index].totalLike = Number(updateWinningIdeaArr[index].totalLike) - 1;
+                    }
+                }
+            });
+            setWinningIdeaArr([...updateWinningIdeaArr]);
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
 
     const navigateDetail = (item) => {
         props.navigation.navigate('IdeaDetails', item)
@@ -211,10 +288,10 @@ const IdeasListScreen = (props) => {
                             tabBarIndicatorStyle: Style.itemBorder,
                             tabBarScrollEnabled: true
                         }}>
-                        <Tab.Screen listeners={{ tabPress: e => { setAllIdeaArrPageNo(1), onIdeas('all', 1) } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("AllIdeas")} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { setNewIdeaArrPageNo(1), onIdeas('latest', 1) } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("LatestIdeas")} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { setPopularIdeaArrPageNo(1), onIdeas('popular', 1) } }} name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("PopularIdeas")} />} />
-                        <Tab.Screen listeners={{ tabPress: e => { setWinningIdeaArrPageNo(1), onIdeas('winning', 1) } }} name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr, likeIdea: likeIdea, navigateDetail: navigateDetail }} paginations={() => paginations("WinningIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setAllIdeaArrPageNo(1), onIdeas('all', 1) } }} name={Label.All} children={() => <AllIdeas propName={{ type: "AllIdeas", data: allIdeaArr, onLikeIdeas: onLikeIdeas, favoriteIdea: favoriteIdea, navigateDetail: navigateDetail }} paginations={() => paginations("AllIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setNewIdeaArrPageNo(1), onIdeas('latest', 1) } }} name={Label.Latest} children={() => <AllIdeas propName={{ type: "LatestIdeas", data: newIdeaArr, onLikeIdeas: onLikeIdeas, favoriteIdea: favoriteIdea, navigateDetail: navigateDetail }} paginations={() => paginations("LatestIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setPopularIdeaArrPageNo(1), onIdeas('popular', 1) } }} name={Label.Popular} children={() => <AllIdeas propName={{ type: "PopularIdeas", data: popularIdeaArr, onLikeIdeas: onLikeIdeas, favoriteIdea: favoriteIdea, navigateDetail: navigateDetail }} paginations={() => paginations("PopularIdeas")} />} />
+                        <Tab.Screen listeners={{ tabPress: e => { setWinningIdeaArrPageNo(1), onIdeas('winning', 1) } }} name={Label.Winning} children={() => <AllIdeas propName={{ type: "WinningIdeas", data: winningIdeaArr,onLikeIdeas: onLikeIdeas, favoriteIdea: favoriteIdea, navigateDetail: navigateDetail }} paginations={() => paginations("WinningIdeas")} />} />
 
                     </Tab.Navigator>
                 </NavigationContainer>

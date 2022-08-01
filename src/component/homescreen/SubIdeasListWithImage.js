@@ -9,6 +9,7 @@ import IcnUnSelectedHeart from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import IcnTrophy from "../../assets/svg/IcnTrophy"
 import IcnStar from "../../assets/svg/IcnStar"
@@ -27,16 +28,27 @@ import { AppConfig } from "../../manager/AppConfig";
 const SubIdeasListWithImage = (props) => {
 
 
-    const likeUnlikeRender = (id) => {
+    const likeUnlike = (id) => {
 
         if (props?.isType == "Ideas") {
-            props.likeIdea(id);
+            props.onLikeIdeas(id);
         }
         else if (props?.isType == "Challenges") {
-            props.likeChallenge(id);
+            props.onLikeIdeas(id);
         }
         else {
-            props.likeSpotLight(id)
+            props.onLikeIdeas(id)
+        }
+    }
+    const favouriteUnfavourite = (id) => {
+        if (props?.isType == "Ideas") {
+            props.onFavoriteIdeas(id);
+        }
+        else if (props?.isType == "Challenges") {
+            props.onFavoriteIdeas(id);
+        }
+        else {
+            props.onFavoriteIdeas(id)
         }
     }
     const renderIdeaItem = ({ item }) => {
@@ -50,11 +62,12 @@ const SubIdeasListWithImage = (props) => {
                         <>
                             {
                                 (item.favorite) ?
-                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}  >
+
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => favouriteUnfavourite(item.id)}  >
                                         <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                                     </TouchableOpacity>
                                     :
-                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => likeUnlikeRender(item.id)}>
+                                    <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => favouriteUnfavourite(item.id)}>
                                         <IcnUnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                                     </TouchableOpacity>
                             }
@@ -116,8 +129,18 @@ const SubIdeasListWithImage = (props) => {
                                 <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
                             </View>
                             <View style={Style.secondInnerCalView}>
-                                <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item?.totalLike ? item.totalLike : 0}</Text>
+                                {
+                                    item.like == true ?
+                                        <TouchableOpacity onPress={() => likeUnlike(item.id)}>
+                                            <IcnThumsUpBlack style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                        </TouchableOpacity>
+                                        :
+                                        <TouchableOpacity onPress={() => likeUnlike(item.id)}>
+                                            <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                        </TouchableOpacity>
+
+                                }
+                                <Text style={Style.title}>{item.totalLike}</Text>
                             </View>
                             <View style={Style.secondInnerCalView}>
                                 <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -135,8 +158,10 @@ const SubIdeasListWithImage = (props) => {
 
     const onGetPaginations = () => {
 
-        if (props?.data?.length > (AppConfig.pageLimit-1) && props?.paginations)
+        if (props?.data?.length > (AppConfig.pageLimit - 1) && props?.paginations)
             props?.paginations()
+        // if (props?.data?.length > 19)
+        //     Loger.onLog("", "-------------------->")
     }
 
     return (
@@ -157,8 +182,9 @@ const SubIdeasListWithImage = (props) => {
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderIdeaItem}
                 onEndReached={onGetPaginations}
-                key={(id)=> id}
+                key={(id) => id}
                 keyExtractor={item => item.id}
+            // onScrollEndDrag={isLast => onGetPaginations()}
 
             />
             {

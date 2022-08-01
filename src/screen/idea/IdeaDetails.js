@@ -28,6 +28,7 @@ import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
 import WebViewComp from '../../component/webview/WebViewComp';
 import VideosPlayer from '../videoplayer/VideosPlayer';
+import { set } from 'react-native-reanimated';
 
 const IdeaDetails = (props) => {
 
@@ -88,7 +89,7 @@ const IdeaDetails = (props) => {
     })
   }
 
-  const onLikeIdeas = (id) => {
+  const onFavoriteIdeas = (id) => {
     var data = {
       "field_name": "idea_id",
       "id": id,
@@ -97,12 +98,42 @@ const IdeaDetails = (props) => {
     }
     Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
-      const likeDislike = res?.data === 'dislike' ? false : true;
+      const likeDislike = res?.data === 'dislike' ? true : false;
       const _isAllIdeas = isAllIdeas
 
       _isAllIdeas.map((ele, index) => {
         if (ele.id == id) {
           _isAllIdeas[index].favorite = likeDislike;
+        }
+      })
+      setAllIdeas([..._isAllIdeas]);
+
+    }, (err) => {
+      Loger.onLog("err of likeUnlike", err)
+    })
+  }
+  const onLikeIdeas = (id) => {
+    var data = {
+      "field_name": "idea_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": 'FavoriteIdeas'
+    }
+    
+    Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+      const likeDislike = res?.data === 'dislike' ? 1 : 0;
+      const _isAllIdeas = isAllIdeas
+      _isAllIdeas.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            _isAllIdeas[index].like = likeDislike
+            _isAllIdeas[index].totalLike = Number(_isAllIdeas[index].totalLike) + 1;
+          }
+          else {
+            _isAllIdeas[index].like = likeDislike
+            _isAllIdeas[index].totalLike = Number(_isAllIdeas[index].totalLike) - 1;
+          }
         }
       })
       setAllIdeas([..._isAllIdeas]);
@@ -122,7 +153,7 @@ const IdeaDetails = (props) => {
               <IdeaSlider Entries={item?.additionalImages} />
               :
               <View style={IdeaStyle.imgStyle}>
-                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.ideaImage }}  />
+                <ImageLoad style={IdeaStyle.img} resizeMode='cover' source={{ uri: item?.ideaImage }} />
               </View>
             }
 
@@ -138,11 +169,11 @@ const IdeaDetails = (props) => {
 
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
-            <Text style={IdeaStyle.heading}>{Label.Video}</Text>
+                <Text style={IdeaStyle.heading}>{Label.Video}</Text>
 
-                <VideosPlayer path={item?.ideaVideo} navi={props.navigation}/>
+                <VideosPlayer path={item?.ideaVideo} navi={props.navigation} />
                 {/* <VideoPlayer path={item?.ideaVideo} /> */}
-              </View>:null}
+              </View> : null}
 
             {item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
@@ -150,9 +181,10 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas.splice(0,2)}
+                data={isAllIdeas}
                 isType="Ideas"
-                likeIdea={onLikeIdeas}
+                onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
+                onLikeIdeas={(id) => onLikeIdeas(id)}
                 isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
                 onItemPress={(item) => { navigation.replace("IdeaDetails", item) }} />

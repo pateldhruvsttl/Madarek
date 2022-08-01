@@ -36,7 +36,6 @@ const ChallengeDetail = (props) => {
 
 
   useEffect(() => {
-    Loger.onLog("id", props?.route?.params?.id);
     challengeDetail(props?.route?.params?.id);
   }, []);
 
@@ -47,12 +46,12 @@ const ChallengeDetail = (props) => {
     };
     Service.post(EndPoints.challengedetails, data, (res) => {
 
-      const similarRow = []
-      const contestData = res.data.contestDetail
-      const evaluationPannel = []
-      const resources = []
-      const termsRow = res.data.termsrow
-      const participateRowsData = []
+      let similarRow = []
+      let contestData = res.data.contestDetail
+      let evaluationPannel = []
+      let resources = []
+      let termsRow = res.data.termsrow
+      let participateRowsData = []
 
       if (res.statusCode) {
         let contestModel = new OpenChallengeDetail(contestData)
@@ -91,7 +90,7 @@ const ChallengeDetail = (props) => {
 
     },
       (err) => {
-        Loger.onLog("error of challange detail", err);
+        // Loger.onLog("error of challange detail", err);
       }
     );
   }
