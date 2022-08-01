@@ -223,7 +223,6 @@ const IdeaContent = (props) => {
                     }
 
                     <View style={Style.secondInnerCalView}>
-                        {Loger.onLog('LIKE IS PRINT', props.data.like)}
                         {
                             props?.data?.like == true ?
 
