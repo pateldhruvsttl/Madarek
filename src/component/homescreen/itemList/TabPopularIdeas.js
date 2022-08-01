@@ -18,9 +18,10 @@ const TabPopularIdeas = (props) => {
                     <SubIdeasListWithImage
                         data={props.data}
                         isType={props.isType}
-                        likeIdea={props.likeIdea}
+                        onLikeIdeas={props.onLikeIdeas}
+                        onFavoriteIdeas={props.onFavoriteIdeas}
                         btn={props.data.length > 0 ? Label.SeeAllIdeas : ""}
-                        onButtonPress={() => { navigation.navigate("IdeasListScreen",0, { likeIdea: props.likeIdea }) }}
+                        onButtonPress={() => { navigation.navigate("IdeasListScreen",0) }}
                         onItemPress={(item) => { navigation.navigate("IdeaDetails",item) }} />
 
                     :

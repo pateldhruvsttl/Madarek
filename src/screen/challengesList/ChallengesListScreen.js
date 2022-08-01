@@ -84,6 +84,56 @@ const ChallengesListScreen = (props) => {
       }
     );
   };
+  const favoriteChallenge = (id) => {
+    var data = {
+      "field_name": "contest_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": "FavoriteContests"
+    }
+    
+    Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
+      const likeDislike = res?.data === 'dislike' ? true : false;
+      let newOpenChallenge = [];
+      newOpenChallenge = openChallenge;
+      newOpenChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newOpenChallenge[index].favorite = likeDislike;
+        }
+      });
+      setOpenChallenge([...newOpenChallenge]);
+
+      let newUpcomingChallenge = [];
+      newUpcomingChallenge = upcomingChallenge;
+      newUpcomingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newUpcomingChallenge[index].favorite = likeDislike;
+        }
+      });
+      setUpcomingChallenge([...newUpcomingChallenge]);
+
+      let newCloseChallenge = [];
+      newCloseChallenge = closeChallenge;
+      newCloseChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newCloseChallenge[index].favorite = likeDislike;
+        }
+      });
+      setCloseChallenge([...newCloseChallenge]);
+
+      let newVottingChallenge = [];
+      newVottingChallenge = vottingChallenge;
+      newVottingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          newVottingChallenge[index].favorite = likeDislike;
+        }
+      });
+      setVottingChallenge([...newVottingChallenge]);
+
+    }, (err) => {
+      Loger.onLog('Error of likeUnlike', err)
+    })
+  }
   const likeChallenge = (id) => {
     var data = {
       field_name: "contest_id",
@@ -92,52 +142,76 @@ const ChallengesListScreen = (props) => {
       model: "LikedislikeContests",
     };
 
-    Service.post(
-      EndPoints.challengeLikeUnlike,
-      data,
-      (res) => {
-        const likeDislike = res?.data === "dislike" ? false : true;
-        let newOpenChallenge = [];
-        newOpenChallenge = openChallenge;
-        newOpenChallenge.map((ele, index) => {
-          if (ele.id == id) {
-            newOpenChallenge[index].favoriteChallenge = likeDislike;
+    Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
+      const likeDislike = res?.data === 'dislike' ? true : false;
+      let newOpenChallenge = [];
+      newOpenChallenge = openChallenge;
+      newOpenChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            newOpenChallenge[index].like = likeDislike
+            newOpenChallenge[index].totalLike = Number(newOpenChallenge[index].totalLike) + 1;
           }
-        });
-        setOpenChallenge([...newOpenChallenge]);
+          else {
+            newOpenChallenge[index].like = likeDislike
+            newOpenChallenge[index].totalLike = Number(newOpenChallenge[index].totalLike) - 1;
+          }
+        }
+      });
+      setOpenChallenge([...newOpenChallenge]);
 
-        let newUpcomingChallenge = [];
-        newUpcomingChallenge = upcomingChallenge;
-        newUpcomingChallenge.map((ele, index) => {
-          if (ele.id == id) {
-            newUpcomingChallenge[index].favoriteChallenge = likeDislike;
+      let newUpcomingChallenge = [];
+      newUpcomingChallenge = upcomingChallenge;
+      newUpcomingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            newUpcomingChallenge[index].like = likeDislike
+            newUpcomingChallenge[index].totalLike = Number(newUpcomingChallenge[index].totalLike) + 1;
           }
-        });
-        setUpcomingChallenge([...newUpcomingChallenge]);
+          else {
+            newUpcomingChallenge[index].like = likeDislike
+            newUpcomingChallenge[index].totalLike = Number(newUpcomingChallenge[index].totalLike) - 1;
+          }
+        }
+      });
+      setUpcomingChallenge([...newUpcomingChallenge]);
 
-        let newCloseChallenge = [];
-        newCloseChallenge = closeChallenge;
-        newCloseChallenge.map((ele, index) => {
-          if (ele.id == id) {
-            newCloseChallenge[index].favoriteChallenge = likeDislike;
+      let newCloseChallenge = [];
+      newCloseChallenge = closeChallenge;
+      newCloseChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            newCloseChallenge[index].like = likeDislike
+            newCloseChallenge[index].totalLike = Number(newCloseChallenge[index].totalLike) + 1;
           }
-        });
-        setCloseChallenge([...newCloseChallenge]);
+          else {
+            newCloseChallenge[index].like = likeDislike
+            newCloseChallenge[index].totalLike = Number(newCloseChallenge[index].totalLike) - 1;
+          }
+        }
+      });
+      setCloseChallenge([...newCloseChallenge]);
 
-        let newVottingChallenge = [];
-        newVottingChallenge = vottingChallenge;
-        newVottingChallenge.map((ele, index) => {
-          if (ele.id == id) {
-            newVottingChallenge[index].favoriteChallenge = likeDislike;
+      let newVottingChallenge = [];
+      newVottingChallenge = vottingChallenge;
+      newVottingChallenge.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            newVottingChallenge[index].like = likeDislike
+            newVottingChallenge[index].totalLike = Number(newVottingChallenge[index].totalLike) + 1;
           }
-        });
-        setVottingChallenge([...newVottingChallenge]);
-      },
-      (err) => {
-        Loger.onLog("Error of likeUnlike", err);
-      }
-    );
-  };
+          else {
+            newVottingChallenge[index].like = likeDislike
+            newVottingChallenge[index].totalLike = Number(newVottingChallenge[index].totalLike) - 1;
+          }
+        }
+      });
+      setVottingChallenge([...newVottingChallenge]);
+
+    }, (err) => {
+      Loger.onLog('Error of likeUnlike', err)
+    })
+  }
 
   // const data = props?.route?.params?.data ? props?.route?.params?.data : sliderdata
   onFilterClose = (categories, sortBy) => {
@@ -185,6 +259,7 @@ const ChallengesListScreen = (props) => {
                 openChallenge.length > 0 ? (
                   <ViewMoreChallenges
                     propName={{ type: "OpenChallenge", data: openChallenge }}
+                    favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(id) =>
                       props.navigation.navigate("ChallengeDetail", { id: id })
@@ -198,38 +273,30 @@ const ChallengesListScreen = (props) => {
             <Tab.Screen
               name={Label.Upcoming}
               children={() =>
-                upcomingChallenge.length > 0 ? (
+                upcomingChallenge.length > 0 ? 
                   <ViewMoreChallenges
-                    propName={{
-                      type: "UpcomingChallenge",
-                      data: upcomingChallenge,
-                    }}
+                    favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", {
-                        id: item.id,
-                      })
-                    }
+                      props.navigation.navigate("ChallengeDetail", {id: item.id})}
                   />
-                ) : (
+                 : 
                   <Text style={ListStyle.txtNodata}>No data found</Text>
-                )
+                
               }
             />
             <Tab.Screen
               name={Label.Closed}
               children={() =>
-                closeChallenge.length > 0 ? (
+                closeChallenge.length > 0 ?
                   <ViewMoreChallenges
                     propName={{ type: "ClosedChallenge", data: closeChallenge }}
+                    favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(id) => {
-                      props.navigation.navigate("ChallengeDetail", { id: id });
-                    }}
-                  />
-                ) : (
+                    navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
+                  />:
                   <Text style={ListStyle.txtNodata}>No data found</Text>
-                )
+                
               }
             />
             <Tab.Screen
@@ -238,6 +305,7 @@ const ChallengesListScreen = (props) => {
                 vottingChallenge.length > 0 ? (
                   <ViewMoreChallenges
                     propName={{ type: "Challenge", data: vottingChallenge }}
+                    favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(item) =>
                       props.navigation.navigate("ChallengeDetail", {

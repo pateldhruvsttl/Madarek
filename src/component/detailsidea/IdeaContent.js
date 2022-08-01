@@ -11,6 +11,7 @@ import IcnRewordComment from "../../assets/svg/IcnRewordComment";
 import IcnRewordLight from "../../assets/svg/IcnRewordLight";
 import IcnWatchDone from "../../assets/svg/IcnWatchDone";
 import IcnThumsUp from "../../assets/svg/IcnThumsUp";
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack";
 import IcnComment from "../../assets/svg/IcnComment";
 import { GetAppColor } from "../../utils/Colors";
 import { useSelector } from "react-redux";
@@ -28,12 +29,12 @@ import WebViewComp from "../webview/WebViewComp";
 
 const IdeaContent = (props) => {
 
-    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest : props.data.favorite)
+    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest+'' : props.data.favorite)
+    const [totalLike, setTotalLike] = useState(props?.data?.totalLike)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
 
-
-    const onIdeaContentChanges = (id) => {
+    const onIdeaFavorite = (id) => {
         var data = {
             "field_name": "idea_id",
             "id": id,
@@ -42,7 +43,7 @@ const IdeaContent = (props) => {
         }
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
-            const likeDislike = res?.data === 'dislike' ? false : true;
+            const likeDislike = res?.data === 'dislike' ? true : false;
             setFavorite(likeDislike)
 
         }, (err) => {
@@ -50,19 +51,42 @@ const IdeaContent = (props) => {
         })
     }
 
-    const onChallengeContentChanges = (id) => {
+    const onIdealike = (id, field, model) => {
+        var data = {
+            "field_name": field,
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": model
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            if (likeDislike == 1) {
+                props.data.like = likeDislike
+                props.data.totalLike = Number(props.data.totalLike) + 1
+                setTotalLike(props.data.totalLike)
+            }
+            else {
+                props.data.like = likeDislike
+                props.data.totalLike = Number(props.data.totalLike) - 1
+                setTotalLike(props.data.totalLike)
+            }
 
-        Loger.onLog("id", props.data)
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+
+    const onChallengeFavorite = (id) => {
+
         var data = {
             "field_name": "contest_id",
             "id": id,
             "frontuser_id": UserManager.userId,
-            "model": "LikedislikeContests"
+            "model": "FavoriteContests"
         }
 
         Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
-            const likeDislike = res?.data === 'dislike' ? false : true;
-            Loger.onLog(likeDislike);
+            const likeDislike = res?.data === 'dislike' ? true : false;
             setFavorite(likeDislike);
 
         }, (err) => {
@@ -199,11 +223,24 @@ const IdeaContent = (props) => {
                     }
 
                     <View style={Style.secondInnerCalView}>
-                        <IcnThumsUp height={iconSize} width={iconSize} />
+                        {Loger.onLog('LIKE IS PRINT', props.data.like)}
+                        {
+                            props?.data?.like == true ?
+
+                                <TouchableOpacity onPress={() => props.isType == 'ChallengeDetail' ? onIdealike(props.id, "contest_id", "LikedislikeContests") : onIdealike(props.data.id, "idea_id", "LikedislikeIdeas")}>
+                                    <IcnThumsUpBlack height={iconSize} width={iconSize} />
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => props.isType == 'ChallengeDetail' ? onIdealike(props.id, "contest_id", "LikedislikeContests") : onIdealike(props.data.id, "idea_id", "LikedislikeIdeas")}>
+                                    <IcnThumsUp height={iconSize} width={iconSize} />
+                                </TouchableOpacity>
+                        }
+
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
-                            {props.data?.totalLike}
+                            {totalLike || props.data.totalLike}
                         </Text>
                     </View>
+
                     <View style={Style.secondInnerCalView}>
                         <IcnComment height={iconSize} width={iconSize} />
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
@@ -226,11 +263,12 @@ const IdeaContent = (props) => {
                     {props.isType == "ChallengeDetail" ? (
                         <>
                             <View style={Style.leftSide}>
-                                <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeContentChanges(props?.id)}>
+                                <TouchableOpacity style={[Style.followBtn]} onPress={() => onChallengeFavorite(props?.id)}>
                                     {isFavorite ?
                                         <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                         :
                                         <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+
                                     }
                                     <Text style={[Style.followBtnTitle]}>{Label.Follow}</Text>
                                 </TouchableOpacity>
@@ -265,14 +303,14 @@ const IdeaContent = (props) => {
                             <View style={Style.rightSide}>
                                 {isFavorite ?
                                     (
-                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaContentChanges(props.data.id)}>
+                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaFavorite(props.data.id)}>
                                             <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                         </TouchableOpacity>
                                     )
                                     :
                                     (
 
-                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaContentChanges(props.data.id)}>
+                                        <TouchableOpacity style={Style.likeBtn} onPress={() => onIdeaFavorite(props.data.id)}>
                                             <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                         </TouchableOpacity>
 

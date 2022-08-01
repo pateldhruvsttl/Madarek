@@ -27,7 +27,6 @@ const JointRequest = (props) => {
     useEffect(() => {
         setRequestData(props.data);
         setReqData(props.isTitle);
-        console.log("vrrr",reqData);
     }, [props])
     
     const joinRequest = (id, status) => {

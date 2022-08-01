@@ -7,6 +7,7 @@ import { Label } from "../../utils/StringUtil";
 import IcnClander from "../../assets/svg/IcnClander"
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 
 import IcnTrophy from "../../assets/svg/IcnTrophy"
@@ -23,21 +24,33 @@ import ImageLoad from "react-native-image-placeholder";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
+
     const likeUnlikeRender = (id) => {
 
         if (props?.isType == "Ideas") {
-            props.likeIdea(id);
-
+            props.likeChallenge(id);
         }
         else if (props?.isType == "Challenges") {
             props.likeChallenge(id);
         }
         else {
-            props.likeSpotLight(id)
+            props.likeChallenge(id)
+        }
+    }
+    const favouriteUnfavourite = (id) => {
+
+        if (props?.isType == "Ideas") {
+            props.favoriteChallenge(id);
+        }
+        else if (props?.isType == "Challenges") {
+            props.favoriteChallenge(id);
+        }
+        else {
+            props.favoriteChallenge(id)
         }
     }
     const renderItem = ({ item }) => (
-        
+
         <TouchableOpacity onPress={() => props.navigateDetail(item.id)} style={LISTSTYLE.renderMainView}>
 
             <View style={LISTSTYLE.rightItems}>
@@ -46,16 +59,16 @@ const ChallengeListImage = (props) => {
                     <ImageLoad style={LISTSTYLE.img} source={{ uri: item.image }} isShowActivity={false} />
                 </View>
                 {
-                                (item.favoriteChallenge) ?
+                    (item.favorite) ?
 
-                                    <TouchableOpacity style={{width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} onPress={() => likeUnlikeRender(item.id)}  >
-                                        <IcnSelectedHeartWithRound style={{paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                                    </TouchableOpacity>
-                                    :
-                                    <TouchableOpacity style={{width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} onPress={() => likeUnlikeRender(item.id)}  >
-                                        <IcnUnSelectedHeartWithRound style={{paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5}} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
-                                    </TouchableOpacity>
-                            }
+                        <TouchableOpacity style={{ width: AppUtil.getHP(2), height: AppUtil.getHP(4), paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 }} onPress={() => favouriteUnfavourite(item.id)}  >
+                            <IcnSelectedHeartWithRound style={{ paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 }} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity style={{ width: AppUtil.getHP(2), height: AppUtil.getHP(4), paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 }} onPress={() => favouriteUnfavourite(item.id)}  >
+                            <IcnUnSelectedHeartWithRound style={{ paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 }} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
+                        </TouchableOpacity>
+                }
                 {/* <View style={LISTSTYLE.rewordView}>
                     <IcnTrophy style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
                     <IcnStar style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
@@ -91,7 +104,16 @@ const ChallengeListImage = (props) => {
                         <Text style={LISTSTYLE.title}>{item.totalView}</Text>
                     </View>
                     <View style={LISTSTYLE.secondInnerCalView}>
-                        <IcnThumsUp style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        {
+                            item.like == true ?
+                                <TouchableOpacity onPress={() => { likeUnlikeRender(item.id) }}>
+                                    <IcnThumsUpBlack style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => { likeUnlikeRender(item.id) }}>
+                                    <IcnThumsUp style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                        }
                         <Text style={LISTSTYLE.title}>{item.totalLike}</Text>
                     </View>
                     <View style={LISTSTYLE.secondInnerCalView}>

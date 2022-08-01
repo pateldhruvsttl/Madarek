@@ -12,7 +12,9 @@ const ViewMoreChallenges =(props) =>{
                 isType={"Challenges"} 
                 scrollEnabled={true}
                 navigateDetail={(id) => props.navigateDetail(id)}
-                likeChallenge={(id) => props.likeChallenge(id)} />
+                likeChallenge={(id) => props.likeChallenge(id)}
+                favoriteChallenge={(id) => props.favoriteChallenge(id)}
+                />
         </View>
     )
 }

@@ -17,7 +17,6 @@ import moment from "moment";
 
 
 const SubParticipateIdeas = (props) => {
-console.log('props',props);
     const navigation = useNavigation();
     const Bold = ({ children }) => <Text style={STYLE.boldView}>{children}</Text>
 

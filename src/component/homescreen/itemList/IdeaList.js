@@ -27,7 +27,7 @@ const IdeaList = (props) => {
     const onSelectTab = (value, type) => {
 
         const data = {
-            "frontuser_id":UserManager.userId,
+            "frontuser_id": UserManager.userId,
             "limit": AppConfig.pageLimit,
             "language": AppConfig.lang,
             "listtype": type,
@@ -71,8 +71,66 @@ const IdeaList = (props) => {
         }, (err) => {
         })
     }
+    const onLikeIdeas = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'LikedislikeIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
-    const onIdeas = (id) => {
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            const popularListArr = popularIdeasList
+            const newListArr = newIdeasList
+            const winningListArr = winningIdeaList
+            
+            popularListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        popularListArr[index].like = likeDislike
+                        popularListArr[index].totalLike = Number(popularListArr[index].totalLike) + 1;
+                    }
+                    else {
+                        popularListArr[index].like = likeDislike
+                        popularListArr[index].totalLike = Number(popularListArr[index].totalLike) - 1;
+                    }
+                }
+            })
+            newListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        newListArr[index].like = likeDislike
+                        newListArr[index].totalLike = Number(newListArr[index].totalLike) + 1;
+                    }
+                    else {
+                        newListArr[index].like = likeDislike
+                        newListArr[index].totalLike = Number(newListArr[index].totalLike) - 1;
+                    }
+                }
+            })
+            winningListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        winningListArr[index].like = likeDislike
+                        winningListArr[index].totalLike = Number(winningListArr[index].totalLike) + 1;
+                    }
+                    else {
+                        winningListArr[index].like = likeDislike
+                        winningListArr[index].totalLike = Number(winningListArr[index].totalLike) - 1;
+                    }
+                }
+            })
+
+            setPopularIdeasList([...popularListArr]);
+            setNewIdeasList([...newListArr]);
+            setWinningIdeaList([...winningListArr]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+    const onFavoriteIdeas = (id) => {
         var data = {
             "field_name": "idea_id",
             "id": id,
@@ -81,7 +139,7 @@ const IdeaList = (props) => {
         }
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
-            const likeDislike = res?.data === 'dislike' ? false : true;
+            const likeDislike = res?.data === 'dislike' ? true : false;
             const popularListArr = popularIdeasList
             const newListArr = newIdeasList
             const winningListArr = winningIdeaList
@@ -113,9 +171,9 @@ const IdeaList = (props) => {
     const onTabNavigate = () => {
 
         return (
-            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeasList.slice(0, 2)} likeIdea={onIdeas} /> :
-                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeasList.slice(0, 2)} likeIdea={onIdeas} /> :
-                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaList.slice(0, 2)} likeIdea={onIdeas} /> : null
+            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> :
+                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> :
+                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> : null
         )
     }
 
