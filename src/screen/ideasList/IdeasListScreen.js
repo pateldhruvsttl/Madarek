@@ -326,7 +326,7 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setAllIdeaArrPageNo(1), onIdeas("all", "", "", "", 1);
+                  setAllIdeaArrPageNo(1), onIdeas("all", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.All}
@@ -346,7 +346,7 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setNewIdeaArrPageNo(1), onIdeas("latest", "", "", "", 1);
+                  setNewIdeaArrPageNo(1), onIdeas("latest", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Latest}
@@ -366,7 +366,7 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setPopularIdeaArrPageNo(1), onIdeas("popular", "", "", "", 1);
+                  setPopularIdeaArrPageNo(1), onIdeas("popular",isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Popular}
@@ -386,7 +386,7 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setWinningIdeaArrPageNo(1), onIdeas("winning", "", "", "", 1);
+                  setWinningIdeaArrPageNo(1), onIdeas("winning", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Winning}
