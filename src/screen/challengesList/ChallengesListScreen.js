@@ -2,10 +2,6 @@ import React, { memo, useEffect, useState } from "react";
 import {
   View,
   Text,
-  ScrollView,
-  ScrollViewBase,
-  StatusBar,
-  TouchableOpacity,
 } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -26,65 +22,92 @@ import { AppConfig } from "../../manager/AppConfig";
 const Tab = createMaterialTopTabNavigator();
 
 const ChallengesListScreen = (props) => {
+
+
+  const [isTab, setTab] = useState(props?.route?.params);
+
+  const [isFilterVisible, setFilterVisible] = useState(false);
+  const [isCategories, setCategories] = useState("");
+  const [isSortBy, setSortBy] = useState("");
+
   const [openChallenge, setOpenChallenge] = useState([]);
   const [upcomingChallenge, setUpcomingChallenge] = useState([]);
   const [closeChallenge, setCloseChallenge] = useState([]);
-  const [vottingChallenge, setVottingChallenge] = useState([]);
-  const [isFilterVisible, setFilterVisible] = useState(false);
   const [isFilter, setFilter] = useState(false);
   const tab = props.route.params;
 
+  const [isUpCommingChallengePageNo, setUpCommingChallengePageNo] = useState(1);
+  const [isCloseChallengePageNo, setCloseChallengePageNo] = useState(1);
+
+
   useEffect(() => {
-    onOpenChallenge("", "", "");
+    if (isTab == 0)
+      onOpenChallenge("open_submission", isCategories, isSortBy, isOpenChallengePageNo);
+    else if (isTab == 1)
+      onOpenChallenge("coming_soon", isCategories, isSortBy, isUpCommingChallengePageNo);
+    else if (isTab == 2)
+      onOpenChallenge("closed", isCategories, isSortBy, isCloseChallengePageNo);
   }, []);
 
-  const onOpenChallenge = (search, categories, sortBy) => {
+  const onOpenChallenge = (type, categories, sortBy, cpage = 1) => {
+
     const data = {
       frontuser_id: UserManager.userId,
-      searchkeywords: search,
+      searchkeywords: "",
       keywords: "",
       categories: categories,
-      statusinputdata: "",
+      statusinputdata: type,
       layout: "list",
       limit: AppConfig.pageLimit,
-      shortby: sortBy==1?"ASC":sortBy==2?"DESC":"",
+      page: cpage,
+      shortby: sortBy == 1 ? "ASC" : sortBy == 2 ? "DESC" : "",
     };
-    Service.post(
-      EndPoints.openChallenges,
-      data,
-      (res) => {
-        var opChallenges = [];
-        var coChallenges = [];
-        var voChallenges = [];
-        var clChallenges = [];
-        res.data.forEach((element) => {
-          switch (element.submission_status) {
-            case "OPEN FOR SUBMISSION":
-              opChallenges.push(new OpenChallenge(element));
-              break;
-            case "COMING SOON":
-              coChallenges.push(new OpenChallenge(element));
-              break;
-            case "OPEN FOR VOTING":
-              voChallenges.push(new OpenChallenge(element));
-              break;
-            case "CLOSED":
-              clChallenges.push(new OpenChallenge(element));
-              break;
-            default:
-              break;
-          }
+
+    if (cpage == 1) {
+      setCloseChallenge([]);
+      setUpcomingChallenge([]);
+      setOpenChallenge([]);
+    }
+
+    Service.post(EndPoints.openChallenges, data, (res) => {
+
+      if (type === "closed") {
+        const arr = [];
+        res?.data?.map((element) => {
+          let model = new OpenChallenge(element);
+          arr.push(model);
         });
-        setOpenChallenge(opChallenges);
-        setUpcomingChallenge(coChallenges);
-        setCloseChallenge(clChallenges);
-        setVottingChallenge(voChallenges);
-      },
+        if (cpage === 1) setCloseChallenge(arr);
+        else setCloseChallenge([...closeChallenge, ...arr]);
+      }
+      else if (type === "coming_soon") {
+        const arr = [];
+        res?.data?.map((element) => {
+          let model = new OpenChallenge(element);
+          arr.push(model);
+        });
+        if (cpage === 1) setUpcomingChallenge(arr);
+        else setUpcomingChallenge([...upcomingChallenge, ...arr]);
+      }
+      else if (type === "open_submission") {
+        const arr = [];
+        res?.data?.map((element) => {
+          let model = new OpenChallenge(element);
+          arr.push(model);
+        });
+        if (cpage === 1)
+          setOpenChallenge(arr);
+        else
+          setOpenChallenge([...openChallenge, ...arr]);
+      }
+
+    },
       (err) => {
         Loger.onLog("", err);
       }
     );
   };
+
   const favoriteChallenge = (id) => {
     var data = {
       "field_name": "contest_id",
@@ -92,7 +115,7 @@ const ChallengesListScreen = (props) => {
       "frontuser_id": UserManager.userId,
       "model": "FavoriteContests"
     }
-    
+
     Service.post(EndPoints.challengeLikeUnlike, data, (res) => {
       const likeDislike = res?.data === 'dislike' ? true : false;
       let newOpenChallenge = [];
@@ -135,6 +158,7 @@ const ChallengesListScreen = (props) => {
       Loger.onLog('Error of likeUnlike', err)
     })
   }
+
   const likeChallenge = (id) => {
     var data = {
       field_name: "contest_id",
@@ -214,16 +238,44 @@ const ChallengesListScreen = (props) => {
     })
   }
 
-  // const data = props?.route?.params?.data ? props?.route?.params?.data : sliderdata
   onFilterClose = (categories, sortBy) => {
-    console.log('====================================');
-    console.log('category and sortby',categories, sortBy);
-    console.log('====================================');
+
+    setCategories(categories.toString());
+    setSortBy(sortBy);
+
     setFilterVisible(!isFilterVisible);
+
+    Loger.onLog("=======>", isTab);
     if (categories.toString() == "" || sortBy != 0) {
-      onOpenChallenge("", categories.toString(), sortBy);
+      if (isTab === undefined || isTab === 0)
+        onOpenChallenge("open_submission", categories.toString(), sortBy, 1);
+      else if (isTab === 1)
+        onOpenChallenge("coming_soon", categories.toString(), sortBy, 1);
+      else if (isTab === 2)
+        onOpenChallenge("closed", categories.toString(), sortBy, 1);
+
+      setOpenChallengePageNo(1);
+      setUpCommingChallengePageNo(1);
+      setCloseChallengePageNo(1);
     }
   };
+
+  const paginations = (type) => {
+
+    if (type === "open_submission") {
+      setOpenChallengePageNo(isOpenChallengePageNo + 1);
+      onOpenChallenge("open_submission", isCategories, isSortBy, isOpenChallengePageNo + 1);
+    }
+    else if (type === "coming_soon") {
+      setUpCommingChallengePageNo(isUpCommingChallengePageNo + 1);
+      onOpenChallenge("coming_soon", isCategories, isSortBy, isUpCommingChallengePageNo + 1);
+    }
+    else if (type === "closed") {
+      setCloseChallengePageNo(isCloseChallengePageNo + 1);
+      onOpenChallenge("closed", isCategories, isSortBy, isCloseChallengePageNo + 1);
+    }
+  };
+
   return (
     <SafeAreaView style={ListStyle.container}>
       <CommonHeader
@@ -237,15 +289,7 @@ const ChallengesListScreen = (props) => {
       <View style={ListStyle.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={
-              tab == 0
-                ? Label.Open
-                : tab == 1
-                ? Label.Upcoming
-                : tab == 2
-                ? Label.Closed
-                : Label.Voting
-            }
+            initialRouteName={isTab == 0 ? Label.Open : isTab == 1 ? Label.Upcoming : isTab == 2 ? Label.Closed : null}
             swipeEnabled={false}
             screenOptions={{
               tabBarLabelStyle: ListStyle.tabHeader,
@@ -255,6 +299,13 @@ const ChallengesListScreen = (props) => {
             }}
           >
             <Tab.Screen
+              listeners={{
+                tabPress: (e) => {
+                  setTab(0);
+                  setOpenChallengePageNo(1);
+                  onOpenChallenge("open_submission", isCategories, isSortBy, 1);
+                },
+              }}
               name={Label.Open}
               children={() =>
                 openChallenge.length > 0 ? (
@@ -262,9 +313,8 @@ const ChallengesListScreen = (props) => {
                     propName={{ type: "OpenChallenge", data: openChallenge }}
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(id) =>
-                      props.navigation.navigate("ChallengeDetail", { id: id })
-                    }
+                    navigateDetail={(id) => props.navigation.navigate("ChallengeDetail", { id: id })}
+                    paginations={() => paginations("open_submission")}
                   />
                 ) : (
                   <Text style={ListStyle.txtNodata}>No data found</Text>
@@ -272,21 +322,36 @@ const ChallengesListScreen = (props) => {
               }
             />
             <Tab.Screen
+              listeners={{
+                tabPress: (e) => {
+                  setTab(1);
+                  setUpCommingChallengePageNo(1)
+                  onOpenChallenge("coming_soon", isCategories, isSortBy, 1);
+                },
+              }}
               name={Label.Upcoming}
               children={() =>
-                upcomingChallenge.length > 0 ? 
+                upcomingChallenge.length > 0 ?
                   <ViewMoreChallenges
+                    propName={{ type: "UpCommingChallenge", data: upcomingChallenge }}
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", {id: item.id})}
+                    navigateDetail={(item) => props.navigation.navigate("ChallengeDetail", { id: item.id })}
+                    paginations={() => paginations("coming_soon")}
                   />
-                 : 
+                  :
                   <Text style={ListStyle.txtNodata}>No data found</Text>
-                
+
               }
             />
             <Tab.Screen
+              listeners={{
+                tabPress: (e) => {
+                  setTab(2);
+                  setCloseChallengePageNo(1)
+                  onOpenChallenge("closed", isCategories, isSortBy, 1);
+                },
+              }}
               name={Label.Closed}
               children={() =>
                 closeChallenge.length > 0 ?
@@ -295,30 +360,13 @@ const ChallengesListScreen = (props) => {
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
-                  />:
+                    paginations={() => paginations("closed")}
+                  /> :
                   <Text style={ListStyle.txtNodata}>No data found</Text>
-                
+
               }
             />
-            <Tab.Screen
-              name={Label.Voting}
-              children={() =>
-                vottingChallenge.length > 0 ? (
-                  <ViewMoreChallenges
-                    propName={{ type: "Challenge", data: vottingChallenge }}
-                    favoriteChallenge={(id) => favoriteChallenge(id)}
-                    likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(item) =>
-                      props.navigation.navigate("ChallengeDetail", {
-                        id: item.id,
-                      })
-                    }
-                  />
-                ) : (
-                  <Text style={ListStyle.txtNodata}>No data found</Text>
-                )
-              }
-            />
+
           </Tab.Navigator>
         </NavigationContainer>
       </View>

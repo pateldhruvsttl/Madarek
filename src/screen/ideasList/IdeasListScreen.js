@@ -21,6 +21,8 @@ import { UserManager } from "../../manager/UserManager";
 const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
+  const [isTab, setTab] = useState(props?.route?.params);
+  
   const [allIdeaArr, setaAllIdeaArr] = useState([]);
   const [newIdeaArr, setNewIdeaArr] = useState([]);
   const [popularIdeaArr, setPopularIdeaArr] = useState([]);
@@ -38,14 +40,14 @@ const IdeasListScreen = (props) => {
   const [isSector, setSector] = useState("");
   const [isSortBy, setSortBy] = useState("");
 
-  const tab = props.route.params;
+  
  
   useEffect(() => {
-    if (tab === undefined || tab === 0)
+    if (isTab === undefined || isTab === 0)
       onIdeas("all", "", "", "", allIdeaArrPageNo);
-    else if (tab === 1) onIdeas("latest", isCategories, isSector, isSortBy, newIdeaArrPageNo);
-    else if (tab === 2) onIdeas("popular", isCategories, isSector, isSortBy, popularIdeaArrPageNo);
-    else if (tab === 3) onIdeas("winning", isCategories, isSector, isSortBy, winningIdeaArrPageNo);
+    else if (isTab === 1) onIdeas("latest", isCategories, isSector, isSortBy, newIdeaArrPageNo);
+    else if (isTab === 2) onIdeas("popular", isCategories, isSector, isSortBy, popularIdeaArrPageNo);
+    else if (isTab === 3) onIdeas("winning", isCategories, isSector, isSortBy, winningIdeaArrPageNo);
   }, []);
 
   const onFilterClose = (categories, sector, sortBy) => {
@@ -59,11 +61,11 @@ const IdeasListScreen = (props) => {
       setFilter(true);
       if (tab === undefined || tab === 0)
         onIdeas("all", categories.toString(), sector.toString(), sortBy);
-      else if (tab === 1)
+      else if (isTab === 1)
         onIdeas("latest", categories.toString(), sector.toString(), sortBy);
-      else if (tab === 2)
+      else if (isTab === 2)
         onIdeas("popular", categories.toString(), sector.toString(), sortBy);
-      else if (tab === 3)
+      else if (isTab === 3)
         onIdeas("winning", categories.toString(), sector.toString(), sortBy);
       else onIdeas("all", categories.toString(), sector.toString(), sortBy);
 
@@ -313,11 +315,11 @@ const IdeasListScreen = (props) => {
         <NavigationContainer independent={true}>
           <Tab.Navigator
             initialRouteName={
-              tab == 0
+              isTab == 0
                 ? Label.All
-                : tab == 1
+                : isTab == 1
                   ? Label.Latest
-                  : tab == 2
+                  : isTab == 2
                     ? Label.Popular
                     : Label.Winning
             }
@@ -332,7 +334,8 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setAllIdeaArrPageNo(1), onIdeas("all", isCategories, isSector, isSortBy, 1);
+                  setTab(0);
+                  setAllIdeaArrPageNo(1), onIdeas("all", "", "", "", 1);
                 },
               }}
               name={Label.All}
@@ -352,7 +355,8 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setNewIdeaArrPageNo(1), onIdeas("latest", isCategories, isSector, isSortBy, 1);
+                  setTab(1);
+                  setNewIdeaArrPageNo(1), onIdeas("latest", "", "", "", 1);
                 },
               }}
               name={Label.Latest}
@@ -372,7 +376,8 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setPopularIdeaArrPageNo(1), onIdeas("popular",isCategories, isSector, isSortBy, 1);
+                  setTab(2);
+                  setPopularIdeaArrPageNo(1), onIdeas("popular", "", "", "", 1);
                 },
               }}
               name={Label.Popular}
@@ -392,7 +397,8 @@ const IdeasListScreen = (props) => {
             <Tab.Screen
               listeners={{
                 tabPress: (e) => {
-                  setWinningIdeaArrPageNo(1), onIdeas("winning", isCategories, isSector, isSortBy, 1);
+                  setTab(3);
+                  setWinningIdeaArrPageNo(1), onIdeas("winning", "", "", "", 1);
                 },
               }}
               name={Label.Winning}
