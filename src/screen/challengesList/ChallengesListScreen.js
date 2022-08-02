@@ -145,15 +145,6 @@ const ChallengesListScreen = (props) => {
       });
       setCloseChallenge([...newCloseChallenge]);
 
-      // let newVottingChallenge = [];
-      // newVottingChallenge = vottingChallenge;
-      // newVottingChallenge.map((ele, index) => {
-      //   if (ele.id == id) {
-      //     newVottingChallenge[index].favorite = likeDislike;
-      //   }
-      // });
-      // setVottingChallenge([...newVottingChallenge]);
-
     }, (err) => {
       Loger.onLog('Error of likeUnlike', err)
     })
@@ -217,22 +208,6 @@ const ChallengesListScreen = (props) => {
       });
       setCloseChallenge([...newCloseChallenge]);
 
-      let newVottingChallenge = [];
-      newVottingChallenge = vottingChallenge;
-      newVottingChallenge.map((ele, index) => {
-        if (ele.id == id) {
-          if (likeDislike == 1) {
-            newVottingChallenge[index].like = likeDislike
-            newVottingChallenge[index].totalLike = Number(newVottingChallenge[index].totalLike) + 1;
-          }
-          else {
-            newVottingChallenge[index].like = likeDislike
-            newVottingChallenge[index].totalLike = Number(newVottingChallenge[index].totalLike) - 1;
-          }
-        }
-      });
-      setVottingChallenge([...newVottingChallenge]);
-
     }, (err) => {
       Loger.onLog('Error of likeUnlike', err)
     })
@@ -242,25 +217,24 @@ const ChallengesListScreen = (props) => {
 
     setCategories(categories.toString());
     setSortBy(sortBy);
-
     setFilterVisible(!isFilterVisible);
 
-    Loger.onLog("=======>", isTab);
     if (categories.toString() != "" || sortBy != 0) {
       setFilter(true)
-      if (isTab === undefined || isTab === 0)
-        onOpenChallenge("open_submission", categories.toString(), sortBy, 1);
-      else if (isTab === 1)
-        onOpenChallenge("coming_soon", categories.toString(), sortBy, 1);
-      else if (isTab === 2)
-        onOpenChallenge("closed", categories.toString(), sortBy, 1);
-
-      setOpenChallengePageNo(1);
-      setUpCommingChallengePageNo(1);
-      setCloseChallengePageNo(1);
-    }else{
+    } else {
       setFilter(false)
     }
+
+    if (isTab === undefined || isTab === 0)
+      onOpenChallenge("open_submission", categories.toString(), sortBy, 1);
+    else if (isTab === 1)
+      onOpenChallenge("coming_soon", categories.toString(), sortBy, 1);
+    else if (isTab === 2)
+      onOpenChallenge("closed", categories.toString(), sortBy, 1);
+
+    setOpenChallengePageNo(1);
+    setUpCommingChallengePageNo(1);
+    setCloseChallengePageNo(1);
   };
 
   const paginations = (type) => {

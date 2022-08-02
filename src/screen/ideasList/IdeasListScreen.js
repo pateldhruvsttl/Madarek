@@ -59,7 +59,11 @@ const IdeasListScreen = (props) => {
     setFilterVisible(!isFilterVisible);
     if (categories.toString() != "" || sortBy != 0 || sector.toString() != "") {
       setFilter(true);
-      if (isTab === undefined || isTab === 0)
+    }else{
+      setFilter(false);
+    }
+
+    if (isTab === undefined || isTab === 0)
         onIdeas("all", categories.toString(), sector.toString(), sortBy);
       else if (isTab === 1)
         onIdeas("latest", categories.toString(), sector.toString(), sortBy);
@@ -73,9 +77,7 @@ const IdeasListScreen = (props) => {
       setNewIdeaArrPageNo(1);
       setPopularIdeaArrPageNo(1);
       setWinningIdeaArrPageNo(1);
-    }else{
-      setFilter(false);
-    }
+      
   };
 
   const onIdeas = (tabType = "all", categories = "", sector = "", sortBy = "", cpage = 1) => {

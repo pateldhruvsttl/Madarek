@@ -99,7 +99,7 @@ const MyDrawerScreen = (props) => {
     return (
       <View>
         {
-          [Label.Open, Label.Upcoming, Label.Closed, Label.Voting].map((item, index) => {
+          [Label.Open, Label.Upcoming, Label.Closed].map((item, index) => {
             return (
               <TouchableOpacity style={[drawerStyles.subMenuButton, { marginVertical: AppUtil.getHP(1), }]} onPress={() => onselectButtonMenu(3, "ChallengesListScreen",index)}>
                 <Text style={drawerStyles.menuText}>{item}</Text>
