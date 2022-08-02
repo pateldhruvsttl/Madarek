@@ -6,7 +6,7 @@ export default class OpenChallengeDetail {
             return;
         }
         // contestDetail 
-        this.id = obj?.id
+        this.submissionStatus = obj?.submissionstatus || "noStatus"
         this.contestTitle = obj?.contest_title || "No contest Title"
         this.contestImage = obj?.contest_image || "https://i.imgur.com/5tj6S7Ol.jpg"
         this.title = obj?.title || "No title"

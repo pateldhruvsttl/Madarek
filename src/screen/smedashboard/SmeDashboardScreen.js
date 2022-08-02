@@ -33,7 +33,6 @@ const SmeDashboardScreen = (props) => {
 
     const onSmeDashboard = () => {
         const data = {
-
             "frontuser_id":UserManager.userId,
             "device_id": deviceId,
             "token": AppConfig.token

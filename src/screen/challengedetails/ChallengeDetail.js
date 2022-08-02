@@ -44,20 +44,17 @@ const ChallengeDetail = (props) => {
     };
     Service.post(EndPoints.challengedetails, data, (res) => {
 
-      const similarRow = []
-      const contestData = {}
       const evaluationPannel = []
       const resources = []
       const termsRow = res.data.termsrow
       const participateRowsData = []
-      
+
       if (res.statusCode === "1") {
 
         let model = new OpenChallengeDetail(res.data.contestDetail)
         setContestData(model)
 
         res.data.evaluationPannel.map((ele) => {
-
           let model = new OpenChallengeDetail(ele)
           evaluationPannel.push(model)
           setEvaluationData(evaluationPannel)
@@ -105,7 +102,8 @@ const ChallengeDetail = (props) => {
 
               {contestData && <IdeaContent data={contestData}
                 isType={title}
-                id={props?.route?.params?.id} />}
+                id={props?.route?.params?.id}
+                />}
 
               {/* <View style={PAGESTYLE.contentBoxChallenge} >
                 <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
