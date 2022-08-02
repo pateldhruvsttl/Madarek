@@ -16,8 +16,8 @@ const IdeaExpert = (props) => {
                         <Image
                             source={{ uri: item.profilePhoto }}
                             style={ExpertInsightStyle.smallRadiousImage} />
-                        <View style={ExpertInsightStyle.subFlexView}>
-                            <Text style={ExpertInsightStyle.catText}>{item.title}</Text>
+                        <View style={[ExpertInsightStyle.subFlexView,{marginEnd:AppUtil.getHP(2.5)}]}>
+                            <Text numberOfLines={1} style={ExpertInsightStyle.catText}>{item.title}</Text>
                             <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
                         </View>
                     </View>
