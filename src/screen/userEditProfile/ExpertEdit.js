@@ -30,7 +30,7 @@ const ExpertEdit = (props) => {
     return (
         <ScrollView >
             <View style={[EditUserProfileStyle.cornerView, { marginTop: AppUtil.getHP(2) }]} >
-                <Text style={[EditUserProfileStyle.titleText, { marginTop: 0 }]}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
+                {/* <Text style={[EditUserProfileStyle.titleText, { marginTop: 0 }]}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
                 <View style={EditUserProfileStyle.scrollSubView}>
                     {
                         [1, 2, 3, 4, 5, 6].map((item, index) => {
@@ -45,7 +45,7 @@ const ExpertEdit = (props) => {
                 </View>
                 <TouchableOpacity style={[EditUserProfileStyle.addMoreButton, { borderColor: themeColor.headerColor }]}>
                     <Text style={[EditUserProfileStyle.addMoreText, { color: themeColor.headerColor }]}>{Label.AddMore}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Skill}</Text>
                 <TextInput
