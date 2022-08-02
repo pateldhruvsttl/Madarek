@@ -181,7 +181,7 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas}
+                data={isAllIdeas.splice(0,2)}
                 isType="Ideas"
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onLikeIdeas={(id) => onLikeIdeas(id)}

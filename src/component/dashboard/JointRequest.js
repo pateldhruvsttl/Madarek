@@ -43,7 +43,7 @@ const JointRequest = (props) => {
                     const updateData = requestData
                     updateData.map((ele,index) => {
                         if (ele.expertId == id) {
-                            updateData[index].joinStatus = res.message
+                            updateData[index].joinStatus = res.status
                         }
                       })
                       setRequestData([...updateData]);

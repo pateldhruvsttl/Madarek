@@ -33,10 +33,10 @@ function NotificationsScreen() {
       token: AppConfig.token,
       page: "1",
     };
-    Service.post(EndPoints.notification,data,(res) => {
-        setNotificatioData(res.data);
-        setRecord(res.totalRecords);
-      },
+    Service.post(EndPoints.notification, data, (res) => {
+      setNotificatioData(res.data);
+      setRecord(res.totalRecords);
+    },
       (err) => {
         Loger.onLog("Notification error response", err);
       }
@@ -50,13 +50,43 @@ function NotificationsScreen() {
       frontuser_id: UserManager.userId,
     };
     Service.post(EndPoints.acceptrejectrequest, data, (res) => {
-    },(err) => {
-        Loger.onLog("Notification accept reject error response", err);
-      }
+    }, (err) => {
+      Loger.onLog("Notification accept reject error response", err);
+    }
     );
   };
 
   const renderItem = ({ item, index }) => {
+    const requestRender = () => {
+
+      if (item?.notification_type == "Expert request") {
+        if (item.admin_status == "pending") {
+          return (
+            <View style={Style.btnView}>
+              <TouchableOpacity onPress={() => onAcceptReject("accept", item.id)} style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor },]}>
+                <Text style={[Style.txt, { color: GetAppColor.white }]}>
+                  {Label.Accept}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => onAcceptReject("reject", item.id)} style={[Style.btnLearMore, { borderColor: themeColor.buttonColor },]}>
+                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
+                  {Label.Reject}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return (<View style={Style.btnView}>
+            <Text style={[Style.txt1]}>
+              {item.admin_status.toUpperCase()}
+            </Text>
+          </View>)
+        }
+      }
+      else {
+        return false
+      }
+    }
     return (
       <View style={Style.renderMainView}>
         <View style={Style.imgRenderView}>
@@ -76,30 +106,8 @@ function NotificationsScreen() {
               {moment(item.created_at).format("DD MMM YY  HH:MM a")}
             </Text>
           </View>
+          {requestRender()}
 
-          {item?.notification_type === "Expert request" ? (
-            <View style={Style.btnView}>
-              <TouchableOpacity onPress={() => onAcceptReject("accept", item.id)} style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor },]}>
-                <Text style={[Style.txt, { color: GetAppColor.white }]}>
-                  {Label.Accept}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => onAcceptReject("reject", item.id)}style={[Style.btnLearMore,{ borderColor: themeColor.buttonColor },]}>
-                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
-                  {Label.Reject}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )
-        :
-        (
-          <View style={Style.btnView}>
-                <Text style={[Style.txt1]}>
-                  {Label.Approved}
-                </Text>
-            </View>
-        )
-        }
           {/* {item?.notification_type === "Idea request" && (
             <View style={Style.btnView}>
               <TouchableOpacity
@@ -125,7 +133,7 @@ function NotificationsScreen() {
             </View>
           )} */}
         </View>
-        <TouchableOpacity onPress={() => { onClear(item.id, index);}}>
+        <TouchableOpacity onPress={() => { onClear(item.id, index); }}>
           <Text style={[Style.clearView, { fontSize: AppUtil.getHP(2.4), marginEnd: 10 }]}>
             {"x"}
           </Text>
@@ -141,16 +149,16 @@ function NotificationsScreen() {
       frontuser_id: UserManager.userId,
       notificationid: id,
     };
-    Service.post( EndPoints.clearnotification,data,(res) => {
-        if (id == "") {
-          setNotificatioData([]);
-        } else {
-          var notData = [...notiData];
-          notData.splice(index, 1);
-          setRecord(notData.length);
-          setNotificatioData(notData);
-        }
-      },
+    Service.post(EndPoints.clearnotification, data, (res) => {
+      if (id == "") {
+        setNotificatioData([]);
+      } else {
+        var notData = [...notiData];
+        notData.splice(index, 1);
+        setRecord(notData.length);
+        setNotificatioData(notData);
+      }
+    },
       (err) => {
         console.log("Clear notification error response", err);
       }
@@ -159,7 +167,7 @@ function NotificationsScreen() {
 
   return (
     <View style={Style.MainView}>
-      <SafeAreaView style={{flex:1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <CommonHeader
           isType={"NotificationsScreen"}
           onMenuClick={() => {
