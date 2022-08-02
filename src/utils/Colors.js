@@ -49,7 +49,9 @@ export const GetAppColor = {
 
     chatInputColor : "#F5F6FA",
     inputBorder:"#0066CB",
-    lightWhite1:"#e8eef1"
+    lightWhite1:"#e8eef1",
+    rejected:"#ef4d30",
+    submissionStatus : "#31ade3"
     
 }
 

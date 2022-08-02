@@ -15,6 +15,7 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import { showMessage, showMessageWithCallBack } from "../../utils/Constant";
 import { UserManager } from "../../manager/UserManager";
+import { GetAppColor } from "../../utils/Colors";
 
 
 
@@ -22,13 +23,12 @@ const JointRequest = (props) => {
     const [requestData, setRequestData] = useState(props?.data)
     const [reqData, setReqData] = useState(props?.isTitle)
 
-    Loger.onLog('requestData', requestData);
 
     useEffect(() => {
         setRequestData(props.data);
         setReqData(props.isTitle);
     }, [props])
-    
+
     const joinRequest = (id, status) => {
 
         const data = {
@@ -40,13 +40,14 @@ const JointRequest = (props) => {
         Service.post(EndPoints.acceptReject, data, (res) => {
             Loger.onLog('acceptReject Response  ========>', res)
             if (res?.statusCode === "1") {
-                if (res.status == "approve" || res.status == "reject") {
                     const updateData = requestData
-                    const newData = updateData.filter(item => item.expertId !== id)
-                    // showMessageWithCallBack(res.message, () => setRequestData(newData))
-                    setRequestData(newData)
+                    updateData.map((ele,index) => {
+                        if (ele.expertId == id) {
+                            updateData[index].joinStatus = res.message
+                        }
+                      })
+                      setRequestData([...updateData]);
 
-                }
             }
             else {
                 showMessage(res.message)
@@ -91,8 +92,8 @@ const JointRequest = (props) => {
                                 </TouchableOpacity>
                             </View>
                             :
-                            <TouchableOpacity style={Style.btnAccept}>
-                                <Text style={Style.txtBtnAccept}>{item.joinStatus.toUpperCase()}</Text>
+                           <TouchableOpacity style={[Style.btnAccept,{borderColor:item.joinStatus == "Accepted" ?  GetAppColor.dotGreen : GetAppColor.rejected}]}>
+                                <Text style={[Style.txtBtnAccept,{color:item.joinStatus == "Accepted" ?  GetAppColor.dotGreen : GetAppColor.rejected}]}>{item.joinStatus.toUpperCase()}</Text>
                             </TouchableOpacity>
                     }
                 </View>

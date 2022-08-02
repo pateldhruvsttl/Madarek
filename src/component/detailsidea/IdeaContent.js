@@ -29,10 +29,15 @@ import WebViewComp from "../webview/WebViewComp";
 
 const IdeaContent = (props) => {
 
-    const [isFavorite, setFavorite] = useState(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest+'' : props.data.favorite)
+    const [isFavorite, setFavorite] = useState()
     const [totalLike, setTotalLike] = useState(props?.data?.totalLike)
     const { themeColor } = useSelector((state) => state);
     const iconSize = AppUtil.getHP(1.8);
+
+    useEffect(() => {
+       setFavorite(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest  : props.data.favorite)
+    }, [props.data])
+
 
     const onIdeaFavorite = (id) => {
         var data = {
@@ -137,7 +142,7 @@ const IdeaContent = (props) => {
                             <Text style={Style.contentTitle}>{props.data?.contestDate}</Text>
                         </View>
                         <TouchableOpacity style={Style.openBtn}>
-                            <Text style={Style.openBtnTitle}>{Label.OpenTitle}</Text>
+                            <Text style={[Style.openBtnTitle,{color:props.data?.submissionStatus == "COMING SOON" ? GetAppColor.submissionStatus : GetAppColor.white}]}>{props.data?.submissionStatus}</Text>
                         </TouchableOpacity>
                     </View>
                     :
