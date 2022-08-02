@@ -34,8 +34,8 @@ const ChallengesListScreen = (props) => {
   const [upcomingChallenge, setUpcomingChallenge] = useState([]);
   const [closeChallenge, setCloseChallenge] = useState([]);
   const [isFilter, setFilter] = useState(false);
-  const tab = props.route.params;
 
+  const [isOpenChallengePageNo, setOpenChallengePageNo] = useState(1);
   const [isUpCommingChallengePageNo, setUpCommingChallengePageNo] = useState(1);
   const [isCloseChallengePageNo, setCloseChallengePageNo] = useState(1);
 
@@ -145,14 +145,14 @@ const ChallengesListScreen = (props) => {
       });
       setCloseChallenge([...newCloseChallenge]);
 
-      let newVottingChallenge = [];
-      newVottingChallenge = vottingChallenge;
-      newVottingChallenge.map((ele, index) => {
-        if (ele.id == id) {
-          newVottingChallenge[index].favorite = likeDislike;
-        }
-      });
-      setVottingChallenge([...newVottingChallenge]);
+      // let newVottingChallenge = [];
+      // newVottingChallenge = vottingChallenge;
+      // newVottingChallenge.map((ele, index) => {
+      //   if (ele.id == id) {
+      //     newVottingChallenge[index].favorite = likeDislike;
+      //   }
+      // });
+      // setVottingChallenge([...newVottingChallenge]);
 
     }, (err) => {
       Loger.onLog('Error of likeUnlike', err)
@@ -287,6 +287,7 @@ const ChallengesListScreen = (props) => {
           props.navigation.openDrawer();
         }}
         onFilter={() => setFilterVisible(!isFilterVisible)}
+        isFilter={isFilter}
       />
 
       <View style={ListStyle.MainView}>

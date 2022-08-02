@@ -59,7 +59,7 @@ const IdeasListScreen = (props) => {
     setFilterVisible(!isFilterVisible);
     if (categories.toString() != "" || sortBy != 0 || sector.toString() != "") {
       setFilter(true);
-      if (tab === undefined || tab === 0)
+      if (isTab === undefined || isTab === 0)
         onIdeas("all", categories.toString(), sector.toString(), sortBy);
       else if (isTab === 1)
         onIdeas("latest", categories.toString(), sector.toString(), sortBy);
