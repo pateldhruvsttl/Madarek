@@ -156,6 +156,65 @@ const SearchLabel = (props) => {
         })
     }
 
+    const onFavoriteChallenge = (id) => {
+        var data = {
+            "field_name": "contest_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'FavoriteContests'
+        }
+        Service.post(
+            EndPoints.challengeLikeUnlike,
+            data,
+            (res) => {
+                const likeDislike = res?.data === 'dislike' ? true : false;
+                const challengeArr = isData;
+
+                challengeArr.map((ele, index) => {
+                    if (ele.id == id) {
+                        challengeArr[index].favorite = likeDislike;
+                    }
+                });
+                setData([...challengeArr]);
+
+
+            },
+            (err) => {
+                Loger.onLog("err of challengeLikeUnlike", err);
+            }
+        );
+    }
+    const onLikeChallenge = (id) => {
+        var data = {
+            "field_name": "contest_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'LikedislikeContests'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            const challengeArr = isData;
+            challengeArr.map((ele, index) => {
+                if (ele.id == id) {
+
+                    if (likeDislike == 1) {
+                        challengeArr[index].like = likeDislike
+                        challengeArr[index].totalLike = Number(challengeArr[index].totalLike) + 1;
+                    }
+                    else {
+                        challengeArr[index].like = likeDislike
+                        challengeArr[index].totalLike = Number(challengeArr[index].totalLike) - 1;
+                    }
+                }
+            });
+            setData([...challengeArr]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+
     const onGetExpertDirectory = () => {
         if (searchStr.length == 0)
             return
@@ -173,7 +232,59 @@ const SearchLabel = (props) => {
         //     Loger.onLog("###", err)
         // })
     }
+    const onFavoriteIdeas = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'FavoriteIdeas'
+        }
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
+            const likeDislike = res?.data === 'dislike' ? true : false;
+            const _isAllIdeas = isData
+
+            _isAllIdeas.map((ele, index) => {
+                if (ele.id == id) {
+                    _isAllIdeas[index].favorite = likeDislike;
+                }
+            })
+            setData([..._isAllIdeas]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+    const onLikeIdeas = (id) => {
+        var data = {
+            "field_name": "idea_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": "LikedislikeIdeas"
+        }
+
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            const _isAllIdeas = isData
+            _isAllIdeas.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        _isAllIdeas[index].like = likeDislike
+                        _isAllIdeas[index].totalLike = Number(_isAllIdeas[index].totalLike) + 1;
+                    }
+                    else {
+                        _isAllIdeas[index].like = likeDislike
+                        _isAllIdeas[index].totalLike = Number(_isAllIdeas[index].totalLike) - 1;
+                    }
+                }
+            })
+            setData([..._isAllIdeas]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
 
     const onPressCloseButton = () => {
         setData([]);
@@ -200,7 +311,8 @@ const SearchLabel = (props) => {
             <SubIdeasListWithImage
                 data={isData}
                 isType={"Ideas"}
-                likeChallenge={(id) => likeChallenge(id)}
+                onLikeIdeas={(id) => onLikeIdeas(id)}
+                onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onItemPress={(item) => { props.navigation.navigate("IdeaDetails", item) }} />
         )
     }
@@ -209,8 +321,9 @@ const SearchLabel = (props) => {
             <SubIdeasListWithImage
                 data={isData}
                 isType={"Challenges"}
-                likeChallenge={(id) => likeChallenge(id)}
-                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", {id:id}) }}
+                onLikeIdeas={(id) => onLikeChallenge(id)}
+                onFavoriteIdeas={(id) => onFavoriteChallenge(id)}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
             />
         )
 
@@ -270,7 +383,7 @@ const SearchLabel = (props) => {
                         })
                     }
                 </ScrollView>
-                <ScrollView contentContainerStyle={{width:'100%', paddingBottom:'50%'}} horizontal={false}>
+                <ScrollView contentContainerStyle={{ width: '100%', paddingBottom: '50%' }} horizontal={false}>
                     {renderResultCell()}
                 </ScrollView>
             </View>

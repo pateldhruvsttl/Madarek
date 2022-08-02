@@ -117,7 +117,7 @@ const IdeaDetails = (props) => {
       "field_name": "idea_id",
       "id": id,
       "frontuser_id": UserManager.userId,
-      "model": 'FavoriteIdeas'
+      "model": 'LikedislikeIdeas'
     }
     
     Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
