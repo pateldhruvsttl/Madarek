@@ -53,7 +53,7 @@ const SubIdeasListWithImage = (props) => {
     }
     const renderIdeaItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
+            <TouchableOpacity  onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
@@ -90,17 +90,17 @@ const SubIdeasListWithImage = (props) => {
                 <View style={Style.leftItems}>
 
                     <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{props.isType == 'Challenges' ? item.categoryName : item.ideaSubTitle}</Text>
 
                     {
                         props?.isType == "Ideas" ?
 
-                            <View style={Style.calView}>
+                            <View style={[Style.calView,{width:'100%'}]}>
                                 <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
 
                                 <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{(item.firstName + " " + item.lastName).slice(0, 15)}...</Text>
+                                <Text numberOfLines={2} style={[Style.title,{width:AppUtil.getWP(26)}]}>{`${item.firstName} ${item.lastName}`}</Text>
                             </View>
 
                             :
@@ -109,7 +109,7 @@ const SubIdeasListWithImage = (props) => {
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate ? moment(item.createDate).format("DD MMM YY") : "No date"}</Text>
+                                    <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
 
                                     <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                     <Text style={Style.title}>{item.name}</Text>
@@ -117,7 +117,7 @@ const SubIdeasListWithImage = (props) => {
                                 :
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate ? item.createDate : "No date"}</Text>
+                                    <Text style={Style.title}>{item.createDate}</Text>
                                 </View>
 
                     }
@@ -126,7 +126,7 @@ const SubIdeasListWithImage = (props) => {
                         <View style={Style.secondCalView}>
                             <View style={Style.secondInnerCalView}>
                                 <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item?.totalView ? item.totalView : 0}</Text>
+                                <Text style={Style.title}>{item?.totalView}</Text>
                             </View>
                             <View style={Style.secondInnerCalView}>
                                 {
@@ -144,7 +144,7 @@ const SubIdeasListWithImage = (props) => {
                             </View>
                             <View style={Style.secondInnerCalView}>
                                 <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item?.totalComments ? item.totalComments : 0}</Text>
+                                <Text style={Style.title}>{item?.totalComment}</Text>
                             </View>
 
                         </View>

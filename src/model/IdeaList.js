@@ -8,9 +8,10 @@ export default class IdeaList {
             return;
         }
 
-        this.ideaTitle = obj?.idea_title ? obj?.idea_title : "No Title";
+        this.ideaSubTitle = obj?.idea_title ? obj?.idea_title : "No Title";
+        this.ideaTitle = obj?.category_name ? obj?.category_name : "No Title";
         this.categoryName = obj?.category_name ? obj?.category_name : "No Category"
-        this.createDate = obj?.created_at ? obj?.created_at : "No Date"
+        this.createDate = obj?.created_at ? obj?.created_at : "15 Mar 22"
         this.date = obj?.date || "15 Mar 22 - 29 Mar 22"
         this.sectorName = obj?.sector_name ? obj?.sector_name : "No Sector"
 

@@ -26,6 +26,7 @@ import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import WebViewComp from "../webview/WebViewComp";
+import moment from "moment";
 
 const IdeaContent = (props) => {
 
@@ -130,7 +131,7 @@ const IdeaContent = (props) => {
                     },
                     ]}
                 >
-                    {props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaTitle}
+                    {props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaSubTitle}
                 </Text>
             </View>
 
@@ -158,7 +159,7 @@ const IdeaContent = (props) => {
                         :
                         <View style={Style.dateContentIdea}>
                             <IcnClander height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.date}</Text>
+                            <Text style={Style.contentTitle}>{moment(props.data.createDate).format("DD MMM YYYY")}</Text>
                             <View style={Style.profileArea}>
                                 <IcnAvtarBg height={iconSize} width={iconSize} />
                                 <Text numberOfLines={1} style={Style.otherSpace}>{props.data?.firstName} {props.data?.lastName}</Text>

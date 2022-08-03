@@ -81,6 +81,7 @@ const JointRequest = (props) => {
                 </View>
 
                 <View style={Style.endItems}>
+                    {console.log('item.joinStatus',item.joinStatus)}
                     {
                         item.joinStatus == "Pending" ?
                             <View style={Style.btnView}>
@@ -92,8 +93,8 @@ const JointRequest = (props) => {
                                 </TouchableOpacity>
                             </View>
                             :
-                           <TouchableOpacity style={[Style.btnAccept,{borderColor:item.joinStatus == "Accepted" ?  GetAppColor.dotGreen : GetAppColor.rejected}]}>
-                                <Text style={[Style.txtBtnAccept,{color:item.joinStatus == "Accepted" ?  GetAppColor.dotGreen : GetAppColor.rejected}]}>{item.joinStatus.toUpperCase()}</Text>
+                           <TouchableOpacity style={[Style.btnAccept,{borderColor:item.joinStatus == "rejected" ?  GetAppColor.rejected:GetAppColor.dotGreen}]}>
+                                <Text style={[Style.txtBtnAccept,{color:item.joinStatus == "rejected" ?  GetAppColor.rejected:GetAppColor.dotGreen}]}>{item.joinStatus.toUpperCase()}</Text>
                             </TouchableOpacity>
                     }
                 </View>

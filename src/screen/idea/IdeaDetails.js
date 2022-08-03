@@ -38,6 +38,7 @@ const IdeaDetails = (props) => {
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
+  console.log('IdeaDetails id',item.id);
 
   useEffect(() => {
     onExpertInsights();
@@ -181,7 +182,7 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas.splice(0,2)}
+                data={isAllIdeas.splice(1,2)}
                 isType="Ideas"
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onLikeIdeas={(id) => onLikeIdeas(id)}

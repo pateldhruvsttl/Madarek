@@ -61,7 +61,7 @@ const SubIdeasList = (props) => {
       <View style={Style.itemsView}>
 
         <View style={Style.TitleView}>
-          <Text numberOfLines={1} style={Style.title}>{item.title}</Text>
+          <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
           {
             (item.favorite) ?
               <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => favouriteUnfavourite(item.id)}>
@@ -74,7 +74,7 @@ const SubIdeasList = (props) => {
           }
         </View>
 
-        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.categoryName}</Text>
+        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaSubTitle}</Text>
 
         {
           props.isType == "Ideas" ?
@@ -84,7 +84,7 @@ const SubIdeasList = (props) => {
 
 
               <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.firstName}</Text>
+              <Text style={Style.title}>{`${item.firstName} ${item.lastName}`}</Text>
             </View>
             :
             <View style={Style.calView}>
