@@ -90,7 +90,7 @@ const SubIdeasListWithImage = (props) => {
                 <View style={Style.leftItems}>
 
                     <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                    <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
+                    <Text numberOfLines={2} style={[Style.SubTitle, { color: props.isType === 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
                     {
                         props?.isType == "Ideas" ?
