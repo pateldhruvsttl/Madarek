@@ -80,8 +80,8 @@ const ChallengeListImage = (props) => {
 
             <View style={LISTSTYLE.leftItems}>
 
-                <Text numberOfLines={1} style={LISTSTYLE.title}>{item.title}</Text>
-                <Text numberOfLines={2} style={[LISTSTYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
+                <Text numberOfLines={1} style={LISTSTYLE.title}>{item.categoryName}</Text>
+                <Text numberOfLines={2} style={[LISTSTYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.title}</Text>
 
                 {
                     props.isType == "Ideas" ?

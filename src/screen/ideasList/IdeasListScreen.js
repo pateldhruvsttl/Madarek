@@ -196,6 +196,7 @@ const IdeasListScreen = (props) => {
       (err) => { }
     );
   };
+
   const onLikeIdeas = (id) => {
     var data = {
       field_name: "idea_id",
@@ -308,23 +309,13 @@ const IdeasListScreen = (props) => {
       <CommonHeader
         isType={"IdeasListScreen"}
         isFilter={isFilter}
-        onMenuClick={() => {
-          props.navigation.openDrawer();
-        }}
+        onMenuClick={() => {props.navigation.openDrawer();}}
         onFilter={() => setFilterVisible(!isFilterVisible)}
       />
       <View style={Style.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={
-              isTab == 0
-                ? Label.All
-                : isTab == 1
-                  ? Label.Latest
-                  : isTab == 2
-                    ? Label.Popular
-                    : Label.Winning
-            }
+            initialRouteName={isTab == 0? Label.All: isTab == 1? Label.Latest: isTab == 2? Label.Popular: Label.Winning}
             swipeEnabled={false}
             screenOptions={{
               tabBarLabelStyle: Style.tabHeader,
@@ -337,7 +328,7 @@ const IdeasListScreen = (props) => {
               listeners={{
                 tabPress: (e) => {
                   setTab(0);
-                  setAllIdeaArrPageNo(1), onIdeas("all", "", "", "", 1);
+                  setAllIdeaArrPageNo(1), onIdeas("all", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.All}
@@ -358,7 +349,7 @@ const IdeasListScreen = (props) => {
               listeners={{
                 tabPress: (e) => {
                   setTab(1);
-                  setNewIdeaArrPageNo(1), onIdeas("latest", "", "", "", 1);
+                  setNewIdeaArrPageNo(1), onIdeas("latest", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Latest}
@@ -379,7 +370,7 @@ const IdeasListScreen = (props) => {
               listeners={{
                 tabPress: (e) => {
                   setTab(2);
-                  setPopularIdeaArrPageNo(1), onIdeas("popular", "", "", "", 1);
+                  setPopularIdeaArrPageNo(1), onIdeas("popular", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Popular}
@@ -400,7 +391,7 @@ const IdeasListScreen = (props) => {
               listeners={{
                 tabPress: (e) => {
                   setTab(3);
-                  setWinningIdeaArrPageNo(1), onIdeas("winning", "", "", "", 1);
+                  setWinningIdeaArrPageNo(1), onIdeas("winning", isCategories, isSector, isSortBy, 1);
                 },
               }}
               name={Label.Winning}
