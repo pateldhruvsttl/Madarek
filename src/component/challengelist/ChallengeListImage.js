@@ -76,19 +76,12 @@ const ChallengeListImage = (props) => {
                             <IcnUnSelectedHeartWithRound style={{ paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 }} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
                         </TouchableOpacity>
                 }
-                {/* <View style={LISTSTYLE.rewordView}>
-                    <IcnTrophy style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnStar style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnRewordComment style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                    <IcnRewordLight style={LISTSTYLE.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />
-                </View> */}
-
             </View>
 
             <View style={LISTSTYLE.leftItems}>
 
                 <Text numberOfLines={1} style={LISTSTYLE.title}>{item.title}</Text>
-                <Text numberOfLines={2} style={[LISTSTYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.subTitle}</Text>
+                <Text numberOfLines={2} style={[LISTSTYLE.SubTitle, { color: props.isType == 'Challenges' ? GetAppColor.black : GetAppColor.borderRed }]}>{item.categoryName}</Text>
 
                 {
                     props.isType == "Ideas" ?

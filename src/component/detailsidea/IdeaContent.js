@@ -142,7 +142,7 @@ const IdeaContent = (props) => {
                             <IcnClander height={iconSize} width={iconSize} />
                             <Text style={Style.contentTitle}>{props.data?.contestDate}</Text>
                         </View>
-                        <TouchableOpacity style={Style.openBtn}>
+                        <TouchableOpacity style={[Style.openBtn,{backgroundColor:props.data?.submissionStatus === "COMING SOON" ? GetAppColor.buttonGreenColor : GetAppColor.rejected}]}>
                             <Text style={[Style.openBtnTitle,{color:props.data?.submissionStatus == "COMING SOON" ? GetAppColor.submissionStatus : GetAppColor.white}]}>{props.data?.submissionStatus}</Text>
                         </TouchableOpacity>
                     </View>

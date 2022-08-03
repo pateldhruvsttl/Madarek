@@ -44,10 +44,9 @@ const ChallengeDetail = (props) => {
     };
     Service.post(EndPoints.challengedetails, data, (res) => {
 
-      const evaluationPannel = []
-      const resources = []
-      const termsRow = res.data.termsrow
-      const participateRowsData = []
+      const evaluationPannel = [];
+      const resources = [];
+      const participateRowsData = [];
 
       if (res.statusCode === "1") {
 
@@ -59,21 +58,19 @@ const ChallengeDetail = (props) => {
           evaluationPannel.push(model)
           setEvaluationData(evaluationPannel)
         })
-
-        res?.data?.resources.map((ele) => {
-          let model = new OpenChallengeDetail(ele)
-          resources.push(model)
-          setResourceData(resources)
-        })
-
+ 
         res?.data?.participaterowsData.map((ele) => {
           let model = new OpenChallengeDetail(ele)
           participateRowsData.push(model)
           setParticipateData(participateRowsData)
         })
 
-        // let model = new OpenChallengeDetail(model)
-        // setRowData(termsModel)
+        res?.data?.resources.map((ele) => {
+          let model = new OpenChallengeDetail(ele)
+          resources.push(model)
+          setResourceData(resources)
+        })
+        
       }
       else {
         showMessage(res.message)
@@ -93,8 +90,6 @@ const ChallengeDetail = (props) => {
         <ScrollView style={PAGESTYLE.MainView}>
           <View>
             <View style={PAGESTYLE.subMainView}>
-              {/* <IdeaSlider Entries={testData} />
-               */}
 
               <View style={PAGESTYLE.imgStyle}>
                 <ImageLoad style={PAGESTYLE.img} resizeMode='cover' source={{ uri: contestData?.contestImage }} />
@@ -105,39 +100,18 @@ const ChallengeDetail = (props) => {
                 id={props?.route?.params?.id}
                 />}
 
-              {/* <View style={PAGESTYLE.contentBoxChallenge} >
-                <Text style={PAGESTYLE.heading}>{Label.Description}</Text>
-                <WebViewComp data={contestData.contestDescription} />
-                <Text style={PAGESTYLE.termsAndConTitle}>
-                  {Label.TermsAndCondition}
-                </Text>
-              </View> */}
-
               {contestData && <CategoryChallenge isType={title} data={contestData} />}
               {contestData && <SubInformation data={contestData} />}
 
+            
               {participateData && participateData.length > 0 &&
                 <View style={PAGESTYLE.subIdeaList}>
                   <SubParticipateIdeas data={participateData} isType={title} />
                 </View>
               }
-              {/* <View style={PAGESTYLE.loadMoreView}>
-              <TouchableOpacity style={PAGESTYLE.loadingMore}>
-                <View style={PAGESTYLE.spacing}>
-                  <IcnLoadMore
-                    width={AppUtil.getHP(1.2)}
-                    height={AppUtil.getHP(1.2)}
-                  />
-                </View>
-                <Text style={PAGESTYLE.txtLoadMore}>{Label.LoadMore}</Text>
-              </TouchableOpacity>
-            </View> */}
 
-
-              {resourceData && resourceData.length > 0 &&
-                <ResourceChallenge resource={resourceData} isType={title} />}
-              {evaluationData && evaluationData.length > 0 &&
-                <UserProfileList profileData={evaluationData} isType={title} />}
+              {resourceData && resourceData.length > 0 && <ResourceChallenge resource={resourceData} isType={title} />}
+              {evaluationData && evaluationData.length > 0 && <UserProfileList profileData={evaluationData} isType={title} />}
 
             </View>
           </View>

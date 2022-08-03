@@ -43,50 +43,28 @@ function NotificationsScreen() {
     );
   }, []);
 
-  const onAcceptReject = (status, id) => {
-    const data = {
-      notificationid: id,
-      status: status,
-      frontuser_id: UserManager.userId,
-    };
+  const onAcceptReject = (status, id, index) => {
+    const data = {notificationid: id,status: status,frontuser_id: UserManager.userId,};
     Service.post(EndPoints.acceptrejectrequest, data, (res) => {
+    
+      // if(res.statusCode === 1)
+      // {
+      //   let arr = notiData;
+
+      //   arr[index].admin_status = 
+      // }
+    
     }, (err) => {
       Loger.onLog("Notification accept reject error response", err);
     }
     );
   };
 
-  const renderItem = ({ item, index }) => {
-    const requestRender = () => {
+  
 
-      if (item?.notification_type == "Expert request") {
-        if (item.admin_status == "pending") {
-          return (
-            <View style={Style.btnView}>
-              <TouchableOpacity onPress={() => onAcceptReject("accept", item.id)} style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor },]}>
-                <Text style={[Style.txt, { color: GetAppColor.white }]}>
-                  {Label.Accept}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => onAcceptReject("reject", item.id)} style={[Style.btnLearMore, { borderColor: themeColor.buttonColor },]}>
-                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
-                  {Label.Reject}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )
-        } else {
-          return (<View style={Style.btnView}>
-            <Text style={[Style.txt1]}>
-              {item.admin_status.toUpperCase()}
-            </Text>
-          </View>)
-        }
-      }
-      else {
-        return false
-      }
-    }
+  const renderItem = ({ item, index }) => {
+
+   
     return (
       <View style={Style.renderMainView}>
         <View style={Style.imgRenderView}>
@@ -106,32 +84,8 @@ function NotificationsScreen() {
               {moment(item.created_at).format("DD MMM YY  HH:MM a")}
             </Text>
           </View>
-          {requestRender()}
+          {requestRender(item, index)}
 
-          {/* {item?.notification_type === "Idea request" && (
-            <View style={Style.btnView}>
-              <TouchableOpacity
-                style={[
-                  Style.btnApplyNow,
-                  { backgroundColor: themeColor.buttonColor },
-                ]}
-              >
-                <Text style={[Style.txt, { color: GetAppColor.white }]}>
-                  {Label.Update}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  Style.btnLearMore,
-                  { borderColor: themeColor.buttonColor },
-                ]}
-              >
-                <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
-                  {Label.NotNow}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )} */}
         </View>
         <TouchableOpacity onPress={() => { onClear(item.id, index); }}>
           <Text style={[Style.clearView, { fontSize: AppUtil.getHP(2.4), marginEnd: 10 }]}>
@@ -141,6 +95,37 @@ function NotificationsScreen() {
       </View>
     );
   };
+
+  const requestRender = (item, index) => {
+
+    if (item?.notification_type == "Expert request") {
+      if (item.admin_status == "pending") {
+        return (
+          <View style={Style.btnView}>
+            <TouchableOpacity onPress={() => onAcceptReject("accept", item.id, index)} style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor },]}>
+              <Text style={[Style.txt, { color: GetAppColor.white }]}>
+                {Label.Accept}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => onAcceptReject("reject", item.id, index)} style={[Style.btnLearMore, { borderColor: themeColor.buttonColor },]}>
+              <Text style={[Style.txt, { color: themeColor.buttonColor }]}>
+                {Label.Reject}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )
+      } else {
+        return (<View style={Style.btnView}>
+          <Text style={[Style.txt1]}>
+            {item.admin_status.toUpperCase()}
+          </Text>
+        </View>)
+      }
+    }
+    else {
+      return false
+    }
+  }
 
   const onClear = (id, index) => {
     const data = {
