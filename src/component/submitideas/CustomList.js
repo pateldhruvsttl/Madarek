@@ -24,10 +24,10 @@ function CustomList(props) {
 
             <MenuOptions>
 
-                {props?.item?.map((txt) => {
+                {props?.item?.map((item) => {
                     return (
-                        <MenuOption onSelect={() => { props.onSelect(txt); setTitle(txt) }}>
-                            <Text>{txt}</Text>
+                        <MenuOption onSelect={() => { props.onSelect(item.itemName); setTitle(item.itemName) }}>
+                            <Text>{item.itemName}</Text>
                         </MenuOption>
                     )
                 })}
