@@ -5,7 +5,6 @@ import CommonHeader from "../../component/commonheader/CommonHeader";
 import SubmitIdeaStep1 from "../../component/submitideas/SubmitIdeaStep1";
 import SubmitIdeaStep2 from "../../component/submitideas/SubmitIdeaStep2";
 import SubmitIdeaStep3 from "../../component/submitideas/SubmitIdeaStep3";
-import SubmitIdeaStep4 from "../../component/submitideas/SubmitIdeaStep4";
 import { GetAppColor } from "../../utils/Colors";
 import { Loger } from "../../utils/Loger";
 import Style from "./SubmitIdeaScreenStyle";
@@ -24,7 +23,7 @@ function SubmitIdeaScreen(props) {
   return (
     <SafeAreaView style={Style.MainView}>
       <CommonHeader isType={"SubmitIdeaScreen"}/>
-
+s
       <ScrollView>
         <View style={Style.containerView}>
           <View style={Style.selectPageIndicatorsView}>

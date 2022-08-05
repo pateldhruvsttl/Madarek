@@ -58,3 +58,4 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 src/srcMobile/screens/teacher/pupilmanagement/HeaderPMInner.js
+android/app/release/Madarek_v1.0.apk
