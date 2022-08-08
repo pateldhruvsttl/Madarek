@@ -9,9 +9,9 @@ const HomeStyle = StyleSheet.create({
     MainView: { backgroundColor: GetAppColor.white, alignItems: 'center' },
 
     innerFirstView: { width: '100%', marginTop: AppUtil.getHP(2) },
-    innerSecondView1: { width: '100%', marginTop: AppUtil.getHP(6) },
+    innerSecondView1: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView2: { width: '100%', marginTop: AppUtil.getHP(2) },
-    
+
     innerView1: { width: '100%', marginTop: AppUtil.getHP(6), justifyContent: 'center' },
     innerView2: { width: '100%', marginTop: AppUtil.getHP(2.5), justifyContent: 'center' },
 
@@ -20,27 +20,27 @@ const HomeStyle = StyleSheet.create({
     txtPlus: { fontSize: AppUtil.getHP(4), color: GetAppColor.textColor, fontFamily: FONTS.robotLight },
 
     txtInputTitle: {
-        height:AppUtil.getHP(5.5),
+        height: AppUtil.getHP(5.5),
         fontSize: AppUtil.getHP(3), marginVertical: AppUtil.getHP(1), fontFamily: FONTS.robotLight,
         color: GetAppColor.pincolor, borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor,
     },
-    
+
     txtDrowerTitle: {
         fontSize: AppUtil.getHP(3), marginVertical: AppUtil.getHP(1), fontFamily: FONTS.robotLight,
         color: GetAppColor.pincolor
     },
-    
+
     txtIdeasTitle: {
-        height:AppUtil.getHP(5.5),
+        height: AppUtil.getHP(5.5),
         fontSize: AppUtil.getHP(2.2), marginTop: AppUtil.getHP(0.5), fontFamily: FONTS.robotRegular,
-        color: GetAppColor.pincolor, paddingEnd:AppUtil.getWP(5),
+        color: GetAppColor.pincolor, paddingEnd: AppUtil.getWP(5),
     },
 
     selectMenuTitle1: {
         flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
         borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor,
     },
-    selectMenuTitle2: {flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'},
+    selectMenuTitle2: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
 
     selectGender: { flexDirection: 'row', alignItems: 'center', marginTop: AppUtil.getHP(0.5), marginBottom: AppUtil.getHP(1) },
     yellowBorderView: {
@@ -80,10 +80,10 @@ const HomeStyle = StyleSheet.create({
         color: GetAppColor.pincolor, borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor
     },
     txtInputMobile2: {
-        width: '70%', height: AppUtil.getHP(5),fontSize: AppUtil.getHP(2.2), marginHorizontal: AppUtil.getHP(1), fontFamily: FONTS.robotRegular, color: GetAppColor.pincolor
+        width: '70%', height: AppUtil.getHP(5), fontSize: AppUtil.getHP(2.2), marginHorizontal: AppUtil.getHP(1), fontFamily: FONTS.robotRegular, color: GetAppColor.pincolor
     },
 
-    mobileInnerView:{ flexDirection: 'row' },
+    mobileInnerView: { flexDirection: 'row' },
     numberAreaOne1: {
         width: '25%',
         borderBottomWidth: 1,
@@ -109,14 +109,14 @@ const HomeStyle = StyleSheet.create({
 
     addImageView: {
         width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderWidth: 1, borderColor: GetAppColor.disableBorder, borderRadius: 3,
-        justifyContent: 'center', alignItems: 'center', margin:5
+        justifyContent: 'center', alignItems: 'center', margin: 5
     },
     imageContainer: { marginVertical: AppUtil.getHP(2), flexDirection: 'row', flexWrap: 'wrap' },
-    imgStyle:{width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderRadius: 3},
-    removeIcnStyle:{position: 'absolute', right:-5, top:-5},
+    imgStyle: { width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderRadius: 3 },
+    removeIcnStyle: { position: 'absolute', right: -5, top: -5 },
 
-    txtNameView:{flexDirection:'row', marginTop:AppUtil.getHP(2.5)},
-    txtName:{width:'50%'},
+    txtNameView: { flexDirection: 'row', marginTop: AppUtil.getHP(2.5) },
+    txtName: { width: '50%' },
     btn: {
         width: '95%', height: buttonHeight, justifyContent: 'center', alignItems: 'center', marginTop: AppUtil.getHP(6), borderRadius: AppUtil.getHP(0.7),
         backgroundColor: GetAppColor.lightOrange
@@ -124,9 +124,11 @@ const HomeStyle = StyleSheet.create({
     txtBtn: { fontSize: buttonFontSize, color: GetAppColor.white, fontFamily: FONTS.robotMedium },
 
 
-
-   
-    
+    browsBorder: { height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), borderWidth: 0.3, borderColor: GetAppColor.disableBorder, flexDirection: 'row' },
+    txtFileText: { width: '65%', marginStart:"5%", fontSize: AppUtil.getHP(1.3), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular, alignSelf: 'center' },
+    btnBrows: { width: '30%', height: AppUtil.getHP(4), justifyContent:'center', alignItems:'center', backgroundColor: GetAppColor.innovationGrey, borderRadius:5 },
+    txtBrowsBtn: { fontSize: buttonFontSize, color: GetAppColor.white, fontFamily: FONTS.robotMedium, fontSize:AppUtil.getHP(1.8) },
+    btnAditionlImg:{ width: '40%', height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), justifyContent:'center', alignItems:'center', backgroundColor: GetAppColor.innovationGrey, borderRadius:5 },
 });
 
 export default HomeStyle;

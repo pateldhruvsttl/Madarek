@@ -28,4 +28,5 @@ export const EndPoints = {
     teamcollaboration:"teamcollaboration",
     challengedetails:"challengedetails",
     sector:"rest/sectors",
+    loadidea:"loadidea",
 }

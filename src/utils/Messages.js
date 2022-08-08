@@ -328,6 +328,8 @@ export const ARlabel = {
   _expertInsight: "Expert Insight",
   _approved: "APPROVED",
   _teamCollaboration: "Team Collaboration",
+  _browse: "Browse",
+  _libraryImage: "LIBRARY IMAGE",
   
 }
 export const USlabel = {
@@ -683,6 +685,8 @@ export const USlabel = {
   _expertInsight: "Expert Insight",
   _approved: "APPROVED",
   _teamCollaboration: "Team Collaboration",
+  _browse: "Browse",
+  _libraryImage: "LIBRARY IMAGE",
 
   // UserProfile model messages
 

@@ -19,8 +19,13 @@ function SubmitIdeaStep1(props) {
     const [title, setTitle] = useState("");
 
     const [sectors, setSectors] = useState("Selected");
+    const [isSectorsId, setSectorsId] = useState(0);
+
     const [category, setCategory] = useState("Selected");
+    const [isCategoryid, setCategoryId] = useState(0);
+
     const [subCategory, setSubCategory] = useState("Selected");
+    const [isSubCategoryId, setSubCategoryId] = useState(0);
 
     const [isSectorsList, setSectorsList] = useState([]);
     const [isCategoryList, setCategoryList] = useState([]);
@@ -63,14 +68,13 @@ function SubmitIdeaStep1(props) {
     };
 
     const onCheckField = () => {
-        // var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
+        var obj = { title: title, sectors: sectors, sectorsId: isSectorsId, category: category, categoryId: isCategoryid, subCategory: subCategory, subCategoryId: isSubCategoryId }
 
         // if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
         //     Alert.alert(Label.FillMandatoryFieldsValidation);
         // else     
-        props.onNext(/*obj*/);
+        props.onNext(obj);
     }
-    Loger.onLog("isCategory", isCategoryList)
     return (
         <View style={Style.MainView}>
 
@@ -88,17 +92,17 @@ function SubmitIdeaStep1(props) {
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.Sectors}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={sectors} item={isSectorsList} onSelect={(txt) => setSectors(txt)} />
+                <CustomList currentItem={sectors} item={isSectorsList} onSelect={(item) => { setSectors(item.itemName); setSectorsId(item.id) }} />
             </View>
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.Category}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={category} item={isCategoryList} onSelect={(txt) => setCategory(txt)} />
+                <CustomList currentItem={category} item={isCategoryList} onSelect={(item) => { setCategory(item.itemName); setCategoryId(item.id) }} />
             </View>
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.SubCategory}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={subCategory} item={isSubCategoryList} onSelect={(txt) => setSubCategory(txt)} />
+                <CustomList currentItem={subCategory} item={isSubCategoryList} onSelect={(item) => { setSubCategory(item.itemName); setSubCategoryId(item.id) }} />
             </View>
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>

@@ -1,121 +1,86 @@
-import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
-import React, { memo, useState } from 'react'
+import { View, Text, TouchableOpacity, TextInput, Image, FlatList } from 'react-native'
+import React, { memo, useEffect, useState } from 'react'
+
+import CountryPicker from 'react-native-country-picker-modal'
+import CustomList from './CustomList'
+
 import { Label } from '../../utils/StringUtil'
 import Style from './IdeaStepStyle'
 import { useSelector } from 'react-redux'
 import { GetAppColor } from '../../utils/Colors'
+import BackIcon from '../../assets/svg/loginLogo/BackIcon'
+import ImageList from './ImageList';
+import { Loger } from '../../utils/Loger'
+import { deviceId } from '../../utils/Constant'
+import { AppConfig } from '../../manager/AppConfig'
+import { UserManager } from '../../manager/UserManager'
+import { Service } from '../../service/Service'
+import { EndPoints } from '../../service/EndPoints'
 import { AppUtil } from '../../utils/AppUtil'
-
+import TextFieldItem from './TextFieldItem'
+import BrowseFileItem from './BrowseFileItem'
+import BrowseEditionalImag from './BrowseEditionalImag'
+import BrowsMultipleFile from './BrowsMultipleFile'
 
 function SubmitIdeaStep2(props) {
 
     const { themeColor } = useSelector((state) => state);
-    
-    const [selectedIndex, setSelectedIndex] = useState(5);
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
+    const [isData, setData] = useState();
+
+
+    const [countryCode, setCountryCode] = useState('IN');
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [nationality, setNationality] = useState("Selected");
+    const [message, setMessage] = useState('');
+    const [imageList, setImageList] = useState([{ assets: "selected" }]);
+
+
+
+
+    useEffect(() => {
+
+        GetField(props?.data?.sectorsId, props?.data?.categoryId, props?.data?.subCategoryId);
+    }, [])
+
+    const GetField = (sectorsId, categoryId, subCategoryId) => {
+
+        let obj = {
+            "device_id": deviceId,
+            "token": AppConfig.token,
+            "lang": AppConfig.lang,
+            "frontuser_id": UserManager.userId,
+            "idea_title": "test",
+            "sector_id": "2",
+            "category_id": "5",
+            "sub_category_id": "0",
+
+            // "sector_id": sectorsId,
+            // "category_id": categoryId,
+            // "sub_category_id": subCategoryId,
+        }
+
+        Service.post(EndPoints.loadidea, obj, (res) => {
+            if (res.statusCode == 1)
+                setData(res.data);
+        },
+            (err) => {
+                Loger.onLog("###", err);
+            }
+        );
+
+    }
 
     const onCheckField = () => {
-        // let gender = "";
-        // if(selectedIndex == 0) gender = "Male";
-        // else if(selectedIndex == 1) gender = "Female";    
-        // else if(selectedIndex == 2) gender = "Other";    
-
-        // var obj = { firstName: firstName, lastName: lastName, gender: gender, email: email }
-
-        // if(email === "" || !AppUtil.validate(email))
-        //     Alert.alert(Label.enteremail)
-        // else if(firstName === "" || lastName === "" || gender === 5 || email === "")
-        //     Alert.alert(Label.FillMandatoryFieldsValidation);
-        // else     
-            props.onNext(/*obj*/);
-
-        
+        // var obj ={countryCode:countryCode, mobileNumber:mobileNumber, nationality:nationality,message:message, imageList:imageList}
+        props.onNext(/*obj*/);
     }
+
     return (
         <View style={Style.MainView}>
+            {isData?.idea_description && <TextFieldItem title={isData?.idea_description?.caption} required={isData?.idea_description?.required} />}
+            {isData?.idea_cover_image && <BrowseFileItem title={isData?.idea_cover_image?.caption} required={isData?.idea_cover_image?.required} />}
+            {isData?.upload_additional_images && <BrowseEditionalImag title={isData?.upload_additional_images?.additional_images?.caption} required={isData?.upload_additional_images?.required} />}
 
-            <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{Label.firstname}<Text style={Style.txtStar}>*</Text></Text>
-                <TextInput
-                    placeholderTextColor={GetAppColor.grayBorder}
-                    numberOfLines={2}
-                    multiline={true}
-                    style={Style.txtInputTitle}
-                    value={firstName}
-                    onChangeText={title => setFirstName(title)}
-                />
-            </View>
-
-            <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{Label.lastname}<Text style={Style.txtStar}>*</Text></Text>
-                <TextInput
-                    placeholderTextColor={GetAppColor.grayBorder}
-                    numberOfLines={2}
-                    multiline={true}
-                    style={Style.txtInputTitle}
-                    value={lastName}
-                    onChangeText={title => setLastName(title)}
-                />
-            </View>
-
-            <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{Label.Gender}<Text style={Style.txtStar}>*</Text></Text>
-
-                <View style={Style.selectGender}>
-
-                    <TouchableOpacity onPress={() => setSelectedIndex(0)} style={[Style.tcOptions,{marginStart:0}]}>
-                        {
-                            selectedIndex == 0 ?
-                                <View style={Style.yellowBorderView}>
-                                    <View style={Style.yellowFillView} />
-                                </View>
-                                :
-                                <View style={Style.grayBorderView} />
-                        }
-                        <Text style={Style.txtOptions}>{Label.Male}</Text>
-
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setSelectedIndex(1)} style={Style.tcOptions}>
-                        {
-                            selectedIndex == 1 ?
-                                <View style={Style.yellowBorderView}>
-                                    <View style={Style.yellowFillView} />
-                                </View>
-                                :
-                                <View style={Style.grayBorderView} />
-                        }
-                        <Text style={Style.txtOptions}>{Label.Female}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setSelectedIndex(2)} style={Style.tcOptions}>
-                        {
-                            selectedIndex == 2 ?
-                                <View style={Style.yellowBorderView}>
-                                    <View style={Style.yellowFillView} />
-                                </View>
-                                :
-                                <View style={Style.grayBorderView} />
-                        }
-                        <Text style={Style.txtOptions}>{Label.Other}</Text>
-                    </TouchableOpacity>
-
-                </View>
-                
-            </View>
-
-            <View style={Style.innerFirstView}>
-                <Text style={Style.txtTitle}>{Label.emailID}<Text style={Style.txtStar}>*</Text></Text>
-                <TextInput
-                    placeholderTextColor={GetAppColor.grayBorder}
-                    numberOfLines={2}
-                    multiline={true}
-                    style={Style.txtInputTitle}
-                    value={email}
-                    onChangeText={title => setEmail(title)}
-                />
-
-            </View>
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>
                 <Text style={Style.txtBtn}>{Label.Continue}</Text>
@@ -124,4 +89,9 @@ function SubmitIdeaStep2(props) {
     )
 }
 
+
+
+
 export default memo(SubmitIdeaStep2);
+
+const sectorsList = ["Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian"];
