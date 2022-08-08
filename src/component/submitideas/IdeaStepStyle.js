@@ -11,7 +11,9 @@ const HomeStyle = StyleSheet.create({
     innerFirstView: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView1: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView2: { width: '100%', marginTop: AppUtil.getHP(2) },
-
+    innerSecondView3: { width: '100%', marginTop: AppUtil.getHP(1), padding: AppUtil.getHP(0.5), borderWidth: 1, borderColor: GetAppColor.commonTextColor },
+    innerSecondView5: { width: '100%', marginTop: AppUtil.getHP(2), flexDirection:'row' },
+    
     innerView1: { width: '100%', marginTop: AppUtil.getHP(6), justifyContent: 'center' },
     innerView2: { width: '100%', marginTop: AppUtil.getHP(2.5), justifyContent: 'center' },
 
@@ -109,9 +111,9 @@ const HomeStyle = StyleSheet.create({
 
     addImageView: {
         width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderWidth: 1, borderColor: GetAppColor.disableBorder, borderRadius: 3,
-        justifyContent: 'center', alignItems: 'center', margin: 5
+        justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: AppUtil.getHP(2)
     },
-    imageContainer: { marginVertical: AppUtil.getHP(2), flexDirection: 'row', flexWrap: 'wrap' },
+    imageContainer: { flexDirection: 'row', flexWrap: 'wrap' },
     imgStyle: { width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderRadius: 3 },
     removeIcnStyle: { position: 'absolute', right: -5, top: -5 },
 
@@ -125,10 +127,41 @@ const HomeStyle = StyleSheet.create({
 
 
     browsBorder: { height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), borderWidth: 0.3, borderColor: GetAppColor.disableBorder, flexDirection: 'row' },
-    txtFileText: { width: '65%', marginStart:"5%", fontSize: AppUtil.getHP(1.3), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular, alignSelf: 'center' },
-    btnBrows: { width: '30%', height: AppUtil.getHP(4), justifyContent:'center', alignItems:'center', backgroundColor: GetAppColor.innovationGrey, borderRadius:5 },
-    txtBrowsBtn: { fontSize: buttonFontSize, color: GetAppColor.white, fontFamily: FONTS.robotMedium, fontSize:AppUtil.getHP(1.8) },
-    btnAditionlImg:{ width: '40%', height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), justifyContent:'center', alignItems:'center', backgroundColor: GetAppColor.innovationGrey, borderRadius:5 },
+    txtFileText: { width: '65%', marginStart: "5%", fontSize: AppUtil.getHP(1.3), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular, alignSelf: 'center' },
+    btnBrows: { width: '30%', height: AppUtil.getHP(4), justifyContent: 'center', alignItems: 'center', backgroundColor: GetAppColor.innovationGrey, borderRadius: 5 },
+    txtBrowsBtn: { fontSize: buttonFontSize, color: GetAppColor.white, fontFamily: FONTS.robotMedium, fontSize: AppUtil.getHP(1.8) },
+    btnAditionlImg: { width: '40%', height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), justifyContent: 'center', alignItems: 'center', backgroundColor: GetAppColor.innovationGrey, borderRadius: 5 },
+    txtInputTitlePlaceHolder: {
+        fontSize: AppUtil.getHP(1.8), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular,
+        height: AppUtil.getHP(4), marginVertical: AppUtil.getHP(1), borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor,
+    },
+    detailsView: { flexDirection: 'row', justifyContent: 'space-between' },
+    icnPluse: {
+        width: AppUtil.getHP(3), height: AppUtil.getHP(3), borderWidth: 0.5, borderColor: GetAppColor.disableBorder, borderRadius: 3,
+        justifyContent: 'center', alignItems: 'center'
+    },
+    txticnPluse: { fontSize: AppUtil.getHP(2), color: GetAppColor.textColor, fontFamily: FONTS.robotLight, alignSelf:"center" },
+    innerSecondView4: { width: '100%', flexDirection:'row', justifyContent:'space-between'},
+
+    multiSelectYellowBorderView: {
+        height: AppUtil.getHP(2),
+        width: AppUtil.getHP(2),
+        borderColor: GetAppColor.buttonGreenColor,
+        backgroundColor: GetAppColor.buttonGreenColor,
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: AppUtil.getHP(0.5),
+    },
+    multiSelectBorderView: {
+        height: AppUtil.getHP(2),
+        width: AppUtil.getHP(2),
+        borderColor: GetAppColor.grayBorder,
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: AppUtil.getHP(0.5),
+    },
 });
 
 export default HomeStyle;

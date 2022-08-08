@@ -28,7 +28,6 @@ function SubmitIdeaScreen(props) {
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 0 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 1 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 2 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
-            <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 3 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
           </View>
 
           {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => {setStep1Obj(obj); setSelectIndex(selectIndex + 1);}} />}

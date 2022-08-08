@@ -9,7 +9,7 @@ const TextFieldItem = (props) => {
     const [isMessage, setMessage] = useState()
     return (
         <View style={Style.innerSecondView1}>
-            <Text style={Style.txtTitle}>{props.title}{props.requered == "Y" && <Text style={Style.txtStar}>*</Text>}</Text>
+            <Text style={Style.txtTitle}>{props.title}{props.required == "Y" && <Text style={Style.txtStar}>*</Text>}</Text>
             <TextInput
                 placeholderTextColor={GetAppColor.grayBorder}
                 multiline={true}
