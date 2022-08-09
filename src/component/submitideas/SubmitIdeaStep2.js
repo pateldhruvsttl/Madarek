@@ -23,6 +23,7 @@ import BrowseEditionalImag from './BrowseEditionalImag'
 import BrowsMultipleFile from './BrowsMultipleFile'
 import TeamMembersDetails from './TeamMembersDetails'
 import TermAndConditions from './TermAndConditions'
+import UploadFiles from '../docpicker/UploadFiles'
 
 function SubmitIdeaStep2(props) {
 
@@ -81,14 +82,14 @@ function SubmitIdeaStep2(props) {
     return (
         <View style={Style.MainView}>
             {isData?.idea_description && <TextFieldItem title={isData?.idea_description?.caption} required={isData?.idea_description?.required} />}
-            {isData?.idea_cover_image && <BrowseFileItem title={isData?.idea_cover_image?.caption} required={isData?.idea_cover_image?.required} type={"image"} />}
+            {isData?.idea_cover_image && <BrowseFileItem title={isData?.idea_cover_image?.caption} required={isData?.idea_cover_image?.required} type={"image"} size={isData?.idea_cover_image?.size?.size}/>}
             {isData?.upload_additional_images && <BrowseEditionalImag title={isData?.upload_additional_images?.additional_images?.caption} required={isData?.upload_additional_images?.required} />}
             {isData?.challenges_addressing && <TextFieldItem title={isData?.challenges_addressing?.caption} required={isData?.challenges_addressing?.required} />}
             {isData?.benefit_idea && <TextFieldItem title={isData?.benefit_idea?.caption} required={isData?.benefit_idea?.required} />}
-            {isData?.idea_upload_files && <BrowseFileItem title={isData?.idea_upload_files?.caption} required={isData?.idea_upload_files?.required} type={"file"} />}
+            {isData?.idea_upload_files && <BrowseFileItem title={isData?.idea_upload_files?.caption} required={isData?.idea_upload_files?.required} type={"file"} size={isData?.idea_upload_files?.size?.size}/>}
             {isData?.upload_video_url && <TextFieldItem title={isData?.upload_video_url?.caption} required={isData?.upload_video_url?.required} />}
             {isData?.upload_embed_url && <TextFieldItem title={isData?.upload_embed_url?.caption} required={isData?.upload_embed_url?.required} />}
-            {isData?.idea_upload_videos && <BrowseFileItem title={isData?.idea_upload_videos?.caption} required={isData?.idea_upload_videos?.required} type={"video"} />}
+            {isData?.idea_upload_videos && <BrowseFileItem title={isData?.idea_upload_videos?.caption} required={isData?.idea_upload_videos?.required} type={"video"} size={isData?.idea_upload_videos?.size?.size}/>}
             {isData?.keywords_tags && <TextFieldItem title={isData?.keywords_tags?.caption} required={isData?.keywords_tags?.required} />}
             {isData?.no_of_team_member && <TextFieldItem title={isData?.no_of_team_member?.caption} required={isData?.no_of_team_member?.required} />}
             {isData?.team_member_details && <TeamMembersDetails data={isData?.team_member_details} />}

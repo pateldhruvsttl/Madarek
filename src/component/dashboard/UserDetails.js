@@ -13,7 +13,6 @@ const UserDetails = (props) => {
 
     const renderItem = ({ item }) => {
         return (
-            item &&
             <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]}>
                 <Text style={[styles.txtTitle, { color: themeColor.buttonColor }]}>{item.count}</Text>
                 <Text numberOfLines={2} style={styles.txtBtn}>{item.title}</Text>

@@ -74,7 +74,7 @@ const SmeDashboardScreen = (props) => {
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                        <UserDetails data={dahboardData} />
+                       {dahboardData && dahboardData.length > 0 && <UserDetails data={dahboardData} />} 
                     </View>
 
                     <View style={Style.secondPos}>

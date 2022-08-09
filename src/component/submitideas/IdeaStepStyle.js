@@ -113,10 +113,21 @@ const HomeStyle = StyleSheet.create({
         width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderWidth: 1, borderColor: GetAppColor.disableBorder, borderRadius: 3,
         justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: AppUtil.getHP(2)
     },
+    addFileView : {
+        width: AppUtil.getWP(25), height: AppUtil.getHP(8), 
+        justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: AppUtil.getHP(2)
+    },
     imageContainer: { flexDirection: 'row', flexWrap: 'wrap' },
     imgStyle: { width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderRadius: 3 },
     removeIcnStyle: { position: 'absolute', right: -5, top: -5 },
-
+    removeIcnFile : {
+        position: 'absolute', right: 3, top: -5 
+    },
+    error : {
+        fontFamily:FONTS.robotRegular,
+        color:GetAppColor.borderRed,
+        fontSize:AppUtil.getHP(1.5)
+    },
     txtNameView: { flexDirection: 'row', marginTop: AppUtil.getHP(2.5) },
     txtName: { width: '50%' },
     btn: {

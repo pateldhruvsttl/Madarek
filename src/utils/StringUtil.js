@@ -270,6 +270,8 @@ export const Label = {
   ParticipateIdeas: isRTL ? ARlabel._participateIdeas : USlabel._participateIdeas,
   Browse: isRTL ? ARlabel._browse : USlabel._browse,
   LibraryImage: isRTL ? ARlabel._libraryImage : USlabel._libraryImage,
+  ErrorMessage: isRTL ? ARlabel._errorMessage : USlabel._errorMessage,
+  MB: isRTL ? ARlabel._mB : USlabel._mB,
 
 
 }

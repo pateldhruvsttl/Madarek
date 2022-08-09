@@ -330,6 +330,8 @@ export const ARlabel = {
   _teamCollaboration: "Team Collaboration",
   _browse: "Browse",
   _libraryImage: "LIBRARY IMAGE",
+  _errorMessage:"Invalid File, Allowed size is",
+  _mB : "MB"
   
 }
 export const USlabel = {
@@ -688,7 +690,10 @@ export const USlabel = {
   _browse: "Browse",
   _libraryImage: "LIBRARY IMAGE",
 
-  // UserProfile model messages
+ _errorMessage:"Invalid File, Allowed size is",
+ _mB : "MB"
+
+
 
 
 

@@ -81,7 +81,6 @@ const JointRequest = (props) => {
                 </View>
 
                 <View style={Style.endItems}>
-                    {console.log('item.joinStatus',item.joinStatus)}
                     {
                         item.joinStatus == "Pending" ?
                             <View style={Style.btnView}>
