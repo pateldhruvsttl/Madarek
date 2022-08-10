@@ -1,6 +1,5 @@
 import React, { memo, useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { GetAppColor } from '../../utils/Colors';
 import { Label } from '../../utils/StringUtil';
 import * as ImagePicker from 'react-native-image-picker';
 import IcnRemoveRound from '../../assets/svg/IcnRemoveRound'
@@ -15,7 +14,6 @@ import { AppUtil } from '../../utils/AppUtil';
 
 const BrowseFileItem = (props) => {
 
-    const [isMessage, setMessage] = useState()
     const [isImage, setImage] = useState(null)
     const [isFile, setFile] = useState(null)
     const fixeSize = Number(props.size) * 1000 // In Bytes
@@ -52,14 +50,21 @@ const BrowseFileItem = (props) => {
                 await DocumentPicker.pickSingle(
                     item == "image" ? { type: [types.images] }
                         :
-                        item == "file" ?
-                            { type: [types.pdf, types.doc, types.docx, types.images] }
+                        item == "file" ? { type: [types.pdf, types.doc, types.docx, types.images] }
                             :
                             { type: [types.video] }
 
                 ).then((results) => {
+                    let ext = results.uri.split('.');
+                    let data =  {
+                        uri: results.uri,
+                        name: results.uri.split('/'),
+                        type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg')
+                    }
+
+                    props.onSelectImgResponse(data);
                     setFile(results)
-                    console.log('res',results);
+
                 });
 
             } catch (err) {

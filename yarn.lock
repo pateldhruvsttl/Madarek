@@ -6213,6 +6213,13 @@
   "resolved" "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-8.7.1.tgz"
   "version" "8.7.1"
 
+"react-native-document-picker@^8.1.1":
+  "integrity" "sha512-mH0oghd7ndgU9/1meVJdqts1sAkOfUQW1qbrqTTsvR5f2K9r0BAj/X02dve5IBMOMZvlGd7qWrNVuIFg5AUXWg=="
+  "resolved" "https://registry.npmjs.org/react-native-document-picker/-/react-native-document-picker-8.1.1.tgz"
+  "version" "8.1.1"
+  dependencies:
+    "invariant" "^2.2.4"
+
 "react-native-fast-image@^8.5.11":
   "integrity" "sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA=="
   "resolved" "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz"
