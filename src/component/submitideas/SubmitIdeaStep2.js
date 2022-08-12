@@ -23,7 +23,6 @@ import BrowseEditionalImag from './BrowseEditionalImag'
 import BrowsMultipleFile from './BrowsMultipleFile'
 import TeamMembersDetails from './TeamMembersDetails'
 import TermAndConditions from './TermAndConditions'
-import UploadFiles from '../docpicker/UploadFiles'
 
 function SubmitIdeaStep2(props) {
 

@@ -29,4 +29,5 @@ export const EndPoints = {
     challengedetails:"challengedetails",
     sector:"rest/sectors",
     loadidea:"loadidea",
+    submitIdeaList:"submittedideas",
 }

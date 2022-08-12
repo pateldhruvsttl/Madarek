@@ -4,8 +4,11 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const Style = StyleSheet.create({
+    menuView: { flexDirection: 'row',marginVertical:AppUtil.getHP(0.8),alignItems:'center' },
+    headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
+    txtMenuOptions:{color:GetAppColor.pincolor,fontFamily:FONTS.robotRegular},
     MainView: { width: '100%',},
-
+    menuOptions:{backgroundColor:'red'},
     titleView: {
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
         marginBottom: AppUtil.getHP(1)
@@ -57,7 +60,7 @@ const Style = StyleSheet.create({
 
     secondCalView: { alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},
     secondInnerCalView: {flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems:'center' },
-
+    moreView:{ flex: 1, alignItems: 'flex-end' },
     bottomBtn: {
         height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor:GetAppColor.white,
         borderRadius: AppUtil.getHP(1), borderWidth: AppUtil.getHP(0.1), justifyContent: 'center', alignItems: 'center', margin: AppUtil.getHP(2),

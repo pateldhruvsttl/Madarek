@@ -10,13 +10,43 @@ import { buttonFontSize } from "../../utils/Constant";
 import { buttonBorderRadius } from "../../utils/Constant";
 
 const PAGESTYLE = StyleSheet.create({
+    multiSelectYellowBorderView: {
+        height: AppUtil.getHP(2),
+        width: AppUtil.getHP(2),
+        borderColor: GetAppColor.buttonGreenColor,
+        backgroundColor: GetAppColor.buttonGreenColor,
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginEnd: AppUtil.getWP(1.8)
+
+    },
+    multiSelectBorderView: {
+        height: AppUtil.getHP(2),
+        width: AppUtil.getHP(2),
+        borderColor: GetAppColor.grayBorder,
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginEnd: AppUtil.getWP(1.8)
+    },
+    corporateUser: {
+        lineHeight: AppUtil.getHP(2),
+        fontFamily: FONTS.robotRegular,
+        color: GetAppColor.grayBorder,
+        fontSize: 13
+    },
+    corporateView: {
+        flexDirection: 'row'
+    },
+    clickArea: { alignItems: 'center', flexDirection: 'row' },
     mainView: {
         backgroundColor: GetAppColor.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
         width: '100%',
-        paddingTop : AppUtil.getHP(2)
+        paddingTop: AppUtil.getHP(2)
     },
     headingMain: {
         justifyContent: 'center',
@@ -33,8 +63,8 @@ const PAGESTYLE = StyleSheet.create({
     signView: {
         backgroundColor: GetAppColor.white,
         borderRadius: 20,
-        paddingHorizontal:AppUtil.getWP(4),
-        paddingVertical:AppUtil.getHP(1),
+        paddingHorizontal: AppUtil.getWP(4),
+        paddingVertical: AppUtil.getHP(1),
         shadowColor: GetAppColor.commonBorderGrey,
         shadowOffset: {
             width: 0,
@@ -44,7 +74,7 @@ const PAGESTYLE = StyleSheet.create({
         shadowRadius: 6.68,
 
         elevation: 11,
-        
+
     },
     signText: {
         color: GetAppColor.lightOrange,
@@ -57,7 +87,7 @@ const PAGESTYLE = StyleSheet.create({
         borderWidth: 1,
         borderColor: GetAppColor.disableBorder,
         borderRadius: 20,
-        marginTop:AppUtil.getHP(1.5)
+        marginTop: AppUtil.getHP(1.5)
     },
     loginEmailCredential: {
         padding: 6,
@@ -107,7 +137,7 @@ const PAGESTYLE = StyleSheet.create({
     numberArea: {
         flexDirection: 'row',
         marginTop: AppUtil.getHP(3),
-        marginBottom:  AppUtil.getHP(1),
+        marginBottom: AppUtil.getHP(1),
     },
     toggleNumber: {
         justifyContent: 'center', width: 70
@@ -142,6 +172,33 @@ const PAGESTYLE = StyleSheet.create({
         height: inputFieldHight,
         color: GetAppColor.black,
         marginBottom: AppUtil.getHP(1.5),
+    },
+    showCorporateActive: {
+        borderWidth: 1,
+        borderColor: GetAppColor.disableBorder,
+        borderTopLeftRadius:5,
+        borderBottomLeftRadius:5,
+        width: '50%',
+        paddingStart: 15,
+        height: inputFieldHight,
+        color: GetAppColor.black,
+        marginBottom: AppUtil.getHP(1.5),
+    },
+    showCorporateDisable: {
+        borderWidth: 1,
+        borderColor: GetAppColor.disableBorder,
+        borderBottomRightRadius:5,
+        borderTopRightRadius:5,
+        paddingVertical: 9,
+        width: '50%',
+        height: inputFieldHight,
+        color: GetAppColor.grayBorder,
+        marginBottom: AppUtil.getHP(1.5),
+        backgroundColor:GetAppColor.backColor
+    },
+    centerUrl:{
+        alignItems:'center',
+        justifyContent:'center'
     },
     showMobileDetail: {
         borderWidth: 1,

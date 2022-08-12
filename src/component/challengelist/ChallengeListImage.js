@@ -14,7 +14,8 @@ import IcnTrophy from "../../assets/svg/IcnTrophy"
 import IcnStar from "../../assets/svg/IcnStar"
 import IcnRewordComment from "../../assets/svg/IcnRewordComment"
 import IcnRewordLight from "../../assets/svg/IcnRewordLight"
-import IcnMenu from "../../assets/svg/IcnMenuDote"
+import IcnMenuDote from "../../assets/svg/IcnMenuDote"
+import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 import { GetAppColor } from "../../utils/Colors";
 import LISTSTYLE from "./ChallengeListImageStyle";
 import IcnSelectedHeart from "../../assets/svg/IcnSelectedHeart"
@@ -22,6 +23,7 @@ import IcnSelectedHeartWithRound from "../../assets/svg/IcnSelectedHeartWithRoun
 import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWithRound"
 import ImageLoad from "react-native-image-placeholder";
 import { AppConfig } from "../../manager/AppConfig";
+import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
@@ -97,7 +99,7 @@ const ChallengeListImage = (props) => {
 
                 }
 
-                <View style={LISTSTYLE.secondCalView}>
+                <View style={[LISTSTYLE.secondCalView]}>
 
                     <View style={LISTSTYLE.secondInnerCalView}>
                         <IcnWatchDone style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -120,9 +122,19 @@ const ChallengeListImage = (props) => {
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={LISTSTYLE.title}>{item.totalComment}</Text>
                     </View>
-                    {/* <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
-                        <IcnMenu fill={GetAppColor.textColor} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
-                    </TouchableOpacity> */}
+                    <View style={LISTSTYLE.moreView}>
+                        <Menu>
+                            <MenuTrigger>
+                                <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
+                            </MenuTrigger>
+                            <MenuOptions >
+                                <MenuOption style={LISTSTYLE.menuView}>
+                                    <IcnShareIcon stroke={GetAppColor.pincolor} style={LISTSTYLE.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+                                    <Text style={LISTSTYLE.txtMenuOptions}>{"Share"}</Text>
+                                </MenuOption>
+                            </MenuOptions>
+                        </Menu>
+                    </View>
                 </View>
             </View>
 

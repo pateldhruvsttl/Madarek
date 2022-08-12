@@ -19,6 +19,7 @@ import { deviceId } from "../../utils/Constant";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { UserManager } from "../../manager/UserManager";
 import { AppConfig } from "../../manager/AppConfig";
+import IcnSelect from "../../assets/svg/IcnSelect"
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -28,7 +29,7 @@ const LoginScreen = (props) => {
     const [mobileNumber, setMobileNumber] = useState('')
     const [password, setPassword] = useState()
     const [email, setEmail] = useState()
-
+    const [corporateUser, setCorporateUser] = useState('')
     const [first, setFirst] = useState('');
     const [second, setSecond] = useState('');
     const [third, setThird] = useState('');
@@ -38,8 +39,10 @@ const LoginScreen = (props) => {
     const [countryCode, setCountryCode] = useState('IN')
     const [country, setCountry] = useState(null)
     const [callCode, setCallCode] = useState('91');
+    const [isCheckedOne, setCheckedOne] = useState(false);
     const t1 = useRef(null);
     const t2 = useRef(null);
+    const t3 = useRef(null);
 
     const input1 = useRef();
     const input2 = useRef();
@@ -180,15 +183,18 @@ const LoginScreen = (props) => {
         //     }
         // }
         // else {
-            if (!email.trim() || !emailValidate(email)) {
-                showMessage(Label.Email)
-                return false
-            }
-            else if (password.trim() === '') {
-                showMessage(Label.PasswordLogin)
-                return false
-            }
-       // }
+        if (!email.trim() || !emailValidate(email)) {
+            showMessage(Label.Email)
+            return false
+        }
+        else if (password.trim() === '') {
+            showMessage(Label.PasswordLogin)
+            return false
+        }
+        else if (isCheckedOne && !corporateUser.trim()) {
+            showMessage(Label.CorporateUser)
+            return false
+        }
         signIn()
 
 
@@ -206,6 +212,8 @@ const LoginScreen = (props) => {
         setCountryCode('IN')
         setCountry('')
         setCallCode('');
+        setCorporateUser('')
+        setCheckedOne(false)
     }
     const onSelect = (country) => {
         setCountryCode(country.cca2)
@@ -274,24 +282,24 @@ const LoginScreen = (props) => {
                                 />
                             </View> */}
                             {/* : */}
-                            
-                            <View style={PAGESTYLE.numberArea}>
-                                        <TextInput
-                                            autoCapitalize="none"
-                                            ref={t1}
-                                            returnKeyType={"next"}
-                                            placeholderTextColor={GetAppColor.grayBorder}
-                                            onSubmitEditing={() => {t2.current.focus()}}
-                                            // onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
-                                            maxLength={40}
-                                            keyboardType="email-address"
-                                            placeholder={Label.EmailAddress}
-                                            style={PAGESTYLE.showEmailDetail}
-                                            value={email}
-                                            onChangeText={email => setEmail(email)}
 
-                                        ></TextInput>
-                                    </View>
+                            <View style={PAGESTYLE.numberArea}>
+                                <TextInput
+                                    autoCapitalize="none"
+                                    ref={t1}
+                                    returnKeyType={"next"}
+                                    placeholderTextColor={GetAppColor.grayBorder}
+                                    onSubmitEditing={() => { t2.current.focus() }}
+                                    // onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
+                                    maxLength={40}
+                                    keyboardType="email-address"
+                                    placeholder={Label.EmailAddress}
+                                    style={PAGESTYLE.showEmailDetail}
+                                    value={email}
+                                    onChangeText={email => setEmail(email)}
+
+                                ></TextInput>
+                            </View>
                             {/* } */}
                             <View>
                                 {/* <View style={PAGESTYLE.otpArea}>
@@ -314,8 +322,9 @@ const LoginScreen = (props) => {
                                     showPassword ? */}
                                 <TextInput
                                     ref={t2}
-                                    returnKeyType={"done"}
+                                    returnKeyType={isCheckedOne ? "next" : "done"}
                                     value={password}
+                                    onSubmitEditing={() => { isCheckedOne ? t3.current.focus() : false }}
                                     placeholderTextColor={GetAppColor.grayBorder}
                                     placeholder={Label.password}
                                     secureTextEntry={true}
@@ -395,7 +404,23 @@ const LoginScreen = (props) => {
 
                                 {/* {
                                     showPassword ? */}
-                                <View style={PAGESTYLE.resendOtpArea}>
+                                <View style={[PAGESTYLE.resendOtpArea, { justifyContent: 'space-between' }]}>
+                                    <View style={PAGESTYLE.clickArea}>
+                                        <TouchableOpacity onPress={() => setCheckedOne(!isCheckedOne)} >
+                                            {
+                                                isCheckedOne ?
+                                                    (
+                                                        <View style={PAGESTYLE.multiSelectYellowBorderView}>
+                                                            <IcnSelect height={AppUtil.getHP(1.4)} width={AppUtil.getHP(1.4)} />
+                                                        </View>
+                                                    )
+                                                    :
+                                                    (
+                                                        <View style={PAGESTYLE.multiSelectBorderView} />
+                                                    )}
+                                        </TouchableOpacity>
+                                        <Text style={PAGESTYLE.corporateUser}>{Label.SignInCorporateUser}</Text>
+                                    </View>
                                     <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
                                     {/* <View style={PAGESTYLE.passwordView}>
                                                 <TouchableOpacity onPress={() => { setShowPassword(false); }} >
@@ -404,6 +429,27 @@ const LoginScreen = (props) => {
                                                 <Text style={PAGESTYLE.resendTextFirst}>{Label.ToLogin}</Text>
                                             </View> */}
                                 </View>
+                                {
+                                    isCheckedOne ?
+                                        <View style={PAGESTYLE.corporateView}>
+                                            <TextInput
+                                                autoCapitalize="none"
+                                                ref={t3}
+                                                returnKeyType={"done"}
+                                                placeholderTextColor={GetAppColor.grayBorder}
+                                                // onSubmitEditing={() => { showPassword ? t2.current.focus() : input1.current.focus() }}
+                                                maxLength={40}
+                                                style={[PAGESTYLE.showCorporateActive, { marginBottom: 0 }]}
+                                                value={corporateUser}
+                                                onChangeText={corporateUser => setCorporateUser(corporateUser)}
+
+                                            ></TextInput>
+                                            <ScrollView horizontal style={PAGESTYLE.showCorporateDisable} showsHorizontalScrollIndicator={false}
+                                             contentContainerStyle={PAGESTYLE.centerUrl}>
+                                                <Text style={{ paddingHorizontal: 5 }}>{".madarekdev.silvertouch-staging.com"}</Text>
+                                            </ScrollView>
+                                        </View> : null
+                                }
                                 {/* :
                                         <View style={PAGESTYLE.resendOtpArea}>
                                             <Text style={PAGESTYLE.resendText}>{Label.ResendOtpTitle}</Text>

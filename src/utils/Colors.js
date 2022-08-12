@@ -51,8 +51,9 @@ export const GetAppColor = {
     inputBorder:"#0066CB",
     lightWhite1:"#e8eef1",
     rejected:"#ef4d30",
-    submissionStatus : "#31ade3"
-    
+    submissionStatus : "#31ade3",
+    backColor:"#e9ecef",
+    urlColor:"#666d73"
 }
 
 

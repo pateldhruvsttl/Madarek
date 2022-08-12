@@ -24,10 +24,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Loger } from "../../utils/Loger";
 import { EndPoints } from "../../service/EndPoints";
 import { AppConfig } from "../../manager/AppConfig";
+import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
+import IcnMenuDote from "../../assets/svg/IcnMenuDote"
+import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 
 const SubIdeasListWithImage = (props) => {
-
-
     const likeUnlike = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -51,6 +52,7 @@ const SubIdeasListWithImage = (props) => {
             props.onFavoriteIdeas(id)
         }
     }
+ 
     const renderIdeaItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
@@ -96,8 +98,8 @@ const SubIdeasListWithImage = (props) => {
                         </>
                         :
                         <>
-                            <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
-                            <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaSubTitle}</Text>
+                            <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
+                            <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
                         </>
                     }
 
@@ -112,9 +114,7 @@ const SubIdeasListWithImage = (props) => {
                                 <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                 <Text numberOfLines={1} style={[Style.title, { width: AppUtil.getWP(26) }]}>{`${item.firstName} ${item.lastName}`}</Text>
                             </View>
-
                             :
-
                             (props?.isType == "Spotlight" && props?.isType == "Challenges") ?
 
                                 <View style={Style.calView}>
@@ -127,7 +127,7 @@ const SubIdeasListWithImage = (props) => {
                                 :
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate}</Text>
+                                    <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
                                 </View>
 
                     }
@@ -156,10 +156,22 @@ const SubIdeasListWithImage = (props) => {
                                 <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                                 <Text style={Style.title}>{item?.totalComment}</Text>
                             </View>
+                            <View style={Style.moreView}>
+                                <Menu>
+                                    <MenuTrigger>
+                                        <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
+                                    </MenuTrigger>
+                                    <MenuOptions customStyles={Style.menuOptions}>
+                                        <MenuOption style={Style.menuView}>
+                                            <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+                                            <Text style={Style.txtMenuOptions}>{"Share"}</Text>
+                                        </MenuOption>
+                                    </MenuOptions>
+                                </Menu>
+                            </View>
 
                         </View>
                     }
-
                 </View>
 
             </TouchableOpacity>

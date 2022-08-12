@@ -22,7 +22,7 @@ const Tab = createMaterialTopTabNavigator();
 
 const IdeasListScreen = (props) => {
   const [isTab, setTab] = useState(props?.route?.params);
-  
+
   const [allIdeaArr, setaAllIdeaArr] = useState([]);
   const [newIdeaArr, setNewIdeaArr] = useState([]);
   const [popularIdeaArr, setPopularIdeaArr] = useState([]);
@@ -40,8 +40,8 @@ const IdeasListScreen = (props) => {
   const [isSector, setSector] = useState("");
   const [isSortBy, setSortBy] = useState("");
 
-  
- 
+
+
   useEffect(() => {
     if (isTab === undefined || isTab === 0)
       onIdeas("all", "", "", "", allIdeaArrPageNo);
@@ -59,25 +59,25 @@ const IdeasListScreen = (props) => {
     setFilterVisible(!isFilterVisible);
     if (categories.toString() != "" || sortBy != 0 || sector.toString() != "") {
       setFilter(true);
-    }else{
+    } else {
       setFilter(false);
     }
 
     if (isTab === undefined || isTab === 0)
-        onIdeas("all", categories.toString(), sector.toString(), sortBy);
-      else if (isTab === 1)
-        onIdeas("latest", categories.toString(), sector.toString(), sortBy);
-      else if (isTab === 2)
-        onIdeas("popular", categories.toString(), sector.toString(), sortBy);
-      else if (isTab === 3)
-        onIdeas("winning", categories.toString(), sector.toString(), sortBy);
-      else onIdeas("all", categories.toString(), sector.toString(), sortBy);
+      onIdeas("all", categories.toString(), sector.toString(), sortBy);
+    else if (isTab === 1)
+      onIdeas("latest", categories.toString(), sector.toString(), sortBy);
+    else if (isTab === 2)
+      onIdeas("popular", categories.toString(), sector.toString(), sortBy);
+    else if (isTab === 3)
+      onIdeas("winning", categories.toString(), sector.toString(), sortBy);
+    else onIdeas("all", categories.toString(), sector.toString(), sortBy);
 
-      setAllIdeaArrPageNo(1);
-      setNewIdeaArrPageNo(1);
-      setPopularIdeaArrPageNo(1);
-      setWinningIdeaArrPageNo(1);
-      
+    setAllIdeaArrPageNo(1);
+    setNewIdeaArrPageNo(1);
+    setPopularIdeaArrPageNo(1);
+    setWinningIdeaArrPageNo(1);
+
   };
 
   const onIdeas = (tabType = "all", categories = "", sector = "", sortBy = "", cpage = 1) => {
@@ -225,6 +225,7 @@ const IdeasListScreen = (props) => {
             }
           }
         });
+        setaAllIdeaArr([...newAllIdeasArr]);
 
         let updateNewIdeaArr = [];
         updateNewIdeaArr = newIdeaArr;
@@ -309,13 +310,13 @@ const IdeasListScreen = (props) => {
       <CommonHeader
         isType={"IdeasListScreen"}
         isFilter={isFilter}
-        onMenuClick={() => {props.navigation.openDrawer();}}
+        onMenuClick={() => { props.navigation.openDrawer(); }}
         onFilter={() => setFilterVisible(!isFilterVisible)}
       />
       <View style={Style.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={isTab == 0? Label.All: isTab == 1? Label.Latest: isTab == 2? Label.Popular: Label.Winning}
+            initialRouteName={isTab == 0 ? Label.All : isTab == 1 ? Label.Latest : isTab == 2 ? Label.Popular : Label.Winning}
             swipeEnabled={false}
             screenOptions={{
               tabBarLabelStyle: Style.tabHeader,

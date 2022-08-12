@@ -4,6 +4,10 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const LISTSTYLE = StyleSheet.create({
+    headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
+    txtMenuOptions:{color:GetAppColor.pincolor,fontFamily:FONTS.robotRegular},
+    menuView: { flexDirection: 'row',marginVertical:AppUtil.getHP(0.8),alignItems:'center' },
+    moreView:{  alignItems: 'flex-end',flex:1},
     MainView: { width: '100%',},
 
     titleView: {

@@ -6,7 +6,10 @@ import { buttonHeight } from '../../utils/Constant';
 import { buttonFontSize } from '../../utils/Constant';
 
 const Style = StyleSheet.create({
-
+    headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
+    txtMenuOptions:{color:GetAppColor.pincolor,fontFamily:FONTS.robotRegular},
+    menuView: { flexDirection: 'row',marginVertical:AppUtil.getHP(0.8),alignItems:'center' },
+    moreView:{  alignItems: 'center',justifyContent:'center'},
     MainView: { width: '100%' },
     titleView: {
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
