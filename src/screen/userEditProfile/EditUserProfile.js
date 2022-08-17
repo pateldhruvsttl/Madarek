@@ -92,7 +92,7 @@ const EditUserProfile = (props) => {
 
             var data = new FormData()
 
-           Loger.onLog('newData', newData);
+            Loger.onLog('newData', newData);
 
             data.append('device_id', deviceId)
             data.append('lang', "en")
@@ -100,7 +100,7 @@ const EditUserProfile = (props) => {
             data.append('first_name', firstName)
             data.append('last_name', lastName)
             data.append('job_title', jobTitle)
-            data.append('organization_name', organization)
+            data.append('organization_name', "123")
             data.append('country_id', countryId)
             data.append('city_id', cityId)
             // data.append('user_photo', userPhoto)
@@ -114,32 +114,18 @@ const EditUserProfile = (props) => {
             data.append('twitter_link', twitterLink)
             data.append('skills', skill)
 
-            console.log('AppConfig.token ----->', AppConfig.token);
+            Loger.onLog("data", data);
 
-            // const data = {
-            //     device_id: deviceId,
-            //     lang: "en",
-            //     token: AppConfig.token,
-            //     first_name: firstName,
-            //     last_name: lastName,
-            //     job_title: jobTitle,
-            //     organization_name: organization,
-            //     country_id: countryId,
-            //     city_id: "1512325823",
-            //     user_photo: userPhoto,
-            //     user_categories: category,
-            //     about_expert: about,
-            //     expertise_brief: description,
-            //     facebook_link: facebookLink,
-            //     linkdin_link: linkdinLink,
-            //     Fees_Type: "hourly",
-            //     SME_User_Fees: "250",
-            //     twitter_link: twitterLink,
-            //     skills: skill
 
-            // }
+        //    fetch(baseURL + EndPoints.editProfile, {
+        //         method: 'post',
+        //         headers: {'Content-Type': 'multipart/form-data',},
+        //         body: data
+        //     }).then(response => {
+        //     }).catch(err => {
+        //     })
+
             Service.post(EndPoints.editProfile, data, (res) => {
-                Loger.onLog("Response of update profile ", res);
                 if (res.statusCode == "1") {
                     showMessageWithCallBack(Label.UpdateProfie, () => {
                         refresh()
@@ -154,17 +140,7 @@ const EditUserProfile = (props) => {
                 }
             )
 
-            // fetch(baseURL + EndPoints.editProfile, {
-            //     method: 'post',
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data',
-            //     },
-            //     body: data
-            // }).then(response => {
-            //     console.log("image uploaded", response)
-            // }).catch(err => {
-            //     console.log('erroe of editprofile', err)
-            // })
+            
 
 
 
@@ -176,11 +152,9 @@ const EditUserProfile = (props) => {
             // })
             //     .then(function (response) {
             //         //handle success
-            //         console.log('res of editprofile',response);
             //     })
             //     .catch(function (response) {
             //         //handle error
-            //         console.log(response);
             //     });
         }
 

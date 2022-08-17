@@ -47,7 +47,6 @@ function SubmitIdeaStep1(props) {
             getCategories();
         },
             (err) => {
-                console.log("Filter Of sectors error ============>", err);
             }
         );
     };
@@ -62,7 +61,6 @@ function SubmitIdeaStep1(props) {
             setCategoryList(arr);
         },
             (err) => {
-                console.log("Filter Of categories error ============>", err);
             }
         );
     };

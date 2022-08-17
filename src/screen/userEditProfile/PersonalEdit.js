@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
-import React, { useState, useEffect,memo } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import EditUserProfileStyle from './EditUserProfileStyle'
 import { useSelector } from 'react-redux'
 import Camera from '../../assets/svg/myaccount/Camera'
@@ -16,6 +16,7 @@ import { Modal } from 'react-native'
 import City from '../../model/City'
 
 const PersonalEdit = (props) => {
+
     const { themeColor } = useSelector((state) => state)
     const [userData, setUserData] = useState(props.data)
     const [userType, setUserType] = useState()
@@ -30,9 +31,10 @@ const PersonalEdit = (props) => {
     const [userPhoto, setUserPhoto] = useState()
 
     const [country, setCountry] = useState([])
-    const [cityName, setCityName] = useState()
+    const [cityName, setCityName] = useState([])
     const [countryIndex, setCountryIndex] = useState(1)
     const [cityIndex, setCityIndex] = useState(1)
+
     const [countryId, setCountryId] = useState(0)
     const [cityId, setCityId] = useState(0)
 
@@ -49,16 +51,53 @@ const PersonalEdit = (props) => {
         setCity(userData.city)
         setNumber(userData.number)
         setUserPhoto(userData.userPhoto)
+        // setCountryId(getCountryId(userData.countryName));
+        // setCityId(getCityId(userData.city));
 
 
     }, [userData])
 
     useEffect(() => {
+        if(country.length > 0){
+            setCountryId(getCountryId(userData.countryName));
+        }
+    }, [country])
+
+    useEffect(() => {
+        if(cityName.length > 0)
+            setCityId(getCityId(userData.city));
+    }, [cityName])
+
+    useEffect(() => {
         selectCountry()
         selectCity()
     }, [])
+    
 
-     const onSelectCountry = (index) => {
+    const getCountryId = (name) => {
+        let id = 0;
+        country.map((ele) => {
+            if (name == ele.countryName) {
+                 id = ele.id;
+            }
+        })
+        return id;
+    }
+    const getCityId = (name) => {
+        let id = 0;
+        cityName.map((ele) => {
+            Loger.onLog(name+">>>>>>>>", ele)
+            if (name == ele.city) {
+                id = ele.id;
+            }
+           
+        })
+        return id;
+    }
+
+   
+
+    const onSelectCountry = (index) => {
         country.map((ele) => {
             if (index == ele.id) {
                 setCountryName(ele.countryName);
@@ -102,14 +141,16 @@ const PersonalEdit = (props) => {
 
     const selectCity = () => {
         Service.get(EndPoints.cities, (res) => {
-            Loger.onLog('Response of cities', res.data)
+            
             const cityData = []
             if (res.statusCode == "1") {
                 res.data.map((item) => {
+                    Loger.onLog(">>>>>>>>>>>>>>>>>>>>>", item)
                     let model = new City(item)
                     cityData.push(model)
-                    setCityName(cityData)
+                    
                 })
+                setCityName(cityData);
             }
         },
             (err) => {
@@ -143,7 +184,7 @@ const PersonalEdit = (props) => {
                         // contentContainerStyle={{ flexGrow: 1}}
                         renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => {onSelectCountry(item.id);toggleCountry() }} >
+                                <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => { onSelectCountry(item.id); toggleCountry() }} >
                                     <Text style={EditUserProfileStyle.label}>{item.countryName}{` (+${item.countryCode})`}</Text>
                                 </TouchableOpacity>
                             )
@@ -164,7 +205,7 @@ const PersonalEdit = (props) => {
                     style={{ flex: 1 }}
                     renderItem={({ item, index }) => {
                         return (
-                            <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => { onSelectCity(item.id);toggleCity() }} >
+                            <TouchableOpacity TouchableOpacity style={EditUserProfileStyle.selections} onPress={() => { onSelectCity(item.id); toggleCity() }} >
                                 <Text numberOfLines={1} style={EditUserProfileStyle.label}>{item.city}</Text>
                             </TouchableOpacity>
                         )
@@ -174,10 +215,10 @@ const PersonalEdit = (props) => {
         )
     }
     const toggleCity = () => {
-       setCityIndex(!cityIndex) 
+        setCityIndex(!cityIndex)
     }
     const toggleCountry = () => {
-         setCountryIndex(!countryIndex)
+        setCountryIndex(!countryIndex)
     }
     return (
         <ScrollView >

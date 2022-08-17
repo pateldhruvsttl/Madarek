@@ -6281,6 +6281,11 @@
     "prop-types" "^15.6.2"
     "react-native-iphone-x-helper" "^1.0.3"
 
+"react-native-kill-app@^1.0.4":
+  "integrity" "sha512-+jLoKGsDxHBgUFgo9zb9quBHd81Y/npVxyHbPEzCBgJv+6fNKNnwehoEH8cZv1Z7wXiTYqRCDawZCV4zSVudSw=="
+  "resolved" "https://registry.npmjs.org/react-native-kill-app/-/react-native-kill-app-1.0.4.tgz"
+  "version" "1.0.4"
+
 "react-native-linear-gradient@^2.5.6":
   "integrity" "sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg=="
   "resolved" "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz"

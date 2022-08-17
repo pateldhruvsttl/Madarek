@@ -331,7 +331,8 @@ export const ARlabel = {
   _browse: "Browse",
   _libraryImage: "LIBRARY IMAGE",
   _errorMessage:"Invalid File, Allowed size is",
-  _mB : "MB"
+  _mB : "MB",
+  _restartApp : "We need to restart the App in order to switch the layout"
   
 }
 export const USlabel = {
@@ -691,7 +692,8 @@ export const USlabel = {
   _libraryImage: "LIBRARY IMAGE",
 
  _errorMessage:"Invalid File, Allowed size is",
- _mB : "MB"
+ _mB : "MB",
+ _restartApp : "We need to restart the App in order to switch the layout"
 
 
 

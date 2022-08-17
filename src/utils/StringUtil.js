@@ -272,6 +272,7 @@ export const Label = {
   LibraryImage: isRTL ? ARlabel._libraryImage : USlabel._libraryImage,
   ErrorMessage: isRTL ? ARlabel._errorMessage : USlabel._errorMessage,
   MB: isRTL ? ARlabel._mB : USlabel._mB,
+  RestartApp: isRTL ? ARlabel._restartApp : USlabel._restartApp,
 
 
 }

@@ -6,7 +6,6 @@ import { AppUtil } from '../../utils/AppUtil'
 
 const OtherDetail = (props) => {
     const data = props.data
-    console.log('props.data',props.data);
     const categoryDetail = props?.data?.categoryInfo || []
 
     const getCategories = () =>

@@ -30,7 +30,6 @@ export const DownloadManager = (item, result) => {
                         downloadFile(item, (res) => {
                             result(res)
                         });
-                        console.log('Storage Permission Granted.');
                     } else {
                         // If permission denied then show alert
                         Alert.alert('Error', 'Storage Permission Not Granted');
@@ -41,7 +40,6 @@ export const DownloadManager = (item, result) => {
 
         } catch (error) {
             // To handle permission related exception
-            console.log("++++", error);
         }
     }
 }
@@ -55,21 +53,16 @@ export const downloadFile = (item, result) => {
             fromUrl: (item.uri).replace(/ /g, '%20'),
             toFile: localFile
         };
-        console.log('options', options);
 
         RNFS.downloadFile(options).promise.then((res) => {
-                console.log('hello res1', res)
                 FileViewer.open(localFile)
                 result()
             }).then(() => {
-                console.log('hello res2', "res")
                 result()
             }).catch(error => {
-                console.log('catch error', error);
                 showMessage('Sorry, unable to find compatible App on your device to view this content')
                 result()
             }).catch(error => {
-                console.log('hello error')
                 result()
 
             });

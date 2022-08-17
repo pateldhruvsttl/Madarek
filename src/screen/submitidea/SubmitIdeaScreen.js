@@ -8,6 +8,7 @@ import SubmitIdeaStep3 from "../../component/submitideas/SubmitIdeaStep3";
 import { AppConfig } from "../../manager/AppConfig";
 import { UserManager } from "../../manager/UserManager";
 import { EndPoints } from "../../service/EndPoints";
+import { Service } from "../../service/Service";
 import { GetAppColor } from "../../utils/Colors";
 import { deviceId } from "../../utils/Constant";
 import Style from "./SubmitIdeaScreenStyle";
@@ -31,10 +32,10 @@ function SubmitIdeaScreen(props) {
     data.append('sector_id', step1Obj.sectorsId)
     data.append('category_id', step1Obj.categoryId)
     data.append(dataForm)
-    // props.navigation.navigate("UserDashboardScreen");
+    // props.navigation.navigate("UserDashboardScreen");`
 
     Service.post(EndPoints.submitidea, data, (res) => {
-      props.navigation.navigate("UserDashboardScreen");
+      // props.navigation.navigate("UserDashboardScreen");
     }, (err) => {
       Loger.onLog("###", err);
     }

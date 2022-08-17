@@ -38,6 +38,22 @@ export const showMessageWithCallBack = (message, callBack) => {
     }
 }
 
+export const showMessageWithCancleCallBack = (message, callBack) => {
+    if (Platform.OS == 'ios') {
+        Alert.alert(message, null,
+            [
+                { text: 'OKAY', onPress: () => { callBack("OKAY") } },
+                { text: 'CANCLE', onPress: () => { callBack("CANCLE") } },
+            ]);
+    } else {
+        Alert.alert(null, message,
+            [
+                { text: 'OKAY', onPress: () => { callBack("OKAY") } },
+                { text: 'CANCLE', onPress: () => { callBack("CANCLE") } },
+            ]);
+    }
+}
+
 export const emailValidate = (text) => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(text) === false) {

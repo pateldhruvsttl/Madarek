@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, Image, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image, FlatList, Alert } from 'react-native'
 import React, { memo, useEffect, useState } from 'react'
 
 import { Label } from '../../utils/StringUtil'
@@ -77,36 +77,30 @@ function SubmitIdeaStep2(props) {
 
     const onTextChange = (type, txt) => {
 
-        if (type === "IdeaDescription") { setIdeaDescription(txt); console.log("IdeaDescription", txt); }
-        else if (type === "challengesAddressing") { setChallengesAddressing(txt); console.log("challengesAddressing", txt); }
-        else if (type === "benefitIdea") { setBenefitIdea(txt); console.log("benefitIdea", txt); }
-        else if (type === "videoUrl") { setVideoUrl(txt); console.log("videoUrl", txt); }
-        else if (type === "UploadEmbedUrl") { setUploadEmbedUrl(txt); console.log("UploadEmbedUrl", txt); }
-        else if (type === "keywordsTags") { setkeywordsTags(txt); console.log("keywordsTags", txt); }
-        else if (type === "NoOfTeamMember") { setNoOfTeamMember(txt); console.log("NoOfTeamMember", txt); }
+        if (type === "IdeaDescription") { setIdeaDescription(txt); }
+        else if (type === "challengesAddressing") { setChallengesAddressing(txt);}
+        else if (type === "benefitIdea") { setBenefitIdea(txt);}
+        else if (type === "videoUrl") { setVideoUrl(txt);}
+        else if (type === "UploadEmbedUrl") { setUploadEmbedUrl(txt);}
+        else if (type === "keywordsTags") { setkeywordsTags(txt);}
+        else if (type === "NoOfTeamMember") { setNoOfTeamMember(txt);}
     }
     const onSelectImg = (item) => {
         setIdeaCoverImage(item);
-        console.log("item", item);
-
     }
     const onSelectMultiImg = (item) => {
         setMultiImage(item);
-        console.log("item", item);
 
     }
     const onSelectFile = (item) => {
         setFile(item);
-        console.log("setFile", item);
 
     }
     const onSelectVideoFile = (item) => {
         setVideoFile(item);
-        console.log("setVideoFile", item);
 
     }
     const onTeamMemeber = (item) => {
-        console.log("setTeamMember", item);
         if (item !== "err") {
             setTeamMember(item);
             setArror(false)
@@ -127,7 +121,7 @@ function SubmitIdeaStep2(props) {
         else if (isData?.upload_additional_images?.required === "Y" && isMultiImage.length == 0) {
             Alert.alert(Label.FillMandatoryFieldsValidation);
         }
-        else if (isData?.challenges_addressing?.required === "Y" && isChallengesAddressing.length === "") {
+        else if (isData?.challenges_addressing?.required === "Y" && isChallengesAddressing === "") {
             Alert.alert(Label.FillMandatoryFieldsValidation);
         }
         else if (isData?.benefit_idea?.required === "Y" && isBenefitIdea === "") {
@@ -164,7 +158,7 @@ function SubmitIdeaStep2(props) {
             Alert.alert(Label.FillMandatoryFieldsValidation);
         }
         else {
-   
+
             let data = {
                 idea_description: isIdeaDescription,
                 challenges_addressing: isChallengesAddressing,
@@ -173,12 +167,12 @@ function SubmitIdeaStep2(props) {
                 upload_embed_url: isUploadEmbedUrl,
                 keywords_tags: iskeywordsTags,
                 no_of_team_member: isNoOfTeamMember,
-                team_member_details:isTeamMember,
+                team_member_details: isTeamMember,
                 hide_team_identity: isTeamIdentity,
                 need_sme: "",
                 post_idea_privately: isIdeaPrivately,
                 terms_condiitons: isTermsConditons,
-   
+
                 idea_cover_image: "",
                 upload_additional_images: "",
                 idea_upload_files: "",
@@ -190,14 +184,14 @@ function SubmitIdeaStep2(props) {
             form.append('form_data', data)
             form.append('idea_cover_image', isIdeaCoverImage)
             form.append('idea_upload_files', isFile)
-            form.append(getMultiImage())
+            form.append(getMultiImage)
             form.append('idea_upload_videos', isVideoFile)
 
             props.onNext(form);
         }
-        const getMultiImage=()=>{
+        const getMultiImage = () => {
             let data = new FormData();
-            
+
             isMultiImage.forEach(element => {
                 if (element.uri) {
                     let ext = element.uri.split('.');
@@ -210,8 +204,9 @@ function SubmitIdeaStep2(props) {
                 }
             });
 
+            return data;
         }
-       
+
     }
 
     return (
