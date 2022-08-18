@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, I18nManager } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
@@ -17,10 +17,10 @@ import { Switch } from 'react-native-switch';
 import styles from '../../component/detailsidea/UserProfileListStyle'
 import { useNavigation } from '@react-navigation/native';
 import { AppConfig } from '../../manager/AppConfig'
-import { AsyncStoreageManager } from '../../manager/AsyncStoreageManager'
+import { AsyncStorageManager } from '../../manager/AsyncStorageManager'
 import { Loger } from '../../utils/Loger'
-import { showMessageWithCallBack, showMessageWithCancleCallBack } from '../../utils/Constant'
-import RNExitApp from 'react-native-kill-app';
+import { showMessageWithCallBack, showMessageWithCancelCallBack } from '../../utils/Constant'
+import RNRestart from 'react-native-restart';
 
 
 const Setting = (props) => {
@@ -35,25 +35,27 @@ const Setting = (props) => {
 
     const onSelectLanguage = async (lang) => {
 
-        var cL = lang == 0 ? "eng" : "ar";
+        var cL = lang == 0 ? "en" : "ar";
         if(AppConfig.getLanguage() === cL)
             return;
 
-        showMessageWithCancleCallBack(Label.RestartApp, (value) => {
-            if (value == "CANCLE")
+        showMessageWithCancelCallBack(Label.RestartApp, (value) => {
+            if (value == "CANCEL")
                 return;
 
             setSelectedIndex(lang);
-            AsyncStoreageManager.onSetLanguages(cL);
+            AsyncStorageManager.onSetLanguages(cL);
             AppUtil.onLoding(true);
+            switchTheLanguage(cL)
 
             setTimeout(()=>{
-                RNExitApp.exitApp();
+                RNRestart.Restart();
             }, 1000)
-
         })
+    }
 
-
+    const switchTheLanguage = async (lang) => {
+        await I18nManager.forceRTL(lang == 'ar');
     }
 
     return (

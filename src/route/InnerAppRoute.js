@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { I18nManager, View } from 'react-native';
 import { AppConfig } from '../manager/AppConfig';
-import { AsyncStoreageManager } from '../manager/AsyncStoreageManager';
+import { AsyncStorageManager } from '../manager/AsyncStorageManager';
 import { Loger } from '../utils/Loger';
 import AppRoute from './AppRoute'
 
@@ -13,9 +13,9 @@ const route = () => {
     }, [])
 
     const languageRestart = async () => {
-        let value = await AsyncStoreageManager.onGetLanguagesCode();
+        let value = await AsyncStorageManager.onGetLanguagesCode();
         console.log("=-=-=-->",value)
-        await I18nManager.forceRTL(value);
+        // await I18nManager.forceRTL(value);
         setSelect(true);
 
     };
