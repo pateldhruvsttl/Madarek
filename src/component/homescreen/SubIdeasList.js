@@ -10,7 +10,8 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
-
+import IcnMenuDote from "../../assets/svg/IcnMenuDote"
+import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 import IcnTrophy from "../../assets/svg/IcnTrophy"
 import IcnStar from "../../assets/svg/IcnStar"
 import IcnRewordComment from "../../assets/svg/IcnRewordComment"
@@ -18,7 +19,7 @@ import IcnRewordLight from "../../assets/svg/IcnRewordLight"
 import IcnAvtarBg from "../../assets/svg/IcnAvtarBg"
 import IcnMenu from "../../assets/svg/IcnMenuDote"
 import moment from "moment";
-
+import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
 import { GetAppColor } from "../../utils/Colors";
 import { AppConfig } from "../../manager/AppConfig";
 
@@ -61,7 +62,7 @@ const SubIdeasList = (props) => {
       <View style={Style.itemsView}>
 
         <View style={Style.TitleView}>
-          <Text numberOfLines={1} style={Style.title}>{item.ideaTitle}</Text>
+          <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
           {
             (item.favorite) ?
               <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => favouriteUnfavourite(item.id)}>
@@ -74,7 +75,7 @@ const SubIdeasList = (props) => {
           }
         </View>
 
-        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaSubTitle}</Text>
+        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
 
         {
           props.isType == "Ideas" ?
@@ -89,7 +90,7 @@ const SubIdeasList = (props) => {
             :
             <View style={Style.calView}>
               <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-              <Text style={Style.title}>{item.date}</Text>
+              <Text style={Style.title}>{moment(item.createDate).format("DD MMM YYYY")}</Text>
             </View>
 
         }
@@ -127,6 +128,19 @@ const SubIdeasList = (props) => {
             <View style={Style.secondInnerCalView}>
               <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
               <Text style={Style.title}>{item.totalComment}</Text>
+            </View>
+            <View style={Style.moreView}>
+              <Menu>
+                <MenuTrigger>
+                  <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
+                </MenuTrigger>
+                <MenuOptions >
+                  <MenuOption style={Style.menuView}>
+                    <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+                    <Text style={Style.txtMenuOptions}>{"Share"}</Text>
+                  </MenuOption>
+                </MenuOptions>
+              </Menu>
             </View>
           </View>
 

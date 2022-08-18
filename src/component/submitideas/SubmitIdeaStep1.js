@@ -1,29 +1,79 @@
 import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CustomList from './CustomList'
 
 import { Label } from '../../utils/StringUtil'
 import Style from './IdeaStepStyle'
 import { GetAppColor } from '../../utils/Colors'
+import { Service } from '../../service/Service'
+import { EndPoints } from '../../service/EndPoints'
+import SubmitIdeaDropDownModel from '../../model/SubmitIdeaDropDownModel'
+import { Loger } from '../../utils/Loger'
 
 
 function SubmitIdeaStep1(props) {
 
     const { themeColor } = useSelector((state) => state);
-    
+
     const [title, setTitle] = useState("");
+
     const [sectors, setSectors] = useState("Selected");
+    const [isSectorsId, setSectorsId] = useState(0);
+
     const [category, setCategory] = useState("Selected");
+    const [isCategoryid, setCategoryId] = useState(0);
+
     const [subCategory, setSubCategory] = useState("Selected");
+    const [isSubCategoryId, setSubCategoryId] = useState(0);
+
+    const [isSectorsList, setSectorsList] = useState([]);
+    const [isCategoryList, setCategoryList] = useState([]);
+    const [isSubCategoryList, setSubCategoryList] = useState([]);
+
+    useEffect(() => {
+        getSectors();
+    }, [])
+
+    const getSectors = () => {
+        Service.get(EndPoints.sector, (res) => {
+
+            var arr = [];
+            res.data.forEach((element) => {
+                let model = new SubmitIdeaDropDownModel(element);
+                arr.push(model);
+            });
+            setSectorsList(arr);
+            getCategories();
+        },
+            (err) => {
+                console.log("Filter Of sectors error ============>", err);
+            }
+        );
+    };
+
+    const getCategories = () => {
+        Service.get(EndPoints.categories, (res) => {
+            var arr = [];
+            res.data.forEach((element) => {
+                let model = new SubmitIdeaDropDownModel(element);
+                arr.push(model);
+            });
+            setCategoryList(arr);
+        },
+            (err) => {
+                console.log("Filter Of categories error ============>", err);
+            }
+        );
+    };
 
     const onCheckField = () => {
-        // var obj = { title: title, sectors: sectors, category: category, subCategory: subCategory }
+        var obj = { title: title, sectors: sectors, sectorsId: isSectorsId, category: category, categoryId: isCategoryid, subCategory: subCategory, subCategoryId: isSubCategoryId }
 
         // if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
         //     Alert.alert(Label.FillMandatoryFieldsValidation);
         // else     
-            props.onNext(/*obj*/);
+        props.onNext(obj);
     }
     return (
         <View style={Style.MainView}>
@@ -42,17 +92,17 @@ function SubmitIdeaStep1(props) {
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.Sectors}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setSectors(txt)} />
+                <CustomList currentItem={sectors} item={isSectorsList} onSelect={(item) => { setSectors(item.itemName); setSectorsId(item.id) }} />
             </View>
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.Category}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setCategory(txt)} />
+                <CustomList currentItem={category} item={isCategoryList} onSelect={(item) => { setCategory(item.itemName); setCategoryId(item.id) }} />
             </View>
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.SubCategory}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={sectors} item={sectorsList} onSelect={(txt) => setSubCategory(txt)} />
+                <CustomList currentItem={subCategory} item={isSubCategoryList} onSelect={(item) => { setSubCategory(item.itemName); setSubCategoryId(item.id) }} />
             </View>
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>
@@ -63,5 +113,3 @@ function SubmitIdeaStep1(props) {
 }
 
 export default memo(SubmitIdeaStep1);
-
-const sectorsList = ["Slider", "Tab", "Challenges", "Spotlight", "ExpertInsightsSlider", "FavouriteCategories", "Button"];

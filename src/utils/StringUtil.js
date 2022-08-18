@@ -29,6 +29,7 @@ export const Label = {
   Email: isRTL ? ARlabel._email : USlabel._email,
   Phone: isRTL ? ARlabel._phone : USlabel._phone,
   PasswordLogin: isRTL ? ARlabel._passwordLogin : USlabel._passwordLogin,
+  CorporateUser: isRTL ? ARlabel._corporateUser : USlabel._corporateUser,
   Pin: isRTL ? ARlabel._pin : USlabel._pin,
   CatTitle: isRTL ? ARlabel._catTitle : USlabel._catTitle,
   Skip: isRTL ? ARlabel._skip : USlabel._skip,
@@ -263,11 +264,18 @@ export const Label = {
   ExpertInsightsDetail: isRTL ? ARlabel._expertInsightsDetail : USlabel._expertInsightsDetail,
   OrganizationName: isRTL ? ARlabel._organizationName : USlabel._organizationName,
   JobTilte: isRTL ? ARlabel._enterJobTitle : USlabel._enterJobTitle,
+  City: isRTL ? ARlabel.city : USlabel.city,
+  Country: isRTL ? ARlabel.country : USlabel.country,
   UpdateProfie: isRTL ? ARlabel._updateProfie : USlabel._updateProfie,
   ExpertInsight: isRTL ? ARlabel._expertInsight : USlabel._expertInsight,
   Approved: isRTL ? ARlabel._approved : USlabel._approved,
   TeamCollaboration: isRTL ? ARlabel._teamCollaboration : USlabel._teamCollaboration,
   ParticipateIdeas: isRTL ? ARlabel._participateIdeas : USlabel._participateIdeas,
+  Browse: isRTL ? ARlabel._browse : USlabel._browse,
+  LibraryImage: isRTL ? ARlabel._libraryImage : USlabel._libraryImage,
+  ErrorMessage: isRTL ? ARlabel._errorMessage : USlabel._errorMessage,
+  MB: isRTL ? ARlabel._mB : USlabel._mB,
+  SignInCorporateUser: isRTL ? ARlabel._signInCorporateUser : USlabel._signInCorporateUser,
 
 
 }

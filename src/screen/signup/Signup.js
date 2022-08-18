@@ -6,6 +6,7 @@ import {
   TextInput,
   Alert,
   Keyboard,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useRef, useEffect } from "react";
@@ -21,7 +22,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
-import { deviceId } from "../../utils/Constant";
+import { deviceId, showMessage } from "../../utils/Constant";
 import CommonHeader from "../../component/commonheader/CommonHeader";
 
 const Signup = (props) => {
@@ -33,6 +34,7 @@ const Signup = (props) => {
   const [emaiId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
   const [reTypePassword, setReTypePassword] = useState("");
+  const [corporateDetail, setCorporateDetail] = useState("");
 
   const [country, setCountry] = useState(null);
   const [withCallingCode, setWithCallingCode] = useState(false);
@@ -44,6 +46,7 @@ const Signup = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const retypepasswordRef = useRef();
+  const corporate = useRef()
 
   const submitRegistartionForm = () => {
     const data = {
@@ -79,21 +82,24 @@ const Signup = (props) => {
 
   const signUpPressed = () => {
     if (firstName === "") {
-      Alert.alert(Label.enterfirstname);
+      showMessage(Label.enterfirstname);
     } else if (lastName === "") {
-      Alert.alert(Label.enterlastname);
+      showMessage(Label.enterlastname);
     } else if (mobileNumber === "") {
-      Alert.alert(Label.entermobilenumber);
+      showMessage(Label.entermobilenumber);
     } else if (emaiId === "" || !AppUtil.validate(emaiId)) {
-      Alert.alert(Label.enteremail);
+      showMessage(Label.enteremail);
     } else if (password === "" || !AppUtil.passwordValidate(password)) {
-      Alert.alert(Label.enterpassword);
+      showMessage(Label.enterpassword);
     } else if (reTypePassword === "") {
-      Alert.alert(Label.enterretypePassword);
+      showMessage(Label.enterretypePassword);
     } else if (password !== reTypePassword) {
-      Alert.alert(Label.enterSamePassword);
+      showMessage(Label.enterSamePassword);
+    }
+    else if (selectedIndex == 2 && corporateDetail == "") {
+      showMessage(Label.CorporateUser);
     } else {
-      submitRegistartionForm();
+      console.log('success');
     }
   };
 
@@ -120,7 +126,10 @@ const Signup = (props) => {
         retypepasswordRef.current.focus();
         break;
       case index === 6:
-        Keyboard.dismiss();
+        selectedIndex == 2 ? corporate.current.focus() : Keyboard.dismiss();
+        break;
+      case index === 7:
+        Keyboard.dismiss()
         break;
       default:
     }
@@ -327,12 +336,39 @@ const Signup = (props) => {
                   setReTypePassword(text);
                 }}
                 secureTextEntry={true}
-                returnKeyType={"done"}
+                returnKeyType={selectedIndex == 2 ? "next" : "done"}
                 keyboardType="default"
                 onSubmitEditing={() => onChangeField(6)}
               />
             </View>
           </View>
+
+          {/*Corporate userField */}
+          {selectedIndex == 2 &&
+            <View style={{ marginTop: AppUtil.getHP(2) }}>
+              <Text style={SignupStyles.titleText}>
+                {"Corporate Sub Domain"}
+                <Text style={{ color: "red" }}>*</Text>
+              </Text>
+              <View style={[SignupStyles.nameAnotherView, { marginTop: 0 }]}>
+                <TextInput
+                  ref={corporate}
+                  style={SignupStyles.showCorporateActive}
+                  onChangeText={(text) => {
+                    setCorporateDetail(text);
+                  }}
+                  secureTextEntry={true}
+                  returnKeyType={"done"}
+                  keyboardType="default"
+                />
+                <ScrollView horizontal style={SignupStyles.showCorporateDisable}
+                  contentContainerStyle={SignupStyles.centerUrl}
+                  showsHorizontalScrollIndicator={false}>
+                  <Text style={{ paddingHorizontal: 5 }}>{".madarekdev.silvertouch-staging.com"}</Text>
+                </ScrollView>
+              </View>
+            </View>
+          }
 
           {/* SignUp button */}
           <TouchableOpacity

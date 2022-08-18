@@ -6,7 +6,6 @@ import SubmitIdeaStep1 from "../../component/submitideas/SubmitIdeaStep1";
 import SubmitIdeaStep2 from "../../component/submitideas/SubmitIdeaStep2";
 import SubmitIdeaStep3 from "../../component/submitideas/SubmitIdeaStep3";
 import { GetAppColor } from "../../utils/Colors";
-import { Loger } from "../../utils/Loger";
 import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
@@ -14,7 +13,6 @@ function SubmitIdeaScreen(props) {
 
   const [step1Obj, setStep1Obj] = useState(null);
   const [step2Obj, setStep2Obj] = useState(null);
-  const [step3Obj, setStep3Obj] = useState(null);
 
   const onSubmit = () => {
     props.navigation.navigate("UserDashboardScreen");
@@ -30,13 +28,11 @@ s
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 0 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 1 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
             <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 2 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
-            <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 3 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} />
           </View>
 
           {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => {setStep1Obj(obj); setSelectIndex(selectIndex + 1);}} />}
-          {selectIndex == 1 && <SubmitIdeaStep2 onNext={(obj) => {setStep2Obj(obj); setSelectIndex(selectIndex + 1);}} />}
-          {selectIndex == 2 && <SubmitIdeaStep3 onNext={(obj) => {setStep3Obj(obj); setSelectIndex(selectIndex + 1);}} />}
-          {selectIndex == 3 && <SubmitIdeaStep4 onNext={() => onSubmit()} step1Obj={step1Obj} step2Obj={step2Obj} step3Obj={step3Obj}/>}
+          {selectIndex == 1 && <SubmitIdeaStep2 onNext={(obj) => {setStep2Obj(obj); setSelectIndex(selectIndex + 1);}} data = {step1Obj}/>}
+          {selectIndex == 2 && <SubmitIdeaStep3 onNext={() => onSubmit()} step1Obj={step1Obj} step2Obj={step2Obj} />}
         </View>
       </ScrollView>
     </SafeAreaView>

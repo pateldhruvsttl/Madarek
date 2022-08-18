@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import React, { memo, useState } from 'react'
 import CountryPicker from 'react-native-country-picker-modal'
-import ImageList from './ImageList';
+// import ImageList from './ImageList';
 import CustomList from './CustomList'
 import { Label } from '../../utils/StringUtil'
 import Style from './IdeaStepStyle'
@@ -170,7 +170,7 @@ function SubmitIdeaStep3(props) {
 
             <View style={Style.innerView2}>
                 <Text style={Style.txtTitle}>{Label.UploadedImages}</Text>
-                <ImageList onUpdateList={(list)=> setImageList(list)} currentList={imageList}/>
+                {/* <ImageList onUpdateList={(list)=> setImageList(list)} currentList={imageList}/> */}
             </View>
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>

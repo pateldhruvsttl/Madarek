@@ -73,6 +73,7 @@ export const ARlabel = {
   _passwordLogin: "Please enter password",
   _pin: "Please enter correct otp",
   _socialLine: "or continue with",
+  _corporateUser: "Corporate is required",
 
   // validation message.
   _enterfirstname: "Please Enter First Name",
@@ -289,8 +290,8 @@ export const ARlabel = {
 
   _notNow: "Not now",
   _update: "Update",
-  _accept:"Accept",
-  _reject:"Reject",
+  _accept: "Accept",
+  _reject: "Reject",
   _newNotifications: "new notifications",
   _clearAll: "Clear all",
   _becomeAnExpert: "Become anExpert",
@@ -328,7 +329,15 @@ export const ARlabel = {
   _expertInsight: "Expert Insight",
   _approved: "APPROVED",
   _teamCollaboration: "Team Collaboration",
-  
+  _browse: "Browse",
+  _libraryImage: "LIBRARY IMAGE",
+  _errorMessage: "Invalid File, Allowed size is",
+  _mB: "MB",
+  _city: "Please Select City",
+  _country: "Please Select Country",
+
+  _signInCorporateUser:"Sign In as a Corporate User"
+
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -366,7 +375,8 @@ export const USlabel = {
   _ideas: "Ideas",
   _socialLine: "or continue with",
   _pin: "Please enter correct otp",
-  _socialLine: "or continue with",
+  _corporateUser: "Corporate is required",
+
 
   // select categories message
   _catTitle: "Select Categories",
@@ -644,8 +654,8 @@ export const USlabel = {
   _submit: "Submit",
   _notNow: "Not now",
   _update: "Update",
-  _accept:"Accept",
-  _reject:"Reject",
+  _accept: "Accept",
+  _reject: "Reject",
   _clearAll: "Clear all",
   _becomeAnExpert: "Become an Expert",
   _clear: "Clear",
@@ -683,8 +693,15 @@ export const USlabel = {
   _expertInsight: "Expert Insight",
   _approved: "APPROVED",
   _teamCollaboration: "Team Collaboration",
+  _browse: "Browse",
+  _libraryImage: "LIBRARY IMAGE",
 
-  // UserProfile model messages
+  _errorMessage: "Invalid File, Allowed size is",
+  _mB: "MB",
+  _city: "Please Select City",
+  _country: "Please Select Country",
+
+  _signInCorporateUser:"Sign In as a Corporate User"
 
 
 
