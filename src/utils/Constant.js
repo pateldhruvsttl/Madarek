@@ -7,8 +7,6 @@ import DeviceInfo from "react-native-device-info";
 
 export const deviceId = DeviceInfo.getUniqueId()
 
-export const isRTL = false;
-
 export const inputFieldHight = AppUtil.getHP(5.63)
 export const hederHeight = AppUtil.getHP(7)
 export const buttonHeight = AppUtil.getHP(6.14)

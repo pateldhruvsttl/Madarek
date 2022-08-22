@@ -144,7 +144,6 @@ export const ARlabel = {
   _message: "Message",
   _search: "Search",
 
-  _popularIdeas: "Popular Ideas",
   _newIdeas: "New Ideas",
   _winningIdeas: "Winning Ideas",
 
@@ -488,7 +487,6 @@ export const USlabel = {
   _madarekSpotlight: "Madarek Spotlight",
   _message: "Message",
   _search: "Search",
-  _popularIdeas: "Popular Ideas",
   _newIdeas: "New Ideas",
   _winningIdeas: "Winning Ideas",
 
