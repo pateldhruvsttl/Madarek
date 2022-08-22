@@ -336,13 +336,13 @@ const SearchLabel = (props) => {
 
     }
 
-
+const _lang = AppConfig.getLanguage();
     return (
         <SafeAreaView>
             <View style={Style.MainView}>
                 <View style={Style.centerIcnView}>
                     <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.navigation.goBack()}>
-                        <IcnBack color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        <IcnBack style={{transform: [{ rotate:_lang=='ar'?'180deg':'0deg' }]}} color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
                     <TextInput

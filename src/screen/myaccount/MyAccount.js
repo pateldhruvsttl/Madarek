@@ -13,10 +13,12 @@ import { Label } from '../../utils/StringUtil'
 import UpgradeUserType from '../../assets/svg/myaccount/UpgradeUserType'
 import { useSelector } from 'react-redux'
 import styles from '../../component/detailsidea/UserProfileListStyle'
+import { AppConfig } from '../../manager/AppConfig'
 
 const MyAccount = (props) => {
 
     const { themeColor } = useSelector((state) => state)
+    const _lang=AppConfig.getLanguage();
     return (
         <SafeAreaView style={{ flex: 1 }}>
           
@@ -27,7 +29,7 @@ const MyAccount = (props) => {
                         <UserProfile height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={MyAccountStyle.subbTitleText}>{Label.UserProfile}</Text>
                     </View>
-                    <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                    <IcnRight style={{ transform: [{ rotate: _lang == "ar" ? "180deg" : "0deg" }] }} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </TouchableOpacity>
 {/* 
                 <TouchableOpacity style={[MyAccountStyle.btnView,]} >

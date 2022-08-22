@@ -57,7 +57,7 @@ const Setting = (props) => {
     const switchTheLanguage = async (lang) => {
         await I18nManager.forceRTL(lang == 'ar');
     }
-
+const _lang=AppConfig.getLanguage();
     return (
         <SafeAreaView>
 
@@ -70,7 +70,7 @@ const Setting = (props) => {
                         <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
                         <Text style={SettingStyle.subTitleText}>Change Password</Text>
                     </View>
-                    <IcnRight height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                    <IcnRight style={{ transform: [{ rotate: _lang == "ar" ? "180deg" : "0deg" }] }} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </TouchableOpacity>
 
 
