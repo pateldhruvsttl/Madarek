@@ -76,9 +76,6 @@ export default class VideosPlayer extends Component {
     if (fullscreen) {
       Orientation.lockToPortrait();
     }
-    console.log('====================================');
-    console.log("his.props.navi",this.props.navi);
-    console.log('====================================');
       this.props.navi.goBack();
     return true;
   }

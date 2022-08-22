@@ -137,7 +137,7 @@ const HomeScreen = (props) => {
       token: AppConfig.token,
       frontuser_id: UserManager.userId,
       idea_id: "146",
-      language: "ar",
+      language: AppConfig.lang,
     };
     Service.post(
       EndPoints.expertInsights,

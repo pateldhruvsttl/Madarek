@@ -276,6 +276,5 @@ export const Label = {
   ErrorMessage: isRTL ? ARlabel._errorMessage : USlabel._errorMessage,
   MB: isRTL ? ARlabel._mB : USlabel._mB,
   SignInCorporateUser: isRTL ? ARlabel._signInCorporateUser : USlabel._signInCorporateUser,
-
-
+  RestartApp: isRTL ? ARlabel._restartApp : USlabel._restartApp,
 }

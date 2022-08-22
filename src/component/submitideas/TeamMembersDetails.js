@@ -5,30 +5,106 @@ import { Loger } from '../../utils/Loger';
 import { Label } from '../../utils/StringUtil';
 import IcnRemoveRound from '../../assets/svg/IcnRemoveRound'
 import Style from './IdeaStepStyle'
+import { useEffect } from 'react';
+import { emailValidate } from '../../utils/Constant';
 
 const TeamMembersDetails = (props) => {
 
-    const [isNumberOfItem, setNumberOfItem] = useState([1]);
-    const [isName, setName] = useState("");
-    const [isEmal, setEmail] = useState("");
-    const [isCountyCode, setCountyCode] = useState("");
-    const [isMobileNumber, setMobileNumber] = useState("");
+    const [isMemberData, setMemberData] = useState([]);
+    const [isErr, setErr] = useState(-1);
+
+
+    useEffect(() => {
+
+        let data = [];
+        data.push({ name: "", email: "", contryCode: "", mobileNo: "" })
+        setMemberData(data);
+
+    }, [])
+
+    useEffect(() => {
+        if (isErr == -1) {
+            let data = [];
+            isMemberData.forEach(element => {
+                if (element.name != "" || element.email != "" || element.contryCode != "" || element.mobileNo != "") {
+                    data.push(element)
+                }
+            });
+            props.onSelectTeamMembers(data)
+        }
+        else {
+            props.onSelectTeamMembers("err")
+        }
+    }, [isMemberData])
 
     const onAddItem = () => {
 
-        let arr = isNumberOfItem;
-        arr.push(1);
-        setNumberOfItem([...arr]);
+        let arr = isMemberData;
+        arr.push({ name: "", email: "", contryCode: "", mobileNo: "" });
+        setMemberData([...arr]);
 
     }
     const onRemoveItem = (index) => {
-        let arr = isNumberOfItem;
+        let arr = isMemberData;
         arr.splice(index, 1);
-        setNumberOfItem([...arr]);
+        setMemberData([...arr]);
     }
-    const onItem = (index) => {
+
+    const setFiled = (type, index, text) => {
+
+        let data = isMemberData;
+
+        if (type === "name") {
+
+            if (text == "")
+                setErr(-1)
+            else if (!text.trim())
+                setErr(index)
+            else
+                setErr(-1)
+
+            data[index].name = text;
+        }
+        else if (type === "email") {
+            if (text == "")
+                setErr(-1)
+            else if (!text.trim() || !emailValidate(text))
+                setErr(index)
+            else
+                setErr(-1)
+
+            data[index].email = text;
+        }
+        else if (type === "contryCode") {
+
+            if (text == "")
+                setErr(-1)
+            else if (!text.trim())
+                setErr(index)
+            else
+                setErr(-1)
+
+            data[index].contryCode = text;
+        }
+        else if (type === "mobileNo") {
+            if (text == "")
+                setErr(-1)
+            else if (!text.trim())
+                setErr(index)
+            else
+                setErr(-1)
+
+            data[index].mobileNo = text;
+        }
+
+        setMemberData([...data]);
+    }
+
+    const onItem = (index, item) => {
+
+        let data = isMemberData[index];
         return (
-            <View style={Style.innerSecondView3}>
+            <View style={[Style.innerSecondView3, { borderColor: isErr === index ? GetAppColor.borderRed : GetAppColor.commonTextColor }]}>
                 {
                     index != 0 && <TouchableOpacity style={Style.removeIcnStyle} onPress={() => onRemoveItem(index)}>
                         <IcnRemoveRound width={20} height={20} />
@@ -39,16 +115,17 @@ const TeamMembersDetails = (props) => {
                     multiline={true}
                     placeholder={props?.data?.full_name?.caption}
                     style={Style.txtInputTitlePlaceHolder}
-                    value={isName}
-                    onChangeText={title => setName(title)}
+                    value={data?.name}
+                    onChangeText={title => setFiled("name", index, title)}
                 />
                 <TextInput
                     placeholderTextColor={GetAppColor.grayBorder}
                     multiline={true}
                     placeholder={props?.data?.email?.caption}
                     style={Style.txtInputTitlePlaceHolder}
-                    value={isEmal}
-                    onChangeText={title => setEmail(title)}
+                    value={data.email}
+                    keyboardType={"email-address"}
+                    onChangeText={title => setFiled("email", index, title)}
 
                 />
                 <View style={Style.detailsView}>
@@ -57,16 +134,19 @@ const TeamMembersDetails = (props) => {
                         multiline={true}
                         placeholder={props?.data?.country_ext?.caption}
                         style={[Style.txtInputTitlePlaceHolder, { width: '25%' }]}
-                        value={isCountyCode}
-                        onChangeText={title => setCountyCode(title)}
+                        value={data.contryCode}
+                        keyboardType={"phone-pad"}
+                        onChangeText={title => setFiled("contryCode", index, title)}
                     />
                     <TextInput
                         placeholderTextColor={GetAppColor.grayBorder}
                         multiline={true}
                         placeholder={props?.data?.mobile?.caption}
                         style={[Style.txtInputTitlePlaceHolder, { width: '70%' }]}
-                        value={isMobileNumber}
-                        onChangeText={title => setMobileNumber(title)}
+                        value={data.mobileNo}
+                        maxLength={12}
+                        keyboardType={"phone-pad"}
+                        onChangeText={title => setFiled("mobileNo", index, title)}
 
                     />
                 </View>
@@ -83,8 +163,8 @@ const TeamMembersDetails = (props) => {
             </View>
 
             {
-                isNumberOfItem.map((item, index) => {
-                    return onItem(index);
+                isMemberData.length > 0 && isMemberData?.map((item, index) => {
+                    return onItem(index, item);
                 }
                 )
             }

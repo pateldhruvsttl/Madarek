@@ -32,7 +32,6 @@ const UserProfileView = (props) => {
             device_id: deviceId,
             token: AppConfig.token,
         }
-        console.log('AppConfig.token of userProfile ------->>>>', AppConfig.token);
         Service.post(EndPoints.getProfile, data, (res) => {
             Loger.onLog('res of getProfile', res);
 

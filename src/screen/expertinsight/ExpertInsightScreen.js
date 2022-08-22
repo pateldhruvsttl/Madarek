@@ -34,7 +34,7 @@ const ExpertInsightScreen = (props) => {
       "device_id": deviceId,
       "token": AppConfig.token,
       "frontuser_id": UserManager.userId,
-      "language": "ar",
+      "language": AppConfig.lang,
       "globalkeywords": "",
       "page": "3",
       "limit": AppConfig.pageLimit,

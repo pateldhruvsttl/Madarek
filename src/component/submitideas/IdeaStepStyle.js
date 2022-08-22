@@ -144,7 +144,7 @@ const HomeStyle = StyleSheet.create({
     btnAditionlImg: { width: '40%', height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), justifyContent: 'center', alignItems: 'center', backgroundColor: GetAppColor.innovationGrey, borderRadius: 5 },
     txtInputTitlePlaceHolder: {
         fontSize: AppUtil.getHP(1.8), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular,
-        height: AppUtil.getHP(4), marginVertical: AppUtil.getHP(1), borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor,
+        height: AppUtil.getHP(4), marginVertical: AppUtil.getHP(1), borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor, paddingVertical:3
     },
     detailsView: { flexDirection: 'row', justifyContent: 'space-between' },
     icnPluse: {

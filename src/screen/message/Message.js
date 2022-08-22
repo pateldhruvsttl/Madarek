@@ -36,7 +36,6 @@ const Message = (props) => {
         }
         Service.post(EndPoints.teamcollaboration, data, (res) => {
 
-            console.log("res", res)
             if (res?.statusCode === "1") {
                 const Arr = []
 

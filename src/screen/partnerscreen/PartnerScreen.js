@@ -32,7 +32,7 @@ const PartnerScreen = (props) => {
         {
             device_id: deviceId,
             token: AppConfig.token,
-            lang: "ar",
+            lang: AppConfig.lang,
         }
 
         Service.post(EndPoints.partner, data, (res) => {

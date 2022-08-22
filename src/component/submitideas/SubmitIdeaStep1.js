@@ -47,7 +47,6 @@ function SubmitIdeaStep1(props) {
             getCategories();
         },
             (err) => {
-                console.log("Filter Of sectors error ============>", err);
             }
         );
     };
@@ -62,7 +61,6 @@ function SubmitIdeaStep1(props) {
             setCategoryList(arr);
         },
             (err) => {
-                console.log("Filter Of categories error ============>", err);
             }
         );
     };
@@ -70,10 +68,10 @@ function SubmitIdeaStep1(props) {
     const onCheckField = () => {
         var obj = { title: title, sectors: sectors, sectorsId: isSectorsId, category: category, categoryId: isCategoryid, subCategory: subCategory, subCategoryId: isSubCategoryId }
 
-        // if(title === "" || sectors === "Selected" || category === "Selected" || subCategory === "Selected")
-        //     Alert.alert(Label.FillMandatoryFieldsValidation);
-        // else     
-        props.onNext(obj);
+        if (title === "" || sectors === "Selected" || category === "Selected")
+            Alert.alert(Label.FillMandatoryFieldsValidation);
+        else
+            props.onNext(obj);
     }
     return (
         <View style={Style.MainView}>

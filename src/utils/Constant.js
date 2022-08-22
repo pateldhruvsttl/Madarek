@@ -28,12 +28,28 @@ export const showMessageWithCallBack = (message, callBack) => {
     if (Platform.OS == 'ios') {
         Alert.alert(message, null,
             [
-                { text: 'OK', onPress: () => { callBack() } },
+                { text: 'OKAY', onPress: () => { callBack() } },
             ]);
     } else {
         Alert.alert(null, message,
             [
-                { text: 'OK', onPress: () => { callBack() } },
+                { text: 'OKAY', onPress: () => { callBack() } },
+            ]);
+    }
+}
+
+export const showMessageWithCancelCallBack = (message, callBack) => {
+    if (Platform.OS == 'ios') {
+        Alert.alert(message, null,
+            [
+                { text: 'SWITCH', onPress: () => { callBack("SWITCH") } },
+                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
+            ]);
+    } else {
+        Alert.alert(null, message,
+            [
+                { text: 'SWITCH', onPress: () => { callBack("SWITCH") } },
+                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
             ]);
     }
 }

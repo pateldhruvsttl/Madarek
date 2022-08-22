@@ -63,11 +63,9 @@ function IdeasFilter(props) {
     Service.get(
       EndPoints.sector,
       (res) => {
-        console.log("Filter Of sectors response ============>", res);
         setSectorsList(res.data);
       },
       (err) => {
-        console.log("Filter Of sectors error ============>", err);
       }
     );
   };
@@ -76,11 +74,9 @@ function IdeasFilter(props) {
     Service.get(
       EndPoints.categories,
       (res) => {
-        console.log("Filter Of categories response ============>", res);
         setCategoriesList(res.data);
       },
       (err) => {
-        console.log("Filter Of categories error ============>", err);
       }
     );
   };

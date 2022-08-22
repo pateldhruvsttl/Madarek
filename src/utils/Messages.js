@@ -335,9 +335,8 @@ export const ARlabel = {
   _mB: "MB",
   _city: "Please Select City",
   _country: "Please Select Country",
-
+  _restartApp : "We need to restart the App in order to switch the layout",
   _signInCorporateUser:"Sign In as a Corporate User"
-
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -695,12 +694,11 @@ export const USlabel = {
   _teamCollaboration: "Team Collaboration",
   _browse: "Browse",
   _libraryImage: "LIBRARY IMAGE",
-
   _errorMessage: "Invalid File, Allowed size is",
   _mB: "MB",
   _city: "Please Select City",
   _country: "Please Select Country",
-
+  _restartApp : "We need to restart the App in order to switch the layout",
   _signInCorporateUser:"Sign In as a Corporate User"
 
 

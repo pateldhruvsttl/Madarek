@@ -5,10 +5,16 @@ import { Label } from '../../utils/StringUtil';
 import Style from './IdeaStepStyle'
 import IcnSelect from "../../assets/svg/IcnSelect";
 import { AppUtil } from '../../utils/AppUtil';
+import { useEffect } from 'react';
 
 const TermAndConditions = (props) => {
 
   const [isCheckedOne, setCheckedOne] = useState(false);
+
+  useEffect(()=>{
+    props.onChecked(isCheckedOne ? 1 : 0);
+  },[isCheckedOne])
+
   return (
     <View style={Style.innerSecondView5}>
       <TouchableOpacity onPress={() => setCheckedOne(!isCheckedOne)} style={{ alignItems: "center" }}>
