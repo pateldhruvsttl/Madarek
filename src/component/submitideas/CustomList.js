@@ -11,7 +11,7 @@ import { AppUtil } from '../../utils/AppUtil'
 
 function CustomList(props) {
 
-    const [title, setTitle] = useState(props?.currentItem !="" ? props?.currentItem : "Selected");
+    const [title, setTitle] = useState(props?.currentItem !="" ? props?.currentItem : Label.Selected);
 
     return (
         <Menu>

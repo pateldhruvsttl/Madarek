@@ -139,7 +139,7 @@ const MyDrawerScreen = (props) => {
           </View>
 
           <View style={{ marginStart: 5 }}>
-            <Text style={drawerStyles.welcomeText}>Welcome</Text>
+            <Text style={drawerStyles.welcomeText}>{Label.Welcome}</Text>
             <Text style={drawerStyles.userNameText}>{UserManager.userName}</Text>
           </View>
         </View>
@@ -159,9 +159,9 @@ const MyDrawerScreen = (props) => {
               </MenuTrigger>
               <MenuOptions style={drawerStyles.optionsView}>
                 <MenuOption style={drawerStyles.menuView}>
-                  <Text style={drawerStyles.selectItem}>Selection One</Text>
-                  <Text style={drawerStyles.selectItem}>Selection Two</Text>
-                  <Text style={drawerStyles.selectItem}>Selection Three</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Latest}</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Popular}</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Winning}</Text>
                 </MenuOption>
               </MenuOptions>
             </Menu>

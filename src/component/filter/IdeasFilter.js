@@ -247,7 +247,7 @@ function IdeasFilter(props) {
             )}
 
             <View style={Style.bodyView}>
-              <Text style={Style.txtSortBy}>{"Sort By"}</Text>
+              <Text style={Style.txtSortBy}>{Label.SortBy}</Text>
               {radioButton(0, sortByArr[0])}
               {radioButton(1, sortByArr[1])}
               {radioButton(2, sortByArr[2])}
@@ -268,7 +268,8 @@ function IdeasFilter(props) {
                   style={Style.menuButton}
                 >
                   <Text style={Style.txtSortBy}>
-                    {"Sectors (" + selectorList + ")"}
+                    {`${Label.Sectors} (${selectorList})`}
+                    {/* {"Sectors (" + selectorList + ")"} */}
                   </Text>
                   {selectedCatIndex ? (
                     <IcnUpArrow
@@ -293,7 +294,8 @@ function IdeasFilter(props) {
               style={Style.menuButton}
             >
               <Text style={Style.txtSortBy}>
-                {"Categories (" + catSelectorList + ")"}
+              {`${Label.Categories} (${catSelectorList})`}
+                {/* {"Categories (" + catSelectorList + ")"} */}
               </Text>
               {selectedCategoriesIndex ? (
                 <IcnUpArrow
@@ -320,7 +322,7 @@ function IdeasFilter(props) {
             }
             style={Style.btnApply}
           >
-            <Text style={Style.txtButton}>{"Apply Filter"}</Text>
+            <Text style={Style.txtButton}>{Label.ApplyFilter}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -331,18 +333,18 @@ function IdeasFilter(props) {
 export default memo(IdeasFilter);
 
 const sortByArr = [
-  "Default",
-  "Name(A-Z)",
-  "Name(Z-A)",
+  Label.Default,
+  Label.FilterAscending,
+  Label.FilterDescending,
   //   "Rating(Highest)",
   //   "R ating(Lowest)",
 ];
 const buttonList = [
-  "Latest",
-  "Popular",
-  "Winning",
-  "Madarek Spotlight",
-  "Favourite",
+  Label.Latest,
+  Label.Popular,
+  Label.Winning,
+  Label.MadarekSpotlight,
+  Label.Favourite,
 ];
 const selectorItemList = [
   "Sector Sector 1",
