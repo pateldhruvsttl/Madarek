@@ -12,7 +12,6 @@ import IcnSelect from "../../assets/svg/IcnSelect";
 import { useEffect } from "react";
 import { GetAppColor } from "../../utils/Colors";
 import { memo } from "react";
-import { Loger } from "../../utils/Loger";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 
@@ -247,7 +246,7 @@ function IdeasFilter(props) {
             )}
 
             <View style={Style.bodyView}>
-              <Text style={Style.txtSortBy}>{Label.SortBy}</Text>
+              <Text style={Style.txtSortBy}>{"Sort By"}</Text>
               {radioButton(0, sortByArr[0])}
               {radioButton(1, sortByArr[1])}
               {radioButton(2, sortByArr[2])}
@@ -268,8 +267,7 @@ function IdeasFilter(props) {
                   style={Style.menuButton}
                 >
                   <Text style={Style.txtSortBy}>
-                    {`${Label.Sectors} (${selectorList})`}
-                    {/* {"Sectors (" + selectorList + ")"} */}
+                    {"Sectors (" + selectorList + ")"}
                   </Text>
                   {selectedCatIndex ? (
                     <IcnUpArrow
@@ -294,8 +292,7 @@ function IdeasFilter(props) {
               style={Style.menuButton}
             >
               <Text style={Style.txtSortBy}>
-              {`${Label.Categories} (${catSelectorList})`}
-                {/* {"Categories (" + catSelectorList + ")"} */}
+                {"Categories (" + catSelectorList + ")"}
               </Text>
               {selectedCategoriesIndex ? (
                 <IcnUpArrow
@@ -322,7 +319,7 @@ function IdeasFilter(props) {
             }
             style={Style.btnApply}
           >
-            <Text style={Style.txtButton}>{Label.ApplyFilter}</Text>
+            <Text style={Style.txtButton}>{"Apply Filter"}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -333,18 +330,18 @@ function IdeasFilter(props) {
 export default memo(IdeasFilter);
 
 const sortByArr = [
-  Label.Default,
-  Label.FilterAscending,
-  Label.FilterDescending,
+  "Default",
+  "Name(A-Z)",
+  "Name(Z-A)",
   //   "Rating(Highest)",
   //   "R ating(Lowest)",
 ];
 const buttonList = [
-  Label.Latest,
-  Label.Popular,
-  Label.Winning,
-  Label.MadarekSpotlight,
-  Label.Favourite,
+  "Latest",
+  "Popular",
+  "Winning",
+  "Madarek Spotlight",
+  "Favourite",
 ];
 const selectorItemList = [
   "Sector Sector 1",
