@@ -6,6 +6,7 @@ import FONTS from '../../utils/Fonts';
 import { buttonFontSize } from '../../utils/Constant';
 import { headerFontSize } from '../../utils/Constant';
 import { buttonBorderRadius } from '../../utils/Constant';
+import { AppConfig } from '../../manager/AppConfig';
 
 const CategoryStyle = StyleSheet.create({
     headerView: {
@@ -43,7 +44,7 @@ const CategoryStyle = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         justifyContent: 'space-between',
-        flexDirection: 'row',
+        flexDirection: AppConfig.getLanguage()=='ar'?'row-reverse' :'row',
         alignItems: 'center',
         backgroundColor:'#F5F7FB'
     },

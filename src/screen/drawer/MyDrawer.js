@@ -37,7 +37,7 @@ const MyDrawerScreen = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
-
+  const _lang = AppConfig.getLanguage();
   const onSelectMenu = (index) => {
     if (index == selectedIndex) {
       setSelectedIndex(0)
@@ -259,7 +259,7 @@ const MyDrawerScreen = (props) => {
         <View style={drawerStyles.line} />
 
         <TouchableOpacity style={drawerStyles.settingButton} onPress={() => onLogoutPressed()}>
-          <LogoutIcn height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+          <LogoutIcn style={{transform: [{ rotate: _lang=='ar'?'180deg':'0deg' }]}} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
       </View>
