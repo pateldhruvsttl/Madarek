@@ -152,10 +152,10 @@ const MyDrawerScreen = (props) => {
               <Text style={drawerStyles.dashText}>{Label.SubmitIdea}</Text>
             </TouchableOpacity>
           </View>
-          <View style={{marginEnd: AppUtil.getWP(4),alignItems:'center',justifyContent:'center' }}>
+          <View style={drawerStyles.menuContainer}>
             <Menu>
               <MenuTrigger style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
-                <IcnSelect height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} stroke={GetAppColor.white}/>
+                <IcnSelect height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} stroke={GetAppColor.white} />
               </MenuTrigger>
               <MenuOptions style={drawerStyles.optionsView}>
                 <MenuOption style={drawerStyles.menuView}>

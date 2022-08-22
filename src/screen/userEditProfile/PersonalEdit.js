@@ -353,7 +353,7 @@ const PersonalEdit = (props) => {
                         onChangeText={(number) => setNumber(number)}
                     />
 
-                    <TouchableOpacity onPress={() => { props.saveNext(), props.saveProfile({ personalEdit: personalEdit }) }} style={EditUserProfileStyle.submitButton}>
+                    <TouchableOpacity onPress={() => {  props.saveProfile({ personalEdit: personalEdit }) }} style={EditUserProfileStyle.submitButton}>
                         <Text style={EditUserProfileStyle.submitText}>{Label.SaveAndNext}</Text>
                     </TouchableOpacity>
                 </View>

@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import EditUserProfileStyle from './EditUserProfileStyle'
 import RightCheck from '../../assets/svg/settingIcon/RightCheck'
@@ -25,60 +25,71 @@ const EditUserProfile = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     const [selectedIndex, SetSelectedIndex] = useState(0)
-    const [newData, setNewData] = useState()
+    const [newData, setNewData] = useState({})
     const [updateData, setUpdateData] = useState(props.route.params.data)
 
+    
     const refresh = () => {
         props.route.params.onReferesh();
         props.navigation.navigate('UserProfileView')
     }
-    const validateField = (props) => {
-        if (updateData) {
-            const { firstName, lastName, jobTitle, organization, userPhoto } = updateData
-            // const { about, category, facebookLink, linkdinLink, twitterLink } = newData.otherData
-            if (firstName == "") {
-                showMessage(Label.enterfirstname)
-                return false;
-            }
-            else if (!lastName()) {
-                showMessage(Label.enterlastname)
-                return false;
-            }
-            else if (!organization()) {
-                showMessage(Label.OrganizationName)
-                return false;
-            }
-            else if (!jobTitle()) {
-                showMessage(Label.JobTilte)
-                return false;
-            }
-            saveProfile(props);
-        }
-        // else if (!lastName()) {
-        //     showMessage(Label.enterlastname)
-        //     return false;
-        // }
-        // else if (!lastName()) {
-        //     showMessage(Label.enterlastname)
-        //     return false;
-        // }
-        else {
-            return false
-        }
-    }
-
-
 
 
     const saveProfile = (props) => {
-
         if (props.personalEdit) {
-            setNewData(props.personalEdit)
+            const personalData = props.personalEdit
+            setNewData(personalData)
+
+            const { firstName, lastName, jobTitle, organization,
+                userPhoto, cityId, countryId, userType } = personalData
+            if (personalData) {
+                if (!firstName.trim()) {
+                    showMessage(Label.enterfirstname)
+                    return false;
+                } else if (!lastName.trim()) {
+                    showMessage(Label.enterlastname)
+                    return false;
+                } else if (!organization.trim()) {
+                    showMessage(Label.Organization)
+                    return false;
+                } else if (!jobTitle.trim()) {
+                    showMessage(Label.JobTilte)
+                    return false;
+                } else if (countryId == 0) {
+                    showMessage(Label.CountryValidate)
+                    return false;
+                } else if (cityId == 0) {
+                    showMessage(Label.CityValidate)
+                    return false;
+                } else {
+                    SetSelectedIndex(1)
+                }
+            }
         }
         else if (props?.otherDetails) {
             const otherData = props.otherDetails
             const updateOtherData = { ...newData, ...otherData }
             setNewData(updateOtherData)
+            const { about, facebookLink, twitterLink, linkdinLink } = updateOtherData
+            if (updateOtherData) {
+                if (!about.trim()) {
+                    showMessage(Label.enterfirstname)
+                    return false;
+                } else if (!facebookLink.trim()) {
+                    showMessage(Label.Organization)
+                    return false;
+                } else if (!twitterLink.trim()) {
+                    showMessage(Label.Organization)
+                    return false;
+                } else if (!linkdinLink.trim()) {
+                    showMessage(Label.Organization)
+                    return false;
+                } else {
+                    SetSelectedIndex(2)
+                }
+
+            }
+
         }
         else if (props?.expertDetail) {
 
@@ -88,57 +99,69 @@ const EditUserProfile = (props) => {
 
             const { firstName, lastName, jobTitle, organization, userPhoto, countryId,
                 about, category, facebookLink, linkdinLink, twitterLink,
-                description, skill, cityId } = newData
+                description, skill, cityId } = updateExpertData
 
-            var data = new FormData()
+            // if (updateExpertData) {
+            //     if (!skill.trim()) {
+            //         showMessage(Label.enterfirstname)
+            //         return false;
+            //     } else if (!description.trim()) {
+            //         showMessage(Label.Organization)
+            //         return false;
+            //     }
+            // }
 
-            Loger.onLog('newData', newData);
+            const data = new FormData()
 
-            data.append('device_id', deviceId)
-            data.append('lang', "en")
-            data.append('token', AppConfig.token.toString())
-            data.append('first_name', firstName)
-            data.append('last_name', lastName)
-            data.append('job_title', jobTitle)
-            data.append('organization_name', "123")
-            data.append('country_id', countryId)
-            data.append('city_id', cityId)
+            data.append('device_id', deviceId);
+            data.append('lang', "en");
+            data.append('token', AppConfig.token);
+            data.append('first_name', firstName);
+            data.append('last_name', lastName);
+            data.append('job_title', jobTitle);
+            data.append('organization_name', organization);
+            data.append('country_id', countryId);
+            data.append('city_id', cityId);
             // data.append('user_photo', userPhoto)
-            data.append('user_categories', category)
-            data.append('about_expert', about)
-            data.append('expertise_brief', description)
-            data.append('facebook_link', facebookLink)
-            data.append('linkdin_link', linkdinLink)
-            data.append('Fees_Type', "hourly")
-            data.append('SME_User_Fees', "250")
-            data.append('twitter_link', twitterLink)
-            data.append('skills', skill)
-
-            Loger.onLog("data", data);
+            data.append('user_categories', '["3", "4"]');
+            data.append('about_expert', about);
+            data.append('expertise_brief', 'description');
+            data.append('facebook_link', facebookLink);
+            data.append('linkdin_link', linkdinLink);
+            data.append('Fees_Type', "hourly");
+            data.append('SME_User_Fees', "250");
+            data.append('twitter_link', twitterLink);
+            data.append('skills', 'skill');
 
 
-        //    fetch(baseURL + EndPoints.editProfile, {
-        //         method: 'post',
-        //         headers: {'Content-Type': 'multipart/form-data',},
-        //         body: data
-        //     }).then(response => {
-        //     }).catch(err => {
-        //     })
+            // Service.post(EndPoints.editProfile, data, (res) => {
+            //     Loger.onLog("Response of update profile ", res);
+            //     if (res.statusCode == "1") {
+            //         showMessageWithCallBack(Label.UpdateProfie, () => {
+            //             refresh()
+            //         })
+            //     }
+            //     else {
+            //         showMessage(res.message)
+            //     }
+            // },
+            //     (err) => {
+            //         Loger.onLog("Error of update profile", err);
+            //     }
+            // )
 
-            Service.post(EndPoints.editProfile, data, (res) => {
-                if (res.statusCode == "1") {
-                    showMessageWithCallBack(Label.UpdateProfie, () => {
-                        refresh()
-                    })
-                }
-                else {
-                    showMessage(res.message)
-                }
-            },
-                (err) => {
-                    Loger.onLog("Error of update profile", err);
-                }
-            )
+
+            // axios.post(EndPoints.editProfile, {
+            //     method: "post",
+            //     body: data,
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     },
+            // }).then((resp) => {
+            //     console.log('resp', resp);
+            // }).catch(err => {
+            //     console.log(err);
+            // });
 
             
 
@@ -159,7 +182,6 @@ const EditUserProfile = (props) => {
         }
 
     }
-    // Loger.onLog('Update Data', updateData);
 
     const renderPersonalSlide = () => (
         <View style={EditUserProfileStyle.roundSlide}>
@@ -231,15 +253,15 @@ const EditUserProfile = (props) => {
                 }
 
                 <View style={EditUserProfileStyle.textLineView}>
-                    <Text style={EditUserProfileStyle.slideText}>{'Personal'}</Text>
-                    <Text style={EditUserProfileStyle.slideText}>{'Other Details'}</Text>
-                    <Text style={EditUserProfileStyle.slideText}>{'Expert'}</Text>
+                    <Text style={EditUserProfileStyle.slideText}>{Label.Personal}</Text>
+                    <Text style={EditUserProfileStyle.slideText}>{Label.OtherDetail}</Text>
+                    <Text style={EditUserProfileStyle.slideText}>{Label.Expert}</Text>
                 </View>
             </View>
 
             {
-                selectedIndex == 0 ? <PersonalEdit saveNext={() => SetSelectedIndex(1)} saveProfile={saveProfile} data={updateData} />
-                    : selectedIndex == 1 ? <OtherDetailEdit saveNext={() => SetSelectedIndex(2)} saveProfile={saveProfile} data={updateData} />
+                selectedIndex == 0 ? <PersonalEdit saveProfile={saveProfile} data={updateData} />
+                    : selectedIndex == 1 ? <OtherDetailEdit saveProfile={saveProfile} data={updateData} />
                         : <ExpertEdit saveProfile={saveProfile} data={updateData} />
             }
 

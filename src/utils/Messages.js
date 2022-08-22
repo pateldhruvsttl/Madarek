@@ -81,7 +81,7 @@ export const ARlabel = {
   _entermobilenumber: "Please Enter Mobile Number",
   _enteremail: "Please Enter Proper Email",
   _enterpassword: "Please Enter Password",
-  _organizationName: "Please Enter Organization Name",
+  _organization: "Please Enter Organization Name",
   _enterretypePassword: "Please Enter Retype Password",
   _enterSamePassword: "Please Match both Password and Re-type Password are same",
   _readyToSubmitYourIdea: "Ready to submit your Idea",
@@ -337,7 +337,17 @@ export const ARlabel = {
   _city: "Please Select City",
   _country: "Please Select Country",
   _restartApp : "We need to restart the App in order to switch the layout",
-  _signInCorporateUser:"Sign In as a Corporate User"
+  _cityValidate: "Please Select City",
+  _countryValidate: "Please Select Country",
+
+  _signInCorporateUser:"Sign In as a Corporate User",
+  _noDataFound : "No data found",
+  _changePassword : "Change Password",
+  _language : "Language",
+  _personal : "Personal",
+  _otherDetail : "Other Detail",
+  _expert : "Expert",
+
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -417,7 +427,7 @@ export const USlabel = {
   _enterretypePassword: "Please Enter Retype Password",
   _enterSamePassword: "Please Match both Password and Re-type Password are same",
   _readyToSubmitYourIdea: "Ready to submit your Idea?",
-  _organizationName: "Please Enter Organization Name",
+  _organization: "Please Enter Organization Name",
   _enterJobTitle: "Please Enter Job Title",
   _updateProfie: "User Profile Update Successfully",
 
@@ -700,8 +710,16 @@ export const USlabel = {
   _city: "Please Select City",
   _country: "Please Select Country",
   _restartApp : "We need to restart the App in order to switch the layout",
-  _signInCorporateUser:"Sign In as a Corporate User"
+  _cityValidate: "Please Select City",
+  _countryValidate: "Please Select Country",
 
+  _signInCorporateUser:"Sign In as a Corporate User",
+  _noDataFound : "No data found",
+  _changePassword : "Change Password",
+  _language : "Language",
+  _personal : "Personal",
+  _otherDetail : "Other Detail",
+  _expert : "Expert",
 
 
 }

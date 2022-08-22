@@ -14,6 +14,7 @@ import { Loger } from '../../utils/Loger';
 import { AppConfig } from '../../manager/AppConfig';
 import { UserManager } from "../../manager/UserManager";
 import { showMessage } from '../../utils/Constant';
+import { Label } from '../../utils/StringUtil';
 
 const Tab = createMaterialTopTabNavigator();
 const UserProfileView = (props) => {
@@ -67,9 +68,9 @@ const UserProfileView = (props) => {
                         tabBarIndicatorStyle: UserProfileStyle.itemBorder,
                         // tabBarScrollEnabled: true
                     }}>
-                        <Tab.Screen name={"Personal"} children={() => <Personal data={userData} />} />
-                        <Tab.Screen name={"Other Detail"} children={() => <OtherDetail data={userData} />} />
-                        <Tab.Screen name={"Expert"} children={() => <Expert data={userData} />} />
+                        <Tab.Screen name={Label.Personal} children={() => <Personal data={userData} />} />
+                        <Tab.Screen name={Label.OtherDetail} children={() => <OtherDetail data={userData} />} />
+                        <Tab.Screen name={Label.Expert} children={() => <Expert data={userData} />} />
                     </Tab.Navigator>
                     {/* </NavigationContainer> */}
                 </View>
