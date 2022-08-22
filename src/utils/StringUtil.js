@@ -1,5 +1,7 @@
-import { baseUrl, isRTL } from "./Constant";
+import { AppConfig } from "../manager/AppConfig";
 import { ARlabel, USlabel } from "./Messages";
+
+let isRTL = AppConfig.getRTL();
 
 export const Label = {
   HomeTitle: isRTL ? ARlabel._homeTitle : USlabel._homeTitle,
@@ -264,8 +266,8 @@ export const Label = {
   ExpertInsightsDetail: isRTL ? ARlabel._expertInsightsDetail : USlabel._expertInsightsDetail,
   OrganizationName: isRTL ? ARlabel._organizationName : USlabel._organizationName,
   JobTilte: isRTL ? ARlabel._enterJobTitle : USlabel._enterJobTitle,
-  City: isRTL ? ARlabel.city : USlabel.city,
-  Country: isRTL ? ARlabel.country : USlabel.country,
+  City: isRTL ? ARlabel._city : USlabel._city,
+  Country: isRTL ? ARlabel._country : USlabel._country,
   UpdateProfie: isRTL ? ARlabel._updateProfie : USlabel._updateProfie,
   ExpertInsight: isRTL ? ARlabel._expertInsight : USlabel._expertInsight,
   Approved: isRTL ? ARlabel._approved : USlabel._approved,
@@ -276,6 +278,5 @@ export const Label = {
   ErrorMessage: isRTL ? ARlabel._errorMessage : USlabel._errorMessage,
   MB: isRTL ? ARlabel._mB : USlabel._mB,
   SignInCorporateUser: isRTL ? ARlabel._signInCorporateUser : USlabel._signInCorporateUser,
-
-
+  RestartApp: isRTL ? ARlabel._restartApp : USlabel._restartApp,
 }

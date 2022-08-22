@@ -19,7 +19,6 @@ import { AppConfig } from '../../manager/AppConfig'
 
 const LiveChat = (props) => {
 
-    console.log("props", props.route.params.name);
     const getId = () => {
         return Math.floor(Math.random() * (999 - 100 + 1) + 100)
     }

@@ -38,7 +38,6 @@ const IdeaDetails = (props) => {
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
-  console.log('IdeaDetails id',item.id);
 
   useEffect(() => {
     onExpertInsights();

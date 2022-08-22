@@ -30,4 +30,5 @@ export const EndPoints = {
     sector:"rest/sectors",
     loadidea:"loadidea",
     submitIdeaList:"submittedideas",
+    submitidea:"submitidea",
 }

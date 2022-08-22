@@ -9,7 +9,7 @@ import Loader from './src/component/Loader'
 import { MenuProvider } from 'react-native-popup-menu';
 import { Provider } from 'react-redux'
 import { store } from './src/redux/store/Store'
-import AppRoute from './src/route/AppRoute';
+import AppRoute from './src/route/InnerAppRoute';
 
 LogBox.ignoreAllLogs();
 

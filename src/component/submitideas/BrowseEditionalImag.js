@@ -4,6 +4,7 @@ import * as ImagePicker from 'react-native-image-picker';
 import IcnRemoveRound from '../../assets/svg/IcnRemoveRound'
 import Style from './IdeaStepStyle'
 import DocumentPicker, { types } from 'react-native-document-picker'
+import { useEffect } from 'react';
 
 
 function ImageList(props) {
@@ -26,11 +27,8 @@ function ImageList(props) {
 
             ImagePicker.launchImageLibrary(options, (response) => {
                 if (response.didCancel) {
-                    console.log('User cancelled image picker');
                 } else if (response.error) {
-                    console.log('ImagePicker Error: ', response.error);
                 } else if (response.customButton) {
-                    console.log('User tapped custom button: ', response.customButton);
                 } else {
                     let arr = [...imageList, response]
                     setImageList(arr);
@@ -41,6 +39,10 @@ function ImageList(props) {
 
         }
     }
+
+    useEffect(()=>{
+        props.onMultiImageArr(imageList);
+    },[imageList])
     const addMaterial = async (item) => {
         if (item === "add") {
             const images = [...imageList]

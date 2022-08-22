@@ -37,7 +37,6 @@ const MyDrawerScreen = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
-  Loger.onLog("User manager in Drawer", UserManager);
 
   const onSelectMenu = (index) => {
     if (index == selectedIndex) {

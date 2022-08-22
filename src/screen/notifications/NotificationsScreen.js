@@ -145,7 +145,6 @@ function NotificationsScreen() {
       }
     },
       (err) => {
-        console.log("Clear notification error response", err);
       }
     );
   };

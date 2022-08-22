@@ -144,7 +144,6 @@ export const ARlabel = {
   _message: "Message",
   _search: "Search",
 
-  _popularIdeas: "Popular Ideas",
   _newIdeas: "New Ideas",
   _winningIdeas: "Winning Ideas",
 
@@ -316,6 +315,7 @@ export const ARlabel = {
   _notificationsSettings: "Notifications Settings",
   _allNotifications: "All Notifications",
   _userNotifications: "User Notifications",
+  _ideaNotifications: "Idea Notifications",
   _collaborateNotifications: "Collaborate Notifications",
   _expertNotifications: "Expert Notifications",
 
@@ -335,9 +335,8 @@ export const ARlabel = {
   _mB: "MB",
   _city: "Please Select City",
   _country: "Please Select Country",
-
+  _restartApp : "We need to restart the App in order to switch the layout",
   _signInCorporateUser:"Sign In as a Corporate User"
-
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -488,7 +487,6 @@ export const USlabel = {
   _madarekSpotlight: "Madarek Spotlight",
   _message: "Message",
   _search: "Search",
-  _popularIdeas: "Popular Ideas",
   _newIdeas: "New Ideas",
   _winningIdeas: "Winning Ideas",
 
@@ -695,12 +693,11 @@ export const USlabel = {
   _teamCollaboration: "Team Collaboration",
   _browse: "Browse",
   _libraryImage: "LIBRARY IMAGE",
-
   _errorMessage: "Invalid File, Allowed size is",
   _mB: "MB",
   _city: "Please Select City",
   _country: "Please Select Country",
-
+  _restartApp : "We need to restart the App in order to switch the layout",
   _signInCorporateUser:"Sign In as a Corporate User"
 
 

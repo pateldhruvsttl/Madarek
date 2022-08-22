@@ -2,7 +2,6 @@ import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
 function Document(props) {
-  console.log('props of size',props);
   return (
     <Svg xmlns="http://www.w3.org/2000/svg" 
     height={props.height} 
