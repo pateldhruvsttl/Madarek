@@ -4,14 +4,16 @@ export const AppConfig = {
     token: '',
     lang: '',
     pageLimit: '10',
-
+    isRTL:false,
     setLanguage: (value) => {
         lang = value;
     },
     getLanguage: () => {
         return lang;
     },
-
+    getRTL:()=>{
+        return lang == "ar" ? true : false;
+    }
 }
 
 
