@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class OpenChallengeDetail {
 
     constructor(obj = null) {
@@ -6,59 +8,59 @@ export default class OpenChallengeDetail {
             return;
         }
         // contestDetail 
-        this.submissionStatus = obj?.submissionstatus || "noStatus"
-        this.contestTitle = obj?.contest_title || "No contest Title"
+        this.submissionStatus = obj?.submissionstatus || Label.NoTitle
+        this.contestTitle = obj?.contest_title || Label.NoTitle
         this.contestImage = obj?.contest_image || "https://i.imgur.com/5tj6S7Ol.jpg"
-        this.title = obj?.title || "No title"
-        this.sector = obj?.sector_name || "No Sector "
-        this.categoryName = obj?.category_name || "No Category "
-        this.favoriteContest = obj?.my_toatal_favorite_contest || "No Favorite Contest"
-        this.contestDate = obj?.contest_date || "15 Mar 22 - 29 Mar 22"
-        this.totalLike = obj?.toatal_liked_contest || "0"
+        this.title = obj?.title || Label.NoTitle
+        this.sector = obj?.sector_name || Label.NoSector
+        this.categoryName = obj?.category_name || Label.NoCategoryName
+        this.favoriteContest = obj?.my_toatal_favorite_contest || Label.NoFavoriteContest
+        this.contestDate = obj?.contest_date || Label.DefaultDate
+        this.totalLike = obj?.toatal_liked_contest || Label.DefaultNumber
         this.like = obj?.toatal_liked_contest > 0 ? true : false;
         this.totalFavoriteContest = obj?.my_toatal_favorite_contest == 0 ? false : true;
-        this.totalView = obj?.toatal_view_contest || "0"
-        this.totalComment = obj?.toatal_contest_comments || "0"
-        this.totalExpertInsight = obj?.total_expert_insight || "0"
+        this.totalView = obj?.toatal_view_contest || Label.DefaultNumber
+        this.totalComment = obj?.toatal_contest_comments || Label.DefaultNumber
+        this.totalExpertInsight = obj?.total_expert_insight || Label.DefaultNumber
         this.contestDescription = obj?.contest_description &&  obj?.contest_description !== " " ? obj.contest_description : "No Description"
-        this.participateRowsCount = obj?.participaterowsCount || "0"
-        this.evaluationPannel = obj?.evaluationPannel || "0"
-        this.participateMulti = obj?.who_should_participate_multi || "no type"
-        this.reward = obj?.reward || "no reward"
-        this.announcementDate = obj?.announcement || "18-07-2022"
-        this.startDate = obj?.start_date || "18-07-2022"
-        this.endDate = obj?.end_date || "18-07-2022"
-        this.publicEvaluation = obj?.public_evaluation || "18-07-2022"
-        this.expertEvaluation = obj?.expert_evaluation || "18-07-2022"
-        this.awardAnnouncement = obj?.award_announcement || "18-07-2022"
-        this.votingMechanism = obj?.voting_mechanism_new || "no data"
+        this.participateRowsCount = obj?.participaterowsCount || Label.DefaultNumber
+        this.evaluationPannel = obj?.evaluationPannel || Label.DefaultNumber
+        this.participateMulti = obj?.who_should_participate_multi || Label.NoType
+        this.reward = obj?.reward || Label.NoReward
+        this.announcementDate = obj?.announcement || Label.DefaultDate
+        this.startDate = obj?.start_date || Label.DefaultDate
+        this.endDate = obj?.end_date || Label.DefaultDate
+        this.publicEvaluation = obj?.public_evaluation || Label.DefaultDate
+        this.expertEvaluation = obj?.expert_evaluation || Label.DefaultDate
+        this.awardAnnouncement = obj?.award_announcement || Label.DefaultDate
+        this.votingMechanism = obj?.voting_mechanism_new || Label.NoData
         this.mixVoting = obj?.mix_voting || ""
-        this.participantsCount = obj?.participantscount || "0"
-        this.objective = obj?.objective || "no objective"
+        this.participantsCount = obj?.participantscount || Label.DefaultNumber
+        this.objective = obj?.objective || Label.NoObjective
         
         // similarrow
         this.madarekSpecial = obj?.madarek_special || ""
         this.form_data = obj?.form_data || ""
-        this.frontuserId = obj?.frontuser_id || "0"
+        this.frontuserId = obj?.frontuser_id || Label.DefaultNumber
         this.status = obj?.status || ""
-        this.ideaTitle = obj?.idea_title || "no title"
-        this.createdAt = obj?.created_at || "0"
+        this.ideaTitle = obj?.idea_title || Label.NoTitle
+        this.createdAt = obj?.created_at || Label.DefaultNumber
 
         // evaluationPannel
-        this.firstName = obj?.first_name || "No Name"
-        this.lastName = obj?.last_name || "No Name"
-        this.jobTitle = obj?.job_title || "No title"
-        this.organization = obj?.organization_name || "No title"
-        this.panelPhoto = obj?.user_photo || "No title"
+        this.firstName = obj?.first_name ||Label.NoName
+        this.lastName = obj?.last_name ||Label.NoName
+        this.jobTitle = obj?.job_title || Label.NoTitle
+        this.organization = obj?.organization_name || Label.NoTitle
+        this.panelPhoto = obj?.user_photo || Label.NoTitle
 
         //participaterowsData
         this.participateImage = obj?.idea_cover_image || "https://i.imgur.com/5tj6S7Ol.jpg"
-        this.participateTitle = obj?.idea_title || "No title"
-        this.participateDate = obj?.idea_participate_created || "01 July 2021"
-        this.participateBy = obj?.created_by || "No name"
-        this.totalScore = obj?.total_vote_data || "0"
-        this.rank = obj?.score || "0"
-        this.totalVote = obj?.total_vote || "0"
+        this.participateTitle = obj?.idea_title || Label.NoTitle
+        this.participateDate = obj?.idea_participate_created || Label.DefaultDate
+        this.participateBy = obj?.created_by ||Label.NoName
+        this.totalScore = obj?.total_vote_data || Label.DefaultNumber
+        this.rank = obj?.score || Label.DefaultNumber
+        this.totalVote = obj?.total_vote || Label.DefaultNumber
        
 
     }

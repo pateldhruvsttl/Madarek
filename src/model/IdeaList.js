@@ -1,4 +1,5 @@
 import { AppConfig } from "../manager/AppConfig";
+import { Label } from "../utils/StringUtil";
 
 export default class IdeaList {
 
@@ -8,23 +9,23 @@ export default class IdeaList {
             return;
         }
 
-        this.ideaTitle = obj?.idea_title ? obj?.idea_title : "No Title";
-        this.categoryName = obj?.category_name ? obj?.category_name : "No Category"
+        this.ideaTitle = obj?.idea_title ? obj?.idea_title :Label.NoTitle;
+        this.categoryName = obj?.category_name ? obj?.category_name : Label.NoCategory
         
-        this.createDate = obj?.created_at ? obj?.created_at : "15 Mar 22"
-        this.date = obj?.date || "15 Mar 22 - 29 Mar 22"
-        this.sectorName = obj?.sector_name ? obj?.sector_name : "No Sector"
+        this.createDate = obj?.created_at ? obj?.created_at :Label.DefaultDate
+        this.date = obj?.date || Label.DefaultDate
+        this.sectorName = obj?.sector_name ? obj?.sector_name : Label.NoSector
 
         this.id = obj?.id
-        this.firstName = obj?.first_name ? obj?.first_name : "No First Name"
-        this.lastName = obj?.last_name ? obj?.last_name : "No Last Name"
-        this.title = obj?.title ? obj?.title : "No Title"
-        this.section = obj?.section || "0"
-        this.ideaDescription = obj?.idea_description ? obj?.idea_description : "No Description"
+        this.firstName = obj?.first_name ? obj?.first_name : Label.NoFirstName
+        this.lastName = obj?.last_name ? obj?.last_name : Label.NoLastName
+        this.title = obj?.title ? obj?.title : Label.NoTitle
+        this.section = obj?.section || Label.DefaultNumber
+        this.ideaDescription = obj?.idea_description ? obj?.idea_description : Label.NoDescription
         this.ideaImage = obj?.idea_cover_image ? obj?.idea_cover_image : ""
-        this.winning = obj?.winning || "0"
-        this.madarekSpecial = obj?.madarek_special || "0"
-        this.favoriteIdea = obj?.toatal_favorite_idea || "0"
+        this.winning = obj?.winning || Label.DefaultNumber
+        this.madarekSpecial = obj?.madarek_special || Label.DefaultNumber
+        this.favoriteIdea = obj?.toatal_favorite_idea || Label.DefaultNumber
         this.favoriteChallenge = obj?.totalFavoriteContest == null || obj?.totalFavoriteContest == 0 ? false : true;
         this.topRate = obj?.top_rated == null && obj?.top_rated != 0 ? true : false;
        
@@ -33,9 +34,9 @@ export default class IdeaList {
         this.insight = obj?.isInsight == null || obj?.isInsight == 0 ? false : true;
         this.starred = obj?.isStarred == null || obj?.isStarred == 0 ? false : true;
         this.like = obj?.isLiked > 0 ? true : false;
-        this.totalView = obj?.totalViews || "0"
-        this.totalLike = obj?.totalLikes || "0"
-        this.totalComment = obj?.totalComments || "0"
+        this.totalView = obj?.totalViews || Label.DefaultNumber
+        this.totalLike = obj?.totalLikes || Label.DefaultNumber
+        this.totalComment = obj?.totalComments || Label.DefaultNumber
 
         this.team = obj?.team;
         this.resources = obj?.resources;

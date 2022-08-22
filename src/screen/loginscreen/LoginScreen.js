@@ -446,7 +446,7 @@ const LoginScreen = (props) => {
                                             ></TextInput>
                                             <ScrollView horizontal style={PAGESTYLE.showCorporateDisable} showsHorizontalScrollIndicator={false}
                                              contentContainerStyle={PAGESTYLE.centerUrl}>
-                                                <Text style={{ paddingHorizontal: 5 }}>{".madarekdev.silvertouch-staging.com"}</Text>
+                                                <Text style={{ paddingHorizontal: 5 }}>{Label.URL}</Text>
                                             </ScrollView>
                                         </View> : null
                                 }
