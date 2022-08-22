@@ -46,7 +46,6 @@ function SubmitIdeaScreen(props) {
   return (
     <SafeAreaView style={Style.MainView}>
       <CommonHeader isType={"SubmitIdeaScreen"} />
-
       <ScrollView>
         <View style={Style.containerView}>
           <View style={Style.selectPageIndicatorsView}>

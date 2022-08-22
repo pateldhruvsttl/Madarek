@@ -262,3 +262,5 @@ function SubmitIdeaStep2(props) {
 
 
 export default memo(SubmitIdeaStep2);
+
+const sectorsList = ["Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian"];
