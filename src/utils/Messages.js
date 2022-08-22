@@ -316,6 +316,7 @@ export const ARlabel = {
   _notificationsSettings: "Notifications Settings",
   _allNotifications: "All Notifications",
   _userNotifications: "User Notifications",
+  _ideaNotifications: "Idea Notifications",
   _collaborateNotifications: "Collaborate Notifications",
   _expertNotifications: "Expert Notifications",
 

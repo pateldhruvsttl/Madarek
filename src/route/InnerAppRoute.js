@@ -14,14 +14,12 @@ const route = () => {
 
     const languageRestart = async () => {
         let value = await AsyncStorageManager.onGetLanguagesCode();
-        console.log("=-=-=-->",value)
         // await I18nManager.forceRTL(value);
         setSelect(true);
 
     };
 
     return isSelect ? <AppRoute /> : null;
-    return isSelect && null;
 }
 
 export default route;
