@@ -139,7 +139,7 @@ const MyDrawerScreen = (props) => {
           </View>
 
           <View style={{ marginStart: 5 }}>
-            <Text style={drawerStyles.welcomeText}>Welcome</Text>
+            <Text style={drawerStyles.welcomeText}>{Label.Welcome}</Text>
             <Text style={drawerStyles.userNameText}>{UserManager.userName}</Text>
           </View>
         </View>
@@ -152,16 +152,16 @@ const MyDrawerScreen = (props) => {
               <Text style={drawerStyles.dashText}>{Label.SubmitIdea}</Text>
             </TouchableOpacity>
           </View>
-          <View style={{marginEnd: AppUtil.getWP(4),alignItems:'center',justifyContent:'center' }}>
+          <View style={drawerStyles.menuContainer}>
             <Menu>
               <MenuTrigger style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
-                <IcnSelect height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} stroke={GetAppColor.white}/>
+                <IcnSelect height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} stroke={GetAppColor.white} />
               </MenuTrigger>
               <MenuOptions style={drawerStyles.optionsView}>
                 <MenuOption style={drawerStyles.menuView}>
-                  <Text style={drawerStyles.selectItem}>Selection One</Text>
-                  <Text style={drawerStyles.selectItem}>Selection Two</Text>
-                  <Text style={drawerStyles.selectItem}>Selection Three</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Latest}</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Popular}</Text>
+                  <Text style={drawerStyles.selectItem}>{Label.Winning}</Text>
                 </MenuOption>
               </MenuOptions>
             </Menu>

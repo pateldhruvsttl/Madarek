@@ -26,7 +26,7 @@ const TabPopularIdeas = (props) => {
 
                     :
                     <View style={ Style.emptyView}>
-                        <Text style={ Style.txtNoDataFound}>No data found</Text>
+                        <Text style={ Style.txtNoDataFound}>{Label.NoDataFound}</Text>
                     </View>
             }
         </View>
