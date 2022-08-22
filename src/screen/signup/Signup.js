@@ -347,7 +347,7 @@ const Signup = (props) => {
           {selectedIndex == 2 &&
             <View style={{ marginTop: AppUtil.getHP(2) }}>
               <Text style={SignupStyles.titleText}>
-                {"Corporate Sub Domain"}
+                {Label.CorporateSubDomain}
                 <Text style={{ color: "red" }}>*</Text>
               </Text>
               <View style={[SignupStyles.nameAnotherView, { marginTop: 0 }]}>
@@ -364,7 +364,7 @@ const Signup = (props) => {
                 <ScrollView horizontal style={SignupStyles.showCorporateDisable}
                   contentContainerStyle={SignupStyles.centerUrl}
                   showsHorizontalScrollIndicator={false}>
-                  <Text style={{ paddingHorizontal: 5 }}>{".madarekdev.silvertouch-staging.com"}</Text>
+                  <Text style={{ paddingHorizontal: 5 }}>{Label.URL}</Text>
                 </ScrollView>
               </View>
             </View>

@@ -12,7 +12,6 @@ import IcnSelect from "../../assets/svg/IcnSelect";
 import { useEffect } from "react";
 import { GetAppColor } from "../../utils/Colors";
 import { memo } from "react";
-import { Loger } from "../../utils/Loger";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 
@@ -58,6 +57,22 @@ function IdeasFilter(props) {
     getSectors();
     getCategories();
   }, []);
+
+  const sortByArr = [
+    Label.Default,
+    Label.FilterAscending,
+    Label.FilterDescending,
+    //   "Rating(Highest)",
+    //   "R ating(Lowest)",
+  ];
+
+  const buttonList = [
+    Label.Latest,
+    Label.Popular,
+    Label.Winning,
+    Label.MadarekSpotlight,
+    Label.Favourite,
+  ];
 
   const getSectors = () => {
     Service.get(
@@ -268,8 +283,7 @@ function IdeasFilter(props) {
                   style={Style.menuButton}
                 >
                   <Text style={Style.txtSortBy}>
-                    {`${Label.Sectors} (${selectorList})`}
-                    {/* {"Sectors (" + selectorList + ")"} */}
+                    {"Sectors (" + selectorList + ")"}
                   </Text>
                   {selectedCatIndex ? (
                     <IcnUpArrow
@@ -294,8 +308,7 @@ function IdeasFilter(props) {
               style={Style.menuButton}
             >
               <Text style={Style.txtSortBy}>
-              {`${Label.Categories} (${catSelectorList})`}
-                {/* {"Categories (" + catSelectorList + ")"} */}
+                {"Categories (" + catSelectorList + ")"}
               </Text>
               {selectedCategoriesIndex ? (
                 <IcnUpArrow
@@ -332,20 +345,7 @@ function IdeasFilter(props) {
 
 export default memo(IdeasFilter);
 
-const sortByArr = [
-  Label.Default,
-  Label.FilterAscending,
-  Label.FilterDescending,
-  //   "Rating(Highest)",
-  //   "R ating(Lowest)",
-];
-const buttonList = [
-  Label.Latest,
-  Label.Popular,
-  Label.Winning,
-  Label.MadarekSpotlight,
-  Label.Favourite,
-];
+
 const selectorItemList = [
   "Sector Sector 1",
   "Sector Ipsm lorem 2",

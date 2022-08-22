@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class City {
 	
     constructor(obj = null) {
@@ -7,9 +9,9 @@ export default class City {
         }
 
         this.id = obj?.id
-        this.city = obj?.city || "No Name"
-        this.country = obj?.country || "No Name"
-        this.isoCodeOne = obj?.iso2  || "0"
-        this.isoCodeSecond= obj?.iso3  || "0"
+        this.city = obj?.city || ""
+        this.country = obj?.country || ""
+        this.isoCodeOne = obj?.iso2  || Label.DefaultNumber
+        this.isoCodeSecond= obj?.iso3  ||  Label.DefaultNumber
     }
 }

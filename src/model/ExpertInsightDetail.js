@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class ExpertInsightDetail {
 	
     constructor(obj = null) {
@@ -9,27 +11,27 @@ export default class ExpertInsightDetail {
         this.id = obj?.expert_id
         this.type = obj?.type || ""
         this.insightBy = obj?.insight_by || ""
-        this.firstName = obj?.first_name || "No first Name"
-        this.spotlightCreateDate = obj?.spotlight_created || "25 Jan 22"
-        this.lastName =  obj?.last_name || "No last Name"
+        this.firstName = obj?.first_name || Label.NoFirstName
+        this.spotlightCreateDate = obj?.spotlight_created || Label.DefaultDate
+        this.lastName =  obj?.last_name || Label.NoLastName
         this.profilePhoto =  obj?.image_upload_files || "https://i.imgur.com/5tj6S7Ol.jpg"
-        this.title =  obj?.heading_title || "No Title"
-        this.jobTitle =  obj?.job_title || "No job Title"
-        this.metaKeywords =  obj?.meta_keywords || "No organization Name"
-        this.totalView =  obj?.totalViews || "0"
-        this.totalFavoriteIdea =  obj?.toatal_favorite_idea || "0"
-        this.totalComment =  obj?.toatal_idea_comment || "0"
-        this.totalLike =  obj?.toatal_liked_idea || "0"
+        this.title =  obj?.heading_title || Label.NoTitle
+        this.jobTitle =  obj?.job_title || Label.NoTitle
+        this.metaKeywords =  obj?.meta_keywords || Label.NoOrganizationName
+        this.totalView =  obj?.totalViews || Label.DefaultNumber
+        this.totalFavoriteIdea =  obj?.toatal_favorite_idea || Label.DefaultNumber
+        this.totalComment =  obj?.toatal_idea_comment || Label.DefaultNumber
+        this.totalLike =  obj?.toatal_liked_idea || Label.DefaultNumber
         // this.title =  obj?.title || "No title"
-        this.insightDescription =  obj?.insight_description || "No Description"
-        this.sectorName =  obj?.sector_name || "No sector"
-        this.categoryName =  obj?.category_name || "No Category"
-        this.contestTitle =  obj?.contest_title || "No contest Title"
-        this.contestDescription =  obj?.contest_description || "No contest Description"
-        this.ideaCreatedDate =  obj?.idea_created_date || "25 jun 22"
-        this.publishBy =  obj?.publish_by || "no name"
-        this.ideaTitle =  obj?.idea_title || "no ideaTitle"
-        this.ideaDescription =  obj?.idea_description || "no desc"
+        this.insightDescription =  obj?.insight_description || Label.NoDescription
+        this.sectorName =  obj?.sector_name || Label.NoSector
+        this.categoryName =  obj?.category_name || Label.NoCategory
+        this.contestTitle =  obj?.contest_title || Label.NoTitle
+        this.contestDescription =  obj?.contest_description || Label.NoDescription
+        this.ideaCreatedDate =  obj?.idea_created_date ||Label.DefaultDate
+        this.publishBy =  obj?.publish_by || Label.NoName
+        this.ideaTitle =  obj?.idea_title || Label.NoTitle
+        this.ideaDescription =  obj?.idea_description || Label.NoDescription
         this.ideaCoverImage =  obj?.idea_cover_image || "https://i.imgur.com/5tj6S7Ol.jpg"
              
         
