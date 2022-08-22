@@ -16,10 +16,12 @@ import { AppUtil } from "../../utils/AppUtil";
 import { AppConfig } from "../../manager/AppConfig";
 
 function CustomList(props) {
-  const [title, setTitle] = useState(
-    props?.currentItem != "" ? props?.currentItem : "Selected"
-  );
   const _lang = AppConfig.getLanguage();
+
+  const [title, setTitle] = useState(
+    props?.currentItem != "" ? props?.currentItem : Label.Selected
+  );
+
   return (
     <Menu>
       <MenuTrigger>

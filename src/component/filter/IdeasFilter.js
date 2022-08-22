@@ -12,7 +12,6 @@ import IcnSelect from "../../assets/svg/IcnSelect";
 import { useEffect } from "react";
 import { GetAppColor } from "../../utils/Colors";
 import { memo } from "react";
-import { Loger } from "../../utils/Loger";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 
@@ -58,6 +57,22 @@ function IdeasFilter(props) {
     getSectors();
     getCategories();
   }, []);
+
+  const sortByArr = [
+    Label.Default,
+    Label.FilterAscending,
+    Label.FilterDescending,
+    //   "Rating(Highest)",
+    //   "R ating(Lowest)",
+  ];
+
+  const buttonList = [
+    Label.Latest,
+    Label.Popular,
+    Label.Winning,
+    Label.MadarekSpotlight,
+    Label.Favourite,
+  ];
 
   const getSectors = () => {
     Service.get(
@@ -247,7 +262,7 @@ function IdeasFilter(props) {
             )}
 
             <View style={Style.bodyView}>
-              <Text style={Style.txtSortBy}>{"Sort By"}</Text>
+              <Text style={Style.txtSortBy}>{Label.SortBy}</Text>
               {radioButton(0, sortByArr[0])}
               {radioButton(1, sortByArr[1])}
               {radioButton(2, sortByArr[2])}
@@ -320,7 +335,7 @@ function IdeasFilter(props) {
             }
             style={Style.btnApply}
           >
-            <Text style={Style.txtButton}>{"Apply Filter"}</Text>
+            <Text style={Style.txtButton}>{Label.ApplyFilter}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -330,20 +345,7 @@ function IdeasFilter(props) {
 
 export default memo(IdeasFilter);
 
-const sortByArr = [
-  "Default",
-  "Name(A-Z)",
-  "Name(Z-A)",
-  //   "Rating(Highest)",
-  //   "R ating(Lowest)",
-];
-const buttonList = [
-  "Latest",
-  "Popular",
-  "Winning",
-  "Madarek Spotlight",
-  "Favourite",
-];
+
 const selectorItemList = [
   "Sector Sector 1",
   "Sector Ipsm lorem 2",

@@ -68,7 +68,7 @@ const _lang=AppConfig.getLanguage();
                 <TouchableOpacity style={[SettingStyle.btnView, SettingStyle.topMargin]} onPress={() => Loger.onLog("()=>", AppConfig.lang)}>
                     <View style={SettingStyle.iconTextView}>
                         <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
-                        <Text style={SettingStyle.subTitleText}>Change Password</Text>
+                        <Text style={SettingStyle.subTitleText}>{Label.ChangePassword}</Text>
                     </View>
                     <IcnRight style={{ transform: [{ rotate: _lang == "ar" ? "180deg" : "0deg" }] }} height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                 </TouchableOpacity>
@@ -78,7 +78,7 @@ const _lang=AppConfig.getLanguage();
                 <View style={SettingStyle.btnView} >
                     <View style={SettingStyle.iconTextView}>
                         <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />
-                        <Text style={SettingStyle.subTitleText}>Language</Text>
+                        <Text style={SettingStyle.subTitleText}>{Label.Language}</Text>
                     </View>
                     <View style={SettingStyle.radioBtnView}>
                         <TouchableOpacity onPress={() => { onSelectLanguage(0) }} style={SettingStyle.radioBtn}>

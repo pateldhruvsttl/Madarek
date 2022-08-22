@@ -18,13 +18,13 @@ function SubmitIdeaStep1(props) {
 
     const [title, setTitle] = useState("");
 
-    const [sectors, setSectors] = useState("Selected");
+    const [sectors, setSectors] = useState(Label.Selected);
     const [isSectorsId, setSectorsId] = useState(0);
 
-    const [category, setCategory] = useState("Selected");
+    const [category, setCategory] = useState(Label.Selected);
     const [isCategoryid, setCategoryId] = useState(0);
 
-    const [subCategory, setSubCategory] = useState("Selected");
+    const [subCategory, setSubCategory] = useState(Label.Selected);
     const [isSubCategoryId, setSubCategoryId] = useState(0);
 
     const [isSectorsList, setSectorsList] = useState([]);

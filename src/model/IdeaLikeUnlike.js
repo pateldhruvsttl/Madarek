@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class IdeaLikeUnlike {
     
     constructor(obj = null) {
@@ -6,9 +8,9 @@ export default class IdeaLikeUnlike {
                return;
            }
            
-           this.id = obj?.totalcount || "0"
+           this.id = obj?.totalcount || Label.DefaultNumber
            this.likeUnlike = obj?.data || "false"
-           this.message = obj?.message ? obj?.message : "No message"
+           this.message = obj?.message ? obj?.message : Label.NoMessage
        }
    }
   

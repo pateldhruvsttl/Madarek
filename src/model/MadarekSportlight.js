@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class IdeaList {
 
     constructor(obj = null) {
@@ -6,18 +8,18 @@ export default class IdeaList {
             return;
         }
         
-        this.ideaTitle = obj?.general_title ? obj?.general_title : "No Title"
-        this.categoryName = obj?.general_description ? obj?.general_description : "No Description"
+        this.ideaTitle = obj?.general_title ? obj?.general_title : Label.NoTitle
+        this.categoryName = obj?.general_description ? obj?.general_description : Label.NoDescription
         
         
-        this.title = obj?.contest_title ? obj?.contest_title : "No Title"
+        this.title = obj?.contest_title ? obj?.contest_title : Label.NoTitle
         this.id = obj?.id
-        this.name = obj?.publish_by ? obj?.publish_by : "No Name"
+        this.name = obj?.publish_by ? obj?.publish_by : Label.NoName
         this.ideaImage = obj?.image_upload_filesfile || ""
-        this.winning = obj?.winning || "0"
-        this.madarekSpecial = obj?.madarek_special || "0"
-        this.favoriteIdea = obj?.toatal_favorite_idea || "0"
-        this.topRate = obj?.top_rated || "0"
+        this.winning = obj?.winning || Label.DefaultNumber
+        this.madarekSpecial = obj?.madarek_special || Label.DefaultNumber
+        this.favoriteIdea = obj?.toatal_favorite_idea || Label.DefaultNumber
+        this.topRate = obj?.top_rated || Label.DefaultNumber
         
         this.trophy = obj.isTrophy && obj?.isTrophy == null && obj?.isTrophy != 0 ? true : false;
         this.favorite = obj.isFavourite && obj?.isFavourite == null && obj?.isFavourite != 0 ? true : false;

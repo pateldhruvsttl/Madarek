@@ -27,7 +27,7 @@ const drawerStyles = StyleSheet.create({
   },
   headerView: { marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(1) },
   centerIcnView: { width: '100%', alignItems: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', marginTop: AppUtil.getHP(1) },
-
+  menuContainer: { marginEnd: AppUtil.getWP(4), alignItems: 'center', justifyContent: 'center' },
   profileImageView: { height: AppUtil.getHP(5), width: AppUtil.getHP(5), borderRadius: AppUtil.getHP(5 / 2), borderWidth: 1, borderColor: 'white', overflow: 'hidden' },
   profileImage: { height: AppUtil.getHP(4), width: AppUtil.getHP(4), },
 
@@ -36,9 +36,11 @@ const drawerStyles = StyleSheet.create({
   welcomeText: { fontFamily: FONTS.robotRegular, fontSize: AppUtil.getHP(1.7), color: GetAppColor.white },
   userNameText: { fontFamily: FONTS.robotMedium, fontSize: AppUtil.getHP(2), color: GetAppColor.white },
   dsButtonView: { flexDirection: 'row', marginHorizontal: AppUtil.getWP(16), marginTop: AppUtil.getHP(1), marginBottom: AppUtil.getHP(1) },
-  bothSideView: { flexDirection: 'row', marginTop: AppUtil.getHP(1),
-   marginBottom: AppUtil.getHP(1),justifyContent:'space-between' },
-  leftItem:{flexDirection: 'row', marginHorizontal: AppUtil.getWP(16)},
+  bothSideView: {
+    flexDirection: 'row', marginTop: AppUtil.getHP(1),
+    marginBottom: AppUtil.getHP(1), justifyContent: 'space-between'
+  },
+  leftItem: { flexDirection: 'row', marginHorizontal: AppUtil.getWP(16) },
   dashBoardButton: { borderColor: GetAppColor.white, borderWidth: 0.8, borderRadius: 5 },
   dashText: { fontFamily: FONTS.robotRegular, fontSize: AppUtil.getHP(1.5), color: GetAppColor.white, marginHorizontal: AppUtil.getHP(1), marginVertical: AppUtil.getHP(0.5) },
   menuButton: { marginHorizontal: AppUtil.getWP(4), height: AppUtil.getHP(6), borderBottomColor: GetAppColor.borderGray, borderBottomWidth: 1, flexDirection: 'row', alignItems: 'center', },

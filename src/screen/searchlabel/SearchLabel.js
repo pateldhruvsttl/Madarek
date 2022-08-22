@@ -51,7 +51,7 @@ const SearchLabel = (props) => {
     const textInput = useRef(null);
     const [searchStr, setSearchStr] = useState("")
     const [isData, setData] = useState([]);
-    const [isType, setType] = useState(["IDEAS", "CHALLENGE", "EXPERT DIRECTORY", "EXPERT INSIGHTS"]);
+    const [isType, setType] = useState([Label.IdeasSearch, Label.ChallengeSearch, Label.ExpertDirectorySearch, Label.ExpertInsightSearch]);
     const [isSelectIndex, setSelectIndex] = useState(0);
 
 
@@ -347,7 +347,7 @@ const _lang = AppConfig.getLanguage();
 
                     <TextInput
                         ref={textInput}
-                        placeholder={"Type to search..."}
+                        placeholder={Label.TypeToSearch}
                         value={searchStr}
                         style={Style.txtHeader}
                         placeholderTextColor={GetAppColor.grayBorder}

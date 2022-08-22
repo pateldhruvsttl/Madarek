@@ -81,7 +81,7 @@ const OtherDetailEdit = (props) => {
           value={twitterLink}
           onChangeText={(tLink) => setTwitterLink(tLink)}
         />
-        <TouchableOpacity onPress={() => { props.saveNext(); props.saveProfile({otherDetails:otherDetails}) }} style={EditUserProfileStyle.submitButton}>
+        <TouchableOpacity onPress={() => {props.saveProfile({otherDetails:otherDetails}) }} style={EditUserProfileStyle.submitButton}>
           <Text style={EditUserProfileStyle.submitText}>{Label.SaveAndNext}</Text>
         </TouchableOpacity>
       </View>

@@ -1,3 +1,5 @@
+import { Label } from "../utils/StringUtil";
+
 export default class ExpertInsightList {
 	
     constructor(obj = null) {
@@ -6,20 +8,20 @@ export default class ExpertInsightList {
             return;
         }
 
-        this.id = obj?.expert_id || "0"
+        this.id = obj?.expert_id 
         this.type = obj?.type || ""
-        this.firstName = obj?.first_name || "No first Name"
-        this.date = obj?.created_date || "25 Jan 22"
-        this.lastName =  obj?.last_name || "No last Name"
+        this.firstName = obj?.first_name || Label.NoFirstName
+        this.date = obj?.created_date || Label.DefaultDate
+        this.lastName =  obj?.last_name || Label.NoLastName
         this.profilePhoto =  obj?.image_upload_files || "https://i.imgur.com/5tj6S7Ol.jpg"
-        this.jobTitle =  obj?.job_title || "No job Title"
-        this.metaKeywords =  obj?.meta_keywords || "No organization Name"
-        this.totalViews =  obj?.totalViews || "0"
-        this.totalFavoriteIdea =  obj?.toatal_favorite_idea || "0"
-        this.totalComments =  obj?.toatal_idea_comment || "0"
-        this.totalLikes =  obj?.toatal_liked_idea || "0"
-        this.title =  obj?.title || "No title"
-        this.description =  obj?.general_description || "No Description"
+        this.jobTitle =  obj?.job_title || Label.NoTitle
+        this.metaKeywords =  obj?.meta_keywords || Label.NoOrganizationName
+        this.totalViews =  obj?.totalViews || Label.DefaultNumber
+        this.totalFavoriteIdea =  obj?.toatal_favorite_idea || Label.DefaultNumber
+        this.totalComments =  obj?.toatal_idea_comment || Label.DefaultNumber
+        this.totalLikes =  obj?.toatal_liked_idea || Label.DefaultNumber
+        this.title =  obj?.title || Label.NoTitle
+        this.description =  obj?.general_description || Label.NoDescription
              
         
     }
