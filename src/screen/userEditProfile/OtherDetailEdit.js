@@ -6,6 +6,7 @@ import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
+import { AppConfig } from '../../manager/AppConfig'
 
 const OtherDetailEdit = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -15,7 +16,12 @@ const OtherDetailEdit = (props) => {
   const [linkdinLink, setLinkdinLink] = useState()
   const [twitterLink, setTwitterLink] = useState()
   const [category, setCategory] = useState([])
+  const [isSelectedLang,setSelectedLang]= useState(true)
 
+  useEffect(() => {
+    let _lang = AppConfig.getLanguage();
+    setSelectedLang(_lang == "ar" ? true : false)
+}, [])
   useEffect(() => {
 
     setAbout(userData.about)
@@ -56,28 +62,28 @@ const OtherDetailEdit = (props) => {
 
         <Text style={EditUserProfileStyle.titleText}>{Label.ShortDiscription}</Text>
         <TextInput
-          style={EditUserProfileStyle.input}
+          style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
           value={about}
           onChangeText={(about) => setAbout(about)}
         />
 
         <Text style={EditUserProfileStyle.titleText}>{Label.FacebookLink}</Text>
         <TextInput
-          style={EditUserProfileStyle.input}
+          style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
           value={facebookLink}
           onChangeText={(fLink) => setFacebookLink(fLink)}
         />
 
         <Text style={EditUserProfileStyle.titleText}>{Label.TwitterLink}</Text>
         <TextInput
-          style={EditUserProfileStyle.input}
+          style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
           value={linkdinLink}
           onChangeText={(lLink) => setLinkdinLink(lLink)}
         />
 
         <Text style={EditUserProfileStyle.titleText}>{Label.LinkdinLink}</Text>
         <TextInput
-          style={EditUserProfileStyle.input}
+          style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
           value={twitterLink}
           onChangeText={(tLink) => setTwitterLink(tLink)}
         />

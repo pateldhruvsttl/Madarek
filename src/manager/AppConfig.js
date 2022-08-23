@@ -5,6 +5,7 @@ export const AppConfig = {
     lang: '',
     pageLimit: '10',
     isRTL:false,
+    
     setLanguage: (value) => {
         lang = value;
     },

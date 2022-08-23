@@ -6,6 +6,7 @@ import { GetAppColor } from '../../utils/Colors'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import EditUserProfileStyle from './EditUserProfileStyle'
+import { AppConfig } from '../../manager/AppConfig'
 
 const ExpertEdit = (props) => {
     const { themeColor } = useSelector((state) => state)
@@ -13,6 +14,13 @@ const ExpertEdit = (props) => {
     const [skill, setSkill] = useState()
     const [biography, setBiography] = useState()
     const [description, setDescription] = useState()
+
+    const [isSelectedLang,setSelectedLang]= useState(true)
+
+    useEffect(() => {
+      let _lang = AppConfig.getLanguage();
+      setSelectedLang(_lang == "ar" ? true : false)
+  }, [])
 
     useEffect(() => {
 
@@ -49,20 +57,20 @@ const ExpertEdit = (props) => {
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Skill}</Text>
                 <TextInput
-                    style={EditUserProfileStyle.input}
+                    style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                     value={skill}
                     onChangeText={(skill) => setSkill(skill)}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Biography}</Text>
                 <TextInput
-                    style={EditUserProfileStyle.input}
+                    style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                     value={biography}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Description}<Text style={{ color: 'red' }}>*</Text></Text>
                 <TextInput
-                    style={EditUserProfileStyle.input}
+                    style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                     value={description}
                     onChangeText={(description) => setDescription(description)}
                 />

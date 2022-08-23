@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { AppConfig } from '../../manager/AppConfig'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
 import { buttonBorderRadius, buttonFontSize, buttonHeight } from '../../utils/Constant'
@@ -230,6 +231,7 @@ const EditUserProfileStyle = StyleSheet.create({
         fontSize: AppUtil.getHP(1.8),
     },
     titleText: {
+        alignSelf:'flex-start',
         color: GetAppColor.grayBorder,
         fontSize: AppUtil.getHP(1.6),
         fontFamily: FONTS.robotRegular,

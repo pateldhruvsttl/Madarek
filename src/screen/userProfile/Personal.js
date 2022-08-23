@@ -19,6 +19,7 @@ const Personal = (props) => {
 
                     <Text style={UserProfileStyle.titleText}>{Label.UserType}</Text>
                     <Text style={UserProfileStyle.subTitleText}>{data.userType}</Text>
+                    
                     <View style={UserProfileStyle.flexView}>
                         <View style={UserProfileStyle.partView}>
                             <Text style={UserProfileStyle.titleText}>{Label.Name}</Text>

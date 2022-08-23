@@ -27,9 +27,7 @@ const { themeColor } = useSelector((state) => state)
         <View style={MyAccountStyle.contentView}>
 
           <Text style={MyAccountStyle.titleText}>{Label.UserType}</Text>
-          <TextInput
-            style={MyAccountStyle.input}
-          />
+          <TextInput style={MyAccountStyle.input}/>
 
           <View style={MyAccountStyle.editFlexView}>
             <View style={MyAccountStyle.editPartView}>
@@ -65,9 +63,7 @@ const { themeColor } = useSelector((state) => state)
           <View style={MyAccountStyle.editFlexView}>
             <View style={MyAccountStyle.editPartView}>
               <Text style={MyAccountStyle.titleText}>{Label.Country}<Text style={{ color: 'red' }}>*</Text></Text>
-              <TextInput
-                style={MyAccountStyle.input}
-              />
+              <TextInput style={MyAccountStyle.input}/>
             </View>
 
             <View style={MyAccountStyle.editPartView}>

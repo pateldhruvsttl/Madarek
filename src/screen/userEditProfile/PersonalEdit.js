@@ -14,6 +14,7 @@ import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
 import DownArrow from '../../assets/svg/DownArrow'
 import { Modal } from 'react-native'
 import City from '../../model/City'
+import { AppConfig } from '../../manager/AppConfig'
 
 const PersonalEdit = (props) => {
 
@@ -36,8 +37,9 @@ const PersonalEdit = (props) => {
     const [cityIndex, setCityIndex] = useState(1)
 
     const [countryId, setCountryId] = useState(0)
-    const [cityId, setCityId] = useState(0)
-
+    const [cityId, setCityId] = useState(0) 
+    const [isSelectedLang,setSelectedLang]= useState(true)
+    
 
     useEffect(() => {
 
@@ -73,6 +75,10 @@ const PersonalEdit = (props) => {
         selectCity()
     }, [])
     
+    useEffect(() => {
+        let _lang = AppConfig.getLanguage();
+        setSelectedLang(_lang == "ar" ? true : false)
+    }, [])
 
     const getCountryId = (name) => {
         let id = 0;
@@ -237,7 +243,7 @@ const PersonalEdit = (props) => {
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.UserType}</Text>
                     <TextInput
-                        style={EditUserProfileStyle.input}
+                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                         multiline={false}
                         value={userType}
                         onChangeText={(useType) => setUserType(useType)}
@@ -247,7 +253,7 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.Name}<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
-                                style={EditUserProfileStyle.input}
+                                style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                                 value={firstName}
                                 onChangeText={(firstName) => setFirstName(firstName)}
                             />
@@ -256,7 +262,7 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
-                                style={EditUserProfileStyle.input}
+                                style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                                 value={lastName}
                                 onChangeText={(lastName) => setLastName(lastName)}
                             />
@@ -265,21 +271,21 @@ const PersonalEdit = (props) => {
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.OrganizationName}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={EditUserProfileStyle.input}
+                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                         value={organization}
                         onChangeText={(organization) => setOrganization(organization)}
                     />
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.JobTitle}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={EditUserProfileStyle.input}
+                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                         value={jobTitle}
                         onChangeText={(jobTitle) => setJobTitle(jobTitle)}
                     />
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.EmailTitle}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={EditUserProfileStyle.input}
+                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                         value={email}
                         onChangeText={(email) => setEmail(email)}
                     />
@@ -288,12 +294,12 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.Country}<Text style={{ color: 'red' }}>*</Text></Text>
 
-                            <View style={[EditUserProfileStyle.input]}>
+                            <View style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]]}>
                                 {countryIndex == 0 ? renderCountry() : null}
                                 <TouchableOpacity onPress={toggleCountry} style={EditUserProfileStyle.container}>
 
                                     <TextInput
-                                        style={EditUserProfileStyle.input}
+                                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                                         keyboardAppearance={false}
                                         value={countryName}
                                         editable={false} />
@@ -317,13 +323,13 @@ const PersonalEdit = (props) => {
 
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.City}<Text style={{ color: 'red' }}>*</Text></Text>
-                            <View style={[EditUserProfileStyle.input]}>
+                            <View style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]]}>
                                 {cityIndex == 0 ? renderCity() : null}
                                 <TouchableOpacity onPress={toggleCity} style={EditUserProfileStyle.container}>
 
 
                                     <TextInput
-                                        style={[EditUserProfileStyle.input, EditUserProfileStyle.addWidth]}
+                                        style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}], EditUserProfileStyle.addWidth]}
                                         keyboardAppearance={false}
                                         value={city}
                                         editable={false}
@@ -348,7 +354,7 @@ const PersonalEdit = (props) => {
                     </View>
                     <Text style={EditUserProfileStyle.titleText}>{Label.MobileNumber}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={EditUserProfileStyle.input}
+                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                         value={number}
                         onChangeText={(number) => setNumber(number)}
                     />

@@ -32,12 +32,14 @@ const UserProfileStyle = StyleSheet.create({
           marginTop:AppUtil.getHP(-9)
     },
     titleText:{
+        alignSelf:'flex-start',
         color:GetAppColor.grayBorder,
         fontSize:AppUtil.getHP(1.5),
         fontFamily:FONTS.robotRegular,
         marginTop:AppUtil.getHP(1.5),
     },
     subTitleText:{
+        alignSelf:'flex-start',
         color:GetAppColor.pincolor,
         fontSize:AppUtil.getHP(2),
         fontFamily:FONTS.robotRegular,
