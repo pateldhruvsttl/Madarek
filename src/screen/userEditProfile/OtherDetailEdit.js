@@ -39,6 +39,30 @@ const OtherDetailEdit = (props) => {
     twitterLink: twitterLink,
     category: category
   }
+  const onCheckField = () => {
+    var obj = {
+      about: about,
+      facebookLink: facebookLink,
+      linkdinLink: linkdinLink,
+      twitterLink: twitterLink,
+      category: category
+    }
+    if (!about.trim()) {
+      showMessage(Label.enterfirstname)
+      return false;
+    } else if (!facebookLink.trim()) {
+      showMessage(Label.Organization)
+      return false;
+    } else if (!twitterLink.trim()) {
+      showMessage(Label.Organization)
+      return false;
+    } else if (!linkdinLink.trim()) {
+      showMessage(Label.Organization)
+      return false;
+    } else {
+      props.onNext(obj);
+    }
+  }
   category ? category : []
   return (
     <ScrollView >
@@ -87,7 +111,7 @@ const OtherDetailEdit = (props) => {
           value={twitterLink}
           onChangeText={(tLink) => setTwitterLink(tLink)}
         />
-        <TouchableOpacity onPress={() => {props.saveProfile({otherDetails:otherDetails}) }} style={EditUserProfileStyle.submitButton}>
+        <TouchableOpacity onPress={() => onCheckField()} style={EditUserProfileStyle.submitButton}>
           <Text style={EditUserProfileStyle.submitText}>{Label.SaveAndNext}</Text>
         </TouchableOpacity>
       </View>

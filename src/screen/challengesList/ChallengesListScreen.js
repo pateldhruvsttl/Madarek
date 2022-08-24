@@ -295,7 +295,7 @@ const ChallengesListScreen = (props) => {
                     paginations={() => paginations("open_submission")}
                   />
                 ) : (
-                  <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
                 )
               }
             />
@@ -318,7 +318,7 @@ const ChallengesListScreen = (props) => {
                     paginations={() => paginations("coming_soon")}
                   />
                   :
-                  <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
 
               }
             />
@@ -340,7 +340,7 @@ const ChallengesListScreen = (props) => {
                     navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
                     paginations={() => paginations("closed")}
                   /> :
-                  <Text style={ListStyle.txtNodata}>No data found</Text>
+                  <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
 
               }
             />

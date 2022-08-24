@@ -61,8 +61,8 @@ const myIdeaEdit = () => {
         return (
             item == "emty" ?
                 <TouchableOpacity style={[Styles.btnView2]} >
-                    <Text style={Styles.btnAdd1}>+</Text>
-                    <Text style={Styles.btnAdd2}>ADD THOTO</Text>
+                    <Text style={Styles.btnAdd1}>{Label.PlusSign}</Text>
+                    <Text style={Styles.btnAdd2}>{Label.AddPhoto}</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity style={Styles.btnView1} >
@@ -75,8 +75,8 @@ const myIdeaEdit = () => {
         return (
             item == "emty" ?
                 <TouchableOpacity style={[Styles.btnView2]} >
-                    <Text style={Styles.btnAdd1}>+</Text>
-                    <Text style={Styles.btnAdd2}>ADD Vedeo</Text>
+                    <Text style={Styles.btnAdd1}>{Label.PlusSign}</Text>
+                    <Text style={Styles.btnAdd2}>{Label.AddVideo}</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity style={Styles.btnView1} >
@@ -168,7 +168,7 @@ const myIdeaEdit = () => {
             case 'Item Cover Image':
                 return (
                     <View>
-                        <Text style={Styles.txtIdeaCoverImage}>{"Idea Cover Image"}</Text>
+                        <Text style={Styles.txtIdeaCoverImage}>{Label.IdeaCoverImage}</Text>
                         <FlatList
                             data={dtList1}
                             numColumns={'3'}
@@ -183,7 +183,7 @@ const myIdeaEdit = () => {
                 return (
                     <View>
 
-                        <Text style={Styles.txtIdeaCoverImage}>{"Upload Additional Image"}</Text>
+                        <Text style={Styles.txtIdeaCoverImage}>{Label.UploadAdditionalImage}</Text>
                         <FlatList
                             data={dtList2}
                             numColumns={'3'}
@@ -192,8 +192,8 @@ const myIdeaEdit = () => {
                             keyExtractor={item => item.id}
                             style={Styles.FlatListStyle}
                         />
-                        <Text style={Styles.txtIdeaCover}>{"Allowed jpg, png, jpeg formats.Optimal Size : 2MBAllowed jpg, png, jpeg formats.Optimal Size : 2MB"}</Text>
-                        <Text style={Styles.txt1}>{"Idea Name"}</Text>
+                        <Text style={Styles.txtIdeaCover}>{Label.AllowImageSize}</Text>
+                        <Text style={Styles.txt1}>{Label.IdeaName}</Text>
                         <Text style={Styles.txt2}>{"Academy of Development Research and Training Consulting Pvt Ltd"}</Text>
                     </View>
                 )
@@ -212,11 +212,11 @@ const myIdeaEdit = () => {
 
                                 <View style={Styles.selectorSty}>
                                     <IcnCalende height={AppUtil.getHP(2.6)} width={AppUtil.getHP(2.6)} />
-                                    <Text style={[Styles.title, { marginStart: 5 }]}>15 April 22</Text>
+                                    <Text style={[Styles.title, { marginStart: 5 }]}>{"15 April 22"}</Text>
                                 </View>
 
                                 <View style={[Styles.selectorSty, { marginHorizontal: 10 }]}>
-                                    <Text style={[Styles.title, { marginEnd: AppUtil.getWP(2), color: publicBtn ? GetAppColor.catBorder : GetAppColor.pincolor }]}>Private</Text>
+                                    <Text style={[Styles.title, { marginEnd: AppUtil.getWP(2), color: publicBtn ? GetAppColor.catBorder : GetAppColor.pincolor }]}>{Label.Private}</Text>
 
                                     <TouchableOpacity onPress={() => setPubicBtn(publicBtn ? false : true)}>
                                         <View >
@@ -227,7 +227,7 @@ const myIdeaEdit = () => {
                                         </View>
                                     </TouchableOpacity>
 
-                                    <Text style={[Styles.title, { marginStart: AppUtil.getWP(1), color: !publicBtn ? GetAppColor.catBorder : GetAppColor.pincolor }]}>Public</Text>
+                                    <Text style={[Styles.title, { marginStart: AppUtil.getWP(1), color: !publicBtn ? GetAppColor.catBorder : GetAppColor.pincolor }]}>{Label.Public}</Text>
 
                                 </View >
 
@@ -285,7 +285,7 @@ const myIdeaEdit = () => {
 
                         <View style={Styles.butView}>
                             <TouchableOpacity style={Styles.btnMaturation1}>
-                                <Text style={Styles.txtMaturation}>{"Maturation"}</Text>
+                                <Text style={Styles.txtMaturation}>{Label.Maturation}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={Styles.btnMaturation2}>
                                 <IcnChekCircle height={AppUtil.getHP(2.6)} width={AppUtil.getHP(2.6)} />
@@ -298,7 +298,7 @@ const myIdeaEdit = () => {
                             </TouchableOpacity>
                         </View>
                         <View style={Styles.txtDescriptionView}>
-                            <Text style={Styles.txtDescription1}>Description</Text>
+                            <Text style={Styles.txtDescription1}>{Label.Description}</Text>
                             <Text style={Styles.txtDescription2}>Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adielit. Ultricies at iaculis eu at Idea description Lorem ipsudjm dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description. Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet. consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at Idea description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies at iaculis eu at description.</Text>
                         </View>
                         <View style={Styles.line} />
@@ -309,7 +309,7 @@ const myIdeaEdit = () => {
                 return (
                     <>
                         <View style={Styles.txtDescriptionView}>
-                            <Text style={Styles.txtDescription1}>Challenges The Idea is Addressing</Text>
+                            <Text style={Styles.txtDescription1}>{Label.ChallengesIdeaAddressing}</Text>
                         </View>
                         <View style={Styles.selectItemButtonView}>
                             {
@@ -324,7 +324,7 @@ const myIdeaEdit = () => {
                         </View>
                         <View>
                             <TouchableOpacity style={Styles.btnAddMor} onPress={() => addItem()}>
-                                <Text style={Styles.categoryLabel1}>{"+Add More"}</Text>
+                                <Text style={Styles.categoryLabel1}>{Label.AddMore}</Text>
                             </TouchableOpacity>
                         </View>
                     </>
@@ -345,7 +345,7 @@ const myIdeaEdit = () => {
                 return (
                     <>
                         <View style={Styles.txtvedioView}>
-                            <Text style={Styles.txtDescription1}>Video</Text>
+                            <Text style={Styles.txtDescription1}>{Label.Video}</Text>
                         </View>
                         <View>
                             {/* <FlatList
@@ -366,7 +366,7 @@ const myIdeaEdit = () => {
                                 style={Styles.FlatListStyle}
                             />
 
-                            <Text style={Styles.txtIdeaCover}>{"Allowed mp4 formats. Optimal Size : 5MB"}</Text>
+                            <Text style={Styles.txtIdeaCover}>{Label.AllowVideoformats}</Text>
 
                         </View>
                         {/* <View style={Styles.line} /> */}
@@ -377,9 +377,9 @@ const myIdeaEdit = () => {
                 return (
                     <>
                         <View style={[Styles.txtvedioView, { flexDirection: 'row', justifyContent: 'space-between', marginTop: AppUtil.getHP(4) },]}>
-                            <Text style={Styles.txtDescription1}>Resources</Text>
+                            <Text style={Styles.txtDescription1}>{Label.Resources}</Text>
                             <TouchableOpacity style={Styles.btnAddMore} onPress={() => addItem()}>
-                                <Text style={Styles.categoryLabel1}>{"+Add"}</Text>
+                                <Text style={Styles.categoryLabel1}>{Label.Add}</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -390,7 +390,7 @@ const myIdeaEdit = () => {
                             keyExtractor={(item) => item.id}
                             style={Styles.FlatListStyle}
                         />
-                        <Text style={Styles.txtIdeaCover}>{"Allowed pdf, jpg, png, jpeg, doc, docx formats. Optimal Size : 2MB"}</Text>
+                        <Text style={Styles.txtIdeaCover}>{Label.AllowDocFormats}</Text>
 
                     </>
                 )
@@ -399,9 +399,9 @@ const myIdeaEdit = () => {
                 return (
                     <>
                         <View style={[Styles.txtvedioView, { flexDirection: 'row', justifyContent: 'space-between', marginTop: AppUtil.getHP(4) },]}>
-                            <Text style={Styles.txtDescription1}>team</Text>
+                            <Text style={Styles.txtDescription1}>{Label.Team}</Text>
                             <TouchableOpacity style={Styles.btnAddMore1} onPress={() => addItem()}>
-                                <Text style={Styles.categoryLabel1}>{"+Add Member"}</Text>
+                                <Text style={Styles.categoryLabel1}>{Label.AddMember}</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -433,7 +433,7 @@ const myIdeaEdit = () => {
                                         :
                                         <View style={Styles.multiSelectBorderView} />
                                 }
-                                <Text style={{ marginStart: AppUtil.getWP(2), paddingRight: AppUtil.getWP(3), }}>{"Hide Team Identity"}</Text>
+                                <Text style={{ marginStart: AppUtil.getWP(2), paddingRight: AppUtil.getWP(3), }}>{Label.HideTeamIdentity}</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress={() => onSetMultiItems2(1, item)} style={{ flexDirection: 'row', marginTop: AppUtil.getWP(2), }}>
@@ -446,7 +446,7 @@ const myIdeaEdit = () => {
                                         :
                                         <View style={Styles.multiSelectBorderView} />
                                 }
-                                <Text style={{ marginStart: AppUtil.getWP(2), paddingRight: AppUtil.getWP(3), }}>{"Post Idea Privately (This option will limit the view of the Idea only to the selected team members and will not be visible on the public site)"}</Text>
+                                <Text style={{ marginStart: AppUtil.getWP(2), paddingRight: AppUtil.getWP(3), }}>{`${Label.PostIdeaPrivately} (${Label.OptionWillLimit})`}</Text>
                             </TouchableOpacity>
 
                         </View>
