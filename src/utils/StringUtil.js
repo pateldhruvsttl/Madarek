@@ -1,7 +1,7 @@
-import { AppConfig } from "../manager/AppConfig";
+import { getRTL } from "../manager/AppConfig";
 import { ARlabel, USlabel } from "./Messages";
 
-let isRTL = AppConfig.getRTL();
+let isRTL = getRTL();
 
 export const Label = {
   HomeTitle: isRTL ? ARlabel._homeTitle : USlabel._homeTitle,

@@ -27,7 +27,7 @@ import { deviceId } from '../../utils/Constant'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
 import IcnSelect from "../../assets/svg/IcnSelect"
@@ -37,7 +37,7 @@ const MyDrawerScreen = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
-  const _lang = AppConfig.getLanguage();
+  const _lang = getLanguage();
   const onSelectMenu = (index) => {
     if (index == selectedIndex) {
       setSelectedIndex(0)
@@ -63,7 +63,7 @@ const MyDrawerScreen = (props) => {
 
   onLogoutPressed = () => {
     const data = {
-      "lang": "en",
+      "language": getLanguage(),
       "frontuser_id": UserManager.userId,
       "device_id": deviceId,
       "token": AppConfig.token

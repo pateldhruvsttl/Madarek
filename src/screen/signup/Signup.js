@@ -61,6 +61,7 @@ const Signup = (props) => {
       pwd: password,
       device_id: deviceId,
       job_title: "",
+      corporate_internal:selectedIndex == 2 ?  corporateDetail : "corp10",
     };
     // newData =  JSON.stringify(data)
     Service.post(

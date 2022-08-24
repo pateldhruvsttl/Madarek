@@ -31,7 +31,7 @@ import { AppUtil } from "../../utils/AppUtil";
 import { TextInput } from "react-native-gesture-handler";
 import ImageLoad from "react-native-image-placeholder";
 import { deviceId } from "../../utils/Constant";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import { UserManager } from "../../manager/UserManager";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
@@ -54,7 +54,7 @@ const ExpertInsightDetailWithComment = (props) => {
     const data = {
       "device_id": deviceId,
       "token": AppConfig.token,
-      "language": "en",
+      "language": getLanguage(),
       "frontuser_id": UserManager.userId,
       "insight_id": id
     }

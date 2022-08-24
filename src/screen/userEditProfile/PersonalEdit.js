@@ -14,7 +14,7 @@ import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
 import DownArrow from '../../assets/svg/DownArrow'
 import { Modal } from 'react-native'
 import City from '../../model/City'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const PersonalEdit = (props) => {
 
@@ -76,7 +76,7 @@ const PersonalEdit = (props) => {
     }, [])
     
     useEffect(() => {
-        let _lang = AppConfig.getLanguage();
+        let _lang = getLanguage();
         setSelectedLang(_lang == "ar" ? true : false)
     }, [])
 

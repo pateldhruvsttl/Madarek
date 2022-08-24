@@ -5,7 +5,7 @@ import AllIdeas from '../../component/homescreen/itemList/ViewMoreIdeas'
 import Style from "./IdeasListStyle";
 import IdeasFilter from '../../component/filter/IdeasFilter';
 import { deviceId } from '../../utils/Constant';
-import { AppConfig } from '../../manager/AppConfig';
+import { AppConfig, getLanguage } from '../../manager/AppConfig';
 import { UserManager } from '../../manager/UserManager';
 import { Service } from '../../service/Service';
 import { EndPoints } from '../../service/EndPoints';
@@ -31,7 +31,7 @@ const MySubmittedIdeas = () => {
         const data = {
             "device_id": deviceId,
             "token": AppConfig.token,
-            "lang": "en",
+            "language": getLanguage(),
             "frontuser_id": UserManager.userId,
             "limit": AppConfig.pageLimit,
             "type": tabType,

@@ -6,7 +6,7 @@ import Style from './IdeaStepStyle'
 import { useSelector } from 'react-redux'
 import { Loger } from '../../utils/Loger'
 import { deviceId } from '../../utils/Constant'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import { UserManager } from '../../manager/UserManager'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
@@ -51,7 +51,7 @@ function SubmitIdeaStep2(props) {
         let obj = {
             "device_id": deviceId,
             "token": AppConfig.token,
-            "lang": AppConfig.lang,
+            "language": getLanguage(),
             "frontuser_id": UserManager.userId,
             "idea_title": "test",
 

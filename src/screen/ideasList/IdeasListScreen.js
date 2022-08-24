@@ -14,7 +14,7 @@ import IdeaList from "../../model/IdeaList";
 import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { Loger } from "../../utils/Loger";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import IdeasFilter from "../../component/filter/IdeasFilter";
 import { UserManager } from "../../manager/UserManager";
 
@@ -88,7 +88,7 @@ const IdeasListScreen = (props) => {
       categories: categories,
       sectors: sector,
       listtype: tabType,
-      language: AppConfig.lang,
+      language: getLanguage(),
       shortby: sortBy == 1 ? "ASC" : sortBy == 2 ? "DESC" : "",
     };
 

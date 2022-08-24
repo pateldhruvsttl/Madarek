@@ -38,7 +38,6 @@ const JointRequest = (props) => {
 
         }
         Service.post(EndPoints.acceptReject, data, (res) => {
-            Loger.onLog('acceptReject Response  ========>', res)
             if (res?.statusCode === "1") {
                     const updateData = requestData
                     updateData.map((ele,index) => {

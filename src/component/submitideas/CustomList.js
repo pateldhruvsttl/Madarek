@@ -13,10 +13,10 @@ import {
   MenuTrigger,
 } from "react-native-popup-menu";
 import { AppUtil } from "../../utils/AppUtil";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 
 function CustomList(props) {
-  const _lang = AppConfig.getLanguage();
+  const _lang = getLanguage();
 
   const [title, setTitle] = useState(
     props?.currentItem != "" ? props?.currentItem : Label.Selected

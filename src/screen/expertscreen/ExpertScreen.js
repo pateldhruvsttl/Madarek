@@ -19,7 +19,7 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import Categories from "../../model/Categories";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import DeviceInfo from "react-native-device-info";
 export const deviceId = DeviceInfo.getUniqueId()
 
@@ -49,7 +49,7 @@ const ExpertScreen = (props) => {
 
         const data = {
             "frontuser_id": UserManager.userId,
-            "language": AppConfig.lang,
+            "language": getLanguage(),
             "device_id": deviceId,
         }
         Service.post(EndPoints.expertInsights, data, (res) => {

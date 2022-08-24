@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux'
 import { Switch } from 'react-native-switch';
 import styles from '../../component/detailsidea/UserProfileListStyle'
 import { useNavigation } from '@react-navigation/native';
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import { AsyncStorageManager } from '../../manager/AsyncStorageManager'
 import { Loger } from '../../utils/Loger'
 import { showMessageWithCallBack, showMessageWithCancelCallBack } from '../../utils/Constant'
@@ -29,14 +29,14 @@ const Setting = (props) => {
     const [isSelectedIndex, setSelectedIndex] = useState(true)
 
     useEffect(() => {
-        let _lang = AppConfig.getLanguage();
+        let _lang = getLanguage();
         setSelectedIndex(_lang == "ar" ? 1 : 0)
     }, [])
 
     const onSelectLanguage = async (lang) => {
 
         var cL = lang == 0 ? "en" : "ar";
-        if(AppConfig.getLanguage() === cL)
+        if(getLanguage() === cL)
             return;
 
         showMessageWithCancelCallBack(Label.RestartApp, (value) => {
@@ -57,7 +57,7 @@ const Setting = (props) => {
     const switchTheLanguage = async (lang) => {
         await I18nManager.forceRTL(lang == 'ar');
     }
-const _lang=AppConfig.getLanguage();
+const _lang = getLanguage();
     return (
         <SafeAreaView>
 
