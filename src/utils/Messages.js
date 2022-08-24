@@ -331,6 +331,31 @@ export const ARlabel = {
   _noSkill :                      "لا مهارة",
   _url :                          ".madarekdev.silvertouch-staging.com ",
   _corporateSubDomain :           "المجال الفرعي للشركات ",
+  _addImage : "Add Image",
+  _addVideo : "Add Video",
+  _addFile : "Add File",
+
+  //Edit Idea
+  _ideaCoverImage : "Idea Cover Image",
+  _uploadAdditionalImage : "Upload Additional Image",
+  _allowImageSize : "Allowed jpg, png, jpeg formats.Optimal Size : 2MBAllowed jpg, png, jpeg formats.Optimal Size : 2MB",
+  _ideaName : "Idea Name",
+  _private : "Private",
+  _public : "Public",
+  _challengesIdeaAddressing : "Challenges The Idea is Addressing",
+  _addMore : "+Add More",
+  _allowVideoformats : "Allowed mp4 formats. Optimal Size : 5MB",
+  _add : "+Add",
+  _allowDocFormats : "Allowed pdf, jpg, png, jpeg, doc, docx formats. Optimal Size : 2MB",
+  _addMember : "+Add Member",
+  _hideTeamIdentity : "Hide Team Identity",
+  _postIdeaPrivately : "Post Idea Privately",
+  _optionWillLimit : "This option will limit the view of the Idea only to the selected team members and will not be visible on the public site",
+  _addPhoto : "ADD PHOTO",
+  _plusSign : "+",
+  
+  _contest : "Contest",
+  _general : "General",
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -744,4 +769,30 @@ export const USlabel = {
   _noSkill : "No Skill",
   _url : ".madarekdev.silvertouch-staging.com",
   _corporateSubDomain : "Corporate Sub Domain",
+  _addImage : "Add Image",
+  _addVideo : "Add Video",
+  _addFile : "Add File",
+
+  //Edit Idea
+  _ideaCoverImage : "Idea Cover Image",
+  _uploadAdditionalImage : "Upload Additional Image",
+  _allowImageSize : "Allowed jpg, png, jpeg formats.Optimal Size : 2MBAllowed jpg, png, jpeg formats.Optimal Size : 2MB",
+  _ideaName : "Idea Name",
+  _private : "Private",
+  _public : "Public",
+  _challengesIdeaAddressing : "Challenges The Idea is Addressing",
+  _addMore : "+Add More",
+  _allowVideoformats : "Allowed mp4 formats. Optimal Size : 5MB",
+  _add : "+Add",
+  _allowDocFormats : "Allowed pdf, jpg, png, jpeg, doc, docx formats. Optimal Size : 2MB",
+  _addMember : "+Add Member",
+  _hideTeamIdentity : "Hide Team Identity",
+  _postIdeaPrivately : "Post Idea Privately",
+  _optionWillLimit : "This option will limit the view of the Idea only to the selected team members and will not be visible on the public site",
+  _addPhoto : "ADD PHOTO",
+  _plusSign : "+",
+  
+  _contest : "Contest",
+  _general : "General",
+
 }

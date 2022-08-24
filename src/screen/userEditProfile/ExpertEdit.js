@@ -30,10 +30,18 @@ const ExpertEdit = (props) => {
 
     }, [userData])
 
-    let expertDetail = {
-        skill: skill,
-        description: description
+    // let expertDetail = {
+    //     skill: skill,
+    //     description: description
+    // }
+    const onCheckField = () => {
+        obj = {
+            skill: skill,
+            description: description
+        }
+        props.onNext(obj);
     }
+
 
     return (
         <ScrollView >
@@ -74,7 +82,7 @@ const ExpertEdit = (props) => {
                     value={description}
                     onChangeText={(description) => setDescription(description)}
                 />
-                <TouchableOpacity onPress={() => {props.saveProfile({expertDetail:expertDetail})}} style={EditUserProfileStyle.submitButton}>
+                <TouchableOpacity onPress={() => onCheckField()} style={EditUserProfileStyle.submitButton}>
                     <Text style={EditUserProfileStyle.submitText}>{Label.Submit}</Text>
                 </TouchableOpacity>
             </View>

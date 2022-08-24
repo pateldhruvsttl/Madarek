@@ -330,5 +330,31 @@ export const Label = {
   NoSkill: isRTL ? ARlabel._noSkill : USlabel._noSkill,
   URL : isRTL ? ARlabel._url : USlabel._url,
   CorporateSubDomain : isRTL ? ARlabel._corporateSubDomain : USlabel._corporateSubDomain,
+  AddImage : isRTL ? ARlabel._addImage : USlabel._addImage,
+  AddVideo : isRTL ? ARlabel._addVideo : USlabel._addVideo,
+  AddFile : isRTL ? ARlabel._addFile : USlabel._addFile,
+
+  IdeaCoverImage : isRTL ? ARlabel._ideaCoverImage : USlabel._ideaCoverImage,
+  UploadAdditionalImage : isRTL ? ARlabel._uploadAdditionalImage : USlabel._uploadAdditionalImage,
+  AllowImageSize : isRTL ? ARlabel._allowImageSize : USlabel._allowImageSize,
+  IdeaName : isRTL ? ARlabel._ideaName : USlabel._ideaName,
+  Private : isRTL ? ARlabel._private : USlabel._private,
+  Public : isRTL ? ARlabel._public : USlabel._public,
+  ChallengesIdeaAddressing : isRTL ? ARlabel._challengesIdeaAddressing : USlabel._challengesIdeaAddressing,
+  AddMore : isRTL ? ARlabel._addMore : USlabel._addMore,
+  AllowVideoformats : isRTL ? ARlabel._allowVideoformats : USlabel._allowVideoformats,
+  Add : isRTL ? ARlabel._add : USlabel._add,
+  AllowDocFormats : isRTL ? ARlabel._allowDocFormats : USlabel._allowDocFormats,
+  AddMember : isRTL ? ARlabel._addMember : USlabel._addMember,
+  HideTeamIdentity : isRTL ? ARlabel._hideTeamIdentity : USlabel._hideTeamIdentity,
+  PostIdeaPrivately : isRTL ? ARlabel._postIdeaPrivately : USlabel._postIdeaPrivately,
+  OptionWillLimit : isRTL ? ARlabel._optionWillLimit : USlabel._optionWillLimit,
+  AddMember : isRTL ? ARlabel._addMember : USlabel._addMember,
+  AddPhoto : isRTL ? ARlabel._addPhoto : USlabel._addPhoto,
+  PlusSign : isRTL ? ARlabel._plusSign : USlabel._plusSign,
+
+  Contest : isRTL ? ARlabel._contest : USlabel._contest,
+  General : isRTL ? ARlabel._general : USlabel._general,
+
 
 }
