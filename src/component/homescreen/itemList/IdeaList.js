@@ -11,7 +11,7 @@ import TabPopularIdeas from "./TabPopularIdeas";
 import { Service } from "../../../service/Service";
 import { EndPoints } from "../../../service/EndPoints";
 import IdeaListModel from "../../../model/IdeaList";
-import { AppConfig } from "../../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../../manager/AppConfig";
 import { UserManager } from "../../../manager/UserManager";
 
 const IdeaList = (props) => {
@@ -29,7 +29,7 @@ const IdeaList = (props) => {
         const data = {
             "frontuser_id": UserManager.userId,
             "limit": AppConfig.pageLimit,
-            "language": AppConfig.lang,
+            "language": getLanguage(),
             "listtype": type,
             "searchkeywords": "",
         }

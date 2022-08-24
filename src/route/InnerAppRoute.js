@@ -14,7 +14,6 @@ const route = () => {
 
     const languageRestart = async () => {
         let value = await AsyncStorageManager.onGetLanguagesCode();
-        // await I18nManager.forceRTL(value);
         setSelect(true);
 
     };

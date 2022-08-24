@@ -22,7 +22,7 @@ import { UserManager } from '../../manager/UserManager';
 import { EndPoints } from '../../service/EndPoints';
 import ExpertInsight from '../../model/ExpertInsights';
 import { Service } from '../../service/Service';
-import { AppConfig } from '../../manager/AppConfig';
+import { AppConfig, getLanguage } from '../../manager/AppConfig';
 import DeviceInfo from "react-native-device-info";
 import IdeaListModel from "../../model/IdeaList";
 export const deviceId = DeviceInfo.getUniqueId()
@@ -47,7 +47,7 @@ const IdeaDetails = (props) => {
   const onExpertInsights = () => {
     const data = {
       "frontuser_id": UserManager.userId,
-      "language": AppConfig.lang,
+      "language": getLanguage(),
       "device_id": deviceId,
     }
     Service.post(EndPoints.expertInsights, data, (res) => {
@@ -70,7 +70,7 @@ const IdeaDetails = (props) => {
     const data = {
       "frontuser_id": UserManager.userId,
       "limit": 10,
-      "language": AppConfig.lang,
+      "language": getLanguage(),
       "listtype": "all",
       "searchkeywords": "",
     }

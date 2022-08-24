@@ -18,10 +18,11 @@ import { Loger } from "../../utils/Loger";
 import { deviceId } from "../../utils/Constant";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getBaseURL, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
 import IcnSelect from "../../assets/svg/IcnSelect"
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
 
 const LoginScreen = (props) => {
     const [showPassword, setShowPassword] = useState(false)
@@ -68,17 +69,23 @@ const LoginScreen = (props) => {
 
             if (res.statusCode == 1) {
 
+                if (res?.data?.corporateSubDomain)
+                    setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
+
+
                 UserManager.userId = res.data.userId;
                 UserManager.email = res.data.email;
                 UserManager.profilePicture = res.data.profilePicture;
                 UserManager.mobile = res.data.mobile;
                 UserManager.userName = res.data.userName;
-
-                AppConfig.lang = res.lang;
                 AppConfig.token = res.token;
+                setLanguage(res.lang == null ? 'en' : res.lang)
+                AsyncStorageManager.onSetLanguages(res.lang == null ? 'en' : res.lang)
                 AsyncStorage.setItem('@user', JSON.stringify(res))
                 navigateHomeScreen();
                 resetField();
+
+
 
             }
             else if (res.statusCode == 0) {
@@ -404,8 +411,8 @@ const LoginScreen = (props) => {
 
                                 {/* {
                                     showPassword ? */}
-                                <View style={[PAGESTYLE.resendOtpArea, { justifyContent: 'space-between' }]}>
-                                    <View style={PAGESTYLE.clickArea}>
+                                <View style={[PAGESTYLE.resendOtpArea, { justifyContent: 'flex-end' }]}>
+                                    {/* <View style={PAGESTYLE.clickArea}>
                                         <TouchableOpacity onPress={() => setCheckedOne(!isCheckedOne)} >
                                             {
                                                 isCheckedOne ?
@@ -420,7 +427,7 @@ const LoginScreen = (props) => {
                                                     )}
                                         </TouchableOpacity>
                                         <Text style={PAGESTYLE.corporateUser}>{Label.SignInCorporateUser}</Text>
-                                    </View>
+                                    </View> */}
                                     <Text style={PAGESTYLE.resendText}>{Label.ForgotPassword}</Text>
                                     {/* <View style={PAGESTYLE.passwordView}>
                                                 <TouchableOpacity onPress={() => { setShowPassword(false); }} >
@@ -445,7 +452,7 @@ const LoginScreen = (props) => {
 
                                             ></TextInput>
                                             <ScrollView horizontal style={PAGESTYLE.showCorporateDisable} showsHorizontalScrollIndicator={false}
-                                             contentContainerStyle={PAGESTYLE.centerUrl}>
+                                                contentContainerStyle={PAGESTYLE.centerUrl}>
                                                 <Text style={{ paddingHorizontal: 5 }}>{Label.URL}</Text>
                                             </ScrollView>
                                         </View> : null

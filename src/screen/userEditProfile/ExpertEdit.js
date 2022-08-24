@@ -6,7 +6,7 @@ import { GetAppColor } from '../../utils/Colors'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import EditUserProfileStyle from './EditUserProfileStyle'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const ExpertEdit = (props) => {
     const { themeColor } = useSelector((state) => state)
@@ -18,7 +18,7 @@ const ExpertEdit = (props) => {
     const [isSelectedLang,setSelectedLang]= useState(true)
 
     useEffect(() => {
-      let _lang = AppConfig.getLanguage();
+      let _lang = getLanguage();
       setSelectedLang(_lang == "ar" ? true : false)
   }, [])
 

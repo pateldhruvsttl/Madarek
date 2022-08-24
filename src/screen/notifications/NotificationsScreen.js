@@ -15,7 +15,7 @@ import { Loger } from "../../utils/Loger";
 import { onLoding } from "../../../App";
 import { deviceId } from "../../utils/Constant";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import { ScrollView } from "react-native-gesture-handler";
 import moment from "moment";
 
@@ -27,7 +27,7 @@ function NotificationsScreen() {
 
   useEffect(() => {
     const data = {
-      lang: "en",
+      language: getLanguage(),
       frontuser_id: UserManager.userId,
       device_id: deviceId,
       token: AppConfig.token,

@@ -12,7 +12,7 @@ import IdeasFilter from "../../component/filter/IdeasFilter";
 import { deviceId } from "../../utils/Constant";
 import ExpertInsightList from "../../model/ExpertInsightList";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
@@ -34,7 +34,7 @@ const ExpertInsightScreen = (props) => {
       "device_id": deviceId,
       "token": AppConfig.token,
       "frontuser_id": UserManager.userId,
-      "language": AppConfig.lang,
+      "language": getLanguage(),
       "globalkeywords": "",
       "page": "3",
       "limit": AppConfig.pageLimit,

@@ -23,7 +23,7 @@ import ParticipateModal from "../../component/challengedetail/ParticipateModal";
 import ExpertInsight from "../../model/ExpertInsights";
 import category from "../../model/FavouriteCategories";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import DeviceInfo from "react-native-device-info";
 import OpenChallengeModel from "../../model/OpenChallengesModel";
 export const deviceId = DeviceInfo.getUniqueId();
@@ -137,7 +137,7 @@ const HomeScreen = (props) => {
       token: AppConfig.token,
       frontuser_id: UserManager.userId,
       idea_id: "146",
-      language: AppConfig.lang,
+      language: getLanguage(),
     };
     Service.post(
       EndPoints.expertInsights,

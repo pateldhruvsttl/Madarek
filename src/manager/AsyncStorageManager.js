@@ -1,12 +1,26 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Loger } from '../utils/Loger';
-import { AppConfig } from './AppConfig';
+import { AppConfig,setLanguage } from './AppConfig';
 
 export const AsyncStorageManager = {
 
     onSetLanguages: (value) => {
-        AppConfig.setLanguage(value);
+        setLanguage(value);
         AsyncStorage.setItem('@Languages', JSON.stringify(value));
+    },
+
+    onGetLanguages:async () => {
+
+        await  AsyncStorage.getItem("@Languages").then((response) => {
+            if (response !== "") {
+
+                const res = JSON.parse(response);
+                setLanguage(res);
+                return code;
+            }
+        });
+        
+       
     },
 
     onGetLanguagesCode:async () => {
@@ -16,7 +30,7 @@ export const AsyncStorageManager = {
             if (response !== "") {
 
                 const res = JSON.parse(response);
-                AppConfig.setLanguage(res);
+                setLanguage(res);
                 code = res === "ar" ? true : false;
             }
         });

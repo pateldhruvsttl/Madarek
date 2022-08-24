@@ -11,7 +11,7 @@ import { EndPoints } from '../../service/EndPoints';
 import UserProfile from '../../model/UserProfile'
 import { deviceId } from '../../utils/Constant';
 import { Loger } from '../../utils/Loger';
-import { AppConfig } from '../../manager/AppConfig';
+import { AppConfig, getLanguage } from '../../manager/AppConfig';
 import { UserManager } from "../../manager/UserManager";
 import { showMessage } from '../../utils/Constant';
 import { Label } from '../../utils/StringUtil';
@@ -28,7 +28,7 @@ const UserProfileView = (props) => {
         // alert('in userProfile')
         const data =
         {
-            lang: "en",
+            language: getLanguage(),
             frontuser_id: UserManager.userId,
             device_id: deviceId,
             token: AppConfig.token,

@@ -19,7 +19,9 @@ import IcnUpArrow from "../../assets/svg/drawerIcon/IcnUpArrow";
 import GoogleIcon from "../../assets/svg/loginLogo/GoogleIcon";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
+import { Loger } from "../../utils/Loger";
+import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
 const SplashScreen = (props) => {
   const [selectLanguage, setselectLanguage] = useState(0);
   const [selectIndex, setSelectIndex] = useState(1);
@@ -32,9 +34,11 @@ const SplashScreen = (props) => {
       UserManager.profilePicture = res.data.profilePicture;
       UserManager.mobile = res.data.mobile;
       UserManager.userName = res.data.userName;
-
-      AppConfig.lang = res.lang;
       AppConfig.token = res.token;
+
+      if (res?.data?.corporateSubDomain)
+        setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1');
+
       props.navigation.navigate("HomeScreen");
     } else {
       props.navigation.navigate("LoginScreen");

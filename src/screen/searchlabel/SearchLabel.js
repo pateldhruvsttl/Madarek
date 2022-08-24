@@ -31,7 +31,7 @@ import moment from "moment";
 import ImageLoad from "react-native-image-placeholder";
 import { Loger } from '../../utils/Loger'
 import { UserManager } from '../../manager/UserManager'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import FONTS from '../../utils/Fonts'
@@ -110,7 +110,7 @@ const SearchLabel = (props) => {
         const data = {
             "frontuser_id": UserManager.userId,
             "limit": AppConfig.pageLimit,
-            "language": AppConfig.lang,
+            "language": getLanguage(),
             "listtype": "all",
             "searchkeywords": searchStr,
         }
@@ -336,7 +336,7 @@ const SearchLabel = (props) => {
 
     }
 
-const _lang = AppConfig.getLanguage();
+const _lang = getLanguage();
     return (
         <SafeAreaView>
             <View style={Style.MainView}>

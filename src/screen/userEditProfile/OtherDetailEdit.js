@@ -6,7 +6,7 @@ import { Label } from '../../utils/StringUtil'
 import IcnClose from '../../assets/svg/IcnClose'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const OtherDetailEdit = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -19,7 +19,7 @@ const OtherDetailEdit = (props) => {
   const [isSelectedLang,setSelectedLang]= useState(true)
 
   useEffect(() => {
-    let _lang = AppConfig.getLanguage();
+    let _lang = getLanguage();
     setSelectedLang(_lang == "ar" ? true : false)
 }, [])
   useEffect(() => {

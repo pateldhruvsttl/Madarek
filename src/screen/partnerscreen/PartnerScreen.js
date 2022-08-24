@@ -8,7 +8,7 @@ import Partners from "../../component/partners/PartnersData";
 import Style from "./PartnerScreenStyle";
 import { Label } from "../../utils/StringUtil";
 import { deviceId } from "../../utils/Constant";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { showMessageWithCallBack } from "../../utils/Constant";
@@ -32,7 +32,7 @@ const PartnerScreen = (props) => {
         {
             device_id: deviceId,
             token: AppConfig.token,
-            lang: AppConfig.lang,
+            language: getLanguage(),
         }
 
         Service.post(EndPoints.partner, data, (res) => {
