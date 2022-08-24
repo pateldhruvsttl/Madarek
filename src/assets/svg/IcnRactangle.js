@@ -15,7 +15,7 @@ function SvgComponent(props) {
         width={135}
         height={135}
         rx={10}
-        fill="#bfbfbf"
+        fill={props.stroke || "#bfbfbf"}
       />
     </Svg>
   )

@@ -103,9 +103,9 @@ const BrowseFileItem = (props) => {
             {isFile === null ?
                 <TouchableOpacity onPress={() => addMaterial(props.type)} style={Style.addImageView}>
                     <Text style={Style.txtPlus}>{"+"}</Text>
-                    {props.type == "image" && <Text style={Style.txtTitle}>{"Add Image"}</Text>}
-                    {props.type == "video" && <Text style={Style.txtTitle}>{"Add Video"}</Text>}
-                    {props.type == "file" && <Text style={Style.txtTitle}>{"Add File"}</Text>}
+                    {props.type == "image" && <Text style={Style.txtTitle}>{Label.AddImage}</Text>}
+                    {props.type == "video" && <Text style={Style.txtTitle}>{Label.AddVideo}</Text>}
+                    {props.type == "file" && <Text style={Style.txtTitle}>{Label.AddFile}</Text>}
                 </TouchableOpacity>
                 :
                 renderFile()

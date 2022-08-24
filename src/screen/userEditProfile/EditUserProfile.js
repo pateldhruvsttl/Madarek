@@ -26,20 +26,64 @@ const EditUserProfile = (props) => {
     const { themeColor } = useSelector((state) => state)
     const [selectedIndex, SetSelectedIndex] = useState(0)
     const [newData, setNewData] = useState({})
+    const [personalData, setPersonalData] = useState(null);
+    const [otherData, setOtherData] = useState(null);
     const [updateData, setUpdateData] = useState(props.route.params.data)
+    // console.log('step1Obj step1Obj', personalData);
+    // console.log('otherData', otherData);
+    // console.log('selectedIndex', selectedIndex);
+    // console.log('step1Obj.fname', personalData.firstName);
 
-    
     const refresh = () => {
         props.route.params.onReferesh();
         props.navigation.navigate('UserProfileView')
     }
+    const onSubmit = (obj) => {
 
+        var data = new FormData()
+
+        data.append('device_id', deviceId)
+        data.append('lang', AppConfig)
+        data.append('token', AppConfig)
+        data.append('first_name', personalData.firstName);
+        data.append('last_name', personalData.lastName);
+        data.append('job_title', personalData.jobTitle);
+        data.append('organization_name', personalData.organization);
+        data.append('country_id', personalData.countryId);
+        data.append('city_id', personalData.cityId);
+        // data.append('user_photo', userPhoto)
+        data.append('user_categories', '["3", "4"]');
+        data.append('about_expert', otherData.about);
+        data.append('twitter_link', otherData.twitterLink);
+        data.append('facebook_link', otherData.facebookLink);
+        data.append('linkdin_link', otherData.linkdinLink);
+        data.append('Fees_Type', "hourly");
+        data.append('SME_User_Fees', "250");
+        data.append('expertise_brief', obj.description);
+        data.append('skills', obj.skill);
+        // console.log('data of here', data);
+        Service.post(EndPoints.editProfile, data, (res) => {
+            Loger.onLog("Response of update profile ", res);
+            if (res.statusCode == "1") {
+                showMessageWithCallBack(Label.UpdateProfie, () => {
+                    refresh()
+                })
+            }
+            else {
+                showMessage(res.message)
+            }
+        },
+            (err) => {
+                Loger.onLog("Error of update profile", err);
+            }
+        )
+
+    }
 
     const saveProfile = (props) => {
         if (props.personalEdit) {
             const personalData = props.personalEdit
             setNewData(personalData)
-
             const { firstName, lastName, jobTitle, organization,
                 userPhoto, cityId, countryId, userType } = personalData
             if (personalData) {
@@ -54,12 +98,6 @@ const EditUserProfile = (props) => {
                     return false;
                 } else if (!jobTitle.trim()) {
                     showMessage(Label.JobTilte)
-                    return false;
-                } else if (countryId == 0) {
-                    showMessage(Label.CountryValidate)
-                    return false;
-                } else if (cityId == 0) {
-                    showMessage(Label.CityValidate)
                     return false;
                 } else {
                     SetSelectedIndex(1)
@@ -125,13 +163,13 @@ const EditUserProfile = (props) => {
             // data.append('user_photo', userPhoto)
             data.append('user_categories', '["3", "4"]');
             data.append('about_expert', about);
-            data.append('expertise_brief', 'description');
+            data.append('expertise_brief', description);
             data.append('facebook_link', facebookLink);
             data.append('linkdin_link', linkdinLink);
             data.append('Fees_Type', "hourly");
             data.append('SME_User_Fees', "250");
             data.append('twitter_link', twitterLink);
-            data.append('skills', 'skill');
+            data.append('skills', skill);
 
 
             // Service.post(EndPoints.editProfile, data, (res) => {
@@ -163,7 +201,7 @@ const EditUserProfile = (props) => {
             //     console.log(err);
             // });
 
-            
+
 
 
 
@@ -260,9 +298,9 @@ const EditUserProfile = (props) => {
             </View>
 
             {
-                selectedIndex == 0 ? <PersonalEdit saveProfile={saveProfile} data={updateData} />
-                    : selectedIndex == 1 ? <OtherDetailEdit saveProfile={saveProfile} data={updateData} />
-                        : <ExpertEdit saveProfile={saveProfile} data={updateData} />
+                selectedIndex == 0 ? <PersonalEdit onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
+                    : selectedIndex == 1 ? <OtherDetailEdit onNext={(obj) => { setOtherData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
+                        : <ExpertEdit onNext={(obj) => onSubmit(obj)} data={updateData} />
             }
 
 

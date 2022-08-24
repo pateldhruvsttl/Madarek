@@ -14,6 +14,7 @@ import IcnUpArrow from '../../assets/svg/drawerIcon/IcnUpArrow'
 import DownArrow from '../../assets/svg/DownArrow'
 import { Modal } from 'react-native'
 import City from '../../model/City'
+import { emailValidate } from '../../utils/Constant'
 
 const PersonalEdit = (props) => {
 
@@ -58,13 +59,13 @@ const PersonalEdit = (props) => {
     }, [userData])
 
     useEffect(() => {
-        if(country.length > 0){
+        if (country.length > 0) {
             setCountryId(getCountryId(userData.countryName));
         }
     }, [country])
 
     useEffect(() => {
-        if(cityName.length > 0)
+        if (cityName.length > 0)
             setCityId(getCityId(userData.city));
     }, [cityName])
 
@@ -72,13 +73,13 @@ const PersonalEdit = (props) => {
         selectCountry()
         selectCity()
     }, [])
-    
+
 
     const getCountryId = (name) => {
         let id = 0;
         country.map((ele) => {
             if (name == ele.countryName) {
-                 id = ele.id;
+                id = ele.id;
             }
         })
         return id;
@@ -86,16 +87,52 @@ const PersonalEdit = (props) => {
     const getCityId = (name) => {
         let id = 0;
         cityName.map((ele) => {
-            Loger.onLog(name+">>>>>>>>", ele)
+            Loger.onLog(name + ">>>>>>>>", ele)
             if (name == ele.city) {
                 id = ele.id;
             }
-           
+
         })
         return id;
     }
 
-   
+    const onCheckField = () => {
+        var obj = {
+            userType: userType,
+            firstName: firstName,
+            lastName: lastName,
+            organization: organization,
+            jobTitle: jobTitle,
+            email: email,
+            country: countryName,
+            city: city,
+            number: number,
+            userPhoto: userPhoto,
+            countryId: countryId,
+            cityId: cityId
+        }
+        if (!firstName.trim()) {
+            showMessage(Label.enterfirstname)
+            return false;
+        } else if (!lastName.trim()) {
+            showMessage(Label.enterlastname)
+            return false;
+        } else if (!organization.trim()) {
+            showMessage(Label.Organization)
+            return false;
+        } else if (!jobTitle.trim()) {
+            showMessage(Label.JobTilte)
+            return false;
+        } else if (!email.trim() || !emailValidate(email)) {
+            showMessage(Label.Email)
+            return false
+        } else if (!number.trim()) {
+            showMessage(Label.Phone)
+            return false
+        } else {
+            props.onNext(obj);
+        }
+    }
 
     const onSelectCountry = (index) => {
         country.map((ele) => {
@@ -141,14 +178,14 @@ const PersonalEdit = (props) => {
 
     const selectCity = () => {
         Service.get(EndPoints.cities, (res) => {
-            
+
             const cityData = []
             if (res.statusCode == "1") {
                 res.data.map((item) => {
                     Loger.onLog(">>>>>>>>>>>>>>>>>>>>>", item)
                     let model = new City(item)
                     cityData.push(model)
-                    
+
                 })
                 setCityName(cityData);
             }
@@ -353,7 +390,7 @@ const PersonalEdit = (props) => {
                         onChangeText={(number) => setNumber(number)}
                     />
 
-                    <TouchableOpacity onPress={() => {  props.saveProfile({ personalEdit: personalEdit }) }} style={EditUserProfileStyle.submitButton}>
+                    <TouchableOpacity onPress={() => onCheckField()} style={EditUserProfileStyle.submitButton}>
                         <Text style={EditUserProfileStyle.submitText}>{Label.SaveAndNext}</Text>
                     </TouchableOpacity>
                 </View>

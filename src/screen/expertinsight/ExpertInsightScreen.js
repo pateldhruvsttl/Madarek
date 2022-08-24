@@ -92,8 +92,8 @@ const ExpertInsightScreen = (props) => {
           }}
         >
           <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData} navigateScreen={navigateScreen} />} />
-          <Tab.Screen name={"Contest"} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} />} />
-          <Tab.Screen name={"General"} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} />} />
+          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} />} />
+          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} />} />
         </Tab.Navigator>
       </View>
       <IdeasFilter
