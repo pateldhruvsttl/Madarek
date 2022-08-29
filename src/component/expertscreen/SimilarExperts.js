@@ -13,6 +13,7 @@ import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import ImageLoad from 'react-native-image-placeholder';
+import { Loger } from '../../utils/Loger';
 
 function SimilarExperts(props) {
     const navigation = useNavigation();
@@ -20,6 +21,7 @@ function SimilarExperts(props) {
     
 
     const renderItem = ({ item }) => (
+        
         <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail()}>
 
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
@@ -37,7 +39,8 @@ function SimilarExperts(props) {
             <View style={Style.leftItems}>
 
                 <Text numberOfLines={1} style={Style.title}>{item.name}</Text>
-                <Text numberOfLines={2} style={Style.SubTitle}>{item.post} <Text style={{ color: themeColor.buttonColor, fontSize: AppUtil.getHP(1.7) }}>19</Text></Text>
+                <Text numberOfLines={2} style={Style.SubTitle}>{item.post}</Text>
+                {/* <Text numberOfLines={2} style={Style.SubTitle}>{item.post} <Text style={{ color: themeColor.buttonColor, fontSize: AppUtil.getHP(1.7) }}>19</Text></Text> */}
 
                 <View style={Style.calView}>
 
@@ -71,6 +74,7 @@ function SimilarExperts(props) {
                 data={props.data}
                 renderItem={(item) => renderItem(item)}
                 keyExtractor={item => item.id}
+                onEndReached={props.onGetPaginations()}
             />
 
         </View>

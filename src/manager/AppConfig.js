@@ -4,6 +4,7 @@ export const AppConfig = {
     token: '',
     lang: '',
     pageLimit: '10',
+    catPageLimit: '100',
     isRTL:false,
     
 }

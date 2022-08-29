@@ -214,7 +214,7 @@ const MyDrawerScreen = (props) => {
       {
         selectedIndex == 2 ? renderChallangeCollapseView() : null
       }
-      <TouchableOpacity onPress={() => onselectButtonMenu(4, "ExpertScreen", -1)} style={drawerStyles.menuButton}>
+      <TouchableOpacity onPress={() => onselectButtonMenu(4, "UserCategory", -1)} style={drawerStyles.menuButton}>
         <UserIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 4 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Experts}</Text>
       </TouchableOpacity>

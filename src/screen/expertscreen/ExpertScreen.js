@@ -32,7 +32,6 @@ const ExpertScreen = (props) => {
     useEffect(() => {
         var cat = [];
         Service.post(EndPoints.categories, {}, (res) => {
-            Loger.onLog('category expert categorylist Response of category list ========>', JSON.stringify(res.data))
             res.data.forEach(element => {
                 let model = new Categories(element);
                 if (cat.length < 6) {
@@ -44,7 +43,6 @@ const ExpertScreen = (props) => {
             setCategories(cat)
             setCategory(cat)
         }, (err) => {
-            Loger.onLog('category bannerlist error ========>', err)
         })
 
         const data = {

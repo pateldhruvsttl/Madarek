@@ -9,8 +9,8 @@ export const Loger = {
         if (__DEV__) {
             type == "Req" ?
                 console.log(url, "----- request ----->", JSON.stringify(data))
-                :null
-                // console.log(url, "+++++ response +++++>", JSON.stringify(data))
+                :
+                console.log(url, "+++++ response +++++>", JSON.stringify(data))
         }
     } 
 }

@@ -17,32 +17,45 @@ import Style from './UserCategoryStyle'
 import CloseIcon from '../../assets/svg/CloseIcon'
 import IcnClose from '../../assets/svg/IcnClose'
 import IdeasFilter from '../../component/filter/IdeasFilter'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const UserCategory = (props) => {
 
     const { themeColor } = useSelector((state) => state)
-    const [category, setCategory] = useState([])
-    const [categories, setCategories] = useState([])
+    const [isCategories, setCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
     const [isFilterVisible, setFilterVisible] = useState(false);
+    const [isPageNo, setPageNo] = useState(1);
 
     useEffect(() => {
+        onGetData(isPageNo);
+    }, []);
+
+    const onGetData = (pageNo) => {
+
         var cat = [];
-        Service.post(EndPoints.categories, {}, (res) => {
-            Loger.onLog('User category categorylist Response of category list ========>', JSON.stringify(res.result))
+        var data = { "language": getLanguage(), "limit": AppConfig.catPageLimit, "page": pageNo }
+
+        Service.post(EndPoints.categorie, data, (res) => {
+
+            if (res.data == "")
+                setPageNo(pageNo - 1)
+
             res.data.forEach(element => {
                 let model = new Categories(element);
                 cat.push(model)
             });
-            setCategories(cat)
-            setCategory(cat)
+
+            if (pageNo == 1) setCategories(cat);
+            else setCategories([...isCategories, ...cat]);
+
+
+
         }, (err) => {
-            Loger.onLog('user category category list error ========>', err)
         })
-    }, []);
 
-
+    }
     const onWriteText = (text) => {
         if (text === "") {
             setSearch(false)
@@ -50,7 +63,7 @@ const UserCategory = (props) => {
             setSearch(true)
         }
         setSearchStr(text)
-        const searchData = category.filter(task => task.categoryName.includes(text))
+        const searchData = isCategories.filter(task => task.categoryName.includes(text))
         var cat = []
         searchData.forEach(obj => {
             cat.push(obj)
@@ -62,23 +75,29 @@ const UserCategory = (props) => {
         onWriteText("")
         Keyboard.dismiss()
     }
+
+    const onGetPaginations = () => {
+
+        if (isCategories.length > (AppConfig.pageLimit - 1)) {
+            onGetData(isPageNo + 1);
+            setPageNo(isPageNo + 1);
+        }
+    }
+
     const renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]}>
+            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]} onPress={() => props.navigation.navigate("ExpertDirectoryScreen", { id: item.category_id })}>
                 <View style={Style.heartView}>
-                    {/* <Heart height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} /> */}
                 </View>
-                {/* <IcnInformationTechnology fill={GetAppColor.catBorder} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} /> */}
                 <Image style={{ height: AppUtil.getHP(3.6), width: AppUtil.getHP(3.6) }} source={{ uri: item.categoryIcon }} />
-                {/* {item.icon} */}
-                <Text style={Style.txtBtn}>{item.categoryName}</Text>
+                <Text numberOfLines={2} style={Style.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>
         )
     }
 
     return (
-        <SafeAreaView>
-            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }}  onFilter={() => setFilterVisible(!isFilterVisible)} />
+        <SafeAreaView style={{ flex: 1 }}>
+            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.searchView}>
                 <TextInput
                     style={Style.input}
@@ -99,13 +118,13 @@ const UserCategory = (props) => {
             </View>
 
             <FlatList
-                data={categories}
+                data={isCategories}
                 style={Style.flatelist}
                 contentContainerStyle={Style.lisView}
                 numColumns={'3'}
-                scrollEnabled={false}
                 renderItem={renderItem}
-            // keyExtractor={item => item.id}
+                onEndReached={onGetPaginations}
+
             />
             <IdeasFilter type="UserCategory" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
 

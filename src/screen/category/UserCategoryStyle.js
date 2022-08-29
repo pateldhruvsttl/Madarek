@@ -4,6 +4,7 @@ import { AppUtil } from "../../utils/AppUtil"
 import FONTS from "../../utils/Fonts"
 
 const Style = StyleSheet.create({
+    MainView: { width: '100%', flex:1, backgroundColor:GetAppColor.white},
     btnView: {
         width: AppUtil.getWP(30),
         height: AppUtil.getHP(12),
@@ -36,8 +37,7 @@ const Style = StyleSheet.create({
         
     },
     flatelist:{
-        marginTop:AppUtil.getHP(1.6),
-        height : '100%',
+        flex:1,
         backgroundColor : GetAppColor.lightWhite
     }
 

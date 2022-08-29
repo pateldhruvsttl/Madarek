@@ -63,15 +63,14 @@ function ScreenStack() {
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
             <Stack.Screen name="Category" component={Category} />
-            <Stack.Screen name="UserCategory" component={UserCategory} />
 
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
             <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
 
-            <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
-            <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
+            <Stack.Screen name="UserCategory" component={UserCategory} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
+            <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />   
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
@@ -102,6 +101,9 @@ function ScreenStack() {
             <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
             <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
 
+
+            {/* // unUsed Screen  */}
+            <Stack.Screen name="ExpertScreen" component={ExpertScreen} />
         </Stack.Navigator>
     )
 }
