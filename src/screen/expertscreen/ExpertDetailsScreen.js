@@ -37,7 +37,7 @@ function ExpertDetailsScreen(props) {
                     <ExpertInsights data={expertInsightsData} />
 
                     <View style={Style.similarExpertView}>
-                        <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.SimilarExperts} />
+                        {/* <SimilarExperts data={expertInsightsData} maxLimit={2} title={Label.SimilarExperts} /> */}
                     </View>
 
                     <View style={Style.footerView}>

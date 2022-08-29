@@ -7,16 +7,12 @@ import GraySearchIcon from '../../assets/svg/GraySearchIcon'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import { useSelector } from 'react-redux'
-import Heart from '../../assets/svg/Heart'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import Categories from '../../model/Categories'
-import { Loger } from '../../utils/Loger'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Style from './UserCategoryStyle'
-import CloseIcon from '../../assets/svg/CloseIcon'
 import IcnClose from '../../assets/svg/IcnClose'
-import IdeasFilter from '../../component/filter/IdeasFilter'
 import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const UserCategory = (props) => {
@@ -25,7 +21,6 @@ const UserCategory = (props) => {
     const [isCategories, setCategories] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
-    const [isFilterVisible, setFilterVisible] = useState(false);
     const [isPageNo, setPageNo] = useState(1);
 
     useEffect(() => {
@@ -126,7 +121,6 @@ const UserCategory = (props) => {
                 onEndReached={onGetPaginations}
 
             />
-            <IdeasFilter type="UserCategory" visible={isFilterVisible} onClose={() => setFilterVisible(!isFilterVisible)} />
 
         </SafeAreaView>
     )

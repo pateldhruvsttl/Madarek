@@ -10,9 +10,12 @@ import IcnInformationTechnology from "../../assets/svg/IcnInformationTechnology"
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
 import Categories from "../../model/Categories";
+import { Loger } from "../../utils/Loger";
 
 
 const FavouriteCategories = (props) => {
+
+    Loger.onLog("props", props)
     
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
@@ -20,7 +23,7 @@ const FavouriteCategories = (props) => {
 
     const renderItem = ({ item }) => {
         return (
-            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("ExpertDirectoryScreen",{data:props.Entries})}>
+            <TouchableOpacity style={[styles.btnView, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("ExpertDirectoryScreen",{id: item.id })}>
                 <IcnInformationTechnology fill={themeColor.buttonColor} height={AppUtil.getHP(3.6)} width={AppUtil.getHP(3.6)} />
                 <Text style={styles.txtBtn}>{item.categoryName}</Text>
             </TouchableOpacity>

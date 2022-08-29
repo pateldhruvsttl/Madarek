@@ -7,7 +7,7 @@ const Style = StyleSheet.create({
     MainView: { width: '100%', flex:1, backgroundColor:GetAppColor.white},
     btnView: {
         width: AppUtil.getWP(30),
-        height: AppUtil.getHP(12),
+        height: AppUtil.getHP(22),
         borderWidth: 0.5,
         borderBottomWidth: AppUtil.getHP(.4),
         justifyContent: 'center',
