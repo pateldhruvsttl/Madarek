@@ -356,6 +356,7 @@ export const ARlabel = {
   
   _contest : "Contest",
   _general : "General",
+  _recordsFound : "Records Found"
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -794,5 +795,6 @@ export const USlabel = {
   
   _contest : "Contest",
   _general : "General",
+  _recordsFound : "Records Found"
 
 }
