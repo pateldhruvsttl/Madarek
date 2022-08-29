@@ -355,6 +355,7 @@ export const Label = {
 
   Contest : isRTL ? ARlabel._contest : USlabel._contest,
   General : isRTL ? ARlabel._general : USlabel._general,
+  RecordsFound : isRTL ? ARlabel._recordsFound : USlabel._recordsFound,
 
 
 }

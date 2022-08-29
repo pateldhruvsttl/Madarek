@@ -115,19 +115,19 @@ const SubIdeasListWithImage = (props) => {
                                 <Text numberOfLines={1} style={[Style.title, { width: AppUtil.getWP(26) }]}>{`${item.firstName} ${item.lastName}`}</Text>
                             </View>
                             :
-                            (props?.isType == "Spotlight" && props?.isType == "Challenges") ?
+                            props?.isType == "Spotlight" ?
 
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
+                                    <Text style={Style.title}>{item.createDate}</Text>
 
                                     <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.name}</Text>
+                                    <Text style={Style.title}>{item.name}</Text> 
                                 </View>
                                 :
                                 <View style={Style.calView}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{moment(item.createDate).format("DD MMM YY")}</Text>
+                                    <Text style={Style.title}>{item.createDate}</Text>
                                 </View>
 
                     }

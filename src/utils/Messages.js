@@ -353,6 +353,7 @@ export const ARlabel = {
   _plusSign :                     "+ ",
   _contest :                      "منافسة",
   _general :                      "عام",
+  _recordsFound :                 "السجلات التي تم العثور عليها",
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -791,5 +792,6 @@ export const USlabel = {
   
   _contest : "Contest",
   _general : "General",
+  _recordsFound : "Records Found"
 
 }
