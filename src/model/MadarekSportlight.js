@@ -14,6 +14,7 @@ export default class IdeaList {
         
         this.title = obj?.contest_title ? obj?.contest_title : Label.NoTitle
         this.id = obj?.id
+        this.createDate = obj?.date || Label.DefaultDate
         this.name = obj?.publish_by ? obj?.publish_by : Label.NoName
         this.ideaImage = obj?.image_upload_filesfile || ""
         this.winning = obj?.winning || Label.DefaultNumber
