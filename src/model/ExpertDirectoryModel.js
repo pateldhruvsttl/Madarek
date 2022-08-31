@@ -8,14 +8,14 @@ export default class ExpertDirectoryModel {
             return;
         }
 
-        this.id = obj?.expert_id
-        this.profilePhoto = obj?.user_photo
-        this.name = obj?.fullname
-        this.post = obj?.about_expert
+        this.id = obj?.id
+        this.profile = obj?.user_photo
+        this.name = obj?.fullname || Label.NoName
+        this.post = obj?.about_expert || Label.NoTitle
 
-        this.see = obj?.toatal_views
-        this.like = obj?.toatal_liked_expert
-        this.comment = obj?.total_expert_comment
+        this.see = obj?.toatal_views || Label.DefaultNumber
+        this.like = obj?.toatal_liked_expert || Label.DefaultNumber
+        this.comment = obj?.total_expert_comment || Label.DefaultNumber
        
     }
 }

@@ -12,7 +12,7 @@ import ExpertDirectoryModel from '../../model/ExpertDirectoryModel';
 import { Service } from '../../service/Service';
 
 function ExpertDirectoryScreen(props) {
-    
+
     const [isCategories, setCategories] = useState([])
     const [isPageNo, setPageNo] = useState(1);
 
@@ -21,7 +21,6 @@ function ExpertDirectoryScreen(props) {
     }, []);
 
     const onGetPaginations = () => {
-
         if (isCategories.length > (AppConfig.pageLimit - 1)) {
             onGetData(isPageNo + 1);
             setPageNo(isPageNo + 1);
@@ -32,18 +31,16 @@ function ExpertDirectoryScreen(props) {
 
         var cat = [];
         var data = {
-            "frontuser_id":UserManager.userId,
-            "language":getLanguage(),
-            "categories_id" :props?.route?.params?.id,
-            "limit" :AppConfig.pageLimit,
-            "page":pageNo
+            "frontuser_id": UserManager.userId,
+            "language": getLanguage(),
+            "categories_id": props?.route?.params?.id,
+            "limit": AppConfig.pageLimit,
+            "page": pageNo
         }
 
         Service.post(EndPoints.experts, data, (res) => {
-
             if (res.data == "")
                 setPageNo(pageNo - 1)
-
             res.data.forEach(element => {
                 let model = new ExpertDirectoryModel(element);
                 cat.push(model)
@@ -58,12 +55,12 @@ function ExpertDirectoryScreen(props) {
         })
 
     }
-
+    
     return (
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
-                <SimilarExperts data={isCategories} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={()=>onGetPaginations}/>
+                <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"} navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen",{id:id})} onGetPaginations={onGetPaginations} />
             </View>
         </SafeAreaView>
     )

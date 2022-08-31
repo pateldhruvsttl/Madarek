@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React, { memo } from 'react'
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
+import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import styles from './ExpertProfileStyle'
@@ -8,6 +8,7 @@ import FONTS from '../../utils/Fonts'
 
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import IcnBulb from "../../assets/svg/IcnBulb"
 
@@ -23,15 +24,17 @@ import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import { Label } from '../../utils/StringUtil'
 import ImageLoad from 'react-native-image-placeholder'
 import WebViewComp from '../webview/WebViewComp'
+import { onShare } from '../share/ShareContent'
+import IcnLikeRed from "../../assets/svg/IcnLikeRed"
+import IcnLikeblack from "../../assets/svg/IcnLikeblack"
 
 
 function ExpertProfile(props) {
 
     const { themeColor } = useSelector((state) => state)
     const data = props.data
-    let expertItemList = props?.data?.categoryInfo;
-
-    const categoryDetail = typeof data?.categoryInfo !== 'string' ? data.categoryInfo : []
+    const [totalLike, setTotalLike] = useState(props?.data?.totalLike)
+    const categoryDetail = typeof data?.categories !== 'string' ? data.categories : []
 
     const getCategories = () =>
         categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
@@ -39,6 +42,15 @@ function ExpertProfile(props) {
                 <Text style={styles.txtBtn}>{ele.category_name}</Text>
             </TouchableOpacity>
         ))
+
+        const openUrlRender = async(url) => {
+            const isSupported = await Linking.canOpenURL(url);
+            if(isSupported){
+                await Linking.openURL(url)
+            }else{
+                return Linking.openURL(url);
+            }
+        }
     return (
         <View style={styles.MainView}>
 
@@ -49,82 +61,144 @@ function ExpertProfile(props) {
                         style={styles.profilePicView}
                         placeholderStyle={styles.profilePicView}
                         resizeMode='cover'
-                        source={{ uri: data.profilePic }}
+                        source={{ uri: data.userPhoto }}
                         borderRadius={AppUtil.getHP(20)}
                     />
 
-                    <View style={[styles.expertIcnViewL, { backgroundColor: themeColor.buttonColor }]}>
-                        <IcnBulb height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-                    </View>
+                    {
+                        data.madarekSpecial == 1 &&
+                        <View style={[styles.expertIcnViewL, { backgroundColor: themeColor.buttonColor }]}>
+                            <IcnBulb height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
+                        </View>
+                    }
 
                 </View>
-                <Text style={styles.txtNameView}>{data.name} </Text>
+                <Text style={styles.txtNameView}>{data.fullName} </Text>
                 {/* <Text style={styles.txtNameView}>{data.firstName} {data.lastName}</Text> */}
-                <Text style={styles.txtSubNameView}>{data.job} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
+                <Text style={styles.txtSubNameView}>{`${data.jobTitle}, ${data.organizationName}`} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
 
                 <View style={styles.rowRightView}>
                     <View style={styles.secondInnerCalView}>
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.see}</Text>
+                        <Text style={styles.title}>{data.totalView}</Text>
                     </View>
+
                     <View style={styles.secondInnerCalView}>
-                        <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.like}</Text>
+                        {
+                            data?.like == true ?
+
+                                <TouchableOpacity onPress={() => props.onLikeIdeas(data.id)}>
+                                    <IcnThumsUpBlack style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => props.onLikeIdeas(data.id)}>
+                                    <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                        }
+                        {/* <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} /> */}
+                        <Text style={styles.title}>{totalLike || data.totalLike}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                        <Text style={styles.title}>{data.comment}</Text>
+                        <Text style={styles.title}>{data.totalComment}</Text>
                     </View>
                 </View>
 
                 <View style={styles.socialIcnView}>
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnCall height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnBlockChain height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnFacebook height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnTwitter height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnGoogle height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnWhatsapp height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.socialIcn}>
-                        <IcnLinkedin height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
-                    </TouchableOpacity>
-
-
+                    {
+                        data.callLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.callLink)}>
+                                <IcnCall height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.blockChainLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.blockChainLink)}>
+                                <IcnBlockChain height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.facebookLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.facebookLink)}>
+                                <IcnFacebook height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.twitterLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.twitterLink)}>
+                                <IcnTwitter height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.googleLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.googleLink)}>
+                                <IcnGoogle height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.whatsappLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.whatsappLink)}>
+                                <IcnWhatsapp height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
+                    {
+                        data.linkdinLink ?
+                            <TouchableOpacity style={styles.socialIcn} onPress={() => openUrlRender(data.linkdinLink)}>
+                                <IcnLinkedin height={AppUtil.getHP(2.2)} width={AppUtil.getHP(2.2)} />
+                            </TouchableOpacity> : null
+                    }
                 </View>
                 {
                     <View style={styles.scrollSubView}>
                         {getCategories()}
                     </View>
                 }
+                <View style={data.joinRequest == "pending" ? styles.expertBtnOne : styles.expertBtnTwo}>
+                    <TouchableOpacity style={styles.followBtn} onPress={() => props.onFavoriteIdeas(data.id)}>
+                        {data.favorite ?
+                            <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                            :
+                            <IcnLikeblack height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
 
-                <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]}>
-                    <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
-                    <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.YouAreConnected}</Text>
-                </TouchableOpacity>
+                        }
+                        <Text style={styles.followBtnTitle}>{Label.Follow}</Text>
+                    </TouchableOpacity>
+                    {
+                        data.joinRequest == "pending" ?
+                            <TouchableOpacity style={[styles.btnConnectPending, { borderColor: themeColor.buttonColor }]}>
+                                {/* <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} /> */}
+                                <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{"Connect"}</Text>
+                            </TouchableOpacity>
+                            :
+                            <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]}>
+                                <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.YouAreConnected}</Text>
+                            </TouchableOpacity>
+                    }
+                </View>
             </View>
 
-            <View style={styles.aboutView}>
-                <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.About}</Text>
-                {/* <Text style={styles.txtAboutDes}>{data.About}</Text> */}
-                <WebViewComp data={data.About} />
-            </View>
+            {
+                data.aboutExpert && <View style={styles.aboutView}>
+                    <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.About}</Text>
+                    <Text style={styles.txtAboutDes}>{data.aboutExpert}</Text>
+                    {/* <WebViewComp data={data.expertiseBrief} /> */}
+                </View>
+            }
+            {
+                data.skill &&
+                <View style={styles.aboutView}>
+                    <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.Skill}</Text>
+                    <Text style={styles.txtAboutDes}>{data.skill}</Text>
+                </View>
+            }
+            {
+                data.expertiseBrief &&
+                <View style={styles.aboutView}>
+                    <Text style={[styles.txtAbout, { color: themeColor.buttonColor }]}>{Label.ExpertiseBrief}</Text>
+                    <WebViewComp data={data.expertiseBrief} />
+                </View>
+            }
 
         </View>
     )

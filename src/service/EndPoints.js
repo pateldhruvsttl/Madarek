@@ -13,6 +13,7 @@ export const EndPoints = {
     ideaLikeUnlike : "mylikedislike",
     challengeLikeUnlike : "mylikedislike",
     spotlightLikeUnlike : "mylikedislike",
+    expertLikeUnlike : "mylikedislike",
     saveUserCategory:"saveusercategory",
     dashboard:"dashboard",
     getProfile:"getprofile",
@@ -33,4 +34,5 @@ export const EndPoints = {
     loadidea:"loadidea",
     submitIdeaList:"submittedideas",
     submitidea:"submitidea",
+    expertDetail:"expertdetail"
 }

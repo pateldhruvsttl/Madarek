@@ -354,6 +354,11 @@ export const ARlabel = {
   _contest :                      "منافسة",
   _general :                      "عام",
   _recordsFound :                 "السجلات التي تم العثور عليها",
+  _share : "Share",
+  _ideaDetails : "idea-details",
+  _expertsProfile : "experts-profile",
+  _contestDetail : "contest-detail",
+  _expertiseBrief:"Expertise Brief"
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -792,6 +797,11 @@ export const USlabel = {
   
   _contest : "Contest",
   _general : "General",
-  _recordsFound : "Records Found"
+  _recordsFound : "Records Found",
+  _share : "Share",
+  _ideaDetails : "idea-details",
+  _expertsProfile : "experts-profile",
+  _contestDetail : "contest-detail",
+  _expertiseBrief:"Expertise Brief"
 
 }

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, Share } from "react-native";
 
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
@@ -27,8 +27,18 @@ import { AppConfig } from "../../manager/AppConfig";
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
 import IcnMenuDote from "../../assets/svg/IcnMenuDote"
 import IcnShareIcon from "../../assets/svg/IcnShareIcon"
+import { baseURL } from "../../utils/Constant";
+import { onShare } from "../share/ShareContent";
 
 const SubIdeasListWithImage = (props) => {
+
+    const message = (id) => {
+        if (props?.isType == "Ideas") {
+            return `idea-details/${id}`
+        } else if (props?.isType == "Challenges") {
+            return `contest-detail/${id}`
+        }
+    }
     const likeUnlike = (id) => {
 
         if (props?.isType == "Ideas") {
@@ -52,7 +62,7 @@ const SubIdeasListWithImage = (props) => {
             props.onFavoriteIdeas(id)
         }
     }
- 
+
     const renderIdeaItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
@@ -122,7 +132,7 @@ const SubIdeasListWithImage = (props) => {
                                     <Text style={Style.title}>{item.createDate}</Text>
 
                                     <IcnAvtarBg style={Style.callLeftIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.name}</Text> 
+                                    <Text style={Style.title}>{item.name}</Text>
                                 </View>
                                 :
                                 <View style={Style.calView}>
@@ -162,9 +172,9 @@ const SubIdeasListWithImage = (props) => {
                                         <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
                                     </MenuTrigger>
                                     <MenuOptions customStyles={Style.menuOptions}>
-                                        <MenuOption style={Style.menuView}>
+                                        <MenuOption style={Style.menuView} onSelect={() => onShare(message(item.id))}>
                                             <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                            <Text style={Style.txtMenuOptions}>{"Share"}</Text>
+                                            <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
                                         </MenuOption>
                                     </MenuOptions>
                                 </Menu>

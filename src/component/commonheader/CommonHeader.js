@@ -141,7 +141,7 @@ const CommonHeader = (props) => {
                         </View>
 
                         <View style={Style.rightSingleIcnView}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.onShare()}>
                                 <IcnShareIcon stroke={GetAppColor.white} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>

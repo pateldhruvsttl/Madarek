@@ -48,11 +48,15 @@ const Style = StyleSheet.create({
     leftItems: { width: '55%' },
     title: { fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, color: GetAppColor.textColor },
     SubTitle: { fontSize: AppUtil.getHP(1.7), fontFamily: FONTS.robotMedium, color: GetAppColor.black, marginVertical: AppUtil.getHP(0.7) },
-    calView: { flexDirection: 'row', alignItems: 'center' },
+    calView: { flexDirection: 'row', alignItems: 'center',justifyContent:'space-around',
+     width: '40%',  height: AppUtil.getWP(10) },
     txtTime:{marginHorizontal:AppUtil.getHP(0.5),fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, color: GetAppColor.textColor},
 
     secondCalView:{flexDirection:'row', marginTop:AppUtil.getHP(0.5)},
     txtName: { fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, marginStart:AppUtil.getHP(0.5), color: GetAppColor.black },
+    secondInnerCalView: { flexDirection: 'row', alignItems: 'center' },
+    callInnerIcn: { marginEnd: AppUtil.getHP(1) },
+
 
 
 });

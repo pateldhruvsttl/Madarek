@@ -356,6 +356,11 @@ export const Label = {
   Contest : isRTL ? ARlabel._contest : USlabel._contest,
   General : isRTL ? ARlabel._general : USlabel._general,
   RecordsFound : isRTL ? ARlabel._recordsFound : USlabel._recordsFound,
+  Share : isRTL ? ARlabel._share : USlabel._share,
+  IdeaDetails : isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
+  ExpertsProfile : isRTL ? ARlabel._expertsProfile : USlabel._expertsProfile,
+  ContestDetail : isRTL ? ARlabel._contestDetail : USlabel._contestDetail,
+  ExpertiseBrief : isRTL ? ARlabel._expertiseBrief : USlabel._expertiseBrief,
 
 
-}
+}   

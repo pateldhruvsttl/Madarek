@@ -18,19 +18,16 @@ import { Loger } from '../../utils/Loger';
 function SimilarExperts(props) {
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
-    
 
     const renderItem = ({ item }) => (
-        
-        <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail()}>
-
+        <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail(item.id)}>
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
             <View style={Style.rightItems}>
                 <ImageLoad
                     style={Style.img}
                     resizeMode='cover'
-                    source={{ uri: item.profilePhoto }}
+                    source={{ uri: item.profile }}
                     placeholderStyle={Style.img}
                     borderRadius={AppUtil.getHP(4)}
                 />
@@ -58,7 +55,7 @@ function SimilarExperts(props) {
             </View>
         </TouchableOpacity>
     );
-    // const list = props.maxLimit != 0 ? props.data.slice(0, props.maxLimit) : props.data;
+    const list = props.maxLimit != 0 ? props.data.slice(0, props.maxLimit) : props.data;
     return (
         <View style={Style.MainView}>
             {
@@ -71,10 +68,10 @@ function SimilarExperts(props) {
                 </View>
             }
             <FlatList
-                data={props.data}
+                data={list}
                 renderItem={(item) => renderItem(item)}
                 keyExtractor={item => item.id}
-                onEndReached={props && props?.onGetPaginations()}
+                onEndReached={() => props && props.isType && props?.onGetPaginations()}
             />
 
         </View>
