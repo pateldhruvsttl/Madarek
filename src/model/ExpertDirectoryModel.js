@@ -16,6 +16,7 @@ export default class ExpertDirectoryModel {
         this.see = obj?.toatal_views || Label.DefaultNumber
         this.like = obj?.toatal_liked_expert || Label.DefaultNumber
         this.comment = obj?.total_expert_comment || Label.DefaultNumber
+        this.isjoin_requests = obj?.isjoin_requests
        
     }
 }

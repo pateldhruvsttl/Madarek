@@ -22,7 +22,11 @@ function SimilarExperts(props) {
     const renderItem = ({ item }) => (
         <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail(item.id)}>
 
-            <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+            <IcnSimilarExperts height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)}
+                one={item?.isjoin_requests == 1 ? themeColor.buttonColor : item?.isjoin_requests == 2 ? GetAppColor.rejected : item?.isjoin_requests == 0 ? GetAppColor.btnBorderColor : GetAppColor.btnBorderColor}
+                two={GetAppColor.btnBorderColor}
+                style={Style.similerIcnView}
+            />
 
             <View style={Style.rightItems}>
                 <ImageLoad
@@ -38,7 +42,6 @@ function SimilarExperts(props) {
 
                 <Text numberOfLines={1} style={Style.title}>{item.name}</Text>
                 <Text numberOfLines={2} style={Style.SubTitle}>{item.post}</Text>
-                {/* <Text numberOfLines={2} style={Style.SubTitle}>{item.post} <Text style={{ color: themeColor.buttonColor, fontSize: AppUtil.getHP(1.7) }}>19</Text></Text> */}
 
                 <View style={Style.calView}>
 
