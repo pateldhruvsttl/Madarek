@@ -356,6 +356,15 @@ export const Label = {
   Contest : isRTL ? ARlabel._contest : USlabel._contest,
   General : isRTL ? ARlabel._general : USlabel._general,
   RecordsFound : isRTL ? ARlabel._recordsFound : USlabel._recordsFound,
+  ChangePassWordHeader : isRTL ? ARlabel._changePassWordHeader : USlabel._changePassWordHeader,
+  
+  OldPassword : isRTL ? ARlabel._oldPassword : USlabel._oldPassword,
+  NewPassword : isRTL ? ARlabel._newPassword : USlabel._newPassword,
+  ConfirmPassword : isRTL ? ARlabel._confirmPassword : USlabel._confirmPassword,
+
+  OldPasswordIncorrect : isRTL ? ARlabel._oldPasswordIncorrect : USlabel._oldPasswordIncorrect,
+  NewPasswordIncorrect : isRTL ? ARlabel._newPasswordIncorrect : USlabel._newPasswordIncorrect,
+  ChangePasswordSuccess : isRTL ? ARlabel._changePasswordSuccess : USlabel._changePasswordSuccess,
 
 
 }

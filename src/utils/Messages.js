@@ -354,6 +354,15 @@ export const ARlabel = {
   _contest :                      "منافسة",
   _general :                      "عام",
   _recordsFound :                 "السجلات التي تم العثور عليها",
+  _changePassWordHeader : "Change Password",
+  _oldPassword: "Old Password",
+  _newPassword: "New Password",
+  _confirmPassword: "Confirm Password",
+  _oldPasswordIncorrect: "The old password you have entered is incorrect",
+  _newPasswordIncorrect: "The new and confirm password do not matched",
+  _changePasswordSuccess: "The password has been successfully changed",
+  
+
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -792,6 +801,14 @@ export const USlabel = {
   
   _contest : "Contest",
   _general : "General",
-  _recordsFound : "Records Found"
+  _recordsFound : "Records Found",
 
+  _changePassWordHeader : "Change Password",
+  _oldPassword: "Old Password",
+  _newPassword: "New Password",
+  _confirmPassword: "Confirm Password",
+  
+  _oldPasswordIncorrect: "The old password you have entered is incorrect",
+  _newPasswordIncorrect: "The new and confirm password do not matched",
+  _changePasswordSuccess: "The password has been successfully changed",
 }

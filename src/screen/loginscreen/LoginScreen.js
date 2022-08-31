@@ -72,13 +72,13 @@ const LoginScreen = (props) => {
                 if (res?.data?.corporateSubDomain)
                     setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
 
-
                 UserManager.userId = res.data.userId;
                 UserManager.email = res.data.email;
                 UserManager.profilePicture = res.data.profilePicture;
                 UserManager.mobile = res.data.mobile;
                 UserManager.userName = res.data.userName;
                 AppConfig.token = res.token;
+
                 setLanguage(res.lang == null ? 'en' : res.lang)
                 AsyncStorageManager.onSetLanguages(res.lang == null ? 'en' : res.lang)
                 AsyncStorage.setItem('@user', JSON.stringify(res))

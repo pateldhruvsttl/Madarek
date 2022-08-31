@@ -33,4 +33,5 @@ export const EndPoints = {
     loadidea:"loadidea",
     submitIdeaList:"submittedideas",
     submitidea:"submitidea",
+    changepassword:"changepassword",
 }

@@ -649,6 +649,21 @@ const CommonHeader = (props) => {
                 </>
             )
             break
+        case 'ChangePassword':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ChangePassWordHeader}</Text>
+                        </View>
+                        <BackButton />
+
+                    </View>
+                </>
+            )
+            break
         default: null;
     }
 }

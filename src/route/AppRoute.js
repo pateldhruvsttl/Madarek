@@ -50,6 +50,7 @@ import MyIdeaEdit from '../screen//myIdeaEdit/MyIdeaEdit';
 import NotificationSetting from '../screen/notifications/NotificationSetting';
 import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithComment/ExpertInsightDetailWithComment';
 import IdeasFilter from '../component/filter/IdeasFilter';
+import ChangePasswordScreen from '../screen/changePassword/ChangePasswordScreen'
 
 
 const Stack = createStackNavigator();
@@ -60,6 +61,7 @@ function ScreenStack() {
         <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName={"SplashScreen"}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
             <Stack.Screen name="Category" component={Category} />
