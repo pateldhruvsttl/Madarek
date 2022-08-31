@@ -75,7 +75,9 @@ function ExpertProfile(props) {
                 </View>
                 <Text style={styles.txtNameView}>{data.fullName} </Text>
                 {/* <Text style={styles.txtNameView}>{data.firstName} {data.lastName}</Text> */}
-                <Text style={styles.txtSubNameView}>{`${data.jobTitle}, ${data.organizationName}`} {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>}</Text>
+                <Text style={styles.txtSubNameView}>{`${data.jobTitle}, ${data.organizationName}`} 
+                {/* {<Text style={{ fontFamily: FONTS.robotMedium, color: themeColor.buttonColor }}>{"48"}</Text>} */}
+                </Text>
 
                 <View style={styles.rowRightView}>
                     <View style={styles.secondInnerCalView}>
