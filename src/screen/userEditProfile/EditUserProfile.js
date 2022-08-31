@@ -29,10 +29,6 @@ const EditUserProfile = (props) => {
     const [personalData, setPersonalData] = useState(null);
     const [otherData, setOtherData] = useState(null);
     const [updateData, setUpdateData] = useState(props.route.params.data)
-    // console.log('step1Obj step1Obj', personalData);
-    // console.log('otherData', otherData);
-    // console.log('selectedIndex', selectedIndex);
-    // console.log('step1Obj.fname', personalData.firstName);
 
     const refresh = () => {
         props.route.params.onReferesh();
@@ -61,7 +57,6 @@ const EditUserProfile = (props) => {
         data.append('SME_User_Fees', "250");
         data.append('expertise_brief', obj.description);
         data.append('skills', obj.skill);
-        // console.log('data of here', data);
         Service.post(EndPoints.editProfile, data, (res) => {
             Loger.onLog("Response of update profile ", res);
             if (res.statusCode == "1") {

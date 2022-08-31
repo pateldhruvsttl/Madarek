@@ -283,7 +283,8 @@ function IdeasFilter(props) {
                   style={Style.menuButton}
                 >
                   <Text style={Style.txtSortBy}>
-                    {"Sectors (" + selectorList + ")"}
+                  {`${Label.Sectors} (${selectorList}) `}
+                    {/* {"Sectors (" + selectorList + ")"} */}
                   </Text>
                   {selectedCatIndex ? (
                     <IcnUpArrow
@@ -308,7 +309,8 @@ function IdeasFilter(props) {
               style={Style.menuButton}
             >
               <Text style={Style.txtSortBy}>
-                {"Categories (" + catSelectorList + ")"}
+                {`${Label.Categories} (${catSelectorList}) `}
+                {/* {"Categories (" + catSelectorList + ")"} */}
               </Text>
               {selectedCategoriesIndex ? (
                 <IcnUpArrow

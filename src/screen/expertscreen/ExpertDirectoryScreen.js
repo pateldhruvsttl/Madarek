@@ -21,7 +21,6 @@ function ExpertDirectoryScreen(props) {
     }, []);
 
     const onGetPaginations = () => {
-
         if (isCategories.length > (AppConfig.pageLimit - 1)) {
             onGetData(isPageNo + 1);
             setPageNo(isPageNo + 1);
@@ -40,10 +39,8 @@ function ExpertDirectoryScreen(props) {
         }
 
         Service.post(EndPoints.experts, data, (res) => {
-
             if (res.data == "")
                 setPageNo(pageNo - 1)
-
             res.data.forEach(element => {
                 let model = new ExpertDirectoryModel(element);
                 cat.push(model)
@@ -63,7 +60,7 @@ function ExpertDirectoryScreen(props) {
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDirectoryScreen"} id={props?.route?.params?.id} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
-                <SimilarExperts data={isCategories} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={() => onGetPaginations} />
+                <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"} navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations} />
             </View>
         </SafeAreaView>
     )

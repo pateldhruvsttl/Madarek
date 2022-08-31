@@ -16,7 +16,7 @@ export default function WebViewComp(props) {
             androidLayerType="software"
             ref={ref}
             useWebKit={true}
-            source={{ html: props.data }}
+            source={{ html: props?.data || '-' }}
             scrollEnabled={false}
             originWhitelist={['*']}
             style={{ height: webViewHeight ,backgroundColor:props.backgroundColor}}

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
-
+import { buttonBorderRadius } from '../../utils/Constant';
 import { buttonFontSize } from '../../utils/Constant';
 import { buttonHeight } from '../../utils/Constant';
 
@@ -40,14 +40,57 @@ const Style = StyleSheet.create({
     txtBtn: { fontSize: AppUtil.getHP(1.5), fontFamily: FONTS.robotRegular, color: GetAppColor.innovationGrey, textAlign: 'center' },
 
     btnConnect: {
-        width: AppUtil.getWP(70), height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
+        width: AppUtil.getWP(60), height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
         marginTop: AppUtil.getHP(2), flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', alignItems: 'center'
+    },
+    btnConnectPending: {
+        width: AppUtil.getWP(40), height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
+        marginTop: AppUtil.getHP(2), flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', alignItems: 'center'
+    },
+ 
+    followBtn: {
+        height: buttonHeight,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: buttonBorderRadius,
+        flexDirection: 'row',
+        borderColor: GetAppColor.grayBorder,
+        borderWidth: 1,
+        backgroundColor: GetAppColor.white,
+        marginTop: AppUtil.getHP(2),
+        paddingHorizontal: AppUtil.getHP(2),
+    },
+    followBtnTitle: {
+        color: GetAppColor.grayBorder,
+        fontSize: buttonFontSize,
+        fontFamily: FONTS.robotMedium,
+        paddingStart: AppUtil.getWP(3)
+
+    },
+    followBtnTitleOne: {
+        color: GetAppColor.grayBorder,
+        fontSize: buttonFontSize,
+        fontFamily: FONTS.robotMedium,
+        paddingStart: AppUtil.getWP(3)
+
+    },
+    expertBtnOne: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingHorizontal: AppUtil.getWP(5)
+    },
+    expertBtnTwo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent:'space-between',
+        paddingHorizontal: AppUtil.getWP(2),
     },
     txtBtnInner: { fontSize: buttonFontSize, fontFamily: FONTS.robotMedium, },
 
-    aboutView:{paddingHorizontal:AppUtil.getHP(1.5), paddingVertical:AppUtil.getHP(2)},
-    txtAbout: { fontSize: AppUtil.getHP(2.5),  fontFamily: FONTS.robotMedium, },
-    txtAboutDes: { fontSize: AppUtil.getWP(4),marginTop:AppUtil.getHP(1.5), fontFamily: FONTS.robotRegular,color:GetAppColor.pincolor },
+    aboutView: { paddingHorizontal: AppUtil.getHP(1.5), paddingVertical: AppUtil.getHP(2) },
+    txtAbout: { fontSize: AppUtil.getHP(2.5), fontFamily: FONTS.robotMedium, },
+    txtAboutDes: { fontSize: AppUtil.getWP(4), marginTop: AppUtil.getHP(1.5), fontFamily: FONTS.robotRegular, color: GetAppColor.pincolor },
 
 });
 
