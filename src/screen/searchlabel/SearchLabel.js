@@ -380,7 +380,7 @@ const SearchLabel = (props) => {
 
     const renderExpertDirectory = () => {
         return (
-            <SimilarExperts data={isData} maxLimit={0} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")} />
+            <SimilarExperts data={isData} maxLimit={0} navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen",{id})} onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")} />
         )
     }
 

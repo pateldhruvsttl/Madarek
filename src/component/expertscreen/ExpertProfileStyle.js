@@ -44,7 +44,7 @@ const Style = StyleSheet.create({
         marginTop: AppUtil.getHP(2), flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', alignItems: 'center'
     },
     btnConnectPending: {
-        width: AppUtil.getWP(40), height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
+        width: '62%', height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
         marginTop: AppUtil.getHP(2), flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', alignItems: 'center'
     },
  

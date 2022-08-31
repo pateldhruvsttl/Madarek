@@ -354,20 +354,20 @@ export const ARlabel = {
   _contest :                      "منافسة",
   _general :                      "عام",
   _recordsFound :                 "السجلات التي تم العثور عليها",
-
-  _changePassWordHeader : "Change Password",
-  _oldPassword: "Old Password",
-  _newPassword: "New Password",
-  _confirmPassword: "Confirm Password",
-  _oldPasswordIncorrect: "The old password you have entered is incorrect",
-  _newPasswordIncorrect: "The new and confirm password do not matched",
-  _changePasswordSuccess: "The password has been successfully changed",
-
-  _share : "Share",
-  _ideaDetails : "idea-details",
-  _expertsProfile : "experts-profile",
-  _contestDetail : "contest-detail",
-  _expertiseBrief:"Expertise Brief"
+  _changePassWordHeader :         "غير كلمة السر",
+  _oldPassword:                   "كلمة المرور القديمة",
+  _newPassword:                   "كلمة السر الجديدة",
+  _confirmPassword:               "تأكيد كلمة المرور",
+  _oldPasswordIncorrect:          "كلمة المرور القديمة التي أدخلتها غير صحيحة ",
+  _newPasswordIncorrect:          "كلمة المرور الجديدة وتأكيد كلمة المرور لا تتطابق ",
+  _changePasswordSuccess:         "تم تغيير كلمة المرور بنجاح",
+  _share :                        "شارك",
+  _ideaDetails :                  "تفاصيل الفكرة ",
+  _expertsProfile :               "لمحة عن الخبراء ",
+  _contestDetail :                "تفاصيل المسابقة ",
+  _expertiseBrief:                "موجز الخبرة ",
+  _requestDone:                   "تم الطلب ",
+  _connect:                       "الاتصال",
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -822,4 +822,7 @@ export const USlabel = {
   _oldPasswordIncorrect: "The old password you have entered is incorrect",
   _newPasswordIncorrect: "The new and confirm password do not matched",
   _changePasswordSuccess: "The password has been successfully changed",
+
+  _requestDone:"Request Done",
+  _connect:"Connect"
 }

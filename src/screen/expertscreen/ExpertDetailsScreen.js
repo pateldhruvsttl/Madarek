@@ -36,6 +36,7 @@ function ExpertDetailsScreen(props) {
     const navigation = useNavigation()
     // console.log('props is getting', props.route.params.id);
     const id = props.route.params.id
+    
     useEffect(() => {
         expertDetails(id);
     }, [])
@@ -144,7 +145,7 @@ function ExpertDetailsScreen(props) {
                     {similarExpert && similarExpert.length > 0 &&
                         <View style={Style.similarExpertView}>
                             <SimilarExperts data={similarExpert} maxLimit={2} title={Label.SimilarExperts}
-                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} />
+                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} onGetPaginations={()=> null}/>
                         </View>}
 
                     <View style={Style.footerView}>

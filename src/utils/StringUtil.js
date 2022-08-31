@@ -371,5 +371,8 @@ export const Label = {
   ContestDetail : isRTL ? ARlabel._contestDetail : USlabel._contestDetail,
   ExpertiseBrief : isRTL ? ARlabel._expertiseBrief : USlabel._expertiseBrief,
 
+  RequestDone : isRTL ? ARlabel._requestDone : USlabel._requestDone,
+  Connect : isRTL ? ARlabel._connect : USlabel._connect,
+
 
 }   
