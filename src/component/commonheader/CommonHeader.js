@@ -162,10 +162,7 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            {/* <TouchableOpacity onPress={() => props.onFilter()}>
-                                <IcnFilter style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity> */}
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel",{screen:"EXPERT DIRECTORY",id:props.id})}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>

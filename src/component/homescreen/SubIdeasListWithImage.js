@@ -204,7 +204,6 @@ const SubIdeasListWithImage = (props) => {
                 onEndReached={onGetPaginations}
                 key={(id) => id}
                 keyExtractor={item => item.id}
-            // onScrollEndDrag={isLast => onGetPaginations()}
 
             />
             {

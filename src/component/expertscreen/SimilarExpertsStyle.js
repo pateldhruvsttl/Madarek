@@ -4,7 +4,7 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const Style = StyleSheet.create({
-    MainView: { width: '100%', flex: 1, },
+    MainView: { width: '100%', flex: 1},
     
     titleView: { marginHorizontal: AppUtil.getHP(2), marginVertical:AppUtil.getHP(1), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" },
 

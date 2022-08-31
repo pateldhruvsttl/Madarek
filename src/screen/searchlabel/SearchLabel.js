@@ -41,11 +41,13 @@ import IdeaListModel from '../../model/IdeaList'
 import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithImage";
 import OpenChallengeModel from '../../model/OpenChallengesModel'
 import SimilarExperts from '../../component/expertscreen/SimilarExperts'
+import ExpertDirectoryModel from '../../model/ExpertDirectoryModel'
 
 
 const SearchLabel = (props) => {
 
     const [isCurrentScreen, setCurrentScreen] = useState(props?.route?.params?.screen)
+    const [isId, setId] = useState(props?.route?.params?.id)
 
     const [isSearchActive, setSearchActive] = useState(false)
     const textInput = useRef(null);
@@ -53,7 +55,7 @@ const SearchLabel = (props) => {
     const [isData, setData] = useState([]);
     const [isType, setType] = useState([Label.IdeasSearch, Label.ChallengeSearch, Label.ExpertDirectorySearch, Label.ExpertInsightSearch]);
     const [isSelectIndex, setSelectIndex] = useState(0);
-
+    const [isPageNo, setPageNo] = useState(1);
 
     useState(() => {
 
@@ -73,37 +75,57 @@ const SearchLabel = (props) => {
     }
 
     const onCurrentType = (item, index) => {
+        setPageNo(1);
         setSelectIndex(index)
         setData([]);
         switch (item) {
-
             case 'IDEAS':
-                onGetIdeasList();
+                onGetIdeasList(1);
                 break
             case 'CHALLENGE':
-                onGetChallengeList();
+                onGetChallengeList(1);
                 break
             case 'EXPERT DIRECTORY':
-                onGetExpertDirectory(2);
+                onGetExpertDirectory(1);
                 break
             default: null;
         }
     }
 
     const onPressSearchButton = () => {
-
+        setPageNo(1);
         if (isSelectIndex === 0) {
-            onGetIdeasList();
+            onGetIdeasList(1);
         }
         else if (isSelectIndex === 1) {
-            onGetChallengeList();
+            onGetChallengeList(1);
         }
         else if (isSelectIndex === 2) {
-            onGetExpertDirectory();
+            onGetExpertDirectory(1);
         }
     }
 
-    const onGetIdeasList = () => {
+    const onGetPaginations = (type) => {
+
+        Loger.onLog("12312313213213213132")
+        if (isData.length > (AppConfig.pageLimit - 1)) {
+            switch (type) {
+                case 'IDEAS':
+                    onGetIdeasList(isPageNo + 1);
+                    break
+                case 'CHALLENGE':
+                    onGetChallengeList(isPageNo + 1);
+                    break
+                case 'EXPERT DIRECTORY':
+                    onGetExpertDirectory(isPageNo + 1);
+                    break
+                default: null;
+            }
+            setPageNo(isPageNo + 1);
+        }
+    }
+
+    const onGetIdeasList = (pageNo) => {
         if (searchStr.length == 0)
             return
 
@@ -113,6 +135,8 @@ const SearchLabel = (props) => {
             "language": getLanguage(),
             "listtype": "all",
             "searchkeywords": searchStr,
+            "limit": AppConfig.pageLimit,
+            "page": pageNo
         }
         Service.post(EndPoints.ideaList, data, (res) => {
 
@@ -121,14 +145,15 @@ const SearchLabel = (props) => {
                 let model = new IdeaListModel(element);
                 _isAllIdeas.push(model);
             })
-            setData(_isAllIdeas)
+            if (pageNo == 1) setData(_isAllIdeas);
+            else setData([...isData, ..._isAllIdeas]);
 
         }, (err) => {
             Loger.onLog("err", err)
         })
     }
 
-    const onGetChallengeList = () => {
+    const onGetChallengeList = (pageNo) => {
         if (searchStr.length == 0)
             return
 
@@ -140,6 +165,8 @@ const SearchLabel = (props) => {
             "categories": "",
             "statusinputdata": "",
             "layout": "list",
+            "limit": AppConfig.pageLimit,
+            "page": pageNo
         }
 
         Service.post(EndPoints.openChallenges, data, (res) => {
@@ -150,9 +177,40 @@ const SearchLabel = (props) => {
                 _isAllIdeas.push(model);
             });
 
-            setData(_isAllIdeas);
+            setData(_isAllIdeas);if (pageNo == 1) setData(_isAllIdeas);
+            else setData([...isData, ..._isAllIdeas]);
         }, (err) => {
             Loger.onLog("###", err)
+        })
+    }
+
+    const onGetExpertDirectory = (pageNo) => {
+
+        if (searchStr.length == 0)
+            return
+
+        var data = {
+            "frontuser_id": UserManager.userId,
+            "language": getLanguage(),
+            "categories_id": 0,
+            "keyword": searchStr,
+            "limit": AppConfig.pageLimit,
+            "page": pageNo
+        }
+
+        Service.post(EndPoints.experts, data, (res) => {
+
+            let _isAllIdeas = [];
+            res.data.forEach(element => {
+                let model = new ExpertDirectoryModel(element);
+                _isAllIdeas.push(model)
+            });
+
+            if (pageNo == 1) setData(_isAllIdeas);
+            else setData([...isData, ..._isAllIdeas]);
+
+
+        }, (err) => {
         })
     }
 
@@ -184,6 +242,7 @@ const SearchLabel = (props) => {
             }
         );
     }
+
     const onLikeChallenge = (id) => {
         var data = {
             "field_name": "contest_id",
@@ -215,23 +274,6 @@ const SearchLabel = (props) => {
         })
     }
 
-    const onGetExpertDirectory = () => {
-        if (searchStr.length == 0)
-            return
-
-        // Service.get(EndPoints.openChallenges, (res) => {
-
-        //     let _isAllIdeas = [];
-        //     res.data.forEach(element => {
-        //         let model = new OpenChalangeHomeModel(element);
-        //         _isAllIdeas.push(model);
-        //     });
-
-        //     setData(_isAllIdeas);
-        // }, (err) => {
-        //     Loger.onLog("###", err)
-        // })
-    }
     const onFavoriteIdeas = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -255,6 +297,7 @@ const SearchLabel = (props) => {
             Loger.onLog("err of likeUnlike", err)
         })
     }
+
     const onLikeIdeas = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -310,39 +353,44 @@ const SearchLabel = (props) => {
         return (
             <SubIdeasListWithImage
                 data={isData}
+                scrollEnabled={true}
                 isType={"Ideas"}
                 onLikeIdeas={(id) => onLikeIdeas(id)}
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
-                onItemPress={(item) => { props.navigation.navigate("IdeaDetails", item) }} />
+                onItemPress={(item) => { props.navigation.navigate("IdeaDetails", item) }}
+                paginations={() => onGetPaginations("IDEAS")}
+            />
         )
     }
+
     const renderChallenge = () => {
         return (
             <SubIdeasListWithImage
                 data={isData}
+                scrollEnabled={true}
                 isType={"Challenges"}
                 onLikeIdeas={(id) => onLikeChallenge(id)}
                 onFavoriteIdeas={(id) => onFavoriteChallenge(id)}
                 onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
+                paginations={() => onGetPaginations("CHALLENGE")}
             />
         )
 
     }
+
     const renderExpertDirectory = () => {
         return (
-            null
-            // <SimilarExperts data={isData} maxLimit={3} title={Label.PopularExperts} type={"ExpertScreen"} />
+            <SimilarExperts data={isData} maxLimit={0} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")} />
         )
-
     }
 
-const _lang = getLanguage();
+    const _lang = getLanguage();
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={Style.MainView}>
                 <View style={Style.centerIcnView}>
                     <TouchableOpacity style={Style.LeftIcnView} onPress={() => props.navigation.goBack()}>
-                        <IcnBack style={{transform: [{ rotate:_lang=='ar'?'180deg':'0deg' }]}} color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                        <IcnBack style={{ transform: [{ rotate: _lang == 'ar' ? '180deg' : '0deg' }] }} color={GetAppColor.black} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                     </TouchableOpacity>
 
                     <TextInput
@@ -383,11 +431,11 @@ const _lang = getLanguage();
                         })
                     }
                 </ScrollView>
-                <ScrollView contentContainerStyle={{ width: '100%', paddingBottom: '50%' }} horizontal={false}>
-                    {renderResultCell()}
-                </ScrollView>
-            </View>
 
+            </View>
+            <View style={{ flex: 1 }}>
+                {renderResultCell()}
+            </View>
 
         </SafeAreaView>
     )

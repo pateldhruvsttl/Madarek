@@ -18,10 +18,10 @@ import { Loger } from '../../utils/Loger';
 function SimilarExperts(props) {
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)
-    
+
 
     const renderItem = ({ item }) => (
-        
+
         <TouchableOpacity style={Style.renderMainView} onPress={() => props.navigateDetail()}>
 
             <IcnSimilarExperts fill={themeColor.buttonColor} style={Style.similerIcnView} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
@@ -58,23 +58,24 @@ function SimilarExperts(props) {
             </View>
         </TouchableOpacity>
     );
-    // const list = props.maxLimit != 0 ? props.data.slice(0, props.maxLimit) : props.data;
+    const onGetPaginations = () => {
+
+        if (props?.onGetPaginations())
+            props?.onGetPaginations()
+    }
     return (
         <View style={Style.MainView}>
             {
                 props.maxLimit != 0 &&
                 <View style={Style.titleView}>
                     <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
-                    {/* <TouchableOpacity onPress={() => navigation.navigate("ExpertDirectoryScreen", { id: item.category_id  })}>
-                        <Text style={Style.txtSeeMore}>{props.type === "ExpertScreen" ? Label.viewMore : Label.viewAll}</Text>
-                    </TouchableOpacity> */}
                 </View>
             }
             <FlatList
                 data={props.data}
                 renderItem={(item) => renderItem(item)}
                 keyExtractor={item => item.id}
-                onEndReached={props && props?.onGetPaginations()}
+                onEndReached={onGetPaginations}
             />
 
         </View>

@@ -7,7 +7,7 @@ const Style = StyleSheet.create({
     menuView: { flexDirection: 'row',marginVertical:AppUtil.getHP(0.8),alignItems:'center' },
     headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
     txtMenuOptions:{color:GetAppColor.pincolor,fontFamily:FONTS.robotRegular},
-    MainView: { width: '100%',},
+    MainView: { width: '100%', flex:1},
     menuOptions:{backgroundColor:'red'},
     titleView: {
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",

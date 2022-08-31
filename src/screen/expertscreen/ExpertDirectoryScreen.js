@@ -12,7 +12,7 @@ import ExpertDirectoryModel from '../../model/ExpertDirectoryModel';
 import { Service } from '../../service/Service';
 
 function ExpertDirectoryScreen(props) {
-    
+
     const [isCategories, setCategories] = useState([])
     const [isPageNo, setPageNo] = useState(1);
 
@@ -32,11 +32,11 @@ function ExpertDirectoryScreen(props) {
 
         var cat = [];
         var data = {
-            "frontuser_id":UserManager.userId,
-            "language":getLanguage(),
-            "categories_id" :props?.route?.params?.id,
-            "limit" :AppConfig.pageLimit,
-            "page":pageNo
+            "frontuser_id": UserManager.userId,
+            "language": getLanguage(),
+            "categories_id": props?.route?.params?.id,
+            "limit": AppConfig.pageLimit,
+            "page": pageNo
         }
 
         Service.post(EndPoints.experts, data, (res) => {
@@ -61,9 +61,9 @@ function ExpertDirectoryScreen(props) {
 
     return (
         <SafeAreaView style={Style.SafeAryView}>
-            <CommonHeader isType={"ExpertDirectoryScreen"} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
+            <CommonHeader isType={"ExpertDirectoryScreen"} id={props?.route?.params?.id} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
-                <SimilarExperts data={isCategories} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={()=>onGetPaginations}/>
+                <SimilarExperts data={isCategories} navigateDetail={() => props.navigation.navigate("ExpertDetailsScreen")} onGetPaginations={() => onGetPaginations} />
             </View>
         </SafeAreaView>
     )

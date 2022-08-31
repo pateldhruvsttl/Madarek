@@ -92,7 +92,7 @@ const UserCategory = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} onFilter={() => setFilterVisible(!isFilterVisible)} />
+            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }}/>
             <View style={Style.searchView}>
                 <TextInput
                     style={Style.input}
@@ -105,7 +105,8 @@ const UserCategory = (props) => {
                     isSearch ?
                         <TouchableOpacity onPress={() => onCloseSearch()}>
                             <IcnClose height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} color={GetAppColor.grayBorder} />
-                        </TouchableOpacity> :
+                        </TouchableOpacity>
+                        :
                         <GraySearchIcon height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
 
                 }
