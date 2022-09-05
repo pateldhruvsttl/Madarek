@@ -70,7 +70,10 @@ const LoginScreen = (props) => {
             if (res.statusCode == 1) {
 
                 if (res?.data?.corporateSubDomain)
-                    setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
+                 {  
+                    Service.setAuth()
+                     setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
+                }
 
                 UserManager.userId = res.data.userId;
                 UserManager.email = res.data.email;
