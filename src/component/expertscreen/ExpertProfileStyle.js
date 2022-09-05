@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { AppUtil } from '../../utils/AppUtil';
 import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
@@ -45,9 +45,10 @@ const Style = StyleSheet.create({
     },
     btnConnectPending: {
         width: '62%', height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
+        // width: AppUtil.getWP(50), height: buttonHeight, borderRadius: AppUtil.getHP(0.5), borderWidth: AppUtil.getHP(0.2),
         marginTop: AppUtil.getHP(2), flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', alignItems: 'center'
     },
- 
+
     followBtn: {
         height: buttonHeight,
         alignItems: 'center',
@@ -74,17 +75,11 @@ const Style = StyleSheet.create({
         paddingStart: AppUtil.getWP(3)
 
     },
-    expertBtnOne: {
+    expertBtn: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingHorizontal: AppUtil.getWP(5)
-    },
-    expertBtnTwo: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent:'space-between',
-        paddingHorizontal: AppUtil.getWP(2),
+        justifyContent: 'space-between',
+        paddingHorizontal: Platform.OS == 'ios' ? AppUtil.getWP(1.5) : AppUtil.getWP(2),
     },
     txtBtnInner: { fontSize: buttonFontSize, fontFamily: FONTS.robotMedium, },
 

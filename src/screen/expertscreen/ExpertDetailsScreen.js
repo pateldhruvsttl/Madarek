@@ -15,13 +15,9 @@ import { useNavigation } from '@react-navigation/native';
 import { EndPoints } from '../../service/EndPoints';
 import { Service } from '../../service/Service';
 import { Loger } from '../../utils/Loger';
-import ExpertInsight from '../../model/ExpertInsights';
-import { deviceId } from '../../utils/Constant';
-import ExpertInsightDetail from '../../model/ExpertInsightDetail';
 import { AppConfig, getLanguage } from '../../manager/AppConfig';
 import { UserManager } from '../../manager/UserManager';
 import ExpertDetail from '../../model/ExpertDetail';
-import { baseURL } from '../../utils/Constant';
 import { onShare } from '../../component/share/ShareContent';
 
 function ExpertDetailsScreen(props) {
@@ -34,12 +30,25 @@ function ExpertDetailsScreen(props) {
     // const ExpertInsight = props.route.params.item
 
     const navigation = useNavigation()
-    // console.log('props is getting', props.route.params.id);
     const id = props.route.params.id
-    
+
     useEffect(() => {
         expertDetails(id);
     }, [])
+
+    const joinExpert = () => {
+        data = {
+            frontuser_id: UserManager.userId,
+            expert_id: id,
+            language: getLanguage()
+        }
+        Service.post(EndPoints.joinExpert, data, (res) => {
+            Loger.onLog('res of joinExpert', res);
+        },
+            (err) => {
+                Loger.onLog('err of joinExpert', err);
+            })
+    }
 
     const expertDetails = (id) => {
         let data = {
@@ -109,18 +118,14 @@ function ExpertDetailsScreen(props) {
             EndPoints.expertLikeUnlike,
             data,
             (res) => {
-                console.log('res is getting', res);
                 const likeDislike = res?.data === 'dislike' ? true : false;
                 const expertArr = expertData;
-
-
                 if (expertData.id == id) {
                     expertArr.favorite = likeDislike;
                 }
                 setExpertData({ ...expertArr });
-
-
             },
+
             (err) => {
                 Loger.onLog("err of challengeLikeUnlike", err);
             }
@@ -136,6 +141,7 @@ function ExpertDetailsScreen(props) {
                     <ExpertProfile data={expertData}
                         onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                         onLikeIdeas={(id) => onLikeIdeas(id)}
+                        joinExpert={() => joinExpert()}
                     />
 
                     {expertInsight && expertInsight.length > 0 &&
@@ -145,16 +151,16 @@ function ExpertDetailsScreen(props) {
                     {similarExpert && similarExpert.length > 0 &&
                         <View style={Style.similarExpertView}>
                             <SimilarExperts data={similarExpert} maxLimit={2} title={Label.SimilarExperts}
-                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} onGetPaginations={()=> null}/>
+                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} onGetPaginations={() => null} />
                         </View>}
 
                     <View style={Style.footerView}>
                         <Text style={Style.txtTitle}>{Label.ExpertDes}</Text>
                         <View style={Style.btnView}>
-                            <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("BecomeAnExpert")}>
+                            {/* <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("BecomeAnExpert")}>
                                 <Text style={[Style.txt, { color: themeColor.buttonColor }]}>{Label.LearnMore}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]}>
+                            </TouchableOpacity> */}
+                            <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]} onPress={() => props.navigation.navigate('Signup')}>
                                 <Text style={[Style.txt, { color: GetAppColor.white }]}>{Label.ApplyNow}</Text>
                             </TouchableOpacity>
                         </View>

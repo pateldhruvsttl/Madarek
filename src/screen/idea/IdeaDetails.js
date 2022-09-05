@@ -31,9 +31,6 @@ import VideosPlayer from '../videoplayer/VideosPlayer';
 import { set } from 'react-native-reanimated';
 
 const IdeaDetails = (props) => {
-
-
-console.log('props id not showing',props);
   const navigation = useNavigation();
   const item = props.route.params
   const [expertInsight, setExpertInsight] = useState([]);

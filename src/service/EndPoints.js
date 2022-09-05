@@ -35,5 +35,8 @@ export const EndPoints = {
     submitIdeaList:"submittedideas",
     submitidea:"submitidea",
     changepassword:"changepassword",
-    expertDetail:"expertdetail"
+    expertDetail:"expertdetail",
+    sendEmailOtp:"sendemailotp",
+    loginWithEmail:"loginwithemail",
+    joinExpert:"joinexpert",
 }

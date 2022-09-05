@@ -51,7 +51,7 @@ import NotificationSetting from '../screen/notifications/NotificationSetting';
 import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithComment/ExpertInsightDetailWithComment';
 import IdeasFilter from '../component/filter/IdeasFilter';
 import ChangePasswordScreen from '../screen/changePassword/ChangePasswordScreen'
-
+import AllRequestStatus from '../component/dashboard/AllRequestStatus';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -102,6 +102,7 @@ function ScreenStack() {
             <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
             <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
             <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
+            <Stack.Screen name="AllRequestStatus" component={AllRequestStatus} />
 
 
             {/* // unUsed Screen  */}

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
+import { onShare } from "../share/ShareContent";
 import { AppUtil } from "../../utils/AppUtil";
 import { Label } from "../../utils/StringUtil";
 import IcnClander from "../../assets/svg/IcnClander"
@@ -128,9 +128,9 @@ const ChallengeListImage = (props) => {
                                 <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
                             </MenuTrigger>
                             <MenuOptions >
-                                <MenuOption style={LISTSTYLE.menuView}>
+                                <MenuOption style={LISTSTYLE.menuView} onSelect={() => onShare(`contest-detail/${item.id}`)}>
                                     <IcnShareIcon stroke={GetAppColor.pincolor} style={LISTSTYLE.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                    <Text style={LISTSTYLE.txtMenuOptions}>{"Share"}</Text>
+                                    <Text style={LISTSTYLE.txtMenuOptions}>{Label.Share}</Text>
                                 </MenuOption>
                             </MenuOptions>
                         </Menu>

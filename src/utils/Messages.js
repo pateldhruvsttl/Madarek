@@ -368,6 +368,10 @@ export const ARlabel = {
   _expertiseBrief:                "موجز الخبرة ",
   _requestDone:                   "تم الطلب ",
   _connect:                       "الاتصال",
+  _requestRejected:"Request Rejected",
+  _logOutCall : "Are you sure you want to logout?",
+  _userRequest : "User Request",
+  _noJoinRequest : "No join request"
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -824,5 +828,10 @@ export const USlabel = {
   _changePasswordSuccess: "The password has been successfully changed",
 
   _requestDone:"Request Done",
-  _connect:"Connect"
+  _connect:"Connect",
+  _requestRejected:"Request Rejected",
+  _logOutCall : "Are you sure you want to logout?",
+  _userRequest : "User Request",
+  _noJoinRequest : "No join request"
+
 }

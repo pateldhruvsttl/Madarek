@@ -23,7 +23,7 @@ import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
 import { UserManager } from '../../manager/UserManager'
 import ImageLoad from 'react-native-image-placeholder'
 import { Service } from '../../service/Service'
-import { deviceId } from '../../utils/Constant'
+import { deviceId, showMessageWithCallBack } from '../../utils/Constant'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
@@ -60,8 +60,10 @@ const MyDrawerScreen = (props) => {
     setSelectedButtonIndex(index)
 
   }
-
-  onLogoutPressed = () => {
+  const isLogOut = () => {
+    showMessageWithCallBack(Label.LogOutCall, () => { onLogoutPressed() })
+  }
+  const onLogoutPressed = () => {
     const data = {
       "language": getLanguage(),
       "frontuser_id": UserManager.userId,
@@ -145,7 +147,7 @@ const MyDrawerScreen = (props) => {
         </View>
         <View style={drawerStyles.bothSideView}>
           <View style={drawerStyles.leftItem}>
-            <TouchableOpacity onPress={() => props.navigation.navigate('SmeDashboardScreen')} style={drawerStyles.dashBoardButton}>
+            <TouchableOpacity onPress={() => props.navigation.navigate(UserManager.userRole == 1 ? 'UserDashboardScreen' : 'SmeDashboardScreen')} style={drawerStyles.dashBoardButton}>
               <Text style={drawerStyles.dashText}>{Label.Dashboard}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => props.navigation.navigate('SubmitIdeaScreen')} style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
@@ -258,8 +260,8 @@ const MyDrawerScreen = (props) => {
         </TouchableOpacity>
         <View style={drawerStyles.line} />
 
-        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => onLogoutPressed()}>
-          <LogoutIcn style={{transform: [{ rotate: _lang=='ar'?'180deg':'0deg' }]}} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
+        <TouchableOpacity style={drawerStyles.settingButton} onPress={() => isLogOut()}>
+          <LogoutIcn style={{ transform: [{ rotate: _lang == 'ar' ? '180deg' : '0deg' }] }} height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
           <Text style={drawerStyles.settingText}>{Label.Logout}</Text>
         </TouchableOpacity>
       </View>

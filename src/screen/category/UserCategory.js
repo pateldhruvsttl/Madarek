@@ -68,6 +68,7 @@ const UserCategory = (props) => {
     const onCloseSearch = () => {
 
         onWriteText("")
+        onGetData(isPageNo);
         Keyboard.dismiss()
     }
 
@@ -81,7 +82,8 @@ const UserCategory = (props) => {
 
     const renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]} onPress={() => props.navigation.navigate("ExpertDirectoryScreen", { id: item.category_id })}>
+            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]} 
+            onPress={() => props.navigation.navigate("ExpertDirectoryScreen", { id: item.category_id,categoryName:item.categoryName })}>
                 <View style={Style.heartView}>
                 </View>
                 <Image style={{ height: AppUtil.getHP(3.6), width: AppUtil.getHP(3.6) }} source={{ uri: item.categoryIcon }} />
