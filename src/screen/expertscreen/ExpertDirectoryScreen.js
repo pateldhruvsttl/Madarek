@@ -27,6 +27,35 @@ function ExpertDirectoryScreen(props) {
         }
     }
 
+    const onLikeIdeas = (id) => {
+        var data = {
+            "field_name": "expert_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'ExpertsLikedislike'
+        }
+        Service.post(EndPoints.expertLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            const expertListArr = isCategories;
+            expertListArr.map((ele, index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        expertListArr[index].isLike = likeDislike
+                        expertListArr[index].like = Number(expertListArr[index].like) + 1;
+                    }
+                    else {
+                        expertListArr[index].isLike = likeDislike
+                        expertListArr[index].like = Number(expertListArr[index].like) - 1;
+                    }
+                }
+            });
+            setCategories([...expertListArr]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
     const onGetData = (pageNo) => {
 
         var cat = [];
@@ -60,7 +89,10 @@ function ExpertDirectoryScreen(props) {
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDirectoryScreen"} id={props?.route?.params?.id} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
             <View style={Style.MainView}>
-                <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"} navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations} />
+                <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"}
+                    onLikeIdeas={(id) => onLikeIdeas(id)}
+                    navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations}
+                    categoryName={props.route.params.categoryName} />
             </View>
         </SafeAreaView>
     )

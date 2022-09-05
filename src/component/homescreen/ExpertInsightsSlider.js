@@ -63,8 +63,8 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                     <Text style={styles.categoryLabel}>{ele.category_name}</Text>
                 </TouchableOpacity>
             ))
-        return (
-            <View style={styles.renderMainView}>
+            return (
+                <TouchableOpacity style={styles.renderMainView} onPress={() =>navigation.navigate('ExpertDetailsScreen',{id:item.id})}>
 
                 <View style={styles.renderProfileView}>
                     <ImageLoad
@@ -104,7 +104,7 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                         <Text style={styles.title}>{item.totalComments}</Text>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 

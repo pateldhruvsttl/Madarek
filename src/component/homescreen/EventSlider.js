@@ -59,9 +59,9 @@ const EventSlider = ({ Entries }) => {
                     <Text numberOfLines={1} style={styles.txtsliderRendTitle}>{item.title}</Text>
                 </View>
 
-                <TouchableOpacity style={styles.btnSliderRend}>
+                {/* <TouchableOpacity style={styles.btnSliderRend}>
                     <Text style={styles.txtsliderRendBtnTitle}>{Label.SubnitIdea}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
             </View>
         );

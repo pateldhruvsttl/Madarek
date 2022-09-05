@@ -16,31 +16,33 @@ import { Loger } from "../../utils/Loger";
 import Dashboard from "../../model/Dashboard";
 import { UserManager } from "../../manager/UserManager";
 import { deviceId } from "../../utils/Constant";
-import { AppConfig } from "../../manager/AppConfig";
+import { AppConfig, getLanguage } from "../../manager/AppConfig";
 
 
 const SmeDashboardScreen = (props) => {
     const [dahboardData, setdahboardData] = useState([])
     const [requestData, setrequestData] = useState([])
     const [favouriteData, setfavouriteData] = useState([])
+    const [requestPending, setRequestPending] = useState([])
 
     // const list = DATA.slice(0, 2);
 
     useEffect(() => {
         onSmeDashboard();
     }, [])
-
     const onSmeDashboard = () => {
         const data = {
-            "frontuser_id":UserManager.userId,
+            "frontuser_id": UserManager.userId,
             "device_id": deviceId,
-            "token": AppConfig.token
+            "token": AppConfig.token,
+            "language": getLanguage()
         }
         Service.post(EndPoints.dashboard, data, (res) => {
             Loger.onLog('dashboard Response  ========>', res.data)
             if (res?.statusCode === "1") {
                 const dashboardArr = []
                 const joinRequest = []
+                const joinRequestPending = []
                 const favouriteIdeas = []
 
                 res.data.Dashboard.dashboard_data.map((ele) => {
@@ -48,12 +50,20 @@ const SmeDashboardScreen = (props) => {
                     dashboardArr.push(model)//{title: model.title, count: model.count}
                     setdahboardData(dashboardArr)
                 })
-                res?.data?.Join_Request.map((ele) => {
+                res?.data?.Join_Request && res?.data?.Join_Request.map((ele) => {
                     const model = new Dashboard(ele)
+                    const modelPending = new Dashboard(ele)
+
                     joinRequest.push(model);
                     setrequestData(joinRequest)
+                    
+                    if (ele.joinstatus == 'Pending') {
+                        joinRequestPending.push(modelPending)
+                        setRequestPending(joinRequestPending)
+                    }
+                    
                 })
-                res.data.Favourite_Ideas.map((ele) => {
+                res.data.Favourite_Ideas && res.data.Favourite_Ideas.map((ele) => {
                     const model = new Dashboard(ele)
                     favouriteIdeas.push(model);
                     setfavouriteData(favouriteIdeas)
@@ -73,11 +83,14 @@ const SmeDashboardScreen = (props) => {
             <View style={Style.MainView}>
                 <ScrollView>
                     <View style={Style.firstPos}>
-                       {dahboardData && dahboardData.length > 0 && <UserDetails data={dahboardData} {...props}/>} 
+                        {dahboardData && dahboardData.length > 0 && <UserDetails data={dahboardData}  {...props} />}
                     </View>
 
                     <View style={Style.secondPos}>
-                        <JointRequest data={requestData} isTitle={Label.UserJoinRequest} />
+                        <JointRequest data={requestData} isTitle={Label.UserJoinRequest}
+                            navigateScreen={(data) => props.navigation.navigate("AllRequestStatus", data)}
+                            dataPending={requestPending}
+                        />
                     </View>
 
                     {/* <View style={Style.firstPos}>

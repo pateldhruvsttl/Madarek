@@ -10,6 +10,7 @@ import Style from './SimilarExpertsStyle'
 
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import IcnSimilarExperts from "../../assets/svg/IcnSimilarExperts"
 import ImageLoad from 'react-native-image-placeholder';
@@ -47,9 +48,18 @@ function SimilarExperts(props) {
 
                     <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                     <Text style={Style.icnTitle}>{item.see}</Text>
-
-                    <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                    <Text style={Style.icnTitle}>{item.like}</Text>
+                    <View style={Style.secondInnerCalView}>
+                        {item.isLike ?
+                            <TouchableOpacity onPress={() => props.onLikeIdeas(item.id)}>
+                                <IcnThumsUpBlack height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            </TouchableOpacity>
+                            :
+                            <TouchableOpacity onPress={() => props.onLikeIdeas(item.id)}>
+                                <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            </TouchableOpacity>
+                        }
+                        <Text style={Style.icnTitle}>{item.like}</Text>
+                    </View>
 
                     <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                     <Text style={Style.icnTitle}>{item.comment}</Text>
@@ -70,9 +80,16 @@ function SimilarExperts(props) {
         <View style={Style.MainView}>
             {
                 props.maxLimit != 0 &&
-                <View style={Style.titleView}>
-                    <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
-                </View>
+
+                    props.title ?
+                    <View style={Style.titleView}>
+                        <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
+                    </View>
+                    :
+                    <View style={[Style.titleView,Style.addTopSpace]}>
+                        <Text style={Style.txtTitleOne}><Text style={Style.txtTitleTwo}>{`${list.length} Experts `}</Text>{props.categoryName}</Text>
+                    </View>
+
             }
             <FlatList
                 data={list}

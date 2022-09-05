@@ -27,6 +27,7 @@ import { EndPoints } from "../../service/EndPoints";
 import { Loger } from "../../utils/Loger";
 import WebViewComp from "../webview/WebViewComp";
 import moment from "moment";
+import { onShare } from "../share/ShareContent";
 
 const IdeaContent = (props) => {
 
@@ -280,13 +281,13 @@ const IdeaContent = (props) => {
                             </View>
 
                             <View style={Style.rightSide}>
-                                <TouchableOpacity style={Style.likeBtn}>
+                                {/* <TouchableOpacity style={Style.likeBtn}>
                                     <IcnBlockChain
                                         height={AppUtil.getHP(3.2)}
                                         width={AppUtil.getHP(3.2)}
                                     />
-                                </TouchableOpacity>
-                                <TouchableOpacity style={Style.likeBtn}>
+                                </TouchableOpacity> */}
+                                <TouchableOpacity style={Style.likeBtn} onPress={() => onShare(`contest-detail/${props.id}`)}>
                                     <IcnShareIcon
                                         height={AppUtil.getHP(3.2)}
                                         width={AppUtil.getHP(3.2)}

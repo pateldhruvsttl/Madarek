@@ -9,7 +9,7 @@ export default class Dashboard {
         }
 
         this.title = obj?.text ? obj?.text :  Label.DefaultNumber
-        this.count =  Label.DefaultNumber
+        this.count = obj?.count || Label.DefaultNumber
         this.userPhoto = obj?.user_photo ? obj?.user_photo :  Label.DefaultNumber
         this.fullName = obj?.fullname ? obj?.fullname: Label.NoName
         this.joinStatus = obj?.joinstatus ? obj?.joinstatus : Label.NoStatus

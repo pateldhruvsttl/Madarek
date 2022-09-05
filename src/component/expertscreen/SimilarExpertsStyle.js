@@ -4,19 +4,28 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const Style = StyleSheet.create({
-    MainView: { width: '100%', flex: 1},
-    
-    titleView: { marginHorizontal: AppUtil.getHP(2), marginVertical:AppUtil.getHP(1), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" },
+    MainView: { width: '100%', flex: 1 },
+    titleView: {
+        marginHorizontal: AppUtil.getHP(2), marginVertical: AppUtil.getHP(1),
+        flexDirection: 'row',
+        justifyContent: 'space-between', alignItems: "center"
+    },
+    addTopSpace : {
+        marginTop: AppUtil.getHP(2)
+    },
 
     similerIcnView: { position: 'absolute', margin: AppUtil.getHP(1), end: 0 },
 
     txtTitle: { fontSize: AppUtil.getHP(2.2), color: GetAppColor.textColor, fontFamily: FONTS.robotBold },
+    txtTitleOne: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily: FONTS.robotMedium },
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular },
-
+    txtTitleTwo: {
+        color: GetAppColor.pincolor
+    },
     renderMainView: {
         width: AppUtil.getWP(92),
         padding: AppUtil.getWP(2),
-        marginVertical:'2%',
+        marginVertical: '2%',
         borderRadius: AppUtil.getHP(1),
         backgroundColor: GetAppColor.white,
         flexDirection: 'row',
@@ -27,21 +36,26 @@ const Style = StyleSheet.create({
         shadowRadius: 2.84,
         elevation: 2,
     },
-    
+
     rightItems: { width: AppUtil.getWP(18), alignItems: 'center', marginTop: AppUtil.getHP(0.5), },
     img: { width: AppUtil.getHP(8), height: AppUtil.getHP(8), borderRadius: AppUtil.getHP(4) },
-    
-    leftItems: { width: AppUtil.getWP(65), marginStart:6, marginTop: AppUtil.getHP(0.5), },
+
+    leftItems: { width: AppUtil.getWP(65), marginStart: 6, marginTop: AppUtil.getHP(0.5), },
 
     title: { fontSize: AppUtil.getHP(1.9), fontFamily: FONTS.robotMedium, color: GetAppColor.black },
     SubTitle: { fontSize: AppUtil.getHP(1.7), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, marginTop: AppUtil.getHP(0.2) },
-    
+
     calView: { flexDirection: 'row', alignItems: 'center', marginTop: AppUtil.getHP(0.2) },
-    icnTitle: { fontSize: AppUtil.getHP(1.5), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor},
+    icnTitle: { fontSize: AppUtil.getHP(1.5), marginStart: 2, marginEnd: AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor },
 
-    icnDes: { fontSize: AppUtil.getHP(1.7), marginStart:2, marginEnd:AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, margin: AppUtil.getHP(0.2) },
+    icnDes: { fontSize: AppUtil.getHP(1.7), marginStart: 2, marginEnd: AppUtil.getWP(5), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor, margin: AppUtil.getHP(0.2) },
 
-
+    secondInnerCalView: {
+        flexDirection: 'row',
+        // marginEnd: AppUtil.getHP(1.3),
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
 });
 
 export default Style;

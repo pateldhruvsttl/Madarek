@@ -157,7 +157,7 @@ function ExpertProfile(props) {
                         {getCategories()}
                     </View>
                 }
-                <View style={data.joinRequest == "pending" ? styles.expertBtnOne : styles.expertBtnTwo}>
+                <View style={styles.expertBtn}>
                     <TouchableOpacity style={styles.followBtn} onPress={() => props.onFavoriteIdeas(data.id)}>
                         {data.favorite ?
                             <IcnLikeRed height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
@@ -166,25 +166,30 @@ function ExpertProfile(props) {
                         }
                         <Text style={styles.followBtnTitle}>{Label.Follow}</Text>
                     </TouchableOpacity>
-                    
                     {
                         data.joinRequest == "Request Done" ?
-
-                            <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]}>
+                            <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]} disabled>
                                 <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                 <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.RequestDone}</Text>
                             </TouchableOpacity>
                             :
                             data.joinRequest == "Accepted" ?
-                                <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]}>
+                                <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]} disabled>
                                     <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                     <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.YouAreConnected}</Text>
                                 </TouchableOpacity>
                                 :
-                                <TouchableOpacity style={[styles.btnConnectPending, { borderColor: themeColor.buttonColor }]}>
-                                    <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.Connect}</Text>
-                                </TouchableOpacity>
-
+                                data.joinRequest == "Rejected" ?
+                                    <TouchableOpacity style={[styles.btnConnect, { borderColor: themeColor.buttonColor }]} disabled>
+                                        <IcnSimilarExperts fill={themeColor.buttonColor} style={styles.callIcn} height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
+                                        <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.RequestRejected}</Text>
+                                    </TouchableOpacity>
+                                    :
+                                    data.joinRequest == "" ?
+                                        <TouchableOpacity style={[styles.btnConnectPending, { borderColor: themeColor.buttonColor }]} onPress={() => props.joinExpert()}>
+                                            <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.Connect}</Text>
+                                        </TouchableOpacity>
+                                        : null
 
                     }
                 </View>

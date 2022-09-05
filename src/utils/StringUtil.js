@@ -373,6 +373,10 @@ export const Label = {
 
   RequestDone : isRTL ? ARlabel._requestDone : USlabel._requestDone,
   Connect : isRTL ? ARlabel._connect : USlabel._connect,
+  RequestRejected : isRTL ? ARlabel._requestRejected : USlabel._requestRejected,
+  LogOutCall : isRTL ? ARlabel._logOutCall : USlabel._logOutCall,
+  UserRequest : isRTL ? ARlabel._userRequest : USlabel._userRequest,
+  NoJoinRequest : isRTL ? ARlabel._noJoinRequest : USlabel._noJoinRequest,
 
 
-}   
+} 
