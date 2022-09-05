@@ -10,6 +10,14 @@ const Style = StyleSheet.create({
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
         marginBottom: AppUtil.getHP(1)
     },
+    nodataView : {
+        height:AppUtil.getHP(10),
+        margin:'2%',
+        padding: '4%', borderRadius: AppUtil.getHP(1),
+        alignItems: "center", 
+        justifyContent:"center"
+    },
+    txtNoDataFound:{color:GetAppColor.black, fontSize:AppUtil.getHP(1.8)},
 
     txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},

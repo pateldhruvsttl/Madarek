@@ -120,13 +120,19 @@ const UserDashboardIdeasList = (props) => {
                     {/* <Text style={Style.txtSeeMore}>{Label.seeMore}</Text> */}
                 </View>
             }
-
-            <FlatList
-                data={props.data}
-                scrollEnabled={props?.scrollEnabled ? true : false}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-            />
+            {
+                props.data.length > 0 ?
+                    <FlatList
+                        data={props.data}
+                        scrollEnabled={props?.scrollEnabled ? true : false}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                    :
+                    <View style={Style.nodataView}>
+                        <Text style={Style.txtNoDataFound}>{Label.NoJoinRequest}</Text>
+                    </View>
+            }
             {
                 props?.btn &&
                 <TouchableOpacity style={Style.bottomBtn} onPress={() => navigation.navigate("IdeasListScreen")}>
