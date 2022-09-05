@@ -50,11 +50,11 @@ function SimilarExperts(props) {
                     <Text style={Style.icnTitle}>{item.see}</Text>
                     <View style={Style.secondInnerCalView}>
                         {item.isLike ?
-                            <TouchableOpacity onPress={() => props.onLikeIdeas(item.id)}>
+                            <TouchableOpacity onPress={() => props.onLikeIdeas ? props.onLikeIdeas(item.id) : null}>
                                 <IcnThumsUpBlack height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             </TouchableOpacity>
                             :
-                            <TouchableOpacity onPress={() => props.onLikeIdeas(item.id)}>
+                            <TouchableOpacity onPress={() => props.onLikeIdeas ? props.onLikeIdeas(item.id) : null}>
                                 <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             </TouchableOpacity>
                         }
