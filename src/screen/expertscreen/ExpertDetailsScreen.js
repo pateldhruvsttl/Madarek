@@ -60,6 +60,9 @@ function ExpertDetailsScreen(props) {
             Loger.onLog('response of expertDetail', res.data);
             const model = new ExpertDetail(res?.data?.expertSRows)
             setExpertData(model)
+            if (!res.data?.expertSRows) {
+                props.navigation.goBack()
+            } 
 
             const similarData = []
             res?.data?.similar_eperts.map((item) => {
