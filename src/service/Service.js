@@ -4,12 +4,18 @@ import { AppUtil } from '../utils/AppUtil';
 import { Loger } from '../utils/Loger';
 
 const axiosInstance = axios.create();
-// const baseURL = getBaseURL();
-
 axios.defaults.headers.common['Authorization'] = "";
 // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
 export const Service = {
+    
+    setAuth:()=>{
+        axios.auth = {
+            username: 'admin',
+            password: 'admin123'
+          }
+    },
+
     get: (endPoint, success, error) => {
         AppUtil.onLoding(true);
         Loger.onServerLog("Req", getBaseURL() + endPoint, "Get Method");
