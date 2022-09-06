@@ -77,19 +77,21 @@ const UserDashboardScreen = (props) => {
                     </View>
 
                     <View style={Style.secondPos}>
-                        <UserDashboardIdeasList data={requestData} isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
+                        <UserDashboardIdeasList data={requestData} 
+                        navigateScreen={(data) => props.navigation.navigate("AllRequestStatus", data)}
+                        isTitle={Label.MyIdeaJointRequest} isType={"Request"} />
                     </View>
 
                     {/* <View style={Style.firstPos}>
                         <UserDashboardIdeasList data={favouriteData.slice(0, 2)} isTitle={Label.IdeaMaturation} isType={"Maturation"} />
                     </View> */}
 
-                    <View style={Style.bottomBarView}>
+                    {/* <View style={Style.bottomBarView}>
                         <Text style={Style.txtBtnTitle}>{Label.readyToSubmitYourIdea}</Text>
                         <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]}>
                             <Text style={Style.txtBtn}>{Label.submitIdea}</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ScrollView >
             </View>

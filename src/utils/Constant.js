@@ -36,6 +36,22 @@ export const showMessageWithCallBack = (message, callBack) => {
     }
 }
 
+export const showMessageWithAnotherCallBack = (message, callBack) => {
+    if (Platform.OS == 'ios') {
+        Alert.alert(message, null,
+            [
+                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
+                { text: 'OKAY', onPress: () => { callBack() } },
+            ]);
+    } else {
+        Alert.alert(null, message,
+            [
+                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
+                { text: 'OKAY', onPress: () => { callBack() } },
+            ]);
+    }
+}
+
 export const showMessageWithCancelCallBack = (message, callBack) => {
     if (Platform.OS == 'ios') {
         Alert.alert(message, null,

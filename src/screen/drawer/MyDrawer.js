@@ -23,7 +23,7 @@ import ChallengeIcn from '../../assets/svg/drawerIcon/ChallengeIcn'
 import { UserManager } from '../../manager/UserManager'
 import ImageLoad from 'react-native-image-placeholder'
 import { Service } from '../../service/Service'
-import { deviceId, showMessageWithCallBack } from '../../utils/Constant'
+import { deviceId, showMessageWithAnotherCallBack, showMessageWithCallBack } from '../../utils/Constant'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
@@ -31,6 +31,8 @@ import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
 import IcnSelect from "../../assets/svg/IcnSelect"
+import { showMessageWithCancelCallBack } from '../../utils/Constant'
+import { StackActions,NavigationActions } from '@react-navigation/native'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -60,8 +62,14 @@ const MyDrawerScreen = (props) => {
     setSelectedButtonIndex(index)
 
   }
+
   const isLogOut = () => {
-    showMessageWithCallBack(Label.LogOutCall, () => { onLogoutPressed() })
+    showMessageWithAnotherCallBack(Label.LogOutCall, (value) => {
+      if (value == "CANCEL") {
+        return;
+      }
+      onLogoutPressed()
+    })
   }
   const onLogoutPressed = () => {
     const data = {
@@ -73,8 +81,9 @@ const MyDrawerScreen = (props) => {
     Service.post(EndPoints.logout, data, (res) => {
       Loger.onLog('Drawer Logout response', res);
       AsyncStorage.setItem('@user', JSON.stringify(null))
-      props.navigation.navigate("LoginScreen")
-
+      props.navigation.closeDrawer();
+      props.navigation.dispatch(StackActions.popToTop());
+     
     }, (err) => {
       Loger.onLog('Drawer Logout error', err);
     })

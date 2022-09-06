@@ -39,8 +39,9 @@ export default class ExpertDetail {
         this.profile = obj?.user_photo || ''
         this.name = obj?.fullname || Label.NoName
         this.ideaDescription = obj?.idea_description || Label.NoDescription
-        this.like = obj?.my_total_liked_id || Label.DefaultNumber
+        this.like = obj?.toatal_liked_expert || Label.DefaultNumber
         this.comment = obj?.total_expert_comment || Label.DefaultNumber
+        this.isLike = obj?.my_total_liked_id > 0 ? true : false;
         this.see = obj?.total_views || Label.DefaultNumber
         this.category = obj?.category || Label.NoCategory
         this.post = obj?.idea_description || Label.NoDescription

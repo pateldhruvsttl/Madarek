@@ -36,14 +36,19 @@ function ExpertDetailsScreen(props) {
         expertDetails(id);
     }, [])
 
-    const joinExpert = () => {
+    const joinExpert = (index) => {
         data = {
             frontuser_id: UserManager.userId,
-            expert_id: id,
+            expert_id: index,
             language: getLanguage()
         }
         Service.post(EndPoints.joinExpert, data, (res) => {
             Loger.onLog('res of joinExpert', res);
+            // const expertArr = expertData
+            // if(expertArr.id == index){
+            //     expertArr.joinRequest = res.data
+            // }
+            // setExpertData({...expertArr})
         },
             (err) => {
                 Loger.onLog('err of joinExpert', err);
@@ -62,7 +67,7 @@ function ExpertDetailsScreen(props) {
             setExpertData(model)
             if (!res.data?.expertSRows) {
                 props.navigation.goBack()
-            } 
+            }
 
             const similarData = []
             res?.data?.similar_eperts.map((item) => {
@@ -134,6 +139,35 @@ function ExpertDetailsScreen(props) {
             }
         );
     }
+    const onLikeSimilarExpert = (id) => {
+        var data = {
+            "field_name": "expert_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": 'ExpertsLikedislike'
+        }
+        Service.post(EndPoints.expertLikeUnlike, data, (res) => {
+
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            const similarArr = similarExpert;
+
+            similarArr && similarArr.map((ele,index) => {
+                if (ele.id == id) {
+                    if (likeDislike == 1) {
+                        similarArr[index].isLike = likeDislike
+                        similarArr[index].like = Number(similarArr[index].like) + 1;
+                    } else {
+                        similarArr[index].isLike = likeDislike
+                        similarArr[index].like = Number(similarArr[index].like) - 1;
+                    }
+                }
+            })
+            setSimilarExpert([...similarArr]);
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
     const message = `experts-profile/${id}`
     return (
         <SafeAreaView style={Style.SafeAryView}>
@@ -154,6 +188,7 @@ function ExpertDetailsScreen(props) {
                     {similarExpert && similarExpert.length > 0 &&
                         <View style={Style.similarExpertView}>
                             <SimilarExperts data={similarExpert} maxLimit={2} title={Label.SimilarExperts}
+                            onLikeIdeas={(id) => onLikeSimilarExpert(id)}
                                 navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} onGetPaginations={() => null} />
                         </View>}
 

@@ -19,6 +19,7 @@ const UserCategory = (props) => {
 
     const { themeColor } = useSelector((state) => state)
     const [isCategories, setCategories] = useState([])
+    const [isCategoriesOne, setCategoriesOne] = useState([])
     const [isSearch, setSearch] = useState(false);
     const [searchStr, setSearchStr] = useState("")
     const [isPageNo, setPageNo] = useState(1);
@@ -42,8 +43,12 @@ const UserCategory = (props) => {
                 cat.push(model)
             });
 
-            if (pageNo == 1) setCategories(cat);
-            else setCategories([...isCategories, ...cat]);
+            if (pageNo == 1) { setCategories(cat); setCategoriesOne(cat); }
+            else {
+                setCategories([...isCategories, ...cat]);
+                setCategoriesOne([...isCategories, ...cat]);
+
+            }
 
 
 
@@ -58,15 +63,29 @@ const UserCategory = (props) => {
             setSearch(true)
         }
         setSearchStr(text)
-        const searchData = isCategories.filter(task => task.categoryName.includes(text))
-        var cat = []
-        searchData.forEach(obj => {
-            cat.push(obj)
-        });
-        setCategories(cat)
+        if (text) {
+            const searchData = isCategoriesOne.filter((item) => {
+                const itemData = item.categoryName ? item.categoryName.toUpperCase() : ''.toUpperCase();
+               console.log('itemData',itemData);
+                const textData = text.toUpperCase();
+                console.log('textData',textData);
+                return itemData.indexOf(textData) > -1;
+            })
+            console.log('search',searchData);
+            setCategories(searchData)
+            setSearchStr(text)
+        }
+        else {
+            setCategories(isCategoriesOne)
+            setSearchStr(text)
+        }
+        // const searchData = isCategories.filter(task => task.categoryName.includes(text))
+        // var cat = []
+        // searchData.forEach(obj => {
+        //     cat.push(obj)
+        // });
     }
     const onCloseSearch = () => {
-
         onWriteText("")
         onGetData(isPageNo);
         Keyboard.dismiss()
@@ -82,8 +101,8 @@ const UserCategory = (props) => {
 
     const renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]} 
-            onPress={() => props.navigation.navigate("ExpertDirectoryScreen", { id: item.category_id,categoryName:item.categoryName })}>
+            <TouchableOpacity style={[Style.btnView, { borderColor: themeColor.headerColor }]}
+                onPress={() => props.navigation.navigate("ExpertDirectoryScreen", { id: item.category_id, categoryName: item.categoryName })}>
                 <View style={Style.heartView}>
                 </View>
                 <Image style={{ height: AppUtil.getHP(3.6), width: AppUtil.getHP(3.6) }} source={{ uri: item.categoryIcon }} />
@@ -94,7 +113,7 @@ const UserCategory = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }}/>
+            <CommonHeader isType={"userCategoryScreen"} onMenuClick={() => { props.navigation.openDrawer() }} />
             <View style={Style.searchView}>
                 <TextInput
                     style={Style.input}
@@ -122,7 +141,7 @@ const UserCategory = (props) => {
                 numColumns={'3'}
                 renderItem={renderItem}
                 onEndReached={onGetPaginations}
-
+                keyExtractor={(item, index) => index.toString()}
             />
 
         </SafeAreaView>

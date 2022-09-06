@@ -186,7 +186,7 @@ function ExpertProfile(props) {
                                     </TouchableOpacity>
                                     :
                                     data.joinRequest == "Connect" ?
-                                        <TouchableOpacity style={[styles.btnConnectPending, { borderColor: themeColor.buttonColor }]} onPress={() => props.joinExpert()}>
+                                        <TouchableOpacity style={[styles.btnConnectPending, { borderColor: themeColor.buttonColor }]} onPress={() => props.joinExpert(data.id)}>
                                             <Text style={[styles.txtBtnInner, { color: themeColor.buttonColor }]}>{Label.Connect}</Text>
                                         </TouchableOpacity>
                                         : null

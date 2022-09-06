@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import {
   View,
   Text,
@@ -24,10 +24,12 @@ import { Loger } from "../../utils/Loger";
 import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
 const SplashScreen = (props) => {
   const [selectLanguage, setselectLanguage] = useState(0);
-  const [selectIndex, setSelectIndex] = useState(1);
+  const [selectIndex, setSelectIndex] = useState();
+
 
   AsyncStorage.getItem("@user").then((response) => {
-    if (response !== null) {
+
+    if (response != 'null' && response != null) {
       const res = JSON.parse(response);
       UserManager.userId = res.data.userId;
       UserManager.email = res.data.email;
@@ -39,10 +41,11 @@ const SplashScreen = (props) => {
       if (res?.data?.corporateSubDomain)
         setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1');
 
-      props.navigation.navigate("HomeScreen");
+      props.navigation.replace("HomeScreen");
     } else {
-      props.navigation.navigate("LoginScreen");
+      props.navigation.replace("LoginScreen")
     }
+
   });
 
   //   setTimeout(() => {
@@ -52,41 +55,41 @@ const SplashScreen = (props) => {
   const Bold = ({ children }) => (
     <Text style={{ fontWeight: "bold" }}>{children}</Text>
   );
-  const renderCollapseView = () => {
-    return (
-      <View style={STYLES.dropDown}>
-        {languageList.map((lang, index) => (
-          <TouchableOpacity
-            style={[STYLES.selections]}
-            onPress={() => {
-              setselectLanguage(index);
-              setSelectIndex(1);
-              if (selectIndex == 0) {
-                props.navigation.navigate("LoginScreen");
-              }
-            }}
-          >
-            <Text
-              style={[
-                STYLES.itemPicker,
-                {
-                  color:
-                    selectLanguage === index
-                      ? GetAppColor.black
-                      : "rgba(0,0,0,0.3)",
-                },
-              ]}
-            >
-              {lang}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  };
-  const toggleButton = () => {
-    selectIndex == 0 ? setSelectIndex(1) : setSelectIndex(0);
-  };
+  // const renderCollapseView = () => {
+  //   return (
+  //     <View style={STYLES.dropDown}>
+  //       {languageList.map((lang, index) => (
+  //         <TouchableOpacity
+  //           style={[STYLES.selections]}
+  //           onPress={() => {
+  //             setselectLanguage(index);
+  //             setSelectIndex(1);
+  //             if (selectIndex == 0) {
+  //               props.navigation.replace("LoginScreen");
+  //             }
+  //           }}
+  //         >
+  //           <Text
+  //             style={[
+  //               STYLES.itemPicker,
+  //               {
+  //                 color:
+  //                   selectLanguage === index
+  //                     ? GetAppColor.black
+  //                     : "rgba(0,0,0,0.3)",
+  //               },
+  //             ]}
+  //           >
+  //             {lang}
+  //           </Text>
+  //         </TouchableOpacity>
+  //       ))}
+  //     </View>
+  //   );
+  // };
+  // const toggleButton = () => {
+  //   selectIndex == 0 ? setSelectIndex(1) : setSelectIndex(0);
+  // };
   return (
     <View style={STYLES.splashView}>
       <StatusBar
@@ -122,7 +125,7 @@ const SplashScreen = (props) => {
           </View>
         </View>
       </ImageBackground>
-      <View style={STYLES.bottomMenu}>
+      {/* <View style={STYLES.bottomMenu}>
         {selectIndex == 0 ? renderCollapseView() : null}
         <Text style={STYLES.content}>{Label.SelectLanguage}</Text>
         <TouchableOpacity onPress={toggleButton} style={STYLES.container}>
@@ -147,7 +150,7 @@ const SplashScreen = (props) => {
             </View>
           )}
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

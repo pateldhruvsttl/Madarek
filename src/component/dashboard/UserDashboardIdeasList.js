@@ -117,7 +117,9 @@ const UserDashboardIdeasList = (props) => {
                 props?.isTitle &&
                 <View style={Style.titleView}>
                     <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props?.isTitle}</Text>
-                    {/* <Text style={Style.txtSeeMore}>{Label.seeMore}</Text> */}
+                    <TouchableOpacity onPress={() => props.navigateScreen(props.data)}>
+                    <Text style={Style.txtSeeMore}>{Label.viewMore}</Text>
+                    </TouchableOpacity>
                 </View>
             }
             {

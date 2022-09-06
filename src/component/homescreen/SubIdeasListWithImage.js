@@ -62,7 +62,6 @@ const SubIdeasListWithImage = (props) => {
             props.onFavoriteIdeas(id)
         }
     }
-
     const renderIdeaItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>

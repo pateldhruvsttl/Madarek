@@ -74,6 +74,7 @@ const LoginScreen = (props) => {
             setTimer(60);
         }
     };
+    // console.log('timer',timer);
     const validateFields = () => {
         if (showPassword) {
             if (!emailValidate(email)) {
@@ -135,7 +136,7 @@ const LoginScreen = (props) => {
         const otpData = {
             device_id: deviceId,
             language: getLanguage(),
-            email_mobile: email
+            email: email
 
         }
         Service.post(EndPoints.sendEmailOtp, otpData, (res) => {
@@ -163,10 +164,9 @@ const LoginScreen = (props) => {
 
             if (res.statusCode == 1) {
 
-                if (res?.data?.corporateSubDomain)
-                 {  
+                if (res?.data?.corporateSubDomain) {
                     Service.setAuth()
-                     setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
+                    setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
                 }
 
                 UserManager.userId = res.data.userId;
@@ -192,7 +192,6 @@ const LoginScreen = (props) => {
     }
 
     const signWithOtp = () => {
-        setTimer(1)
         const data = {
             device_id: deviceId,
             language: getLanguage(),
@@ -214,7 +213,7 @@ const LoginScreen = (props) => {
                 AsyncStorage.setItem('@user', JSON.stringify(res))
                 navigateHomeScreen();
                 resetField();
-                setTimer(0)
+                setTimer(1)
             }
             else {
                 showMessage(res.message)

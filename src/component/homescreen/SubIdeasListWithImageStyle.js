@@ -4,36 +4,39 @@ import { GetAppColor } from '../../utils/Colors';
 import FONTS from '../../utils/Fonts';
 
 const Style = StyleSheet.create({
-    menuView: { flexDirection: 'row',marginVertical:AppUtil.getHP(0.8),alignItems:'center' },
+    menuView: { flexDirection: 'row', marginVertical: AppUtil.getHP(0.8), alignItems: 'center' },
     headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
-    txtMenuOptions:{color:GetAppColor.pincolor,fontFamily:FONTS.robotRegular},
-    MainView: { width: '100%', flex:1},
-    menuOptions:{backgroundColor:'red'},
+    txtMenuOptions: { color: GetAppColor.pincolor, fontFamily: FONTS.robotRegular },
+    MainView: { width: '100%' },
+    menuOptions: { backgroundColor: 'red' },
     titleView: {
         marginHorizontal: AppUtil.getHP(2), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center",
         marginBottom: AppUtil.getHP(1)
     },
 
-    titleAnotherScreen : {
+    titleAnotherScreen: {
         color: GetAppColor.pincolor,
         fontFamily: FONTS.robotBold,
         fontSize: AppUtil.getHP(2.2),
         textAlign: 'left',
     },
-    seeMoreAnotherScreen : {
+    seeMoreAnotherScreen: {
         fontSize: AppUtil.getHP(1.7),
         color: GetAppColor.pincolor,
         fontFamily: FONTS.robotRegular
     },
 
 
-    txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily:FONTS.robotBold },
-    txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily:FONTS.robotRegular},
+    txtTitle: { fontSize: AppUtil.getHP(2.1), color: GetAppColor.textColor, fontFamily: FONTS.robotBold },
+    txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular },
 
     renderMainView: {
-        margin:'2%',
-        padding: '4%', borderRadius: AppUtil.getHP(1),
-        alignItems: "center", backgroundColor: GetAppColor.white, flexDirection: 'row', justifyContent: "space-between",
+        margin: '2%',
+        padding: '4%',
+        borderRadius: AppUtil.getHP(1),
+        alignItems: "center", backgroundColor: GetAppColor.white,
+        flexDirection: 'row',
+        justifyContent: "space-between",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -44,45 +47,45 @@ const Style = StyleSheet.create({
         elevation: 2,
     },
 
-    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), borderWidth:0.5, borderColor:GetAppColor.disableBorder,overflow:'hidden' },
+    img: { width: "100%", height: AppUtil.getHP(13), borderRadius: AppUtil.getHP(1), borderWidth: 0.5, borderColor: GetAppColor.disableBorder, overflow: 'hidden' },
 
     rightItems: { width: '40%', },
-    leftItems: { width: '55%'},
+    leftItems: { width: '55%' },
 
     calView: { flexDirection: 'row', alignItems: 'center' },
-    
+
     callIcn: { marginEnd: AppUtil.getHP(1) },
-    callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart:AppUtil.getHP(1), },
+    callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart: AppUtil.getHP(1), },
 
-    title: {fontSize: AppUtil.getHP(1.3), fontFamily:FONTS.robotMedium, color:GetAppColor.textColor},
-    
-    SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily:FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
+    title: { fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, color: GetAppColor.textColor },
 
-    secondCalView: { alignItems:'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start'},
-    secondInnerCalView: {flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems:'center' },
-    moreView:{ flex: 1, alignItems: 'flex-end' },
+    SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily: FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
+
+    secondCalView: { alignItems: 'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
+    secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems: 'center' },
+    moreView: { flex: 1, alignItems: 'flex-end' },
     bottomBtn: {
-        height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor:GetAppColor.white,
+        height: AppUtil.getHP(5), borderColor: GetAppColor.lightOrange, backgroundColor: GetAppColor.white,
         borderRadius: AppUtil.getHP(1), borderWidth: AppUtil.getHP(0.1), justifyContent: 'center', alignItems: 'center', margin: AppUtil.getHP(2),
     },
-    txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily:FONTS.robotMedium },
+    txtBottomBtn: { fontSize: AppUtil.getHP(2), color: GetAppColor.lightOrange, fontFamily: FONTS.robotMedium },
 
     likeUnlikeIcn: { paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 },
-    likeUnlikeBtn : {width:AppUtil.getHP(2),height:AppUtil.getHP(4),paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5},
+    likeUnlikeBtn: { width: AppUtil.getHP(2), height: AppUtil.getHP(4), paddingHorizontal: AppUtil.getHP(2), position: 'absolute', end: 0, top: 5 },
     rewordView: {
         width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomEndRadius: AppUtil.getHP(1),
         borderBottomStartRadius: AppUtil.getHP(1),
-        position: 'absolute', backgroundColor: GetAppColor.blackTransperent, flexDirection:'row',
-        alignItems:'center'
+        position: 'absolute', backgroundColor: GetAppColor.blackTransperent, flexDirection: 'row',
+        alignItems: 'center'
     },
     rewordViewAlt: {
         width: '100%', height: AppUtil.getWP(7), bottom: 0, borderBottomEndRadius: AppUtil.getHP(1),
         borderBottomStartRadius: AppUtil.getHP(1),
-        position: 'absolute', flexDirection:'row',
-        alignItems:'center'
+        position: 'absolute', flexDirection: 'row',
+        alignItems: 'center'
     },
 
-    winningIcn: { marginStart: AppUtil.getHP(1)},
+    winningIcn: { marginStart: AppUtil.getHP(1) },
 });
 
 export default Style;
