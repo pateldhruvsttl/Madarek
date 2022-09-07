@@ -66,12 +66,10 @@ const UserCategory = (props) => {
         if (text) {
             const searchData = isCategoriesOne.filter((item) => {
                 const itemData = item.categoryName ? item.categoryName.toUpperCase() : ''.toUpperCase();
-               console.log('itemData',itemData);
                 const textData = text.toUpperCase();
-                console.log('textData',textData);
                 return itemData.indexOf(textData) > -1;
             })
-            console.log('search',searchData);
+                ;
             setCategories(searchData)
             setSearchStr(text)
         }

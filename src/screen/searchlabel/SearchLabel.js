@@ -177,7 +177,7 @@ const SearchLabel = (props) => {
                 _isAllIdeas.push(model);
             });
 
-            setData(_isAllIdeas);if (pageNo == 1) setData(_isAllIdeas);
+            setData(_isAllIdeas); if (pageNo == 1) setData(_isAllIdeas);
             else setData([...isData, ..._isAllIdeas]);
         }, (err) => {
             Loger.onLog("###", err)
@@ -359,6 +359,7 @@ const SearchLabel = (props) => {
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onItemPress={(item) => { props.navigation.navigate("IdeaDetails", item) }}
                 paginations={() => onGetPaginations("IDEAS")}
+                navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
             />
         )
     }
@@ -373,6 +374,8 @@ const SearchLabel = (props) => {
                 onFavoriteIdeas={(id) => onFavoriteChallenge(id)}
                 onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
                 paginations={() => onGetPaginations("CHALLENGE")}
+                navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+                isComment={"Challenges"}
             />
         )
 
@@ -380,7 +383,11 @@ const SearchLabel = (props) => {
 
     const renderExpertDirectory = () => {
         return (
-            <SimilarExperts data={isData} maxLimit={0} navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen",{id})} onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")} />
+            <SimilarExperts data={isData} maxLimit={0}
+                navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id })}
+                onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")}
+                navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+            />
         )
     }
 

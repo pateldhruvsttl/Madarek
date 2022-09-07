@@ -39,4 +39,6 @@ export const EndPoints = {
     sendEmailOtp:"sendemailotp",
     loginWithEmail:"loginwithemail",
     joinExpert:"joinexpert",
+    commentSection:"commentsection",
+    submitComment:"submitcomment",
 }

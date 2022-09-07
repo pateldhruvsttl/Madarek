@@ -52,6 +52,7 @@ import ExpertInsightDetailWithComment from '../screen/expertInsightDetailWithCom
 import IdeasFilter from '../component/filter/IdeasFilter';
 import ChangePasswordScreen from '../screen/changePassword/ChangePasswordScreen'
 import AllRequestStatus from '../component/dashboard/AllRequestStatus';
+import CommentScreen from '../component/comment/CommentScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -115,6 +116,7 @@ function HomeRoot() {
             <Stack.Screen name="ExpertInsightDetailWithComment" component={ExpertInsightDetailWithComment} />
             <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
             <Stack.Screen name="AllRequestStatus" component={AllRequestStatus} />
+            <Stack.Screen name="CommentScreen" component={CommentScreen} />
 
 
             {/* // unUsed Screen  */}

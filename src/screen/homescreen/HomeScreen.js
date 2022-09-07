@@ -76,14 +76,14 @@ const HomeScreen = (props) => {
       layout: "list",
       limit: AppConfig.pageLimit,
     };
-    Service.post(EndPoints.openChallenges,data,(res) => {
-        var opChallenges = [];
-        (res.data).slice(0, 2).forEach((element) => {
-          let model = new OpenChallengeModel(element); 
-          opChallenges.push(model);
-        });
-        setOpenChallenges(opChallenges);
-      },
+    Service.post(EndPoints.openChallenges, data, (res) => {
+      var opChallenges = [];
+      (res.data).slice(0, 2).forEach((element) => {
+        let model = new OpenChallengeModel(element);
+        opChallenges.push(model);
+      });
+      setOpenChallenges(opChallenges);
+    },
       (err) => {
         Loger.onLog("###", err);
       }
@@ -171,7 +171,7 @@ const HomeScreen = (props) => {
       const challengeArr = openChallenges;
       challengeArr.map((ele, index) => {
         if (ele.id == id) {
-          
+
           if (likeDislike == 1) {
             challengeArr[index].like = likeDislike
             challengeArr[index].totalLike = Number(challengeArr[index].totalLike) + 1;
@@ -201,7 +201,7 @@ const HomeScreen = (props) => {
       (res) => {
         const likeDislike = res?.data === 'dislike' ? true : false;
         const challengeArr = openChallenges;
-       
+
         challengeArr.map((ele, index) => {
           if (ele.id == id) {
             challengeArr[index].favorite = likeDislike;
@@ -245,7 +245,7 @@ const HomeScreen = (props) => {
     );
   };
   const onSetItem = (item) => {
-    
+
     switch (item) {
       case "Slider":
         return bannerList.length > 0 && <EventSlider Entries={bannerList} />;
@@ -268,6 +268,9 @@ const HomeScreen = (props) => {
                 onButtonPress={() => { setModalVisible(true); }}
                 onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", 0, { data: openChallenges, }); }}
                 onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }); }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }); }}
+                navigateToComment={(item) => { props.navigation.navigate("CommentScreen", { item: item }) }}
+                isComment={"Challenges"}
               />
             </View>
           )
@@ -303,7 +306,9 @@ const HomeScreen = (props) => {
               paddingVertical: AppUtil.getHP(2),
             }}
           >
-            <ExpertInsightsSlider Entries={expertInsight} />
+            <ExpertInsightsSlider Entries={expertInsight}
+              navigateToComment={(item) => { props.navigation.navigate("CommentScreen", { item: item }) }}
+            />
           </View>
         );
         break;

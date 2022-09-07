@@ -269,7 +269,7 @@ const ExpertInsightDetailWithComment = (props) => {
           </Text>
           {/* <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}> */}
           <View>
-          <WebViewComp data={props.ideaDescription} backgroundColor={GetAppColor.lightGrey}/>
+            <WebViewComp data={props.ideaDescription} backgroundColor={GetAppColor.lightGrey} />
           </View>
           {/* </Text> */}
 
@@ -319,14 +319,19 @@ const ExpertInsightDetailWithComment = (props) => {
       </>
     );
   };
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: GetAppColor.lightGrey, }}>
       <CommonHeader isType={"ExpertInsightDetailWithComment"} />
       <View style={ExpertInsightDetailStyle.MainView}>
         <ScrollView>
           <View style={ExpertInsightDetailStyle.container}>
             <IdeaSlider Entries={testData} />
-            <IdeaContent data={detail} isMyIdeaDetail={false} isExpert={true} isType={'ExpertInsightDetailWithComment'} />
+            <IdeaContent data={detail}
+              id={id}
+              isType={'ExpertWithComment'}
+              navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+              isMyIdeaDetail={false} isExpert={true} isType={'ExpertInsightDetailWithComment'} />
 
             {renderSubCell(detail)}
             {/* <View style={ExpertInsightDetailStyle.commentView}>

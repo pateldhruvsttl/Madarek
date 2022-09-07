@@ -41,9 +41,9 @@ function ViewMoreIdeas(props) {
             </View>
 
             <View style={Styles.selectView}>
-                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={props.isMySubmitType ? "MySubmittedIdea" : "Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} />}
-                {selectFilter == 1 && <SubIdeasList onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={props.isMySubmitType ? "MySubmittedIdea" : "Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} />}
-                {selectFilter == 2 && <SubIdeasListGraph onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} />}
+                {selectFilter == 0 && <SubIdeasListWithImage onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={props.isMySubmitType ? "MySubmittedIdea" : "Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} navigateToComment={props?.navigateToComment}/>}
+                {selectFilter == 1 && <SubIdeasList onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={props.isMySubmitType ? "MySubmittedIdea" : "Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} navigateToComment={props?.navigateToComment} />}
+                {selectFilter == 2 && <SubIdeasListGraph onItemPress={(item) => props?.propName?.navigateDetail(item)} data={props?.propName?.data} isType={"Ideas"} scrollEnabled={true} paginations={props?.paginations} onLikeIdeas={likeIdea} onFavoriteIdeas={favoriteIdea} navigateToComment={props?.navigateToComment} />}
             </View>
 
         </View>

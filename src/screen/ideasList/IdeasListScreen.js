@@ -341,8 +341,11 @@ const IdeasListScreen = (props) => {
                     onLikeIdeas: onLikeIdeas,
                     favoriteIdea: favoriteIdea,
                     navigateDetail: navigateDetail,
+                    
                   }}
                   paginations={() => paginations("AllIdeas")}
+                  navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+
                 />
               )}
             />
@@ -364,6 +367,8 @@ const IdeasListScreen = (props) => {
                     navigateDetail: navigateDetail,
                   }}
                   paginations={() => paginations("LatestIdeas")}
+                  navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+
                 />
               )}
             />
@@ -385,6 +390,8 @@ const IdeasListScreen = (props) => {
                     navigateDetail: navigateDetail,
                   }}
                   paginations={() => paginations("PopularIdeas")}
+                  navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+
                 />
               )}
             />
@@ -406,6 +413,8 @@ const IdeasListScreen = (props) => {
                     navigateDetail: navigateDetail,
                   }}
                   paginations={() => paginations("WinningIdeas")}
+                  navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+
                 />
               )}
             />

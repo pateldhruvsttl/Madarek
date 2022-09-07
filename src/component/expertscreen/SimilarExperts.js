@@ -60,8 +60,9 @@ function SimilarExperts(props) {
                         }
                         <Text style={Style.icnTitle}>{item.like}</Text>
                     </View>
-
-                    <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                    <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                        <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                    </TouchableOpacity>
                     <Text style={Style.icnTitle}>{item.comment}</Text>
                 </View>
 
@@ -86,7 +87,7 @@ function SimilarExperts(props) {
                         <Text style={[Style.txtTitle, { color: themeColor.buttonColor }]}>{props.title}</Text>
                     </View>
                     :
-                    <View style={[Style.titleView,Style.addTopSpace]}>
+                    <View style={[Style.titleView, Style.addTopSpace]}>
                         <Text style={Style.txtTitleOne}><Text style={Style.txtTitleTwo}>{`${list.length} Experts `}</Text>{props.categoryName}</Text>
                     </View>
 

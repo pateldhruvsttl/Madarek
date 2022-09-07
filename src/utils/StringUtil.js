@@ -377,6 +377,9 @@ export const Label = {
   LogOutCall : isRTL ? ARlabel._logOutCall : USlabel._logOutCall,
   UserRequest : isRTL ? ARlabel._userRequest : USlabel._userRequest,
   NoJoinRequest : isRTL ? ARlabel._noJoinRequest : USlabel._noJoinRequest,
+  Comment : isRTL ? ARlabel._comment : USlabel._comment,
+  CommentRequired : isRTL ? ARlabel._commentRequired : USlabel._commentRequired,
+  Replay : isRTL ? ARlabel._replay : USlabel._replay,
 
 
 } 

@@ -103,7 +103,9 @@ function ExpertProfile(props) {
                         <Text style={styles.title}>{totalLike || data.totalLike}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
+                        <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: data.id })}>
                         <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        </TouchableOpacity>
                         <Text style={styles.title}>{data.totalComment}</Text>
                     </View>
                 </View>

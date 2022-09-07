@@ -293,6 +293,7 @@ const ChallengesListScreen = (props) => {
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(id) => props.navigation.navigate("ChallengeDetail", { id: id })}
                     paginations={() => paginations("open_submission")}
+                    navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   />
                 ) : (
                   <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
@@ -316,6 +317,7 @@ const ChallengesListScreen = (props) => {
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(item) => props.navigation.navigate("ChallengeDetail", { id: item.id })}
                     paginations={() => paginations("coming_soon")}
+                    navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   />
                   :
                   <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
@@ -339,6 +341,7 @@ const ChallengesListScreen = (props) => {
                     likeChallenge={(id) => likeChallenge(id)}
                     navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
                     paginations={() => paginations("closed")}
+                    navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   /> :
                   <Text style={ListStyle.txtNodata}>{Label.NoDataFound}</Text>
 

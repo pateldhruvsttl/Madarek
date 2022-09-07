@@ -22,7 +22,9 @@ const TabPopularIdeas = (props) => {
                         onFavoriteIdeas={props.onFavoriteIdeas}
                         btn={props.data.length > 0 ? Label.SeeAllIdeas : ""}
                         onButtonPress={() => { navigation.navigate("IdeasListScreen",0) }}
-                        onItemPress={(item) => { navigation.navigate("IdeaDetails",item) }} />
+                        onItemPress={(item) => { navigation.navigate("IdeaDetails",item) }} 
+                        navigateToComment={(item) =>navigation.navigate("CommentScreen",{item:item}) }
+                        />
 
                     :
                     <View style={ Style.emptyView}>

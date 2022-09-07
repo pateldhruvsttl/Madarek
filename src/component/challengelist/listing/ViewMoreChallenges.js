@@ -15,6 +15,7 @@ const ViewMoreChallenges =(props) =>{
                 likeChallenge={(id) => props.likeChallenge(id)}
                 favoriteChallenge={(id) => props.favoriteChallenge(id)}
                 paginations={props?.paginations}
+                navigateToComment={(item) => props.navigateToComment(item)}
                 />
         </View>
     )

@@ -43,7 +43,9 @@ const GeneralExpert = (props) => {
                             <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
 
-                            <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                                <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            </TouchableOpacity>
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
                         </View>
                         <View style={ExpertInsightStyle.line} />
@@ -55,11 +57,11 @@ const GeneralExpert = (props) => {
         )
     }
     return (
-        <View style={{paddingBottom:AppUtil.getHP(5)}}>
+        <View style={{ paddingBottom: AppUtil.getHP(5) }}>
 
             <FlatList
                 data={props.data}
-                style={{ marginTop:AppUtil.getHP(1)  }}
+                style={{ marginTop: AppUtil.getHP(1) }}
                 renderItem={(item) => renderCell(item)}
             />
         </View>

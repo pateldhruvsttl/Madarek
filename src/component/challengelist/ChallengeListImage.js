@@ -119,7 +119,9 @@ const ChallengeListImage = (props) => {
                         <Text style={LISTSTYLE.title}>{item.totalLike}</Text>
                     </View>
                     <View style={LISTSTYLE.secondInnerCalView}>
+                        <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id: item.id })}>
                         <IcnComment style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                       </TouchableOpacity>
                         <Text style={LISTSTYLE.title}>{item.totalComment}</Text>
                     </View>
                     <View style={LISTSTYLE.moreView}>

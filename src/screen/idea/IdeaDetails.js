@@ -116,7 +116,7 @@ const IdeaDetails = (props) => {
       "frontuser_id": UserManager.userId,
       "model": 'LikedislikeIdeas'
     }
-    
+
     Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
       const likeDislike = res?.data === 'dislike' ? 1 : 0;
@@ -154,7 +154,10 @@ const IdeaDetails = (props) => {
               </View>
             }
 
-            <IdeaContent data={item} />
+            <IdeaContent data={item}
+              id={props?.route?.params?.id}
+              navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+            />
 
             <View style={IdeaStyle.contentBox}>
               <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
@@ -178,7 +181,7 @@ const IdeaDetails = (props) => {
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas.splice(1,2)}
+                data={isAllIdeas.splice(1, 2)}
                 isType="Ideas"
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onLikeIdeas={(id) => onLikeIdeas(id)}

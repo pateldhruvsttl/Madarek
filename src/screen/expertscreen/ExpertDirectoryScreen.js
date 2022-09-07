@@ -92,7 +92,9 @@ function ExpertDirectoryScreen(props) {
                 <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"}
                     onLikeIdeas={(id) => onLikeIdeas(id)}
                     navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations}
-                    categoryName={props.route.params.categoryName} />
+                    categoryName={props.route.params.categoryName} 
+                    navigateToComment={(item) =>  props.navigation.navigate("CommentScreen", { item: item })}
+                    />
             </View>
         </SafeAreaView>
     )

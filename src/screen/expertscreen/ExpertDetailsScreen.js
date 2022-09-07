@@ -151,7 +151,7 @@ function ExpertDetailsScreen(props) {
             const likeDislike = res?.data === 'dislike' ? 1 : 0;
             const similarArr = similarExpert;
 
-            similarArr && similarArr.map((ele,index) => {
+            similarArr && similarArr.map((ele, index) => {
                 if (ele.id == id) {
                     if (likeDislike == 1) {
                         similarArr[index].isLike = likeDislike
@@ -179,6 +179,7 @@ function ExpertDetailsScreen(props) {
                         onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                         onLikeIdeas={(id) => onLikeIdeas(id)}
                         joinExpert={() => joinExpert()}
+                        navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                     />
 
                     {expertInsight && expertInsight.length > 0 &&
@@ -188,8 +189,10 @@ function ExpertDetailsScreen(props) {
                     {similarExpert && similarExpert.length > 0 &&
                         <View style={Style.similarExpertView}>
                             <SimilarExperts data={similarExpert} maxLimit={2} title={Label.SimilarExperts}
-                            onLikeIdeas={(id) => onLikeSimilarExpert(id)}
-                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })} onGetPaginations={() => null} />
+                                onLikeIdeas={(id) => onLikeSimilarExpert(id)}
+                                navigateDetail={(id) => props.navigation.replace("ExpertDetailsScreen", { id: id })}
+                                navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+                                onGetPaginations={() => null} />
                         </View>}
 
                     <View style={Style.footerView}>
