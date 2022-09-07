@@ -22,6 +22,8 @@ import { UserManager } from "../../manager/UserManager";
 import { AppConfig, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
 import { Loger } from "../../utils/Loger";
 import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
+import { StackActions } from '@react-navigation/native'
+
 const SplashScreen = (props) => {
   const [selectLanguage, setselectLanguage] = useState(0);
   const [selectIndex, setSelectIndex] = useState();
@@ -39,11 +41,15 @@ const SplashScreen = (props) => {
       AppConfig.token = res.token;
 
       if (res?.data?.corporateSubDomain)
-        setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1');
+        setBaseURL('http://' + res?.data?.corporateSubDomain + '.madarek.io/apiv1/');
 
-      props.navigation.replace("HomeScreen");
+      // setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1');
+
+      // props.navigation.replace("HomeScreen");
+      props.navigation.dispatch(StackActions.replace('HomeRoot'));
     } else {
-      props.navigation.replace("LoginScreen")
+      props.navigation.dispatch(StackActions.replace('LoginRoot'));
+      // props.navigation.replace("LoginScreen")
     }
 
   });

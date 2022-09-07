@@ -19,7 +19,7 @@ import { deviceId } from "../../utils/Constant";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { UserManager } from "../../manager/UserManager";
 import { AppConfig, getBaseURL, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
-import IcnSelect from "../../assets/svg/IcnSelect"
+import { StackActions } from '@react-navigation/native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
@@ -165,8 +165,8 @@ const LoginScreen = (props) => {
             if (res.statusCode == 1) {
 
                 if (res?.data?.corporateSubDomain) {
-                    Service.setAuth()
-                    setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
+                    setBaseURL('http://' + res?.data?.corporateSubDomain + '.madarek.io/apiv1/');
+                    // setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
                 }
 
                 UserManager.userId = res.data.userId;
@@ -225,7 +225,8 @@ const LoginScreen = (props) => {
     }
 
     const navigateHomeScreen = () => {
-        props.navigation.navigate("HomeScreen")
+        props.navigation.dispatch(StackActions.replace('HomeRoot'));
+        // props.navigation.navigate("HomeScreen")
     }
     const navigateSignUpScreen = () => {
         props.navigation.navigate("Signup")

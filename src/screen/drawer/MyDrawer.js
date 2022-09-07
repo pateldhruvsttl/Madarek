@@ -79,10 +79,13 @@ const MyDrawerScreen = (props) => {
       "token": AppConfig.token
     }
     Service.post(EndPoints.logout, data, (res) => {
-      Loger.onLog('Drawer Logout response', res);
+
       AsyncStorage.setItem('@user', JSON.stringify(null))
       props.navigation.closeDrawer();
-      props.navigation.dispatch(StackActions.popToTop());
+      props.navigation.dispatch(StackActions.replace('LoginRoot'));
+
+      // props.navigation.replace("LoginScreen")
+      // props.navigation.dispatch(StackActions.popToTop());
      
     }, (err) => {
       Loger.onLog('Drawer Logout error', err);
