@@ -62,6 +62,14 @@ const SubIdeasListWithImage = (props) => {
             props.onFavoriteIdeas(id)
         }
     }
+
+    const commentRender = (id) => {
+        if (props.isComment == "Challenges") {
+            props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id: id });
+        } else {
+            props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id: id });
+        }
+    }
     const renderIdeaItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
@@ -162,7 +170,9 @@ const SubIdeasListWithImage = (props) => {
                                 <Text style={Style.title}>{item.totalLike}</Text>
                             </View>
                             <View style={Style.secondInnerCalView}>
-                                <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                <TouchableOpacity onPress={() => commentRender(item.id)}>
+                                    <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
                                 <Text style={Style.title}>{item?.totalComment}</Text>
                             </View>
                             <View style={Style.moreView}>

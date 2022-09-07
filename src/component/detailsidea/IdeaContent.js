@@ -37,10 +37,21 @@ const IdeaContent = (props) => {
     const iconSize = AppUtil.getHP(1.8);
 
     useEffect(() => {
-       setFavorite(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest  : props.data.favorite)
+        setFavorite(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest : props.data.favorite)
     }, [props.data])
 
-
+    const navigateToComment = (id) => {
+        if (props?.isType == "ChallengeDetail") {
+            props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id:id })
+        } 
+        else if(props?.isType == "ExpertWithComment"){
+            props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id:id })
+        }
+        else {
+            props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id:id })
+        }
+    }
+    
     const onIdeaFavorite = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -143,8 +154,8 @@ const IdeaContent = (props) => {
                             <IcnClander height={iconSize} width={iconSize} />
                             <Text style={Style.contentTitle}>{props.data?.contestDate}</Text>
                         </View>
-                        <TouchableOpacity style={[Style.openBtn,{backgroundColor:props.data?.submissionStatus === "COMING SOON" ? GetAppColor.buttonGreenColor : GetAppColor.rejected}]}>
-                            <Text style={[Style.openBtnTitle,{color:props.data?.submissionStatus == "COMING SOON" ? GetAppColor.submissionStatus : GetAppColor.white}]}>{props.data?.submissionStatus}</Text>
+                        <TouchableOpacity style={[Style.openBtn, { backgroundColor: props.data?.submissionStatus === "COMING SOON" ? GetAppColor.buttonGreenColor : GetAppColor.rejected }]}>
+                            <Text style={[Style.openBtnTitle, { color: props.data?.submissionStatus == "COMING SOON" ? GetAppColor.submissionStatus : GetAppColor.white }]}>{props.data?.submissionStatus}</Text>
                         </TouchableOpacity>
                     </View>
                     :
@@ -248,7 +259,9 @@ const IdeaContent = (props) => {
                     </View>
 
                     <View style={Style.secondInnerCalView}>
-                        <IcnComment height={iconSize} width={iconSize} />
+                        <TouchableOpacity onPress={() => navigateToComment(props.id)}>
+                            <IcnComment height={iconSize} width={iconSize} />
+                        </TouchableOpacity>
                         <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
                             {props.data?.totalComment}
                         </Text>

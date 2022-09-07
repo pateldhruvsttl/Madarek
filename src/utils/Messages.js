@@ -371,7 +371,10 @@ export const ARlabel = {
   _requestRejected:"Request Rejected",
   _logOutCall : "Are you sure you want to logout?",
   _userRequest : "User Request",
-  _noJoinRequest : "No join request"
+  _noJoinRequest : "No join request",
+  _comment : "Comment",
+  _commentRequired : "Please enter comment",
+  _replay : "Replay",
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -832,6 +835,10 @@ export const USlabel = {
   _requestRejected:"Request Rejected",
   _logOutCall : "Are you sure you want to logout?",
   _userRequest : "User Request",
-  _noJoinRequest : "No join request"
+  _noJoinRequest : "No join request",
+  _comment : "Comment",
+  _commentRequired : "Please enter comment",
+  _replay : "Replay",
 
+  
 }

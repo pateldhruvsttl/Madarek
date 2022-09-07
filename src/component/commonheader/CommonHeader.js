@@ -409,6 +409,20 @@ const CommonHeader = (props) => {
                     </>
                 )
                 break;
+                case 'Comments':
+                    return (
+                        <>
+                            <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                            <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                                <BackButton />
+                                <View style={Style.centerIcnView}>
+                                <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Comment}</Text>
+                            </View>
+                            <View style={Style.icnEmpty} />
+                            </View>
+                        </>
+                    )
+                    break;
         case 'MyAccount':
             return (
                 <>

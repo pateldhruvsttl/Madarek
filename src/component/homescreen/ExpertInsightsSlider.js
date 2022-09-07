@@ -13,7 +13,7 @@ import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import ImageLoad from "react-native-image-placeholder";
 
-const ExpertInsightsSlider = ({ Entries, screen }) => {
+const ExpertInsightsSlider = ({ Entries, screen,navigateToComment }) => {
 
     const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
@@ -63,8 +63,8 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                     <Text style={styles.categoryLabel}>{ele.category_name}</Text>
                 </TouchableOpacity>
             ))
-            return (
-                <TouchableOpacity style={styles.renderMainView} onPress={() =>navigation.navigate('ExpertDetailsScreen',{id:item.id})}>
+        return (
+            <TouchableOpacity style={styles.renderMainView} onPress={() => navigation.navigate('ExpertDetailsScreen', { id: item.id })}>
 
                 <View style={styles.renderProfileView}>
                     <ImageLoad
@@ -100,7 +100,9 @@ const ExpertInsightsSlider = ({ Entries, screen }) => {
                         <Text style={styles.title}>{item.totalLikes}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
-                        <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        <TouchableOpacity onPress={() => navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                            <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        </TouchableOpacity>
                         <Text style={styles.title}>{item.totalComments}</Text>
                     </View>
                 </View>

@@ -74,7 +74,7 @@ const LoginScreen = (props) => {
             setTimer(60);
         }
     };
-    // console.log('timer',timer);
+ 
     const validateFields = () => {
         if (showPassword) {
             if (!emailValidate(email)) {

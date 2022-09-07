@@ -126,7 +126,9 @@ const SubIdeasList = (props) => {
               <Text style={Style.title}>{item.totalLike}</Text>
             </View>
             <View style={Style.secondInnerCalView}>
-              <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+              <TouchableOpacity onPress={() => props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id: item.id })}>
+                <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+              </TouchableOpacity>
               <Text style={Style.title}>{item.totalComment}</Text>
             </View>
             <View style={Style.moreView}>

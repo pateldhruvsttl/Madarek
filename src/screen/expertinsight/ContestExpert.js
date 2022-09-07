@@ -43,7 +43,9 @@ const ContestExpert = (props) => {
                             <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
 
-                            <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                                <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            </TouchableOpacity>
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
                         </View>
                         <View style={ExpertInsightStyle.line} />

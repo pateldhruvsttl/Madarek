@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity,Text,Platform } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, Platform } from 'react-native'
 import React, { useState, useEffect, memo } from 'react'
 import BubbleChart from 'rn-bubble-chart'
 import { AppUtil } from '../../utils/AppUtil';
@@ -48,6 +48,9 @@ const SubIdeasListGraph = (props) => {
   const favouriteUnfavourite = (id) => {
     props.onFavoriteIdeas(id);
   }
+  const navigateToComment = (id) => {
+    props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id: id })
+  }
   const SubIdeaGraphDetail = (props) => {
 
     return (
@@ -55,6 +58,7 @@ const SubIdeasListGraph = (props) => {
         <View style={Style.itemsView}>
           <View style={Style.TitleView}>
             <Text numberOfLines={1} style={Style.title}>{props.item.categoryName}</Text>
+
             {(props.item.favorite) ?
               <TouchableOpacity style={Style.likeUnlikeBtn} onPress={() => favouriteUnfavourite(props.item.id)}>
                 <IcnSelectedHeart style={Style.likeUnlikeIcn} height={AppUtil.getHP(2.7)} width={AppUtil.getHP(2.7)} />
@@ -65,6 +69,7 @@ const SubIdeasListGraph = (props) => {
               </TouchableOpacity>}
           </View>
           <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{props.item.ideaTitle}</Text>
+
           {props.isType == "Ideas" ?
             <View style={Style.calView}>
               <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -80,6 +85,7 @@ const SubIdeasListGraph = (props) => {
               <Text style={Style.title}>{moment(props.item.createDate).format("DD MMM YYYY")}</Text>
             </View>}
           <View style={Style.icnView}>
+
             <View style={Style.rowLeftView}>
               {props.item.trophy && <IcnTrophy style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
               {props.item.starred && <IcnStar style={Style.winningIcn} height={AppUtil.getHP(1.7)} width={AppUtil.getHP(1.7)} />}
@@ -93,6 +99,7 @@ const SubIdeasListGraph = (props) => {
                 <Text style={Style.title}>{props.item.totalView}</Text>
               </View>
               <View style={Style.secondInnerCalView}>
+
                 {props.item.like == true ?
                   <TouchableOpacity onPress={() => { likeUnlike(props.item.id) }}>
                     <IcnThumsUpBlack style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
@@ -103,10 +110,14 @@ const SubIdeasListGraph = (props) => {
                   </TouchableOpacity>}
                 <Text style={Style.title}>{props.item.totalLike}</Text>
               </View>
+
               <View style={Style.secondInnerCalView}>
-                <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                <TouchableOpacity onPress={() => { navigateToComment(props.item.id) }}>
+                  <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                </TouchableOpacity>
                 <Text style={Style.title}>{props.item.totalComment}</Text>
               </View>
+
               <View style={Style.moreView}>
                 <Menu>
                   <MenuTrigger>

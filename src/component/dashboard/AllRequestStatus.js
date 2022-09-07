@@ -48,7 +48,7 @@ const AllRequestStatus = (props) => {
             </TouchableOpacity>
         )
     };
-    console.log('props',props);
+    
     return (
         <View style={Style.MainView}>
             <CommonHeader isType={"User Request"} />

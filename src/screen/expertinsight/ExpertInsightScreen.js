@@ -76,6 +76,10 @@ const ExpertInsightScreen = (props) => {
   const navigateScreen = (id) => {
     return props.navigation.navigate("ExpertInsightDetailWithComment",{expertId:id})
   }
+  const navigateToComment = (item) => {
+    return props.navigation.navigate("CommentScreen", { item: item }) 
+  }
+
   return (
     <SafeAreaView style={{height:'100%' ,paddingBottom:30}}>
       <CommonHeader
@@ -91,9 +95,9 @@ const ExpertInsightScreen = (props) => {
             tabBarIndicatorStyle: ExpertInsightStyle.itemBorder,
           }}
         >
-          <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData} navigateScreen={navigateScreen} />} />
-          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} />} />
-          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} />} />
+          <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
+          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} navigateToComment={navigateToComment}/>} />
+          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} navigateToComment={navigateToComment}/>} />
         </Tab.Navigator>
       </View>
       <IdeasFilter

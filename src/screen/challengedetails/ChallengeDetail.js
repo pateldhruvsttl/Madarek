@@ -58,7 +58,7 @@ const ChallengeDetail = (props) => {
           evaluationPannel.push(model)
           setEvaluationData(evaluationPannel)
         })
- 
+
         res?.data?.participaterowsData.map((ele) => {
           let model = new OpenChallengeDetail(ele)
           participateRowsData.push(model)
@@ -70,7 +70,7 @@ const ChallengeDetail = (props) => {
           resources.push(model)
           setResourceData(resources)
         })
-        
+
       }
       else {
         showMessage(res.message)
@@ -98,12 +98,13 @@ const ChallengeDetail = (props) => {
               {contestData && <IdeaContent data={contestData}
                 isType={title}
                 id={props?.route?.params?.id}
-                />}
+                navigateToComment={(item) => props.navigation.navigate('CommentScreen',{item:item})}
+              />}
 
               {contestData && <CategoryChallenge isType={title} data={contestData} />}
               {contestData && <SubInformation data={contestData} />}
 
-            
+
               {participateData && participateData.length > 0 &&
                 <View style={PAGESTYLE.subIdeaList}>
                   <SubParticipateIdeas data={participateData} isType={title} />
