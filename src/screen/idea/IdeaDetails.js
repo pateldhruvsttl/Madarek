@@ -177,7 +177,9 @@ const IdeaDetails = (props) => {
 
             {item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
-            {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
+            {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} 
+             navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+            screen="IdeaDetail" />}
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
@@ -187,7 +189,9 @@ const IdeaDetails = (props) => {
                 onLikeIdeas={(id) => onLikeIdeas(id)}
                 isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
                 onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
-                onItemPress={(item) => { navigation.replace("IdeaDetails", item) }} />
+                onItemPress={(item) => { navigation.replace("IdeaDetails", item) }}
+                navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+                />
 
             </View>
           </View>
