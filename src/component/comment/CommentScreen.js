@@ -20,6 +20,7 @@ import { GetAppColor } from '../../utils/Colors'
 
 const CommentScreen = (props) => {
   const [comment, setComment] = useState('')
+  const [parentComment, setParentComment] = useState('')
   const [commentList, setCommentList] = useState([])
   const [isCommentVisible, setCommentVisible] = useState(false)
   const [parentId, setParentId] = useState(0)
@@ -34,7 +35,7 @@ const CommentScreen = (props) => {
 
   const submitComment = (props) => {
 
-    if (!comment.trim()) {
+    if (props?.isType == 'Parent' ? !parentComment.trim() : !comment.trim()) {
       showMessage('Please Enter Comment')
     }
     else {
@@ -47,7 +48,7 @@ const CommentScreen = (props) => {
         "model": model,
         "language": getLanguage(),
         "parent_id": props?.isType == 'Parent' ? props.id : '0',
-        "comment": comment
+        "comment": props?.isType == 'Parent' ? parentComment : comment
       }
       Service.post(EndPoints.submitComment, data, (res) => {
         Loger.onLog("res of submitComment", res)
@@ -96,8 +97,8 @@ const CommentScreen = (props) => {
           placeholderTextColor={GetAppColor.grayBorder}
           multiline={true}
           style={Style.input}
-          value={comment}
-          onChangeText={title => setComment(title)}
+          value={props?.isType == 'Parent' ? parentComment : comment}
+          onChangeText={title => { props?.isType == 'Parent' ? setParentComment(title) : setComment(title) }}
         />
         <View style={{ flexDirection: "row", marginTop: AppUtil.getHP(1) }}>
           <TouchableOpacity style={Style.commentBtn} onPress={() => submitComment(props)}>
