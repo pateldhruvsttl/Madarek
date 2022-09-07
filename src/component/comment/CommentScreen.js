@@ -55,6 +55,7 @@ const CommentScreen = (props) => {
         if (res.statusCode == 1) {
           commentListing()
           setComment('')
+          setParentComment('')
           props?.isType == 'Parent' && setCommentVisible(!isCommentVisible)
         }
       },
