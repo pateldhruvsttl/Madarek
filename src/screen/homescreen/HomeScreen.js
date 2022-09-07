@@ -366,7 +366,6 @@ const HomeScreen = (props) => {
 
 export default memo(HomeScreen);
 
-// const dtList = ["ExpertInsightsSlider"];
 const dtList = [
   "Slider",
   "Tab",
