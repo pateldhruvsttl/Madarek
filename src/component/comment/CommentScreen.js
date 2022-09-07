@@ -153,11 +153,10 @@ const CommentScreen = (props) => {
           />
           <View style={Style.leftItems1}>
             <Text numberOfLines={1} style={Style.userName}>
-              {props.item.firstName} {props.item.lastName}<Text style={Style.date}> {moment(item.date).format("DD MMM YY")}</Text>
+              {props.item.firstName} {props.item.lastName}<Text style={Style.date}> {moment(item.created_at).format("DD MMM YY")}</Text>
             </Text>
             <Text numberOfLines={0} style={Style.titleComment}>
-              {item.comment} 
-
+              {item.comment}
             </Text>
             <View style={Style.secondInnerCalView}>
               <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} style={Style.icnLikeUp} />
@@ -193,7 +192,7 @@ const CommentScreen = (props) => {
       <View style={Style.MainView}>
         <ScrollView>
           <View style={Style.container}>
-            {CommentView({isType: 'Main'})}
+            {CommentView({ isType: 'Main' })}
             <View style={Style.middleView}>
               <Text style={Style.middleTitle}>{Label.Comment}</Text>
               <View style={Style.middleLine}></View>
