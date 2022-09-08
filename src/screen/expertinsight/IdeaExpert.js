@@ -5,6 +5,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import { AppUtil } from '../../utils/AppUtil'
+import { Label } from '../../utils/StringUtil'
 
 const IdeaExpert = (props) => {
 
@@ -16,7 +17,7 @@ const IdeaExpert = (props) => {
                         <Image
                             source={{ uri: item.profilePhoto }}
                             style={ExpertInsightStyle.smallRadiousImage} />
-                            
+
                         <View style={[ExpertInsightStyle.subFlexView, { marginEnd: AppUtil.getHP(2.5) }]}>
                             <Text numberOfLines={1} style={ExpertInsightStyle.catText}>{item.title}</Text>
                             <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
@@ -43,7 +44,7 @@ const IdeaExpert = (props) => {
 
                             <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
-                            
+
                             <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
                                 <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             </TouchableOpacity>
@@ -60,13 +61,22 @@ const IdeaExpert = (props) => {
     return (
         <View>
 
-            <FlatList
-             data={props.data}
-             scrollEnabled={props?.scrollEnabled ? true : false}
-             renderItem={(item) => renderCell(item)}
-             key={(id) => id}
-             keyExtractor={item => item.id}
-            />
+
+            {
+                props.data.length > 0 ?
+
+                    <FlatList
+                        data={props.data}
+                        scrollEnabled={props?.scrollEnabled ? true : false}
+                        renderItem={(item) => renderCell(item)}
+                        key={(id) => id}
+                        keyExtractor={item => item.id}
+                    />
+                    :
+                    <View style={ExpertInsightStyle.emptyView}>
+                        <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
+                    </View>
+            }
         </View>
     )
 }

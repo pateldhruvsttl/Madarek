@@ -29,6 +29,7 @@ export const deviceId = DeviceInfo.getUniqueId()
 import WebViewComp from '../../component/webview/WebViewComp';
 import VideosPlayer from '../videoplayer/VideosPlayer';
 import { set } from 'react-native-reanimated';
+import { showMessage } from '../../utils/Constant';
 
 const IdeaDetails = (props) => {
   const navigation = useNavigation();
@@ -49,6 +50,8 @@ const IdeaDetails = (props) => {
 
   }, []);
 
+  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(1, 2) : isAllIdeas
+  
   useEffect(() => {
     onIdeas()
   }, []);
@@ -58,20 +61,20 @@ const IdeaDetails = (props) => {
   const onIdeas = () => {
     const data = {
       "frontuser_id": UserManager.userId,
-      "limit": 10,
+      "limit": AppConfig.pageLimit,
       "language": getLanguage(),
       "listtype": "all",
       "searchkeywords": "",
     }
     Service.post(EndPoints.ideaList, data, (res) => {
-      let _isAllIdeas = [];
-      setAllIdeas([]);
-
-      res?.data?.allIdea.map((element) => {
-        let model = new IdeaListModel(element);
-        _isAllIdeas.push(model);
-      })
-      setAllIdeas(_isAllIdeas)
+      const _isAllIdeas = [];
+      if (res.statusCode == 1) {
+        res?.data?.allIdea.map((element) => {
+          let model = new IdeaListModel(element);
+          _isAllIdeas.push(model);
+        })
+        setAllIdeas(_isAllIdeas)
+      }
 
     }, (err) => {
       Loger.onLog("err", err)
@@ -131,6 +134,7 @@ const IdeaDetails = (props) => {
       Loger.onLog("err of likeUnlike", err)
     })
   }
+ 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"IdeaDetails"} />
@@ -166,7 +170,7 @@ const IdeaDetails = (props) => {
             </View>
 
             {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
-
+            
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
                 <Text style={IdeaStyle.heading}>{Label.Video}</Text>
@@ -175,21 +179,28 @@ const IdeaDetails = (props) => {
                 {/* <VideoPlayer path={item?.ideaVideo} /> */}
               </View> : null}
 
-            {item?.resources.length > 0 && <Resources resource={item?.resources} />}
+            {item?.resources && item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
-            {isExpertInsight.length > 0 && <ExpertInsightsSlider Entries={isExpertInsight} screen="IdeaDetail" />}
+            {isExpertInsight && isExpertInsight.length > 0 && <ExpertInsightsSlider Entries={isExpertInsight}
+              navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+              screen="IdeaDetail" />}
 
-            <View style={IdeaStyle.subIdeaList}>
-              <SubIdeasListWithImage
-                data={isAllIdeas}
-                isType="Ideas"
-                onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
-                onLikeIdeas={(id) => onLikeIdeas(id)}
-                isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
-                onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
-                onItemPress={(item) => { navigation.replace("IdeaDetails", item) }} />
-
-            </View>
+            {
+              isAllIdeas.length > 0 && (
+                <View style={IdeaStyle.subIdeaList}>
+                  <SubIdeasListWithImage
+                    data={allData}
+                    isType="Ideas"
+                    onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
+                    onLikeIdeas={(id) => onLikeIdeas(id)}
+                    isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
+                    onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
+                    onItemPress={(item) => { navigation.replace("IdeaDetails", item) }}
+                    navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
+                  />
+                </View>
+              )
+            }
           </View>
         </ScrollView>
       </View>

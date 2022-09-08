@@ -299,21 +299,22 @@ const HomeScreen = (props) => {
         break;
       case "ExpertInsightsSlider":
         return (
-          <View
+          expertInsight && expertInsight.length > 0 &&
+          (<View
             style={{
               backgroundColor: GetAppColor.lightWhite,
               paddingVertical: AppUtil.getHP(2),
-            }}
-          >
+            }}>
             <ExpertInsightsSlider Entries={expertInsight}
               navigateToComment={(item) => { props.navigation.navigate("CommentScreen", { item: item }) }}
             />
-          </View>
+          </View>)
         );
         break;
       case "FavouriteCategories":
         return (
-          <View
+          favouriteCategories && favouriteCategories.length > 0 &&
+          (<View
             style={{
               backgroundColor: GetAppColor.white,
               paddingVertical: AppUtil.getHP(2),
@@ -323,7 +324,7 @@ const HomeScreen = (props) => {
               data={favouriteCategories.slice(0, 6)}
               Entries={expertInsight}
             />
-          </View>
+          </View>)
         );
         break;
       case "Button":

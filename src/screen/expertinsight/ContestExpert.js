@@ -5,6 +5,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import { AppUtil } from '../../utils/AppUtil'
+import { Label } from '../../utils/StringUtil'
 
 const ContestExpert = (props) => {
 
@@ -58,12 +59,17 @@ const ContestExpert = (props) => {
     }
     return (
         <View>
-
-            <FlatList
-                data={props.data}
-                style={{ marginTop:AppUtil.getHP(1)  }}
-                renderItem={(item) => renderCell(item)}
-            />
+            {
+                props.data.length > 0 ?
+                    <FlatList
+                        data={props.data}
+                        style={{ marginTop: AppUtil.getHP(1) }}
+                        renderItem={(item) => renderCell(item)}
+                    /> :
+                    <View style={ExpertInsightStyle.emptyView}>
+                        <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
+                    </View>
+            }
         </View>
     )
 }

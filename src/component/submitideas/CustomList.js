@@ -61,7 +61,7 @@ function CustomList(props) {
                 setTitle(item.itemName);
               }}
             >
-              <Text>{item.itemName}</Text>
+              <Text style={Style.label}>{item.itemName}</Text>
             </MenuOption>
           );
         })}
