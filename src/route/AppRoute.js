@@ -5,14 +5,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import MyDrawerScreen from '../screen/drawer/MyDrawer';
-
 import SplashScreen from '../screen/splashscreen/SplashScreen';
 import LoginScreen from '../screen/loginscreen/LoginScreen';
 import Signup from '../screen/signup/Signup';
 import SignUpVerify from '../screen/signup/SignUpVerify';
-
 import SmeDashboardScreen from '../screen/smedashboard/SmeDashboardScreen';
-
 import HomeScreen from '../screen/homescreen/HomeScreen';
 import Category from '../screen/category/Category';
 import IdeasListScreen from '../screen/ideasList/IdeasListScreen';
@@ -21,10 +18,8 @@ import ExpertScreen from '../screen/expertscreen/ExpertScreen';
 import ExpertDetailsScreen from '../screen/expertscreen/ExpertDetailsScreen';
 import ExpertDirectoryScreen from '../screen/expertscreen/ExpertDirectoryScreen';
 import SubmitIdeaScreen from '../screen/submitidea/SubmitIdeaScreen';
-
 // import UserCategory from '../screen/category/UserCategory';
 import UserCategory from '../screen/category/UserCategory';
-
 import UserDashboardScreen from '../screen/userdashboard/UserDashboardScreen';
 import ChallengesListScreen from '../screen/challengesList/ChallengesListScreen';
 import ChallengeDetail from '../screen/challengedetails/ChallengeDetail';
@@ -34,7 +29,6 @@ import MyAccount from '../screen/myaccount/MyAccount';
 // import UserProfileView from '../screen/myaccount/UserProfileView';
 // import EditUserProfileView from '../screen/myaccount/EditUserProfileView';
 import Message from '../screen/message/Message';
-
 import NotificationsScreen from '../screen/notifications/NotificationsScreen';
 import BecomeAnExpert from '../screen/expertscreen/BecomeAnExpert';
 import SearchLabel from '../screen/searchlabel/SearchLabel';
