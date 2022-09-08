@@ -21,10 +21,17 @@ const EventSliderStyle = StyleSheet.create({
     sliderRendTitleView: {
         position: 'absolute',
         // top: AppUtil.getHP(17),
-        top: AppUtil.getHP(20),
-        marginStart: AppUtil.getWP(4)
+        top: AppUtil.getHP(19.8),
+        marginStart: AppUtil.getWP(4),
+        width: '93%',
+        marginEnd:AppUtil.getWP(2),
     },
-    txtsliderRendTitle: { color: GetAppColor.white, fontSize: AppUtil.getHP(2.3), fontWeight: 'bold', paddingEnd: 30 },
+    txtsliderRendTitle: {
+        color: GetAppColor.white,
+        fontSize: AppUtil.getHP(2),
+        fontWeight: 'bold',
+        width: '100%',
+    },
 
     btnSliderRend: {
         flex: 1, marginVertical: AppUtil.getHP(0.5), top: AppUtil.getHP(20), marginStart: AppUtil.getWP(4),

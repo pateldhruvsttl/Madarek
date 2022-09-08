@@ -124,7 +124,7 @@ const SubIdeasListGraph = (props) => {
                     <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
                   </MenuTrigger>
                   <MenuOptions >
-                    <MenuOption style={Style.menuView} onSelect={() => onShare(message())}>
+                    <MenuOption style={Style.menuView} onSelect={() => onShare(message(props.item.id))}>
                       <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                       <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
                     </MenuOption>
