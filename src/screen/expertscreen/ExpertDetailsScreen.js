@@ -44,11 +44,11 @@ function ExpertDetailsScreen(props) {
         }
         Service.post(EndPoints.joinExpert, data, (res) => {
             Loger.onLog('res of joinExpert', res);
-            // const expertArr = expertData
-            // if(expertArr.id == index){
-            //     expertArr.joinRequest = res.data
-            // }
-            // setExpertData({...expertArr})
+            const expertArr = expertData
+            if(expertArr.id == index){
+                expertArr.joinRequest = res.data
+            }
+            setExpertData({...expertArr})
         },
             (err) => {
                 Loger.onLog('err of joinExpert', err);
@@ -178,7 +178,7 @@ function ExpertDetailsScreen(props) {
                     <ExpertProfile data={expertData}
                         onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                         onLikeIdeas={(id) => onLikeIdeas(id)}
-                        joinExpert={() => joinExpert()}
+                        joinExpert={(id) => joinExpert(id)}
                         navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                     />
 

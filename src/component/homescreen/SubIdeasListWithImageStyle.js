@@ -53,7 +53,11 @@ const Style = StyleSheet.create({
     leftItems: { width: '55%' },
 
     calView: { flexDirection: 'row', alignItems: 'center' },
-
+    challengeDate : { 
+        flexDirection: 'row',
+         alignItems: 'center',
+         width:'90%',
+        },
     callIcn: { marginEnd: AppUtil.getHP(1) },
     callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart: AppUtil.getHP(1), },
 

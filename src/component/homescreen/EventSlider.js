@@ -56,7 +56,7 @@ const EventSlider = ({ Entries }) => {
                 <ImageLoad style={styles.bgImage} source={{ uri:  item.url }} isShowActivity={false}/>
                 </View>
                 <View style={styles.sliderRendTitleView}>
-                    <Text numberOfLines={1} style={styles.txtsliderRendTitle}>{item.title}</Text>
+                    <Text numberOfLines={2} style={styles.txtsliderRendTitle}>{item.title}</Text>
                 </View>
 
                 {/* <TouchableOpacity style={styles.btnSliderRend}>

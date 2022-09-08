@@ -26,19 +26,23 @@ const IdeaContentStyle = StyleSheet.create({
         paddingHorizontal: AppUtil.getWP(5),
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: '100%'
     },
     openBtn: {
         backgroundColor: GetAppColor.buttonGreenColor,
         borderRadius: AppUtil.getHP(3),
-        paddingHorizontal: AppUtil.getHP(1.3),
+        paddingHorizontal: AppUtil.getHP(1),
         paddingVertical: AppUtil.getHP(0.2),
-        alignItems: 'center', justifyContent: 'center'
+        alignItems: 'center', justifyContent: 'center',
+        marginStart: 5,
+        // width:'30%'
     },
     openBtnTitle: {
         color: GetAppColor.white,
         fontFamily: FONTS.robotMedium,
         fontSize: AppUtil.getHP(1.6),
+       
     },
     dateContentIdea: {
         flexDirection: 'row',
@@ -49,7 +53,9 @@ const IdeaContentStyle = StyleSheet.create({
     dateSubContain: {
         flexDirection: 'row',
         alignItems: 'center',
+        width: '70%',
     },
+
     contentTitle: {
         fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
@@ -59,7 +65,7 @@ const IdeaContentStyle = StyleSheet.create({
     },
     otherSpace: {
         alignItems: 'flex-start',
-        width: AppUtil.getWP(40),fontFamily: FONTS.robotRegular,
+        width: AppUtil.getWP(40), fontFamily: FONTS.robotRegular,
         fontSize: AppUtil.getHP(1.8), //2.5
         marginStart: AppUtil.getWP(1.5),
         color: GetAppColor.textColor,

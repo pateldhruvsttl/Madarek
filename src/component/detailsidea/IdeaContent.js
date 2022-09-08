@@ -42,16 +42,16 @@ const IdeaContent = (props) => {
 
     const navigateToComment = (id) => {
         if (props?.isType == "ChallengeDetail") {
-            props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id:id })
-        } 
-        else if(props?.isType == "ExpertWithComment"){
-            props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id:id })
+            props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id: id })
+        }
+        else if (props?.isType == "ExpertWithComment") {
+            props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: id })
         }
         else {
-            props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id:id })
+            props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id: id })
         }
     }
-    
+
     const onIdeaFavorite = (id) => {
         var data = {
             "field_name": "idea_id",
@@ -143,7 +143,7 @@ const IdeaContent = (props) => {
                     },
                     ]}
                 >
-                    {props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaSubTitle}
+                    {props.isType == "ChallengeDetail" ? props?.data?.contestTitle : props?.data?.ideaTitle}
                 </Text>
             </View>
 
@@ -152,10 +152,10 @@ const IdeaContent = (props) => {
                     <View style={Style.dateContentChallenge}>
                         <View style={Style.dateSubContain}>
                             <IcnClander height={iconSize} width={iconSize} />
-                            <Text style={Style.contentTitle}>{props.data?.contestDate}</Text>
+                            <Text numberOfLines={1} style={Style.contentTitle}>{props.data?.contestDate}</Text>
                         </View>
                         <TouchableOpacity style={[Style.openBtn, { backgroundColor: props.data?.submissionStatus === "COMING SOON" ? GetAppColor.buttonGreenColor : GetAppColor.rejected }]}>
-                            <Text style={[Style.openBtnTitle, { color: props.data?.submissionStatus == "COMING SOON" ? GetAppColor.submissionStatus : GetAppColor.white }]}>{props.data?.submissionStatus}</Text>
+                            <Text numberOfLines={1} style={[Style.openBtnTitle, { color: GetAppColor.white }]}>{props.data?.submissionStatus}</Text>
                         </TouchableOpacity>
                     </View>
                     :
@@ -339,14 +339,15 @@ const IdeaContent = (props) => {
                                     <IcnBlockChain height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} />
                                 </TouchableOpacity> */}
 
-                                {/* <TouchableOpacity style={Style.likeBtn}>
+                                <TouchableOpacity style={Style.likeBtn} onPress={() => onShare(`idea-details/${props.id}`)}>
                                     <IcnShareIcon height={AppUtil.getHP(3.2)} width={AppUtil.getHP(3.2)} stroke={GetAppColor.grayBorder} />
-                                </TouchableOpacity> */}
+                                </TouchableOpacity>
                             </View>
                         </>
                     )}
                 </View>
-            )}
+            )
+            }
             {
                 props.isType == "ChallengeDetail" &&
                 <View style={Style.contentBoxChallenge} >
@@ -357,7 +358,7 @@ const IdeaContent = (props) => {
                     </Text>
                 </View>
             }
-        </View>
+        </View >
     );
 };
 
