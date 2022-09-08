@@ -6,8 +6,7 @@ export const UserManager = {
     profilePicture: '',
     mobile: '',
     userName: '',
-    userRole:'',
-    expert:false,
+    userRole:0,
 
     
     getUserProfilePicture: () => {

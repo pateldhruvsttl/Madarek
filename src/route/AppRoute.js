@@ -80,6 +80,7 @@ function HomeRoot() {
             <Stack.Screen name="UserCategory" component={UserCategory} />
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
+            <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
             <Stack.Screen name="BecomeAnExpert" component={BecomeAnExpert} />
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
@@ -98,7 +99,6 @@ function HomeRoot() {
             <Stack.Screen name="Message" component={Message} />
             <Stack.Screen name="SearchLabel" component={SearchLabel} />
             <Stack.Screen name="VideoPlayer" component={VideosPlayer} />
-            <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
             <Stack.Screen name="ExpertInsightDetail" component={ExpertInsightDetail} />
             <Stack.Screen name="MySubmittedIdeas" component={MySubmittedIdeas} />
 

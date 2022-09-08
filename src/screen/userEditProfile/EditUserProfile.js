@@ -47,7 +47,6 @@ const EditUserProfile = (props) => {
         data.append('organization_name', personalData.organization);
         data.append('country_id', personalData.countryId);
         data.append('city_id', personalData.cityId);
-        // data.append('user_photo', userPhoto)
         data.append('user_categories', '["3", "4"]');
         data.append('about_expert', otherData.about);
         data.append('twitter_link', otherData.twitterLink);

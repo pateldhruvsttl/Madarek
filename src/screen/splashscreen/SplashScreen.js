@@ -38,6 +38,7 @@ const SplashScreen = (props) => {
       UserManager.profilePicture = res.data.profilePicture;
       UserManager.mobile = res.data.mobile;
       UserManager.userName = res.data.userName;
+      UserManager.userRole = res.data.userRole;
       AppConfig.token = res.token;
 
       if (res?.data?.corporateSubDomain)

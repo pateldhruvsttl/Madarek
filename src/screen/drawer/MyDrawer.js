@@ -27,7 +27,7 @@ import { deviceId, showMessageWithAnotherCallBack, showMessageWithCallBack } fro
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
-import { AppConfig, getLanguage } from '../../manager/AppConfig'
+import { AppConfig, getLanguage, setBaseURL } from '../../manager/AppConfig'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
 import IcnSelect from "../../assets/svg/IcnSelect"
@@ -82,10 +82,8 @@ const MyDrawerScreen = (props) => {
 
       AsyncStorage.setItem('@user', JSON.stringify(null))
       props.navigation.closeDrawer();
+      setBaseURL('http://madarek.io/apiv1/');
       props.navigation.dispatch(StackActions.replace('LoginRoot'));
-
-      // props.navigation.replace("LoginScreen")
-      // props.navigation.dispatch(StackActions.popToTop());
      
     }, (err) => {
       Loger.onLog('Drawer Logout error', err);

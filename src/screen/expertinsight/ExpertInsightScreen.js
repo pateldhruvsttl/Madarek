@@ -42,14 +42,14 @@ const ExpertInsightScreen = (props) => {
 
     }
     Service.post(EndPoints.expertInsightsList, data, (res) => {
-      
+
       const ideas = []
       const contest = []
       const general = []
       if (res.statusCode === '1') {
         res.data.map((ele) => {
           const model = new ExpertInsightList(ele)
-          
+
           switch (ele.type) {
             case 'Idea':
               ideas.push(model)
@@ -74,21 +74,21 @@ const ExpertInsightScreen = (props) => {
     })
   }
   const navigateScreen = (id) => {
-    return props.navigation.navigate("ExpertInsightDetailWithComment",{expertId:id})
+    return props.navigation.navigate("ExpertInsightDetailWithComment", { expertId: id })
   }
   const navigateToComment = (item) => {
-    return props.navigation.navigate("CommentScreen", { item: item }) 
+    return props.navigation.navigate("CommentScreen", { item: item })
   }
 
   return (
-    <SafeAreaView style={{height:'100%' ,paddingBottom:30}}>
+    <SafeAreaView style={{ height: '100%', paddingBottom: 30 }}>
       <CommonHeader
         isType={"ExpertInsight"}
         onFilter={() => setFilterVisible(!isFilterVisible)}
       />
       <View style={[ExpertInsightStyle.MainView, { height: "95%" }]}>
         <Tab.Navigator
-           swipeEnabled={false}
+          swipeEnabled={false}
           screenOptions={{
             tabBarLabelStyle: ExpertInsightStyle.tabHeader,
             tabBarItemStyle: ExpertInsightStyle.tabBarItem,
@@ -96,8 +96,8 @@ const ExpertInsightScreen = (props) => {
           }}
         >
           <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
-          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} navigateToComment={navigateToComment}/>} />
-          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} navigateToComment={navigateToComment}/>} />
+          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
+          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
         </Tab.Navigator>
       </View>
       <IdeasFilter
