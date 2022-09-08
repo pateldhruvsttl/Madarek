@@ -36,7 +36,7 @@ const IdeaDetails = (props) => {
   const item = props.route.params
   const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
-  Loger.onLog("item",item);
+  Loger.onLog("item", item);
   useEffect(() => {
 
     if (item?.expertInsightData.length > 0) {
@@ -51,7 +51,7 @@ const IdeaDetails = (props) => {
   }, []);
 
   const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(1, 2) : isAllIdeas
-  
+
   useEffect(() => {
     onIdeas()
   }, []);
@@ -134,7 +134,7 @@ const IdeaDetails = (props) => {
       Loger.onLog("err of likeUnlike", err)
     })
   }
- 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"IdeaDetails"} />
@@ -164,13 +164,14 @@ const IdeaDetails = (props) => {
               <Text style={IdeaStyle.heading}>{Label?.ChallengesTheIdeaIsAddressing}</Text>
               <WebViewComp data={item?.challengesAddressing} />
             </View>
-            <View style={IdeaStyle.contentBox}>
-              <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
-              <WebViewComp data={item?.benefitIdea} />
-            </View>
+
+              <View style={IdeaStyle.contentBox}>
+                <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
+                <WebViewComp data={item?.benefitIdea} />
+              </View>
 
             {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
-            
+
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
                 <Text style={IdeaStyle.heading}>{Label.Video}</Text>
