@@ -15,7 +15,7 @@ const IdeaStyle = StyleSheet.create({
         width: '100%',
         // flex: 1,
         backgroundColor: GetAppColor.white,
-        paddingBottom: AppUtil.getHP(5)
+        paddingBottom: AppUtil.getHP(1)
     },
     academyTitle: {
         fontFamily: FONTS.robotMedium,
