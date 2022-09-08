@@ -375,6 +375,11 @@ export const ARlabel = {
   _comment : "Comment",
   _commentRequired : "Please enter comment",
   _replay : "Replay",
+  _noSubCategory: "No Sub Category",
+  _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
+  _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
+
+  
 }
 export const USlabel = {
   _homeTitle: "HomeScreen",
@@ -589,6 +594,7 @@ export const USlabel = {
   _sectors: "Sectors",
   _category: "Category",
   _subCategory: "Sub Category",
+  _noSubCategory: "No Sub Category",
   _gender: "Gender",
   _male: "Male",
   _female: "Female",
@@ -839,6 +845,9 @@ export const USlabel = {
   _comment : "Comment",
   _commentRequired : "Please enter comment",
   _replay : "Replay",
+
+  _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
+  _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
 
   
 }

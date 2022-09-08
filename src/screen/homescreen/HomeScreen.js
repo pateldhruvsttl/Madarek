@@ -39,10 +39,10 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     onSlider();
-    // onOpenChallenge();
-    // onSpotlight();
-    // onFavouriteCategories();
-    // onExpertInsights();
+    onOpenChallenge();
+    onSpotlight();
+    onFavouriteCategories();
+    onExpertInsights();
   }, []);
 
   const onSlider = () => {

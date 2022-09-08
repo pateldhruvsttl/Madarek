@@ -36,7 +36,7 @@ const ExpertInsightScreen = (props) => {
       "frontuser_id": UserManager.userId,
       "language": getLanguage(),
       "globalkeywords": "",
-      "page": "3",
+      "page": "1",
       "limit": AppConfig.pageLimit,
       "sector": ""
 

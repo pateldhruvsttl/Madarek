@@ -11,6 +11,7 @@ export default class IdeaList {
 
         this.ideaTitle = obj?.idea_title ? obj?.idea_title :Label.NoTitle;
         this.categoryName = obj?.category_name ? obj?.category_name : Label.NoCategory
+        this.sub_category_name = obj?.sub_category_name ? obj?.sub_category_name : Label.NoSubCategory
         
         this.createDate = obj?.created_at ? obj?.created_at :Label.DefaultDate
         this.date = obj?.date || Label.DefaultDate
@@ -22,6 +23,10 @@ export default class IdeaList {
         this.title = obj?.title ? obj?.title : Label.NoTitle
         this.section = obj?.section || Label.DefaultNumber
         this.ideaDescription = obj?.idea_description ? obj?.idea_description : Label.NoDescription
+        
+        this.challengesAddressing = obj?.challenges_addressing ? obj?.challenges_addressing : Label.NoDescription
+        this.benefitIdea = obj?.benefit_idea ? obj?.benefit_idea : Label.NoDescription
+        
         this.ideaImage = obj?.idea_cover_image ? obj?.idea_cover_image : ""
         this.winning = obj?.winning || Label.DefaultNumber
         this.madarekSpecial = obj?.madarek_special || Label.DefaultNumber
@@ -43,6 +48,7 @@ export default class IdeaList {
         this.ideaVideo = obj?.idea_upload_videos || ""
         this.additionalImages = obj?.additional_images || ""
         this.userPhoto = obj?.user_photo || "https://i.imgur.com/5tj6S7Ol.jpg"
+        this.expertInsightData = obj?.expert_insight_data || []
 
 
     }

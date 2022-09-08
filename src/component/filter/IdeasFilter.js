@@ -14,6 +14,7 @@ import { GetAppColor } from "../../utils/Colors";
 import { memo } from "react";
 import { Service } from "../../service/Service";
 import { EndPoints } from "../../service/EndPoints";
+import { Loger } from "../../utils/Loger";
 
 function IdeasFilter(props) {
   const [selectedItemList, setSelectedItemList] = useState([]);
@@ -86,11 +87,22 @@ function IdeasFilter(props) {
   };
 
   const getCategories = () => {
-    Service.get(
-      EndPoints.categories,
-      (res) => {
-        setCategoriesList(res.data);
-      },
+    Service.get(EndPoints.categorie, (res) => {
+
+      let cat = [];
+      res.data.forEach(element => {
+       
+        if (element?.subcategory) {
+          element?.subcategory.forEach(innerElement => {
+            cat.push(innerElement)
+          });
+        }
+        cat.push(element)
+      });
+
+      Loger.onLog("=-=-=-=-=-=-=-=-=->", cat);
+      setCategoriesList(cat);
+    },
       (err) => {
       }
     );
@@ -203,10 +215,7 @@ function IdeasFilter(props) {
         {categoriesList.map((item, index) => {
           return (
             <View style={Style.userTypeButtonView}>
-              <TouchableOpacity
-                onPress={() => onSetMultiItem(item.category_name)}
-                style={{ alignItems: "center" }}
-              >
+              <TouchableOpacity onPress={() => onSetMultiItem(item.category_name)} style={{ alignItems: "center" }}>
                 {onCheckSelectItem(item.category_name) ? (
                   <View style={Style.multiSelectYellowBorderView}>
                     <IcnSelect
@@ -283,7 +292,7 @@ function IdeasFilter(props) {
                   style={Style.menuButton}
                 >
                   <Text style={Style.txtSortBy}>
-                  {`${Label.Sectors} (${selectorList}) `}
+                    {`${Label.Sectors} (${selectorList}) `}
                     {/* {"Sectors (" + selectorList + ")"} */}
                   </Text>
                   {selectedCatIndex ? (
@@ -347,14 +356,3 @@ function IdeasFilter(props) {
 
 export default memo(IdeasFilter);
 
-
-const selectorItemList = [
-  "Sector Sector 1",
-  "Sector Ipsm lorem 2",
-  "Sector A",
-  "Aviation",
-  "Banking and Finance",
-  "Child Level Cat",
-  "Constuctuion and Infrastucture",
-  "Corporate Category",
-];

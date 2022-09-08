@@ -33,35 +33,27 @@ import { set } from 'react-native-reanimated';
 const IdeaDetails = (props) => {
   const navigation = useNavigation();
   const item = props.route.params
-  const [expertInsight, setExpertInsight] = useState([]);
+  const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
+  Loger.onLog("item",item);
+  useEffect(() => {
+
+    if (item?.expertInsightData.length > 0) {
+      const expertInsightArr = [];
+      item?.expertInsightData.map((ele) => {
+        const model = new ExpertInsight(ele)
+        expertInsightArr.push(model);
+      })
+      setExpertInsight(expertInsightArr)
+    }
+
+  }, []);
 
   useEffect(() => {
-    onExpertInsights();
     onIdeas()
   }, []);
 
-  const onExpertInsights = () => {
-    const data = {
-      "frontuser_id": UserManager.userId,
-      "language": getLanguage(),
-      "device_id": deviceId,
-    }
-    Service.post(EndPoints.expertInsights, data, (res) => {
-      if (res?.statusCode === "1") {
-        const expertInsightArr = [];
-        res.data.map((ele) => {
-          const model = new ExpertInsight(ele)
-          expertInsightArr.push(model);
-        })
-        setExpertInsight(expertInsightArr)
 
-      }
-
-    }, (err) => {
-      Loger.onLog('expertInsights  error ========>', err)
-    })
-  }
 
   const onIdeas = () => {
     const data = {
@@ -154,15 +146,23 @@ const IdeaDetails = (props) => {
               </View>
             }
 
-            <IdeaContent data={item}
+            <IdeaContent
+              data={item}
               id={props?.route?.params?.id}
               navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
             />
 
             <View style={IdeaStyle.contentBox}>
               <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
-              {/* <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text> */}
               <WebViewComp data={item?.ideaDescription} />
+            </View>
+            <View style={IdeaStyle.contentBox}>
+              <Text style={IdeaStyle.heading}>{Label?.ChallengesTheIdeaIsAddressing}</Text>
+              <WebViewComp data={item?.challengesAddressing} />
+            </View>
+            <View style={IdeaStyle.contentBox}>
+              <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
+              <WebViewComp data={item?.benefitIdea} />
             </View>
 
             {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
@@ -177,11 +177,11 @@ const IdeaDetails = (props) => {
 
             {item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
-            {expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight} screen="IdeaDetail" />}
+            {isExpertInsight.length > 0 && <ExpertInsightsSlider Entries={isExpertInsight} screen="IdeaDetail" />}
 
             <View style={IdeaStyle.subIdeaList}>
               <SubIdeasListWithImage
-                data={isAllIdeas.splice(1, 2)}
+                data={isAllIdeas}
                 isType="Ideas"
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
                 onLikeIdeas={(id) => onLikeIdeas(id)}
