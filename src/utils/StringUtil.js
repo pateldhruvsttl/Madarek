@@ -366,7 +366,6 @@ export const Label = {
   NewPasswordIncorrect : isRTL ? ARlabel._newPasswordIncorrect : USlabel._newPasswordIncorrect,
   ChangePasswordSuccess : isRTL ? ARlabel._changePasswordSuccess : USlabel._changePasswordSuccess,
   Share : isRTL ? ARlabel._share : USlabel._share,
-  IdeaDetails : isRTL ? ARlabel._ideaDetails : USlabel._ideaDetails,
   ExpertsProfile : isRTL ? ARlabel._expertsProfile : USlabel._expertsProfile,
   ContestDetail : isRTL ? ARlabel._contestDetail : USlabel._contestDetail,
   ExpertiseBrief : isRTL ? ARlabel._expertiseBrief : USlabel._expertiseBrief,

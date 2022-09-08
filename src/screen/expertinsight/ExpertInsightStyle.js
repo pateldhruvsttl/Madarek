@@ -15,6 +15,15 @@ import FONTS from '../../utils/Fonts'
         backgroundColor:GetAppColor.white,
 
     },
+    emptyView: {
+        height: AppUtil.getHP(20),
+        margin: '2%',
+        padding: '4%',
+        borderRadius: AppUtil.getHP(1),
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    txtNoDataFound: { color: GetAppColor.black, fontSize: AppUtil.getHP(1.8) },
     topFlexView:{
         flexDirection:'row',
         padding:AppUtil.getHP(1.5),

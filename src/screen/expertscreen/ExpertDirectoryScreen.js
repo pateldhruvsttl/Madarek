@@ -10,6 +10,7 @@ import { AppConfig, getLanguage } from '../../manager/AppConfig';
 import { EndPoints } from '../../service/EndPoints';
 import ExpertDirectoryModel from '../../model/ExpertDirectoryModel';
 import { Service } from '../../service/Service';
+import { Label } from '../../utils/StringUtil';
 
 function ExpertDirectoryScreen(props) {
 
@@ -88,14 +89,20 @@ function ExpertDirectoryScreen(props) {
     return (
         <SafeAreaView style={Style.SafeAryView}>
             <CommonHeader isType={"ExpertDirectoryScreen"} id={props?.route?.params?.id} onMenuClick={() => null} onFilter={() => setFilterVisible(!isFilterVisible)} />
-            <View style={Style.MainView}>
-                <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"}
-                    onLikeIdeas={(id) => onLikeIdeas(id)}
-                    navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations}
-                    categoryName={props.route.params.categoryName} 
-                    navigateToComment={(item) =>  props.navigation.navigate("CommentScreen", { item: item })}
+            {isCategories.length > 0 ?
+                <View style={Style.MainView}>
+                    <SimilarExperts data={isCategories} isType={"ExpertDirectoryScreen"}
+                        onLikeIdeas={(id) => onLikeIdeas(id)}
+                        navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })} onGetPaginations={onGetPaginations}
+                        categoryName={props.route.params.categoryName}
+                        navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                     />
-            </View>
+                </View>
+                :
+                <View style={Style.emptyView}>
+                    <Text style={Style.txtNoDataFound}>{Label.NoDataFound}</Text>
+                </View>
+            }
         </SafeAreaView>
     )
 }

@@ -7,13 +7,17 @@ import { buttonHeight } from '../../utils/Constant';
 
 const HomeStyle = StyleSheet.create({
     MainView: { backgroundColor: GetAppColor.white, alignItems: 'center' },
-
+    label: {
+        fontSize:
+            AppUtil.getHP(1.6), color: GetAppColor.textColor,
+        fontFamily: FONTS.robotRegular
+    },
     innerFirstView: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView1: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView2: { width: '100%', marginTop: AppUtil.getHP(2) },
     innerSecondView3: { width: '100%', marginTop: AppUtil.getHP(1), padding: AppUtil.getHP(0.5), borderWidth: 1, borderColor: GetAppColor.commonTextColor },
-    innerSecondView5: { width: '100%', marginTop: AppUtil.getHP(2), flexDirection:'row' },
-    
+    innerSecondView5: { width: '100%', marginTop: AppUtil.getHP(2), flexDirection: 'row' },
+
     innerView1: { width: '100%', marginTop: AppUtil.getHP(6), justifyContent: 'center' },
     innerView2: { width: '100%', marginTop: AppUtil.getHP(2.5), justifyContent: 'center' },
 
@@ -113,20 +117,20 @@ const HomeStyle = StyleSheet.create({
         width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderWidth: 1, borderColor: GetAppColor.disableBorder, borderRadius: 3,
         justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: AppUtil.getHP(2)
     },
-    addFileView : {
-        width: AppUtil.getWP(25), height: AppUtil.getHP(8), 
+    addFileView: {
+        width: AppUtil.getWP(25), height: AppUtil.getHP(8),
         justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: AppUtil.getHP(2)
     },
     imageContainer: { flexDirection: 'row', flexWrap: 'wrap' },
     imgStyle: { width: AppUtil.getWP(25), height: AppUtil.getHP(8), borderRadius: 3 },
     removeIcnStyle: { position: 'absolute', right: -5, top: -5 },
-    removeIcnFile : {
-        position: 'absolute', right: 3, top: -5 
+    removeIcnFile: {
+        position: 'absolute', right: 3, top: -5
     },
-    error : {
-        fontFamily:FONTS.robotRegular,
-        color:GetAppColor.borderRed,
-        fontSize:AppUtil.getHP(1.5)
+    error: {
+        fontFamily: FONTS.robotRegular,
+        color: GetAppColor.borderRed,
+        fontSize: AppUtil.getHP(1.5)
     },
     txtNameView: { flexDirection: 'row', marginTop: AppUtil.getHP(2.5) },
     txtName: { width: '50%' },
@@ -144,15 +148,15 @@ const HomeStyle = StyleSheet.create({
     btnAditionlImg: { width: '40%', height: AppUtil.getHP(4), marginTop: AppUtil.getHP(1), justifyContent: 'center', alignItems: 'center', backgroundColor: GetAppColor.innovationGrey, borderRadius: 5 },
     txtInputTitlePlaceHolder: {
         fontSize: AppUtil.getHP(1.8), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular,
-        height: AppUtil.getHP(4), marginVertical: AppUtil.getHP(1), borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor, paddingVertical:3
+        height: AppUtil.getHP(4), marginVertical: AppUtil.getHP(1), borderBottomWidth: 1, borderBottomColor: GetAppColor.btnBorderColor, paddingVertical: 3
     },
     detailsView: { flexDirection: 'row', justifyContent: 'space-between' },
     icnPluse: {
         width: AppUtil.getHP(3), height: AppUtil.getHP(3), borderWidth: 0.5, borderColor: GetAppColor.disableBorder, borderRadius: 3,
         justifyContent: 'center', alignItems: 'center'
     },
-    txticnPluse: { fontSize: AppUtil.getHP(2), color: GetAppColor.textColor, fontFamily: FONTS.robotLight, alignSelf:"center" },
-    innerSecondView4: { width: '100%', flexDirection:'row', justifyContent:'space-between'},
+    txticnPluse: { fontSize: AppUtil.getHP(2), color: GetAppColor.textColor, fontFamily: FONTS.robotLight, alignSelf: "center" },
+    innerSecondView4: { width: '100%', flexDirection: 'row', justifyContent: 'space-between' },
 
     multiSelectYellowBorderView: {
         height: AppUtil.getHP(2),

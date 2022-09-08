@@ -217,7 +217,7 @@ const SubIdeasListWithImage = (props) => {
 
 
             <FlatList
-                data={props.data}
+                data={props?.data}
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderIdeaItem}
                 onEndReached={onGetPaginations}

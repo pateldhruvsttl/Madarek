@@ -362,7 +362,6 @@ export const ARlabel = {
   _newPasswordIncorrect:          "كلمة المرور الجديدة وتأكيد كلمة المرور لا تتطابق ",
   _changePasswordSuccess:         "تم تغيير كلمة المرور بنجاح",
   _share :                        "شارك",
-  _ideaDetails :                  "تفاصيل الفكرة ",
   _expertsProfile :               "لمحة عن الخبراء ",
   _contestDetail :                "تفاصيل المسابقة ",
   _expertiseBrief:                "موجز الخبرة ",
@@ -816,7 +815,6 @@ export const USlabel = {
   _recordsFound : "Records Found",
 
   _share : "Share",
-  _ideaDetails : "idea-details",
   _expertsProfile : "experts-profile",
   _contestDetail : "contest-detail",
   _expertiseBrief:"Expertise Brief",

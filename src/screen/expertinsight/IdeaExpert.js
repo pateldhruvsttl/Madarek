@@ -5,6 +5,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import { AppUtil } from '../../utils/AppUtil'
+import { Label } from '../../utils/StringUtil'
 
 const IdeaExpert = (props) => {
 
@@ -42,7 +43,7 @@ const IdeaExpert = (props) => {
 
                             <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
-                            
+
                             <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
                                 <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             </TouchableOpacity>
@@ -58,12 +59,17 @@ const IdeaExpert = (props) => {
     }
     return (
         <View>
-
-            <FlatList
-                data={props.data}
-                style={{ marginTop: AppUtil.getHP(1) }}
-                renderItem={(item) => renderCell(item)}
-            />
+            {
+                props.data.length > 0 ?
+                    <FlatList
+                        data={props.data}
+                        style={{ marginTop: AppUtil.getHP(1) }}
+                        renderItem={(item) => renderCell(item)}
+                    /> :
+                    <View style={ExpertInsightStyle.emptyView}>
+                        <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
+                    </View>
+            }
         </View>
     )
 }
