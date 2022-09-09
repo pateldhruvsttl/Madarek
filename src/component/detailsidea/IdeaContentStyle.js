@@ -53,7 +53,7 @@ const IdeaContentStyle = StyleSheet.create({
     dateSubContain: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '60%',
+        width:  Platform.OS === "android" ? AppUtil.getWP(50) :  AppUtil.getWP(40),
     },
 
     contentTitle: {
