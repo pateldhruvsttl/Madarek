@@ -34,36 +34,29 @@ import { showMessage } from '../../utils/Constant';
 const IdeaDetails = (props) => {
   const navigation = useNavigation();
   const item = props.route.params
-  const [expertInsight, setExpertInsight] = useState([]);
+  const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
-  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(1, 2) : isAllIdeas
-  
+  Loger.onLog("item", item);
   useEffect(() => {
-    onExpertInsights();
+
+    if (item?.expertInsightData.length > 0) {
+      const expertInsightArr = [];
+      item?.expertInsightData.map((ele) => {
+        const model = new ExpertInsight(ele)
+        expertInsightArr.push(model);
+      })
+      setExpertInsight(expertInsightArr)
+    }
+
+  }, []);
+
+  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(1, 2) : isAllIdeas
+
+  useEffect(() => {
     onIdeas()
   }, []);
 
-  const onExpertInsights = () => {
-    const data = {
-      "frontuser_id": UserManager.userId,
-      "language": getLanguage(),
-      "device_id": deviceId,
-    }
-    Service.post(EndPoints.expertInsights, data, (res) => {
-      if (res?.statusCode === "1") {
-        const expertInsightArr = [];
-        res.data.map((ele) => {
-          const model = new ExpertInsight(ele)
-          expertInsightArr.push(model);
-        })
-        setExpertInsight(expertInsightArr)
 
-      }
-
-    }, (err) => {
-      Loger.onLog('expertInsights  error ========>', err)
-    })
-  }
 
   const onIdeas = () => {
     const data = {
@@ -141,7 +134,7 @@ const IdeaDetails = (props) => {
       Loger.onLog("err of likeUnlike", err)
     })
   }
- 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CommonHeader isType={"IdeaDetails"} />
@@ -157,16 +150,25 @@ const IdeaDetails = (props) => {
               </View>
             }
 
-            <IdeaContent data={item}
+            <IdeaContent
+              data={item}
               id={props?.route?.params?.id}
               navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
             />
 
             <View style={IdeaStyle.contentBox}>
               <Text style={IdeaStyle.heading}>{Label?.Description}</Text>
-              {/* <Text style={IdeaStyle.descriptionContent}>{item?.ideaDescription}</Text> */}
               <WebViewComp data={item?.ideaDescription} />
             </View>
+            <View style={IdeaStyle.contentBox}>
+              <Text style={IdeaStyle.heading}>{Label?.ChallengesTheIdeaIsAddressing}</Text>
+              <WebViewComp data={item?.challengesAddressing} />
+            </View>
+
+              <View style={IdeaStyle.contentBox}>
+                <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
+                <WebViewComp data={item?.benefitIdea} />
+              </View>
 
             {item.team && item?.team.length > 0 && 
             <UserProfileList profileData={item?.team}
@@ -183,7 +185,7 @@ const IdeaDetails = (props) => {
 
             {item?.resources && item?.resources.length > 0 && <Resources resource={item?.resources} />}
 
-            {expertInsight && expertInsight.length > 0 && <ExpertInsightsSlider Entries={expertInsight}
+            {isExpertInsight && isExpertInsight.length > 0 && <ExpertInsightsSlider Entries={isExpertInsight}
               navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
               screen="IdeaDetail" />}
 

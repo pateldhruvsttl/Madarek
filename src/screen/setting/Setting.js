@@ -65,6 +65,7 @@ const _lang = getLanguage();
 
             {/* Change Password */}
             <ScrollView style={SettingStyle.settingScrollViewStyle} >
+                
                 <TouchableOpacity style={[SettingStyle.btnView, SettingStyle.topMargin]} onPress={() =>  props.navigation.navigate("ChangePasswordScreen")}>
                     <View style={SettingStyle.iconTextView}>
                         <Lock height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} color={themeColor.headerColor} />

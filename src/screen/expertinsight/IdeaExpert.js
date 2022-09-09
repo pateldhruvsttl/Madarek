@@ -17,6 +17,7 @@ const IdeaExpert = (props) => {
                         <Image
                             source={{ uri: item.profilePhoto }}
                             style={ExpertInsightStyle.smallRadiousImage} />
+
                         <View style={[ExpertInsightStyle.subFlexView, { marginEnd: AppUtil.getHP(2.5) }]}>
                             <Text numberOfLines={1} style={ExpertInsightStyle.catText}>{item.title}</Text>
                             <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
@@ -59,13 +60,19 @@ const IdeaExpert = (props) => {
     }
     return (
         <View>
+
+
             {
                 props.data.length > 0 ?
+
                     <FlatList
                         data={props.data}
-                        style={{ marginTop: AppUtil.getHP(1) }}
+                        scrollEnabled={props?.scrollEnabled ? true : false}
                         renderItem={(item) => renderCell(item)}
-                    /> :
+                        key={(id) => id}
+                        keyExtractor={item => item.id}
+                    />
+                    :
                     <View style={ExpertInsightStyle.emptyView}>
                         <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
                     </View>

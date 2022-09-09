@@ -202,6 +202,9 @@ export const Label = {
   AboutExpert: isRTL ? ARlabel._aboutExpert : USlabel._aboutExpert,
   Description: isRTL ? ARlabel._description : USlabel._description,
 
+  ChallengesTheIdeaIsAddressing: isRTL ? ARlabel._challengesTheIdeaIsAddressing : USlabel._challengesTheIdeaIsAddressing,
+  BenefitsOfIdeaImplementation: isRTL ? ARlabel._benefitsOfIdeaImplementation : USlabel._benefitsOfIdeaImplementation,
+
   AddMore: isRTL ? ARlabel._addMore : USlabel._addMore,
   Submit: isRTL ? ARlabel._submit : USlabel._submit,
 
@@ -380,6 +383,7 @@ export const Label = {
   CommentRequired : isRTL ? ARlabel._commentRequired : USlabel._commentRequired,
   Replay : isRTL ? ARlabel._replay : USlabel._replay,
   NoNotifications : isRTL ? ARlabel._noNotifications : USlabel._noNotifications,
+  NoSubCategory : isRTL ? ARlabel._noSubCategory : USlabel._noSubCategory,
 
 
 } 

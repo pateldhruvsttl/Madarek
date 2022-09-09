@@ -19,7 +19,7 @@ const UserProfileList = (props) => {
                     borderRadius={ AppUtil.getHP(9)}
                     resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={true} />
                 </View>
-                <Text style={styles.personName}>{item.first_name}</Text>
+                <Text style={styles.personName}>{item.first_name +" "+ item.last_name}</Text>
             </TouchableOpacity>
         </ScrollView>
 

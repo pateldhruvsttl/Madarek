@@ -205,6 +205,12 @@ const ExpertInsightDetailStyle = StyleSheet.create({
     color: GetAppColor.grayBorder,
     fontFamily: FONTS.robotMedium,
   },
+  img1: { width: '100%', height: AppUtil.getHP(32),},
+
+  imgStyle: {
+    width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1,
+     justifyContent:'center', alignItems:'center'
+}
 });
 
 export default ExpertInsightDetailStyle;

@@ -30,7 +30,7 @@ export const EndPoints = {
     acceptrejectrequest:"acceptrejectrequest",
     teamcollaboration:"teamcollaboration",
     challengedetails:"challengedetails",
-    sector:"rest/sectors",
+    sector:"sectors",
     loadidea:"loadidea",
     submitIdeaList:"submittedideas",
     submitidea:"submitidea",
@@ -41,4 +41,5 @@ export const EndPoints = {
     joinExpert:"joinexpert",
     commentSection:"commentsection",
     submitComment:"submitcomment",
+    globe:"globe",
 }

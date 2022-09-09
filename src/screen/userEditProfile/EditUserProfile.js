@@ -19,6 +19,7 @@ import { Label } from '../../utils/StringUtil'
 import { Loger } from '../../utils/Loger'
 import { showMessageWithCallBack, showMessage } from '../../utils/Constant'
 import axios from 'axios'
+import { UserManager } from '../../manager/UserManager'
 
 const EditUserProfile = (props) => {
 
@@ -34,6 +35,48 @@ const EditUserProfile = (props) => {
         props.route.params.onReferesh();
         props.navigation.navigate('UserProfileView')
     }
+    const onNormalUserSubmit = (obj) => {
+
+        var data = new FormData()
+
+        data.append('device_id', deviceId)
+        data.append('lang', AppConfig)
+        data.append('token', AppConfig)
+
+        data.append('first_name', personalData.firstName);
+        data.append('last_name', personalData.lastName);
+        data.append('job_title', personalData.jobTitle);
+        data.append('organization_name', personalData.organization);
+        data.append('country_id', personalData.countryId);
+        data.append('city_id', personalData.cityId);
+        data.append('user_categories', '["3", "4"]');
+
+        data.append('about_expert', obj.about);
+        data.append('twitter_link', obj.twitterLink);
+        data.append('facebook_link', obj.facebookLink);
+        data.append('linkdin_link', obj.linkdinLink);
+
+        data.append('Fees_Type', "hourly");
+        data.append('SME_User_Fees', "250");
+
+        data.append('expertise_brief', "");
+        data.append('skills', "");
+        Service.post(EndPoints.editProfile, data, (res) => {
+            if (res.statusCode == "1") {
+                showMessageWithCallBack(Label.UpdateProfie, () => {
+                    refresh()
+                })
+            }
+            else {
+                showMessage(res.message)
+            }
+        },
+            (err) => {
+                Loger.onLog("Error of update profile", err);
+            }
+        )
+
+    }
     const onSubmit = (obj) => {
 
         var data = new FormData()
@@ -47,7 +90,6 @@ const EditUserProfile = (props) => {
         data.append('organization_name', personalData.organization);
         data.append('country_id', personalData.countryId);
         data.append('city_id', personalData.cityId);
-        // data.append('user_photo', userPhoto)
         data.append('user_categories', '["3", "4"]');
         data.append('about_expert', otherData.about);
         data.append('twitter_link', otherData.twitterLink);
@@ -216,6 +258,32 @@ const EditUserProfile = (props) => {
 
     }
 
+    const renderPersonalSlideNormalUser = () => (
+        <View style={EditUserProfileStyle.roundSlide}>
+            <View style={EditUserProfileStyle.rightCheckView}>
+                <RightCheck height={AppUtil.getHP(2.25)} width={AppUtil.getHP(2.25)} color={themeColor.headerColor} />
+            </View>
+
+            <View style={EditUserProfileStyle.line2} />
+
+            <View style={[EditUserProfileStyle.rightCheckView, { backgroundColor: GetAppColor.white }]}>
+            </View>
+        </View>
+    )
+
+    const renderotherDetailSlideNormalUser = () => (
+        <View style={EditUserProfileStyle.roundSlide}>
+            <View style={EditUserProfileStyle.rightCheckView}>
+                <RightCheck height={AppUtil.getHP(2.25)} width={AppUtil.getHP(2.25)} color={themeColor.headerColor} />
+            </View>
+            <View style={EditUserProfileStyle.line2} />
+
+            <View style={[EditUserProfileStyle.rightCheckView]}>
+                <RightCheck height={AppUtil.getHP(2.25)} width={AppUtil.getHP(2.25)} color={themeColor.headerColor} />
+            </View>
+        </View>
+    )
+
     const renderPersonalSlide = () => (
         <View style={EditUserProfileStyle.roundSlide}>
             <View style={EditUserProfileStyle.rightCheckView}>
@@ -252,7 +320,6 @@ const EditUserProfile = (props) => {
         </View>
     )
 
-
     const renderExpertSlide = () => (
         <View style={EditUserProfileStyle.roundSlide}>
             <View style={EditUserProfileStyle.rightCheckView}>
@@ -273,37 +340,66 @@ const EditUserProfile = (props) => {
             </View>
         </View>
     )
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"UserEditProfile"} />
-            <View style={EditUserProfileStyle.slideView}>
+    if (UserManager.userRole == 1) {
+
+        return (
+            <SafeAreaView style={{ flex: 1 }}>
+                <CommonHeader isType={"UserEditProfile"} />
+                <View style={EditUserProfileStyle.slideView}>
+                    {
+                        selectedIndex == 0 ? renderPersonalSlideNormalUser() : renderotherDetailSlideNormalUser()
+                    }
+
+                    <View style={EditUserProfileStyle.textLineView2}>
+                        <Text style={EditUserProfileStyle.slideText}>{Label.Personal}</Text>
+                        <Text style={EditUserProfileStyle.slideText}>{Label.OtherDetail}</Text>
+                    </View>
+                </View>
+
                 {
-                    selectedIndex == 0 ?
-                        renderPersonalSlide() :
-                        selectedIndex == 1 ?
-                            renderotherDetailSlide()
-                            : renderExpertSlide()
+                    selectedIndex == 0 ? <PersonalEdit onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
+                        : <OtherDetailEdit onNext={(obj) => { onNormalUserSubmit(obj) }} data={updateData} />
                 }
 
-                <View style={EditUserProfileStyle.textLineView}>
-                    <Text style={EditUserProfileStyle.slideText}>{Label.Personal}</Text>
-                    <Text style={EditUserProfileStyle.slideText}>{Label.OtherDetail}</Text>
-                    <Text style={EditUserProfileStyle.slideText}>{Label.Expert}</Text>
+
+
+
+
+            </SafeAreaView>
+        )
+    }
+    else {
+        return (
+            <SafeAreaView style={{ flex: 1 }}>
+                <CommonHeader isType={"UserEditProfile"} />
+                <View style={EditUserProfileStyle.slideView}>
+                    {
+                        selectedIndex == 0 ? renderPersonalSlide() :
+                            selectedIndex == 1 ? renderotherDetailSlide()
+                                : renderExpertSlide()
+                    }
+
+                    <View style={EditUserProfileStyle.textLineView}>
+                        <Text style={EditUserProfileStyle.slideText}>{Label.Personal}</Text>
+                        <Text style={EditUserProfileStyle.slideText}>{Label.OtherDetail}</Text>
+                        <Text style={EditUserProfileStyle.slideText}>{Label.Expert}</Text>
+                    </View>
                 </View>
-            </View>
 
-            {
-                selectedIndex == 0 ? <PersonalEdit onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
-                    : selectedIndex == 1 ? <OtherDetailEdit onNext={(obj) => { setOtherData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
-                        : <ExpertEdit onNext={(obj) => onSubmit(obj)} data={updateData} />
-            }
-
+                {
+                    selectedIndex == 0 ? <PersonalEdit onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
+                        : selectedIndex == 1 ? <OtherDetailEdit onNext={(obj) => { setOtherData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
+                            : <ExpertEdit onNext={(obj) => onSubmit(obj)} data={updateData} />
+                }
 
 
 
 
-        </SafeAreaView>
-    )
+
+            </SafeAreaView>
+        )
+    }
+
 }
 
 export default EditUserProfile

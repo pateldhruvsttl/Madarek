@@ -7,7 +7,8 @@ import FONTS from '../../utils/Fonts'
 const UserProfileStyle = StyleSheet.create({
     MainView: {  width: '100%', backgroundColor: GetAppColor.white },
     tabHeader: { fontSize: 15, textTransform: 'capitalize', width: AppUtil.getWP(33.33) },
-    tabBarItem: { width:AppUtil.getWP(33) },
+    tabBarItem1: { width:AppUtil.getWP(50) },
+    tabBarItem2: { width:AppUtil.getWP(33) },
     itemBorder: { backgroundColor: GetAppColor.innovationGrey },
 
     cornerView:{

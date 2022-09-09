@@ -66,20 +66,24 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment }) => {
             ))
         return (
             <TouchableOpacity style={styles.renderMainView} onPress={() => navigation.navigate('ExpertInsightDetailWithComment', { id: item.id })}>
+                {item?.profilePhoto &&
+                    <View style={styles.renderProfileView}>
+                        <ImageLoad
+                            style={styles.profilePicView}
+                            resizeMode='cover'
+                            source={{ uri: item.profilePhoto }}
+                            borderRadius={AppUtil.getHP(15)}
+                        />
+                    </View>
+                }
 
-                <View style={styles.renderProfileView}>
-                    <ImageLoad
-                        style={styles.profilePicView}
-                        resizeMode='cover'
-                        source={{ uri: item.profilePhoto }}
-                        borderRadius={AppUtil.getHP(15)}
-                    />
-                </View>
+                {item?.firstName != "" && <Text style={styles.txtNameView}>{item.firstName}</Text>}
+                {item?.jobTitle != "" &&
+                    <>
+                        <Text style={styles.txtSubNameView}>{item.jobTitle}</Text>
+                        <View style={styles.borderLine} />
+                    </>}
 
-                <Text style={styles.txtNameView}>{item.firstName}</Text>
-                <Text style={styles.txtSubNameView}>{item.jobTitle}</Text>
-
-                <View style={styles.borderLine} />
 
                 <Text numberOfLines={1} style={styles.txtTitleView}>{item.ideaTitle}</Text>
 

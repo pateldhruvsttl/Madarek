@@ -32,7 +32,7 @@ import FONTS from '../../utils/Fonts'
     },
     smallRadiousImage:{
         height:AppUtil.getHP(8),
-        width:AppUtil.getHP(10),
+        width:AppUtil.getHP(8),
          borderRadius:10,
 
     },

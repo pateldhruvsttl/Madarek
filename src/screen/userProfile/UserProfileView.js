@@ -54,6 +54,30 @@ const UserProfileView = (props) => {
         userProfile();
         // alert('refresh callled at 49')
     }
+    const onNavigateRoot = () => {
+        if (UserManager.userRole == 1) {
+            return (
+                <Tab.Navigator screenOptions={{
+                    tabBarLabelStyle: UserProfileStyle.tabHeader,
+                    tabBarItemStyle: UserProfileStyle.tabBarItem1,
+                    tabBarIndicatorStyle: UserProfileStyle.itemBorder,
+                }}>
+                    <Tab.Screen name={Label.Personal} children={() => <Personal data={userData} />} />
+                    <Tab.Screen name={Label.OtherDetail} children={() => <OtherDetail data={userData} />} />
+                </Tab.Navigator>
+            )
+        }
+        else {
+            return (
+
+                <Tab.Navigator screenOptions={{ tabBarLabelStyle: UserProfileStyle.tabHeader, tabBarItemStyle: UserProfileStyle.tabBarItem2, tabBarIndicatorStyle: UserProfileStyle.itemBorder, }}>
+                    <Tab.Screen name={Label.Personal} children={() => <Personal data={userData} />} />
+                    <Tab.Screen name={Label.OtherDetail} children={() => <OtherDetail data={userData} />} />
+                    <Tab.Screen name={Label.Expert} children={() => <Expert data={userData} />} />
+                </Tab.Navigator>
+            )
+        }
+    }
     return (
 
         <View style={{ flex: 1 }}>
@@ -62,16 +86,9 @@ const UserProfileView = (props) => {
 
                 <View style={[UserProfileStyle.MainView, { height: '95%' }]}>
                     {/* <NavigationContainer > */}
-                    <Tab.Navigator screenOptions={{
-                        tabBarLabelStyle: UserProfileStyle.tabHeader,
-                        tabBarItemStyle: UserProfileStyle.tabBarItem,
-                        tabBarIndicatorStyle: UserProfileStyle.itemBorder,
-                        // tabBarScrollEnabled: true
-                    }}>
-                        <Tab.Screen name={Label.Personal} children={() => <Personal data={userData} />} />
-                        <Tab.Screen name={Label.OtherDetail} children={() => <OtherDetail data={userData} />} />
-                        <Tab.Screen name={Label.Expert} children={() => <Expert data={userData} />} />
-                    </Tab.Navigator>
+
+                    {onNavigateRoot()}
+
                     {/* </NavigationContainer> */}
                 </View>
             </SafeAreaView>

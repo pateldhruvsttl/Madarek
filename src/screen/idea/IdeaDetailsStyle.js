@@ -62,7 +62,8 @@ const IdeaStyle = StyleSheet.create({
     img: { width: '100%', height: AppUtil.getHP(32),},
 
     imgStyle: {
-        width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1, justifyContent:'center', alignItems:'center', backgroundColor:"red"
+        width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1,
+         justifyContent:'center', alignItems:'center'
     }
 })
 

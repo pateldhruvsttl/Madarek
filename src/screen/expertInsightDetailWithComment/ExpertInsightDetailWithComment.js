@@ -59,7 +59,6 @@ const ExpertInsightDetailWithComment = (props) => {
       "insight_id": id
     }
     Service.post(EndPoints.expertsInsiteDetail, data, (res) => {
-      Loger.onLog('response of expertsInsiteDetail', res)
       if (res.statusCode == 1) {
         let model = new ExpertInsightDetail(res.data)
         setDetail(model)
@@ -229,7 +228,17 @@ const ExpertInsightDetailWithComment = (props) => {
       <View style={ExpertInsightDetailStyle.MainView}>
         <ScrollView>
           <View style={ExpertInsightDetailStyle.container}>
-            <IdeaSlider Entries={testData} />
+            {/* <IdeaSlider Entries={testData} /> */}
+
+            {
+              // detail && detail?.additionalImages.length > 0 ?
+              //   <IdeaSlider Entries={detail?.additionalImages} />
+              //   :
+              <View style={ExpertInsightDetailStyle.imgStyle}>
+                <ImageLoad style={ExpertInsightDetailStyle.img1} resizeMode='cover' source={{ uri: detail?.profilePhoto }} />
+              </View>
+            }
+
             <IdeaContent data={detail}
               id={id}
               isType={'ExpertWithComment'}

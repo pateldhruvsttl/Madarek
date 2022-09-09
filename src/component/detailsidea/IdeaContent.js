@@ -209,6 +209,7 @@ const IdeaContent = (props) => {
                     <View style={Style.sectorCategoryArea}>
                         <Text style={Style.contentTitleSecond}>{Label.Sector}  <Bold>{props.data?.sectorName}</Bold></Text>
                         <Text style={Style.contentTitleSecond}>{Label.Category}  <Bold>{props.data?.categoryName}</Bold> </Text>
+                        {props.data?.sub_category_name && <Text style={Style.contentTitleSecond}>{Label.SubCategory}  <Bold>{props.data?.sub_category_name}</Bold> </Text>}
                     </View>
 
             }

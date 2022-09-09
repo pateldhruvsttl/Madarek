@@ -39,6 +39,7 @@ const SubIdeasListGraph = (props) => {
     let randColor = randomNumber.padStart(6, 0);
     return `#${randColor.toUpperCase()}`
   }
+  
   const message = (id) => {
     return `idea-details/${id}`
   }

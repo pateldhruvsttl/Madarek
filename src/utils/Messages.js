@@ -375,6 +375,11 @@ export const ARlabel = {
   _commentRequired : "Please enter comment",
   _replay : "Reply",
   _noNotifications : "No new notifications",
+  _noSubCategory: "No Sub Category",
+  _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
+  _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
+
+  
 }
 
 export const USlabel = {
@@ -590,6 +595,7 @@ export const USlabel = {
   _sectors: "Sectors",
   _category: "Category",
   _subCategory: "Sub Category",
+  _noSubCategory: "No Sub Category",
   _gender: "Gender",
   _male: "Male",
   _female: "Female",
@@ -840,6 +846,9 @@ export const USlabel = {
   _commentRequired : "Please enter comment",
   _replay : "Reply",
   _noNotifications : "No new notifications",
+
+  _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
+  _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
 
   
 }
