@@ -38,7 +38,7 @@ const CommonHeaderStyle = StyleSheet.create({
     },
     container: { position: 'absolute', start: AppUtil.getWP(12), flexDirection: 'row' },
     profile: {
-        backgroundColor: GetAppColor.grayShadeBorder,
+        // backgroundColor: GetAppColor.grayShadeBorder,
         width: AppUtil.getHP(5),
         height: AppUtil.getHP(5),
         borderRadius: AppUtil.getHP(2.5)

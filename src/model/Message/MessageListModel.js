@@ -1,3 +1,4 @@
+import { Label } from "../../utils/StringUtil";
 
 export default class MessageListModel {
     
@@ -8,8 +9,8 @@ export default class MessageListModel {
         }
         
         this.id = obj?.id
-        this.full_name = obj?.full_name ?  obj?.full_name : "No Name"
-        this.user_photo = obj?.user_photo ? obj?.user_photo : ""
-        this.email = obj?.email ? obj?.email : ""
+        this.fullName = obj?.full_name ?  obj?.full_name : Label.NoName
+        this.userPhoto = obj?.user_photo ? obj?.user_photo : "https://i.imgur.com/5tj6S7Ol.jpg"
+        this.email = obj?.email ? obj?.email : Label.NoEmail
     }
 }
