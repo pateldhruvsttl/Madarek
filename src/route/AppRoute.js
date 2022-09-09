@@ -77,9 +77,9 @@ function HomeRoot() {
             <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
             <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
 
-           <Stack.Screen name="Category" component={Category} />
+            <Stack.Screen name="Category" component={Category} />
             <Stack.Screen name="UserCategory" component={UserCategory} />
-            
+
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
@@ -131,7 +131,7 @@ function ScreenStack() {
             <Stack.Screen name="LoginRoot" component={LoginRoot} />
             <Stack.Screen name="HomeRoot" component={HomeRoot} />
 
-            
+
         </Stack.Navigator>
     )
 }
@@ -142,7 +142,7 @@ function MyDrawer() {
         <Drawer.Navigator
             drawerContent={props => <MyDrawerScreen {...props} />}
             drawerPosition='left'
-            screenOptions={{headerShown: false,drawerStyle: { width: '85%', },}}
+            screenOptions={{ headerShown: false, drawerStyle: { width: '85%', }, }}
             useLegacyImplementation={true}>
             <Drawer.Screen name="ScreenStack" component={ScreenStack} options={{ swipeEnabled: false, }} />
         </Drawer.Navigator>
