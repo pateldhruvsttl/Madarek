@@ -45,7 +45,7 @@ const IdeaContent = (props) => {
             props.navigateToComment({ model: 'ContestComments', fieldName: 'contest_id', id: id })
         }
         else if (props?.isType == "ExpertWithComment") {
-            props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: id })
+            props.navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: id })
         }
         else {
             props.navigateToComment({ model: 'IdeaComments', fieldName: 'idea_id', id: id })
@@ -69,12 +69,32 @@ const IdeaContent = (props) => {
         })
     }
 
-    const onIdealike = (id, field, model) => {
+    const onIdealike = (id) => {
+        const fieldName = () => {
+            if (props.isType == 'ChallengeDetail') {
+                return 'contest_id'
+            }
+            else if (props.isType == 'ExpertWithComment') {
+                return 'formdata_id'
+            } else {
+                return 'idea_id'
+            }
+        }
+        const modelName = () => {
+            if (props.isType == 'ChallengeDetail') {
+                return 'LikedislikeContests'
+            }
+            else if (props.isType == 'ExpertWithComment') {
+                return 'LikedislikeGeneral'
+            } else {
+                return 'LikedislikeIdeas'
+            }
+        }
         var data = {
-            "field_name": field,
+            "field_name": fieldName(),
             "id": id,
             "frontuser_id": UserManager.userId,
-            "model": model
+            "model": modelName()
         }
         Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
             const likeDislike = res?.data === 'dislike' ? 1 : 0;
@@ -159,7 +179,7 @@ const IdeaContent = (props) => {
                         </TouchableOpacity>
                     </View>
                     :
-                    props.isType == 'ExpertInsightDetailWithComment' ?
+                    props.isType == 'ExpertWithComment' ?
                         <View style={Style.dateContentIdea}>
                             <IcnClander height={iconSize} width={iconSize} />
                             <Text style={Style.contentTitle}>{props.data?.spotlightCreateDate}</Text>
@@ -231,7 +251,7 @@ const IdeaContent = (props) => {
                             {props.data?.toatal_view_contest}
                         </Text>
                     </View> */}
-                    {props.isType != 'ExpertInsightDetailWithComment' &&
+                    {props.isType != 'ExpertWithComment' &&
                         <View style={Style.secondInnerCalView}>
                             <IcnWatchDone height={iconSize} width={iconSize} />
                             <Text style={[Style.contentTitleSecond, Style.spacetoLeft]}>
@@ -244,11 +264,11 @@ const IdeaContent = (props) => {
                         {
                             props?.data?.like == true ?
 
-                                <TouchableOpacity onPress={() => props.isType == 'ChallengeDetail' ? onIdealike(props.id, "contest_id", "LikedislikeContests") : onIdealike(props.data.id, "idea_id", "LikedislikeIdeas")}>
+                                <TouchableOpacity onPress={() => onIdealike(props.id)}>
                                     <IcnThumsUpBlack height={iconSize} width={iconSize} />
                                 </TouchableOpacity>
                                 :
-                                <TouchableOpacity onPress={() => props.isType == 'ChallengeDetail' ? onIdealike(props.id, "contest_id", "LikedislikeContests") : onIdealike(props.data.id, "idea_id", "LikedislikeIdeas")}>
+                                <TouchableOpacity onPress={() => onIdealike(props.id)}>
                                     <IcnThumsUp height={iconSize} width={iconSize} />
                                 </TouchableOpacity>
                         }

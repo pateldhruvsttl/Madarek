@@ -46,7 +46,8 @@ const CommonHeaderStyle = StyleSheet.create({
     subProfile: {
         width: AppUtil.getHP(5),
         height: AppUtil.getHP(5),
-        borderRadius: AppUtil.getHP(2.5)
+        borderRadius: AppUtil.getHP(2.5),
+        backgroundColor:GetAppColor.grayShadeBorder
     },
 
     chatDetail: { alignItems: 'flex-start', justifyContent: 'center', marginStart: AppUtil.getWP(2) },

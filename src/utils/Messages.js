@@ -373,8 +373,10 @@ export const ARlabel = {
   _noJoinRequest : "No join request",
   _comment : "Comment",
   _commentRequired : "Please enter comment",
-  _replay : "Replay",
+  _replay : "Reply",
+  _noNotifications : "No new notifications",
 }
+
 export const USlabel = {
   _homeTitle: "HomeScreen",
   _subnitIdea: "SUBMIT IDEA",
@@ -836,7 +838,8 @@ export const USlabel = {
   _noJoinRequest : "No join request",
   _comment : "Comment",
   _commentRequired : "Please enter comment",
-  _replay : "Replay",
+  _replay : "Reply",
+  _noNotifications : "No new notifications",
 
   
 }

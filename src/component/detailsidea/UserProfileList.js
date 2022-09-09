@@ -12,16 +12,15 @@ const UserProfileList = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
 
     const renderItem = ({ item }) => (
-
         <ScrollView horizontal={true}>
-            <View style={styles.profileDetails}>
+            <TouchableOpacity style={styles.profileDetails} onPress={() => props?.navigateToScreen ? props.navigateToScreen(item.id)  : null}>
                 <View style={styles.imgStyle}>
                     <ImageLoad style={styles.img}
                     borderRadius={ AppUtil.getHP(9)}
                     resizeMode='cover' source={{ uri: item.user_photo }} isShowActivity={true} />
                 </View>
                 <Text style={styles.personName}>{item.first_name}</Text>
-            </View>
+            </TouchableOpacity>
         </ScrollView>
 
     );

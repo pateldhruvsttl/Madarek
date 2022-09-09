@@ -74,7 +74,7 @@ const ExpertInsightScreen = (props) => {
     })
   }
   const navigateScreen = (id) => {
-    return props.navigation.navigate("ExpertInsightDetailWithComment",{expertId:id})
+    return props.navigation.navigate("ExpertInsightDetailWithComment",{id:id})
   }
   const navigateToComment = (item) => {
     return props.navigation.navigate("CommentScreen", { item: item }) 

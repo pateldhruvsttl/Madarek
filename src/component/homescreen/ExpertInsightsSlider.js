@@ -65,7 +65,7 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment }) => {
                 </TouchableOpacity>
             ))
         return (
-            <TouchableOpacity style={styles.renderMainView} onPress={() => navigation.navigate('ExpertDetailsScreen', { id: item.id })}>
+            <TouchableOpacity style={styles.renderMainView} onPress={() => navigation.navigate('ExpertInsightDetailWithComment', { id: item.id })}>
 
                 <View style={styles.renderProfileView}>
                     <ImageLoad
@@ -97,12 +97,12 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment }) => {
                         <IcnWatchDone style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={styles.title}>{item.totalViews}</Text>
                     </View>
-                    <View style={styles.secondInnerCalView}>
+                    <TouchableOpacity style={styles.secondInnerCalView}>
                         <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         <Text style={styles.title}>{item.totalLikes}</Text>
-                    </View>
+                    </TouchableOpacity>
                     <View style={styles.secondInnerCalView}>
-                        <TouchableOpacity onPress={() => navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                        <TouchableOpacity onPress={() => navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: item.id })}>
                             <IcnComment style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                         </TouchableOpacity>
                         <Text style={styles.title}>{item.totalComments}</Text>

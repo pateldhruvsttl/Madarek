@@ -148,7 +148,9 @@ function NotificationsScreen() {
       }
     );
   };
-
+console.log(
+  'length',notiData.length
+);
   return (
     <View style={Style.MainView}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -162,7 +164,7 @@ function NotificationsScreen() {
         <View style={Style.bodyView}>
           <Text style={Style.notificationsCounter}>
             {record}
-            <Text style={Style.txtTitle}> {Label.NewNotifications}</Text>
+            <Text style={Style.txtTitle}> {notiData && notiData.length > 0 ? Label.NewNotifications : Label.NoNotifications}</Text>
           </Text>
           <TouchableOpacity
             onPress={() => {

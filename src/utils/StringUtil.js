@@ -379,6 +379,7 @@ export const Label = {
   Comment : isRTL ? ARlabel._comment : USlabel._comment,
   CommentRequired : isRTL ? ARlabel._commentRequired : USlabel._commentRequired,
   Replay : isRTL ? ARlabel._replay : USlabel._replay,
+  NoNotifications : isRTL ? ARlabel._noNotifications : USlabel._noNotifications,
 
 
 } 

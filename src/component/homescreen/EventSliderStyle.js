@@ -21,7 +21,7 @@ const EventSliderStyle = StyleSheet.create({
     sliderRendTitleView: {
         position: 'absolute',
         // top: AppUtil.getHP(17),
-        top: AppUtil.getHP(19.8),
+        top: AppUtil.getHP(19.5),
         marginStart: AppUtil.getWP(4),
         width: '93%',
         marginEnd:AppUtil.getWP(2),

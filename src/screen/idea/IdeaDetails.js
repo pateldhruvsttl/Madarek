@@ -168,7 +168,10 @@ const IdeaDetails = (props) => {
               <WebViewComp data={item?.ideaDescription} />
             </View>
 
-            {item.team && item?.team.length > 0 && <UserProfileList profileData={item?.team} />}
+            {item.team && item?.team.length > 0 && 
+            <UserProfileList profileData={item?.team}
+            navigateToScreen={(id) =>  props.navigation.navigate("UserProfileView",{id:id})}
+            />}
             
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>

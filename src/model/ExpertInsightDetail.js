@@ -22,6 +22,7 @@ export default class ExpertInsightDetail {
         this.totalFavoriteIdea =  obj?.toatal_favorite_idea || Label.DefaultNumber
         this.totalComment =  obj?.toatal_idea_comment || Label.DefaultNumber
         this.totalLike =  obj?.toatal_liked_idea || Label.DefaultNumber
+        this.like =  obj?.my_total_liked_id > 0 ? true : false
         // this.title =  obj?.title || "No title"
         this.insightDescription =  obj?.insight_description || Label.NoDescription
         this.sectorName =  obj?.sector_name || Label.NoSector
