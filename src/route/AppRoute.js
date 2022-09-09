@@ -63,7 +63,6 @@ function LoginRoot() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: false }}  >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="SignUpVerify" component={SignUpVerify} />
         </Stack.Navigator>
@@ -73,11 +72,14 @@ function HomeRoot() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: false }}  >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
+
             <Stack.Screen name="IdeasListScreen" component={IdeasListScreen} />
             <Stack.Screen name="IdeaDetails" component={IdeaDetails} />
+            <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
 
            <Stack.Screen name="Category" component={Category} />
             <Stack.Screen name="UserCategory" component={UserCategory} />
+            
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
             <Stack.Screen name="ExpertInsightScreen" component={ExpertInsightScreen} />
@@ -85,14 +87,16 @@ function HomeRoot() {
 
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
-            <Stack.Screen name="SubmitIdeaScreen" component={SubmitIdeaScreen} />
-
             <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
 
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
-            <Stack.Screen name="PartnerScreen" component={PartnerScreen} />
+
             <Stack.Screen name="Setting" component={Setting} />
+            <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
+            <Stack.Screen name="SignupComman" component={Signup} />
+
+            <Stack.Screen name="PartnerScreen" component={PartnerScreen} />
             <Stack.Screen name="MyAccount" component={MyAccount} />
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
             <Stack.Screen name="EditUserProfileView" component={EditUserProfile} />

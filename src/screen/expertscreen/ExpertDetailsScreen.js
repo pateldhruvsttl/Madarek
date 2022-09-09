@@ -201,7 +201,7 @@ function ExpertDetailsScreen(props) {
                             {/* <TouchableOpacity style={[Style.btnLearMore, { borderColor: themeColor.buttonColor }]} onPress={() => navigation.navigate("BecomeAnExpert")}>
                                 <Text style={[Style.txt, { color: themeColor.buttonColor }]}>{Label.LearnMore}</Text>
                             </TouchableOpacity> */}
-                            <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]} onPress={() => props.navigation.navigate('Signup')}>
+                            <TouchableOpacity style={[Style.btnApplyNow, { backgroundColor: themeColor.buttonColor }]} onPress={() => props.navigation.navigate('SignupComman')}>
                                 <Text style={[Style.txt, { color: GetAppColor.white }]}>{Label.ApplyNow}</Text>
                             </TouchableOpacity>
                         </View>
