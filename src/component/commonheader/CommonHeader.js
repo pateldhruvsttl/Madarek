@@ -600,7 +600,7 @@ const CommonHeader = (props) => {
                             </View>
                             <View style={Style.chatDetail}>
                                 <Text style={Style.chatTxt}>{props.isName}</Text>
-                                <Text style={[Style.chatTxt, Style.onlineTxt]}>{Label.Online}</Text>
+                                {/* <Text style={[Style.chatTxt, Style.onlineTxt]}>{Label.Online}</Text> */}
                             </View>
                         </View>
                         <View style={Style.icnEmpty} />

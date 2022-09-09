@@ -47,7 +47,6 @@ const MessageStyle = StyleSheet.create({
         width: AppUtil.getHP(6),
         height: AppUtil.getHP(6),
         borderRadius: AppUtil.getHP(3),
-        backgroundColor: 'gray'
     },
     leftItems: {
         width: AppUtil.getWP(65),

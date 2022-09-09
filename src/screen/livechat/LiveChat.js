@@ -7,6 +7,7 @@ import IcnEmoji from '../../assets/svg/IcnEmoji'
 import IcnGallery from '../../assets/svg/IcnGallery'
 import IcnDocument from '../../assets/svg/IcnDocument'
 import IcnMenuDote from '../../assets/svg/IcnMenuDote'
+import IcnSendMessage from '../../assets/svg/IcnSendMessage'
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
 import { EndPoints } from '../../service/EndPoints'
@@ -41,7 +42,7 @@ const LiveChat = (props) => {
             "page": 1,
             "limit": 1,
             "type": "detail",
-            "idea_id": "1787"
+            "idea_id": props?.route?.params?.ideaId
         }
         Service.post(EndPoints.teamcollaboration, data, (res) => {
             if (res?.statusCode === "1") {
@@ -64,10 +65,10 @@ const LiveChat = (props) => {
             return 
 
         let obj = {
-            "frontuser_id": 48,
+            "frontuser_id": UserManager.userId,
             "device_id": deviceId,
             "type": "add",
-            "idea_id": "1787",
+            "idea_id":props?.route?.params?.ideaId,
             "comment": isMessage,
             "parent_id": ""
         }
@@ -75,8 +76,8 @@ const LiveChat = (props) => {
             if (res?.statusCode === "1") {
                
                 const storeArray = isNewMessage
-                storeArray.push({ id:UserManager.userId,comment:isMessage})
-                setNewMessage(storeArray)
+                storeArray.push({ id:UserManager.userId,comment:isMessage,email:UserManager.email})
+                setNewMessage([...storeArray])
                 setListUpdate(getId())
 
                 setMessage("");
@@ -89,9 +90,8 @@ const LiveChat = (props) => {
 
         
     }
-
     const renderItem = ({ item }) => (
-
+        
         <View style={[STYLE.messageContainer, { alignItems: item?.email == UserManager.email ? 'flex-end' : 'flex-start' }]}>
             <View style={item?.email == UserManager.email ? STYLE.rightMsg : STYLE.leftMsg}>
                 <Text ellipsizeMode='tail' style={STYLE.leftLabel}>{item.comment}</Text>
@@ -101,7 +101,7 @@ const LiveChat = (props) => {
     )
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <CommonHeader isType={"LiveChat"} isName={props?.route?.params?.name} url={props?.route?.params?.url} />
+            <CommonHeader isType={"LiveChat"} isName={props?.route?.params?.name} url={props?.route?.params?.imgUrl} />
             <View style={STYLE.container}>
                 <View style={STYLE.listing}>
                     <FlatList
@@ -125,13 +125,15 @@ const LiveChat = (props) => {
                             value={isMessage}
                             onChangeText={(txt) => { setMessage(txt) }}
                         />
-                        <TouchableOpacity>
+                        {/* <TouchableOpacity onPress={() => sendMessage()}>
                             <IcnDocument width={AppUtil.getHP(2.8)} height={AppUtil.getHP(2.8)} style={STYLE.menuDocument} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
-                    <TouchableOpacity onPress={sendMessage} style={STYLE.icnContainer}>
-                        <IcnMenuDote width={AppUtil.getHP(3)} height={AppUtil.getHP(3)} color={GetAppColor.grayBorder} />
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={() => sendMessage()} style={STYLE.icnContainer}>
+                            <IcnSendMessage width={AppUtil.getHP(3)} height={AppUtil.getHP(3)} 
+                            fill={GetAppColor.grayBorder}
+                            />
+                            </TouchableOpacity>
                 </View>
             </View>
 
