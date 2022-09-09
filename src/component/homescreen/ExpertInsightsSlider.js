@@ -12,6 +12,7 @@ import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
 import IcnComment from "../../assets/svg/IcnComment"
 import ImageLoad from "react-native-image-placeholder";
+import WebViewComp from "../webview/WebViewComp";
 
 const ExpertInsightsSlider = ({ Entries, screen, navigateToComment }) => {
 
@@ -85,6 +86,7 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment }) => {
 
 
                 <Text numberOfLines={1} style={styles.txtTitleView}>{item.ideaTitle}</Text>
+
                 <Text numberOfLines={2} style={styles.txtSubtitleView}>{item.ideaDescription}</Text>
 
 

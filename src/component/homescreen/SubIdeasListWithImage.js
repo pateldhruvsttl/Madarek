@@ -142,9 +142,9 @@ const SubIdeasListWithImage = (props) => {
                                     <Text style={Style.title}>{item.name}</Text>
                                 </View>
                                 :
-                                <View style={Style.calView}>
+                                <View style={Style.challengeDate}>
                                     <IcnClander style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    <Text style={Style.title}>{item.createDate}</Text>
+                                    <Text numberOfLines={1} style={Style.title}>{item.createDate}</Text>
                                 </View>
 
                     }

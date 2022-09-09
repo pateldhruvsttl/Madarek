@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
 import Style from './JointRequestStyle'
 import ImageLoad from 'react-native-image-placeholder'
@@ -50,6 +50,7 @@ const AllRequestStatus = (props) => {
     };
     
     return (
+        <SafeAreaView>
         <View style={Style.MainView}>
             <CommonHeader isType={"User Request"} />
             {props.route.params.length > 0 ?
@@ -66,6 +67,7 @@ const AllRequestStatus = (props) => {
                 </View>
             }
         </View>
+        </SafeAreaView>
     )
 }
 

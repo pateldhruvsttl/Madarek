@@ -35,15 +35,16 @@ const STYLE = StyleSheet.create({
         justifyContent: 'space-between'
     },
     icnContainer: {
-        marginStart: AppUtil.getWP(4),
+        // marginStart: AppUtil.getWP(3),
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flex:1
     },
 
     chatInput: {
         color: GetAppColor.pincolor,
         fontSize: AppUtil.getHP(1.8),
-        width: AppUtil.getWP(40),
+        width: AppUtil.getWP(60),
     },
     
     icons: {
@@ -69,7 +70,7 @@ const STYLE = StyleSheet.create({
         borderBottomLeftRadius: AppUtil.getHP(2),
         paddingVertical: AppUtil.getWP(1.5),
         paddingHorizontal: AppUtil.getHP(1.5),
-        maxWidth : '70%'
+        maxWidth : '70%',
     },
     messageContainer: {
         paddingHorizontal :  AppUtil.getHP(1.5), 

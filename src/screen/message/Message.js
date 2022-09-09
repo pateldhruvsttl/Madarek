@@ -1,11 +1,9 @@
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import MessageStyle from './MessageStyle'
 import { useSelector } from 'react-redux'
-import { AppUtil } from '../../utils/AppUtil'
-import IcnClander from "../../assets/svg/IcnClander"
 import { Label } from '../../utils/StringUtil'
 import { EndPoints } from '../../service/EndPoints'
 import { Service } from '../../service/Service'
@@ -18,6 +16,7 @@ import { AppConfig } from '../../manager/AppConfig'
 const Message = (props) => {
     const { themeColor } = useSelector((state) => state)
     const [isList, setList] = useState([])
+    const [ideaId, setIdeaId] = useState()
 
     useEffect(() => {
         onSmeDashboard();
@@ -27,23 +26,25 @@ const Message = (props) => {
     const onSmeDashboard = () => {
         const data = {
 
-            "frontuser_id":UserManager.userId,
+            "frontuser_id": UserManager.userId,
             "device_id": deviceId,
             "token": AppConfig.token,
             "page": 1,
-            "limit":1,
+            "limit": 1,
             "type": "list"
         }
         Service.post(EndPoints.teamcollaboration, data, (res) => {
 
             if (res?.statusCode === "1") {
                 const Arr = []
-
+                res.data.map((ele) => {
+                    setIdeaId(ele.ideas_id)
+                })
                 res.data[0].team.map((ele) => {
                     const model = new MessageListModel(ele)
                     Arr.push(model)
-                    setList(Arr)
                 })
+                setList(Arr)
             }
 
         }, (err) => {
@@ -52,17 +53,20 @@ const Message = (props) => {
     }
 
     const renderCell = ({ item }) => (
-        <TouchableOpacity style={MessageStyle.renderMainView} onPress={()=> props.navigation.navigate("LiveChat", {name:item.full_name, imgUrl:item.user_photo})}>
+
+        <TouchableOpacity style={MessageStyle.renderMainView} onPress={() => props.navigation.navigate("LiveChat", { name: item.fullName, imgUrl: item.userPhoto, ideaId: ideaId })}>
 
             <View style={MessageStyle.rightItems}>
-                <Image style={MessageStyle.img} resizeMode='cover' source={{ uri: item.user_photo }} />
+                <Image style={MessageStyle.img}
+                    resizeMode='cover'
+                    source={{ uri: item.userPhoto }}
+                />
             </View>
 
             <View style={MessageStyle.leftItems}>
 
-                <Text numberOfLines={1} style={MessageStyle.title}>{item.full_name}</Text>
+                <Text numberOfLines={1} style={MessageStyle.title}>{item.fullName}</Text>
                 <Text style={MessageStyle.subTitle}>{item?.email}</Text>
-
 
                 {/* <View style={MessageStyle.calView}>
                     <IcnClander style={MessageStyle.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
