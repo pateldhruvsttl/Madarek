@@ -27,7 +27,8 @@ const drawerStyles = StyleSheet.create({
   },
   headerView: { marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(1) },
   centerIcnView: { width: '100%', alignItems: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', marginTop: AppUtil.getHP(1) },
-  menuContainer: { marginEnd: AppUtil.getWP(4), alignItems: 'center', justifyContent: 'center' },
+ 
+  menuContainer: { marginEnd: AppUtil.getWP(2), alignItems: 'center', justifyContent: 'center' },
   profileImageView: { height: AppUtil.getHP(5), width: AppUtil.getHP(5), borderRadius: AppUtil.getHP(5 / 2), borderWidth: 1, borderColor: 'white', overflow: 'hidden' },
   profileImage: { height: AppUtil.getHP(4), width: AppUtil.getHP(4), },
 

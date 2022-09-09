@@ -163,7 +163,7 @@ const MyDrawerScreen = (props) => {
         AsyncStorage.setItem('@user', JSON.stringify(res))
         onselectButtonMenu(1, "HomeScreen", -1);
       }
-     
+
     });
 
   }
@@ -208,23 +208,26 @@ const MyDrawerScreen = (props) => {
           </View>
           <View style={drawerStyles.menuContainer}>
 
-            <Menu>
-              <MenuTrigger style={[drawerStyles.dashBoardButton, { marginStart: 5 }]} onPress={() => onGetGlobelData()}>
-                <IcnGlobe height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} stroke={GetAppColor.white} />
-              </MenuTrigger>
-              <MenuOptions>
-                {isSelectCorporate.map((obj) => {
-                  if (obj?.corporate_internal === "Global")
-                    return
+            {UserManager.userRole === 2 &&
 
-                  return (
-                    <MenuOption onSelect={() => { onSelectSector(obj?.corporate_internal) }}>
-                      <Text style={drawerStyles.selectItem}>{obj?.corporate_internal}</Text>
-                    </MenuOption>
-                  )
-                })}
-              </MenuOptions>
-            </Menu>
+              <Menu>
+                <MenuTrigger style={[{height: AppUtil.getHP(3), width: AppUtil.getHP(3) }]} onPress={() => onGetGlobelData()}>
+                  <IcnGlobe height={AppUtil.getHP(3.5)} width={AppUtil.getHP(3.5)} stroke={GetAppColor.white} />
+                </MenuTrigger>
+                <MenuOptions>
+                  {isSelectCorporate.map((obj) => {
+                    if (obj?.corporate_internal === "Global")
+                      return
+
+                    return (
+                      <MenuOption onSelect={() => { onSelectSector(obj?.corporate_internal) }}>
+                        <Text style={drawerStyles.selectItem}>{obj?.corporate_internal}</Text>
+                      </MenuOption>
+                    )
+                  })}
+                </MenuOptions>
+              </Menu>
+            }
 
           </View>
         </View>
