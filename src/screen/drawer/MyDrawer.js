@@ -30,16 +30,18 @@ import Login from '../../model/Login'
 import { AppConfig, getLanguage, setBaseURL } from '../../manager/AppConfig'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
-import IcnSelect from "../../assets/svg/IcnSelect"
+import IcnGlobe from "../../assets/svg/IcnGlobe"
 import { showMessageWithCancelCallBack } from '../../utils/Constant'
-import { StackActions,NavigationActions } from '@react-navigation/native'
+import { StackActions, NavigationActions } from '@react-navigation/native'
 
 const MyDrawerScreen = (props) => {
   const { themeColor } = useSelector((state) => state)
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [isSelectCorporate, setSelectCorporate] = useState([]);
 
   const _lang = getLanguage();
+
   const onSelectMenu = (index) => {
     if (index == selectedIndex) {
       setSelectedIndex(0)
@@ -71,6 +73,7 @@ const MyDrawerScreen = (props) => {
       onLogoutPressed()
     })
   }
+
   const onLogoutPressed = () => {
     const data = {
       "language": getLanguage(),
@@ -84,7 +87,7 @@ const MyDrawerScreen = (props) => {
       props.navigation.closeDrawer();
       setBaseURL('http://madarek.io/apiv1/');
       props.navigation.dispatch(StackActions.replace('LoginRoot'));
-     
+
     }, (err) => {
       Loger.onLog('Drawer Logout error', err);
     })
@@ -126,6 +129,45 @@ const MyDrawerScreen = (props) => {
     )
   }
 
+  const onGetGlobelData = () => {
+    if (isSelectCorporate.length === 0) {
+
+      const data = {
+        "frontuser_id": UserManager.userId,
+        "layout": "globe",
+        "limit": "100",
+        "page": "1",
+        "language": "en"
+
+      }
+      Service.post(EndPoints.globe, data, (res) => {
+        setSelectCorporate(res.data);
+      }, (err) => {
+        Loger.onLog('Drawer Logout error', err);
+      })
+    }
+
+
+
+  }
+
+  const onSelectSector = (corporateInternal) => {
+
+    AsyncStorage.getItem("@user").then((response) => {
+      if (response != 'null' && response != null) {
+        const res = JSON.parse(response);
+        res.data.corporateSubDomain = corporateInternal;
+        setBaseURL('http://' + corporateInternal + '.madarek.io/apiv1/');
+        setSelectCorporate([]);
+
+        AsyncStorage.setItem('@user', JSON.stringify(res))
+        onselectButtonMenu(1, "HomeScreen", -1);
+      }
+     
+    });
+
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* <View style={{ flex: 1 }}> */}
@@ -165,18 +207,25 @@ const MyDrawerScreen = (props) => {
             </TouchableOpacity>
           </View>
           <View style={drawerStyles.menuContainer}>
+
             <Menu>
-              <MenuTrigger style={[drawerStyles.dashBoardButton, { marginStart: 5 }]}>
-                <IcnSelect height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} stroke={GetAppColor.white} />
+              <MenuTrigger style={[drawerStyles.dashBoardButton, { marginStart: 5 }]} onPress={() => onGetGlobelData()}>
+                <IcnGlobe height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} stroke={GetAppColor.white} />
               </MenuTrigger>
-              <MenuOptions style={drawerStyles.optionsView}>
-                <MenuOption style={drawerStyles.menuView}>
-                  <Text style={drawerStyles.selectItem}>{Label.Latest}</Text>
-                  <Text style={drawerStyles.selectItem}>{Label.Popular}</Text>
-                  <Text style={drawerStyles.selectItem}>{Label.Winning}</Text>
-                </MenuOption>
+              <MenuOptions>
+                {isSelectCorporate.map((obj) => {
+                  if (obj?.corporate_internal === "Global")
+                    return
+
+                  return (
+                    <MenuOption onSelect={() => { onSelectSector(obj?.corporate_internal) }}>
+                      <Text style={drawerStyles.selectItem}>{obj?.corporate_internal}</Text>
+                    </MenuOption>
+                  )
+                })}
               </MenuOptions>
             </Menu>
+
           </View>
         </View>
       </View>
@@ -204,10 +253,7 @@ const MyDrawerScreen = (props) => {
 
       </TouchableOpacity>
 
-      {/*  */}
-      {
-        selectedIndex == 1 ? renderCollapseView() : null
-      }
+      {selectedIndex == 1 ? renderCollapseView() : null}
 
 
       <TouchableOpacity onPress={() => { onSelectMenu(2); onselectButtonMenu(3) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
@@ -231,32 +277,10 @@ const MyDrawerScreen = (props) => {
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 4 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Experts}</Text>
       </TouchableOpacity>
 
-      {/* <TouchableOpacity onPress={() => { onSelectMenu(3); onselectButtonMenu(5) }} style={[drawerStyles.menuButton, { justifyContent: 'space-between' }]}>
-        <View style={{ flexDirection: 'row' }}>
-          <EnterpriseIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-          <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 5 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Enterprises}</Text>
-        </View>
-        {
-          selectedIndex == 3 ?
-            <IcnUpArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-            :
-            <DownArrow height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-        }
-      </TouchableOpacity>
-      {
-        selectedIndex == 3 ? renderCollapseView() : null
-      } */}
-
-
       <TouchableOpacity onPress={() => onselectButtonMenu(6)} style={drawerStyles.menuButton}>
         <HowItWorksIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
         <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 6 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.HowitWorks}</Text>
       </TouchableOpacity>
-
-      {/* <TouchableOpacity onPress={() => onselectButtonMenu(7, 'PartnerScreen')} style={drawerStyles.menuButton}>
-        <PartnerIcn height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
-        <Text style={[drawerStyles.menuText, { fontFamily: selectedButtonIndex == 7 ? FONTS.robotBold : FONTS.robotRegular, }]}>{Label.Partners}</Text>
-      </TouchableOpacity> */}
 
       <TouchableOpacity onPress={() => onselectButtonMenu(8, 'MyAccount', -1)} style={drawerStyles.menuButton}>
         <MyAccount height={AppUtil.getHP(3)} width={AppUtil.getHP(3)} />
