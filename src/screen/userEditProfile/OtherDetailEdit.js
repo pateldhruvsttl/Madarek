@@ -7,6 +7,7 @@ import IcnClose from '../../assets/svg/IcnClose'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
 import { AppConfig, getLanguage } from '../../manager/AppConfig'
+import { UserManager } from '../../manager/UserManager'
 
 const OtherDetailEdit = (props) => {
   const { themeColor } = useSelector((state) => state)
@@ -112,7 +113,7 @@ const OtherDetailEdit = (props) => {
           onChangeText={(tLink) => setTwitterLink(tLink)}
         />
         <TouchableOpacity onPress={() => onCheckField()} style={EditUserProfileStyle.submitButton}>
-          <Text style={EditUserProfileStyle.submitText}>{Label.SaveAndNext}</Text>
+          <Text style={EditUserProfileStyle.submitText}>{UserManager.userRole == 1 ?  Label.Submit : Label.SaveAndNext}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

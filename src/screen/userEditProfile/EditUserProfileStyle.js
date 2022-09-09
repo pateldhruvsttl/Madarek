@@ -121,6 +121,11 @@ const EditUserProfileStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    line2: {
+        height: 1,
+        width: AppUtil.getWP(35),
+        backgroundColor: GetAppColor.editRoundColor,
+    },
     line: {
         height: 1,
         width: AppUtil.getWP(27),
@@ -131,6 +136,14 @@ const EditUserProfileStyle = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         width: '100%',
+        marginTop: AppUtil.getHP(1),
+
+    },
+    textLineView2: {
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '90%',
         marginTop: AppUtil.getHP(1),
 
     },
