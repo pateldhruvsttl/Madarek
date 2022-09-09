@@ -53,7 +53,7 @@ const IdeaContentStyle = StyleSheet.create({
     dateSubContain: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '70%',
+        width: '60%',
     },
 
     contentTitle: {
