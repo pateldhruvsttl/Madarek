@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { color } from 'react-native-reanimated'
 import { useSelector } from 'react-redux'
 import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
@@ -14,7 +15,8 @@ const drawerStyles = StyleSheet.create({
     borderBottomColor: GetAppColor.backColor,
     paddingStart: AppUtil.getWP(5),
     paddingTop: AppUtil.getHP(1),
-    paddingBottom: AppUtil.getHP(1)
+    paddingBottom: AppUtil.getHP(1),
+    color:GetAppColor.pincolor
   },
   moreView: { alignItems: 'flex-end', flex: 1 },
   optionsView: {
