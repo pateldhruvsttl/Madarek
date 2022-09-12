@@ -378,8 +378,13 @@ export const ARlabel = {
   _noSubCategory: "No Sub Category",
   _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
   _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
-
-  
+  _spotlightDetail: "Spotlight Detail",
+  _publishDate: "Publish Date",
+  _by: "by",
+  _spotlightDescription: "Spotlight Description",
+  _spotlightKeywords  : "Spotlight Keywords",
+  _meta  : "Meta",
+  _spotlight  : "Spotlights"
 }
 
 export const USlabel = {
@@ -849,6 +854,11 @@ export const USlabel = {
 
   _challengesTheIdeaIsAddressing: "Challenges The Idea is Addressing",
   _benefitsOfIdeaImplementation: "Benefits of Idea Implementation",
-
-  
+  _spotlightDetail: "Spotlight Detail",
+  _publishDate: "Publish Date",
+  _by: "by",
+  _spotlightDescription: "Spotlight Description",
+  _spotlightKeywords  : "Spotlight Keywords",
+  _meta  : "Meta",
+  _spotlight  : "Spotlights"
 }

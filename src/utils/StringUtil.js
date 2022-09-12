@@ -384,6 +384,13 @@ export const Label = {
   Replay : isRTL ? ARlabel._replay : USlabel._replay,
   NoNotifications : isRTL ? ARlabel._noNotifications : USlabel._noNotifications,
   NoSubCategory : isRTL ? ARlabel._noSubCategory : USlabel._noSubCategory,
+  SpotlightDetail : isRTL ? ARlabel._spotlightDetail : USlabel._spotlightDetail,
+  PublishDate : isRTL ? ARlabel._publishDate : USlabel._publishDate,
+  By : isRTL ? ARlabel._by : USlabel._by,
+  SpotlightKeywords : isRTL ? ARlabel._spotlightKeywords : USlabel._spotlightKeywords,
+  Meta : isRTL ? ARlabel._meta : USlabel._meta,
+  SpotlightDescription : isRTL ? ARlabel._spotlightDescription : USlabel._spotlightDescription,
+  Spotlight : isRTL ? ARlabel._spotlight : USlabel._spotlight,
 
 
-} 
+}  

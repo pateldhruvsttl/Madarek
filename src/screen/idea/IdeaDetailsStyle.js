@@ -50,7 +50,6 @@ const IdeaStyle = StyleSheet.create({
     contentBox: {
         width: '100%',
         paddingHorizontal: AppUtil.getWP(5),
-
     },
     videoPlay: {
         width: '100%', height: AppUtil.getHP(30),
@@ -59,11 +58,11 @@ const IdeaStyle = StyleSheet.create({
         marginTop: AppUtil.getHP(1),
     },
 
-    img: { width: '100%', height: AppUtil.getHP(32),},
+    img: { width: '100%', height: AppUtil.getHP(32), },
 
     imgStyle: {
         width: '100%', height: AppUtil.getHP(32), backgroundColor: GetAppColor.lightWhite1,
-         justifyContent:'center', alignItems:'center'
+        justifyContent: 'center', alignItems: 'center'
     }
 })
 

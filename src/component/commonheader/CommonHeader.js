@@ -67,7 +67,7 @@ const CommonHeader = (props) => {
 
                         <View style={Style.rightIcnView}>
                             <NotificationsButton />
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel",{screen:"HomeScreen"})}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "HomeScreen" })}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -95,8 +95,8 @@ const CommonHeader = (props) => {
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                                 {/* isFilter */}
-                                
-                                {props.isFilter?<View style={Style.redDot} />:null}
+
+                                {props.isFilter ? <View style={Style.redDot} /> : null}
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -162,7 +162,7 @@ const CommonHeader = (props) => {
                         <BackButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel",{screen:"EXPERT DIRECTORY",id:props.id})}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "EXPERT DIRECTORY", id: props.id })}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
                         </View>
@@ -280,7 +280,7 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                {props.isFilter?<View style={Style.redDot} />:null}
+                                {props.isFilter ? <View style={Style.redDot} /> : null}
 
                             </TouchableOpacity>
                         </View>
@@ -395,34 +395,34 @@ const CommonHeader = (props) => {
                 </>
             )
             break;
-            case 'User Request':
-                return (
-                    <>
-                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
-                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-                            <BackButton />
-                            <View style={Style.centerIcnView}>
+        case 'User Request':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                        <BackButton />
+                        <View style={Style.centerIcnView}>
                             <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.UserRequest}</Text>
                         </View>
                         <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            )
+            break;
+        case 'Comments':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+                        <BackButton />
+                        <View style={Style.centerIcnView}>
+                            <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Comment}</Text>
                         </View>
-                    </>
-                )
-                break;
-                case 'Comments':
-                    return (
-                        <>
-                            <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
-                            <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-                                <BackButton />
-                                <View style={Style.centerIcnView}>
-                                <Text style={[Style.expertHeader, { color: themeColor.headerFontColor }]}>{Label.Comment}</Text>
-                            </View>
-                            <View style={Style.icnEmpty} />
-                            </View>
-                        </>
-                    )
-                    break;
+                        <View style={Style.icnEmpty} />
+                    </View>
+                </>
+            )
+            break;
         case 'MyAccount':
             return (
                 <>
@@ -547,7 +547,7 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                {props.isFilter?<View style={Style.redDot} />:null}
+                                {props.isFilter ? <View style={Style.redDot} /> : null}
 
                             </TouchableOpacity>
                         </View>
@@ -573,7 +573,7 @@ const CommonHeader = (props) => {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                {props.isFilter?<View style={Style.redDot} />:null}
+                                {props.isFilter ? <View style={Style.redDot} /> : null}
 
                             </TouchableOpacity>
                         </View>
@@ -692,6 +692,46 @@ const CommonHeader = (props) => {
                 </>
             )
             break
+        case 'SpotlightDetail':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{props.heading ? props.heading : Label.SpotlightDetail}</Text>
+                        </View>
+                        <BackButton />
+                        <View style={Style.rightIcnView}></View>
+                    </View>
+                </>
+            )
+            break
+            case 'SpotlightListing':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+    
+                            <View style={Style.middleIcnView}>
+                                <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Spotlight}</Text>
+                            </View>
+                            <MenuButton />
+    
+                            <View style={Style.rightIcnView}>
+                                <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "CHALLENGE" })}>
+                                    <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.onFilter()}>
+                                    <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                    {props.isFilter ? <View style={Style.redDot} /> : null}
+    
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </>
+                );
+                break
         default: null;
     }
 }

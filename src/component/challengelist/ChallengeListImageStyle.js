@@ -55,7 +55,7 @@ const LISTSTYLE = StyleSheet.create({
     rightItems: { width: '40%', },
     leftItems: { width: '55%' },
 
-    calView: { flexDirection: 'row', alignItems: 'center' },
+    calView: { flexDirection: 'row', alignItems: 'center',width:AppUtil.getWP(46) },
     callIcn: { marginEnd: AppUtil.getHP(1) },
     callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart:AppUtil.getHP(1), },
 

@@ -94,7 +94,7 @@ const ChallengeListImage = (props) => {
                         :
                         <View style={LISTSTYLE.calView}>
                             <IcnClander style={LISTSTYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={LISTSTYLE.title}>{item.date}</Text>
+                            <Text numberOfLines={1} style={LISTSTYLE.title}>{item.date}</Text>
                         </View>
 
                 }

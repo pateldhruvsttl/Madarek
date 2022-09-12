@@ -72,7 +72,7 @@ const SubIdeasListWithImage = (props) => {
     }
     const renderIdeaItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props.onItemPress(item)} style={Style.renderMainView}>
+            <TouchableOpacity onPress={() => props?.isType == "Challenges" ? props.onItemPress(item.id) : props?.isType == "Spotlight" ? props.onItemPress(item.parentId) : props.onItemPress(item)} style={Style.renderMainView}>
                 <View style={Style.rightItems}>
                     <View style={Style.img}>
                         <ImageLoad style={Style.img} source={{ uri: item.ideaImage }} isShowActivity={false} />
@@ -114,10 +114,16 @@ const SubIdeasListWithImage = (props) => {
                             <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.black }]}>{item.ideaTitle}</Text>
                         </>
                         :
+                        props.isType == 'Spotlight' ?
                         <>
-                            <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
-                            <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
+                            <Text numberOfLines={2} style={[Style.SubTitleother, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
+                            <Text numberOfLines={1} style={Style.titleOther}>{item.categoryName}</Text>
                         </>
+                        :
+                        <>
+                        <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
+                        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
+                    </>
                     }
 
 

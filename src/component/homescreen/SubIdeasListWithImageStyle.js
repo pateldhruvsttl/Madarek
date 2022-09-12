@@ -62,8 +62,10 @@ const Style = StyleSheet.create({
     callLeftIcn: { marginEnd: AppUtil.getHP(1), marginStart: AppUtil.getHP(1), },
 
     title: { fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, color: GetAppColor.textColor },
+    titleOther: { fontSize: AppUtil.getHP(1.3), fontFamily: FONTS.robotMedium, color: GetAppColor.textColor, marginVertical: AppUtil.getHP(0.7) },
 
     SubTitle: { fontSize: AppUtil.getHP(1.9), fontFamily: FONTS.robotMedium, color: GetAppColor.borderRed, marginVertical: AppUtil.getHP(0.7) },
+    SubTitleother: { marginTop:-20,fontSize: AppUtil.getHP(1.9), fontFamily: FONTS.robotMedium, color: GetAppColor.borderRed },
 
     secondCalView: { alignItems: 'center', flexDirection: 'row', marginTop: AppUtil.getHP(1), justifyContent: 'flex-start' },
     secondInnerCalView: { flexDirection: 'row', marginEnd: AppUtil.getHP(2), alignItems: 'center' },
