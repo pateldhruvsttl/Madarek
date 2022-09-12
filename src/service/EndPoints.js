@@ -41,5 +41,5 @@ export const EndPoints = {
     joinExpert:"joinexpert",
     commentSection:"commentsection",
     submitComment:"submitcomment",
-    globe:"globe",
+    spotlightDetail:"madarekspotlightdetail",
 }

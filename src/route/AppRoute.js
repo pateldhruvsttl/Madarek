@@ -47,6 +47,7 @@ import IdeasFilter from '../component/filter/IdeasFilter';
 import ChangePasswordScreen from '../screen/changePassword/ChangePasswordScreen'
 import AllRequestStatus from '../component/dashboard/AllRequestStatus';
 import CommentScreen from '../component/comment/CommentScreen';
+import SpotlightDetail from '../screen/spotlightdetail/SpotlightDetail';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -115,6 +116,7 @@ function HomeRoot() {
             <Stack.Screen name="IdeasFilter" component={IdeasFilter} />
             <Stack.Screen name="AllRequestStatus" component={AllRequestStatus} />
             <Stack.Screen name="CommentScreen" component={CommentScreen} />
+            <Stack.Screen name="SpotlightDetail" component={SpotlightDetail} />
 
 
             {/* // unUsed Screen  */}
