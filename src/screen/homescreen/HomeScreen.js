@@ -91,10 +91,15 @@ const HomeScreen = (props) => {
   };
   const onSpotlight = () => {
     const data = {
-      frontuser_id:UserManager.userId
-  }
+      frontuser_id: UserManager.userId,
+      searchkeywords: "",
+      limit:"",
+      page: "",
+      spotlight_type: "",
+    }
+
     Service.post(
-      EndPoints.madarekSpotlight,data,
+      EndPoints.madarekSpotlight, data,
       (res) => {
         var spotLight = [];
         Loger.onLog("res madarekSpotlight", res);
@@ -291,8 +296,8 @@ const HomeScreen = (props) => {
                 onButtonPress={() => {
                   setModalVisible(true);
                 }}
-                onSeeMorePress={() => { }} //props.navigation.navigate("ChallengesListScreen")
-                // onSeeMorePress={() => { props.navigation.navigate("SpotlightListScreen", 0, { data: openChallenges, }); }}
+                // onSeeMorePress={() => { }} //props.navigation.navigate("ChallengesListScreen")
+                onSeeMorePress={() => { props.navigation.navigate("SpotlightListScreen", 0, { data: spotLight, }); }}
                 onItemPress={(id) => {
                   props.navigation.navigate("SpotlightDetail", { id: id });
                 }}

@@ -1,6 +1,6 @@
 import { Label } from "../utils/StringUtil";
 
-export default class IdeaList {
+export default class MadarekSportlight {
 
     constructor(obj = null) {
 
