@@ -37,6 +37,8 @@ const SubIdeasListWithImage = (props) => {
             return `idea-details/${id}`
         } else if (props?.isType == "Challenges") {
             return `contest-detail/${id}`
+        } else if (props?.isType == "Spotlight") {
+            return `spotlights/${id}`
         }
     }
     const likeUnlike = (id) => {
@@ -190,7 +192,7 @@ const SubIdeasListWithImage = (props) => {
                                     <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
                                 </MenuTrigger>
                                 <MenuOptions customStyles={Style.menuOptions}>
-                                    <MenuOption style={Style.menuView} onSelect={() => onShare(message(item.id))}>
+                                    <MenuOption style={Style.menuView} onSelect={() => props.isType == "Spotlight" ?  onShare(message(item.parentId)) : onShare(message(item.id))}>
                                         <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                                         <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
                                     </MenuOption>

@@ -52,7 +52,7 @@ const SpotlightListImage = (props) => {
                                 <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
                             </MenuTrigger>
                             <MenuOptions >
-                                <MenuOption style={STYLE.menuView} onSelect={() => onShare(`spotlight-detail/${item.id}`)}>
+                                <MenuOption style={STYLE.menuView} onSelect={() => onShare(`spotlights/${item.id}`)}>
                                     <IcnShareIcon stroke={GetAppColor.pincolor} style={STYLE.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
                                     <Text style={STYLE.txtMenuOptions}>{Label.Share}</Text>
                                 </MenuOption>
