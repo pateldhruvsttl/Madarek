@@ -1,5 +1,5 @@
 import { Share } from 'react-native'
-const url = 'http://madarekdev.silvertouch-staging.com/'
+const url = 'http://madarek.io/apiv1/'
 // const url = 'http://madarekdev.silvertouch-staging.com/experts-profile/24/'
 export const onShare = async (props) => {
     try {

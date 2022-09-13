@@ -115,15 +115,15 @@ const SubIdeasListWithImage = (props) => {
                         </>
                         :
                         props.isType == 'Spotlight' ?
-                        <>
-                            <Text numberOfLines={2} style={[Style.SubTitleother, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
-                            <Text numberOfLines={1} style={Style.titleOther}>{item.categoryName}</Text>
-                        </>
-                        :
-                        <>
-                        <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
-                        <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
-                    </>
+                            <>
+                                <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
+                                <Text numberOfLines={1} style={Style.titleOther}>{item.categoryName}</Text>
+                            </>
+                            :
+                            <>
+                                <Text numberOfLines={1} style={Style.title}>{item.categoryName}</Text>
+                                <Text numberOfLines={2} style={[Style.SubTitle, { color: GetAppColor.borderRed }]}>{item.ideaTitle}</Text>
+                            </>
                     }
 
 
@@ -154,49 +154,51 @@ const SubIdeasListWithImage = (props) => {
                                 </View>
 
                     }
-                    {
-                        props?.isType != "Spotlight" &&
-                        <View style={Style.secondCalView}>
-                            <View style={Style.secondInnerCalView}>
-                                <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                <Text style={Style.title}>{item?.totalView}</Text>
-                            </View>
-                            <View style={Style.secondInnerCalView}>
-                                {
-                                    item.like == true ?
-                                        <TouchableOpacity onPress={() => likeUnlike(item.id)}>
-                                            <IcnThumsUpBlack style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                        </TouchableOpacity>
-                                        :
-                                        <TouchableOpacity onPress={() => likeUnlike(item.id)}>
-                                            <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                        </TouchableOpacity>
+                    <View style={Style.secondCalView}>
+                        {
+                            props?.isType != "Spotlight" &&
+                            <>
+                                <View style={Style.secondInnerCalView}>
+                                    <IcnWatchDone style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    <Text style={Style.title}>{item?.totalView}</Text>
+                                </View>
+                                <View style={Style.secondInnerCalView}>
+                                    {
+                                        item.like == true ?
+                                            <TouchableOpacity onPress={() => likeUnlike(item.id)}>
+                                                <IcnThumsUpBlack style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                            </TouchableOpacity>
+                                            :
+                                            <TouchableOpacity onPress={() => likeUnlike(item.id)}>
+                                                <IcnThumsUp style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                            </TouchableOpacity>
 
-                                }
-                                <Text style={Style.title}>{item.totalLike}</Text>
-                            </View>
-                            <View style={Style.secondInnerCalView}>
-                                <TouchableOpacity onPress={() => commentRender(item.id)}>
-                                    <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                </TouchableOpacity>
-                                <Text style={Style.title}>{item?.totalComment}</Text>
-                            </View>
-                            <View style={Style.moreView}>
-                                <Menu>
-                                    <MenuTrigger>
-                                        <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
-                                    </MenuTrigger>
-                                    <MenuOptions customStyles={Style.menuOptions}>
-                                        <MenuOption style={Style.menuView} onSelect={() => onShare(message(item.id))}>
-                                            <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                            <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
-                                        </MenuOption>
-                                    </MenuOptions>
-                                </Menu>
-                            </View>
-
+                                    }
+                                    <Text style={Style.title}>{item.totalLike}</Text>
+                                </View>
+                                <View style={Style.secondInnerCalView}>
+                                    <TouchableOpacity onPress={() => commentRender(item.id)}>
+                                        <IcnComment style={Style.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    </TouchableOpacity>
+                                    <Text style={Style.title}>{item?.totalComment}</Text>
+                                </View>
+                            </>
+                        }
+                        <View style={Style.moreView}>
+                            <Menu>
+                                <MenuTrigger>
+                                    <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
+                                </MenuTrigger>
+                                <MenuOptions customStyles={Style.menuOptions}>
+                                    <MenuOption style={Style.menuView} onSelect={() => onShare(message(item.id))}>
+                                        <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
+                                        <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
+                                    </MenuOption>
+                                </MenuOptions>
+                            </Menu>
                         </View>
-                    }
+
+                    </View>
                 </View>
 
             </TouchableOpacity>

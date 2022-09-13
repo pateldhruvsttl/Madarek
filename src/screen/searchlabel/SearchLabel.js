@@ -42,6 +42,8 @@ import SubIdeasListWithImage from "../../component/homescreen/SubIdeasListWithIm
 import OpenChallengeModel from '../../model/OpenChallengesModel'
 import SimilarExperts from '../../component/expertscreen/SimilarExperts'
 import ExpertDirectoryModel from '../../model/ExpertDirectoryModel'
+import MadarekSportlight from '../../model/MadarekSportlight'
+import SpotlightListImage from '../../component/spotlightList/SpotlightListImage'
 
 
 const SearchLabel = (props) => {
@@ -53,7 +55,7 @@ const SearchLabel = (props) => {
     const textInput = useRef(null);
     const [searchStr, setSearchStr] = useState("")
     const [isData, setData] = useState([]);
-    const [isType, setType] = useState([Label.IdeasSearch, Label.ChallengeSearch, Label.ExpertDirectorySearch, Label.ExpertInsightSearch]);
+    const [isType, setType] = useState([Label.IdeasSearch, Label.ChallengeSearch, Label.ExpertDirectorySearch, Label.ExpertInsightSearch,"SPOTLIGHT"]);
     const [isSelectIndex, setSelectIndex] = useState(0);
     const [isPageNo, setPageNo] = useState(1);
 
@@ -65,6 +67,8 @@ const SearchLabel = (props) => {
             setSelectIndex(1);
         else if (isCurrentScreen === "EXPERT DIRECTORY")
             setSelectIndex(2);
+        else if (isCurrentScreen === "SPOTLIGHT")
+            setSelectIndex(4);
 
 
     }, [])
@@ -75,6 +79,7 @@ const SearchLabel = (props) => {
     }
 
     const onCurrentType = (item, index) => {
+        console.log('selectedIndex @123',isSelectIndex);
         setPageNo(1);
         setSelectIndex(index)
         setData([]);
@@ -88,11 +93,15 @@ const SearchLabel = (props) => {
             case 'EXPERT DIRECTORY':
                 onGetExpertDirectory(1);
                 break
+            case 'SPOTLIGHT':
+                onGetSpotlightList(1);
+                break
             default: null;
         }
     }
 
     const onPressSearchButton = () => {
+        console.log('isSelectIndex',isSelectIndex);
         setPageNo(1);
         if (isSelectIndex === 0) {
             onGetIdeasList(1);
@@ -102,6 +111,9 @@ const SearchLabel = (props) => {
         }
         else if (isSelectIndex === 2) {
             onGetExpertDirectory(1);
+        }
+        else if (isSelectIndex === 4) {
+            onGetSpotlightList(1);
         }
     }
 
@@ -118,6 +130,9 @@ const SearchLabel = (props) => {
                     break
                 case 'EXPERT DIRECTORY':
                     onGetExpertDirectory(isPageNo + 1);
+                    break
+                case 'SPOTLIGHT':
+                    onGetSpotlightList(isPageNo + 1);
                     break
                 default: null;
             }
@@ -213,7 +228,34 @@ const SearchLabel = (props) => {
         }, (err) => {
         })
     }
+    const onGetSpotlightList = (pageNo) => {
+        if (searchStr.length == 0)
+            return
+        const data = {
+            frontuser_id: UserManager.userId,
+            searchkeywords: searchStr,
+            limit: AppConfig.pageLimit,
+            page: pageNo,
+            spotlight_type: "",
+            keywords: "",
+        }
 
+
+        Service.post(EndPoints.madarekSpotlight, data, (res) => {
+            let _isAllIdeas = [];
+            res?.data?.map((element) => {
+                let model = new MadarekSportlight(element);
+                _isAllIdeas.push(model);
+            })
+            if (pageNo == 1) setData(_isAllIdeas);
+            else setData([...isData, ..._isAllIdeas]);
+
+        },
+            (err) => {
+                Loger.onLog("", err);
+            }
+        );
+    };
     const onFavoriteChallenge = (id) => {
         var data = {
             "field_name": "contest_id",
@@ -346,6 +388,8 @@ const SearchLabel = (props) => {
             return renderChallenge();
         else if (isSelectIndex === 2)
             return renderExpertDirectory();
+        else if (isSelectIndex === 4)
+            return renderSpotlight()
 
     };
 
@@ -380,16 +424,28 @@ const SearchLabel = (props) => {
         )
 
     }
-
+    
     const renderExpertDirectory = () => {
         return (
             <SimilarExperts data={isData} maxLimit={0}
-                navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id })}
-                onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")}
-                navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
+            navigateDetail={(id) => props.navigation.navigate("ExpertDetailsScreen", { id })}
+            onGetPaginations={() => onGetPaginations("EXPERT DIRECTORY")}
+            navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
             />
-        )
-    }
+            )
+        }
+        const renderSpotlight = () => {
+            return (
+                <SpotlightListImage
+                    data={isData}
+                    scrollEnabled={true}
+                    isType={"Spotlight"}
+                    onItemPress={(id) => { props.navigation.navigate("SpotlightDetail", { id: id }) }}
+                    paginations={() => onGetPaginations("SPOTLIGHT")}
+                />
+            )
+    
+        }
 
     const _lang = getLanguage();
     return (
