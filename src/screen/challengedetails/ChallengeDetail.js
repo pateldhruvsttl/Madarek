@@ -32,7 +32,6 @@ const ChallengeDetail = (props) => {
   const [rowData, setRowData] = useState()
   const [resourceData, setResourceData] = useState([])
   const [participateData, setParticipateData] = useState([])
-  const [favorite, setFavorite] = useState()
 
   useEffect(() => {
     challengeDetail(props?.route?.params?.id);
@@ -53,7 +52,6 @@ const ChallengeDetail = (props) => {
 
         let model = new OpenChallengeDetail(res.data.contestDetail)
         setContestData(model)
-        setFavorite(model.favorite)
 
         res.data.evaluationPannel.map((ele) => {
           let model = new OpenChallengeDetail(ele)
@@ -98,7 +96,6 @@ const ChallengeDetail = (props) => {
               </View>
 
               {contestData && <IdeaContent data={contestData}
-                favorite={favorite}
                 isType={title}
                 id={props?.route?.params?.id}
                 navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
