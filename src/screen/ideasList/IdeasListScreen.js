@@ -285,7 +285,7 @@ const IdeasListScreen = (props) => {
   };
 
   const navigateDetail = (item) => {
-    props.navigation.navigate("IdeaDetails", item);
+    props.navigation.navigate("IdeaDetails", {item:item});
   };
 
   const paginations = (type) => {

@@ -84,7 +84,7 @@ const IdeaList = (props) => {
             const popularListArr = popularIdeasList
             const newListArr = newIdeasList
             const winningListArr = winningIdeaList
-            
+
             popularListArr.map((ele, index) => {
                 if (ele.id == id) {
                     if (likeDislike == 1) {
@@ -167,13 +167,16 @@ const IdeaList = (props) => {
             Loger.onLog("err of likeUnlike", err)
         })
     }
+    const onRefresh = (value, type) => {
+        onSelectTab(value, type)
+    }
 
     const onTabNavigate = () => {
 
         return (
-            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> :
-                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> :
-                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} /> : null
+            selectedIndex == 0 ? <TabPopularIdeas isType={"Ideas"} data={popularIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} onRefresh={() => onRefresh(0, "popular")}/> :
+                selectedIndex == 1 ? <TabPopularIdeas isType={"Ideas"} data={newIdeasList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} onRefresh={() => onRefresh(1, "latest")}/> :
+                    selectedIndex == 2 ? <TabPopularIdeas isType={"Ideas"} data={winningIdeaList.slice(0, 2)} onLikeIdeas={onLikeIdeas} onFavoriteIdeas={onFavoriteIdeas} onRefresh={() => onRefresh(2, "winning")} /> : null
         )
     }
 

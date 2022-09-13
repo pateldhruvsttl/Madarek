@@ -18,7 +18,7 @@ export default class OpenChallengeDetail {
         this.contestDate = obj?.contest_date || Label.DefaultDate
         this.totalLike = obj?.toatal_liked_contest || Label.DefaultNumber
         this.like = obj?.toatal_liked_contest > 0 ? true : false;
-        this.totalFavoriteContest = obj?.my_toatal_favorite_contest == 0 ? false : true;
+        this.favorite = obj?.toatal_favorite_contest == 0 ? false : true;
         this.totalView = obj?.toatal_view_contest || Label.DefaultNumber
         this.totalComment = obj?.toatal_contest_comments || Label.DefaultNumber
         this.totalExpertInsight = obj?.total_expert_insight || Label.DefaultNumber

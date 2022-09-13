@@ -45,7 +45,7 @@ function IdeasFilter(props) {
     setCatSelectorList(catSelectorList.length);
     let cate = [];
     catSelectorList.forEach((element) => {
-      cate.push(element.id);
+      cate.push(element.category_id);
     });
     setSelectedCatItemList(cate);
     let radioButtonValueSelection = selectedItemList.filter((x) =>

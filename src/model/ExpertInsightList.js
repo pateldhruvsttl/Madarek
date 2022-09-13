@@ -22,7 +22,7 @@ export default class ExpertInsightList {
         this.totalLikes =  obj?.toatal_liked_idea || Label.DefaultNumber
         this.title =  obj?.title || Label.NoTitle
         this.description =  obj?.general_description || Label.NoDescription
-             
+        this.like = obj?.my_total_liked_id > 0 ? true : false;
         
     }
 }

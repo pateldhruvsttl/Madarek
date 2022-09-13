@@ -275,7 +275,7 @@ const HomeScreen = (props) => {
                 onLikeIdeas={(id) => onLikeIdeas(id)}
                 onButtonPress={() => { setModalVisible(true); }}
                 onSeeMorePress={() => { props.navigation.navigate("ChallengesListScreen", 0, { data: openChallenges, }); }}
-                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }); }}
+                onItemPress={(id) => { props.navigation.navigate("ChallengeDetail", { id: id, onRefresh: () => onOpenChallenge() }) }}
                 navigateToComment={(item) => { props.navigation.navigate("CommentScreen", { item: item }) }}
                 isComment={"Challenges"}
               />

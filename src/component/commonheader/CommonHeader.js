@@ -113,7 +113,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.IdeaDetails}</Text>
                         </View>
 
-                        <BackButton />
+                        <BackButton onRefresh={props.onRefresh}/>
 
                         <View style={Style.rightIcnView}>
                             {/* <TouchableOpacity onPress={() => navigation.navigate("Message")}>
@@ -294,7 +294,7 @@ const CommonHeader = (props) => {
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
-                        <BackButton />
+                        <BackButton onRefresh={props.onRefresh} />
 
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.ChallengeDetail}</Text>
@@ -542,13 +542,8 @@ const CommonHeader = (props) => {
                         <MenuButton />
 
                         <View style={Style.rightIcnView}>
-                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "EXPERT INSIGHTS" })}>
                                 <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.onFilter()}>
-                                <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                {props.isFilter ? <View style={Style.redDot} /> : null}
-
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -574,7 +569,6 @@ const CommonHeader = (props) => {
                             <TouchableOpacity onPress={() => props.onFilter()}>
                                 <IcnFilter style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                                 {props.isFilter ? <View style={Style.redDot} /> : null}
-
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -707,26 +701,26 @@ const CommonHeader = (props) => {
                 </>
             )
             break
-            case 'SpotlightListing':
-                return (
-                    <>
-                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
-                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-    
-                            <View style={Style.middleIcnView}>
-                                <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Spotlight}</Text>
-                            </View>
-                            <MenuButton />
-    
-                            <View style={Style.rightIcnView}>
-                                <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "SPOTLIGHT" })}>
-                                    <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
-                                </TouchableOpacity>
-                            </View>
+        case 'SpotlightListing':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.Spotlight}</Text>
                         </View>
-                    </>
-                );
-                break
+                        <MenuButton />
+
+                        <View style={Style.rightIcnView}>
+                            <TouchableOpacity onPress={() => navigation.navigate("SearchLabel", { screen: "SPOTLIGHT" })}>
+                                <IcnSearch style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </>
+            );
+            break
         default: null;
     }
 }

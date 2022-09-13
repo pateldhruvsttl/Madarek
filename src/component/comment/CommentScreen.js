@@ -67,7 +67,7 @@ const CommentScreen = (props) => {
   }
   const commentListing = () => {
     const data = {
-      "frontuser_id": "48",
+      "frontuser_id": UserManager.userId,
       "field_name": fieldName,
       "id": id,
       "language": "en",

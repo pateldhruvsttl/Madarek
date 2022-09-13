@@ -356,7 +356,7 @@ const ChallengesListScreen = (props) => {
         visible={isFilterVisible}
         type="Challange"
         onClose={(categories, sector, sortBy) =>
-          onFilterClose(categories, sortBy)
+          onFilterClose(categories, sector, sortBy)
         }
         isFilter={isFilter}
       />

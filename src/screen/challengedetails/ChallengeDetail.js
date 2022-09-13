@@ -32,6 +32,7 @@ const ChallengeDetail = (props) => {
   const [rowData, setRowData] = useState()
   const [resourceData, setResourceData] = useState([])
   const [participateData, setParticipateData] = useState([])
+  const [favorite, setFavorite] = useState()
 
   useEffect(() => {
     challengeDetail(props?.route?.params?.id);
@@ -52,6 +53,7 @@ const ChallengeDetail = (props) => {
 
         let model = new OpenChallengeDetail(res.data.contestDetail)
         setContestData(model)
+        setFavorite(model.favorite)
 
         res.data.evaluationPannel.map((ele) => {
           let model = new OpenChallengeDetail(ele)
@@ -86,7 +88,7 @@ const ChallengeDetail = (props) => {
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
-        <CommonHeader isType={title} />
+        <CommonHeader isType={title} onRefresh={props.route.params.onRefresh}/>
         <ScrollView style={PAGESTYLE.MainView}>
           <View>
             <View style={PAGESTYLE.subMainView}>
@@ -96,9 +98,10 @@ const ChallengeDetail = (props) => {
               </View>
 
               {contestData && <IdeaContent data={contestData}
+                favorite={favorite}
                 isType={title}
                 id={props?.route?.params?.id}
-                navigateToComment={(item) => props.navigation.navigate('CommentScreen',{item:item})}
+                navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
               />}
 
               {contestData && <CategoryChallenge isType={title} data={contestData} />}
