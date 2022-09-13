@@ -42,4 +42,5 @@ export const EndPoints = {
     commentSection:"commentsection",
     submitComment:"submitcomment",
     spotlightDetail:"madarekspotlightdetail",
+    globe:"globe",
 }

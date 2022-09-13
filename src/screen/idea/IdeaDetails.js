@@ -33,7 +33,7 @@ import { showMessage } from '../../utils/Constant';
 
 const IdeaDetails = (props) => {
   const navigation = useNavigation();
-  const item = props.route.params
+  const item = props.route.params.item
   const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
   Loger.onLog("item", item);
@@ -137,7 +137,7 @@ const IdeaDetails = (props) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <CommonHeader isType={"IdeaDetails"} />
+      <CommonHeader isType={"IdeaDetails"} onRefresh={props.route.params.onRefresh}/>
       <View style={IdeaStyle.MainView}>
         <ScrollView>
 

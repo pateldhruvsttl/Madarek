@@ -119,7 +119,7 @@ function ExpertDetailsScreen(props) {
         var data = {
             "field_name": "expert_id",
             "id": id,
-            "frontuser_id": 48,
+            "frontuser_id": UserManager.userId,
             "model": "FavoriteExperts"
         }
         Service.post(

@@ -391,6 +391,9 @@ export const Label = {
   Meta : isRTL ? ARlabel._meta : USlabel._meta,
   SpotlightDescription : isRTL ? ARlabel._spotlightDescription : USlabel._spotlightDescription,
   Spotlight : isRTL ? ARlabel._spotlight : USlabel._spotlight,
+  YES : isRTL ? ARlabel._yes : USlabel._yes,
+  NO : isRTL ? ARlabel._no : USlabel._no,
+  OtpSent : isRTL ? ARlabel._otpSent : USlabel._otpSent,
 
 
 }  

@@ -26,9 +26,11 @@ const ExpertInsightScreen = (props) => {
   const [ideaData, setIdeaData] = useState([])
   const [contestData, setContestData] = useState([])
   const [generalData, setGeneralData] = useState([])
+
   useEffect(() => {
     expertList();
   }, [])
+
   const expertList = () => {
     const data = {
       "device_id": deviceId,
@@ -74,10 +76,41 @@ const ExpertInsightScreen = (props) => {
     })
   }
   const navigateScreen = (id) => {
-    return props.navigation.navigate("ExpertInsightDetailWithComment",{id:id})
+    return props.navigation.navigate("ExpertInsightDetailWithComment", { id: id })
   }
   const navigateToComment = (item) => {
     return props.navigation.navigate("CommentScreen", { item: item })
+  }
+
+  const onLikeIdeas = (id, type) => {
+    var data = {
+      "field_name": "formdata_id",
+      "id": id,
+      "frontuser_id": UserManager.userId,
+      "model": "LikedislikeGeneral"
+    }
+
+    Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+
+      const likeDislike = res?.data === 'dislike' ? 1 : 0;
+      const expertInsight = type == "Ideas" ? ideaData : type == "Contest" ? contestData : generalData
+      expertInsight.map((ele, index) => {
+        if (ele.id == id) {
+          if (likeDislike == 1) {
+            expertInsight[index].like = likeDislike
+            expertInsight[index].totalLikes = Number(expertInsight[index].totalLikes) + 1;
+          }
+          else {
+            expertInsight[index].like = likeDislike
+            expertInsight[index].totalLikes = Number(expertInsight[index].totalLikes) - 1;
+          }
+        }
+      })
+      type == "Ideas" ? setIdeaData([...expertInsight]) : type == "Contest" ? setContestData([...expertInsight]) : setGeneralData([...expertInsight])
+
+    }, (err) => {
+      Loger.onLog("err of likeUnlike", err)
+    })
   }
 
   return (
@@ -95,16 +128,25 @@ const ExpertInsightScreen = (props) => {
             tabBarIndicatorStyle: ExpertInsightStyle.itemBorder,
           }}
         >
-          <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
-          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
-          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData} navigateScreen={navigateScreen} navigateToComment={navigateToComment} />} />
+          <Tab.Screen name={Label.Ideas} children={() => <IdeaExpert data={ideaData}
+            navigateScreen={navigateScreen}
+            navigateToComment={navigateToComment}
+            onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+          />} />
+
+          <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData}
+            navigateScreen={navigateScreen}
+            navigateToComment={navigateToComment}
+            onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+          />} />
+
+          <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData}
+            navigateScreen={navigateScreen}
+            navigateToComment={navigateToComment}
+            onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+          />} />
         </Tab.Navigator>
       </View>
-      <IdeasFilter
-        visible={isFilterVisible}
-        onClose={() => setFilterVisible(!isFilterVisible)}
-        isFilter={isFilter}
-      />
     </SafeAreaView>
   );
 };

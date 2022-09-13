@@ -16,10 +16,10 @@ import ChatModel from '../../model/Message/ChatModel'
 import { Loger } from '../../utils/Loger'
 import { UserManager } from '../../manager/UserManager'
 import { deviceId } from '../../utils/Constant'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 
 const LiveChat = (props) => {
-
+const _lang = getLanguage()
     const getId = () => {
         return Math.floor(Math.random() * (999 - 100 + 1) + 100)
     }
@@ -132,7 +132,7 @@ const LiveChat = (props) => {
                         <TouchableOpacity onPress={() => sendMessage()} style={STYLE.icnContainer}>
                             <IcnSendMessage width={AppUtil.getHP(3)} height={AppUtil.getHP(3)} 
                             fill={GetAppColor.grayBorder}
-                            />
+                           style={{transform: [{ rotate: _lang=='ar'?'180deg':'0deg' }]}} />
                             </TouchableOpacity>
                 </View>
             </View>

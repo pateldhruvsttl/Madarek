@@ -3,6 +3,7 @@ import React from 'react'
 import ExpertInsightStyle from './ExpertInsightStyle'
 import IcnWatchDone from "../../assets/svg/IcnWatchDone"
 import IcnThumsUp from "../../assets/svg/IcnThumsUp"
+import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
@@ -40,12 +41,21 @@ const IdeaExpert = (props) => {
                         <View style={ExpertInsightStyle.calView}>
 
                             <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalViews}</Text>
+                            <Text style={[ExpertInsightStyle.icnTitle,{padding:AppUtil.getHP(0.3)}]}>{item.totalViews}</Text>
+                            {
+                                item.like == true ?
+                                    <TouchableOpacity onPress={() => props.onLikeIdeas(item.id,"Ideas")} style={ExpertInsightStyle.addSpace}>
+                                        <IcnThumsUpBlack height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity onPress={() => props.onLikeIdeas(item.id,"Ideas")} style={ExpertInsightStyle.addSpace}>
+                                        <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                    </TouchableOpacity>
 
-                            <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            }
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
 
-                            <TouchableOpacity onPress={() => props.navigateToComment({ model: 'ExpertComments', fieldName: 'expert_id', id: item.id })}>
+                            <TouchableOpacity style={ExpertInsightStyle.addSpace} onPress={() => props.navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: item.id })}>
                                 <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             </TouchableOpacity>
                             <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
@@ -73,9 +83,16 @@ const IdeaExpert = (props) => {
                         keyExtractor={item => item.id}
                     />
                     :
-                    <View style={ExpertInsightStyle.emptyView}>
-                        <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
-                    </View>
+                    <>
+                        {
+                            props?.isSearch ?
+                                null
+                                :
+                                <View style={ExpertInsightStyle.emptyView}>
+                                    <Text style={ExpertInsightStyle.txtNoDataFound}>{Label.NoDataFound}</Text>
+                                </View>
+                        }
+                    </>
             }
         </View>
     )

@@ -142,6 +142,7 @@ const LoginScreen = (props) => {
         Service.post(EndPoints.sendEmailOtp, otpData, (res) => {
             Loger.onLog('Response of EmailOtp', res)
             if (res.statusCode == 1) {
+                showMessage(Label.OtpSent)
                 setEmailOtp(res.otp)
             } else {
                 showMessage(res.message)

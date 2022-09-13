@@ -37,7 +37,7 @@ const IdeaContent = (props) => {
     const iconSize = AppUtil.getHP(1.8);
 
     useEffect(() => {
-        setFavorite(props.isType == "ChallengeDetail" ? props.data.totalFavoriteContest : props.data.favorite)
+        setFavorite(props.isType== "ChallengeDetail" ? props.favorite : props.data.favorite)
     }, [props.data])
 
     const navigateToComment = (id) => {

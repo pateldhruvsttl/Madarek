@@ -4,6 +4,7 @@ export const baseURL = 'http://madarek.php-staging.com/apiv1/';
 import { Alert, Platform } from "react-native";
 import { AppUtil } from "./AppUtil";
 import DeviceInfo from "react-native-device-info";
+import { Label } from "./StringUtil";
 
 export const deviceId = DeviceInfo.getUniqueId()
 
@@ -40,14 +41,14 @@ export const showMessageWithAnotherCallBack = (message, callBack) => {
     if (Platform.OS == 'ios') {
         Alert.alert(message, null,
             [
-                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
-                { text: 'OKAY', onPress: () => { callBack() } },
+                { text: Label.NO, onPress: () => { callBack("CANCEL") } },
+                { text: Label.YES, onPress: () => { callBack() } },
             ]);
     } else {
         Alert.alert(null, message,
             [
-                { text: 'CANCEL', onPress: () => { callBack("CANCEL") } },
-                { text: 'OKAY', onPress: () => { callBack() } },
+                { text: Label.NO, onPress: () => { callBack("CANCEL") } },
+                { text: Label.YES, onPress: () => { callBack() } },
             ]);
     }
 }
