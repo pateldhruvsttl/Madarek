@@ -8,7 +8,7 @@ export default class ExpertInsightDetail {
             return;
         }
 
-        this.id = obj?.expert_id
+        this.id = obj?.id
         this.type = obj?.type || ""
         this.insightBy = obj?.insight_by || ""
         this.firstName = obj?.first_name || Label.NoFirstName
@@ -23,7 +23,7 @@ export default class ExpertInsightDetail {
         this.totalComment =  obj?.toatal_idea_comment || Label.DefaultNumber
         this.totalLike =  obj?.toatal_liked_idea || Label.DefaultNumber
         this.like =  obj?.my_total_liked_id > 0 ? true : false
-        // this.title =  obj?.title || "No title"
+        this.insightTitle =  obj?.title || "No title"
         this.insightDescription =  obj?.insight_description || Label.NoDescription
         this.sectorName =  obj?.sector_name || Label.NoSector
         this.categoryName =  obj?.category_name || Label.NoCategory

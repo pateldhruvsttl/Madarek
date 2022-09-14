@@ -2,13 +2,15 @@ import { StyleSheet } from "react-native";
 import { AppUtil } from "../../utils/AppUtil";
 import FONTS from "../../utils/Fonts";
 import { GetAppColor } from "../../utils/Colors";
+import { buttonHeight } from "../../utils/Constant";
+import { buttonBorderRadius } from "../../utils/Constant";
 
 const Style = StyleSheet.create({
     contentBox: {
         marginTop: AppUtil.getHP(1),
     },
     description :{
-        marginTop: AppUtil.getHP(2),
+        marginTop: AppUtil.getHP(1),
     },
     redLabel : {
         color : GetAppColor.borderRed
@@ -29,7 +31,6 @@ const Style = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor,
         marginTop: AppUtil.getHP(1),
-        marginBottom: AppUtil.getHP(1),
     },
     icnView : {
         flexDirection:'row',
@@ -57,7 +58,20 @@ const Style = StyleSheet.create({
         marginTop: AppUtil.getHP(2),
         marginBottom:AppUtil.getHP(2),
         backgroundColor:GetAppColor.lightGrey
-    }
+    },
+    likeBtn: {
+        height: buttonHeight,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: buttonBorderRadius,
+        borderWidth: 1,
+        marginTop: AppUtil.getHP(1),
+        width: AppUtil.getWP(12),
+        borderColor: GetAppColor.grayBorder,
+        backgroundColor: GetAppColor.white,
+        // marginStart: AppUtil.getHP(1),
+        // right:5
+    },
 })
 
 export default Style

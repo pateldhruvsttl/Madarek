@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text ,TouchableOpacity} from 'react-native'
 import React from 'react'
 import Style from './SubDetailStyle'
 import { Label } from '../../utils/StringUtil'
@@ -6,9 +6,10 @@ import WebViewComp from '../webview/WebViewComp'
 import IcnRewordLight from '../../assets/svg/IcnRewordLight'
 import { AppUtil } from '../../utils/AppUtil'
 import moment from 'moment'
+import IcnShareIcon from '../../assets/svg/IcnShareIcon'
+import { onShare } from '../share/ShareContent'
 
 const SubDetail = (props) => {
-
     const { spotlightTitle, spotlightDate, spotlightPublishBy,
         spotlightDescription, spotlightKeywords } = props.data
 
@@ -16,6 +17,13 @@ const SubDetail = (props) => {
         <View style={Style.detailView}>
             <View>
                 <Text style={Style.label}>{spotlightTitle}</Text>
+                <TouchableOpacity style={Style.likeBtn} onPress={() => onShare(`spotlights/${props.id}`)}>
+                    <IcnShareIcon
+                        height={AppUtil.getHP(3.2)}
+                        width={AppUtil.getHP(3.2)}
+                        stroke={"#848484"}
+                    />
+                </TouchableOpacity>
                 {/* <View style={Style.icnView}>
                     <IcnRewordLight width={AppUtil.getHP(2)} height={AppUtil.getHP(2)} />
                     <Text style={Style.icnTitle}>{"Madarek Spotlight"}</Text>

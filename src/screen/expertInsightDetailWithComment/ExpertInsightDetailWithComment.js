@@ -224,7 +224,7 @@ const ExpertInsightDetailWithComment = (props) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: GetAppColor.lightGrey, }}>
-      <CommonHeader isType={"ExpertInsightDetailWithComment"} />
+      <CommonHeader isType={"ExpertInsightDetailWithComment"} heading={detail.title}/>
       <View style={ExpertInsightDetailStyle.MainView}>
         <ScrollView>
           <View style={ExpertInsightDetailStyle.container}>

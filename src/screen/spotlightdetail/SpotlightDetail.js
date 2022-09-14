@@ -1,8 +1,7 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../../component/commonheader/CommonHeader'
 import STYLE from './SpotlightDetailStyle'
-import { ScrollView } from 'react-native-gesture-handler'
 import SubDetail from '../../component/spotlight/SubDetail'
 import ImageLoad from 'react-native-image-placeholder'
 import SpotlightContent from '../../component/spotlight/SpotlightContent'
@@ -59,7 +58,7 @@ const SpotlightDetail = (props) => {
                                 borderRadius={AppUtil.getHP(1)}
                             />
                         </View>
-                        {spotlightDetail && <SubDetail data={spotlightDetail} />}
+                        {spotlightDetail && <SubDetail data={spotlightDetail} id={props.route.params.id}/>}
                     </View>
                 </ScrollView>
             </View>

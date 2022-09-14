@@ -26,22 +26,30 @@ const ExpertInsightScreen = (props) => {
   const [ideaData, setIdeaData] = useState([])
   const [contestData, setContestData] = useState([])
   const [generalData, setGeneralData] = useState([])
+  const [ideaPageNo, setIdeaPageNo] = useState(1)
+  const [contestPageNo, setContestPageNo] = useState(1)
+  const [generalPageNo, setGeneralPageNo] = useState(1)
 
   useEffect(() => {
     expertList();
   }, [])
 
-  const expertList = () => {
+  const expertList = (page = 1) => {
     const data = {
       "device_id": deviceId,
       "token": AppConfig.token,
       "frontuser_id": UserManager.userId,
       "language": getLanguage(),
       "globalkeywords": "",
-      "page": "1",
+      "page": page,
       "limit": AppConfig.pageLimit,
       "sector": ""
 
+    }
+    if (page == 1) {
+      setIdeaData([])
+      setContestData([])
+      setGeneralData([])
     }
     Service.post(EndPoints.expertInsightsList, data, (res) => {
 
@@ -55,15 +63,18 @@ const ExpertInsightScreen = (props) => {
           switch (ele.type) {
             case 'Idea':
               ideas.push(model)
-              setIdeaData(ideas)
+              if (page === 1) setIdeaData(ideas)
+              else setIdeaData([...ideaData, ...ideas])
               break;
             case 'Contest':
               contest.push(model)
-              setContestData(contest)
+              if (page === 1) setContestData(contest)
+              else setContestData(...contestData, ...contest)
               break;
             case 'General':
               general.push(model)
-              setGeneralData(general)
+              if (page === 1) setGeneralData(general)
+              else setGeneralData(...generalData, ...general)
               break;
             default: null
           }
@@ -75,9 +86,13 @@ const ExpertInsightScreen = (props) => {
       }
     })
   }
-  const navigateScreen = (id) => {
-    return props.navigation.navigate("ExpertInsightDetailWithComment", { id: id })
+  const navigateScreen = (id, type) => {
+    if (type != "General")
+      return props.navigation.navigate("ExpertInsightTypeDetail", { id: id })
+    else
+      return props.navigation.navigate("ExpertInsightDetailWithComment", { id: id })
   }
+
   const navigateToComment = (item) => {
     return props.navigation.navigate("CommentScreen", { item: item })
   }
@@ -113,6 +128,20 @@ const ExpertInsightScreen = (props) => {
     })
   }
 
+  const paginations = (type) => {
+
+    if (type === "IdeaExpert") {
+      setIdeaPageNo(ideaPageNo + 1);
+      expertList(ideaPageNo + 1);
+    } else if (type === "ContestExpert") {
+      setContestPageNo(contestPageNo + 1);
+      expertList(contestPageNo + 1);
+    } else if (type === "GeneralExpert") {
+      setGeneralPageNo(generalPageNo + 1);
+      expertList(generalPageNo + 1);
+    }
+  };
+
   return (
     <SafeAreaView style={{ height: '100%', paddingBottom: 30 }}>
       <CommonHeader
@@ -132,18 +161,21 @@ const ExpertInsightScreen = (props) => {
             navigateScreen={navigateScreen}
             navigateToComment={navigateToComment}
             onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+            paginations={() => paginations('IdeaExpert')}
           />} />
 
           <Tab.Screen name={Label.Contest} children={() => <ContestExpert data={contestData}
             navigateScreen={navigateScreen}
             navigateToComment={navigateToComment}
             onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+            paginations={() => paginations('ContestExpert')}
           />} />
 
           <Tab.Screen name={Label.General} children={() => <GeneralExpert data={generalData}
             navigateScreen={navigateScreen}
             navigateToComment={navigateToComment}
             onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
+            paginations={() => paginations('GeneralExpert')}
           />} />
         </Tab.Navigator>
       </View>

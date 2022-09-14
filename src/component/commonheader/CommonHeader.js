@@ -638,7 +638,7 @@ const CommonHeader = (props) => {
                     <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
 
                         <View style={Style.middleIcnView}>
-                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.ExpertInsightsDetail}</Text>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{props.heading ? props.heading : Label.ExpertInsightsDetail}</Text>
                         </View>
 
                         <BackButton />
@@ -721,6 +721,31 @@ const CommonHeader = (props) => {
                 </>
             );
             break
+            case 'ExpertInsightTypeDetail':
+                return (
+                    <>
+                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+    
+                            <View style={Style.middleIcnView}>
+                                <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{props.heading ? props.heading : Label.ExpertInsightsDetail}</Text>
+                            </View>
+    
+                            <BackButton />
+    
+                            <View style={Style.rightIcnView}>
+                                {/* <TouchableOpacity>
+                                    <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
+                                </TouchableOpacity> */}
+                                <TouchableOpacity>
+                                    {/* <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} /> */}
+                                </TouchableOpacity>
+                            </View>
+    
+                        </View>
+                    </>
+                )
+                break
         default: null;
     }
 }

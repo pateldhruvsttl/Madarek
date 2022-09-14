@@ -27,7 +27,7 @@ const ChangePasswordScreen = (props) => {
                 onChnagePassWord()
             }
             else {
-                showMessageWithCallBack(Label.OldPasswordIncorrect, () => {
+                showMessageWithCallBack(Label.NewPasswordIncorrect, () => {
 
                 })
             }

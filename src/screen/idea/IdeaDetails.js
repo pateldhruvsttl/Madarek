@@ -50,7 +50,7 @@ const IdeaDetails = (props) => {
 
   }, []);
 
-  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(1, 2) : isAllIdeas
+  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(0, 2) : isAllIdeas
 
   useEffect(() => {
     onIdeas()
@@ -70,8 +70,11 @@ const IdeaDetails = (props) => {
       const _isAllIdeas = [];
       if (res.statusCode == 1) {
         res?.data?.allIdea.map((element) => {
-          let model = new IdeaListModel(element);
-          _isAllIdeas.push(model);
+          if (item.id != element.id) {
+            let model = new IdeaListModel(element);
+            _isAllIdeas.push(model);
+          }
+
         })
         setAllIdeas(_isAllIdeas)
       }
@@ -152,7 +155,7 @@ const IdeaDetails = (props) => {
 
             <IdeaContent
               data={item}
-              id={props?.route?.params?.id}
+              id={item.id}
               navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
             />
 
@@ -172,7 +175,7 @@ const IdeaDetails = (props) => {
 
             {item.team && item?.team.length > 0 && 
             <UserProfileList profileData={item?.team}
-            navigateToScreen={(id) =>  props.navigation.navigate("UserProfileView",{id:id})}
+            navigateToScreen={(id) =>  props.navigation.navigate("ExpertDetailsScreen",{id:id})}
             />}
             
             {item.ideaVideo ?

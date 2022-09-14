@@ -21,8 +21,8 @@ export default class ExpertInsight {
         this.lastName =  obj?.last_name ? obj?.last_name : Label.NoLastName
         this.organization_name =  obj?.organization_name ? obj?.organization_name : Label.NoOrganizationName
         this.totalViews =  obj?.totalViews || Label.DefaultNumber
-        this.totalComments =  obj?.totalComments || Label.DefaultNumber
-        this.totalLikes =  obj?.totalLikes || Label.DefaultNumber
+        this.totalComments =  obj?.toatal_idea_comment || Label.DefaultNumber
+        this.totalLike =  obj?.toatal_liked_idea || Label.DefaultNumber
         this.isLiked =  obj?.isLiked || Label.DefaultNumber
         this.madarek_special =  obj?.madarek_special ? obj?.madarek_special : Label.NoMadarekSpecial
         this.title =  obj?.title ? obj?.title : Label.NoTitle
@@ -30,6 +30,7 @@ export default class ExpertInsight {
         this.categoryInfo =  obj?.category_info ? obj?.category_info : Label.NoInformation
         this.categoryId =  obj?.category_id 
         this.categoryName = obj.category_name ? obj.category_name : Label.NoCategory
+        this.like = obj.my_total_liked_id  > 0 ? true : false;
         
     }
 }

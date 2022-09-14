@@ -89,15 +89,15 @@ const HomeScreen = (props) => {
       }
     );
   };
+
   const onSpotlight = () => {
     const data = {
       frontuser_id: UserManager.userId,
       searchkeywords: "",
-      limit:"",
+      limit: "",
       page: "",
       spotlight_type: "",
     }
-
     Service.post(
       EndPoints.madarekSpotlight, data,
       (res) => {
@@ -148,7 +148,7 @@ const HomeScreen = (props) => {
       language: getLanguage(),
     };
     Service.post(
-      EndPoints.expertInsights,
+      EndPoints.expertInsightsList,
       data,
       (res) => {
         if (res?.statusCode === "1") {
@@ -166,17 +166,27 @@ const HomeScreen = (props) => {
     );
   };
 
-  const onLikeIdeas = (id) => {
+  const onLikeIdeas = (id, type) => {
+
+    const fieldName = () => {
+      if (type) return "formdata_id"
+      else return "contest_id"
+    }
+    const model = () => {
+      if (type) return "LikedislikeGeneral"
+      else return "LikedislikeContests"
+    }
+
     var data = {
-      "field_name": "contest_id",
+      "field_name": fieldName(),
       "id": id,
       "frontuser_id": UserManager.userId,
-      "model": 'LikedislikeContests'
+      "model": model()
     }
     Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
 
       const likeDislike = res?.data === 'dislike' ? 1 : 0;
-      const challengeArr = openChallenges;
+      const challengeArr = type ? expertInsight : openChallenges;
       challengeArr.map((ele, index) => {
         if (ele.id == id) {
 
@@ -190,7 +200,7 @@ const HomeScreen = (props) => {
           }
         }
       });
-      setOpenChallenges([...challengeArr]);
+      type ? setExpertInsight([...challengeArr]) : setOpenChallenges([...challengeArr]);
 
     }, (err) => {
       Loger.onLog("err of likeUnlike", err)
@@ -252,6 +262,7 @@ const HomeScreen = (props) => {
       }
     );
   };
+  
   const onSetItem = (item) => {
 
     switch (item) {
@@ -315,6 +326,7 @@ const HomeScreen = (props) => {
               paddingVertical: AppUtil.getHP(2),
             }}>
             <ExpertInsightsSlider Entries={expertInsight}
+              onLikeIdeas={(id, type) => onLikeIdeas(id, type)}
               navigateToComment={(item) => { props.navigation.navigate("CommentScreen", { item: item }) }}
             />
           </View>)

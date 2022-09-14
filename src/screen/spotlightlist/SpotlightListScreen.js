@@ -38,7 +38,7 @@ const SpotlightListScreen = (props) => {
     if (isTab == 0)
       onSpotlight("Idea", IdeaPageNo);
     else if (isTab == 1)
-      onSpotlight("Challenge", ChallengePageNo);
+      onSpotlight("Contest", ChallengePageNo);
     else if (isTab == 2)
       onSpotlight("Expert", ExpertPageNo);
   }, []);
@@ -69,7 +69,7 @@ const SpotlightListScreen = (props) => {
         if (cpage === 1) setIdeaSpotlight(arr);
         else setIdeaSpotlight([...ideaSpotlight, ...arr]);
       }
-      else if (type === "Challenge") {
+      else if (type === "Contest") {
         const arr = [];
         res?.data?.map((element) => {
           let model = new MadarekSportlight(element);
@@ -103,9 +103,9 @@ const SpotlightListScreen = (props) => {
       setIdeaPageNo(IdeaPageNo + 1);
       onSpotlight("Idea", IdeaPageNo + 1);
     }
-    else if (type === "Challenge") {
+    else if (type === "Contest") {
       setChallengePageNo(ChallengePageNo + 1);
-      onSpotlight("Challenge", ChallengePageNo + 1);
+      onSpotlight("Contest", ChallengePageNo + 1);
     }
     else if (type === "expert") {
       setExpertPageNo(ExpertPageNo + 1);
@@ -125,7 +125,7 @@ const SpotlightListScreen = (props) => {
       <View style={Style.MainView}>
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={isTab == 0 ? "Idea" : isTab == 1 ? "Challenge" : isTab == 2 ? Label.Expert : null}
+            initialRouteName={isTab == 0 ? "Idea" : isTab == 1 ? "Contest" : isTab == 2 ? Label.Expert : null}
             swipeEnabled={false}
             screenOptions={{
               tabBarLabelStyle: Style.tabHeader,
@@ -160,16 +160,16 @@ const SpotlightListScreen = (props) => {
                 tabPress: (e) => {
                   setTab(1);
                   setChallengePageNo(1)
-                  onSpotlight("Challenge", 1);
+                  onSpotlight("Contest", 1);
                 },
               }}
               name={Label.Challenges}
               children={() =>
                 challengeSpotlight.length > 0 ?
                   <ViewMoreSpotlights
-                    propName={{ type: "Challenge", data: challengeSpotlight }}
+                    propName={{ type: "Contest", data: challengeSpotlight }}
                     navigateDetail={(item) => props.navigation.navigate("SpotlightDetail", { id: item.id })}
-                    paginations={() => paginations("Challenge")}
+                    paginations={() => paginations("Contest")}
                   />
                   :
                   <Text style={Style.txtNodata}>{Label.NoDataFound}</Text>

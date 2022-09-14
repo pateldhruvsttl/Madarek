@@ -13,7 +13,7 @@ const GeneralExpert = (props) => {
     const renderCell = ({ item }) => {
         return (
             <>
-                <TouchableOpacity style={ExpertInsightStyle.cellView} onPress={() => props.navigateScreen(item.id)}>
+                <TouchableOpacity style={ExpertInsightStyle.cellView} onPress={() => props.navigateScreen(item.id,item.type)}>
                     <View style={ExpertInsightStyle.topFlexView}>
                         <Image
                             source={{ uri: item.profilePhoto }}
@@ -40,8 +40,8 @@ const GeneralExpert = (props) => {
 
                         <View style={ExpertInsightStyle.calView}>
 
-                            <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            <Text style={[ExpertInsightStyle.icnTitle,{padding:AppUtil.getHP(0.3)}]}>{item.totalViews}</Text>
+                            {/* <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                            <Text style={[ExpertInsightStyle.icnTitle,{padding:AppUtil.getHP(0.3)}]}>{item.totalViews}</Text> */}
                             {
                                 item.like == true ?
                                     <TouchableOpacity onPress={() => props.onLikeIdeas(item.id,"General")} style={ExpertInsightStyle.addSpace}>

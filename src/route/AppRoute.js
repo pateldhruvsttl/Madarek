@@ -49,6 +49,7 @@ import AllRequestStatus from '../component/dashboard/AllRequestStatus';
 import CommentScreen from '../component/comment/CommentScreen';
 import SpotlightDetail from '../screen/spotlightdetail/SpotlightDetail';
 import SpotlightListScreen from '../screen/spotlightlist/SpotlightListScreen';
+import ExpertInsightTypeDetail from '../screen/expertInsightDetailWithComment/ExpertInsightTypeDetail';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -119,6 +120,7 @@ function HomeRoot() {
             <Stack.Screen name="CommentScreen" component={CommentScreen} />
             <Stack.Screen name="SpotlightDetail" component={SpotlightDetail} />
             <Stack.Screen name="SpotlightListScreen" component={SpotlightListScreen} />
+            <Stack.Screen name="ExpertInsightTypeDetail" component={ExpertInsightTypeDetail} />
 
 
             {/* // unUsed Screen  */}
