@@ -58,7 +58,7 @@ const SpotlightDetail = (props) => {
                                 borderRadius={AppUtil.getHP(1)}
                             />
                         </View>
-                        {spotlightDetail && <SubDetail data={spotlightDetail} id={props.route.params.id}/>}
+                        {spotlightDetail && <SubDetail data={spotlightDetail} id={props?.route?.params?.id}/>}
                     </View>
                 </ScrollView>
             </View>

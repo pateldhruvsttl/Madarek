@@ -168,7 +168,7 @@ const SpotlightListScreen = (props) => {
                 challengeSpotlight.length > 0 ?
                   <ViewMoreSpotlights
                     propName={{ type: "Contest", data: challengeSpotlight }}
-                    navigateDetail={(item) => props.navigation.navigate("SpotlightDetail", { id: item.id })}
+                    navigateDetail={(id) => props.navigation.navigate("SpotlightDetail", { id: id })}
                     paginations={() => paginations("Contest")}
                   />
                   :
