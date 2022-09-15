@@ -5,8 +5,9 @@ export default class SubmitIdeaDropDownModel {
             return;
         }
 
-        this.itemName = obj?.sector_name ? obj?.sector_name :  obj?.category_name;
-        this.id =  obj?.id;
+        this.itemName = obj?.sector_name ? obj?.sector_name : obj?.category_name;
+        this.id = obj?.id ? obj?.id : obj?.category_id;
+        this.subcategory = obj?.subcategory ? obj?.subcategory : [];
 
     }
 }

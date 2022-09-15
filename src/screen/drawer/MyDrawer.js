@@ -137,7 +137,7 @@ const MyDrawerScreen = (props) => {
         "layout": "globe",
         "limit": "100",
         "page": "1",
-        "language": "en"
+        "language": getLanguage(),
 
       }
       Service.post(EndPoints.globe, data, (res) => {

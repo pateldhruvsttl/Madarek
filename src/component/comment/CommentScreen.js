@@ -70,7 +70,7 @@ const CommentScreen = (props) => {
       "frontuser_id": UserManager.userId,
       "field_name": fieldName,
       "id": id,
-      "language": "en",
+      "language": getLanguage(),
       "model": model
 
     }

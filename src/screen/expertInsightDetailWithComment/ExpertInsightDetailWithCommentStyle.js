@@ -14,8 +14,7 @@ const ExpertInsightDetailStyle = StyleSheet.create({
   },
   MainView: {
     width: "100%",
-    // flex: 1,
-    backgroundColor: GetAppColor.white,
+    backgroundColor: GetAppColor.lightGrey,
   },
   academyTitle: {
     fontFamily: FONTS.robotMedium,

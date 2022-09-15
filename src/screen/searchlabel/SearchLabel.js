@@ -84,7 +84,7 @@ const SearchLabel = (props) => {
     }
 
     const onCurrentType = (item, index) => {
-       
+
         setPageNo(1);
         setSelectIndex(index)
         setData([]);
@@ -109,7 +109,7 @@ const SearchLabel = (props) => {
     }
 
     const onPressSearchButton = () => {
-       
+
         setPageNo(1);
         if (isSelectIndex === 0) {
             onGetIdeasList(1);
@@ -445,7 +445,7 @@ const SearchLabel = (props) => {
                 isType={"Ideas"}
                 onLikeIdeas={(id) => onLikeIdeas(id)}
                 onFavoriteIdeas={(id) => onFavoriteIdeas(id)}
-                onItemPress={(item) => { props.navigation.navigate("IdeaDetails", {item:item}) }}
+                onItemPress={(item) => { props.navigation.navigate("IdeaDetails", { item: item }) }}
                 paginations={() => onGetPaginations("IDEAS")}
                 navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
             />
@@ -482,7 +482,7 @@ const SearchLabel = (props) => {
     const renderExpertInsight = () => {
         return (
             <IdeaExpert data={isData} maxLimit={0}
-                navigateScreen={(id) => props.navigation.navigate("ExpertInsightDetailWithComment", { id: id })}
+                navigateScreen={(id, type) => onExpertInsightNavigations(type, id)}
                 onGetPaginations={() => onGetPaginations("EXPERT INSIGHTS")}
                 navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                 isSearch={"Expert Insight"}
@@ -502,6 +502,14 @@ const SearchLabel = (props) => {
         )
 
     }
+    const onExpertInsightNavigations = (type, id) => {
+        if (type != "General")
+            return props.navigation.navigate("ExpertInsightTypeDetail", { id: id })
+        else
+            return props.navigation.navigate("ExpertInsightDetailWithComment", { id: id })
+
+    }
+
 
     const _lang = getLanguage();
     return (

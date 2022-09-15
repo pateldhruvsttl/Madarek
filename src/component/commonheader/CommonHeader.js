@@ -113,7 +113,7 @@ const CommonHeader = (props) => {
                             <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{Label.IdeaDetails}</Text>
                         </View>
 
-                        <BackButton onRefresh={props.onRefresh}/>
+                        <BackButton onRefresh={props.onRefresh} />
 
                         <View style={Style.rightIcnView}>
                             {/* <TouchableOpacity onPress={() => navigation.navigate("Message")}>
@@ -331,12 +331,12 @@ const CommonHeader = (props) => {
                         <View style={Style.centerIcnView}>
                             <Text style={Style.txtHeader}>{Label.Notifications}</Text>
                         </View>
-
-                        <View style={Style.rightIcnView}>
+                        <View style={Style.icnEmpty} />
+                        {/* <View style={Style.rightIcnView}>
                             <TouchableOpacity onPress={() => navigation.navigate("SearchLabel")}>
                                 <IcnSearch style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </View>
                 </>
             );
@@ -721,31 +721,31 @@ const CommonHeader = (props) => {
                 </>
             );
             break
-            case 'ExpertInsightTypeDetail':
-                return (
-                    <>
-                        <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
-                        <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
-    
-                            <View style={Style.middleIcnView}>
-                                <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{props.heading ? props.heading : Label.ExpertInsightsDetail}</Text>
-                            </View>
-    
-                            <BackButton />
-    
-                            <View style={Style.rightIcnView}>
-                                {/* <TouchableOpacity>
+        case 'ExpertInsightTypeDetail':
+            return (
+                <>
+                    <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} />
+                    <View style={[Style.MainView, { backgroundColor: themeColor.headerColor }]}>
+
+                        <View style={Style.middleIcnView}>
+                            <Text style={[Style.txtHeader, { color: themeColor.headerFontColor }]}>{props.heading ? props.heading : Label.ExpertInsightsDetail}</Text>
+                        </View>
+
+                        <BackButton />
+
+                        <View style={Style.rightIcnView}>
+                            {/* <TouchableOpacity>
                                     <IcnMultiMsg style={Style.icnProp} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} />
                                 </TouchableOpacity> */}
-                                <TouchableOpacity>
-                                    {/* <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} /> */}
-                                </TouchableOpacity>
-                            </View>
-    
+                            <TouchableOpacity>
+                                {/* <IcnEdit style={Style.headerLeftIcn} height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} /> */}
+                            </TouchableOpacity>
                         </View>
-                    </>
-                )
-                break
+
+                    </View>
+                </>
+            )
+            break
         default: null;
     }
 }

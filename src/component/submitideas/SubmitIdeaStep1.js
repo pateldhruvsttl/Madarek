@@ -19,13 +19,13 @@ function SubmitIdeaStep1(props) {
     const [title, setTitle] = useState("");
 
     const [sectors, setSectors] = useState(Label.Selected);
-    const [isSectorsId, setSectorsId] = useState(0);
+    const [isSectorsId, setSectorsId] = useState("");
 
     const [category, setCategory] = useState(Label.Selected);
-    const [isCategoryid, setCategoryId] = useState(0);
+    const [isCategoryid, setCategoryId] = useState("");
 
     const [subCategory, setSubCategory] = useState(Label.Selected);
-    const [isSubCategoryId, setSubCategoryId] = useState(0);
+    const [isSubCategoryId, setSubCategoryId] = useState("");
 
     const [isSectorsList, setSectorsList] = useState([]);
     const [isCategoryList, setCategoryList] = useState([]);
@@ -52,7 +52,7 @@ function SubmitIdeaStep1(props) {
     };
 
     const getCategories = () => {
-        Service.get(EndPoints.categories, (res) => {
+        Service.get(EndPoints.categorie, (res) => {
             var arr = [];
             res.data.forEach((element) => {
                 let model = new SubmitIdeaDropDownModel(element);
@@ -65,10 +65,27 @@ function SubmitIdeaStep1(props) {
         );
     };
 
+    const setCategories = (list) => {
+
+        var arr = [];
+        setSubCategoryId("");
+        setSubCategory("");
+        setSubCategoryList([]);
+
+        list.forEach((element) => {
+            let model = new SubmitIdeaDropDownModel(element);
+            arr.push(model);
+        });
+        setSubCategoryList(arr);
+
+    };
     const onCheckField = () => {
+
         var obj = { title: title, sectors: sectors, sectorsId: isSectorsId, category: category, categoryId: isCategoryid, subCategory: subCategory, subCategoryId: isSubCategoryId }
 
         if (title === "" || sectors === "Selected" || category === "Selected")
+            Alert.alert(Label.FillMandatoryFieldsValidation);
+        else if (isSubCategoryList.length > 0 && isSubCategoryId === "")
             Alert.alert(Label.FillMandatoryFieldsValidation);
         else
             props.onNext(obj);
@@ -95,13 +112,16 @@ function SubmitIdeaStep1(props) {
 
             <View style={Style.innerView1}>
                 <Text style={Style.txtTitle}>{Label.Category}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={category} item={isCategoryList} onSelect={(item) => { setCategory(item.itemName); setCategoryId(item.id) }} />
+                <CustomList currentItem={category} item={isCategoryList} onSelect={(item) => { setCategories(item.subcategory); setCategory(item.itemName); setCategoryId(item.id) }} />
             </View>
 
-            <View style={Style.innerView1}>
-                <Text style={Style.txtTitle}>{Label.SubCategory}<Text style={Style.txtStar}>*</Text></Text>
-                <CustomList currentItem={subCategory} item={isSubCategoryList} onSelect={(item) => { setSubCategory(item.itemName); setSubCategoryId(item.id) }} />
-            </View>
+            {
+                isSubCategoryList.length > 0 &&
+                <View style={Style.innerView1}>
+                    <Text style={Style.txtTitle}>{Label.SubCategory}<Text style={Style.txtStar}>*</Text></Text>
+                    <CustomList currentItem={subCategory} item={isSubCategoryList} onSelect={(item) => { setSubCategory(item.itemName); setSubCategoryId(item.id) }} />
+                </View>
+            }
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>
                 <Text style={Style.txtBtn}>{Label.Continue}</Text>

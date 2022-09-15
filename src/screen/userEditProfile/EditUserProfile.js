@@ -13,7 +13,7 @@ import ExpertEdit from './ExpertEdit'
 import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import { baseURL, deviceId } from '../../utils/Constant'
-import { AppConfig } from '../../manager/AppConfig'
+import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import UserProfile from '../../model/UserProfile'
 import { Label } from '../../utils/StringUtil'
 import { Loger } from '../../utils/Loger'
@@ -189,7 +189,7 @@ const EditUserProfile = (props) => {
             const data = new FormData()
 
             data.append('device_id', deviceId);
-            data.append('lang', "en");
+            data.append('lang', getLanguage());
             data.append('token', AppConfig.token);
             data.append('first_name', firstName);
             data.append('last_name', lastName);

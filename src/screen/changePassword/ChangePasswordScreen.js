@@ -44,7 +44,7 @@ const ChangePasswordScreen = (props) => {
         Service.post(EndPoints.changepassword, data, (res) => {
             if (res?.statusCode === "0") {
                 showMessageWithCallBack(Label.OldPasswordIncorrect, () => {
-                    props.navigation.goBack();
+                    // props.navigation.goBack();
                 })
             }
             else if (res?.statusCode === "1") {

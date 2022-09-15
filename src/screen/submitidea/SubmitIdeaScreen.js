@@ -11,6 +11,7 @@ import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { GetAppColor } from "../../utils/Colors";
 import { deviceId } from "../../utils/Constant";
+import { Loger } from "../../utils/Loger";
 import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
@@ -54,7 +55,7 @@ function SubmitIdeaScreen(props) {
             {/* <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 2 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} /> */}
           </View>
 
-          {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => { setStep1Obj(obj); setSelectIndex(selectIndex + 1); }} />}
+          {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => {Loger.onLog("", obj); setStep1Obj(obj); setSelectIndex(selectIndex + 1); }} />}
           {selectIndex == 1 && <SubmitIdeaStep2 onNext={(dataForm) => { onSubmit(dataForm) }} />}
           {/* {selectIndex == 2 && <SubmitIdeaStep3 onNext={() => onSubmit()} step1Obj={step1Obj} step2Obj={step2Obj} />} */}
         </View>

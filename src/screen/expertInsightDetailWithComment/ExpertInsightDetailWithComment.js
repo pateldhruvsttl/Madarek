@@ -72,27 +72,7 @@ const ExpertInsightDetailWithComment = (props) => {
       }
     )
   }
-  
-  const testData = [
-    {
-      url: "https://i.imgur.com/SsJmZ9jl.jpg",
-    },
-    {
-      url: "https://i.imgur.com/5tj6S7Ol.jpg",
-    },
-    {
-      url: "https://i.imgur.com/pmSqIFZl.jpg",
-    },
-    {
-      url: "https://i.imgur.com/cA8zoGel.jpg",
-    },
-    {
-      url: "https://i.imgur.com/pewusMzl.jpg",
-    },
-    {
-      url: "https://i.imgur.com/l49aYS3l.jpg",
-    },
-  ];
+ 
  
   const renderComentCell = () => {
     return (
@@ -225,8 +205,8 @@ const ExpertInsightDetailWithComment = (props) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: GetAppColor.lightGrey, }}>
       <CommonHeader isType={"ExpertInsightDetailWithComment"} heading={detail.title}/>
-      <View style={ExpertInsightDetailStyle.MainView}>
-        <ScrollView>
+      <View style={[ExpertInsightDetailStyle.MainView, {flex:1}]}>
+        <ScrollView style={[ExpertInsightDetailStyle.MainView, {flex:1}]}>
           <View style={ExpertInsightDetailStyle.container}>
             {/* <IdeaSlider Entries={testData} /> */}
 
