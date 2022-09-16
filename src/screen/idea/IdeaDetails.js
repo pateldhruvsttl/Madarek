@@ -32,11 +32,13 @@ import { set } from 'react-native-reanimated';
 import { showMessage } from '../../utils/Constant';
 
 const IdeaDetails = (props) => {
+
   const navigation = useNavigation();
-  const item = props.route.params.item
+ const item = props.route.params.item
   const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
   Loger.onLog("item", item);
+  
   useEffect(() => {
 
     if (item?.expertInsightData.length > 0) {
@@ -202,7 +204,7 @@ const IdeaDetails = (props) => {
                     onLikeIdeas={(id) => onLikeIdeas(id)}
                     isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
                     onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
-                    onItemPress={(item) => { navigation.replace("IdeaDetails", item) }}
+                    onItemPress={(item) => { navigation.replace("IdeaDetails", {item:item}) }}
                     navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
                   />
                 </View>
