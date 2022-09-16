@@ -24,6 +24,7 @@ import IcnUnSelectedHeartWithRound from "../../assets/svg/IcnUnSelectedHeartWith
 import ImageLoad from "react-native-image-placeholder";
 import { AppConfig } from "../../manager/AppConfig";
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
+import MenuFile from "../menu/MenuFile";
 
 const ChallengeListImage = (props) => {
     const navigation = useNavigation();
@@ -125,17 +126,7 @@ const ChallengeListImage = (props) => {
                         <Text style={LISTSTYLE.title}>{item.totalComment}</Text>
                     </View>
                     <View style={LISTSTYLE.moreView}>
-                        <Menu>
-                            <MenuTrigger>
-                                <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
-                            </MenuTrigger>
-                            <MenuOptions >
-                                <MenuOption style={LISTSTYLE.menuView} onSelect={() => onShare(`contest-detail/${item.id}`)}>
-                                    <IcnShareIcon stroke={GetAppColor.pincolor} style={LISTSTYLE.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                    <Text style={LISTSTYLE.txtMenuOptions}>{Label.Share}</Text>
-                                </MenuOption>
-                            </MenuOptions>
-                        </Menu>
+                       <MenuFile onMessage={`contest-detail/${item.id}`} />
                     </View>
                 </View>
             </View>

@@ -173,9 +173,7 @@ const IdeaContent = (props) => {
                         <View style={Style.dateSubContain}>
                             <IcnClander height={iconSize} width={iconSize} />
                             <Text numberOfLines={1} style={Style.contentTitle}>{props.data?.contestDate}</Text>
-                        </View>{
-                            console.log('props.data?.submissionStatus',props.data?.submissionStatus)
-                        }
+                        </View>
                         <TouchableOpacity style={[Style.openBtn, { backgroundColor: props.data?.submissionStatus != "CLOSED" ? GetAppColor.buttonGreenColor : GetAppColor.rejected }]}>
                             <Text numberOfLines={1} style={[Style.openBtnTitle, { color: GetAppColor.white }]}>{props.data?.submissionStatus}</Text>
                         </TouchableOpacity>

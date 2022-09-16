@@ -148,9 +148,7 @@ function NotificationsScreen() {
       }
     );
   };
-console.log(
-  'length',notiData.length
-);
+
   return (
     <View style={Style.MainView}>
       <SafeAreaView style={{ flex: 1 }}>
