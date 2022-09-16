@@ -6,6 +6,7 @@ import WebViewComp from '../webview/WebViewComp'
 import IcnThumsUpBlack from '../../assets/svg/IcnThumsUpBlack'
 import IcnThumsUp from '../../assets/svg/IcnThumsUp'
 import IcnComment from '../../assets/svg/IcnComment'
+import IcnClander from '../../assets/svg/IcnClander'
 import moment from 'moment'
 import { AppUtil } from '../../utils/AppUtil'
 import ImageLoad from 'react-native-image-placeholder'
@@ -17,36 +18,36 @@ import { Loger } from '../../utils/Loger'
 const ExpertInsightSubDetail = (props) => {
 
     const { sectorName, categoryName, publishBy, spotlightCreateDate, ideaTitle, ideaDescription,
-        insightTitle, ideaCreatedDate, id, totalComment, insightDescription,profilePhoto } = props.detail
-  
-        const [totalLike,setTotalLike] = useState(props.detail.totalLike)
+        insightTitle, ideaCreatedDate, id, totalComment, insightDescription, profilePhoto } = props.detail
 
-        const onIdealike = (id) => {
-            var data = {
-                "field_name": "formdata_id",
-                "id": id,
-                "frontuser_id": UserManager.userId,
-                "model": "LikedislikeGeneral"
-            }
-            Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
-                const likeDislike = res?.data === 'dislike' ? 1 : 0;
-                if (likeDislike == 1) {
-                    props.detail.like = likeDislike
-                    props.detail.totalLike = Number(props.detail.totalLike) + 1
-                    setTotalLike(props.detail.totalLike)
-                }
-                else {
-                    props.detail.like  = likeDislike
-                    props.detail.totalLike = Number(props.detail.totalLike) - 1
-                    setTotalLike(props.detail.totalLike)
-                }
-    
-            }, (err) => {
-                Loger.onLog("err of likeUnlike", err)
-            })
+    const [totalLike, setTotalLike] = useState(props.detail.totalLike)
+
+    const onIdealike = (id) => {
+        var data = {
+            "field_name": "formdata_id",
+            "id": id,
+            "frontuser_id": UserManager.userId,
+            "model": "LikedislikeGeneral"
         }
-   
-        return (
+        Service.post(EndPoints.ideaLikeUnlike, data, (res) => {
+            const likeDislike = res?.data === 'dislike' ? 1 : 0;
+            if (likeDislike == 1) {
+                props.detail.like = likeDislike
+                props.detail.totalLike = Number(props.detail.totalLike) + 1
+                setTotalLike(props.detail.totalLike)
+            }
+            else {
+                props.detail.like = likeDislike
+                props.detail.totalLike = Number(props.detail.totalLike) - 1
+                setTotalLike(props.detail.totalLike)
+            }
+
+        }, (err) => {
+            Loger.onLog("err of likeUnlike", err)
+        })
+    }
+
+    return (
         <>
             <View style={STYLE.mainView}>
                 <View style={STYLE.calViewOne}>
@@ -82,13 +83,16 @@ const ExpertInsightSubDetail = (props) => {
                 />
             </View>
             <View style={STYLE.detailView}>
-                <View>
+                <View style={{ marginBottom: AppUtil.getHP(1) }}>
                     <Text style={STYLE.label}>{insightTitle}</Text>
-                    <Text style={STYLE.dateAuthor}>{moment(ideaCreatedDate).format("YYYY-MM-DD")}</Text>
+                    <View style={STYLE.dateCover}>
+                        <IcnClander height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                        <Text style={STYLE.dateAuthor}>{moment(ideaCreatedDate).format("YYYY-MM-DD")}</Text>
+                    </View>
                 </View>
                 <View style={STYLE.iconContainer}>
                     {
-                          props.detail.like == true ?
+                        props.detail.like == true ?
                             <TouchableOpacity
                                 onPress={() => onIdealike(id)}>
                                 <IcnThumsUpBlack style={STYLE.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />

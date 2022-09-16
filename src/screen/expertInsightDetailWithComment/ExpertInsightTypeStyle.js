@@ -84,6 +84,12 @@ const STYLE = StyleSheet.create({
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.borderRed
     },
+    dateCover : {
+        flexDirection:'row',
+        alignItems:'center',
+         marginTop: AppUtil.getHP(0.5),
+        // marginBottom: AppUtil.getHP(1),
+    },
     contentBox: {
         marginTop: AppUtil.getHP(1),
     },
@@ -108,8 +114,8 @@ const STYLE = StyleSheet.create({
         fontSize: AppUtil.getHP(2),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor,
-        marginTop: AppUtil.getHP(1),
-        marginBottom: AppUtil.getHP(1),
+        marginStart: AppUtil.getHP(0.8),
+        // marginBottom: AppUtil.getHP(1),
     },
     icnView : {
         flexDirection:'row',
