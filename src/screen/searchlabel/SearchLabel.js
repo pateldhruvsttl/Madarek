@@ -496,7 +496,7 @@ const SearchLabel = (props) => {
                 data={isData}
                 scrollEnabled={true}
                 isType={"Spotlight"}
-                onItemPress={(id) => { props.navigation.navigate("SpotlightDetail", { id: id }) }}
+                navigateDetail={(id) => { props.navigation.navigate("SpotlightDetail", { id: id }) }}
                 paginations={() => onGetPaginations("SPOTLIGHT")}
             />
         )
