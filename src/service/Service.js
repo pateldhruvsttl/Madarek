@@ -25,10 +25,9 @@ export const Service = {
     post: (endPoint, params, success, error) => {
         AppUtil.onLoding(true);
         Loger.onServerLog("Req", getBaseURL() + endPoint, params);
-
         AppUtil.onLoding(true);
 
-        axios.post(getBaseURL() + endPoint, params, { headers: { 'Authorization': `Basic ${token}` } }).then((response) => {
+        axios.post(getBaseURL() + endPoint, params, { headers: {'Authorization': `Basic ${token}` } }).then((response) => {
             AppUtil.onLoding(false);
             Loger.onServerLog("Res", getBaseURL() + endPoint, response.data);
             AppUtil.onLoding(false);
@@ -40,5 +39,25 @@ export const Service = {
         });
     },
 
+    postFormDataFetch: (endPoint, data, success, error) => {
+        console.log('-----Request----->', getBaseURL() + endPoint,data);
+        fetch(`${getBaseURL()}${endPoint}`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Authorization': `Basic ${token}`,
+                "Content-type": "multipart/form-data",
+            },
+            body: data,
+        }).then((res) => res.json()).then((res) => {
+            Loger.onServerLog("Res", getBaseURL() + endPoint, res);
+
+            return success(res)
+        }).catch((err) => {
+            console.log('errr1', err)
+
+            return error(err)
+        })
+    }
 
 }

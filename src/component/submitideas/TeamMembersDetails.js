@@ -17,7 +17,7 @@ const TeamMembersDetails = (props) => {
     useEffect(() => {
 
         let data = [];
-        data.push({ name: "", email: "", contryCode: "", mobileNo: "" })
+        data.push({ full_name: "", email: "", country_ext: "", mobile: "" })
         setMemberData(data);
 
     }, [])
@@ -26,7 +26,7 @@ const TeamMembersDetails = (props) => {
         if (isErr == -1) {
             let data = [];
             isMemberData.forEach(element => {
-                if (element.name != "" || element.email != "" || element.contryCode != "" || element.mobileNo != "") {
+                if (element.full_name != "" || element.email != "" || element.country_ext != "" || element.mobile != "") {
                     data.push(element)
                 }
             });
@@ -40,7 +40,7 @@ const TeamMembersDetails = (props) => {
     const onAddItem = () => {
 
         let arr = isMemberData;
-        arr.push({ name: "", email: "", contryCode: "", mobileNo: "" });
+        arr.push({ full_name: "", email: "", country_ext: "", mobile: "" });
         setMemberData([...arr]);
 
     }
@@ -63,7 +63,7 @@ const TeamMembersDetails = (props) => {
             else
                 setErr(-1)
 
-            data[index].name = text;
+            data[index].full_name = text;
         }
         else if (type === "email") {
             if (text == "")
@@ -84,7 +84,7 @@ const TeamMembersDetails = (props) => {
             else
                 setErr(-1)
 
-            data[index].contryCode = text;
+            data[index].country_ext = text;
         }
         else if (type === "mobileNo") {
             if (text == "")
@@ -94,7 +94,7 @@ const TeamMembersDetails = (props) => {
             else
                 setErr(-1)
 
-            data[index].mobileNo = text;
+            data[index].mobile = text;
         }
 
         setMemberData([...data]);

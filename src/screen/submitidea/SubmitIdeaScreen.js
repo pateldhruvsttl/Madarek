@@ -21,21 +21,68 @@ function SubmitIdeaScreen(props) {
 
   const onSubmit = (dataForm) => {
 
-    var data = new FormData()
+    var formData = new FormData()
 
-    data.append('device_id', deviceId)
-    data.append('lang', AppConfig.lang.toString())
-    data.append('token', AppConfig.token.toString())
-    data.append('frontuser_id', UserManager.userId.toString())
-    data.append('task', "save")
-    data.append('idea_id', 0)
-    data.append('idea_title', step1Obj.title)
-    data.append('sector_id', step1Obj.sectorsId)
-    data.append('category_id', step1Obj.categoryId)
-    data.append(dataForm)
-    // props.navigation.navigate("UserDashboardScreen");`
+    formData.append('device_id', deviceId)
+    formData.append('lang', AppConfig.lang.toString())
+    formData.append('token', AppConfig.token.toString())
+    formData.append('frontuser_id', UserManager.userId.toString())
+    formData.append('task', "save")
 
-    Service.post(EndPoints.submitidea, data, (res) => {
+    formData.append('idea_id', 0)
+    formData.append('idea_title', step1Obj.title)
+    formData.append('sector_id', "2")
+    formData.append('category_id', "5")
+    formData.append('sub_category_id', "0")
+
+    formData.append('form_data', dataForm.data_obj)
+
+    formData.append('idea_cover_image', dataForm.isIdeaCoverImage)
+    formData.append('idea_upload_files', dataForm.isFile)
+    formData.append(getMultiImage(dataForm.isMultiImage))
+    formData.append('idea_upload_videos', dataForm.isVideoFile)
+
+    Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {
+      props.navigation.navigate("UserDashboardScreen");
+    }, (err) => {
+      Loger.onLog("###", err);
+    }
+    );
+
+  }
+  const getMultiImage = (list) => {
+    let data = new FormData();
+
+    list.forEach(element => {
+      if (element.uri) {
+        data.append('additional_images', element)
+        // let ext = element.uri.split('.');
+        // data.append('additional_images', {
+        //   uri: element.uri,
+        //   name: element.name,
+        //   type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg')
+        // });
+      }
+    });
+
+    return data;
+  }
+
+  const onSubmit1 = (dataForm) => {
+
+
+    dataForm.device_id = deviceId,
+    dataForm.lang = AppConfig.lang.toString(),
+    dataForm.token = AppConfig.token.toString(),
+    dataForm.frontuser_id = UserManager.userId.toString(),
+    dataForm.task = "save",
+
+    dataForm.idea_id = 0,
+    dataForm.idea_title = step1Obj.title,
+    dataForm.sector_id = step1Obj.sectorsId,
+    dataForm.category_id = step1Obj.categoryId
+
+    Service.post(EndPoints.submitidea, dataForm, (res) => {
       // props.navigation.navigate("UserDashboardScreen");
     }, (err) => {
       Loger.onLog("###", err);
@@ -43,6 +90,7 @@ function SubmitIdeaScreen(props) {
     );
 
   }
+ 
 
   return (
     <SafeAreaView style={Style.MainView}>
@@ -55,8 +103,14 @@ function SubmitIdeaScreen(props) {
             {/* <View style={[Style.selectPageIndicators, { backgroundColor: selectIndex == 2 ? GetAppColor.statusBarYellow : GetAppColor.btnBorderColor }]} /> */}
           </View>
 
-          {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => {Loger.onLog("", obj); setStep1Obj(obj); setSelectIndex(selectIndex + 1); }} />}
+          {/* {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => {setStep1Obj(obj); onSubmit()} }/>} */}
+
+
+          {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => { setStep1Obj(obj); setSelectIndex(selectIndex + 1); }} />}
           {selectIndex == 1 && <SubmitIdeaStep2 onNext={(dataForm) => { onSubmit(dataForm) }} />}
+
+
+
           {/* {selectIndex == 2 && <SubmitIdeaStep3 onNext={() => onSubmit()} step1Obj={step1Obj} step2Obj={step2Obj} />} */}
         </View>
       </ScrollView>

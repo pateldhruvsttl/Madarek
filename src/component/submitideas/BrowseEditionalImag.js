@@ -1,57 +1,34 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useState, memo } from 'react'
-import * as ImagePicker from 'react-native-image-picker';
 import IcnRemoveRound from '../../assets/svg/IcnRemoveRound'
 import Style from './IdeaStepStyle'
 import DocumentPicker, { types } from 'react-native-document-picker'
 import { useEffect } from 'react';
-
+import RNFS from 'react-native-fs';
+import { Loger } from '../../utils/Loger'
 
 function ImageList(props) {
 
     let list = props?.currentList;
     const [imageList, setImageList] = useState(list ? props?.currentList : [{ assets: "selected" }]);
 
-    const onImagePress = (item) => {
-        if (item === "add") {
-            let options = {
-                title: 'Select Image',
-                customButtons: [
-                    { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
-                ],
-                storageOptions: {
-                    skipBackup: true,
-                    path: 'images',
-                },
-            };
 
-            ImagePicker.launchImageLibrary(options, (response) => {
-                if (response.didCancel) {
-                } else if (response.error) {
-                } else if (response.customButton) {
-                } else {
-                    let arr = [...imageList, response]
-                    setImageList(arr);
-                    // props.onUpdateList(arr);
-                }
-            });
-
-
-        }
-    }
-
-    useEffect(()=>{
+    useEffect(() => {
         props.onMultiImageArr(imageList);
-    },[imageList])
+    }, [imageList])
+
     const addMaterial = async (item) => {
         if (item === "add") {
             const images = [...imageList]
             try {
-                await DocumentPicker.pickMultiple({
-                    type: [types.images]
-                }).then((results) => {
+                await DocumentPicker.pickMultiple({ type: [types.images] }).then((results) => {
                     results.map((res) => {
-                        images.push({"assets":[res]})
+                        // RNFS.readFile(res.uri, 'base64').then(base64String => {
+                        //     res.base64st = base64String;
+                        //     images.push({ "assets": [res] });
+                        // }).catch(err => {
+                        // });
+                        images.push(res);
                     })
                     setImageList(images)
                 });
@@ -87,7 +64,7 @@ function ImageList(props) {
                         else {
                             return (
                                 <View style={Style.addImageView}>
-                                    <Image resizeMode="cover" resizeMethod="scale" style={Style.imgStyle} source={{ uri: item?.assets[0].uri }} />
+                                    <Image resizeMode="cover" resizeMethod="scale" style={Style.imgStyle} source={{ uri: item.uri }} />
                                     <TouchableOpacity style={Style.removeIcnStyle} onPress={() => onRemoveImage(index)}>
                                         <IcnRemoveRound width={15} height={15} />
                                     </TouchableOpacity>

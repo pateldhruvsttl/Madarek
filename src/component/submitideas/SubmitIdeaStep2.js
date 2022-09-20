@@ -78,23 +78,22 @@ function SubmitIdeaStep2(props) {
     const onTextChange = (type, txt) => {
 
         if (type === "IdeaDescription") { setIdeaDescription(txt); }
-        else if (type === "challengesAddressing") { setChallengesAddressing(txt);}
-        else if (type === "benefitIdea") { setBenefitIdea(txt);}
-        else if (type === "videoUrl") { setVideoUrl(txt);}
-        else if (type === "UploadEmbedUrl") { setUploadEmbedUrl(txt);}
-        else if (type === "keywordsTags") { setkeywordsTags(txt);}
-        else if (type === "NoOfTeamMember") { setNoOfTeamMember(txt);}
+        else if (type === "challengesAddressing") { setChallengesAddressing(txt); }
+        else if (type === "benefitIdea") { setBenefitIdea(txt); }
+        else if (type === "videoUrl") { setVideoUrl(txt); }
+        else if (type === "UploadEmbedUrl") { setUploadEmbedUrl(txt); }
+        else if (type === "keywordsTags") { setkeywordsTags(txt); }
+        else if (type === "NoOfTeamMember") { setNoOfTeamMember(txt); }
     }
+
     const onSelectImg = (item) => {
         setIdeaCoverImage(item);
     }
     const onSelectMultiImg = (item) => {
         setMultiImage(item);
-
     }
     const onSelectFile = (item) => {
         setFile(item);
-
     }
     const onSelectVideoFile = (item) => {
         setVideoFile(item);
@@ -159,7 +158,13 @@ function SubmitIdeaStep2(props) {
         }
         else {
 
-            let data = {
+            let data_form = {
+                photos_image: null,
+                idea_cover_image: "",
+                idea_upload_files: "",
+                idea_upload_videos: "",
+                upload_additional_images: "",
+
                 idea_description: isIdeaDescription,
                 challenges_addressing: isChallengesAddressing,
                 benefit_idea: isBenefitIdea,
@@ -173,39 +178,17 @@ function SubmitIdeaStep2(props) {
                 post_idea_privately: isIdeaPrivately,
                 terms_condiitons: isTermsConditons,
 
-                idea_cover_image: "",
-                upload_additional_images: "",
-                idea_upload_files: "",
-                idea_upload_videos: "",
-                photos_image: "",
             }
 
-            var form = new FormData()
-            form.append('form_data', data)
-            form.append('idea_cover_image', isIdeaCoverImage)
-            form.append('idea_upload_files', isFile)
-            form.append(getMultiImage)
-            form.append('idea_upload_videos', isVideoFile)
-
-            props.onNext(form);
-        }
-        const getMultiImage = () => {
-            let data = new FormData();
-
-            isMultiImage.forEach(element => {
-                if (element.uri) {
-                    let ext = element.uri.split('.');
-
-                    data.append('additional_images', {
-                        uri: element.uri,
-                        name: element.name,
-                        type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg')
-                    });
-                }
+            props.onNext({
+                data_obj: JSON.stringify(data_form),
+                isIdeaCoverImage: isIdeaCoverImage,
+                isFile: isFile,
+                isVideoFile: isVideoFile,
+                isMultiImage: isMultiImage
             });
-
-            return data;
         }
+
 
     }
 
