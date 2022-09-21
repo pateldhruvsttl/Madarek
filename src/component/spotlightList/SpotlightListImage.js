@@ -14,6 +14,7 @@ import { AppConfig } from "../../manager/AppConfig";
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-menu";
 import STYLE from './SpotlightListImageStyle'
 import moment from "moment";
+import MenuFile from "../menu/MenuFile";
 
 const SpotlightListImage = (props) => {
     
@@ -47,17 +48,7 @@ const SpotlightListImage = (props) => {
 
                 <View style={[STYLE.secondCalView]}>
                     <View style={STYLE.moreView}>
-                        <Menu>
-                            <MenuTrigger>
-                                <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
-                            </MenuTrigger>
-                            <MenuOptions >
-                                <MenuOption style={STYLE.menuView} onSelect={() => onShare(`spotlights/${item.id}`)}>
-                                    <IcnShareIcon stroke={GetAppColor.pincolor} style={STYLE.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                    <Text style={STYLE.txtMenuOptions}>{Label.Share}</Text>
-                                </MenuOption>
-                            </MenuOptions>
-                        </Menu>
+                        <MenuFile onMessage={`spotlights/${item.id}`}/>
                     </View>
                 </View>
             </View>

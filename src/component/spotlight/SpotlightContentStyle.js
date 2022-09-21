@@ -23,12 +23,12 @@ const Style = StyleSheet.create({
         borderRightWidth: AppUtil.getWP(0.3),
         borderRightColor: GetAppColor.grayShadeBorder,
         paddingEnd: AppUtil.getWP(5),
-        maxWidth:'50%'
+        flex:1.5
     },
     category: {
         flexDirection: 'column',
         paddingStart: AppUtil.getWP(5),
-        maxWidth:'50%',
+        flex:2
     },
     title: {
         fontSize: AppUtil.getHP(1.8),

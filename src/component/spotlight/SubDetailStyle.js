@@ -9,32 +9,39 @@ const Style = StyleSheet.create({
     contentBox: {
         marginTop: AppUtil.getHP(1),
     },
-    description :{
+    description: {
         marginTop: AppUtil.getHP(1),
     },
-    redLabel : {
-        color : GetAppColor.borderRed
+    redLabel: {
+        color: GetAppColor.borderRed
     },
-    label : {
+    areaCover: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop:AppUtil.getHP(1.5)
+
+    },
+    label: {
         fontSize: AppUtil.getHP(2.9),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor
     },
-    icnTitle : {
+    icnTitle: {
         fontSize: AppUtil.getHP(1.8),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor,
         paddingStart: AppUtil.getWP(1),
     },
-    dateAuthor : {
+    dateAuthor: {
         fontSize: AppUtil.getHP(2),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor,
-        marginTop: AppUtil.getHP(1),
+      marginStart:AppUtil.getWP(2),
+        marginEnd:AppUtil.getWP(5),
     },
-    icnView : {
-        flexDirection:'row',
-        alignItems:'center',
+    icnView: {
+        flexDirection: 'row',
+        alignItems: 'center',
         marginTop: AppUtil.getHP(1),
         marginBottom: AppUtil.getHP(1),
     },
@@ -44,20 +51,20 @@ const Style = StyleSheet.create({
         fontSize: AppUtil.getHP(2.2),
         textAlign: 'left',
         marginBottom: AppUtil.getHP(1),
-        
+
     },
-    line :{
-        backgroundColor:GetAppColor.borderRed,
-        padding:AppUtil.getWP(0.4),
-        width:AppUtil.getWP(18),
-        borderRadius:3
+    line: {
+        backgroundColor: GetAppColor.borderRed,
+        padding: AppUtil.getWP(0.4),
+        width: AppUtil.getWP(18),
+        borderRadius: 3
     },
-    detailView : {
-        width:'100%',
+    detailView: {
+        width: '100%',
         paddingHorizontal: AppUtil.getWP(5),
         marginTop: AppUtil.getHP(2),
-        marginBottom:AppUtil.getHP(2),
-        backgroundColor:GetAppColor.lightGrey
+        marginBottom: AppUtil.getHP(2),
+        backgroundColor: GetAppColor.lightGrey
     },
     likeBtn: {
         height: buttonHeight,
@@ -65,7 +72,7 @@ const Style = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: buttonBorderRadius,
         borderWidth: 1,
-        marginTop: AppUtil.getHP(1),
+        marginTop: AppUtil.getHP(1.5),
         width: AppUtil.getWP(12),
         borderColor: GetAppColor.grayBorder,
         backgroundColor: GetAppColor.white,

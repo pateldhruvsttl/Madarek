@@ -23,6 +23,7 @@ import { MenuTrigger, Menu, MenuOption, MenuOptions } from "react-native-popup-m
 import { GetAppColor } from "../../utils/Colors";
 import { AppConfig } from "../../manager/AppConfig";
 import { onShare } from "../share/ShareContent";
+import MenuFile from "../menu/MenuFile";
 
 const SubIdeasList = (props) => {
 
@@ -133,26 +134,11 @@ const SubIdeasList = (props) => {
               <Text style={Style.title}>{item.totalComment}</Text>
             </View>
             <View style={Style.moreView}>
-              <Menu>
-                <MenuTrigger>
-                  <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
-                </MenuTrigger>
-                <MenuOptions >
-                  <MenuOption style={Style.menuView} onSelect={() => onShare(`idea-details/${item.id}`)}>
-                    <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                    <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
-                  </MenuOption>
-                </MenuOptions>
-              </Menu>
+              <MenuFile onMessage={`idea-details/${item.id}`} />
             </View>
           </View>
-
         </View>
-
-
-
       </View>
-
     </TouchableOpacity>
   );
 

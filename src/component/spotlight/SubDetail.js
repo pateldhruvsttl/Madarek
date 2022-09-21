@@ -1,4 +1,4 @@
-import { View, Text ,TouchableOpacity} from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Style from './SubDetailStyle'
 import { Label } from '../../utils/StringUtil'
@@ -7,6 +7,8 @@ import IcnRewordLight from '../../assets/svg/IcnRewordLight'
 import { AppUtil } from '../../utils/AppUtil'
 import moment from 'moment'
 import IcnShareIcon from '../../assets/svg/IcnShareIcon'
+import IcnClander from '../../assets/svg/IcnClander'
+import IcnAvtarBg from '../../assets/svg/IcnAvtarBg'
 import { onShare } from '../share/ShareContent'
 
 const SubDetail = (props) => {
@@ -28,7 +30,12 @@ const SubDetail = (props) => {
                     <IcnRewordLight width={AppUtil.getHP(2)} height={AppUtil.getHP(2)} />
                     <Text style={Style.icnTitle}>{"Madarek Spotlight"}</Text>
                 </View> */}
-                <Text style={Style.dateAuthor}>{moment(spotlightDate).format("YYYY-MM-DD")}<Text style={Style.redLabel}>{` ${spotlightPublishBy}`}</Text></Text>
+                <View style={Style.areaCover}>
+                    <IcnClander height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                    <Text style={Style.dateAuthor}>{moment(spotlightDate).format("YYYY-MM-DD")}</Text>
+                    <IcnAvtarBg height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
+                    <Text style={Style.redLabel}>{` ${spotlightPublishBy}`}</Text>
+                </View>
             </View>
             <View style={Style.description}>
                 <View style={Style.contentBox}>

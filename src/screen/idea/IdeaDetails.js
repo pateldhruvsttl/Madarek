@@ -32,11 +32,13 @@ import { set } from 'react-native-reanimated';
 import { showMessage } from '../../utils/Constant';
 
 const IdeaDetails = (props) => {
+
   const navigation = useNavigation();
   const item = props.route.params.item
   const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
   Loger.onLog("item", item);
+
   useEffect(() => {
 
     if (item?.expertInsightData.length > 0) {
@@ -50,13 +52,9 @@ const IdeaDetails = (props) => {
 
   }, []);
 
-  const allData = isAllIdeas.length > 2 ? isAllIdeas.splice(0, 2) : isAllIdeas
-
   useEffect(() => {
     onIdeas()
   }, []);
-
-
 
   const onIdeas = () => {
     const data = {
@@ -137,10 +135,10 @@ const IdeaDetails = (props) => {
       Loger.onLog("err of likeUnlike", err)
     })
   }
-
+  const allData = isAllIdeas.length > 1 ? isAllIdeas.slice(0, 2) : isAllIdeas
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <CommonHeader isType={"IdeaDetails"} onRefresh={props.route.params.onRefresh}/>
+      <CommonHeader isType={"IdeaDetails"} onRefresh={props.route.params.onRefresh} />
       <View style={IdeaStyle.MainView}>
         <ScrollView>
 
@@ -168,16 +166,16 @@ const IdeaDetails = (props) => {
               <WebViewComp data={item?.challengesAddressing} />
             </View>
 
-              <View style={IdeaStyle.contentBox}>
-                <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
-                <WebViewComp data={item?.benefitIdea} />
-              </View>
+            <View style={IdeaStyle.contentBox}>
+              <Text style={IdeaStyle.heading}>{Label?.BenefitsOfIdeaImplementation}</Text>
+              <WebViewComp data={item?.benefitIdea} />
+            </View>
 
-            {item.team && item?.team.length > 0 && 
-            <UserProfileList profileData={item?.team}
-            navigateToScreen={(id) =>  props.navigation.navigate("ExpertDetailsScreen",{id:id})}
-            />}
-            
+            {item.team && item?.team.length > 0 &&
+              <UserProfileList profileData={item?.team}
+                navigateToScreen={(id) => props.navigation.navigate("ExpertDetailsScreen", { id: id })}
+              />}
+
             {item.ideaVideo ?
               <View style={IdeaStyle.videoPlay}>
                 <Text style={IdeaStyle.heading}>{Label.Video}</Text>
@@ -202,7 +200,7 @@ const IdeaDetails = (props) => {
                     onLikeIdeas={(id) => onLikeIdeas(id)}
                     isTitle={Label.MayAlsoInterested} screen="IdeaDetail"
                     onSeeMorePress={() => { navigation.navigate("IdeasListScreen") }}
-                    onItemPress={(item) => { navigation.replace("IdeaDetails", item) }}
+                    onItemPress={(item) => { navigation.replace("IdeaDetails", { item: item }) }}
                     navigateToComment={(item) => props.navigation.navigate('CommentScreen', { item: item })}
                   />
                 </View>

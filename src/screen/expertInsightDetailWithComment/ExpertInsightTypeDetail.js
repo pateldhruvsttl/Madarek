@@ -4,8 +4,6 @@ import CommonHeader from '../../component/commonheader/CommonHeader'
 import STYLE from './ExpertInsightTypeStyle'
 import { ScrollView } from 'react-native-gesture-handler'
 import ImageLoad from 'react-native-image-placeholder'
-import { AppUtil } from '../../utils/AppUtil'
-import { Label } from '../../utils/StringUtil'
 import { deviceId } from '../../utils/Constant'
 import { AppConfig, getLanguage } from '../../manager/AppConfig'
 import { UserManager } from '../../manager/UserManager'
@@ -13,11 +11,6 @@ import { Service } from '../../service/Service'
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import ExpertInsightDetail from '../../model/ExpertInsightDetail'
-import moment from 'moment'
-import WebViewComp from '../../component/webview/WebViewComp'
-import IcnThumsUpBlack from '../../assets/svg/IcnThumsUpBlack'
-import IcnThumsUp from '../../assets/svg/IcnThumsUp'
-import IcnComment from '../../assets/svg/IcnComment'
 import ExpertInsightSubDetail from '../../component/expertscreen/ExpertInsightSubDetail'
 
 const ExpertInsightTypeDetail = (props) => {
@@ -27,7 +20,7 @@ const ExpertInsightTypeDetail = (props) => {
     useEffect(() => {
         expertList();
     }, [])
-    console.log('props', props);
+ 
     const id = props.route.params.id
 
     const expertList = () => {
@@ -39,7 +32,7 @@ const ExpertInsightTypeDetail = (props) => {
             "insight_id": id
         }
         Service.post(EndPoints.expertsInsiteDetail, data, (res) => {
-            console.log('res of idea', res);
+            Loger.onLog('res of expertsInsiteDetail', res);
             if (res.statusCode == 1) {
                 let model = new ExpertInsightDetail(res.data)
                 setDetail(model)

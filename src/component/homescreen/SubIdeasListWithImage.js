@@ -29,6 +29,7 @@ import IcnMenuDote from "../../assets/svg/IcnMenuDote"
 import IcnShareIcon from "../../assets/svg/IcnShareIcon"
 import { baseURL } from "../../utils/Constant";
 import { onShare } from "../share/ShareContent";
+import MenuFile from "../menu/MenuFile";
 
 const SubIdeasListWithImage = (props) => {
 
@@ -187,17 +188,7 @@ const SubIdeasListWithImage = (props) => {
                             </>
                         }
                         <View style={Style.moreView}>
-                            <Menu>
-                                <MenuTrigger>
-                                    <IcnMenuDote height={AppUtil.getHP(2.4)} width={AppUtil.getHP(2.4)} fill={GetAppColor.grayBorder} />
-                                </MenuTrigger>
-                                <MenuOptions customStyles={Style.menuOptions}>
-                                    <MenuOption style={Style.menuView} onSelect={() => props.isType == "Spotlight" ?  onShare(message(item.parentId)) : onShare(message(item.id))}>
-                                        <IcnShareIcon stroke={GetAppColor.pincolor} style={Style.headerProfileIcn} height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
-                                        <Text style={Style.txtMenuOptions}>{Label.Share}</Text>
-                                    </MenuOption>
-                                </MenuOptions>
-                            </Menu>
+                            <MenuFile onMessage={props.isType == "Spotlight" ? message(item.parentId) : message(item.id)} />
                         </View>
 
                     </View>
