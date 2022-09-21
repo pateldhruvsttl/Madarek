@@ -388,6 +388,7 @@ export const ARlabel = {
   _yes:                               "نعم",
   _no:                                "رقم",
   _otpSent:                           "تم إرسال OTP ",
+  _ideaSubmitSuccessfully: "The idea has been submitted successfully",
 }
 
 export const USlabel = {
@@ -867,4 +868,5 @@ export const USlabel = {
   _yes: "YES",
   _no: "NO",
   _otpSent: "OTP is sent",
+  _ideaSubmitSuccessfully: "The idea has been submitted successfully",
 }

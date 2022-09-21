@@ -43,6 +43,7 @@ function SubmitIdeaStep2(props) {
 
 
     useEffect(() => {
+        Loger.onLog("props", props);
         GetField(props?.data?.sectorsId, props?.data?.categoryId, props?.data?.subCategoryId);
     }, [])
 
@@ -55,13 +56,13 @@ function SubmitIdeaStep2(props) {
             "frontuser_id": UserManager.userId,
             "idea_title": "test",
 
-            "sector_id": "2",
-            "category_id": "5",
-            "sub_category_id": "0",
+            // "sector_id": "2",
+            // "category_id": "5",
+            // "sub_category_id": "0",
 
-            // "sector_id": sectorsId,
-            // "category_id": categoryId,
-            // "sub_category_id": subCategoryId,
+            "sector_id": sectorsId,
+            "category_id": categoryId,
+            "sub_category_id": subCategoryId == "" ? "0" : subCategoryId,
         }
 
         Service.post(EndPoints.loadidea, obj, (res) => {
@@ -194,7 +195,7 @@ function SubmitIdeaStep2(props) {
 
     return (
         <View style={Style.MainView}>
-            {isData?.idea_description && <TextFieldItem title={isData?.idea_description?.caption} required={isData?.idea_description?.required}
+            {isData?.idea_description && <TextFieldItem title={isData?.idea_description?.caption} required={isData?.idea_description?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("IdeaDescription", txt)} />}
 
             {isData?.idea_cover_image && <BrowseFileItem title={isData?.idea_cover_image?.caption} required={isData?.idea_cover_image?.required}
@@ -203,28 +204,28 @@ function SubmitIdeaStep2(props) {
             {isData?.upload_additional_images && <BrowseEditionalImag title={isData?.upload_additional_images?.additional_images?.caption}
                 required={isData?.upload_additional_images?.required} onMultiImageArr={onSelectMultiImg} />}
 
-            {isData?.challenges_addressing && <TextFieldItem title={isData?.challenges_addressing?.caption} required={isData?.challenges_addressing?.required}
+            {isData?.challenges_addressing && <TextFieldItem title={isData?.challenges_addressing?.caption} required={isData?.challenges_addressing?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("challengesAddressing", txt)} />}
 
-            {isData?.benefit_idea && <TextFieldItem title={isData?.benefit_idea?.caption} required={isData?.benefit_idea?.required}
+            {isData?.benefit_idea && <TextFieldItem title={isData?.benefit_idea?.caption} required={isData?.benefit_idea?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("benefitIdea", txt)} />}
 
             {isData?.idea_upload_files && <BrowseFileItem title={isData?.idea_upload_files?.caption} required={isData?.idea_upload_files?.required}
                 type={"file"} size={isData?.idea_upload_files?.size?.size} onSelectImgResponse={onSelectFile} />}
 
-            {isData?.upload_video_url && <TextFieldItem title={isData?.upload_video_url?.caption} required={isData?.upload_video_url?.required}
+            {isData?.upload_video_url && <TextFieldItem title={isData?.upload_video_url?.caption} required={isData?.upload_video_url?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("videoUrl", txt)} />}
 
-            {isData?.upload_embed_url && <TextFieldItem title={isData?.upload_embed_url?.caption} required={isData?.upload_embed_url?.required}
+            {isData?.upload_embed_url && <TextFieldItem title={isData?.upload_embed_url?.caption} required={isData?.upload_embed_url?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("UploadEmbedUrl", txt)} />}
 
             {isData?.idea_upload_videos && <BrowseFileItem title={isData?.idea_upload_videos?.caption} required={isData?.idea_upload_videos?.required}
                 type={"video"} size={isData?.idea_upload_videos?.size?.size} onSelectImgResponse={onSelectVideoFile} />}
 
-            {isData?.keywords_tags && <TextFieldItem title={isData?.keywords_tags?.caption} required={isData?.keywords_tags?.required}
+            {isData?.keywords_tags && <TextFieldItem title={isData?.keywords_tags?.caption} required={isData?.keywords_tags?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("keywordsTags", txt)} />}
 
-            {isData?.no_of_team_member && <TextFieldItem title={isData?.no_of_team_member?.caption} required={isData?.no_of_team_member?.required}
+            {isData?.no_of_team_member && <TextFieldItem title={isData?.no_of_team_member?.caption} required={isData?.no_of_team_member?.required} isKey={"phone-pad"}
                 onCurrentText={(txt) => onTextChange("NoOfTeamMember", txt)} />}
 
             {isData?.team_member_details && <TeamMembersDetails data={isData?.team_member_details} required={isData?.team_member_details?.required}

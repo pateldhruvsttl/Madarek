@@ -15,7 +15,8 @@ import DownArrow from '../../assets/svg/DownArrow'
 import { Modal } from 'react-native'
 import City from '../../model/City'
 import { AppConfig, getLanguage } from '../../manager/AppConfig'
-import { emailValidate } from '../../utils/Constant'
+import { emailValidate, showMessageWithCallBack } from '../../utils/Constant'
+import DocumentPicker, { types } from 'react-native-document-picker'
 
 const PersonalEdit = (props) => {
 
@@ -31,6 +32,7 @@ const PersonalEdit = (props) => {
     const [city, setCity] = useState()
     const [number, setNumber] = useState()
     const [userPhoto, setUserPhoto] = useState()
+    const [isNewUserPhoto, isSetNewUserPhoto] = useState("")
 
     const [country, setCountry] = useState([])
     const [cityName, setCityName] = useState([])
@@ -38,9 +40,9 @@ const PersonalEdit = (props) => {
     const [cityIndex, setCityIndex] = useState(1)
 
     const [countryId, setCountryId] = useState(0)
-    const [cityId, setCityId] = useState(0) 
-    const [isSelectedLang,setSelectedLang]= useState(true)
-    
+    const [cityId, setCityId] = useState(0)
+    const [isSelectedLang, setSelectedLang] = useState(true)
+    const fixeSize = Number(props.size) * 1000 // In Bytes
 
     useEffect(() => {
 
@@ -75,11 +77,32 @@ const PersonalEdit = (props) => {
         selectCountry()
         selectCity()
     }, [])
-    
+
     useEffect(() => {
         let _lang = getLanguage();
         setSelectedLang(_lang == "ar" ? true : false)
     }, [])
+
+    const addMaterial = async () => {
+
+        Loger.onLog("","");
+        try {
+            await DocumentPicker.pickSingle({ type: [types.images] }).then((results) => {
+                if (results.size > fixeSize) {
+                    showMessageWithCallBack(`${Label.ErrorMessage} ${fixeSize / 1e+6} ${Label.MB}`, () => { null })
+                }
+                else {
+                    isSetNewUserPhoto(results)
+                }
+            });
+
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+            } else {
+                throw err;
+            }
+        }
+    }
 
     const getCountryId = (name) => {
         let id = 0;
@@ -93,51 +116,12 @@ const PersonalEdit = (props) => {
     const getCityId = (name) => {
         let id = 0;
         cityName.map((ele) => {
-            Loger.onLog(name + ">>>>>>>>", ele)
             if (name == ele.city) {
                 id = ele.id;
             }
 
         })
         return id;
-    }
-
-    const onCheckField = () => {
-        var obj = {
-            userType: userType,
-            firstName: firstName,
-            lastName: lastName,
-            organization: organization,
-            jobTitle: jobTitle,
-            email: email,
-            country: countryName,
-            city: city,
-            number: number,
-            userPhoto: userPhoto,
-            countryId: countryId,
-            cityId: cityId
-        }
-        if (!firstName.trim()) {
-            showMessage(Label.enterfirstname)
-            return false;
-        } else if (!lastName.trim()) {
-            showMessage(Label.enterlastname)
-            return false;
-        } else if (!organization.trim()) {
-            showMessage(Label.Organization)
-            return false;
-        } else if (!jobTitle.trim()) {
-            showMessage(Label.JobTilte)
-            return false;
-        } else if (!email.trim() || !emailValidate(email)) {
-            showMessage(Label.Email)
-            return false
-        } else if (!number.trim()) {
-            showMessage(Label.Phone)
-            return false
-        } else {
-            props.onNext(obj);
-        }
     }
 
     const onSelectCountry = (index) => {
@@ -166,7 +150,6 @@ const PersonalEdit = (props) => {
     const selectCountry = () => {
 
         Service.get(EndPoints.countries, (res) => {
-            Loger.onLog('Response of countries', res)
             const countryData = []
             if (res.statusCode == "1") {
                 res.data.map((item) => {
@@ -188,10 +171,8 @@ const PersonalEdit = (props) => {
             const cityData = []
             if (res.statusCode == "1") {
                 res.data.map((item) => {
-                    Loger.onLog(">>>>>>>>>>>>>>>>>>>>>", item)
                     let model = new City(item)
                     cityData.push(model)
-
                 })
                 setCityName(cityData);
             }
@@ -263,15 +244,53 @@ const PersonalEdit = (props) => {
     const toggleCountry = () => {
         setCountryIndex(!countryIndex)
     }
+
+    const onCheckField = () => {
+        var obj = {
+            userType: userType,
+            firstName: firstName,
+            lastName: lastName,
+            organization: organization,
+            jobTitle: jobTitle,
+            email: email,
+            country: countryName,
+            city: city,
+            number: number,
+            userPhoto: userPhoto,
+            countryId: countryId,
+            cityId: cityId,
+            newUserPhoto: isNewUserPhoto
+        }
+        if (!firstName.trim()) {
+            showMessage(Label.enterfirstname)
+            return false;
+        } else if (!lastName.trim()) {
+            showMessage(Label.enterlastname)
+            return false;
+        } else if (!organization.trim()) {
+            showMessage(Label.Organization)
+            return false;
+        } else if (!jobTitle.trim()) {
+            showMessage(Label.JobTilte)
+            return false;
+        } else if (!email.trim() || !emailValidate(email)) {
+            showMessage(Label.Email)
+            return false
+        } else if (!number.trim()) {
+            showMessage(Label.Phone)
+            return false
+        } else {
+            props.onNext(obj);
+        }
+    }
     return (
         <ScrollView >
             <View style={EditUserProfileStyle.cornerView} >
 
                 <View style={EditUserProfileStyle.imageView}>
-                    <Image style={EditUserProfileStyle.userEditImage}
-                        source={{ uri: userPhoto }}
-                    />
-                    <TouchableOpacity style={[EditUserProfileStyle.cameraIconBtn, { backgroundColor: themeColor.headerColor }]}>
+                    {/* <Image resizeMode="cover" resizeMethod="scale" style={EditUserProfileStyle.userEditImage} source={{ uri: userPhoto?.uri }} /> */}
+                    <Image style={EditUserProfileStyle.userEditImage} source={{ uri: isNewUserPhoto == "" ? userPhoto : isNewUserPhoto?.uri }} />
+                    <TouchableOpacity onPress={addMaterial} style={[EditUserProfileStyle.cameraIconBtn, { backgroundColor: themeColor.headerColor }]}>
                         <Camera height={AppUtil.getHP(2.5)} width={AppUtil.getHP(2.5)} />
                     </TouchableOpacity>
                 </View>
@@ -280,7 +299,7 @@ const PersonalEdit = (props) => {
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.UserType}</Text>
                     <TextInput
-                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                         multiline={false}
                         value={userType}
                         onChangeText={(useType) => setUserType(useType)}
@@ -290,7 +309,7 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.Name}<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
-                                style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                                style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                                 value={firstName}
                                 onChangeText={(firstName) => setFirstName(firstName)}
                             />
@@ -299,7 +318,7 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.lastname}<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
-                                style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                                style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                                 value={lastName}
                                 onChangeText={(lastName) => setLastName(lastName)}
                             />
@@ -308,21 +327,21 @@ const PersonalEdit = (props) => {
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.OrganizationName}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                         value={organization}
                         onChangeText={(organization) => setOrganization(organization)}
                     />
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.JobTitle}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                         value={jobTitle}
                         onChangeText={(jobTitle) => setJobTitle(jobTitle)}
                     />
 
                     <Text style={EditUserProfileStyle.titleText}>{Label.EmailTitle}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                         value={email}
                         onChangeText={(email) => setEmail(email)}
                     />
@@ -331,12 +350,12 @@ const PersonalEdit = (props) => {
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.Country}<Text style={{ color: 'red' }}>*</Text></Text>
 
-                            <View style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]]}>
+                            <View style={[[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]]}>
                                 {countryIndex == 0 ? renderCountry() : null}
                                 <TouchableOpacity onPress={toggleCountry} style={EditUserProfileStyle.container}>
 
                                     <TextInput
-                                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                                         keyboardAppearance={false}
                                         value={countryName}
                                         editable={false} />
@@ -360,13 +379,13 @@ const PersonalEdit = (props) => {
 
                         <View style={EditUserProfileStyle.editPartView}>
                             <Text style={EditUserProfileStyle.titleText}>{Label.City}<Text style={{ color: 'red' }}>*</Text></Text>
-                            <View style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]]}>
+                            <View style={[[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]]}>
                                 {cityIndex == 0 ? renderCity() : null}
                                 <TouchableOpacity onPress={toggleCity} style={EditUserProfileStyle.container}>
 
 
                                     <TextInput
-                                        style={[[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}], EditUserProfileStyle.addWidth]}
+                                        style={[[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }], EditUserProfileStyle.addWidth]}
                                         keyboardAppearance={false}
                                         value={city}
                                         editable={false}
@@ -391,7 +410,7 @@ const PersonalEdit = (props) => {
                     </View>
                     <Text style={EditUserProfileStyle.titleText}>{Label.MobileNumber}<Text style={{ color: 'red' }}>*</Text></Text>
                     <TextInput
-                        style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
+                        style={[EditUserProfileStyle.input, { textAlign: isSelectedLang ? "right" : "left" }]}
                         value={number}
                         onChangeText={(number) => setNumber(number)}
                     />

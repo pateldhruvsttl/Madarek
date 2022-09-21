@@ -44,9 +44,8 @@ const OtherDetailEdit = (props) => {
     var obj = {
       about: about,
       facebookLink: facebookLink,
-      linkdinLink: linkdinLink,
       twitterLink: twitterLink,
-      category: category
+      linkdinLink: linkdinLink,
     }
     if (!about.trim()) {
       showMessage(Label.enterfirstname)
@@ -68,22 +67,6 @@ const OtherDetailEdit = (props) => {
   return (
     <ScrollView >
       <View style={[EditUserProfileStyle.cornerView, { marginTop: AppUtil.getHP(2) }]} >
-        {/* <Text style={EditUserProfileStyle.titleText}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
-        <View style={EditUserProfileStyle.scrollSubView}>
-          {
-           category && category.map((item, index) => {
-              return (
-                <View style={EditUserProfileStyle.catView1}>
-                  <Text style={EditUserProfileStyle.catText1}>{item.category_name}</Text>
-                  <IcnClose color={GetAppColor.black} height={AppUtil.getHP(1)} width={AppUtil.getHP(1)} />
-                </View>
-              )
-            })
-          }
-        </View>
-        <TouchableOpacity style={[EditUserProfileStyle.addMoreButton, { borderColor: themeColor.headerColor }]}>
-          <Text style={[EditUserProfileStyle.addMoreText, { color: themeColor.headerColor }]}>{Label.AddMore}</Text>
-        </TouchableOpacity> */}
 
         <Text style={EditUserProfileStyle.titleText}>{Label.ShortDiscription}</Text>
         <TextInput

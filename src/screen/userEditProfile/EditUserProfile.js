@@ -40,8 +40,12 @@ const EditUserProfile = (props) => {
         var data = new FormData()
 
         data.append('device_id', deviceId)
-        data.append('lang', AppConfig)
-        data.append('token', AppConfig)
+        data.append('lang', getLanguage())
+        data.append('token', AppConfig.token)
+        data.append('user_categories', '["3", "4"]');
+
+        if (personalData.newUserPhoto != "")
+            data.append('user_photo', personalData.newUserPhoto);
 
         data.append('first_name', personalData.firstName);
         data.append('last_name', personalData.lastName);
@@ -49,23 +53,15 @@ const EditUserProfile = (props) => {
         data.append('organization_name', personalData.organization);
         data.append('country_id', personalData.countryId);
         data.append('city_id', personalData.cityId);
-        data.append('user_categories', '["3", "4"]');
 
         data.append('about_expert', obj.about);
-        data.append('twitter_link', obj.twitterLink);
         data.append('facebook_link', obj.facebookLink);
+        data.append('twitter_link', obj.twitterLink);
         data.append('linkdin_link', obj.linkdinLink);
 
-        data.append('Fees_Type', "hourly");
-        data.append('SME_User_Fees', "250");
-
-        data.append('expertise_brief', "");
-        data.append('skills', "");
-        Service.post(EndPoints.editProfile, data, (res) => {
+        Service.postFormDataFetch(EndPoints.editProfile, data, (res) => {
             if (res.statusCode == "1") {
-                showMessageWithCallBack(Label.UpdateProfie, () => {
-                    refresh()
-                })
+                showMessageWithCallBack(Label.UpdateProfie, () => { refresh() })
             }
             else {
                 showMessage(res.message)
@@ -82,29 +78,34 @@ const EditUserProfile = (props) => {
         var data = new FormData()
 
         data.append('device_id', deviceId)
-        data.append('lang', AppConfig)
-        data.append('token', AppConfig)
+        data.append('lang', getLanguage())
+        data.append('token', AppConfig.token)
+        // data.append('user_categories', '["3", "4"]');
+        // data.append('Fees_Type', "hourly");
+        // data.append('SME_User_Fees', "250");
+
+        if (personalData.newUserPhoto != "")
+            data.append('user_photo', personalData.newUserPhoto);
+
         data.append('first_name', personalData.firstName);
         data.append('last_name', personalData.lastName);
         data.append('job_title', personalData.jobTitle);
         data.append('organization_name', personalData.organization);
         data.append('country_id', personalData.countryId);
         data.append('city_id', personalData.cityId);
-        data.append('user_categories', '["3", "4"]');
-        data.append('about_expert', otherData.about);
-        data.append('twitter_link', otherData.twitterLink);
-        data.append('facebook_link', otherData.facebookLink);
-        data.append('linkdin_link', otherData.linkdinLink);
-        data.append('Fees_Type', "hourly");
-        data.append('SME_User_Fees', "250");
+
+        data.append('about_expert', obj.about);
+        data.append('facebook_link', obj.facebookLink);
+        data.append('twitter_link', obj.twitterLink);
+        data.append('linkdin_link', obj.linkdinLink);
+        
         data.append('expertise_brief', obj.description);
         data.append('skills', obj.skill);
-        Service.post(EndPoints.editProfile, data, (res) => {
-            Loger.onLog("Response of update profile ", res);
+
+
+        Service.postFormDataFetch(EndPoints.editProfile, data, (res) => {
             if (res.statusCode == "1") {
-                showMessageWithCallBack(Label.UpdateProfie, () => {
-                    refresh()
-                })
+                showMessageWithCallBack(Label.UpdateProfie, () => { refresh() })
             }
             else {
                 showMessage(res.message)
@@ -114,15 +115,13 @@ const EditUserProfile = (props) => {
                 Loger.onLog("Error of update profile", err);
             }
         )
-
     }
 
     const saveProfile = (props) => {
         if (props.personalEdit) {
             const personalData = props.personalEdit
             setNewData(personalData)
-            const { firstName, lastName, jobTitle, organization,
-                userPhoto, cityId, countryId, userType } = personalData
+            const { firstName, lastName, jobTitle, organization, userPhoto, cityId, countryId, userType } = personalData
             if (personalData) {
                 if (!firstName.trim()) {
                     showMessage(Label.enterfirstname)
@@ -209,51 +208,23 @@ const EditUserProfile = (props) => {
             data.append('skills', skill);
 
 
-            // Service.post(EndPoints.editProfile, data, (res) => {
-            //     Loger.onLog("Response of update profile ", res);
-            //     if (res.statusCode == "1") {
-            //         showMessageWithCallBack(Label.UpdateProfie, () => {
-            //             refresh()
-            //         })
-            //     }
-            //     else {
-            //         showMessage(res.message)
-            //     }
-            // },
-            //     (err) => {
-            //         Loger.onLog("Error of update profile", err);
-            //     }
-            // )
-
-
-            // axios.post(EndPoints.editProfile, {
-            //     method: "post",
-            //     body: data,
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data'
-            //     },
-            // }).then((resp) => {
-            //     console.log('resp', resp);
-            // }).catch(err => {
-            //     console.log(err);
-            // });
+            Service.postFormDataFetch(EndPoints.editProfile, data, (res) => {
+                if (res.statusCode == "1") {
+                    showMessageWithCallBack(Label.UpdateProfie, () => {
+                        refresh()
+                    })
+                }
+                else {
+                    showMessage(res.message)
+                }
+            },
+                (err) => {
+                    Loger.onLog("Error of update profile", err);
+                }
+            )
 
 
 
-
-
-            // axios({
-            //     method: "post",
-            //     url:baseURL+EndPoints.editProfile,
-            //     data: data,
-            //     headers: { "Content-Type": "multipart/form-data" },
-            // })
-            //     .then(function (response) {
-            //         //handle success
-            //     })
-            //     .catch(function (response) {
-            //         //handle error
-            //     });
         }
 
     }
@@ -349,22 +320,17 @@ const EditUserProfile = (props) => {
                     {
                         selectedIndex == 0 ? renderPersonalSlideNormalUser() : renderotherDetailSlideNormalUser()
                     }
-
                     <View style={EditUserProfileStyle.textLineView2}>
                         <Text style={EditUserProfileStyle.slideText}>{Label.Personal}</Text>
                         <Text style={EditUserProfileStyle.slideText}>{Label.OtherDetail}</Text>
                     </View>
                 </View>
-
                 {
-                    selectedIndex == 0 ? <PersonalEdit onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} data={updateData} />
-                        : <OtherDetailEdit onNext={(obj) => { onNormalUserSubmit(obj) }} data={updateData} />
+                    selectedIndex == 0 ?
+                        <PersonalEdit data={updateData} onNext={(obj) => { setPersonalData(obj); SetSelectedIndex(selectedIndex + 1); }} />
+                        :
+                        <OtherDetailEdit data={updateData} onNext={(obj) => { onNormalUserSubmit(obj) }} />
                 }
-
-
-
-
-
             </SafeAreaView>
         )
     }

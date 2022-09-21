@@ -394,6 +394,7 @@ export const Label = {
   YES : isRTL ? ARlabel._yes : USlabel._yes,
   NO : isRTL ? ARlabel._no : USlabel._no,
   OtpSent : isRTL ? ARlabel._otpSent : USlabel._otpSent,
+  IdeaSubmitSuccessfully : isRTL ? ARlabel._ideaSubmitSuccessfully : USlabel._ideaSubmitSuccessfully,
 
 
 }  

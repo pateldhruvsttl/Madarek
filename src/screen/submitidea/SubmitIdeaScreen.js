@@ -10,8 +10,9 @@ import { UserManager } from "../../manager/UserManager";
 import { EndPoints } from "../../service/EndPoints";
 import { Service } from "../../service/Service";
 import { GetAppColor } from "../../utils/Colors";
-import { deviceId } from "../../utils/Constant";
+import { deviceId, showMessageWithCallBack } from "../../utils/Constant";
 import { Loger } from "../../utils/Loger";
+import { Label } from "../../utils/StringUtil";
 import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
@@ -43,7 +44,10 @@ function SubmitIdeaScreen(props) {
     formData.append('idea_upload_videos', dataForm.isVideoFile)
 
     Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {
-      props.navigation.navigate("UserDashboardScreen");
+      showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
+        // props.navigation.navigate("UserDashboardScreen");
+        props.navigation.goBack()
+      })
     }, (err) => {
       Loger.onLog("###", err);
     }
@@ -72,15 +76,15 @@ function SubmitIdeaScreen(props) {
 
 
     dataForm.device_id = deviceId,
-    dataForm.lang = AppConfig.lang.toString(),
-    dataForm.token = AppConfig.token.toString(),
-    dataForm.frontuser_id = UserManager.userId.toString(),
-    dataForm.task = "save",
+      dataForm.lang = AppConfig.lang.toString(),
+      dataForm.token = AppConfig.token.toString(),
+      dataForm.frontuser_id = UserManager.userId.toString(),
+      dataForm.task = "save",
 
-    dataForm.idea_id = 0,
-    dataForm.idea_title = step1Obj.title,
-    dataForm.sector_id = step1Obj.sectorsId,
-    dataForm.category_id = step1Obj.categoryId
+      dataForm.idea_id = 0,
+      dataForm.idea_title = step1Obj.title,
+      dataForm.sector_id = step1Obj.sectorsId,
+      dataForm.category_id = step1Obj.categoryId
 
     Service.post(EndPoints.submitidea, dataForm, (res) => {
       // props.navigation.navigate("UserDashboardScreen");
@@ -90,7 +94,7 @@ function SubmitIdeaScreen(props) {
     );
 
   }
- 
+
 
   return (
     <SafeAreaView style={Style.MainView}>
@@ -107,7 +111,7 @@ function SubmitIdeaScreen(props) {
 
 
           {selectIndex == 0 && <SubmitIdeaStep1 onNext={(obj) => { setStep1Obj(obj); setSelectIndex(selectIndex + 1); }} />}
-          {selectIndex == 1 && <SubmitIdeaStep2 onNext={(dataForm) => { onSubmit(dataForm) }} />}
+          {selectIndex == 1 && <SubmitIdeaStep2 data={step1Obj} onNext={(dataForm) => { onSubmit(dataForm) }} />}
 
 
 

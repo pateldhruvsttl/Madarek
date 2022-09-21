@@ -40,6 +40,7 @@ export const Service = {
     },
 
     postFormDataFetch: (endPoint, data, success, error) => {
+        AppUtil.onLoding(true);
         console.log('-----Request----->', getBaseURL() + endPoint,data);
         fetch(`${getBaseURL()}${endPoint}`, {
             method: 'POST',
@@ -51,11 +52,10 @@ export const Service = {
             body: data,
         }).then((res) => res.json()).then((res) => {
             Loger.onServerLog("Res", getBaseURL() + endPoint, res);
-
+            AppUtil.onLoding(false);
             return success(res)
         }).catch((err) => {
-            console.log('errr1', err)
-
+            Loger.onLog('err', err);
             return error(err)
         })
     }

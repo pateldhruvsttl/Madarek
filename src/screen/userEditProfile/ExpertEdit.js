@@ -11,6 +11,7 @@ import { AppConfig, getLanguage } from '../../manager/AppConfig'
 const ExpertEdit = (props) => {
     const { themeColor } = useSelector((state) => state)
     const [userData, setUserData] = useState(props?.data)
+    
     const [skill, setSkill] = useState()
     const [biography, setBiography] = useState()
     const [description, setDescription] = useState()
@@ -30,14 +31,11 @@ const ExpertEdit = (props) => {
 
     }, [userData])
 
-    // let expertDetail = {
-    //     skill: skill,
-    //     description: description
-    // }
     const onCheckField = () => {
         obj = {
             skill: skill,
-            description: description
+            biography:biography,
+            description: description,
         }
         props.onNext(obj);
     }
@@ -46,22 +44,6 @@ const ExpertEdit = (props) => {
     return (
         <ScrollView >
             <View style={[EditUserProfileStyle.cornerView, { marginTop: AppUtil.getHP(2) }]} >
-                {/* <Text style={[EditUserProfileStyle.titleText, { marginTop: 0 }]}>{Label.Categories}<Text style={{ color: 'red' }}>*</Text></Text>
-                <View style={EditUserProfileStyle.scrollSubView}>
-                    {
-                        [1, 2, 3, 4, 5, 6].map((item, index) => {
-                            return (
-                                <View style={EditUserProfileStyle.catView1} key={index}>
-                                    <Text style={EditUserProfileStyle.catText1}>Health</Text>
-                                    <IcnClose color={GetAppColor.black} height={AppUtil.getHP(1)} width={AppUtil.getHP(1)} />
-                                </View>
-                            )
-                        })
-                    }
-                </View>
-                <TouchableOpacity style={[EditUserProfileStyle.addMoreButton, { borderColor: themeColor.headerColor }]}>
-                    <Text style={[EditUserProfileStyle.addMoreText, { color: themeColor.headerColor }]}>{Label.AddMore}</Text>
-                </TouchableOpacity> */}
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Skill}</Text>
                 <TextInput
@@ -74,6 +56,7 @@ const ExpertEdit = (props) => {
                 <TextInput
                     style={[EditUserProfileStyle.input,{textAlign: isSelectedLang ? "right":"left"}]}
                     value={biography}
+                    onChangeText={(txt) => setBiography(txt)}
                 />
 
                 <Text style={EditUserProfileStyle.titleText}>{Label.Description}<Text style={{ color: 'red' }}>*</Text></Text>
