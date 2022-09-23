@@ -79,11 +79,6 @@ const STYLE = StyleSheet.create({
     headings : {
         marginTop: AppUtil.getHP(2)
     },
-    label : {
-        fontSize: AppUtil.getHP(2.7),
-        fontFamily: FONTS.robotMedium,
-        color: GetAppColor.borderRed
-    },
     dateCover : {
         flexDirection:'row',
         alignItems:'center',
@@ -99,8 +94,13 @@ const STYLE = StyleSheet.create({
     redLabel : {
         color : GetAppColor.borderRed
     },
-    label : {
-        fontSize: AppUtil.getHP(2.9),
+    labelOne : {
+        fontSize: AppUtil.getHP(2.4),
+        fontFamily: FONTS.robotMedium,
+        color: GetAppColor.borderRed
+    },
+    labelSecond : {
+        fontSize: AppUtil.getHP(2.4),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor
     },

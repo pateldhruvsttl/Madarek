@@ -32,7 +32,10 @@ const drawerStyles = StyleSheet.create({
  
   menuContainer: { marginEnd: AppUtil.getWP(2), alignItems: 'center', justifyContent: 'center' },
   profileImageView: { height: AppUtil.getHP(5), width: AppUtil.getHP(5), borderRadius: AppUtil.getHP(5 / 2), borderWidth: 1, borderColor: 'white', overflow: 'hidden' },
-  profileImage: { height: AppUtil.getHP(4), width: AppUtil.getHP(4), },
+  profileImage: {  width: AppUtil.getHP(5),
+    height: AppUtil.getHP(5),
+    borderRadius: AppUtil.getHP(2.5),
+    backgroundColor: GetAppColor.borderGray, },
 
   yellowLineView: { width: '100%', height: 1, opacity: 0.5, marginTop: AppUtil.getHP(1) },
   profileView: { flexDirection: "row", marginHorizontal: AppUtil.getWP(4), marginTop: AppUtil.getHP(2), alignItems: 'center' },

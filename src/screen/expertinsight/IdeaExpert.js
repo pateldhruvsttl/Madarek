@@ -7,65 +7,75 @@ import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import { AppUtil } from '../../utils/AppUtil'
 import { Label } from '../../utils/StringUtil'
+import { AppConfig } from '../../manager/AppConfig'
 
 const IdeaExpert = (props) => {
 
+    const onGetPaginations = () => {
+        if (props?.data?.length > (AppConfig.pageLimit - 1) && props?.paginations)
+            props?.paginations()
+    }
     const renderCell = ({ item }) => {
         return (
-            <>
-                <TouchableOpacity style={ExpertInsightStyle.cellView} onPress={() => props.navigateScreen(item.id,item.type)}>
-                    <View style={ExpertInsightStyle.topFlexView}>
-                        <Image
-                            source={{ uri: item.profilePhoto }}
-                            style={ExpertInsightStyle.smallRadiousImage} />
+            <TouchableOpacity style={ExpertInsightStyle.cellView} onPress={() => props.navigateScreen(item.id, item.type)}>
+                <View style={ExpertInsightStyle.topFlexView}>
+                    <Image
+                        source={{ uri: item.profilePhoto }}
+                        style={ExpertInsightStyle.smallRadiousImage} />
 
-                        <View style={[ExpertInsightStyle.subFlexView, { marginEnd: AppUtil.getHP(2.5) }]}>
-                            <Text numberOfLines={1} style={ExpertInsightStyle.catText}>{item.title}</Text>
-                            <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
+                    <View style={[ExpertInsightStyle.subFlexView, { marginEnd: AppUtil.getHP(2.5) }]}>
+                        <View style={ExpertInsightStyle.firstSection}>
+                            <Text numberOfLines={1} style={ExpertInsightStyle.userName}>{`${item.firstName} ${item.lastName} `}</Text>
+                            <Text style={ExpertInsightStyle.vline}>|</Text>
+                            <Text style={ExpertInsightStyle.userName}>{` ${item.jobTitle}`}</Text>
                         </View>
+                        <Text numberOfLines={1} style={ExpertInsightStyle.catText}>{item.title}</Text>
+                        {/* <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.title}</Text> */}
                     </View>
-                    <View style={ExpertInsightStyle.userFlexView}>
+                </View>
+                <View style={ExpertInsightStyle.detailCal}>
+                    <Text numberOfLines={2} style={ExpertInsightStyle.titleText}>{item.description}</Text>
+                </View>
+                {/* <View style={ExpertInsightStyle.userFlexView}>
                         <Image style={ExpertInsightStyle.userImage} />
                         <View>
                             <Text style={ExpertInsightStyle.userName}>{item.firstName}</Text>
                             <Text style={ExpertInsightStyle.userCatName}>{item.jobTitle}</Text>
                         </View>
-                    </View>
+                    </View> */}
 
-                    {/* <FlatList 
+                {/* <FlatList 
                 data={props.data}
                 renderItem={renderSubCell}
                 /> */}
-                    <View style={ExpertInsightStyle.leftItems}>
+                <View style={ExpertInsightStyle.leftItems}>
 
-                        <View style={ExpertInsightStyle.calView}>
+                    <View style={ExpertInsightStyle.calView}>
 
-                            {/* <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        {/* <IcnWatchDone height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
                             <Text style={[ExpertInsightStyle.icnTitle,{padding:AppUtil.getHP(0.3)}]}>{item.totalViews}</Text> */}
-                            {
-                                item.like == true ?
-                                    <TouchableOpacity onPress={() => props.onLikeIdeas(item.id,"Ideas")} style={ExpertInsightStyle.addSpace}>
-                                        <IcnThumsUpBlack height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    </TouchableOpacity>
-                                    :
-                                    <TouchableOpacity onPress={() => props.onLikeIdeas(item.id,"Ideas")} style={ExpertInsightStyle.addSpace}>
-                                        <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                                    </TouchableOpacity>
+                        {
+                            item.like == true ?
+                                <TouchableOpacity onPress={() => props.onLikeIdeas(item.id, "Ideas")} style={ExpertInsightStyle.addSpace}>
+                                    <IcnThumsUpBlack height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => props.onLikeIdeas(item.id, "Ideas")} style={ExpertInsightStyle.addSpace}>
+                                    <IcnThumsUp height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
 
-                            }
-                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
+                        }
+                        <Text style={ExpertInsightStyle.icnTitle}>{item.totalLikes}</Text>
 
-                            <TouchableOpacity style={ExpertInsightStyle.addSpace} onPress={() => props.navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: item.id })}>
-                                <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            </TouchableOpacity>
-                            <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
-                        </View>
-                        <View style={ExpertInsightStyle.line} />
-
+                        <TouchableOpacity style={ExpertInsightStyle.addSpace} onPress={() => props.navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: item.id })}>
+                            <IcnComment height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                        </TouchableOpacity>
+                        <Text style={ExpertInsightStyle.icnTitle}>{item.totalComments}</Text>
                     </View>
-                </TouchableOpacity>
+                    {/* <View style={ExpertInsightStyle.line} /> */}
 
-            </>
+                </View>
+            </TouchableOpacity>
         )
     }
     return (
@@ -77,10 +87,12 @@ const IdeaExpert = (props) => {
 
                     <FlatList
                         data={props.data}
+                        style={{ marginTop: AppUtil.getHP(1) }}
                         scrollEnabled={props?.scrollEnabled ? true : false}
                         renderItem={(item) => renderCell(item)}
                         key={(id) => id}
                         keyExtractor={item => item.id}
+                        onEndReached={onGetPaginations}
                     />
                     :
                     <>

@@ -10,7 +10,7 @@ export default class ExpertInsight {
 
         this.id = obj?.expert_id
         
-        this.profilePhoto =  obj?.user_photo || "https://i.imgur.com/5tj6S7Ol.jpg"
+        this.profilePhoto =  obj?.image_upload_files || ""
         this.firstName = obj?.first_name ? obj?.first_name :""
         this.jobTitle =  obj?.job_title ? obj?.job_title : ""
         this.ideaTitle =  obj?.idea_title ? obj?.idea_title : obj?.title ? obj?.title : "";
@@ -18,6 +18,7 @@ export default class ExpertInsight {
 
         this.date = obj?.date || Label.DefaultDate
         this.time = obj?.time || Label.DefaultTime
+        this.type = obj?.type || ""
         this.lastName =  obj?.last_name ? obj?.last_name : Label.NoLastName
         this.organization_name =  obj?.organization_name ? obj?.organization_name : Label.NoOrganizationName
         this.totalViews =  obj?.totalViews || Label.DefaultNumber

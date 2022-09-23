@@ -17,7 +17,7 @@ import moment from "moment";
 import MenuFile from "../menu/MenuFile";
 
 const SpotlightListImage = (props) => {
-    
+
     const onGetPaginations = () => {
 
         if (props?.data?.length > (AppConfig.pageLimit - 1) && props?.paginations)
@@ -48,7 +48,7 @@ const SpotlightListImage = (props) => {
 
                 <View style={[STYLE.secondCalView]}>
                     <View style={STYLE.moreView}>
-                        <MenuFile onMessage={`spotlights/${item.id}`}/>
+                        <MenuFile onMessage={`spotlights/${item.id}`} />
                     </View>
                 </View>
             </View>
@@ -63,7 +63,7 @@ const SpotlightListImage = (props) => {
                 scrollEnabled={props?.scrollEnabled ? true : false}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-            onEndReached={onGetPaginations}
+                onEndReached={onGetPaginations}
             />
         </View>
     );

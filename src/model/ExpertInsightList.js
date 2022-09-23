@@ -13,7 +13,7 @@ export default class ExpertInsightList {
         this.firstName = obj?.first_name || Label.NoFirstName
         this.date = obj?.created_date || Label.DefaultDate
         this.lastName =  obj?.last_name || Label.NoLastName
-        this.profilePhoto =  obj?.image_upload_files || "https://i.imgur.com/5tj6S7Ol.jpg"
+        this.profilePhoto =  obj?.image_upload_files || ""
         this.jobTitle =  obj?.job_title || Label.NoTitle
         this.metaKeywords =  obj?.meta_keywords || Label.NoOrganizationName
         this.totalViews =  obj?.totalViews || Label.DefaultNumber

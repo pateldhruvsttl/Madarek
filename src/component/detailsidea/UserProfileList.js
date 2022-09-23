@@ -60,12 +60,12 @@ const UserProfileList = (props) => {
                         />
                     </View>
 
-                    <View style={styles.footerbtnView}>
+                    {/* <View style={styles.footerbtnView}>
                         <TouchableOpacity style={[styles.bottomBtn,
                         { backgroundColor: themeColor.buttonColor }]} onPress={() => { setModalVisible(true) }}>
                             <Text style={[styles.txtBottomBtn, { color: themeColor.buttonFontColor }]}>{Label.ParticipateNow}</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </View>
                 :

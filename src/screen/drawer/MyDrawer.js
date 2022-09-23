@@ -189,7 +189,7 @@ const MyDrawerScreen = (props) => {
           {/* <Image style={drawerStyles.profileImage} /> */}
 
           <View style={drawerStyles.profileImageView}>
-            <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.getUserProfilePicture() }} isShowActivity={false} />
+            <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.profilePicture }} isShowActivity={false} />
           </View>
 
           <View style={{ marginStart: 5 }}>

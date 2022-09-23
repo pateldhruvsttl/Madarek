@@ -11,7 +11,11 @@ export const itemWidth = slideWidth + itemHorizontalMargin * 10;
 
 const EventSliderStyle = StyleSheet.create({
     MainView: { width: '100%', flex: 1, },
-
+    contentBoxChallenge: {
+        width: '100%',
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
     sliderContainer: { marginBottom: AppUtil.getHP(5) },
     paginView: { width: '100%', marginVertical: AppUtil.getHP(1), position: 'absolute', bottom: AppUtil.getHP(-2), },
 
@@ -32,8 +36,8 @@ const EventSliderStyle = StyleSheet.create({
     txtSeeMore: { fontSize: AppUtil.getHP(1.7), color: GetAppColor.textColor, fontFamily: FONTS.robotRegular },
 
     renderMainView: { width: '100%', height: "93%", borderRadius: AppUtil.getHP(2), alignItems: 'center' },
-    renderProfileView: { width: AppUtil.getHP(15), height: AppUtil.getHP(15), borderRadius: AppUtil.getHP(15), alignSelf: 'center' },
-    profilePicView: { width: AppUtil.getHP(15), height: AppUtil.getHP(15), borderRadius: AppUtil.getHP(15), },
+    renderProfileView: { width: AppUtil.getHP(15), height: AppUtil.getHP(15), borderRadius: AppUtil.getHP(15 / 2), alignSelf: 'center', },
+    profilePicView: { backgroundColor: GetAppColor.borderGray, width: AppUtil.getHP(15), height: AppUtil.getHP(15), borderRadius: AppUtil.getHP(15 / 2), },
 
 
 
@@ -55,7 +59,7 @@ const EventSliderStyle = StyleSheet.create({
     callIcn: { marginEnd: AppUtil.getHP(1) },
     title: { fontSize: AppUtil.getHP(1.4), fontFamily: FONTS.robotRegular, color: GetAppColor.textColor },
 
-    categoryLabel: { color: GetAppColor.textColor, fontSize: AppUtil.getHP(1.6),fontFamily:FONTS.robotRegular },
+    categoryLabel: { color: GetAppColor.textColor, fontSize: AppUtil.getHP(1.6), fontFamily: FONTS.robotRegular },
     paginationContainer: { paddingVertical: 1, marginBottom: AppUtil.getHP(1), },
 
     paginationDot: {

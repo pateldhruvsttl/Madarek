@@ -3,18 +3,19 @@ import { AppUtil } from '../../utils/AppUtil'
 import { GetAppColor } from '../../utils/Colors'
 import FONTS from '../../utils/Fonts'
 const ExpertInsightStyle = StyleSheet.create({
-    
+    firstSection : {flexDirection:'row',alignItems:'center'},
     addSpace: { padding: AppUtil.getHP(0.3) },
     MainView: { width: '100%', backgroundColor: GetAppColor.white },
     tabHeader: { fontSize: 15, textTransform: 'capitalize', width: AppUtil.getWP(33.33) },
     tabBarItem: { width: AppUtil.getWP(33) },
     itemBorder: { backgroundColor: GetAppColor.innovationGrey },
-
+    detailCal: { width: '92%', marginStart: AppUtil.getWP(4), marginBottom: AppUtil.getHP(1) },
     cellView: {
         marginHorizontal: AppUtil.getWP(2.5),
         marginVertical: AppUtil.getHP(1),
         borderRadius: 10,
         backgroundColor: GetAppColor.white,
+        paddingBottom: AppUtil.getHP(1.2),
 
     },
     emptyView: {
@@ -29,29 +30,28 @@ const ExpertInsightStyle = StyleSheet.create({
     topFlexView: {
         flexDirection: 'row',
         padding: AppUtil.getHP(1.5),
-        borderBottomWidth: 1,
-        borderBottomColor: GetAppColor.borderGray,
+        // borderBottomWidth: 1,
+        // borderBottomColor: GetAppColor.borderGray,
     },
     smallRadiousImage: {
-        height: AppUtil.getHP(8),
-        width: AppUtil.getHP(8),
-        borderRadius: 10,
+        height: AppUtil.getHP(6),
+        width: AppUtil.getHP(6),
+        borderRadius: AppUtil.getHP(6 / 2),
 
     },
     subFlexView: {
         marginStart: AppUtil.getWP(2),
+        marginTop: AppUtil.getHP(0.4),
     },
     catText: {
         fontFamily: FONTS.robotMedium,
-        fontSize: AppUtil.getHP(1.4),
-        color: GetAppColor.textColor
+        fontSize: AppUtil.getHP(1.5),
+        color: GetAppColor.acedemyRedtitle,
     },
     titleText: {
-        fontFamily: FONTS.robotMedium,
-        fontSize: AppUtil.getHP(2.2),
-        color: GetAppColor.acedemyRedtitle,
-        width: AppUtil.getWP(60),
-        marginTop: AppUtil.getHP(0.5)
+        fontFamily: FONTS.robotRegular,
+        fontSize: AppUtil.getHP(1.8),
+        color: GetAppColor.textColor
     },
     userFlexView: {
         flexDirection: 'row',
@@ -67,7 +67,12 @@ const ExpertInsightStyle = StyleSheet.create({
     },
     userName: {
         fontFamily: FONTS.robotMedium,
-        fontSize: AppUtil.getHP(1.8),
+        fontSize: AppUtil.getHP(1.7),
+        color: GetAppColor.textColor
+    },
+    vline : {
+        fontFamily: FONTS.robotMedium,
+        fontSize: AppUtil.getHP(2.2),
         color: GetAppColor.textColor
     },
     userCatName: {
