@@ -55,10 +55,9 @@ function ExpertProfile(props) {
     }
     return (
         <View style={styles.MainView}>
-
             <View style={styles.FirstView}>
-
                 <View style={styles.renderProfileView}>
+
                     <ImageLoad
                         style={styles.profilePicView}
                         placeholderStyle={styles.profilePicView}

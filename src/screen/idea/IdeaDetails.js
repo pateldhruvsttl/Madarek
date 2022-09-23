@@ -37,8 +37,8 @@ const IdeaDetails = (props) => {
   const item = props.route.params.item
   const [isExpertInsight, setExpertInsight] = useState([]);
   const [isAllIdeas, setAllIdeas] = useState([]);
-  Loger.onLog("item", item);
 
+  
   useEffect(() => {
 
     if (item?.expertInsightData.length > 0) {

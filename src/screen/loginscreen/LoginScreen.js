@@ -18,7 +18,7 @@ import { Loger } from "../../utils/Loger";
 import { deviceId } from "../../utils/Constant";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig, getBaseURL, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
+import { AppConfig, getBaseURL, getLanguage, setBaseURL, setCorporateProfile, setLanguage } from "../../manager/AppConfig";
 import { StackActions } from '@react-navigation/native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -167,7 +167,6 @@ const LoginScreen = (props) => {
 
                 if (res?.data?.corporateSubDomain) {
                     setBaseURL('http://' + res?.data?.corporateSubDomain + '.madarek.io/apiv1/');
-                    // setBaseURL('http://' + res?.data?.corporateSubDomain + '.silvertouch-staging.com/apiv1/');
                 }
 
                 UserManager.userId = res.data.userId;
@@ -178,6 +177,7 @@ const LoginScreen = (props) => {
                 UserManager.userRole = res.data.userRole;
                 AppConfig.token = res.token;
 
+                setCorporateProfile(res.data.corporate_profile);
                 setLanguage(res.lang == null ? 'en' : res.lang)
                 AsyncStorageManager.onSetLanguages(res.lang == null ? 'en' : res.lang)
                 AsyncStorage.setItem('@user', JSON.stringify(res))
@@ -200,7 +200,6 @@ const LoginScreen = (props) => {
             verify_email_otp: emailOtp
         }
         Service.post(EndPoints.loginWithEmail, data, (res) => {
-            Loger.onLog('Response of loginWithEmail', res)
             if (res.statusCode == 1) {
                 UserManager.userId = res.data.userId;
                 UserManager.email = res.data.email;
@@ -208,7 +207,10 @@ const LoginScreen = (props) => {
                 UserManager.mobile = res.data.mobile;
                 UserManager.userRole = res.data.userRole;
                 UserManager.userName = res.data.userName;
+                
                 AppConfig.token = res.token;
+
+                setCorporateProfile(res.data.corporate_profile);
                 setLanguage(res.lang == null ? 'en' : res.lang)
                 AsyncStorageManager.onSetLanguages(res.lang == null ? 'en' : res.lang)
                 AsyncStorage.setItem('@user', JSON.stringify(res))

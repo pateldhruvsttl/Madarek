@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, TouchableOpacity, StatusBar, Image } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar, Image, LogBox } from "react-native";
 import { useSelector } from 'react-redux'
 import { Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider } from 'react-native-popup-menu';
 import { useNavigation } from '@react-navigation/native';
@@ -20,6 +20,9 @@ import NotificationsButton from "../button/NotificationsButton";
 import MenuButton from "../button/MenuButton";
 import BackButton from "../button/BackButton";
 import ImageLoad from "react-native-image-placeholder";
+import { UserManager } from "../../manager/UserManager";
+import { Loger } from "../../utils/Loger";
+import { getCorporateProfile } from "../../manager/AppConfig";
 
 
 
@@ -53,6 +56,7 @@ const CommonHeader = (props) => {
     switch (props.isType) {
 
         case 'HomeScreenHeader':
+            let _url = getCorporateProfile();
             return (
                 <>
                     <StatusBar barStyle="light-content" hidden={false} backgroundColor={themeColor.statusBarColor} translucent={false} />
@@ -60,7 +64,8 @@ const CommonHeader = (props) => {
 
 
                         <View style={Style.middleIcnView}>
-                            <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />
+                            {_url == "" && <IcnMenuHeader style={Style.headerProfile} height={AppUtil.getHP(20)} width={AppUtil.getHP(20)} />}
+                            {_url != "" && <ImageLoad style={Style.headerProfile1} resizeMode='contain' source={{ uri: _url }} />}
                         </View>
 
                         <MenuButton />

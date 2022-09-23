@@ -8,6 +8,7 @@ import FONTS from '../../utils/Fonts'
 
 const drawerStyles = StyleSheet.create({
   headerProfileIcn: { marginHorizontal: AppUtil.getHP(1) },
+  headerProfile1: { width:AppUtil.getWP(25), height:AppUtil.getHP(6.5), alignSelf: 'center' },
   txtMenuOptions: { color: GetAppColor.pincolor, fontFamily: FONTS.robotRegular },
   menuView: { flexDirection: 'column', justifyContent: 'center' },
   selectItem: {

@@ -27,7 +27,7 @@ import { deviceId, showMessageWithAnotherCallBack, showMessageWithCallBack } fro
 import { EndPoints } from '../../service/EndPoints'
 import { Loger } from '../../utils/Loger'
 import Login from '../../model/Login'
-import { AppConfig, getLanguage, setBaseURL } from '../../manager/AppConfig'
+import { AppConfig, getCorporateProfile, getLanguage, setBaseURL, setCorporateProfile } from '../../manager/AppConfig'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
 import IcnGlobe from "../../assets/svg/IcnGlobe"
@@ -70,6 +70,8 @@ const MyDrawerScreen = (props) => {
       if (value == "CANCEL") {
         return;
       }
+
+      setCorporateProfile("");
       onLogoutPressed()
     })
   }
@@ -151,17 +153,37 @@ const MyDrawerScreen = (props) => {
 
   }
 
-  const onSelectSector = (corporateInternal) => {
+  const onSelectSector = (user_image, corporateInternal) => {
 
     AsyncStorage.getItem("@user").then((response) => {
       if (response != 'null' && response != null) {
-        const res = JSON.parse(response);
-        res.data.corporateSubDomain = corporateInternal;
-        setBaseURL('http://' + corporateInternal + '.madarek.io/apiv1/');
-        setSelectCorporate([]);
 
-        AsyncStorage.setItem('@user', JSON.stringify(res))
-        onselectButtonMenu(1, "HomeScreen", -1);
+        const res = JSON.parse(response);
+
+        if (corporateInternal == "Global") {
+
+          setCorporateProfile("")
+          res.data.corporate_profile = "";
+
+          res.data.corporateSubDomain = "";
+
+          setBaseURL('http://madarek.io/apiv1/');
+          setSelectCorporate([]);
+          AsyncStorage.setItem('@user', JSON.stringify(res))
+          onselectButtonMenu(1, "HomeScreen", -1);
+        }
+        else {
+          setCorporateProfile(user_image)
+          res.data.corporate_profile = user_image;
+
+          res.data.corporateSubDomain = corporateInternal;
+          setBaseURL('http://' + corporateInternal + '.madarek.io/apiv1/');
+          setSelectCorporate([]);
+
+          AsyncStorage.setItem('@user', JSON.stringify(res))
+          onselectButtonMenu(1, "HomeScreen", -1);
+        }
+
       }
 
     });
@@ -177,7 +199,11 @@ const MyDrawerScreen = (props) => {
       <View style={{ backgroundColor: themeColor.headerColor, }}>
         <View style={drawerStyles.headerView}>
           <View style={drawerStyles.centerIcnView}>
-            <IcnMenuHeader height={AppUtil.getHP(5)} width={AppUtil.getHP(20)} />
+            {getCorporateProfile() == "" ?
+              <IcnMenuHeader height={AppUtil.getHP(5)} width={AppUtil.getHP(20)} />
+              :
+              <ImageLoad style={drawerStyles.headerProfile1} resizeMode='contain' source={{ uri: getCorporateProfile() }} />
+            }
             <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
               <IcnClose height={AppUtil.getHP(2)} width={AppUtil.getHP(2)} />
             </TouchableOpacity>
@@ -188,14 +214,14 @@ const MyDrawerScreen = (props) => {
         <View style={[drawerStyles.profileView]}>
           {/* <Image style={drawerStyles.profileImage} /> */}
 
-          <View style={drawerStyles.profileImageView}>
+          <TouchableOpacity style={drawerStyles.profileImageView} onPress={() => props.navigation.navigate('UserProfileView')}>
             <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.getUserProfilePicture() }} isShowActivity={false} />
-          </View>
+          </TouchableOpacity>
 
-          <View style={{ marginStart: 5 }}>
+          <TouchableOpacity style={{ marginStart: 5 }} onPress={() => props.navigation.navigate('UserProfileView')}>
             <Text style={drawerStyles.welcomeText}>{Label.Welcome}</Text>
             <Text style={drawerStyles.userNameText}>{UserManager.userName}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={drawerStyles.bothSideView}>
           <View style={drawerStyles.leftItem}>
@@ -211,16 +237,15 @@ const MyDrawerScreen = (props) => {
             {UserManager.userRole === 2 &&
 
               <Menu>
-                <MenuTrigger style={[{height: AppUtil.getHP(3), width: AppUtil.getHP(3) }]} onPress={() => onGetGlobelData()}>
+                <MenuTrigger style={[{ height: AppUtil.getHP(3), width: AppUtil.getHP(3) }]} onPress={() => onGetGlobelData()}>
                   <IcnGlobe height={AppUtil.getHP(3.5)} width={AppUtil.getHP(3.5)} stroke={GetAppColor.white} />
                 </MenuTrigger>
                 <MenuOptions>
                   {isSelectCorporate.map((obj) => {
-                    if (obj?.corporate_internal === "Global")
-                      return
+
 
                     return (
-                      <MenuOption onSelect={() => { onSelectSector(obj?.corporate_internal) }}>
+                      <MenuOption onSelect={() => { onSelectSector(obj?.user_image, obj?.corporate_internal) }}>
                         <Text style={drawerStyles.selectItem}>{obj?.corporate_internal}</Text>
                       </MenuOption>
                     )

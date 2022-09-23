@@ -19,7 +19,7 @@ import IcnUpArrow from "../../assets/svg/drawerIcon/IcnUpArrow";
 import GoogleIcon from "../../assets/svg/loginLogo/GoogleIcon";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserManager } from "../../manager/UserManager";
-import { AppConfig, getLanguage, setBaseURL, setLanguage } from "../../manager/AppConfig";
+import { AppConfig, getLanguage, setBaseURL, setCorporateProfile, setLanguage } from "../../manager/AppConfig";
 import { Loger } from "../../utils/Loger";
 import { AsyncStorageManager } from "../../manager/AsyncStorageManager";
 import { StackActions } from '@react-navigation/native'
@@ -41,6 +41,7 @@ const SplashScreen = (props) => {
       UserManager.userRole = res.data.userRole;
       AppConfig.token = res.token;
 
+      setCorporateProfile(res.data.corporate_profile)
       if (res?.data?.corporateSubDomain)
         setBaseURL('http://' + res?.data?.corporateSubDomain + '.madarek.io/apiv1/');
 

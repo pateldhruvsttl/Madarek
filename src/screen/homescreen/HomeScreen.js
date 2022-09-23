@@ -39,28 +39,27 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     onSlider();
-    onOpenChallenge();
-    onSpotlight();
-    onFavouriteCategories();
-    onExpertInsights();
+    // onOpenChallenge();
+    // onSpotlight();
+    // onFavouriteCategories();
+    // onExpertInsights();
   }, []);
 
   const onSlider = () => {
     var banner = [];
-    Service.get(
-      EndPoints.bannerList,
-      (res) => {
-        res.data.forEach((element) => {
-          let model = new BannerList(element);
+    setBannerList([]);
+    Service.get(EndPoints.bannerList, (res) => {
 
-          if (banner.length < 5) {
-            banner.push(model);
-          } else {
-            return;
-          }
-        });
-        setBannerList(banner);
-      },
+      res.data.forEach((element) => {
+        let model = new BannerList(element);
+        if (banner.length < 5) {
+          banner.push(model);
+        } else {
+          return;
+        }
+      });
+      setBannerList(banner);
+    },
       (err) => {
         Loger.onLog("bannerList error ------>", err);
       }
@@ -89,7 +88,6 @@ const HomeScreen = (props) => {
       }
     );
   };
-
   const onSpotlight = () => {
     const data = {
       frontuser_id: UserManager.userId,
@@ -262,12 +260,12 @@ const HomeScreen = (props) => {
       }
     );
   };
-  
+
   const onSetItem = (item) => {
 
     switch (item) {
       case "Slider":
-        return bannerList.length > 0 && <EventSlider Entries={bannerList} />;
+        return <EventSlider Entries={bannerList} />;
         break;
 
       case "Tab":

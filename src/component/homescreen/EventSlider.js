@@ -53,7 +53,7 @@ const EventSlider = ({ Entries }) => {
         return (
             <View style={styles.renderMainView}>
                 <View style={styles.bgImage}>
-                <ImageLoad style={styles.bgImage} source={{ uri:  item.url }} isShowActivity={false}/>
+                    <ImageLoad style={styles.bgImage} source={{ uri: item.url }} isShowActivity={false} />
                 </View>
                 <View style={styles.sliderRendTitleView}>
                     <Text numberOfLines={2} style={styles.txtsliderRendTitle}>{item.title}</Text>
@@ -67,11 +67,15 @@ const EventSlider = ({ Entries }) => {
         );
     }
 
-    return (
-        <View style={styles.MainView}>
-            {onEventSlider()}
-        </View>
-    );
+    if (Entries.length > 0) {
+        return (
+            <View style={styles.MainView}>
+                {onEventSlider()}
+            </View>
+        );
+    }
+    else
+        return null
 }
 export default memo(EventSlider);
 

@@ -34,11 +34,12 @@ return size
     let leaves = []
     for (let leaf of root.leaves()) {
       leaves.push(
-        <G transform={`translate(${leaf.x + 1},${leaf.y + 1})`} onPress={() => this.props.onClick(leaf.data.item)} >
+        <G transform={`translate(${leaf.x + 1},${leaf.y + 1})`}  >
          <Circle
             {...circleProps}
             r={leaf.r}
             fill={leaf.data.color}
+            onPress={() => this.props.onClick(leaf.data.item)}
           />
           <SVGText
             {...textProps}

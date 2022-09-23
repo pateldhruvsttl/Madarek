@@ -82,6 +82,7 @@ function HomeRoot() {
 
             <Stack.Screen name="Category" component={Category} />
             <Stack.Screen name="UserCategory" component={UserCategory} />
+            <Stack.Screen name="SearchLabel" component={SearchLabel} />
 
             <Stack.Screen name="ExpertDirectoryScreen" component={ExpertDirectoryScreen} />
             <Stack.Screen name="ExpertDetailsScreen" component={ExpertDetailsScreen} />
@@ -91,7 +92,6 @@ function HomeRoot() {
             <Stack.Screen name="UserDashboardScreen" component={UserDashboardScreen} />
             <Stack.Screen name="SmeDashboardScreen" component={SmeDashboardScreen} />
             <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
-
             <Stack.Screen name="ChallengesListScreen" component={ChallengesListScreen} />
             <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
 
@@ -104,7 +104,6 @@ function HomeRoot() {
             <Stack.Screen name="UserProfileView" component={UserProfileView} />
             <Stack.Screen name="EditUserProfileView" component={EditUserProfile} />
             <Stack.Screen name="Message" component={Message} />
-            <Stack.Screen name="SearchLabel" component={SearchLabel} />
             <Stack.Screen name="VideoPlayer" component={VideosPlayer} />
             <Stack.Screen name="ExpertInsightDetail" component={ExpertInsightDetail} />
             <Stack.Screen name="MySubmittedIdeas" component={MySubmittedIdeas} />

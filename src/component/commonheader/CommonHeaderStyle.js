@@ -10,6 +10,7 @@ const CommonHeaderStyle = StyleSheet.create({
 
     middleIcnView: { position: 'absolute', end: 0, start: 0 },
     headerProfile: { alignSelf: 'center' },
+    headerProfile1: { width:AppUtil.getWP(25), height:AppUtil.getHP(6.5), alignSelf: 'center' },
     txtHeader: { fontFamily: FONTS.robotMedium, fontSize: headerFontSize, color: GetAppColor.white, alignSelf: 'center' },
 
 

@@ -43,7 +43,6 @@ function ExpertDetailsScreen(props) {
             language: getLanguage()
         }
         Service.post(EndPoints.joinExpert, data, (res) => {
-            Loger.onLog('res of joinExpert', res);
             const expertArr = expertData
             if(expertArr.id == index){
                 expertArr.joinRequest = res.data
@@ -58,11 +57,10 @@ function ExpertDetailsScreen(props) {
     const expertDetails = (id) => {
         let data = {
             "frontuser_id": UserManager.userId,
-            "expert_id": id, //48
+            "expert_id": id,
             "language": getLanguage()
         }
         Service.post(EndPoints.expertDetail, data, (res) => {
-            Loger.onLog('response of expertDetail', res.data);
             const model = new ExpertDetail(res?.data?.expertSRows)
             setExpertData(model)
             if (!res.data?.expertSRows) {
