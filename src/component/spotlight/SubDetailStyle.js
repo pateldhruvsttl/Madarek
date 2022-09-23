@@ -13,7 +13,10 @@ const Style = StyleSheet.create({
         marginTop: AppUtil.getHP(1),
     },
     redLabel: {
-        color: GetAppColor.borderRed
+        color: GetAppColor.pincolor,
+        fontSize: AppUtil.getHP(2),
+        fontFamily: FONTS.robotRegular,
+        marginStart:AppUtil.getWP(1),
     },
     areaCover: {
         flexDirection: 'row',
@@ -22,7 +25,7 @@ const Style = StyleSheet.create({
 
     },
     label: {
-        fontSize: AppUtil.getHP(2.9),
+        fontSize: AppUtil.getHP(2.4),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.pincolor
     },

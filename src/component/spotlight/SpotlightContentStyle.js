@@ -44,7 +44,7 @@ const Style = StyleSheet.create({
         marginTop: AppUtil.getHP(2)
     },
     label : {
-        fontSize: AppUtil.getHP(2.7),
+        fontSize: AppUtil.getHP(2.4),
         fontFamily: FONTS.robotMedium,
         color: GetAppColor.borderRed
     }

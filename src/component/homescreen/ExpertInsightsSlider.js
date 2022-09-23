@@ -14,12 +14,13 @@ import IcnThumsUpBlack from "../../assets/svg/IcnThumsUpBlack"
 import IcnComment from "../../assets/svg/IcnComment"
 import ImageLoad from "react-native-image-placeholder";
 import WebViewComp from "../webview/WebViewComp";
+import { Loger } from "../../utils/Loger";
 
 const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas }) => {
 
     const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
-    const data = Entries.slice(0, 2)
+    const data = Entries.slice(0, 4)
 
     const setExpertInsights = () => {
         return (
@@ -58,7 +59,6 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
 
     const onSliderRend = ({ item, index }, parallaxProps) => {
         const categoryDetail = typeof item?.categoryInfo !== 'string' ? item.categoryInfo : []
-
         const getCategories = () =>
             categoryDetail && categoryDetail.length !== 0 && categoryDetail.map((ele) => (
                 <TouchableOpacity style={styles.btn}>
@@ -66,7 +66,11 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
                 </TouchableOpacity>
             ))
         return (
-            <TouchableOpacity style={styles.renderMainView} onPress={() => navigation.navigate('ExpertInsightDetailWithComment', { id: item.id })}>
+            <TouchableOpacity style={styles.renderMainView} onPress={() => item.type != "General" ?
+                navigation.navigate('ExpertInsightTypeDetail', { id: item.id })
+                :
+                navigation.navigate('ExpertInsightDetailWithComment', { id: item.id })
+            }>
                 {item?.profilePhoto &&
                     <View style={styles.renderProfileView}>
                         <ImageLoad
@@ -87,7 +91,9 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
 
 
                 <Text numberOfLines={1} style={styles.txtTitleView}>{item.ideaTitle}</Text>
-
+                {/* <View style={styles.contentBoxChallenge} >
+                    <WebViewComp data={item.ideaDescription} />
+                </View> */}
                 <Text numberOfLines={2} style={styles.txtSubtitleView}>{item.ideaDescription}</Text>
 
 
@@ -103,17 +109,17 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
                         <Text style={styles.title}>{item.totalViews}</Text>
                     </View> */}
                     <View style={styles.secondInnerCalView}>
-                    {
-                        item.like == true ?
-                            <TouchableOpacity onPress={() => onLikeIdeas ? onLikeIdeas(item.id, "ExpertInsight") : null}>
-                                <IcnThumsUpBlack style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity onPress={() => onLikeIdeas ? onLikeIdeas(item.id, "ExpertInsight") : null}>
-                                <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
-                            </TouchableOpacity>
-                    }
-                    <Text style={styles.title}>{item.totalLike}</Text>
+                        {
+                            item.like == true ?
+                                <TouchableOpacity onPress={() => onLikeIdeas ? onLikeIdeas(item.id, "ExpertInsight") : null}>
+                                    <IcnThumsUpBlack style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={() => onLikeIdeas ? onLikeIdeas(item.id, "ExpertInsight") : null}>
+                                    <IcnThumsUp style={styles.callIcn} height={AppUtil.getHP(1.5)} width={AppUtil.getHP(1.5)} />
+                                </TouchableOpacity>
+                        }
+                        <Text style={styles.title}>{item.totalLike}</Text>
                     </View>
                     <View style={styles.secondInnerCalView}>
                         <TouchableOpacity onPress={() => navigateToComment ? navigateToComment({ model: 'GeneralComments', fieldName: 'formdata_id', id: item.id }) : null}>

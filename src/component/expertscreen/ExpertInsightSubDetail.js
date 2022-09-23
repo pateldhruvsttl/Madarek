@@ -71,7 +71,7 @@ const ExpertInsightSubDetail = (props) => {
                     </View>
                 </View>
                 <View style={STYLE.headings}>
-                    <Text style={STYLE.label}>{ideaTitle}</Text>
+                    <Text style={STYLE.labelOne}>{ideaTitle}</Text>
                     <WebViewComp data={ideaDescription} />
                 </View>
             </View>
@@ -84,7 +84,7 @@ const ExpertInsightSubDetail = (props) => {
             </View>
             <View style={STYLE.detailView}>
                 <View style={{ marginBottom: AppUtil.getHP(1) }}>
-                    <Text style={STYLE.label}>{insightTitle}</Text>
+                    <Text style={STYLE.labelSecond}>{insightTitle}</Text>
                     <View style={STYLE.dateCover}>
                         <IcnClander height={AppUtil.getHP(1.8)} width={AppUtil.getHP(1.8)} />
                         <Text style={STYLE.dateAuthor}>{moment(ideaCreatedDate).format("YYYY-MM-DD")}</Text>

@@ -32,12 +32,12 @@ export default class IdeaList {
         this.madarekSpecial = obj?.madarek_special || Label.DefaultNumber
         this.favoriteIdea = obj?.toatal_favorite_idea || Label.DefaultNumber
         this.favoriteChallenge = obj?.totalFavoriteContest == null || obj?.totalFavoriteContest == 0 ? false : true;
-        this.topRate = obj?.top_rated == null && obj?.top_rated != 0 ? true : false;
+        this.topRate = obj?.top_rated != null && obj?.top_rated != 0 ? true : false;
        
-        this.trophy = obj?.isTrophy == null || obj?.isTrophy == 0 ? false : true;
+        this.trophy = obj?.isTrophy != null && obj?.isTrophy != 0 ? true : false;
         this.favorite = obj?.isFavourite == null || obj?.isFavourite == 0 ? false : true;
-        this.insight = obj?.isInsight == null || obj?.isInsight == 0 ? false : true;
-        this.starred = obj?.isStarred == null || obj?.isStarred == 0 ? false : true;
+        this.insight = obj?.isInsight != null && obj?.isInsight != 0 ? true : false;
+        this.starred = obj?.isStarred != null && obj?.isStarred != 0 ? true : false;
         this.like = obj?.isLiked > 0 ? true : false;
         this.totalView = obj?.totalViews || Label.DefaultNumber
         this.totalLike = obj?.totalLikes || Label.DefaultNumber

@@ -214,9 +214,9 @@ const MyDrawerScreen = (props) => {
         <View style={[drawerStyles.profileView]}>
           {/* <Image style={drawerStyles.profileImage} /> */}
 
-          <TouchableOpacity style={drawerStyles.profileImageView} onPress={() => props.navigation.navigate('UserProfileView')}>
-            <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.getUserProfilePicture() }} isShowActivity={false} />
-          </TouchableOpacity>
+          <View style={drawerStyles.profileImageView}>
+            <ImageLoad style={drawerStyles.profileImage} source={{ uri: UserManager.profilePicture }} isShowActivity={false} />
+          </View>
 
           <TouchableOpacity style={{ marginStart: 5 }} onPress={() => props.navigation.navigate('UserProfileView')}>
             <Text style={drawerStyles.welcomeText}>{Label.Welcome}</Text>
