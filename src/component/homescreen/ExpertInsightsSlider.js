@@ -20,7 +20,7 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
 
     const navigation = useNavigation();
     const [isSelectIndicator, setSelectIndicator] = useState(1);
-    const data = Entries.slice(0, 4)
+    const data = Entries.slice(0, 2)
 
     const setExpertInsights = () => {
         return (
