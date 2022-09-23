@@ -46,7 +46,7 @@ const Style = StyleSheet.create({
     label : {
         fontSize: AppUtil.getHP(2.4),
         fontFamily: FONTS.robotMedium,
-        color: GetAppColor.pincolor
+        color: GetAppColor.borderRed
     }
 })
 
