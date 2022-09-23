@@ -71,7 +71,7 @@ const ExpertInsightsSlider = ({ Entries, screen, navigateToComment, onLikeIdeas 
                 :
                 navigation.navigate('ExpertInsightDetailWithComment', { id: item.id })
             }>
-                {item?.profilePhoto &&
+                {item?.profilePhoto != "" &&
                     <View style={styles.renderProfileView}>
                         <ImageLoad
                             style={styles.profilePicView}

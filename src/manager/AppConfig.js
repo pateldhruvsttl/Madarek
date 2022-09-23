@@ -26,7 +26,10 @@ export const getBaseURL = () => {
     return AppConfig.baseURL;
 }
 export const setCorporateProfile = (value) => {
-    AppConfig.corporateProfile = value;
+    if (value != "" && value != undefined)
+        AppConfig.corporateProfile = value;
+    else
+        AppConfig.corporateProfile = "";
 }
 export const getCorporateProfile = () => {
     return AppConfig.corporateProfile;
