@@ -23,11 +23,6 @@ function ImageList(props) {
             try {
                 await DocumentPicker.pickMultiple({ type: [types.images] }).then((results) => {
                     results.map((res) => {
-                        // RNFS.readFile(res.uri, 'base64').then(base64String => {
-                        //     res.base64st = base64String;
-                        //     images.push({ "assets": [res] });
-                        // }).catch(err => {
-                        // });
                         images.push(res);
                     })
                     setImageList(images)

@@ -20,6 +20,7 @@ function SubmitIdeaStep2(props) {
 
     const { themeColor } = useSelector((state) => state);
     const [isData, setData] = useState();
+    const [isItemList, setItemList] = useState([]);
 
     const [isIdeaDescription, setIdeaDescription] = useState("");
     const [isIdeaCoverImage, setIdeaCoverImage] = useState("");
@@ -39,69 +40,71 @@ function SubmitIdeaStep2(props) {
 
     const [isArror, setArror] = useState(false);
 
-
-
-
     useEffect(() => {
-        Loger.onLog("props", props);
         GetField(props?.data?.sectorsId, props?.data?.categoryId, props?.data?.subCategoryId);
     }, [])
 
     const GetField = (sectorsId, categoryId, subCategoryId) => {
-
         let obj = {
             "device_id": deviceId,
             "token": AppConfig.token,
             "language": getLanguage(),
             "frontuser_id": UserManager.userId,
             "idea_title": "test",
-
-            // "sector_id": "2",
-            // "category_id": "5",
-            // "sub_category_id": "0",
-
             "sector_id": sectorsId,
             "category_id": categoryId,
             "sub_category_id": subCategoryId == "" ? "0" : subCategoryId,
         }
 
         Service.post(EndPoints.loadidea, obj, (res) => {
-            if (res.statusCode == 1)
+            if (res.statusCode == 1) {
                 setData(res.data);
+
+                let arr = [];
+                Object.keys(res.data).forEach(key => {
+                    res.data[key].KeyType = key;
+                    let obj = res.data[key];
+                    arr.push(obj)
+                })
+                setItemList(arr);
+            }
         },
             (err) => {
                 Loger.onLog("###", err);
             }
         );
-
     }
 
-    const onTextChange = (type, txt) => {
+    const onTextChange = (index, txt) => {
 
-        if (type === "IdeaDescription") { setIdeaDescription(txt); }
-        else if (type === "challengesAddressing") { setChallengesAddressing(txt); }
-        else if (type === "benefitIdea") { setBenefitIdea(txt); }
-        else if (type === "videoUrl") { setVideoUrl(txt); }
-        else if (type === "UploadEmbedUrl") { setUploadEmbedUrl(txt); }
-        else if (type === "keywordsTags") { setkeywordsTags(txt); }
-        else if (type === "NoOfTeamMember") { setNoOfTeamMember(txt); }
+        let arrData = isItemList;
+        arrData[index].dataItem = txt;
+        setItemList(arrData)
     }
 
-    const onSelectImg = (item) => {
-        setIdeaCoverImage(item);
-    }
-    const onSelectMultiImg = (item) => {
-        setMultiImage(item);
-    }
-    const onSelectFile = (item) => {
+    const onSelectFile = (index, item) => {
+
+        let arrData = isItemList;
+        arrData[index].dataItem = item;
+        setItemList(arrData)
+
         setFile(item);
     }
-    const onSelectVideoFile = (item) => {
-        setVideoFile(item);
+
+    const onSelectMultiImg = (index, item) => {
+        let arrData = isItemList;
+        arrData[index].dataItem = item;
+        setItemList(arrData)
+        setMultiImage(item);
 
     }
-    const onTeamMemeber = (item) => {
+    const onTeamMemeber = (index, item) => {
         if (item !== "err") {
+
+            let arrData = isItemList;
+            arrData[index].dataItem = item;
+            setItemList(arrData)
+
             setTeamMember(item);
             setArror(false)
         }
@@ -109,6 +112,17 @@ function SubmitIdeaStep2(props) {
             setArror(true)
 
     }
+
+    const onSelectImg = (item) => {
+        setIdeaCoverImage(item);
+    }
+
+
+    const onSelectVideoFile = (item) => {
+        setVideoFile(item);
+
+    }
+
 
     const onCheckField = () => {
 
@@ -178,8 +192,14 @@ function SubmitIdeaStep2(props) {
                 need_sme: "",
                 post_idea_privately: isIdeaPrivately,
                 terms_condiitons: isTermsConditons,
-
             }
+
+            let arr = [];
+            arr[0] = { key: "form_data", item: JSON.stringify(data_form) }
+            arr[1] = { key: "form_data", item: JSON.stringify(data_form) }
+            arr[2] = { key: "form_data", item: JSON.stringify(data_form) }
+            arr[3] = { key: "form_data", item: JSON.stringify(data_form) }
+            arr[4] = { key: "form_data", item: JSON.stringify(data_form) }
 
             props.onNext({
                 data_obj: JSON.stringify(data_form),
@@ -193,8 +213,45 @@ function SubmitIdeaStep2(props) {
 
     }
 
+    const onItemList = () => {
+        return (
+            <View style={{ width: "100%" }}>
+                {isItemList.map((item, index) => {
+
+                    if (item.type == "text" || item.type == "ckeditor" || item.type == "textarea" || item.type == "tags")
+                        return (
+                            <TextFieldItem title={item?.caption} required={item?.required} isKey={""} onCurrentText={(txt) => onTextChange(index, txt)} />
+                        );
+                    else if (item.type == "number")
+                        return (
+                            <TextFieldItem title={item?.caption} required={item?.required} isKey={"phone-pad"} onCurrentText={(txt) => onTextChange(index, txt)} />
+                        );
+                    else if (item.type == "file")
+                        return (
+                            <BrowseFileItem title={item?.caption} required={item?.required} type={item.allowed} size={item?.size?.size} onSelectImgResponse={(item) => onSelectFile(index, item)} />
+                        );
+                    else if (item.type == "multijson" && item.additional_images)
+                        return (
+                            <BrowseEditionalImag title={item?.additional_images?.caption} required={item?.required} onMultiImageArr={(item) => onSelectMultiImg(index, item)} />
+                        );
+                    else if (item.type == "multijson")
+                        return (
+                            <TeamMembersDetails data={item} required={item?.required} onSelectTeamMembers={(item) => onTeamMemeber(index, item)} />
+                        );
+                    else if (item.type == "checkbox")
+                        return (
+                            <TermAndConditions title={item?.caption} required={item?.required} onChecked={(value) => setTeamIdentity(value)} />
+                        );
+                })}
+            </View>
+        )
+    }
+
     return (
         <View style={Style.MainView}>
+
+            {isItemList.length > 0 && onItemList()}
+            {/*             
             {isData?.idea_description && <TextFieldItem title={isData?.idea_description?.caption} required={isData?.idea_description?.required} isKey={""}
                 onCurrentText={(txt) => onTextChange("IdeaDescription", txt)} />}
 
@@ -235,7 +292,7 @@ function SubmitIdeaStep2(props) {
             {isData?.hide_team_identity && <TermAndConditions title={isData?.hide_team_identity?.caption} required={isData?.hide_team_identity?.required} onChecked={(value) => setTeamIdentity(value)} />}
             {isData?.post_idea_privately && <TermAndConditions title={isData?.post_idea_privately?.caption} required={isData?.post_idea_privately?.required} onChecked={(value) => setIdeaPrivately(value)} />}
             {isData?.terms_condiitons && <TermAndConditions title={isData?.terms_condiitons?.caption} isClick={true} required={isData?.terms_condiitons?.required} onChecked={(value) => setTermsConditons(value)} />}
-
+ */}
 
             <TouchableOpacity style={[Style.btn, { backgroundColor: themeColor.buttonColor }]} onPress={() => onCheckField()}>
                 <Text style={Style.txtBtn}>{Label.Submit}</Text>
@@ -246,5 +303,3 @@ function SubmitIdeaStep2(props) {
 
 
 export default memo(SubmitIdeaStep2);
-
-const sectorsList = ["Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian", "Indian"];

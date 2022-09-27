@@ -9,6 +9,7 @@ import Document from '../../assets/svg/Document';
 import { AppUtil } from '../../utils/AppUtil';
 import RNFS from 'react-native-fs';
 import { useEffect } from 'react';
+import { Loger } from '../../utils/Loger';
 
 const BrowseFileItem = (props) => {
 
@@ -22,16 +23,25 @@ const BrowseFileItem = (props) => {
     }, [isFile])
 
     const addMaterial = async (item) => {
-        if (item == "image" || item == "file" || item == "video") {
-            try {
-                await DocumentPicker.pickSingle(
-                    item == "image" ? { type: [types.images] }
-                        :
-                        item == "file" ? { type: [types.pdf, types.doc, types.docx, types.images] }
-                            :
-                            { type: [types.video] }
+        if (item && item != "" && item != undefined) {
 
-                ).then((results) => {
+            let typeArr = [];
+            item.forEach(key => {
+                if (key === "jpg" || key === "png" || key === "jpeg")
+                    typeArr.push(types.images)
+                else if (key === "pdf")
+                    typeArr.push(types.pdf)
+                else if (key === "doc")
+                    typeArr.push(types.doc)
+                else if (key === "docx")
+                    typeArr.push(types.docx)
+                else if (key === "mp4" || key === "mp3")
+                    typeArr.push(types.video)
+            })
+
+            Loger.onLog("",typeArr)
+            try {
+                await DocumentPicker.pickSingle({ type: typeArr }).then((results) => {
 
                     if (results.size > fixeSize) {
                         showMessageWithCallBack(`${Label.ErrorMessage} ${fixeSize / 1e+6} ${Label.MB}`, () => { null })
@@ -39,19 +49,6 @@ const BrowseFileItem = (props) => {
                     else {
                         props.onSelectImgResponse(results);
                         setFile(results)
-
-                        // RNFS.readFile(results.uri, 'base64').then(base64String => {
-                        //     let ext = results.uri.split('.');
-                        //     let data = {
-                        //         uri: results.uri,
-                        //         name: results.uri.split('/'),
-                        //         type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg'),
-                        //         base64st: base64String
-                        //     }
-
-                        // }).catch(err => {
-                        //     console.log(err.message, err.code);
-                        // });
                     }
 
                 });
@@ -69,7 +66,7 @@ const BrowseFileItem = (props) => {
             (isFile.type == "image/png" || isFile.type == "image/jpg" || isFile.type == "image/jpeg" || isFile.type == "video/mp4") ?
                 <View style={Style.addImageView}>
                     <Image resizeMode="cover" resizeMethod="scale" style={Style.imgStyle} source={{ uri: isFile.uri }} />
-                    <TouchableOpacity style={Style.removeIcnStyle} onPress={() => { setFile(null)}}>
+                    <TouchableOpacity style={Style.removeIcnStyle} onPress={() => { setFile(null) }}>
                         <IcnRemoveRound width={15} height={15} />
                     </TouchableOpacity>
                 </View>
@@ -91,9 +88,10 @@ const BrowseFileItem = (props) => {
             {isFile === null ?
                 <TouchableOpacity onPress={() => addMaterial(props.type)} style={Style.addImageView}>
                     <Text style={Style.txtPlus}>{"+"}</Text>
-                    {props.type == "image" && <Text style={Style.txtTitle}>{Label.AddImage}</Text>}
+                    <Text style={Style.txtTitle}>{Label.AddFile}</Text>
+                    {/* {props.type == "image" && <Text style={Style.txtTitle}>{Label.AddImage}</Text>}
                     {props.type == "video" && <Text style={Style.txtTitle}>{Label.AddVideo}</Text>}
-                    {props.type == "file" && <Text style={Style.txtTitle}>{Label.AddFile}</Text>}
+                    {props.type == "file" && <Text style={Style.txtTitle}>{Label.AddFile}</Text>} */}
                 </TouchableOpacity>
                 :
                 renderFile()
