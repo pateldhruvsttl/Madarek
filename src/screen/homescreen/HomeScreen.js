@@ -39,10 +39,10 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     onSlider();
-    // onOpenChallenge();
-    // onSpotlight();
-    // onFavouriteCategories();
-    // onExpertInsights();
+    onOpenChallenge();
+    onSpotlight();
+    onFavouriteCategories();
+    onExpertInsights();
   }, []);
 
   const onSlider = () => {
@@ -142,7 +142,6 @@ const HomeScreen = (props) => {
       device_id: deviceId,
       token: AppConfig.token,
       frontuser_id: UserManager.userId,
-      idea_id: "146",
       language: getLanguage(),
     };
     Service.post(

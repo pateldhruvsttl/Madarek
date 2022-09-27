@@ -10,7 +10,7 @@ export default class ExpertInsightDetail {
 
         this.id = obj?.id
         this.type = obj?.type || ""
-        this.insightBy = obj?.insight_by || ""
+        this.insightBy = obj?.insight_by || Label.NoName
         this.firstName = obj?.first_name || Label.NoFirstName
         this.spotlightCreateDate = obj?.spotlight_created || Label.DefaultDate
         this.lastName =  obj?.last_name || Label.NoLastName

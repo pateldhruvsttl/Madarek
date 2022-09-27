@@ -253,6 +253,10 @@ const ChallengesListScreen = (props) => {
     }
   };
 
+const onRefresh = (type) => {
+  onOpenChallenge(type, "", "", isOpenChallengePageNo);
+}
+
   return (
     <SafeAreaView style={ListStyle.container}>
       <CommonHeader
@@ -291,7 +295,7 @@ const ChallengesListScreen = (props) => {
                     propName={{ type: "OpenChallenge", data: openChallenge }}
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(id) => props.navigation.navigate("ChallengeDetail", { id: id })}
+                    navigateDetail={(id) => props.navigation.navigate("ChallengeDetail", { id: id,onRefresh:() => onRefresh("open_submission")})}
                     paginations={() => paginations("open_submission")}
                     navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   />
@@ -315,7 +319,7 @@ const ChallengesListScreen = (props) => {
                     propName={{ type: "UpCommingChallenge", data: upcomingChallenge }}
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(item) => props.navigation.navigate("ChallengeDetail", { id: item.id })}
+                    navigateDetail={(item) => props.navigation.navigate("ChallengeDetail", { id: item.id,onRefresh:() => onRefresh("coming_soon") })}
                     paginations={() => paginations("coming_soon")}
                     navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   />
@@ -339,7 +343,7 @@ const ChallengesListScreen = (props) => {
                     propName={{ type: "ClosedChallenge", data: closeChallenge }}
                     favoriteChallenge={(id) => favoriteChallenge(id)}
                     likeChallenge={(id) => likeChallenge(id)}
-                    navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id }) }}
+                    navigateDetail={(id) => { props.navigation.navigate("ChallengeDetail", { id: id,onRefresh:() => onRefresh("closed") }) }}
                     paginations={() => paginations("closed")}
                     navigateToComment={(item) => props.navigation.navigate("CommentScreen", { item: item })}
                   /> :

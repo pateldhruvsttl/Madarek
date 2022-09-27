@@ -163,7 +163,7 @@ const IdeaContent = (props) => {
                     },
                     ]}
                 >
-                    {props.isType == "ChallengeDetail" ? props?.data?.title : props?.data?.ideaTitle}
+                    {props.isType == "ChallengeDetail" ? props?.data?.title : props.isType ==  "ExpertWithComment" ? props?.data?.insightTitle : props?.data?.ideaTitle}
                 </Text>
             </View>
 

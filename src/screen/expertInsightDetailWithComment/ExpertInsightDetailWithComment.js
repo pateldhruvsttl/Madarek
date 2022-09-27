@@ -146,12 +146,12 @@ const ExpertInsightDetailWithComment = (props) => {
           </View>
         </View>
         <View style={ExpertInsightDetailStyle.leftItems}>
-          <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
+          {/* <Text numberOfLines={1} style={ExpertInsightDetailStyle.title}>
             {props.ideaTitle}
-          </Text>
+          </Text> */}
           {/* <Text numberOfLines={0} style={ExpertInsightDetailStyle.SubTitle}> */}
           <View>
-            <WebViewComp data={props.ideaDescription} backgroundColor={GetAppColor.lightGrey} />
+            <WebViewComp data={props.insightDescription} backgroundColor={GetAppColor.lightGrey} />
           </View>
           {/* </Text> */}
 

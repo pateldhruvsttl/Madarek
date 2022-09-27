@@ -21,7 +21,7 @@ export default class SpotlightDetail {
         this.publishBy = obj?.publish_by || Label.NoName
         this.publishDate = obj?.publish_date || Label.DefaultDate
         this.title = obj?.title || Label.NoTitle
-        this.description = obj?.desscription || Label.NoDescription
+        this.description = obj?.description || Label.NoDescription
         this.image = obj?.image_upload_files || ""
 
     }

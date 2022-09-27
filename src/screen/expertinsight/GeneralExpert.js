@@ -86,7 +86,6 @@ const GeneralExpert = (props) => {
                     <FlatList
                         data={props.data}
                         style={{ marginTop: AppUtil.getHP(1) }}
-                        scrollEnabled={props?.scrollEnabled ? true : false}
                         renderItem={(item) => renderCell(item)}
                         key={(id) => id}
                         keyExtractor={item => item.id}
