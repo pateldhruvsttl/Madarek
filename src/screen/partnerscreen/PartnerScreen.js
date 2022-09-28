@@ -36,7 +36,6 @@ const PartnerScreen = (props) => {
         }
 
         Service.post(EndPoints.partner, data, (res) => {
-            Loger.onLog('res of partners', res);
             const data = []
             if (res.statusCode == "1") {
                 res.data.map((ele, index) => {

@@ -27,10 +27,6 @@ function SubmitIdeaStep2(props) {
     const [isFormData, setFormData] = useState({});
 
     useEffect(() => {
-        Loger.onLog("FormData", isFormData)
-    }, [isFormData])
-
-    useEffect(() => {
         GetField(props?.data?.sectorsId, props?.data?.categoryId, props?.data?.subCategoryId);
     }, [])
 
@@ -76,7 +72,6 @@ function SubmitIdeaStep2(props) {
         _obj = isFormData;
         _obj[KeyType] = txt
 
-        Loger.onLog("onTextChange", _obj)
         setFormData(_obj);
     }
 
@@ -172,9 +167,6 @@ function SubmitIdeaStep2(props) {
             return false;
         }
         else {
-
-            Loger.onLog("isFormData", isFormData);
-
             props.onNext({
                 data_obj: JSON.stringify(isFormData),
                 obj: isFile,

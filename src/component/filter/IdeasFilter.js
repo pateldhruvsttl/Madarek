@@ -100,7 +100,6 @@ function IdeasFilter(props) {
         cat.push(element)
       });
 
-      Loger.onLog("=-=-=-=-=-=-=-=-=->", cat);
       setCategoriesList(cat);
     },
       (err) => {

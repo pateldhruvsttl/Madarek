@@ -28,9 +28,7 @@ const Resources = (props) => {
     },[])
 
     const onDownloadFile =(item, index)=>{
-        
         DownloadManager(item, (res) => {
-            Loger.onLog("res", res);
         })
     }
 

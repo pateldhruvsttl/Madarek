@@ -68,7 +68,6 @@ const Signup = (props) => {
       EndPoints.signUp,
       data,
       (res) => {
-        Loger.onLog("SignUp screen Response  ========>", res);
         navigateToSignUpVerify();
       },
       (err) => {

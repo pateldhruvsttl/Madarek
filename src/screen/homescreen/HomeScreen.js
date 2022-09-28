@@ -119,10 +119,6 @@ const HomeScreen = (props) => {
       EndPoints.favouriteCategories,
       data,
       (res) => {
-        Loger.onLog(
-          "favouriteCategories Response ========>",
-          res.data[0].category_info
-        );
         if (res?.statusCode === "1") {
           const favouriteCategoriesArr = [];
           res?.data[0]?.category_info.map((ele) => {

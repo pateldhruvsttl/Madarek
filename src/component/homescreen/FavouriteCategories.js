@@ -15,7 +15,6 @@ import { Loger } from "../../utils/Loger";
 
 const FavouriteCategories = (props) => {
 
-    Loger.onLog("props", props)
     
     const navigation = useNavigation();
     const { themeColor } = useSelector((state) => state)

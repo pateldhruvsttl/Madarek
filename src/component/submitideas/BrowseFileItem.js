@@ -9,6 +9,7 @@ import Document from '../../assets/svg/Document';
 import { AppUtil } from '../../utils/AppUtil';
 import RNFS from 'react-native-fs';
 import { useEffect } from 'react';
+import { Loger } from '../../utils/Loger';
 
 const BrowseFileItem = (props) => {
 
@@ -60,8 +61,8 @@ const BrowseFileItem = (props) => {
         }
     }
     const renderFile = () => {
-        return (
-            (isFile.type == "image/png") ?
+               return (
+            (isFile.type == "image/png" || isFile.type == "image/jpeg"  || isFile.type == "image/jpg" || isFile.type == "video/mp3" || isFile.type == "video/mp4") ?
                 <View style={Style.addImageView}>
                     <Image resizeMode="cover" resizeMethod="scale" style={Style.imgStyle} source={{ uri: isFile.uri }} />
                     <TouchableOpacity style={Style.removeIcnStyle} onPress={() => { setFile(null) }}>

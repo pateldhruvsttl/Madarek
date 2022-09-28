@@ -84,8 +84,6 @@ const PersonalEdit = (props) => {
     }, [])
 
     const addMaterial = async () => {
-
-        Loger.onLog("","");
         try {
             await DocumentPicker.pickSingle({ type: [types.images] }).then((results) => {
                 if (results.size > fixeSize) {

@@ -39,7 +39,6 @@ const UserDashboardScreen = (props) => {
             "language": getLanguage()
         }
         Service.post(EndPoints.dashboard, data, (res) => {
-            Loger.onLog('dashboard Response  ========>', JSON.stringify(res.data))
             if (res?.statusCode === "1") {
                 const dashboardArr = []
                 const joinRequest = []

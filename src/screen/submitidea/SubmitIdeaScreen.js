@@ -43,8 +43,6 @@ function SubmitIdeaScreen(props) {
 
     Object.keys(dataForm.obj).forEach(key => {
       formData.append(key, dataForm.obj[key])
-
-      Loger.onLog(key,dataForm.obj[key])
     })
 
     Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {

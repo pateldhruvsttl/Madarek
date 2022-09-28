@@ -44,7 +44,6 @@ const MySubmittedIdeas = () => {
 
         Service.post(EndPoints.submitIdeaList, data, (response) => {
             const idea = []
-            Loger.onLog('response of submitIdeaList', response);
             response.data.map((item) => {
                 let model = new SubmitIdeaList(item)
                 idea.push(model)
