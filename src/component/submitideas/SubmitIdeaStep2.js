@@ -19,30 +19,17 @@ import TermAndConditions from './TermAndConditions'
 function SubmitIdeaStep2(props) {
 
     const { themeColor } = useSelector((state) => state);
-    const [isData, setData] = useState();
     const [isItemList, setItemList] = useState([]);
-
-    const [isIdeaDescription, setIdeaDescription] = useState("");
-    const [isIdeaCoverImage, setIdeaCoverImage] = useState("");
     const [isMultiImage, setMultiImage] = useState([]);
-    const [isChallengesAddressing, setChallengesAddressing] = useState("");
-    const [isBenefitIdea, setBenefitIdea] = useState("");
-    const [isFile, setFile] = useState("");
-    const [isVideoUrl, setVideoUrl] = useState("");
-    const [isUploadEmbedUrl, setUploadEmbedUrl] = useState("");
-    const [isVideoFile, setVideoFile] = useState("");
-    const [iskeywordsTags, setkeywordsTags] = useState("");
-    const [isNoOfTeamMember, setNoOfTeamMember] = useState("");
-    const [isTeamMember, setTeamMember] = useState([]);
-    const [isTeamIdentity, setTeamIdentity] = useState(0);
-    const [isIdeaPrivately, setIdeaPrivately] = useState(0);
-    const [isTermsConditons, setTermsConditons] = useState(0);
-
+    const [isFile, setFile] = useState({});
     const [isArror, setArror] = useState(false);
+    
 
     useEffect(() => {
         GetField(props?.data?.sectorsId, props?.data?.categoryId, props?.data?.subCategoryId);
     }, [])
+
+ 
 
     const GetField = (sectorsId, categoryId, subCategoryId) => {
         let obj = {
@@ -58,11 +45,10 @@ function SubmitIdeaStep2(props) {
 
         Service.post(EndPoints.loadidea, obj, (res) => {
             if (res.statusCode == 1) {
-                setData(res.data);
-
                 let arr = [];
                 Object.keys(res.data).forEach(key => {
                     res.data[key].KeyType = key;
+                    res.data[key].dataItem = "";
                     let obj = res.data[key];
                     arr.push(obj)
                 })
@@ -82,13 +68,17 @@ function SubmitIdeaStep2(props) {
         setItemList(arrData)
     }
 
-    const onSelectFile = (index, item) => {
+    const onSelectFile = (index, KeyType, item) => {
 
         let arrData = isItemList;
         arrData[index].dataItem = item;
         setItemList(arrData)
+        
+        let _obj ={};
+        _obj = isFile;
+        _obj[KeyType] = item
+        setFile(_obj);
 
-        setFile(item);
     }
 
     const onSelectMultiImg = (index, item) => {
@@ -96,119 +86,135 @@ function SubmitIdeaStep2(props) {
         arrData[index].dataItem = item;
         setItemList(arrData)
         setMultiImage(item);
-
     }
-    const onTeamMemeber = (index, item) => {
-        if (item !== "err") {
 
-            let arrData = isItemList;
+    const onTeamMemeber = (index, item) => {
+
+        let arrData = isItemList;
+        if (item !== "err") {
             arrData[index].dataItem = item;
             setItemList(arrData)
-
-            setTeamMember(item);
             setArror(false)
         }
-        else
+        else {
+            arrData[index].dataItem = "";
+            setItemList(arrData)
             setArror(true)
+        }
 
     }
 
-    const onSelectImg = (item) => {
-        setIdeaCoverImage(item);
+    const onTermConditions = (index, item) => {
+        let arrData = isItemList;
+        arrData[index].dataItem = item;
+        setItemList(arrData)
     }
 
-
-    const onSelectVideoFile = (item) => {
-        setVideoFile(item);
+    const onCheckedAllRequredFiles = () => {
+        let validationFali = true;
+        isItemList.forEach(eliment => {
+            if (eliment.required === "Y" && eliment.dataItem === "") {
+                validationFali = false;
+            }
+        })
+        return validationFali;
 
     }
-
-
     const onCheckField = () => {
 
-        if (isData?.idea_description?.required === "Y" && isIdeaDescription === "") {
+        if (!onCheckedAllRequredFiles())
             Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.idea_cover_image?.required === "Y" && isIdeaCoverImage === "") {
+        else if (isArror) {
             Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.upload_additional_images?.required === "Y" && isMultiImage.length == 0) {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.challenges_addressing?.required === "Y" && isChallengesAddressing === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.benefit_idea?.required === "Y" && isBenefitIdea === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.idea_upload_files?.required === "Y" && isFile === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.upload_video_url?.required === "Y" && isVideoUrl === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.upload_embed_url?.required === "Y" && isUploadEmbedUrl === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.idea_upload_videos?.required === "Y" && isVideoFile === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.keywords_tags?.required === "Y" && iskeywordsTags === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.no_of_team_member?.required === "Y" && isNoOfTeamMember === "") {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if ((isData?.team_member_details?.required === "Y" && isTeamMember === "") || isArror == true) {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.hide_team_identity?.required === "Y" && isTeamIdentity === 0) {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.post_idea_privately?.required === "Y" && isIdeaPrivately === 0) {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
-        }
-        else if (isData?.terms_condiitons?.required === "Y" && isTermsConditons === 0) {
-            Alert.alert(Label.FillMandatoryFieldsValidation);
+            return false;
         }
         else {
-
-            let data_form = {
-                photos_image: null,
-                idea_cover_image: "",
-                idea_upload_files: "",
-                idea_upload_videos: "",
-                upload_additional_images: "",
-
-                idea_description: isIdeaDescription,
-                challenges_addressing: isChallengesAddressing,
-                benefit_idea: isBenefitIdea,
-                upload_video_url: isVideoUrl,
-                upload_embed_url: isUploadEmbedUrl,
-                keywords_tags: iskeywordsTags,
-                no_of_team_member: isNoOfTeamMember,
-                team_member_details: isTeamMember,
-                hide_team_identity: isTeamIdentity,
-                need_sme: "",
-                post_idea_privately: isIdeaPrivately,
-                terms_condiitons: isTermsConditons,
-            }
-
-            let arr = [];
-            arr[0] = { key: "form_data", item: JSON.stringify(data_form) }
-            arr[1] = { key: "form_data", item: JSON.stringify(data_form) }
-            arr[2] = { key: "form_data", item: JSON.stringify(data_form) }
-            arr[3] = { key: "form_data", item: JSON.stringify(data_form) }
-            arr[4] = { key: "form_data", item: JSON.stringify(data_form) }
-
             props.onNext({
-                data_obj: JSON.stringify(data_form),
-                isIdeaCoverImage: isIdeaCoverImage,
-                isFile: isFile,
-                isVideoFile: isVideoFile,
-                isMultiImage: isMultiImage
+                data_obj: JSON.stringify(isItemList),
+                obj: isFile,
+                isMultiImage: isMultiImage,
             });
         }
+
+
+
+        // if (isData?.idea_description?.required === "Y" && isIdeaDescription === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.idea_cover_image?.required === "Y" && isIdeaCoverImage === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.upload_additional_images?.required === "Y" && isMultiImage.length == 0) {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.challenges_addressing?.required === "Y" && isChallengesAddressing === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.benefit_idea?.required === "Y" && isBenefitIdea === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.idea_upload_files?.required === "Y" && isFile === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.upload_video_url?.required === "Y" && isVideoUrl === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.upload_embed_url?.required === "Y" && isUploadEmbedUrl === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.idea_upload_videos?.required === "Y" && isVideoFile === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.keywords_tags?.required === "Y" && iskeywordsTags === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.no_of_team_member?.required === "Y" && isNoOfTeamMember === "") {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if ((isData?.team_member_details?.required === "Y" && isTeamMember === "") || isArror == true) {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.hide_team_identity?.required === "Y" && isTeamIdentity === 0) {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.post_idea_privately?.required === "Y" && isIdeaPrivately === 0) {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else if (isData?.terms_condiitons?.required === "Y" && isTermsConditons === 0) {
+        //     Alert.alert(Label.FillMandatoryFieldsValidation);
+        // }
+        // else {
+
+        // let data_form = {
+        //     photos_image: null,
+        //     idea_cover_image: "",
+        //     idea_upload_files: "",
+        //     idea_upload_videos: "",
+        //     upload_additional_images: "",
+
+        //     idea_description: isIdeaDescription,
+        //     challenges_addressing: isChallengesAddressing,
+        //     benefit_idea: isBenefitIdea,
+        //     upload_video_url: isVideoUrl,
+        //     upload_embed_url: isUploadEmbedUrl,
+        //     keywords_tags: iskeywordsTags,
+        //     no_of_team_member: isNoOfTeamMember,
+        //     team_member_details: isTeamMember,
+        //     hide_team_identity: isTeamIdentity,
+        //     need_sme: "",
+        //     post_idea_privately: isIdeaPrivately,
+        //     terms_condiitons: isTermsConditons,
+        // }
+
+        // let arr = [];
+        // arr[0] = { key: "form_data", item: JSON.stringify(data_form) }
+        // arr[1] = { key: "form_data", item: JSON.stringify(data_form) }
+        // arr[2] = { key: "form_data", item: JSON.stringify(data_form) }
+        // arr[3] = { key: "form_data", item: JSON.stringify(data_form) }
+        // arr[4] = { key: "form_data", item: JSON.stringify(data_form) }
+
+
+        // }
 
 
     }
@@ -228,11 +234,12 @@ function SubmitIdeaStep2(props) {
                         );
                     else if (item.type == "file")
                         return (
-                            <BrowseFileItem title={item?.caption} required={item?.required} type={item.allowed} size={item?.size?.size} onSelectImgResponse={(item) => onSelectFile(index, item)} />
+                            <BrowseFileItem title={item?.caption} required={item?.required} type={item.allowed} size={item?.size?.size}
+                                onSelectImgResponse={(obj) => onSelectFile(index, item.KeyType, obj)} />
                         );
                     else if (item.type == "multijson" && item.additional_images)
                         return (
-                            <BrowseEditionalImag title={item?.additional_images?.caption} required={item?.required} onMultiImageArr={(item) => onSelectMultiImg(index, item)} />
+                            <BrowseEditionalImag title={item?.additional_images?.caption} required={item?.required} onMultiImageArr={(obj) => onSelectMultiImg(index, obj)} />
                         );
                     else if (item.type == "multijson")
                         return (
@@ -240,7 +247,7 @@ function SubmitIdeaStep2(props) {
                         );
                     else if (item.type == "checkbox")
                         return (
-                            <TermAndConditions title={item?.caption} required={item?.required} onChecked={(value) => setTeamIdentity(value)} />
+                            <TermAndConditions title={item?.caption} required={item?.required} onChecked={(value) => onTermConditions(index, value)} />
                         );
                 })}
             </View>

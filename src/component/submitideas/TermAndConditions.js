@@ -12,7 +12,7 @@ const TermAndConditions = (props) => {
   const [isCheckedOne, setCheckedOne] = useState(false);
 
   useEffect(()=>{
-    props.onChecked(isCheckedOne ? 1 : 0);
+    props.onChecked(isCheckedOne ? 1 : "");
   },[isCheckedOne])
 
   return (

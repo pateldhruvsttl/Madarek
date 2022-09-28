@@ -23,6 +23,7 @@ function SubmitIdeaScreen(props) {
 
   const onSubmit = (dataForm) => {
 
+
     var formData = new FormData()
 
     formData.append('device_id', deviceId)
@@ -38,10 +39,13 @@ function SubmitIdeaScreen(props) {
     formData.append('sub_category_id', "0")
     
     formData.append('form_data', dataForm.data_obj)
-    formData.append('idea_cover_image', dataForm.isIdeaCoverImage)
-    formData.append('idea_upload_files', dataForm.isFile)
-    formData.append('idea_upload_videos', dataForm.isVideoFile)
     formData.append(getMultiImage(dataForm.isMultiImage))
+
+    Object.keys(dataForm.obj).forEach(key => {
+      formData.append(key, dataForm.obj[key])
+
+      Loger.onLog(key,dataForm.obj[key])
+    })
 
     Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {
       showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
@@ -60,12 +64,6 @@ function SubmitIdeaScreen(props) {
     list.forEach(element => {
       if (element.uri) {
         data.append('additional_images', element)
-        // let ext = element.uri.split('.');
-        // data.append('additional_images', {
-        //   uri: element.uri,
-        //   name: element.name,
-        //   type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg')
-        // });
       }
     });
 
