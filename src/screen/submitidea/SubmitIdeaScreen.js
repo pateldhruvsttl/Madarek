@@ -18,13 +18,10 @@ import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
   const [selectIndex, setSelectIndex] = useState(0);
-
   const [step1Obj, setStep1Obj] = useState(null);
+  var formData = new FormData()
 
   const onSubmit = (dataForm) => {
-
-
-    var formData = new FormData()
 
     formData.append('device_id', deviceId)
     formData.append('lang', AppConfig.lang.toString())
@@ -34,38 +31,67 @@ function SubmitIdeaScreen(props) {
 
     formData.append('idea_id', 0)
     formData.append('idea_title', step1Obj.title)
-    formData.append('sector_id', "2")
-    formData.append('category_id', "5")
-    formData.append('sub_category_id', "0")
-    
+
+    formData.append('sector_id', step1Obj.sectorsId)
+    formData.append('category_id', step1Obj.categoryId)
+    formData.append('sub_category_id', step1Obj.subCategoryId)
+
     formData.append('form_data', dataForm.data_obj)
-    formData.append(getMultiImage(dataForm.isMultiImage))
+    formData.append('upload_additional_images[]', getModifideList(dataForm.isMultiImage))
 
     Object.keys(dataForm.obj).forEach(key => {
       formData.append(key, dataForm.obj[key])
     })
 
+    // getMultiImage(dataForm.isMultiImage)
+
     Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {
-      showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
-        // props.navigation.navigate("UserDashboardScreen");
-        props.navigation.goBack()
-      })
+
+      let _label = "";
+
+      if (res?.statusCode == 1)
+        _label = Label.IdeaSubmitSuccessfully;
+      else
+        _label = Label.SomethingWrongMssage;
+
+      // showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
+      //   props.navigation.goBack()
+      // })
+
     }, (err) => {
       Loger.onLog("###", err);
     }
     );
 
   }
+  const getModifideList =(results)=>{
+   
+    let fileCopyUri =[];
+    let name =[];
+    let size =[];
+    let type =[];
+    let uri =[];
+
+    results.map((res) => {
+      fileCopyUri.push(res.fileCopyUri)
+      name.push(res.name)
+      size.push(res.size)
+      type.push(res.type)
+      uri.push(res.uri)
+  })
+
+  return {fileCopyUri:fileCopyUri, name:name, size:size, type:type, uri:uri}
+  }
   const getMultiImage = (list) => {
-    let data = new FormData();
 
     list.forEach(element => {
       if (element.uri) {
-        data.append('additional_images', element)
+        // formData.append('additional_images', element)
+        formData.append('upload_additional_images[]', element)
       }
     });
 
-    return data;
+    // return data;
   }
 
   return (

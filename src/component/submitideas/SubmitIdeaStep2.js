@@ -98,11 +98,14 @@ function SubmitIdeaStep2(props) {
         let arrData = isItemList;
         arrData[index].dataItem = item;
         setItemList(arrData)
+
         setMultiImage(item);
+
+        Loger.onLog("item", item);
 
         let _obj = {};
         _obj = isFormData;
-        _obj[KeyType] = "";
+        _obj[KeyType] = [];
 
         setFormData(_obj);
 
