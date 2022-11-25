@@ -389,6 +389,7 @@ export const ARlabel = {
   _no:                                "رقم",
   _otpSent:                           "تم إرسال OTP ",
   _ideaSubmitSuccessfully: "The idea has been submitted successfully",
+  _somethingWrongMssage: "Something Wrong. Please try again next time!",
 }
 
 export const USlabel = {
@@ -869,4 +870,5 @@ export const USlabel = {
   _no: "NO",
   _otpSent: "OTP is sent",
   _ideaSubmitSuccessfully: "The idea has been submitted successfully",
+  _somethingWrongMssage: "Something Wrong. Please try again next time!",
 }

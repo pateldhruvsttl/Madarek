@@ -112,7 +112,6 @@ const myIdeaEdit = () => {
         )
     }
     const onRemoveImage = (index) => {
-        Loger.onLog("index", index)
     }
 
     const onCheckSelectItem = () => {

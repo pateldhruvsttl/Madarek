@@ -1,3 +1,4 @@
+import { formatPrefix } from "d3";
 import React, { memo, useState } from "react";
 import { View, Text, ScrollView, ScrollViewBase, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -17,12 +18,10 @@ import Style from "./SubmitIdeaScreenStyle";
 
 function SubmitIdeaScreen(props) {
   const [selectIndex, setSelectIndex] = useState(0);
-
   const [step1Obj, setStep1Obj] = useState(null);
+  var formData = new FormData()
 
   const onSubmit = (dataForm) => {
-
-    var formData = new FormData()
 
     formData.append('device_id', deviceId)
     formData.append('lang', AppConfig.lang.toString())
@@ -32,69 +31,68 @@ function SubmitIdeaScreen(props) {
 
     formData.append('idea_id', 0)
     formData.append('idea_title', step1Obj.title)
-    formData.append('sector_id', "2")
-    formData.append('category_id', "5")
-    formData.append('sub_category_id', "0")
+
+    formData.append('sector_id', step1Obj.sectorsId)
+    formData.append('category_id', step1Obj.categoryId)
+    formData.append('sub_category_id', step1Obj.subCategoryId)
 
     formData.append('form_data', dataForm.data_obj)
+    formData.append('upload_additional_images[]', getModifideList(dataForm.isMultiImage))
 
-    formData.append('idea_cover_image', dataForm.isIdeaCoverImage)
-    formData.append('idea_upload_files', dataForm.isFile)
-    formData.append(getMultiImage(dataForm.isMultiImage))
-    formData.append('idea_upload_videos', dataForm.isVideoFile)
+    Object.keys(dataForm.obj).forEach(key => {
+      formData.append(key, dataForm.obj[key])
+    })
+
+    // getMultiImage(dataForm.isMultiImage)
 
     Service.postFormDataFetch(EndPoints.submitidea, formData, (res) => {
-      showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
-        // props.navigation.navigate("UserDashboardScreen");
-        props.navigation.goBack()
-      })
+
+      let _label = "";
+
+      if (res?.statusCode == 1)
+        _label = Label.IdeaSubmitSuccessfully;
+      else
+        _label = Label.SomethingWrongMssage;
+
+      // showMessageWithCallBack(Label.IdeaSubmitSuccessfully, () => {
+      //   props.navigation.goBack()
+      // })
+
     }, (err) => {
       Loger.onLog("###", err);
     }
     );
 
   }
+  const getModifideList =(results)=>{
+   
+    let fileCopyUri =[];
+    let name =[];
+    let size =[];
+    let type =[];
+    let uri =[];
+
+    results.map((res) => {
+      fileCopyUri.push(res.fileCopyUri)
+      name.push(res.name)
+      size.push(res.size)
+      type.push(res.type)
+      uri.push(res.uri)
+  })
+
+  return {fileCopyUri:fileCopyUri, name:name, size:size, type:type, uri:uri}
+  }
   const getMultiImage = (list) => {
-    let data = new FormData();
 
     list.forEach(element => {
       if (element.uri) {
-        data.append('additional_images', element)
-        // let ext = element.uri.split('.');
-        // data.append('additional_images', {
-        //   uri: element.uri,
-        //   name: element.name,
-        //   type: 'image/' + (ext.length > 0 ? ext[1] : 'jpeg')
-        // });
+        // formData.append('additional_images', element)
+        formData.append('upload_additional_images[]', element)
       }
     });
 
-    return data;
+    // return data;
   }
-
-  const onSubmit1 = (dataForm) => {
-
-
-    dataForm.device_id = deviceId,
-      dataForm.lang = AppConfig.lang.toString(),
-      dataForm.token = AppConfig.token.toString(),
-      dataForm.frontuser_id = UserManager.userId.toString(),
-      dataForm.task = "save",
-
-      dataForm.idea_id = 0,
-      dataForm.idea_title = step1Obj.title,
-      dataForm.sector_id = step1Obj.sectorsId,
-      dataForm.category_id = step1Obj.categoryId
-
-    Service.post(EndPoints.submitidea, dataForm, (res) => {
-      // props.navigation.navigate("UserDashboardScreen");
-    }, (err) => {
-      Loger.onLog("###", err);
-    }
-    );
-
-  }
-
 
   return (
     <SafeAreaView style={Style.MainView}>

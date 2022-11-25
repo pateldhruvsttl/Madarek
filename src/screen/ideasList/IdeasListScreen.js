@@ -138,7 +138,7 @@ const IdeasListScreen = (props) => {
         }
       },
       (err) => {
-        // Loger.onLog(" ideaList error ------->", err)
+        Loger.onLog(" ideaList error ------->", err)
       }
     );
   };

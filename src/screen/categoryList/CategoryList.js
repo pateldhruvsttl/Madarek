@@ -24,7 +24,6 @@ const CategoryList = (props) => {
     useEffect(() => {
         var cat=[];
         Service.post(EndPoints.categories, {}, (res) => {
-            Loger.onLog('category categorylist Response of category list ========>',JSON.stringify(res.data))
             res.data.forEach(element => {
                 let model = new Categories(element);
                 cat.push(model)

@@ -51,7 +51,6 @@ const CommentScreen = (props) => {
         "comment": props?.isType == 'Parent' ? parentComment : comment
       }
       Service.post(EndPoints.submitComment, data, (res) => {
-        Loger.onLog("res of submitComment", res)
         if (res.statusCode == 1) {
           commentListing()
           setComment('')
@@ -75,7 +74,6 @@ const CommentScreen = (props) => {
 
     }
     Service.post(EndPoints.commentSection, data, (res) => {
-      Loger.onLog("res of CommentSection", res)
       const commentArr = []
       if (res.statusCode == 1) {
         res.data.map((ele) => {

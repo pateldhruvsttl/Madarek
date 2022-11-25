@@ -130,7 +130,6 @@ const SearchLabel = (props) => {
 
     const onGetPaginations = (type) => {
 
-        Loger.onLog("12312313213213213132")
         if (isData.length > (AppConfig.pageLimit - 1)) {
             switch (type) {
                 case 'IDEAS':

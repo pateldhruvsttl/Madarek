@@ -32,7 +32,6 @@ const ExpertInsightTypeDetail = (props) => {
             "insight_id": id
         }
         Service.post(EndPoints.expertsInsiteDetail, data, (res) => {
-            Loger.onLog('res of expertsInsiteDetail', res);
             if (res.statusCode == 1) {
                 let model = new ExpertInsightDetail(res.data)
                 setDetail(model)

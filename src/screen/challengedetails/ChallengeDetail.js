@@ -78,7 +78,6 @@ const ChallengeDetail = (props) => {
 
     },
       (err) => {
-        // Loger.onLog("error of challange detail", err);
       }
     );
   }

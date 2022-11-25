@@ -34,7 +34,6 @@ const UserProfileView = (props) => {
             token: AppConfig.token,
         }
         Service.post(EndPoints.getProfile, data, (res) => {
-            Loger.onLog('res of getProfile', res);
 
             if (res.statusCode == "1") {
                 let model = new UserProfile(res.data)

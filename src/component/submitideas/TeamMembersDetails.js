@@ -35,7 +35,7 @@ const TeamMembersDetails = (props) => {
         else {
             props.onSelectTeamMembers("err")
         }
-    }, [isMemberData])
+    }, [isErr])
 
     const onAddItem = () => {
 
@@ -55,14 +55,6 @@ const TeamMembersDetails = (props) => {
         let data = isMemberData;
 
         if (type === "name") {
-
-            if (text == "")
-                setErr(-1)
-            else if (!text.trim())
-                setErr(index)
-            else
-                setErr(-1)
-
             data[index].full_name = text;
         }
         else if (type === "email") {
@@ -76,24 +68,9 @@ const TeamMembersDetails = (props) => {
             data[index].email = text;
         }
         else if (type === "contryCode") {
-
-            if (text == "")
-                setErr(-1)
-            else if (!text.trim())
-                setErr(index)
-            else
-                setErr(-1)
-
             data[index].country_ext = text;
         }
         else if (type === "mobileNo") {
-            if (text == "")
-                setErr(-1)
-            else if (!text.trim())
-                setErr(index)
-            else
-                setErr(-1)
-
             data[index].mobile = text;
         }
 

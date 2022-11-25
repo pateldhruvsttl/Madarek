@@ -32,7 +32,6 @@ const SpotlightDetail = (props) => {
         Service.post(EndPoints.spotlightDetail, data,
             (res) => {
                 if (res.statusCode == 1) {
-                    Loger.onLog("Response of spotlightDetail", res)
                     const model = new SpotlightDetailModel(res.data)
                     setSpotlightDetail(model)
                 }
